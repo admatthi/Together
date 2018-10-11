@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>91801829478-nlo9flr96m8dtk4e8163g0c4q6l904sp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.91801829478-nlo9flr96m8dtk4e8163g0c4q6l904sp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBWTmwMrMlnVsM07LNDB_7eCbD-4ETawVI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>91801829478</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.aatech.Together</string>
+	<key>PROJECT_ID</key>
+	<string>together-ece6b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>together-ece6b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:91801829478:ios:0ecf34665773aed0</string>
+	<key>DATABASE_URL</key>
+	<string>https://together-ece6b.firebaseio.com</string>
+</dict>
+</plist>
