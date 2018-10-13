@@ -14,6 +14,8 @@
 		9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F7C216B948A009708D4 /* AnswersViewController.swift */; };
 		9D451F7F216B949A009708D4 /* AnswersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */; };
 		9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F80216B96B6009708D4 /* AskViewController.swift */; };
+		9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C221728D1D001AEF8E /* HomeViewController.swift */; };
+		9D8934C521728D38001AEF8E /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */; };
 		9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9019C7216FA81A00668852 /* RespondViewController.swift */; };
 		9DB795C621656B5300211327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C521656B5300211327 /* AppDelegate.swift */; };
 		9DB795C821656B5300211327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C721656B5300211327 /* ViewController.swift */; };
@@ -62,6 +64,8 @@
 		9D451F7C216B948A009708D4 /* AnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
 		9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersTableViewCell.swift; sourceTree = "<group>"; };
 		9D451F80216B96B6009708D4 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
+		9D8934C221728D1D001AEF8E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = /Users/alekmatthiessen/Desktop/Together/Together/HomeTableViewCell.swift; sourceTree = "<absolute>"; };
 		9D9019C7216FA81A00668852 /* RespondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViewController.swift; sourceTree = "<group>"; };
 		9DB795C221656B5300211327 /* Together.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Together.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB795C521656B5300211327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,13 +187,15 @@
 				9DB795C921656B5300211327 /* Main.storyboard */,
 				9D451F80216B96B6009708D4 /* AskViewController.swift */,
 				9D451F7C216B948A009708D4 /* AnswersViewController.swift */,
-				9D9019C7216FA81A00668852 /* RespondViewController.swift */,
 				9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */,
+				9D9019C7216FA81A00668852 /* RespondViewController.swift */,
 				9DB795F321656CDF00211327 /* LogViewController.swift */,
 				9DB795F521656CEB00211327 /* LogTableViewCell.swift */,
 				9D0F869F217104FD00AE5F18 /* LonelyViewController.swift */,
 				9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */,
 				9D0F86A121710A6400AE5F18 /* Constants.swift */,
+				9D8934C221728D1D001AEF8E /* HomeViewController.swift */,
+				9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */,
 				9DB795CC21656B5600211327 /* Assets.xcassets */,
 				9DB795CE21656B5600211327 /* LaunchScreen.storyboard */,
 				9DB795D121656B5700211327 /* Info.plist */,
@@ -441,6 +447,7 @@
 			files = (
 				9D0F86A0217104FD00AE5F18 /* LonelyViewController.swift in Sources */,
 				9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */,
+				9D8934C521728D38001AEF8E /* HomeTableViewCell.swift in Sources */,
 				9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */,
 				9DB795F421656CDF00211327 /* LogViewController.swift in Sources */,
 				9DB795C821656B5300211327 /* ViewController.swift in Sources */,
@@ -450,6 +457,7 @@
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
+				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
