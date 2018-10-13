@@ -24,6 +24,7 @@
 		9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795E521656B5700211327 /* TogetherUITests.swift */; };
 		9DB795F421656CDF00211327 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795F321656CDF00211327 /* LogViewController.swift */; };
 		9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795F521656CEB00211327 /* LogTableViewCell.swift */; };
+		9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */; };
 		CDA65A340E0251A467ABD40B /* Pods_TogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AED522BDB9F8FBB8DE7FE7 /* Pods_TogetherUITests.framework */; };
 		F730C0F4CFD34EE9240B5A7C /* Pods_Together.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFCA9B94C66A654D51E53CF /* Pods_Together.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		9DB795E721656B5700211327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DB795F321656CDF00211327 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		9DB795F521656CEB00211327 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToReportViewController.swift; sourceTree = "<group>"; };
 		C5A42F47C5E03279E65B93BA /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
 		D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
 		F2942B7D3049A32B2E924492 /* Pods-TogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TogetherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TogetherUITests/Pods-TogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				9DB795F321656CDF00211327 /* LogViewController.swift */,
 				9DB795F521656CEB00211327 /* LogTableViewCell.swift */,
 				9D0F869F217104FD00AE5F18 /* LonelyViewController.swift */,
+				9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */,
 				9D0F86A121710A6400AE5F18 /* Constants.swift */,
 				9DB795CC21656B5600211327 /* Assets.xcassets */,
 				9DB795CE21656B5600211327 /* LaunchScreen.storyboard */,
@@ -438,6 +441,7 @@
 			files = (
 				9D0F86A0217104FD00AE5F18 /* LonelyViewController.swift in Sources */,
 				9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */,
+				9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */,
 				9DB795F421656CDF00211327 /* LogViewController.swift in Sources */,
 				9DB795C821656B5300211327 /* ViewController.swift in Sources */,
 				9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */,
