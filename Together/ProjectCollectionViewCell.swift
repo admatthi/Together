@@ -11,6 +11,7 @@ import UIKit
 class ProjectCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var product: UILabel!
     
+    @IBOutlet weak var screenshot: UIImageView!
     @IBOutlet weak var descriptionlabel: UILabel!
     @IBOutlet weak var price: UILabel!
 }
