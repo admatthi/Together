@@ -10,6 +10,10 @@ import UIKit
 
 
 var selectedprice = String()
+var selectedtitle = String()
+var selecteddescription = String()
+var selectedprogress = String()
+
 class ProjectViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView!

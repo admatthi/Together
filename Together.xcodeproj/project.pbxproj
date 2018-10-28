@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6BDE49D236B4D45BD8980441 /* Pods_TogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0565EF7528CB7F17F4D99A00 /* Pods_TogetherTests.framework */; };
-		9D0F86A0217104FD00AE5F18 /* LonelyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F869F217104FD00AE5F18 /* LonelyViewController.swift */; };
 		9D0F86A221710A6400AE5F18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F86A121710A6400AE5F18 /* Constants.swift */; };
 		9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1EBF0321750F91004A566A /* MapViewController.swift */; };
-		9D1EBF062176059E004A566A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1EBF052176059E004A566A /* FeedViewController.swift */; };
 		9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1EBF07217605AD004A566A /* FeedTableViewCell.swift */; };
 		9D3D3310216ED3CF0074BBF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D3D330F216ED3CF0074BBF2 /* GoogleService-Info.plist */; };
 		9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F7C216B948A009708D4 /* AnswersViewController.swift */; };
@@ -19,7 +17,6 @@
 		9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F80216B96B6009708D4 /* AskViewController.swift */; };
 		9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8521835E5D0079F9CB /* ProjectViewController.swift */; };
 		9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */; };
-		9D714B7F21834D6100A033EB /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B7E21834D6100A033EB /* DiscoverViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
 		9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C221728D1D001AEF8E /* HomeViewController.swift */; };
 		9D8934C521728D38001AEF8E /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */; };
@@ -27,6 +24,7 @@
 		9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */; };
 		9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934CA2174113F001AEF8E /* PromptViewController.swift */; };
 		9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9019C7216FA81A00668852 /* RespondViewController.swift */; };
+		9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */; };
 		9DB795C621656B5300211327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C521656B5300211327 /* AppDelegate.swift */; };
 		9DB795C821656B5300211327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C721656B5300211327 /* ViewController.swift */; };
 		9DB795CB21656B5300211327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB795C921656B5300211327 /* Main.storyboard */; };
@@ -68,10 +66,8 @@
 		69E892D4E4F7F75DA9E22302 /* Pods-TogetherUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TogetherUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TogetherUITests/Pods-TogetherUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BFCA9B94C66A654D51E53CF /* Pods_Together.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Together.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		946746B00455D23BCECD7726 /* Pods-Together.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.release.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.release.xcconfig"; sourceTree = "<group>"; };
-		9D0F869F217104FD00AE5F18 /* LonelyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LonelyViewController.swift; path = /Users/alekmatthiessen/Desktop/Together/Together/LonelyViewController.swift; sourceTree = "<absolute>"; };
 		9D0F86A121710A6400AE5F18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9D1EBF0321750F91004A566A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		9D1EBF052176059E004A566A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		9D1EBF07217605AD004A566A /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		9D3D330F216ED3CF0074BBF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D451F7C216B948A009708D4 /* AnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +75,6 @@
 		9D451F80216B96B6009708D4 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		9D519C8521835E5D0079F9CB /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
-		9D714B7E21834D6100A033EB /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		9D8934C221728D1D001AEF8E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = /Users/alekmatthiessen/Desktop/Together/Together/HomeTableViewCell.swift; sourceTree = "<absolute>"; };
@@ -87,6 +82,7 @@
 		9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		9D8934CA2174113F001AEF8E /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
 		9D9019C7216FA81A00668852 /* RespondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViewController.swift; sourceTree = "<group>"; };
+		9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover2ViewController.swift; sourceTree = "<group>"; };
 		9DB795C221656B5300211327 /* Together.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Together.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB795C521656B5300211327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DB795C721656B5300211327 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +172,39 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9D508C932186248100385462 /* Tomorrow's App Store */ = {
+			isa = PBXGroup;
+			children = (
+				9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */,
+				9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */,
+				9D519C8521835E5D0079F9CB /* ProjectViewController.swift */,
+				9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */,
+			);
+			path = "Tomorrow's App Store";
+			sourceTree = "<group>";
+		};
+		9D508C942186249A00385462 /* Irrelevant */ = {
+			isa = PBXGroup;
+			children = (
+				9D1EBF07217605AD004A566A /* FeedTableViewCell.swift */,
+				9D451F7C216B948A009708D4 /* AnswersViewController.swift */,
+				9DB795C721656B5300211327 /* ViewController.swift */,
+				9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */,
+				9D9019C7216FA81A00668852 /* RespondViewController.swift */,
+				9DB795F321656CDF00211327 /* LogViewController.swift */,
+				9DB795F521656CEB00211327 /* LogTableViewCell.swift */,
+				9D8934C621740ABE001AEF8E /* QuestionsTableViewCell.swift */,
+				9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */,
+				9D8934CA2174113F001AEF8E /* PromptViewController.swift */,
+				9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */,
+				9D0F86A121710A6400AE5F18 /* Constants.swift */,
+				9D8934C221728D1D001AEF8E /* HomeViewController.swift */,
+				9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */,
+				9D1EBF0321750F91004A566A /* MapViewController.swift */,
+			);
+			path = Irrelevant;
+			sourceTree = "<group>";
+		};
 		9DB795B921656B5300211327 = {
 			isa = PBXGroup;
 			children = (
@@ -202,30 +231,11 @@
 			isa = PBXGroup;
 			children = (
 				9DB795C521656B5300211327 /* AppDelegate.swift */,
-				9DB795C721656B5300211327 /* ViewController.swift */,
 				5514E4B9AC3B4FC850CE2F9A /* Pods */,
 				9DB795C921656B5300211327 /* Main.storyboard */,
 				9D451F80216B96B6009708D4 /* AskViewController.swift */,
-				9D451F7C216B948A009708D4 /* AnswersViewController.swift */,
-				9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */,
-				9D9019C7216FA81A00668852 /* RespondViewController.swift */,
-				9DB795F321656CDF00211327 /* LogViewController.swift */,
-				9DB795F521656CEB00211327 /* LogTableViewCell.swift */,
-				9D0F869F217104FD00AE5F18 /* LonelyViewController.swift */,
-				9D8934C621740ABE001AEF8E /* QuestionsTableViewCell.swift */,
-				9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */,
-				9D8934CA2174113F001AEF8E /* PromptViewController.swift */,
-				9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */,
-				9D0F86A121710A6400AE5F18 /* Constants.swift */,
-				9D8934C221728D1D001AEF8E /* HomeViewController.swift */,
-				9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */,
-				9D1EBF0321750F91004A566A /* MapViewController.swift */,
-				9D1EBF052176059E004A566A /* FeedViewController.swift */,
-				9D1EBF07217605AD004A566A /* FeedTableViewCell.swift */,
-				9D714B7E21834D6100A033EB /* DiscoverViewController.swift */,
-				9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */,
-				9D519C8521835E5D0079F9CB /* ProjectViewController.swift */,
-				9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */,
+				9D508C942186249A00385462 /* Irrelevant */,
+				9D508C932186248100385462 /* Tomorrow's App Store */,
 				9DB795CC21656B5600211327 /* Assets.xcassets */,
 				9DB795CE21656B5600211327 /* LaunchScreen.storyboard */,
 				9DB795D121656B5700211327 /* Info.plist */,
@@ -396,6 +406,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Purchases/Purchases.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -406,6 +417,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Purchases.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -475,7 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D0F86A0217104FD00AE5F18 /* LonelyViewController.swift in Sources */,
+				9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */,
 				9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */,
 				9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */,
 				9D8934C521728D38001AEF8E /* HomeTableViewCell.swift in Sources */,
@@ -485,12 +497,10 @@
 				9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */,
 				9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */,
 				9DB795C821656B5300211327 /* ViewController.swift in Sources */,
-				9D714B7F21834D6100A033EB /* DiscoverViewController.swift in Sources */,
 				9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */,
 				9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */,
 				9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */,
 				9D0F86A221710A6400AE5F18 /* Constants.swift in Sources */,
-				9D1EBF062176059E004A566A /* FeedViewController.swift in Sources */,
 				9D451F7F216B949A009708D4 /* AnswersTableViewCell.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
