@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseCore
+import FirebaseStorage
+import FirebaseDatabase
+import FirebaseAuth
+import FBSDKCoreKit
 
-var images = [UIImage]()
-var titles = [String]()
-var prices = [String]()
-var descriptions = [String]()
-var progress = [String]()
+var images = [String:UIImage]()
+var titles = [String:String]()
+var prices = [String:String]()
+var descriptions = [String:String]()
+var progress = [String:String]()
+var projectids = [String]()
+var selectedimage = UIImage()
 
 class Discover2ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -22,39 +30,116 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ref = Database.database().reference()
+
+
         
-        images.append(UIImage(named: "1")!)
-        images.append(UIImage(named: "2")!)
-        images.append(UIImage(named: "3")!)
-        images.append(UIImage(named: "4")!)
-        images.append(UIImage(named: "5")!)
-        
-        titles.append("Slide")
-        titles.append("Black Ocean")
-        titles.append("Paleo Beginers")
-        titles.append("Slide")
-        titles.append("Slide")
-        
-        descriptions.append("Make your texts better and more charming")
-        descriptions.append("Own and manage a share of an ethereum mine")
-        descriptions.append("Find paleo recipes for any time")
-        
-        progress.append("25")
-        progress.append("50")
-        progress.append("75")
-        
-        prices.append("5.99")
-        prices.append("15.99")
-        prices.append("25.99")
+        queryforids { () -> () in
+            
+            self.queryforinfo()
+            
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    func queryforids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+        
+        projectids.removeAll()
+        descriptions.removeAll()
+        titles.removeAll()
+        progress.removeAll()
+        prices.removeAll()
+        ref?.child("Projects").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    projectids.append(ids)
+                    
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        completed()
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
+    }
+    
+    func queryforinfo() {
+        
+        var functioncounter = 0
+        
+        for each in projectids {
+            
+            
+            ref?.child("Projects").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                
+                
+                if var author2 = value?["Description"] as? String {
+                    descriptions[each] = author2
+                    
+                }
+                if var name = value?["Title"] as? String {
+                    titles[each] = name
+                    
+                }
+                
+                if var views = value?["Price"] as? String {
+                    prices[each] = views
+                    
+                }
+                
+                if var views = value?["Progress"] as? String {
+                    progress[each] = views
+                    
+                }
+                
+                images[each] = UIImage(named: "\(each)")
+                
+  
+                
+                functioncounter += 1
+           
+                print(functioncounter)
+                
+                
+                
+                if functioncounter == projectids.count {
+                    
+                    self.tableView.reloadData()
+                    
+                }
+                
+                
+            })
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedtitle = titles[indexPath.row]
-        selecteddescription = descriptions[indexPath.row]
-        selectedprice = prices[indexPath.row]
-        selectedprogress = progress[indexPath.row]
+        selectedimage = images[projectids[indexPath.row]]!
+        selectedtitle = titles[projectids[indexPath.row]]!
+        selecteddescription = descriptions[projectids[indexPath.row]]!
+        selectedprice = prices[projectids[indexPath.row]]!
+        selectedprogress = progress[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "DiscoverToProject", sender: self)
     }
@@ -71,12 +156,25 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Discover", for: indexPath) as! DiscoverTableViewCell
         
-        cell.titlelabel.text = titles[indexPath.row]
-        cell.summarylabel.text = descriptions[indexPath.row]
-        cell.percent.text = "\(progress[indexPath.row])% funded"
-        cell.tapfun.setTitle("$\(prices[indexPath.row])", for: .normal)
-        cell.titlelabel.text = titles[indexPath.row]
-        cell.productimage.image = images[indexPath.row]
+        if titles.count > indexPath.row {
+            
+        
+        cell.titlelabel.text = titles[projectids[indexPath.row]]
+        cell.summarylabel.text = descriptions[projectids[indexPath.row]]
+        cell.percent.text = "\(progress[projectids[indexPath.row]]!)% funded"
+        cell.tapfun.setTitle("$\(prices[projectids[indexPath.row]]!)", for: .normal)
+        cell.titlelabel.text = titles[projectids[indexPath.row]]
+        cell.productimage.image = images[projectids[indexPath.row]]
+        
+            var floatprogress = Float(progress[projectids[indexPath.row]]!)!/100
+        cell.progressView.setProgress(floatprogress, animated: true)
+            
+
+            
+        } else {
+            
+            
+        }
         
         
         return cell

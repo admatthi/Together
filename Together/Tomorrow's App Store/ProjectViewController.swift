@@ -7,14 +7,26 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseCore
+import FirebaseStorage
+import FirebaseDatabase
+import FirebaseAuth
+import UserNotifications
+import StoreKit
+import FBSDKCoreKit
+import Purchases
 
 var selectedprice = String()
 var selectedtitle = String()
 var selecteddescription = String()
 var selectedprogress = String()
 
+var selectedprojectid = String()
+
 class ProjectViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    var purchases = RCPurchases(apiKey: "XJcTuaSXGKIWBwsRjWsKIUumwbSzBArQ")
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -26,10 +38,12 @@ class ProjectViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var backers: UILabel!
     @IBOutlet weak var amountpledged: UILabel!
     @IBOutlet weak var descriptionlabel: UILabel!
+    @IBOutlet weak var productimage: UIImageView!
     @IBOutlet weak var authorlabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        productimage.image = selectedimage
         titlelabel.text = selectedtitle
         descriptionlabel.text = selecteddescription
         tapBuy.setTitle("$\(selectedprice)", for: .normal) 
@@ -40,7 +54,8 @@ class ProjectViewController: UIViewController, UICollectionViewDelegate, UIColle
         screenshots.append(UIImage(named: "A")!)
         screenshots.append(UIImage(named: "B")!)
         screenshots.append(UIImage(named: "C")!)
-        
+        tapBuy.layer.cornerRadius = 10.0
+        tapBuy.layer.masksToBounds = true
         
         collectionView.reloadData()
         // Do any additional setup after loading the view.
@@ -55,9 +70,30 @@ class ProjectViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBOutlet weak var tapshare: UIButton!
     @IBAction func tapShare(_ sender: Any) {
+        
     }
     @IBOutlet weak var tapBuy: UIButton!
+    
     @IBAction func tapbuy(_ sender: Any) {
+        
+        FBSDKAppEvents.logEvent("Lifetime Pressed")
+        
+        //        purchase(purchase: sevendayfreetrial)
+        
+        purchases.entitlements { entitlements in
+            guard let pro = entitlements?["Projects"] else { return }
+            
+            
+            guard let monthly = pro.offerings["\(selectedprojectid)"] else { return }
+            
+            
+            guard let product = monthly.activeProduct else { return }
+            
+            
+            self.purchases.makePurchase(product)
+            
+            
+        }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

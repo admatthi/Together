@@ -8,27 +8,71 @@
 
 import UIKit
 import Firebase
-import FirebaseCore
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseAuth
 import FBSDKCoreKit
+import StoreKit
+import UserNotifications
+import FirebaseInstanceID
+import FirebaseMessaging
+import UXCam
+import AVFoundation
+import Purchases
 
 var uid = String()
 var ref: DatabaseReference?
+
+var tryingtopurchase = Bool()
+
+protocol SnippetsPurchasesDelegate: AnyObject {
+    
+    func purchaseCompleted(product: String)
+    
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    weak var purchasesdelegate : SnippetsPurchasesDelegate?
 
+    var purchases: RCPurchases?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
         
+        FBSDKAppEvents.activateApp()
+        
+        UXCam.start(withKey: "8921dd89a4b98a3")
+        purchases = RCPurchases(apiKey: "XJcTuaSXGKIWBwsRjWsKIUumwbSzBArQ")
+        
+        purchases!.delegate = self
+        
+        var tabBar: UITabBarController = self.window?.rootViewController as! UITabBarController
+        
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+            
+            tabBar.selectedIndex = 0
+            
+            
+        } else {
+            
+            tabBar.selectedIndex = 0
+            
+        }
+        
         return true
+    }
+    
+    func letsgo() {
+        
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Login") as UIViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialViewControlleripad
+        self.window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -56,3 +100,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: RCPurchasesDelegate {
+    func purchases(_ purchases: RCPurchases, completedTransaction transaction: SKPaymentTransaction, withUpdatedInfo purchaserInfo: RCPurchaserInfo) {
+        
+        self.purchasesdelegate?.purchaseCompleted(product: transaction.payment.productIdentifier)
+        
+        print("purchased")
+        tryingtopurchase  = true
+        letsgo()
+        
+    }
+    
+    func purchases(_ purchases: RCPurchases, receivedUpdatedPurchaserInfo purchaserInfo: RCPurchaserInfo) {
+        //        handlePurchaserInfo(purchaserInfo)
+        
+        print("shit")
+        
+    }
+    
+    func purchases(_ purchases: RCPurchases, failedToUpdatePurchaserInfoWithError error: Error) {
+        print(error)
+        
+        tryingtopurchase = false
+    }
+    
+    func purchases(_ purchases: RCPurchases, failedTransaction transaction: SKPaymentTransaction, withReason failureReason: Error) {
+        print(failureReason)
+        
+        tryingtopurchase = false
+    }
+    
+    func purchases(_ purchases: RCPurchases, restoredTransactionsWith purchaserInfo: RCPurchaserInfo) {
+        //        handlePurchaserInfo(purchaserInfo)
+        
+        print("restored")
+        tryingtopurchase  = true
+        letsgo()
+        
+        
+    }
+    
+    func purchases(_ purchases: RCPurchases, failedToRestoreTransactionsWithError error: Error) {
+        print(error)
+    }
+}
