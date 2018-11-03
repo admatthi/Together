@@ -24,7 +24,7 @@ var selectedprogress = String()
 
 var selectedprojectid = String()
 
-class ProjectViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource  {
 
     var purchases = RCPurchases(apiKey: "XJcTuaSXGKIWBwsRjWsKIUumwbSzBArQ")
 
@@ -33,6 +33,7 @@ class ProjectViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var titlelabel: UILabel!
     var prices = [String]()
     
+    @IBOutlet weak var tableVIew: UITableView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var days: UILabel!
     @IBOutlet weak var backers: UILabel!
@@ -43,27 +44,18 @@ class ProjectViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        productimage.image = selectedimage
-        titlelabel.text = selectedtitle
-        descriptionlabel.text = selecteddescription
-        tapBuy.setTitle("$\(selectedprice)", for: .normal) 
-        authorlabel.text = "by Alek Matthiessen"
-        amountpledged.text = "$2,987"
-        let progress = (Float(selectedprogress)!/100)
-        self.progressView.setProgress(Float(progress), animated:true)
         screenshots.append(UIImage(named: "A")!)
         screenshots.append(UIImage(named: "B")!)
         screenshots.append(UIImage(named: "C")!)
-        tapBuy.layer.cornerRadius = 10.0
-        tapBuy.layer.masksToBounds = true
-        
-        collectionView.reloadData()
+
+        tableVIew.reloadData()
+//        collectionView.reloadData()
         // Do any additional setup after loading the view.
     }
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
      
-        return 3
+        return 1
     }
     
     @IBOutlet weak var pricelabel: UILabel!
@@ -95,6 +87,7 @@ class ProjectViewController: UIViewController, UICollectionViewDelegate, UIColle
             
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
@@ -105,6 +98,44 @@ class ProjectViewController: UIViewController, UICollectionViewDelegate, UIColle
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        return 1
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Project", for: indexPath) as! ProjectTableViewCell
+        
+        
+            
+            cell.productimage.image = selectedimage
+            cell.titlelabel.text = selectedtitle
+            cell.descriptionlabel.text = selecteddescription
+        cell.pricelabel.text = "$\(selectedprice)"
+            cell.tapbuy.setTitle("Back this app", for: .normal)
+            cell.authorlabel.text = selecteddescription
+            cell.amountpledged.text = "$2,987"
+
+            cell.tapbuy.layer.cornerRadius = 10.0
+            cell.tapbuy.layer.masksToBounds = true
+            
+            var floatprogress = Float(selectedprogress)!/100
+            cell.progressView.setProgress(floatprogress, animated: true)
+            
+            
+    
+        
+        
+        return cell
+    }
     /*
     // MARK: - Navigation
 
