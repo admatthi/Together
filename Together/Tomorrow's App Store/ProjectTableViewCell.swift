@@ -21,6 +21,7 @@ class ProjectTableViewCell: UITableViewCell {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var authorlabel: UILabel!
     @IBOutlet weak var longdescription: UILabel!
+    @IBOutlet weak var profilepic: UIImageView!
     @IBOutlet weak var projectdescription: UILabel!
     @IBOutlet weak var projectimage: UIImageView!
     override func awakeFromNib() {

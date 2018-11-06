@@ -104,6 +104,7 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
             
             cell.playerView.player!.play()
             cell.playerView.alpha = 1
+            
         } else {
             
             cell.screenshot.image = UIImage(named: "A")
