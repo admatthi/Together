@@ -37,6 +37,7 @@
 		9DB795F421656CDF00211327 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795F321656CDF00211327 /* LogViewController.swift */; };
 		9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795F521656CEB00211327 /* LogTableViewCell.swift */; };
 		9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B27F21910AB900F56A1A /* ProjectTableViewCell.swift */; };
+		9DC0B28221920DC500F56A1A /* PlayerViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B28121920DC500F56A1A /* PlayerViewClass.swift */; };
 		9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */; };
 		CDA65A340E0251A467ABD40B /* Pods_TogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AED522BDB9F8FBB8DE7FE7 /* Pods_TogetherUITests.framework */; };
 		F730C0F4CFD34EE9240B5A7C /* Pods_Together.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFCA9B94C66A654D51E53CF /* Pods_Together.framework */; };
@@ -104,6 +105,7 @@
 		9DB795F321656CDF00211327 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		9DB795F521656CEB00211327 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		9DC0B27F21910AB900F56A1A /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		9DC0B28121920DC500F56A1A /* PlayerViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewClass.swift; sourceTree = "<group>"; };
 		9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToReportViewController.swift; sourceTree = "<group>"; };
 		C5A42F47C5E03279E65B93BA /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
 		D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */,
 				9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */,
 				9D519C8521835E5D0079F9CB /* ProjectViewController.swift */,
+				9DC0B28121920DC500F56A1A /* PlayerViewClass.swift */,
 				9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */,
 				9DC0B27F21910AB900F56A1A /* ProjectTableViewCell.swift */,
 				9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */,
@@ -508,6 +511,7 @@
 				9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */,
 				9D8934C521728D38001AEF8E /* HomeTableViewCell.swift in Sources */,
 				9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */,
+				9DC0B28221920DC500F56A1A /* PlayerViewClass.swift in Sources */,
 				9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */,
 				9DB795F421656CDF00211327 /* LogViewController.swift in Sources */,
 				9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */,

@@ -16,6 +16,7 @@ import UserNotifications
 import StoreKit
 import FBSDKCoreKit
 import Purchases
+import AVFoundation
 
 var selectedprice = String()
 var selectedtitle = String()
@@ -93,7 +94,22 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
         
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Project", for: indexPath) as! ProjectCollectionViewCell
    
-        cell.screenshot.image = UIImage(named: "A")
+        let videourl = URL(string:"https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/y2mate.com%20-%20billie_eilish_you_should_see_me_in_a_crown_vertical_video_Ah0Ys50CqO8_1080p.mp4?alt=media&token=59015971-c787-475f-ba3b-d4696a7ac268")
+        
+        let avPlayer = AVPlayer(url: videourl! as URL)
+        
+        cell.playerView.playerLayer.player = avPlayer
+        
+        if indexPath.row == 0 {
+            
+            cell.playerView.player!.play()
+            cell.playerView.alpha = 1
+        } else {
+            
+            cell.screenshot.image = UIImage(named: "A")
+            cell.playerView.alpha = 0
+
+        }
 //        cell.price.text = "$\(prices[indexPath.row])"
         return cell
     }

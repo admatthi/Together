@@ -695,6 +695,14 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A" translatesAutoresizingMaskIntoConstraints="NO" id="Rwf-Ij-4wl">
                                                                         <rect key="frame" x="-1.5" y="-0.5" width="220" height="410"/>
                                                                     </imageView>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-Hc-6Al" customClass="PlayerViewClass" customModule="Together" customModuleProvider="target">
+                                                                        <rect key="frame" x="-1" y="-0.5" width="219" height="410"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="410" id="MF1-yy-Vjn"/>
+                                                                            <constraint firstAttribute="width" constant="219" id="cis-wH-fQb"/>
+                                                                        </constraints>
+                                                                    </view>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
@@ -703,6 +711,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="Rwf-Ij-4wl" secondAttribute="trailing" constant="-1.5" id="Isk-rd-ghT"/>
                                                                 <constraint firstItem="pue-Jq-vsq" firstAttribute="top" secondItem="Wk1-rI-LCs" secondAttribute="bottom" constant="-2" id="Iyf-Yd-Wlf"/>
                                                                 <constraint firstItem="Nl2-dU-Xvd" firstAttribute="centerX" secondItem="JRh-Q1-bIv" secondAttribute="centerX" id="Jye-lo-0ge"/>
+                                                                <constraint firstItem="DO9-Hc-6Al" firstAttribute="centerY" secondItem="JRh-Q1-bIv" secondAttribute="centerY" id="K0s-iT-W0P"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Rwf-Ij-4wl" secondAttribute="bottom" constant="-0.5" id="KQD-Nb-WAT"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Nl2-dU-Xvd" secondAttribute="bottom" id="Lfq-Un-oYJ"/>
                                                                 <constraint firstItem="Wk1-rI-LCs" firstAttribute="leading" secondItem="JRh-Q1-bIv" secondAttribute="leading" constant="12" id="M3Y-cR-WdX"/>
@@ -711,10 +720,12 @@
                                                                 <constraint firstItem="pue-Jq-vsq" firstAttribute="leading" secondItem="JRh-Q1-bIv" secondAttribute="leadingMargin" constant="4" id="im5-Co-LZw"/>
                                                                 <constraint firstItem="Rwf-Ij-4wl" firstAttribute="leading" secondItem="JRh-Q1-bIv" secondAttribute="leading" constant="-1.5" id="jCb-QI-EYo"/>
                                                                 <constraint firstItem="pue-Jq-vsq" firstAttribute="top" secondItem="Wk1-rI-LCs" secondAttribute="bottom" constant="-2" id="qqe-Aw-SM2"/>
+                                                                <constraint firstItem="DO9-Hc-6Al" firstAttribute="centerX" secondItem="JRh-Q1-bIv" secondAttribute="centerX" id="shr-PG-fCw"/>
                                                                 <constraint firstItem="Wk1-rI-LCs" firstAttribute="top" secondItem="JRh-Q1-bIv" secondAttribute="top" constant="17" id="xNV-yU-gQU"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="descriptionlabel" destination="9cg-PD-8Nh" id="ybq-d9-Lkq"/>
+                                                                <outlet property="playerView" destination="DO9-Hc-6Al" id="TxA-D0-QWi"/>
                                                                 <outlet property="price" destination="Wk1-rI-LCs" id="TWc-RT-WeY"/>
                                                                 <outlet property="product" destination="pue-Jq-vsq" id="mgp-iP-uYr"/>
                                                                 <outlet property="screenshot" destination="Rwf-Ij-4wl" id="EeZ-Bm-tyx"/>
