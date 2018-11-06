@@ -28,7 +28,6 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var purchases = RCPurchases(apiKey: "XJcTuaSXGKIWBwsRjWsKIUumwbSzBArQ")
 
-    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var titlelabel: UILabel!
     var prices = [String]()
@@ -55,7 +54,7 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
      
-        return 1
+        return 5
     }
     
     @IBOutlet weak var pricelabel: UILabel!
@@ -88,12 +87,13 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Project", for: indexPath) as! ProjectCollectionViewCell
    
-        cell.screenshot.image = screenshots[indexPath.row]
+        cell.screenshot.image = UIImage(named: "A")
 //        cell.price.text = "$\(prices[indexPath.row])"
         return cell
     }
@@ -116,18 +116,14 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
         
         
             
-            cell.productimage.image = selectedimage
-            cell.titlelabel.text = selectedtitle
-            cell.descriptionlabel.text = selecteddescription
-        cell.pricelabel.text = "$\(selectedprice)"
-            cell.tapbuy.setTitle("Back this app", for: .normal)
-            cell.authorlabel.text = selecteddescription
-            cell.amountpledged.text = "$2,987"
-
-            cell.tapbuy.layer.cornerRadius = 10.0
-            cell.tapbuy.layer.masksToBounds = true
-            
+        cell.projectimage.image = selectedimage
+            cell.projectname.text = selectedtitle
+        
+            cell.projectdescription.text = selecteddescription
+        cell.authorlabel.text = "by Alek Matthiessen"
+        cell.longdescription.text = selectedlongdescription
             var floatprogress = Float(selectedprogress)!/100
+        
             cell.progressView.setProgress(floatprogress, animated: true)
             
             
@@ -148,3 +144,6 @@ class ProjectViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var screenshots = [UIImage]()
 }
+
+var selectedauthor = String()
+var selectedlongdescription = String()

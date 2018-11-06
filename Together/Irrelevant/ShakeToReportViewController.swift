@@ -123,7 +123,7 @@ class ShakeToReportViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference()
+//        ref = Database.database().reference()
         
         tf.delegate = self
         ss.image = screenshot

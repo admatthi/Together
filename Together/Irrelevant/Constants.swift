@@ -13,7 +13,7 @@ struct Constants
 {
     struct refs
     {
-        static let databaseRoot = Database.database().reference()
-        static let databaseChats = databaseRoot.child("Lonely")
+//        static let databaseRoot = Database.database().reference()
+//        static let databaseChats = databaseRoot.child("Lonely")
     }
 }

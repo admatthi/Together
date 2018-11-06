@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 import FBSDKCoreKit
 import StoreKit
 import UserNotifications

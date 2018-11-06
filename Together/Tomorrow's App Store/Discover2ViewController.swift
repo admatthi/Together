@@ -79,6 +79,7 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
         })
     }
     
+    var longdescriptions = [String:String]()
     func queryforinfo() {
         
         var functioncounter = 0
@@ -90,7 +91,10 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 var value = snapshot.value as? NSDictionary
                 
-                
+                if var author2 = value?["LongDescription"] as? String {
+                    self.longdescriptions[each] = author2
+                    
+                }
                 
                 if var author2 = value?["Description"] as? String {
                     descriptions[each] = author2
@@ -140,6 +144,7 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
         selecteddescription = descriptions[projectids[indexPath.row]]!
         selectedprice = prices[projectids[indexPath.row]]!
         selectedprogress = progress[projectids[indexPath.row]]!
+        selectedlongdescription = longdescriptions[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "DiscoverToProject", sender: self)
     }
@@ -161,8 +166,8 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
         
         cell.titlelabel.text = titles[projectids[indexPath.row]]
         cell.summarylabel.text = descriptions[projectids[indexPath.row]]
-        cell.percent.text = "\(progress[projectids[indexPath.row]]!)% funded"
-        cell.tapfun.setTitle("$\(prices[projectids[indexPath.row]]!)", for: .normal)
+        cell.percent.text = "funded"
+        cell.tapfun.setTitle("\(progress[projectids[indexPath.row]]!)%", for: .normal)
         cell.titlelabel.text = titles[projectids[indexPath.row]]
         cell.productimage.image = images[projectids[indexPath.row]]
         
