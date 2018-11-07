@@ -1,5 +1,5 @@
 //
-//  ProjectCollectionViewCell.swift
+//  ProjectCollectionViewCell.swift#imageLiteral(resourceName: "1B.jpg")
 //  Together
 //
 //  Created by Alek Matthiessen on 10/26/18.
