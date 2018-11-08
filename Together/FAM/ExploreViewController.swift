@@ -146,10 +146,11 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         selectedid = projectids[indexPath.row]
         selectedimage = images[projectids[indexPath.row]]!
         selectedname = names[projectids[indexPath.row]]!
-        selecteddescription = descriptions[projectids[indexPath.row]]!
+        selectedpitch = descriptions[projectids[indexPath.row]]!
         selectedprice = prices[projectids[indexPath.row]]!
 //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedlongdescription = subscribers[projectids[indexPath.row]]!
+        selectedsubs = subscribers[projectids[indexPath.row]]!
+        selectedprogramname = programnames[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "DiscoverToPlan", sender: self)
     }
@@ -168,8 +169,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if names.count > indexPath.row {
             
-            cell.layer.borderWidth = 1.0
-            cell.layer.borderColor = UIColor.lightGray.cgColor
+//            cell.layer.borderWidth = 1.0
+//            cell.layer.borderColor = UIColor.lightGray.cgColor
             
             cell.layer.cornerRadius = 3.0
             cell.layer.masksToBounds = true
@@ -204,3 +205,5 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
 
 }
+
+var selectedprogramname = String()
