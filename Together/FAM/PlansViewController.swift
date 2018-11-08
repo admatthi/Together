@@ -228,7 +228,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 cell.playerView.playerLayer.player = avPlayer
                 cell.playerView.player?.play()
-                cell.playerView.player?.pause()
+//                cell.playerView.player?.pause()
 
             }
         } else {
@@ -257,42 +257,17 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let buttonTag = sender.tag
         
-        if buttonspressedup[questionids[buttonTag]] == "Pressed" as String? {
-            
-            
-        } else {
-            
-            
-            var originalnumber = numbers[questionids[buttonTag]]
-            var newnumber = Int(originalnumber!)! + 1
-            var stringnewnumber = String(newnumber)
-            numbers[questionids[buttonTag]] = stringnewnumber
-            ref?.child("TopQuestions").child(questionids[buttonTag]).updateChildValues(["Votes" : stringnewnumber])
-            buttonspressedup[questionids[buttonTag]] = "Pressed"
-            
+     
             tableView.reloadData()
-        }
     }
     
     @objc func tapDown(sender: UIButton){
         let buttonTag = sender.tag
-        
-        if buttonspresseddown[questionids[buttonTag]] == "Pressed" as String? {
-            
-            
-        } else {
-            
-            
-            var originalnumber = numbers[questionids[buttonTag]]
-            var newnumber = Int(originalnumber!)! - 1
-            var stringnewnumber = String(newnumber)
-            numbers[questionids[buttonTag]] = stringnewnumber
-            ref?.child("TopQuestions").child(questionids[buttonTag]).updateChildValues(["Votes" : stringnewnumber])
-            buttonspresseddown[questionids[buttonTag]] = "Pressed"
+
             
             tableView.reloadData()
         }
         
     }
 
-}
+
