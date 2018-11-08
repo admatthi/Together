@@ -167,6 +167,7 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.name.text = selectedname
                 cell.tapjoin2.alpha = 0
                 cell.longdescription.text = ""
+                
             } else {
                 
                 if indexPath.row == responses2.count+1 {

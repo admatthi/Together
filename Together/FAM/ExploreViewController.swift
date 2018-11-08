@@ -152,7 +152,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         selectedsubs = subscribers[projectids[indexPath.row]]!
         selectedprogramname = programnames[projectids[indexPath.row]]!
         
-        self.performSegue(withIdentifier: "DiscoverToPlan", sender: self)
+        self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
     }
     
     

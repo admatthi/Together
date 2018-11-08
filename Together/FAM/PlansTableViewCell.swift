@@ -22,6 +22,7 @@ class PlansTableViewCell: UITableViewCell {
     
     @IBOutlet weak var playerView: PlayerViewClass!
 
+    @IBOutlet weak var thumbnailpreview: UIImageView!
     @IBOutlet weak var timelabel: UILabel!
     @IBOutlet weak var daylabel: UILabel!
     @IBOutlet weak var descriptionlabel: UILabel!
