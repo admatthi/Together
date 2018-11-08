@@ -200,7 +200,10 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.dollers.text = "$\(selectedprice)"
                 cell.name.text = selectedname
                 cell.playerView.alpha = 0
-                cell.thumbnailpreview.alpha = 0
+//                cell.thumbnailpreview.alpha = 0
+                cell.descriptionlabel.text = ""
+                cell.descriptionlabel.alpha = 0
+
             } else {
                 cell.playerView.alpha = 1
                 cell.profilepic.alpha = 0
@@ -212,6 +215,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.sublabel.alpha = 0
                 cell.monthlylabel.alpha = 0
                 cell.pitch.text = ""
+                cell.descriptionlabel.alpha = 1
 //                cell.thumbnailpreview.alpha = 1
 //                cell.thumbnailpreview.image = thumbnails[videolinks[videoids[indexPath.row-1]]!]
                 
@@ -228,7 +232,10 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 cell.playerView.playerLayer.player = avPlayer
                 cell.playerView.player?.play()
+                    cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
 //                cell.playerView.player?.pause()
+                
+                
 
             }
         } else {
@@ -242,12 +249,14 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
 
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            
-            return UITableViewAutomaticDimension
+
+            return 220
 
         } else {
-            
-            return 425
+
+//            return 425
+            return UITableViewAutomaticDimension
+
         }
     }
     
