@@ -948,7 +948,7 @@ subscribers</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6g-gT-dkw">
-                                                    <rect key="frame" x="16" y="446.5" width="342" height="61.5"/>
+                                                    <rect key="frame" x="15" y="446.5" width="342" height="61.5"/>
                                                     <string key="text">Sweat with Kayla Itsines BBG Program, join the world’s biggest female fitness community and fast track your journey to Bikini Body Confidence!</string>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
@@ -1018,7 +1018,7 @@ subscribers</string>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="y6g-gT-dkw" firstAttribute="leading" secondItem="7Zj-f3-bwz" secondAttribute="leadingMargin" constant="1" id="2fV-ly-Sqf"/>
+                                                <constraint firstItem="y6g-gT-dkw" firstAttribute="leading" secondItem="7Zj-f3-bwz" secondAttribute="leadingMargin" id="2fV-ly-Sqf"/>
                                                 <constraint firstItem="2nJ-HQ-Qo2" firstAttribute="leading" secondItem="xmU-us-Sxd" secondAttribute="trailing" constant="8" id="4DR-l6-41d"/>
                                                 <constraint firstItem="Kt9-ND-zvg" firstAttribute="top" secondItem="bPQ-Ye-LSX" secondAttribute="bottom" constant="15" id="7zV-Ke-3MF"/>
                                                 <constraint firstItem="Y9d-sW-NkZ" firstAttribute="leading" secondItem="xmU-us-Sxd" secondAttribute="trailing" constant="10" id="9KB-OU-In2"/>
@@ -1029,7 +1029,8 @@ subscribers</string>
                                                 <constraint firstItem="cdw-hB-bk1" firstAttribute="top" secondItem="2nJ-HQ-Qo2" secondAttribute="bottom" constant="-6" id="NnJ-ZZ-GQZ"/>
                                                 <constraint firstItem="bPQ-Ye-LSX" firstAttribute="top" secondItem="7Zj-f3-bwz" secondAttribute="top" constant="6" id="PaN-Dv-Frr"/>
                                                 <constraint firstItem="eER-Xx-dMd" firstAttribute="leading" secondItem="7Zj-f3-bwz" secondAttribute="leadingMargin" constant="2" id="Pbb-CV-0Pb"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="y6g-gT-dkw" secondAttribute="trailing" constant="2" id="Qae-uk-8rU"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kt9-ND-zvg" secondAttribute="trailing" id="QQy-CH-6ho"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="y6g-gT-dkw" secondAttribute="trailing" constant="3" id="Qae-uk-8rU"/>
                                                 <constraint firstItem="RmP-ek-J3a" firstAttribute="centerY" secondItem="2nJ-HQ-Qo2" secondAttribute="centerY" id="Stw-Lv-6P9"/>
                                                 <constraint firstItem="y6g-gT-dkw" firstAttribute="bottom" secondItem="7Zj-f3-bwz" secondAttribute="bottomMargin" id="UJD-QC-04c"/>
                                                 <constraint firstItem="NLy-er-A06" firstAttribute="centerX" secondItem="RmP-ek-J3a" secondAttribute="centerX" id="Z7X-83-IDy"/>
@@ -1037,6 +1038,7 @@ subscribers</string>
                                                 <constraint firstItem="bPQ-Ye-LSX" firstAttribute="leading" secondItem="7Zj-f3-bwz" secondAttribute="leading" constant="15" id="dAc-LJ-WHL"/>
                                                 <constraint firstItem="NLy-er-A06" firstAttribute="top" secondItem="RmP-ek-J3a" secondAttribute="bottom" constant="-3" id="dLO-4Y-x9F"/>
                                                 <constraint firstItem="eER-Xx-dMd" firstAttribute="top" secondItem="xmU-us-Sxd" secondAttribute="bottom" constant="11" id="eGy-Ag-fR4"/>
+                                                <constraint firstItem="Kt9-ND-zvg" firstAttribute="leading" secondItem="7Zj-f3-bwz" secondAttribute="leading" id="fhb-qv-tOZ"/>
                                                 <constraint firstItem="cdw-hB-bk1" firstAttribute="centerX" secondItem="2nJ-HQ-Qo2" secondAttribute="centerX" id="g5E-v2-Q3N"/>
                                                 <constraint firstItem="Y9d-sW-NkZ" firstAttribute="top" secondItem="cdw-hB-bk1" secondAttribute="bottom" constant="7" id="iaO-As-AaA"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bag-Zz-PVA" secondAttribute="trailing" constant="18" id="kGc-8w-5Wm"/>
