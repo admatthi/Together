@@ -14,13 +14,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 
-var images = [String:UIImage]()
-var titles = [String:String]()
-var prices = [String:String]()
-var descriptions = [String:String]()
-var progress = [String:String]()
-var projectids = [String]()
-var selectedimage = UIImage()
+
 
 class Discover2ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -36,7 +30,7 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
         
         queryforids { () -> () in
             
-            self.queryforinfo()
+//            self.queryforinfo()
             
         }
         // Do any additional setup after loading the view.
@@ -46,11 +40,11 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
         
         var functioncounter = 0
         
-        projectids.removeAll()
-        descriptions.removeAll()
-        titles.removeAll()
-        progress.removeAll()
-        prices.removeAll()
+//        projectids.removeAll()
+//        descriptions.removeAll()
+//        titles.removeAll()
+//        progress.removeAll()
+//        prices.removeAll()
         ref?.child("Projects").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -61,7 +55,7 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
                     
                     let ids = each.key
                     
-                    projectids.append(ids)
+//                    projectids.append(ids)
                     
                     functioncounter += 1
                     
@@ -80,71 +74,71 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     var longdescriptions = [String:String]()
-    func queryforinfo() {
-        
-        var functioncounter = 0
-        
-        for each in projectids {
-            
-            
-            ref?.child("Projects").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                if var author2 = value?["LongDescription"] as? String {
-                    self.longdescriptions[each] = author2
-                    
-                }
-                
-                if var author2 = value?["Description"] as? String {
-                    descriptions[each] = author2
-                    
-                }
-                if var name = value?["Title"] as? String {
-                    titles[each] = name
-                    
-                }
-                
-                if var views = value?["Price"] as? String {
-                    prices[each] = views
-                    
-                }
-                
-                if var views = value?["Progress"] as? String {
-                    progress[each] = views
-                    
-                }
-                
-                images[each] = UIImage(named: "\(each)")
-                
-  
-                
-                functioncounter += 1
-           
-                print(functioncounter)
-                
-                
-                
-                if functioncounter == projectids.count {
-                    
-                    self.tableView.reloadData()
-                    
-                }
-                
-                
-            })
-            
-        }
-    }
+//    func queryforinfo() {
+//
+//        var functioncounter = 0
+//
+//        for each in projectids {
+//
+//
+//            ref?.child("Projects").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//                var value = snapshot.value as? NSDictionary
+//
+//                if var author2 = value?["LongDescription"] as? String {
+//                    self.longdescriptions[each] = author2
+//
+//                }
+//
+//                if var author2 = value?["Description"] as? String {
+//                    descriptions[each] = author2
+//
+//                }
+//                if var name = value?["Title"] as? String {
+//                    titles[each] = name
+//
+//                }
+//
+//                if var views = value?["Price"] as? String {
+//                    prices[each] = views
+//
+//                }
+//
+//                if var views = value?["Progress"] as? String {
+//                    progress[each] = views
+//
+//                }
+//
+//                images[each] = UIImage(named: "\(each)")
+//
+//
+//
+//                functioncounter += 1
+//
+//                print(functioncounter)
+//
+//
+//
+//                if functioncounter == projectids.count {
+//
+//                    self.tableView.reloadData()
+//
+//                }
+//
+//
+//            })
+//
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedimage = images[projectids[indexPath.row]]!
-        selectedtitle = titles[projectids[indexPath.row]]!
-        selecteddescription = descriptions[projectids[indexPath.row]]!
-        selectedprice = prices[projectids[indexPath.row]]!
-        selectedprogress = progress[projectids[indexPath.row]]!
-        selectedlongdescription = longdescriptions[projectids[indexPath.row]]!
+//        selectedimage = images[projectids[indexPath.row]]!
+//        selectedtitle = titles[projectids[indexPath.row]]!
+//        selecteddescription = descriptions[projectids[indexPath.row]]!
+//        selectedprice = prices[projectids[indexPath.row]]!
+//        selectedprogress = progress[projectids[indexPath.row]]!
+//        selectedlongdescription = longdescriptions[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "DiscoverToProject", sender: self)
     }
@@ -161,26 +155,26 @@ class Discover2ViewController: UIViewController, UITableViewDataSource, UITableV
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Discover", for: indexPath) as! DiscoverTableViewCell
         
-        if titles.count > indexPath.row {
-            
+//        if titles.count > indexPath.row {
         
-        cell.titlelabel.text = titles[projectids[indexPath.row]]
-        cell.summarylabel.text = descriptions[projectids[indexPath.row]]
-        cell.percent.text = "funded"
-        cell.tapfun.setTitle("\(progress[projectids[indexPath.row]]!)%", for: .normal)
-        cell.titlelabel.text = titles[projectids[indexPath.row]]
-        cell.productimage.image = images[projectids[indexPath.row]]
         
-            var floatprogress = Float(progress[projectids[indexPath.row]]!)!/100
-        cell.progressView.setProgress(floatprogress, animated: true)
-            
+//        cell.titlelabel.text = titles[projectids[indexPath.row]]
+//        cell.summarylabel.text = descriptions[projectids[indexPath.row]]
+//        cell.percent.text = "funded"
+//        cell.tapfun.setTitle("\(progress[projectids[indexPath.row]]!)%", for: .normal)
+//        cell.titlelabel.text = titles[projectids[indexPath.row]]
+//        cell.productimage.image = images[projectids[indexPath.row]]
+//
+//            var floatprogress = Float(progress[projectids[indexPath.row]]!)!/100
+//        cell.progressView.setProgress(floatprogress, animated: true)
+//
 
             
-        } else {
-            
-            
-        }
-        
+//        } else {
+//
+//
+//        }
+//
         
         return cell
     }

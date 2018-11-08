@@ -15,7 +15,7 @@ import FirebaseAuth
 import FBSDKCoreKit
 
 var ids = [String]()
-var names = [String:String]()
+//var names = [String:String]()
 var photos = [String:UIImage]()
 var numbahs = [String:String]()
 var answers = [String:String]()
