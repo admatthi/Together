@@ -27,8 +27,7 @@ class AboutTableViewCell: UITableViewCell {
         tapjoin2.layer.cornerRadius = 15.0
         tapjoin2.layer.masksToBounds = true
         
-        tapjoin.layer.cornerRadius = 15.0
-        tapjoin.layer.masksToBounds = true
+
         // Initialization code
     }
 

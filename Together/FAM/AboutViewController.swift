@@ -133,8 +133,14 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
-        return responses2.count+2
+        if responses2.count > 0 {
+            
+            return responses2.count+1
+            
+        } else {
+            
+            return 0
+        }
         
     }
     
@@ -143,43 +149,24 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "About", for: indexPath) as! AboutTableViewCell
         
-        if responses2.count > indexPath.row-2 {
+        if responses2.count > indexPath.row-1 {
             
             if indexPath.row == 0 {
                 
-                cell.headline.alpha = 0
-                cell.longdescription.alpha = 0
-                
-                cell.profilepic.alpha = 1
-                cell.pitch.alpha = 1
-                cell.tapjoin.alpha = 1
-                cell.subs.alpha = 1
-                cell.dollers.alpha = 1
-                cell.name.alpha = 1
-                cell.sublabel.alpha = 1
-                cell.monthlylabel.alpha = 1
-                cell.profilepic.image = selectedimage
-                cell.profilepic.layer.cornerRadius = 5.0
-                cell.profilepic.layer.masksToBounds = true
-                cell.pitch.text = selectedpitch
-                cell.subs.text = selectedsubs
-                cell.dollers.text = "$\(selectedprice)"
-                cell.name.text = selectedname
+//                cell.pitch.text = ""
+                cell.headline.alpha = 1
+                cell.longdescription.alpha = 1
                 cell.tapjoin2.alpha = 0
-                cell.longdescription.text = ""
+                cell.headline.text = headlines[aboutids[indexPath.row]]
+                
+                cell.longdescription.text = responses2[aboutids[indexPath.row]]
+                
                 
             } else {
                 
-                if indexPath.row == responses2.count+1 {
+                if indexPath.row == responses2.count{
                     
-                    cell.profilepic.alpha = 0
-                    cell.pitch.alpha = 0
-                    cell.tapjoin.alpha = 0
-                    cell.subs.alpha = 0
-                    cell.dollers.alpha = 0
-                    cell.name.alpha = 0
-                    cell.sublabel.alpha = 0
-                    cell.monthlylabel.alpha = 0
+
                     cell.headline.alpha = 1
                     cell.longdescription.alpha = 1
                     
@@ -189,21 +176,14 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
                     
                 } else {
                 
-                    cell.pitch.text = ""
-                cell.profilepic.alpha = 0
-                cell.pitch.alpha = 0
-                cell.tapjoin.alpha = 0
-                cell.subs.alpha = 0
-                cell.dollers.alpha = 0
-                cell.name.alpha = 0
-                cell.sublabel.alpha = 0
-                cell.monthlylabel.alpha = 0
+//                    cell.pitch.text = ""
+
                 cell.headline.alpha = 1
                 cell.longdescription.alpha = 1
                 cell.tapjoin2.alpha = 0
-                cell.headline.text = headlines[aboutids[indexPath.row-1]]
+                cell.headline.text = headlines[aboutids[indexPath.row]]
                 
-                cell.longdescription.text = responses2[aboutids[indexPath.row-1]]
+                cell.longdescription.text = responses2[aboutids[indexPath.row]]
                 
                 }
             }
