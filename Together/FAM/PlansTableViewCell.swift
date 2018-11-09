@@ -28,6 +28,9 @@ class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var daylabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        tapjoin.layer.cornerRadius = 15.0
+        tapjoin.layer.masksToBounds = true
         // Initialization code
     }
 

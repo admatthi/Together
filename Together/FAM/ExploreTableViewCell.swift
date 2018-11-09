@@ -22,16 +22,15 @@ class ExploreTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        subscriber.layer.cornerRadius = 5.0
-        subscriber.layer.masksToBounds = true
+//        subscriber.layer.cornerRadius = 5.0
+//        subscriber.layer.masksToBounds = true
         
                 profilepic.layer.masksToBounds = true
                 profilepic.layer.cornerRadius = 10.0
 
+        subscriber.layer.cornerRadius = 15.0
+        subscriber.layer.masksToBounds = true
         
-//        profilepic.layer.masksToBounds = false
-//        profilepic.layer.cornerRadius = profilepic.frame.height/2
-        profilepic.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

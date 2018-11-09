@@ -18,6 +18,9 @@
 		9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */; };
 		9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */; };
 		9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08A21949795001B40E1 /* AboutViewController.swift */; };
+		9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */; };
+		9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */; };
+		9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD09021952BD5001B40E1 /* LoginViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
 		9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C221728D1D001AEF8E /* HomeViewController.swift */; };
 		9D8934C521728D38001AEF8E /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */; };
@@ -86,6 +89,9 @@
 		9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		9D5FD08A21949795001B40E1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamViewController.swift; sourceTree = "<group>"; };
+		9D5FD09021952BD5001B40E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		9D8934C221728D1D001AEF8E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = /Users/alekmatthiessen/Desktop/Together/Together/HomeTableViewCell.swift; sourceTree = "<absolute>"; };
@@ -291,12 +297,15 @@
 		9DC0B2832193550B00F56A1A /* FAM */ = {
 			isa = PBXGroup;
 			children = (
+				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
 				9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
 				9D5FD08A21949795001B40E1 /* AboutViewController.swift */,
 				9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */,
 				9DC0B28E219360C100F56A1A /* PlansTableViewCell.swift */,
 				9DC0B290219360EC00F56A1A /* PlansViewController.swift */,
+				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
+				9D5FD09021952BD5001B40E1 /* LoginViewController.swift */,
 			);
 			path = FAM;
 			sourceTree = "<group>";
@@ -544,6 +553,7 @@
 				9DC0B2872193556300F56A1A /* ExploreViewController.swift in Sources */,
 				9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */,
 				9DB795C821656B5300211327 /* ViewController.swift in Sources */,
+				9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */,
 				9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */,
 				9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */,
 				9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */,
@@ -551,6 +561,8 @@
 				9DC0B2852193553300F56A1A /* ExploreTableViewCell.swift in Sources */,
 				9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */,
 				9D451F7F216B949A009708D4 /* AnswersTableViewCell.swift in Sources */,
+				9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */,
+				9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
 				9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */,
 				9DC0B291219360EC00F56A1A /* PlansViewController.swift in Sources */,
