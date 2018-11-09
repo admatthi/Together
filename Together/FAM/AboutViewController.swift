@@ -189,6 +189,7 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
                     
                 } else {
                 
+                    cell.pitch.text = ""
                 cell.profilepic.alpha = 0
                 cell.pitch.alpha = 0
                 cell.tapjoin.alpha = 0
@@ -211,8 +212,14 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
             
         }
         
-        
+        cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  
+            return UITableViewAutomaticDimension
+            
     }
     
 }

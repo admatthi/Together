@@ -745,7 +745,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-4";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
 				INFOPLIST_FILE = Together/Info.plist;
@@ -764,7 +764,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 946746B00455D23BCECD7726 /* Pods-Together.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-4";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
 				INFOPLIST_FILE = Together/Info.plist;

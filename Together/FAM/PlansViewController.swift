@@ -177,9 +177,11 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
         
+        cell.selectionStyle = .none
         if videolinks.count > indexPath.row-1 {
             
             if indexPath.row == 0 {
+                
                 
                 cell.daylabel.alpha = 0
                 

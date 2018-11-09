@@ -26,10 +26,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FAMLOGO" translatesAutoresizingMaskIntoConstraints="NO" id="7FE-iV-uNg">
-                                <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                                <rect key="frame" x="109" y="292" width="157" height="83"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="YAR-Df-sE8"/>
-                                    <constraint firstAttribute="width" constant="240" id="pbN-xT-kV3"/>
+                                    <constraint firstAttribute="height" constant="83" id="YAR-Df-sE8"/>
+                                    <constraint firstAttribute="width" constant="157" id="pbN-xT-kV3"/>
                                 </constraints>
                             </imageView>
                         </subviews>
