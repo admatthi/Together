@@ -210,6 +210,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.playerView.alpha = 1
                 cell.profilepic.alpha = 0
                 cell.pitch.alpha = 0
+                cell.pitch.text = "" 
                 cell.tapjoin.alpha = 0
                 cell.subs.alpha = 0
                 cell.dollers.alpha = 0
