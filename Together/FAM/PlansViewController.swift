@@ -22,6 +22,10 @@ var videotimes = [String:String]()
 
 var firstname = String()
 var selectedname = String()
+
+var unlockedids = [String]()
+var locked = Bool()
+
 class PlansViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
     @IBOutlet weak var programname: UILabel!
@@ -36,13 +40,67 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         ref = Database.database().reference()
         
 
-
         queryforids { () -> () in
             
             self.queryforinfo()
             
         }
+        
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+
+            locked = true
+
+        } else {
+
+            locked = true
+
+            uid = (Auth.auth().currentUser?.uid)!
+
+            queryforpurchased()
+            
+        }
+        
+        
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func queryforpurchased() {
+        
+        var functioncounter = 0
+        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    if ids == selectedid {
+                        
+                        locked = false
+                        
+                    } else {
+                        
+                        locked = true
+                    }
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        self.tableView.reloadData()
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
     }
     
     func queryforids(completed: @escaping (() -> ()) ) {
@@ -171,7 +229,32 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? PlansTableViewCell {
+            
+            if cell.playerView.player?.isPlaying == true {
+                
+                cell.playerView.player?.pause()
+
+                
+            } else {
+                
+                cell.playerView.player?.play()
+
+            }
+
+        }
+    }
+
+     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? PlansTableViewCell {
+            
+            
+                cell.playerView.player?.pause()
+            
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -185,7 +268,8 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 cell.daylabel.alpha = 0
                 
-                
+                cell.minipic.alpha = 0
+                cell.programn.alpha = 0
                 cell.profilepic.alpha = 1
                 cell.pitch.alpha = 1
                 cell.tapjoin.alpha = 1
@@ -195,8 +279,8 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.sublabel.alpha = 1
                 cell.monthlylabel.alpha = 1
                 cell.profilepic.image = selectedimage
-                cell.profilepic.layer.cornerRadius = 5.0
-                cell.profilepic.layer.masksToBounds = true
+//                cell.profilepic.layer.cornerRadius = 5.0
+//                cell.profilepic.layer.masksToBounds = true
                 cell.pitch.text = selectedpitch
                 cell.subs.text = selectedsubs
                 cell.dollers.text = "$\(selectedprice)"
@@ -207,6 +291,11 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.descriptionlabel.alpha = 0
 
             } else {
+                
+                cell.minipic.alpha = 1
+                cell.programn.alpha = 1
+                cell.minipic.image = selectedimage
+                cell.programn.text = selectedprogramname
                 cell.playerView.alpha = 1
                 cell.profilepic.alpha = 0
                 cell.pitch.alpha = 0
@@ -224,7 +313,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 cell.daylabel.alpha = 1
                 
-                cell.daylabel.text = "DAY \(indexPath.row)"
+                cell.daylabel.text = "Day \(indexPath.row)"
 //                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
 //                cell.timelabel.text = videotimes[videoids[indexPath.row]]
                 let videourl = URL(string: videolinks[videoids[indexPath.row-1]]!)
@@ -232,13 +321,32 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let avPlayer = AVPlayer(url: videourl! as URL)
                 
                 cell.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                
+
                 cell.playerView.playerLayer.player = avPlayer
-                cell.playerView.player?.play()
-                    cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
+                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
+                
+                cell.playerView.player?.pause()
+
+                if locked {
+                
+                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                    blurEffectView.frame = cell.playerView.bounds
+                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    cell.playerView.addSubview(blurEffectView)
+                    cell.lockimage.alpha = 1
+                    
+                } else {
+                    cell.lockimage.alpha = 0
+
+                }
+//                cell.playerView.player!.replaceCurrentItem(with: nil)
+
 //                cell.playerView.player?.pause()
+//
+//                cell.playerView.player?.play()
                 
-                
+
 
             }
         } else {
@@ -270,7 +378,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         let buttonTag = sender.tag
         
      
-            tableView.reloadData()
+        tableView.reloadData()
     }
     
     @objc func tapDown(sender: UIButton){
@@ -283,3 +391,8 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
 
+extension AVPlayer {
+    var isPlaying: Bool {
+        return rate != 0 && error == nil
+    }
+}

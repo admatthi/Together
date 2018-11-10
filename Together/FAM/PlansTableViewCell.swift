@@ -19,9 +19,12 @@ class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var subs: UILabel!
     @IBOutlet weak var profilepic: UIImageView!
     @IBOutlet weak var tapjoin2: UIButton!
+    @IBOutlet weak var programn: UILabel!
     
+    @IBOutlet weak var minipic: UIImageView!
     @IBOutlet weak var playerView: PlayerViewClass!
 
+    @IBOutlet weak var lockimage: UIImageView!
     @IBOutlet weak var descriptionlabel: UILabel!
     @IBOutlet weak var thumbnailpreview: UIImageView!
     @IBOutlet weak var timelabel: UILabel!
@@ -31,6 +34,16 @@ class PlansTableViewCell: UITableViewCell {
         
         tapjoin.layer.cornerRadius = 15.0
         tapjoin.layer.masksToBounds = true
+        
+                profilepic.layer.masksToBounds = false
+                profilepic.layer.cornerRadius = profilepic.frame.height/2
+                profilepic.clipsToBounds = true
+        
+        minipic.layer.masksToBounds = false
+        minipic.layer.cornerRadius = minipic.frame.height/2
+        minipic.clipsToBounds = true
+        
+        
         // Initialization code
     }
 
