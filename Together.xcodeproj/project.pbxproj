@@ -23,7 +23,6 @@
 		9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD09021952BD5001B40E1 /* LoginViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
 		9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C221728D1D001AEF8E /* HomeViewController.swift */; };
-		9D8934C521728D38001AEF8E /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */; };
 		9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C621740ABE001AEF8E /* QuestionsTableViewCell.swift */; };
 		9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */; };
 		9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934CA2174113F001AEF8E /* PromptViewController.swift */; };
@@ -32,6 +31,7 @@
 		9D9E4A4721862B1700B3C74C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9E4A4621862B1700B3C74C /* StoreKit.framework */; };
 		9D9E4A49218630D300B3C74C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D9E4A48218630D300B3C74C /* GoogleService-Info.plist */; };
 		9D9E4A4B21864CC000B3C74C /* FundedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */; };
+		9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4D29321965344008A57FD /* VideoPlayerView.swift */; };
 		9DB795C621656B5300211327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C521656B5300211327 /* AppDelegate.swift */; };
 		9DB795C821656B5300211327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C721656B5300211327 /* ViewController.swift */; };
 		9DB795CB21656B5300211327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB795C921656B5300211327 /* Main.storyboard */; };
@@ -95,7 +95,6 @@
 		9D5FD09021952BD5001B40E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		9D8934C221728D1D001AEF8E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = /Users/alekmatthiessen/Desktop/Together/Together/HomeTableViewCell.swift; sourceTree = "<absolute>"; };
 		9D8934C621740ABE001AEF8E /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
 		9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		9D8934CA2174113F001AEF8E /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D9E4A48218630D300B3C74C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundedViewController.swift; sourceTree = "<group>"; };
+		9DB4D29321965344008A57FD /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		9DB795C221656B5300211327 /* Together.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Together.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB795C521656B5300211327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DB795C721656B5300211327 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -232,7 +232,6 @@
 				9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */,
 				9D0F86A121710A6400AE5F18 /* Constants.swift */,
 				9D8934C221728D1D001AEF8E /* HomeViewController.swift */,
-				9D8934C421728D38001AEF8E /* HomeTableViewCell.swift */,
 				9D1EBF0321750F91004A566A /* MapViewController.swift */,
 			);
 			path = Irrelevant;
@@ -303,6 +302,7 @@
 				9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
 				9D5FD08A21949795001B40E1 /* AboutViewController.swift */,
+				9DB4D29321965344008A57FD /* VideoPlayerView.swift */,
 				9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */,
 				9DC0B28E219360C100F56A1A /* PlansTableViewCell.swift */,
 				9DC0B290219360EC00F56A1A /* PlansViewController.swift */,
@@ -550,7 +550,6 @@
 				9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */,
 				9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */,
 				9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */,
-				9D8934C521728D38001AEF8E /* HomeTableViewCell.swift in Sources */,
 				9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */,
 				9DC0B28221920DC500F56A1A /* PlayerViewClass.swift in Sources */,
 				9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */,
@@ -579,6 +578,7 @@
 				9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,
+				9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

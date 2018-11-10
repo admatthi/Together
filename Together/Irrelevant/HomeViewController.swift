@@ -114,11 +114,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Home", for: indexPath) as! HomeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Project", for: indexPath) as! ProjectTableViewCell
         
         
-        cell.topic.text = topics[indexPath.row]
-        cell.people.text = n[indexPath.row]
+//        cell.topic.text = topics[indexPath.row]
+//        cell.people.text = n[indexPath.row]
         
         return cell
     }
