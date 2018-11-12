@@ -133,11 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
-//    func presentDetailViewController(_ computer: Computer) {
-//        
-//
-//    }
-    
+
     func application(
         _ application: UIApplication,
         continue userActivity: NSUserActivity,
@@ -145,6 +141,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ) -> Void) -> Bool {
         
         // 1
+        
+        
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
             let url = userActivity.webpageURL,
             let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {

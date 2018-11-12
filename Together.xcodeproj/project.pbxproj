@@ -17,6 +17,8 @@
 		9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8521835E5D0079F9CB /* ProjectViewController.swift */; };
 		9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */; };
 		9D5DBE3C219A26B8000C46FC /* RevenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */; };
+		9D5DBE3E219A31D5000C46FC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */; };
+		9D5DBE40219A35CA000C46FC /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */; };
 		9D5DD6BE2198A2FF0085F58A /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */; };
 		9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */; };
 		9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08A21949795001B40E1 /* AboutViewController.swift */; };
@@ -92,6 +94,8 @@
 		9D519C8521835E5D0079F9CB /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueViewController.swift; sourceTree = "<group>"; };
+		9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		9D5FD08A21949795001B40E1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -306,7 +310,6 @@
 		9DC0B2832193550B00F56A1A /* FAM */ = {
 			isa = PBXGroup;
 			children = (
-				9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */,
 				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
 				9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
@@ -317,9 +320,12 @@
 				9DC0B290219360EC00F56A1A /* PlansViewController.swift */,
 				9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */,
 				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
-				9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */,
 				9D5FD09021952BD5001B40E1 /* LoginViewController.swift */,
+				9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */,
+				9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */,
 				9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */,
+				9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */,
+				9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */,
 			);
 			path = FAM;
 			sourceTree = "<group>";
@@ -559,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D5DBE40219A35CA000C46FC /* UpdateProfileViewController.swift in Sources */,
 				9D9E4A4B21864CC000B3C74C /* FundedViewController.swift in Sources */,
 				9D5DD6BE2198A2FF0085F58A /* UploadViewController.swift in Sources */,
 				9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */,
@@ -585,6 +592,7 @@
 				9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
 				9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */,
+				9D5DBE3E219A31D5000C46FC /* EditProfileViewController.swift in Sources */,
 				9DC0B291219360EC00F56A1A /* PlansViewController.swift in Sources */,
 				9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */,
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
