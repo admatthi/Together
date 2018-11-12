@@ -1,8 +1,8 @@
 //
-//  LoginViewController.swift
+//  InfluencerCreateViewController.swift
 //  Together
 //
-//  Created by Alek Matthiessen on 11/8/18.
+//  Created by Alek Matthiessen on 11/12/18.
 //  Copyright © 2018 AA Tech. All rights reserved.
 //
 
@@ -14,12 +14,9 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate     {
+class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
 
-    @IBAction func tapLogin(_ sender: Any) {
-        
-        login()
-    }
+  
     @IBAction func tapSignUp(_ sender: Any) {
         
         signup()
@@ -32,56 +29,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
         //        })
     }
     
+    @IBOutlet weak var domaintf: UITextField!
+    
+    @IBOutlet weak var nametf: UITextField!
     @IBOutlet weak var passwordtf: UITextField!
     @IBOutlet weak var emailtf: UITextField!
+
     
-    func login() {
-        
-        var email = "\(emailtf.text!)"
-        var password = "\(passwordtf.text!)"
-        
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            
-            if let error = error {
-                
-                
-                self.errorlabel.alpha = 1
-                self.errorlabel.text = error.localizedDescription
-                
-                return
-                
-            } else {
-                
-                uid = (Auth.auth().currentUser?.uid)!
-                
-                let date = Date()
-                let calendar = Calendar.current
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MM-dd-yy"
-                var todaysdate =  dateFormatter.string(from: date)
-                
-//                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
-            ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Purchased" : true])
-                
-                DispatchQueue.main.async {
-                    
-//                    purchased = true
-                    
-                    self.performSegue(withIdentifier: "LoginToDiscover", sender: self)
-                    
-                }
-            }
-            
-        }
-        
-    }
-    
-    @IBOutlet weak var errorlabel: UILabel!
     func signup() {
         
-        
         var email = "\(emailtf.text!)"
         var password = "\(passwordtf.text!)"
+        var name = "\(nametf.text!)"
+        var domain = "\(domaintf.text!)"
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             
@@ -96,7 +56,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 
                 uid = (Auth.auth().currentUser?.uid)!
                 
-//                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
+                //                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
                 
                 let date = Date()
                 let calendar = Calendar.current
@@ -106,17 +66,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 let thirtyDaysAfterToday = Calendar.current.date(byAdding: .day, value: +30, to: date)!
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
-//                self.addstaticbooks()
-                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Purchased" : true])
+                //                self.addstaticbooks()
+                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Influencer" : "True", "Password": password, "Name" : name, "Domain" : domain, "Approved" : "False"])
                 
                 
                 
                 
                 DispatchQueue.main.async {
                     
-//                    purchased = true
+                    //                    purchased = true
                     
-                    self.performSegue(withIdentifier: "LoginToDiscover", sender: self)
+                    self.performSegue(withIdentifier: "InfluencerToThankYou", sender: self)
                 }
             }
             
@@ -139,18 +99,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
         
         emailtf.delegate = self
         passwordtf.delegate = self
-        emailtf.becomeFirstResponder()
+        nametf.delegate = self
+        domaintf.delegate = self
+        nametf.becomeFirstResponder()
         
         tapcreate.layer.cornerRadius = 22.0
         tapcreate.layer.masksToBounds = true
         
         errorlabel.alpha = 0
-        
         FBSDKAppEvents.logEvent("LoginScreen")
         
         
     }
     
+    @IBOutlet weak var errorlabel: UILabel!
     func addstaticbooks() {
         
         ref?.child("Users").child(uid).child("Library").child("InProgress").child("12 Rules for Life").updateChildValues(["Author" : "Jordan B. Peterson", "BookID" : "26", "Description" : "What does everyone in the modern world need to know? Renowned psychologist Jordan B. Peterson's answer to this most difficult of questions uniquely combines the hard-won truths of ancient tradition with the stunning revelations of cutting-edge scientific research.", "Genre" : "Psychology", "Image" : "PS26", "Name" : "12 Rules for Life", "Completed" : "No", "Views" : "123K views"])

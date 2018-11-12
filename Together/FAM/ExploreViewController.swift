@@ -109,7 +109,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if var views = value?["Price"] as? String {
                     prices[each] = views
-                    
+                    functioncounter += 1
+
                 }
                 
                 if var views = value?["ProgramName"] as? String {
@@ -123,7 +124,6 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 toppics[each] = UIImage(named: "\(each)pic")
                 
-                functioncounter += 1
                 
                 print(functioncounter)
                 
@@ -159,7 +159,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-        return names.count
+        return subscribers.count
         
     }
     
@@ -167,7 +167,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Explore", for: indexPath) as! ExploreTableViewCell
         
-        if names.count > indexPath.row {
+        if names.count > indexPath.row && subscribers.count > indexPath.row {
             
 //            cell.layer.borderWidth = 1.0
 //            cell.layer.borderColor = UIColor.lightGray.cgColor

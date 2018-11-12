@@ -16,12 +16,14 @@
 		9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F80216B96B6009708D4 /* AskViewController.swift */; };
 		9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8521835E5D0079F9CB /* ProjectViewController.swift */; };
 		9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */; };
+		9D5DD6BE2198A2FF0085F58A /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */; };
 		9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */; };
 		9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08A21949795001B40E1 /* AboutViewController.swift */; };
 		9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */; };
 		9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */; };
 		9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD09021952BD5001B40E1 /* LoginViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
+		9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */; };
 		9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C221728D1D001AEF8E /* HomeViewController.swift */; };
 		9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C621740ABE001AEF8E /* QuestionsTableViewCell.swift */; };
 		9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */; };
@@ -88,12 +90,15 @@
 		9D451F80216B96B6009708D4 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		9D519C8521835E5D0079F9CB /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		9D5FD08A21949795001B40E1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamViewController.swift; sourceTree = "<group>"; };
 		9D5FD09021952BD5001B40E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
+		9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCreateViewController.swift; sourceTree = "<group>"; };
+		9D8311802197DDA2003CC76C /* Together.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Together.entitlements; sourceTree = "<group>"; };
 		9D8934C221728D1D001AEF8E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9D8934C621740ABE001AEF8E /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
 		9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +267,7 @@
 		9DB795C421656B5300211327 /* Together */ = {
 			isa = PBXGroup;
 			children = (
+				9D8311802197DDA2003CC76C /* Together.entitlements */,
 				9DB795C521656B5300211327 /* AppDelegate.swift */,
 				5514E4B9AC3B4FC850CE2F9A /* Pods */,
 				9DB795C921656B5300211327 /* Main.storyboard */,
@@ -298,6 +304,7 @@
 		9DC0B2832193550B00F56A1A /* FAM */ = {
 			isa = PBXGroup;
 			children = (
+				9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */,
 				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
 				9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
@@ -309,6 +316,7 @@
 				9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */,
 				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
 				9D5FD09021952BD5001B40E1 /* LoginViewController.swift */,
+				9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */,
 			);
 			path = FAM;
 			sourceTree = "<group>";
@@ -387,6 +395,9 @@
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -546,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D9E4A4B21864CC000B3C74C /* FundedViewController.swift in Sources */,
+				9D5DD6BE2198A2FF0085F58A /* UploadViewController.swift in Sources */,
 				9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */,
 				9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */,
 				9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */,
@@ -577,6 +589,7 @@
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
 				9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
+				9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */,
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,
 				9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */,
 			);
@@ -752,9 +765,11 @@
 			baseConfigurationReference = D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-4";
+				CODE_SIGN_ENTITLEMENTS = Together/Together.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
 				INFOPLIST_FILE = Together/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -771,9 +786,11 @@
 			baseConfigurationReference = 946746B00455D23BCECD7726 /* Pods-Together.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-4";
+				CODE_SIGN_ENTITLEMENTS = Together/Together.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
 				INFOPLIST_FILE = Together/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -23,6 +23,7 @@ var uid = String()
 var ref: DatabaseReference?
 
 var tryingtopurchase = Bool()
+var isInfluencer = Bool()
 
 protocol SnippetsPurchasesDelegate: AnyObject {
     
@@ -38,6 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     weak var purchasesdelegate : SnippetsPurchasesDelegate?
 
     var purchases: RCPurchases?
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -51,18 +54,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         purchases!.delegate = self
         
+        isInfluencer = false
+
+        ref = Database.database().reference()
+
+
         var tabBar: UITabBarController = self.window?.rootViewController as! UITabBarController
-        
+
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
-            
+
             tabBar.selectedIndex = 0
-            
-            
+
+
         } else {
+
+            let currentUser = Auth.auth().currentUser
             
+            uid = (currentUser?.uid)!
+            queryforinfo()
             tabBar.selectedIndex = 0
-            
+
         }
         
         return true
@@ -70,11 +82,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func letsgo() {
         
+    
+        
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Login") as UIViewController
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialViewControlleripad
         self.window?.makeKeyAndVisible()
+    }
+    
+    func queryforinfo() {
+        
+        var functioncounter = 0
+        
+        ref?.child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if var author2 = value?["Approved"] as? String {
+                
+                if author2 == "False" {
+                    
+                    
+                } else {
+                    
+                    isInfluencer = true
+                }
+                
+                
+            }
+      
+            
+        })
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -98,6 +138,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let urlPath : String = url.path as String!
+        let urlHost : String = url.host as String!
+        
+        if urlPath == "/wow" {
+            
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buy") as UIViewController
+            
+            selectedid = "11"
+            selectedimage = UIImage(named: "11pic")!
+            selectedname = "Kayla"
+            selectedpitch = "Sup"
+            selectedprice = "10"
+            //        selectedprogramnames = programnames[projectids[indexPath.row]]!
+            selectedsubs = "100"
+            selectedprogramname = "Sweat"
+            
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewControlleripad
+            self.window?.makeKeyAndVisible()
+            
+            return true
+        } else {
+            
+            return true
+        }
+    }
 
 
 }
@@ -109,6 +180,7 @@ extension AppDelegate: RCPurchasesDelegate {
         
         print("purchased")
         tryingtopurchase  = true
+        
         letsgo()
         
     }

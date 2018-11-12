@@ -26,6 +26,7 @@ var selectedname = String()
 var unlockedids = [String]()
 var locked = Bool()
 
+
 class PlansViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
     @IBOutlet weak var programname: UILabel!
@@ -156,7 +157,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 if var author2 = value?["URL"] as? String {
                     videolinks[each] = author2
                     
-//                    self.createThumbnailOfVideoFromRemoteUrl(url: author2)
+                    
                     
                 }
                 
@@ -170,13 +171,16 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                     
                 }
                 
-            
+                if var profileUrl = value?["Image"] as? String {
+                // Create a storage reference from the URL
+          
+                    let url = URL(string: profileUrl)
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    self.thumbnails[each] = UIImage(data: data!)
      
-                
-                
-                
-                functioncounter += 1
-                
+                    functioncounter += 1
+                }
+   
                 print(functioncounter)
                 
                 
@@ -233,13 +237,23 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         if let cell = tableView.cellForRow(at: indexPath) as? PlansTableViewCell {
             
+            let videourl = URL(string: videolinks[videoids[indexPath.row-1]]!)
+            
+            let avPlayer = AVPlayer(url: videourl! as URL)
+            
+            cell.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+            
+            cell.playerView.playerLayer.player = avPlayer
+            
+
+            
             if cell.playerView.player?.isPlaying == true {
                 
                 cell.playerView.player?.pause()
-
+                cell.thumbnail.alpha = 0
                 
             } else {
-                
+                cell.thumbnail.alpha = 0
                 cell.playerView.player?.play()
 
             }
@@ -247,25 +261,17 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
 
-     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? PlansTableViewCell {
-            
-            
-                cell.playerView.player?.pause()
-            
-        }
-    }
-    
+  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
-        
+        cell.activityIndicator.alpha = 1
         cell.selectionStyle = .none
         if videolinks.count > indexPath.row-1 {
             
             if indexPath.row == 0 {
                 
-                
+                cell.activityIndicator.alpha = 0
                 cell.daylabel.alpha = 0
                 
                 cell.minipic.alpha = 0
@@ -289,9 +295,11 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
 //                cell.thumbnailpreview.alpha = 0
                 cell.descriptionlabel.text = ""
                 cell.descriptionlabel.alpha = 0
-
+                cell.thumbnail.alpha = 0
             } else {
                 
+                cell.thumbnail.alpha = 1
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
                 cell.minipic.alpha = 1
                 cell.programn.alpha = 1
                 cell.minipic.image = selectedimage
@@ -314,30 +322,26 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.daylabel.alpha = 1
                 
                 cell.daylabel.text = "Day \(indexPath.row)"
+                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
+                cell.activityIndicator.alpha = 0
+
 //                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
 //                cell.timelabel.text = videotimes[videoids[indexPath.row]]
-                let videourl = URL(string: videolinks[videoids[indexPath.row-1]]!)
-                
-                let avPlayer = AVPlayer(url: videourl! as URL)
-                
-                cell.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-
-                cell.playerView.playerLayer.player = avPlayer
-                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
-                
-                cell.playerView.player?.pause()
 
                 if locked {
                 
-                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                    blurEffectView.frame = cell.playerView.bounds
-                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                    cell.playerView.addSubview(blurEffectView)
-                    cell.lockimage.alpha = 1
+//                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+//                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                    blurEffectView.frame = cell.playerView.bounds
+//                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//                    cell.playerView.addSubview(blurEffectView)
+//                    cell.lockimage.alpha = 1
+                    
+//                    cell.isUserInteractionEnabled = false
                     
                 } else {
-                    cell.lockimage.alpha = 0
+                    cell.isUserInteractionEnabled = true
+//                    cell.lockimage.alpha = 0
 
                 }
 //                cell.playerView.player!.replaceCurrentItem(with: nil)
