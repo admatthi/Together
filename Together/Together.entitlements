@@ -5,6 +5,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:joinmyfam.com</string>
+		<string>applinks:joinmyfam.herokuapp.com</string>
 	</array>
 </dict>
 </plist>

@@ -70,6 +70,10 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var imagePickerController = UIImagePickerController()
 
+    @IBAction func tapEditProfile(_ sender: Any) {
+    }
+    @IBAction func tapRevenue(_ sender: Any) {
+    }
     @IBAction func tapAdd(_ sender: Any) {
         
         imagePickerController.sourceType = .photoLibrary
@@ -125,18 +129,24 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             
         }
     }
-    @IBOutlet weak var tapadd: UIButton!
    
+    @IBOutlet weak var tapeditprofile: UIButton!
+    @IBOutlet weak var tapaddcontent: UIButton!
+    @IBOutlet weak var tapseerevenue: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if isInfluencer {
             
-            tapadd.alpha = 1
+            tapaddcontent.alpha = 1
+            tapseerevenue.alpha = 1
+            tapeditprofile.alpha = 1
             
         } else {
             
-            tapadd.alpha = 0
+            tapaddcontent.alpha = 0
+            tapseerevenue.alpha = 0
+            tapeditprofile.alpha = 0
         }
        
         tapsubscriptions.layer.cornerRadius = 25.0
@@ -149,8 +159,12 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         tapabout.layer.masksToBounds = true
         tapbilling.layer.cornerRadius = 25.0
         tapbilling.layer.masksToBounds = true
-        tapadd.layer.cornerRadius = 25.0
-        tapadd.layer.masksToBounds = true
+        tapaddcontent.layer.cornerRadius = 25.0
+        tapaddcontent.layer.masksToBounds = true
+        tapeditprofile.layer.cornerRadius = 25.0
+        tapeditprofile.layer.masksToBounds = true
+        tapseerevenue.layer.cornerRadius = 25.0
+        tapseerevenue.layer.masksToBounds = true
         
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in

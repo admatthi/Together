@@ -39,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     weak var purchasesdelegate : SnippetsPurchasesDelegate?
 
     var purchases: RCPurchases?
-    
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -134,6 +132,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
+    
+//    func presentDetailViewController(_ computer: Computer) {
+//        
+//
+//    }
+    
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?
+        ) -> Void) -> Bool {
+        
+        // 1
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+            let url = userActivity.webpageURL,
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                return false
+        }
+        
+        // 2
+//        if let computer = ItemHandler.sharedInstance.items
+//            .filter({ $0.path == components.path}).first {
+//            presentDetailViewController(computer)
+//            return true
+//        }
+        
+        // 3
+        if let webpageUrl = URL(string: "http://joinmyfam.herokuapp.com") {
+            application.open(webpageUrl)
+            return false
+        }
+        
+        return false
+    }
+
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

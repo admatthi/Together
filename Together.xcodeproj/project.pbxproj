@@ -16,6 +16,7 @@
 		9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F80216B96B6009708D4 /* AskViewController.swift */; };
 		9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8521835E5D0079F9CB /* ProjectViewController.swift */; };
 		9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */; };
+		9D5DBE3C219A26B8000C46FC /* RevenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */; };
 		9D5DD6BE2198A2FF0085F58A /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */; };
 		9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */; };
 		9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08A21949795001B40E1 /* AboutViewController.swift */; };
@@ -90,6 +91,7 @@
 		9D451F80216B96B6009708D4 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		9D519C8521835E5D0079F9CB /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		9D519C8721835E8F0079F9CB /* ProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueViewController.swift; sourceTree = "<group>"; };
 		9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		9D5FD08A21949795001B40E1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				9DC0B290219360EC00F56A1A /* PlansViewController.swift */,
 				9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */,
 				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
+				9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */,
 				9D5FD09021952BD5001B40E1 /* LoginViewController.swift */,
 				9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */,
 			);
@@ -587,6 +590,7 @@
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
+				9D5DBE3C219A26B8000C46FC /* RevenueViewController.swift in Sources */,
 				9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
 				9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */,
