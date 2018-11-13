@@ -14,8 +14,18 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 
+
+var myprojectids = [String]()
+var mydescriptions = [String:String]()
+var myprogramnames = [String:String]()
+var myprices = [String:String]()
+var mytoppics = [String:UIImage]()
+var mynames = [String:String]()
+var myimages = [String:UIImage]()
+
 class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
+    @IBOutlet weak var errorlabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,26 +33,46 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         ref = Database.database().reference()
         
-        queryforids { () -> () in
+      
+
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
             
-            self.queryforinfo()
+            
+        tableView.alpha = 0
+        errorlabel.alpha = 1
+            
+            
+        } else {
+            
+            errorlabel.alpha = 0
+            queryforids { () -> () in
+                
+                self.queryforinfo()
+                
+            }
             
         }
-
+        
         // Do any additional setup after loading the view.
     }
-    
+
+
     func queryforids(completed: @escaping (() -> ()) ) {
         
         var functioncounter = 0
         
-        projectids.removeAll()
-        descriptions.removeAll()
-        names.removeAll()
-        programnames.removeAll()
-        prices.removeAll()
-        toppics.removeAll()
-        ref?.child("Influencers").observeSingleEvent(of: .value, with: { (snapshot) in
+        myprojectids.removeAll()
+        mydescriptions.removeAll()
+        mynames.removeAll()
+        myprogramnames.removeAll()
+        myprices.removeAll()
+        mytoppics.removeAll()
+        myimages.removeAll()
+        
+        tableView.alpha = 0
+        errorlabel.alpha = 1
+        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -52,8 +82,9 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     let ids = each.key
                     
-                    projectids.append(ids)
-                    
+                    myprojectids.append(ids)
+                    self.tableView.alpha = 1
+                    self.errorlabel.alpha = 0
                     functioncounter += 1
                     
                     if functioncounter == snapDict.count {
@@ -76,7 +107,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         var functioncounter = 0
         
-        for each in projectids {
+        for each in myprojectids {
             
             
             ref?.child("Influencers").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -93,45 +124,45 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
                 
                 if var author2 = value?["Description"] as? String {
-                    descriptions[each] = author2
+                    mydescriptions[each] = author2
                     
                 } else {
-                    descriptions[each] = "-"
+                    mydescriptions[each] = "-"
 
                     
                 }
                 if var name = value?["Name"] as? String {
-                    names[each] = name
+                    mynames[each] = name
                     
                 } else {
                     
-                    names[each] = "-"
+                    mynames[each] = "-"
 
                 }
                 
                 if var views = value?["Price"] as? String {
-                    prices[each] = views
+                    myprices[each] = views
                     
                 } else {
                     
-                    prices[each] = "0"
+                    myprices[each] = "0"
 
                 }
                 
                 if var views = value?["ProgramName"] as? String {
-                    programnames[each] = views
+                    myprogramnames[each] = views
                     
                 } else {
                     
-                    programnames[each] = "-"
+                    myprogramnames[each] = "-"
 
                 }
                 
                 
                 
-                images[each] = UIImage(named: "\(each)")
+                myimages[each] = UIImage(named: "\(each)")
                 
-                toppics[each] = UIImage(named: "\(each)pic")
+                mytoppics[each] = UIImage(named: "\(each)pic")
                 
                 functioncounter += 1
                 
@@ -139,7 +170,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 
                 
-                if functioncounter == projectids.count {
+                if functioncounter == myprojectids.count {
                     
                     self.tableView.reloadData()
                     
@@ -153,14 +184,14 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedid = projectids[indexPath.row]
-        selectedimage = images[projectids[indexPath.row]]!
-        selectedname = names[projectids[indexPath.row]]!
-        selectedpitch = descriptions[projectids[indexPath.row]]!
-        selectedprice = prices[projectids[indexPath.row]]!
-        //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedsubs = subscribers[projectids[indexPath.row]]!
-        selectedprogramname = programnames[projectids[indexPath.row]]!
+        selectedid = myprojectids[indexPath.row]
+        selectedimage = myimages[myprojectids[indexPath.row]]!
+        selectedname = mynames[myprojectids[indexPath.row]]!
+        selectedpitch = mydescriptions[myprojectids[indexPath.row]]!
+        selectedprice = myprices[myprojectids[indexPath.row]]!
+        //        selectedprogrammynames = myprogramnames[myprojectids[indexPath.row]]!
+        selectedsubs = subscribers[myprojectids[indexPath.row]]!
+        selectedprogramname = myprogramnames[myprojectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
     }
@@ -168,8 +199,16 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if mynames.count > 0 {
+            
+            return mynames.count
+
+        } else {
+            
+            return 0
+            
+        }
         
-        return names.count
         
     }
     
@@ -177,21 +216,21 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Explore", for: indexPath) as! ExploreTableViewCell
         
-        if names.count > indexPath.row {
+        if mynames.count > indexPath.row {
             
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
             
             cell.layer.cornerRadius = 3.0
             cell.layer.masksToBounds = true
-            cell.name.text = names[projectids[indexPath.row]]
-            cell.descriptionlabel.text = descriptions[projectids[indexPath.row]]
-            cell.programname.text = programnames[projectids[indexPath.row]]
-            cell.name.text = names[projectids[indexPath.row]]
-            cell.profilepic.image = images[projectids[indexPath.row]]
-            cell.subscribercount.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
-            cell.toppic.image = toppics[projectids[indexPath.row]]
-            cell.price.text = "$\(prices[projectids[indexPath.row]]!)/mo"
+            cell.name.text = mynames[myprojectids[indexPath.row]]
+            cell.descriptionlabel.text = mydescriptions[myprojectids[indexPath.row]]
+            cell.programname.text = myprogramnames[myprojectids[indexPath.row]]
+            cell.name.text = names[myprojectids[indexPath.row]]
+            cell.profilepic.image = myimages[myprojectids[indexPath.row]]
+            cell.subscribercount.text = "\(subscribers[myprojectids[indexPath.row]]!) subscribers"
+            cell.toppic.image = mytoppics[myprojectids[indexPath.row]]
+            cell.price.text = "$\(myprices[myprojectids[indexPath.row]]!)/mo"
             
             
             

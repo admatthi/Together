@@ -324,8 +324,8 @@
 		9DC0B2832193550B00F56A1A /* FAM */ = {
 			isa = PBXGroup;
 			children = (
-				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
 				9D46D843219B2142006CE94C /* Sign Up */,
+				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
 				9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
 				9D5FD08A21949795001B40E1 /* AboutViewController.swift */,
