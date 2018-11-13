@@ -171,7 +171,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                     
                 }
                 
-                if var profileUrl = value?["Image"] as? String {
+                if var profileUrl = value?["Thumbnail"] as? String {
                 // Create a storage reference from the URL
           
                     let url = URL(string: profileUrl)

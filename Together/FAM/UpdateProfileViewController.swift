@@ -51,7 +51,6 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
         profileimage.layer.cornerRadius = profileimage.frame.height/2
         profileimage.clipsToBounds = true
         
-        tapadd.layer.masksToBounds = false
         tapadd.layer.cornerRadius = tapadd.frame.height/2
         tapadd.clipsToBounds = true
         
@@ -74,9 +73,15 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
             
             pdftf.text = selectedpitch
         }
+        
+        if selectedprice != "-" {
+            
+            pricelabel.text = "$\(selectedprice)"
+        }
         // Do any additional setup after loading the view.
     }
     
+    @IBOutlet weak var pricelabel: UILabel!
     var imagePickerController = UIImagePickerController()
 
     func uploadimage() {

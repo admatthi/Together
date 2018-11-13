@@ -193,7 +193,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                     
                 }
                 
-                if var profileUrl = value?["Image"] as? String {
+                if var profileUrl = value?["Thumbnail"] as? String {
                     // Create a storage reference from the URL
                     
                     let url = URL(string: profileUrl)
@@ -229,6 +229,13 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
      }
      */
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
+//
+//        cell.playerView.player?.pause()
+//
+//    }
     func createThumbnailOfVideoFromRemoteUrl(url: String) -> UIImage? {
         let asset = AVAsset(url: URL(string: url)!)
         let assetImgGenerate = AVAssetImageGenerator(asset: asset)
@@ -261,7 +268,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
             
             if indexPath.row == 0 {
                 
-                self.performSegue(withIdentifier: "EditToUpload", sender: self)
+                
                 
                 
             } else {
@@ -274,8 +281,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
             
             cell.playerView.playerLayer.player = avPlayer
             
-            
-            
+                
             if cell.playerView.player?.isPlaying == true {
                 
                 cell.playerView.player?.pause()
@@ -293,13 +299,14 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         }
     
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
         cell.activityIndicator.alpha = 1
         cell.selectionStyle = .none
         if videolinks.count > indexPath.row-1 {
+            
+                cell.tapjoin.addTarget(self, action: #selector(tapDown(sender:)), for: .touchUpInside)
             
             if indexPath.row == 0 {
                 
@@ -357,6 +364,8 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
                 cell.activityIndicator.alpha = 0
                 
+                cell.playerView.player?.replaceCurrentItem(with: nil)
+
                 //                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
                 //                cell.timelabel.text = videotimes[videoids[indexPath.row]]
                 
@@ -392,6 +401,11 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         
         return cell
+    }
+    
+    @objc func tapDown(sender: UIButton){
+        
+      self.performSegue(withIdentifier: "EditToUpload", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
