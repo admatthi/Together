@@ -273,6 +273,8 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.tapjoin.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             cell.tapcircle.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
 
+            cell.tapjoin.tag = indexPath.row
+            cell.tapcircle.tag = indexPath.row
             if indexPath.row == 0 {
                 
                 cell.activityIndicator.alpha = 0

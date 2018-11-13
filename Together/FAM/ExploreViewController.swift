@@ -32,7 +32,9 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         ref = Database.database().reference()
         
-        
+        activityIndicator.alpha = 1
+        activityIndicator.startAnimating()
+        tableView.alpha = 0
         
         queryforids { () -> () in
             
@@ -131,8 +133,10 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if functioncounter == projectids.count {
                     
+                    self.activityIndicator.alpha = 0
+                    self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
-                    
+                    self.tableView.alpha = 1
                 }
                 
                 
@@ -168,12 +172,17 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Explore", for: indexPath) as! ExploreTableViewCell
         
+        cell.subscriber.tag = indexPath.row
+        
+        cell.selectionStyle = .none
         if names.count > indexPath.row && subscribers.count > indexPath.row {
+            
             
 //            cell.layer.borderWidth = 1.0
 //            cell.layer.borderColor = UIColor.lightGray.cgColor

@@ -45,7 +45,10 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         } else {
             
+            activityIndicator.alpha = 1
+            activityIndicator.startAnimating()
             errorlabel.alpha = 0
+            
             queryforids { () -> () in
                 
                 self.queryforinfo()
@@ -72,6 +75,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.alpha = 0
         errorlabel.alpha = 1
+        activityIndicator.alpha = 0
         ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -101,6 +105,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         })
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var subscribers = [String:String]()
     
     func queryforinfo() {
@@ -172,6 +177,9 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if functioncounter == myprojectids.count {
                     
+                    self.activityIndicator.alpha = 0
+                    self.activityIndicator.stopAnimating()
+                    self.tableView.alpha = 1
                     self.tableView.reloadData()
                     
                 }
@@ -216,6 +224,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Explore", for: indexPath) as! ExploreTableViewCell
         
+        cell.selectionStyle = .none
         if mynames.count > indexPath.row {
             
             //            cell.layer.borderWidth = 1.0
@@ -231,7 +240,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.subscribercount.text = "\(subscribers[myprojectids[indexPath.row]]!) subscribers"
             cell.toppic.image = mytoppics[myprojectids[indexPath.row]]
             cell.price.text = "$\(myprices[myprojectids[indexPath.row]]!)/mo"
-            
+            cell.subscriber.setTitle("See More", for: .normal)
             
             
         } else {
