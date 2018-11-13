@@ -26,6 +26,7 @@ class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var minipic: UIImageView!
     @IBOutlet weak var playerView: PlayerViewClass!
 
+    @IBOutlet weak var tapcircle: UIButton!
     @IBOutlet weak var lockimage: UIImageView!
     @IBOutlet weak var descriptionlabel: UILabel!
     @IBOutlet weak var thumbnailpreview: UIImageView!

@@ -269,6 +269,10 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.selectionStyle = .none
         if videolinks.count > indexPath.row-1 {
             
+            
+            cell.tapjoin.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
+            cell.tapcircle.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
+
             if indexPath.row == 0 {
                 
                 cell.activityIndicator.alpha = 0
@@ -296,8 +300,9 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.descriptionlabel.text = ""
                 cell.descriptionlabel.alpha = 0
                 cell.thumbnail.alpha = 0
+                cell.tapcircle.alpha = 1
             } else {
-                
+                cell.tapcircle.alpha = 0
                 cell.thumbnail.alpha = 1
                 cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
                 cell.minipic.alpha = 1
@@ -358,7 +363,6 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         }
         
-        
         return cell
     }
 
@@ -368,7 +372,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
             return 220
 
         } else {
-
+            
 //            return 425
             return UITableViewAutomaticDimension
 
@@ -377,12 +381,12 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var buttonspressedup = [String:String]()
     
-    @objc func tapPlay(sender: UIButton){
+    @objc func tapJoin(sender: UIButton){
         
         let buttonTag = sender.tag
         
      
-        tableView.reloadData()
+        self.performSegue(withIdentifier: "SaleToBuy", sender: self)
     }
     
     @objc func tapDown(sender: UIButton){

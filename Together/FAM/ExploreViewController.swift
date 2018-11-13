@@ -158,8 +158,14 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
-        return subscribers.count
+        if subscribers.count > 0 {
+            
+            return subscribers.count
+
+        } else {
+            
+            return 0
+        }
         
     }
     
@@ -171,7 +177,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
             
 //            cell.layer.borderWidth = 1.0
 //            cell.layer.borderColor = UIColor.lightGray.cgColor
-            
+            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
+
             cell.layer.cornerRadius = 3.0
             cell.layer.masksToBounds = true
             cell.name.text = names[projectids[indexPath.row]]
@@ -193,7 +200,30 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+            //            return 425
+            return UITableViewAutomaticDimension
+            
+    }
+    
+    @objc func tapJoin(sender: UIButton){
+        
+        let buttonTag = sender.tag
+        
+        selectedid = projectids[buttonTag]
+        selectedimage = images[projectids[buttonTag]]!
+        selectedname = names[projectids[buttonTag]]!
+        selectedpitch = descriptions[projectids[buttonTag]]!
+        selectedprice = prices[projectids[buttonTag]]!
+        //        selectedprogramnames = programnames[projectids[buttonTag]]!
+        selectedsubs = subscribers[projectids[buttonTag]]!
+        selectedprogramname = programnames[projectids[buttonTag]]!
+        
+        self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
