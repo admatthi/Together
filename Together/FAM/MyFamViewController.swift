@@ -86,25 +86,45 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 if var author2 = value?["Subscribers"] as? String {
                     self.subscribers[each] = author2
                     
+                } else {
+                    
+                    self.subscribers[each] = "0"
+
                 }
                 
                 if var author2 = value?["Description"] as? String {
                     descriptions[each] = author2
                     
+                } else {
+                    descriptions[each] = "-"
+
+                    
                 }
                 if var name = value?["Name"] as? String {
                     names[each] = name
                     
+                } else {
+                    
+                    names[each] = "-"
+
                 }
                 
                 if var views = value?["Price"] as? String {
                     prices[each] = views
                     
+                } else {
+                    
+                    prices[each] = "0"
+
                 }
                 
                 if var views = value?["ProgramName"] as? String {
                     programnames[each] = views
                     
+                } else {
+                    
+                    programnames[each] = "-"
+
                 }
                 
                 

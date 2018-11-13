@@ -57,24 +57,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ref = Database.database().reference()
 
 
-        var tabBar: UITabBarController = self.window?.rootViewController as! UITabBarController
+//        var tabBar: UITabBarController =
 
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+       
+        let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
+//        
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
 
-            tabBar.selectedIndex = 0
 
-
+        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialViewControlleripad
+        self.window?.makeKeyAndVisible()//
+        
+        
         } else {
 
             let currentUser = Auth.auth().currentUser
-            
+    
             uid = (currentUser?.uid)!
             queryforinfo()
-            tabBar.selectedIndex = 0
+          
 
         }
-        
+    
         return true
     }
     
@@ -101,13 +110,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if author2 == "False" {
                     
+                    let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+                    
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    self.window?.rootViewController = tabBarBuyer
+                    
+                    self.window?.makeKeyAndVisible()
                     
                 } else {
                     
                     isInfluencer = true
+                    
+                    let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+           
+                    
+                    let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    self.window?.rootViewController = tabBarInfluencer
+                    self.window?.makeKeyAndVisible()
                 }
                 
                 
+            } else {
+                
+                let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = tabBarBuyer
+                
+                self.window?.makeKeyAndVisible()
             }
       
             

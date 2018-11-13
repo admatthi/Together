@@ -45,7 +45,20 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        queryforpersonalinfo()
+        
+        queryforids { () -> () in
+            
+            self.queryforinfo()
+            
+        }
+        
+    }
+    
     func queryforpersonalinfo() {
+        
         
         var functioncounter = 0
         
@@ -85,7 +98,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                     
                 } else {
                  
-                    "-"
+                    selectedprice = "-"
                 }
                 
                 if var views = value?["ProgramName"] as? String {
@@ -420,5 +433,11 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
             
         }
         
+    }
+    @IBAction func tapLogout(_ sender: Any) {
+        
+        try! Auth.auth().signOut()
+        
+        self.performSegue(withIdentifier: "LogoutFromProfile", sender: self)
     }
 }

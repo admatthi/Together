@@ -27,14 +27,20 @@ class RevenueViewController: UIViewController {
     
         ref = Database.database().reference()
 
+        propic.layer.masksToBounds = false
+        propic.layer.cornerRadius = propic.frame.height/2
+        propic.clipsToBounds = true
         
         queryforinfo()
         
+        tapmonthly.setTitle("Paid Subscribers", for: .normal)
+        tapsubscribers.setTitle("Monthly Revenue", for: .normal)
         tapmonthly.alpha = 1
         tapsubscribers.alpha = 0.25
         taptotal.alpha = 0.25
-        descriptivelabel.text = "Monthly Recurring Revenue"
-        realvalue.text = "$\(yourmrr)"
+        descriptivelabel.text = "Total Paid Subscribers"
+        realvalue.text = yoursubscribers
+        
         // Do any additional setup after loading the view.
     }
     @IBOutlet weak var tapsubscribers: UIButton!
@@ -44,11 +50,12 @@ class RevenueViewController: UIViewController {
     @IBOutlet weak var tapmonthly: UIButton!
     @IBAction func tapSubscribers(_ sender: Any) {
         
+        
         tapsubscribers.alpha = 1
         tapmonthly.alpha = 0.25
         taptotal.alpha = 0.25
-        descriptivelabel.text = "Paid Subscribers"
-        realvalue.text = yoursubscribers
+        descriptivelabel.text = "Monthly Revenue"
+        realvalue.text = "$\(yourmrr)"
         
     }
 
@@ -57,8 +64,8 @@ class RevenueViewController: UIViewController {
         tapmonthly.alpha = 1
         tapsubscribers.alpha = 0.25
         taptotal.alpha = 0.25
-        descriptivelabel.text = "Monthly Recurring Revenue"
-        realvalue.text = "$\(yourmrr)"
+        descriptivelabel.text = "Total Paid Subscribers"
+        realvalue.text = yoursubscribers
     }
     @IBOutlet weak var taptotal: UIButton!
     @IBAction func tapTotal(_ sender: Any) {
@@ -71,6 +78,9 @@ class RevenueViewController: UIViewController {
     }
     func queryforinfo() {
         
+        yoursubscribers = "0"
+        yourmrr = "0"
+        yourtotalreve = "0"
         var functioncounter = 0
             
             ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -84,7 +94,8 @@ class RevenueViewController: UIViewController {
                     numberFormatter.numberStyle = NumberFormatter.Style.decimal
                     let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author2)!))
                     yoursubscribers = formattedNumber!
-                    
+                    self.realvalue.text = yoursubscribers
+
                     if var author3 = value?["Price"] as? String {
                         
                         var newprice = Double(Int(author2)!) * Double(Int(author3)!)
@@ -93,7 +104,6 @@ class RevenueViewController: UIViewController {
                         numberFormatter.numberStyle = NumberFormatter.Style.decimal
                         let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(newprice)))
                         yourmrr = formattedNumber!
-                        self.realvalue.text = "$\(yourmrr)"
 
                     }
                     

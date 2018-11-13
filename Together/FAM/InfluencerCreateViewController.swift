@@ -16,10 +16,37 @@ import FBSDKCoreKit
 
 class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
 
-  
+    @IBOutlet weak var tapsign: UIButton!
+    
     @IBAction func tapSignUp(_ sender: Any) {
         
-        signup()
+    
+        var email = "\(emailtf.text!)"
+        var password = "\(passwordtf.text!)"
+        var name = "\(nametf.text!)"
+        var domain = "\(domaintf.text!)"
+        
+        if email != "" && password != "" && name != "" && domain != "" {
+            
+            if uid != "" {
+      
+                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Influencer" : "True", "Approved" : "False", "isUser" : "True", "Description" : password, "ProgramName" : name, "Domain" : domain])
+                
+            } else {
+                
+//                ref?.child("InfluencerApps").childByAutoId().updateChildValues(["Email" : email, "Influencer" : "True", "Password": password, "Name" : name, "Domain" : domain, "Approved" : "False"])
+
+            }
+
+        thankyou.alpha = 1
+        passwordtf.alpha = 0
+        domaintf.alpha = 0
+        emailtf.alpha = 0
+        nametf.alpha = 0
+        tapsign.alpha = 0
+        
+        }
+        
     }
     
     @IBAction func tapBack(_ sender: Any) {
@@ -36,53 +63,54 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailtf: UITextField!
 
     
-    func signup() {
-        
-        var email = "\(emailtf.text!)"
-        var password = "\(passwordtf.text!)"
-        var name = "\(nametf.text!)"
-        var domain = "\(domaintf.text!)"
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            
-            if let error = error {
-                
-                self.errorlabel.alpha = 1
-                self.errorlabel.text = error.localizedDescription
-                
-                return
-                
-            } else {
-                
-                uid = (Auth.auth().currentUser?.uid)!
-                
-                //                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
-                
-                let date = Date()
-                let calendar = Calendar.current
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MM-dd-yy"
-                var todaysdate =  dateFormatter.string(from: date)
-                let thirtyDaysAfterToday = Calendar.current.date(byAdding: .day, value: +30, to: date)!
-                let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
-                
-                //                self.addstaticbooks()
-                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Influencer" : "True", "Password": password, "Name" : name, "Domain" : domain, "Approved" : "False"])
-                
-                
-                
-                
-                DispatchQueue.main.async {
-                    
-                    //                    purchased = true
-                    
-                    self.performSegue(withIdentifier: "InfluencerToThankYou", sender: self)
-                }
-            }
-            
-        }
-        
-    }
+    @IBOutlet weak var thankyou: UILabel!
+//    func signup() {
+//
+//        var email = "\(emailtf.text!)"
+//        var password = "\(passwordtf.text!)"
+//        var name = "\(nametf.text!)"
+//        var domain = "\(domaintf.text!)"
+//
+//        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+//
+//            if let error = error {
+//
+//                self.errorlabel.alpha = 1
+//                self.errorlabel.text = error.localizedDescription
+//
+//                return
+//
+//            } else {
+//                
+//                uid = (Auth.auth().currentUser?.uid)!
+//                
+//                //                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
+//
+//                let date = Date()
+//                let calendar = Calendar.current
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "MM-dd-yy"
+//                var todaysdate =  dateFormatter.string(from: date)
+//                let thirtyDaysAfterToday = Calendar.current.date(byAdding: .day, value: +30, to: date)!
+//                let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
+//
+//                //                self.addstaticbooks()
+//                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Influencer" : "True", "Password": password, "Name" : name, "Domain" : domain, "Approved" : "False"])
+//                
+//                
+//
+//                
+//                DispatchQueue.main.async {
+//
+//                    //                    purchased = true
+//
+//                    self.performSegue(withIdentifier: "InfluencerToThankYou", sender: self)
+//                }
+//            }
+//
+//        }
+//
+//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -95,6 +123,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
         
+        thankyou.alpha = 0
         ref = Database.database().reference()
         
         emailtf.delegate = self

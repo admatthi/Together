@@ -60,19 +60,65 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 dateFormatter.dateFormat = "MM-dd-yy"
                 var todaysdate =  dateFormatter.string(from: date)
                 
+//
 //                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
-            ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Purchased" : true])
+//            ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Purchased" : true])
+                
+                
+                self.queryforinfo()
+            }
+            
+        }
+        
+    }
+    
+    func queryforinfo() {
+        
+        var functioncounter = 0
+        
+        ref?.child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if var author2 = value?["Approved"] as? String {
+                
+                if author2 == "False" {
+                    
+                    DispatchQueue.main.async {
+                        
+                        //                    purchased = true
+                        
+                        self.performSegue(withIdentifier: "LoginToDiscover", sender: self)
+                        
+                    }
+                    
+                } else {
+                    
+                    isInfluencer = true
+                    
+                    DispatchQueue.main.async {
+                        
+                        //                    purchased = true
+                        
+                        self.performSegue(withIdentifier: "LoginToInfluencer", sender: self)
+                        
+                    }
+                        
+                }
+                
+            } else {
                 
                 DispatchQueue.main.async {
                     
-//                    purchased = true
+                    //                    purchased = true
                     
                     self.performSegue(withIdentifier: "LoginToDiscover", sender: self)
                     
                 }
             }
             
-        }
+            
+        })
         
     }
     
