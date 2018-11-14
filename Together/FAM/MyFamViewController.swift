@@ -22,6 +22,8 @@ var myprices = [String:String]()
 var mytoppics = [String:UIImage]()
 var mynames = [String:String]()
 var myimages = [String:UIImage]()
+var mypink = UIColor(red:0.96, green:0.10, blue:0.47, alpha:1.0)
+
 
 class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
@@ -30,7 +32,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        activityIndicator.color = mypink
         ref = Database.database().reference()
         
       

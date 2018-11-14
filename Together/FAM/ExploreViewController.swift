@@ -29,6 +29,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        activityIndicator.color = mypink
         
         ref = Database.database().reference()
         
@@ -54,7 +55,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         programnames.removeAll()
         prices.removeAll()
        toppics.removeAll()
-        ref?.child("Influencers").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Influencers").queryOrdered(byChild: "Approved").queryEqual(toValue: "True").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
