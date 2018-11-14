@@ -123,9 +123,18 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                 }
                 
+                if var profileUrl = value?["ProPic"] as? String {
+                    // Create a storage reference from the URL
+                    
+                    let url = URL(string: profileUrl)
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    selectedimage = UIImage(data: data!)!
+                    
+                    images[each] = selectedimage
+
+                    
+                }
                 
-                
-                images[each] = UIImage(named: "\(each)")
                 
                 toppics[each] = UIImage(named: "\(each)pic")
                 

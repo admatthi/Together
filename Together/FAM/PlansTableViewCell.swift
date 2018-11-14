@@ -26,6 +26,7 @@ class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var minipic: UIImageView!
     @IBOutlet weak var playerView: PlayerViewClass!
 
+    @IBOutlet weak var tapaddstory: UIButton!
     @IBOutlet weak var tapcircle: UIButton!
     @IBOutlet weak var lockimage: UIImageView!
     @IBOutlet weak var descriptionlabel: UILabel!
@@ -45,7 +46,9 @@ class PlansTableViewCell: UITableViewCell {
         minipic.layer.masksToBounds = false
         minipic.layer.cornerRadius = minipic.frame.height/2
         minipic.clipsToBounds = true
-        
+        tapaddstory.layer.masksToBounds = false
+        tapaddstory.layer.cornerRadius = tapaddstory.frame.height/2
+        tapaddstory.clipsToBounds = true
         
         // Initialization code
     }

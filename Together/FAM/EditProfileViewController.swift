@@ -70,44 +70,25 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     selectedsubs = author2
                     
-                } else {
-                    
-                    selectedsubs = "0"
-
                 }
                 
                 if var author2 = value?["Description"] as? String {
                     selectedpitch = author2
                     
-                } else {
-                    
-                    selectedpitch = "-"
-
                 }
                 
                 if var name = value?["Name"] as? String {
                         selectedname = name
-                } else {
-                    
-                    selectedname = "-"
-
                 }
                 
                 if var views = value?["Price"] as? String {
                     selectedprice = views
                     
-                } else {
-                 
-                    selectedprice = "-"
                 }
                 
                 if var views = value?["ProgramName"] as? String {
 
                     selectedprogramname = views
-                    self.programname.text = selectedprogramname
-                } else {
-                    
-                    selectedprogramname = "-"
                     self.programname.text = selectedprogramname
                 }
                 
@@ -118,16 +99,10 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                     let url = URL(string: profileUrl)
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     selectedimage = UIImage(data: data!)!
-                    self.tableView.reloadData()
-
-                } else {
                     
-                    selectedimage = UIImage(named: "Placeholder")!
                     self.tableView.reloadData()
-
 
                 }
-                
                 
                 
      
@@ -139,7 +114,8 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
             
         }
 
-   
+    @IBOutlet weak var tableView: UITableView!
+    
     func queryforids(completed: @escaping (() -> ()) ) {
         
         var functioncounter = 0
@@ -147,6 +123,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         videoids.removeAll()
         videolinks.removeAll()
         videodescriptions.removeAll()
+        videotitles.removeAll()
         thumbnails.removeAll()
         
         ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -178,7 +155,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     var thumbnails = [String:UIImage]()
-    
+    var videotitles = [String:String]()
     func queryforinfo() {
         
         var functioncounter = 0
@@ -203,6 +180,11 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 if var author2 = value?["Times"] as? String {
                     videotimes[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Title"] as? String {
+                    self.videotitles[each] = author2
                     
                 }
                 
@@ -231,7 +213,6 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
             
         }
     }
-    @IBOutlet weak var tableView: UITableView!
     /*
      // MARK: - Navigation
      
@@ -248,30 +229,38 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
 //
 //        cell.playerView.player?.pause()
 //
+////    }
+//    func createThumbnailOfVideoFromRemoteUrl(url: String) -> UIImage? {
+//        let asset = AVAsset(url: URL(string: url)!)
+//        let assetImgGenerate = AVAssetImageGenerator(asset: asset)
+//        assetImgGenerate.appliesPreferredTrackTransform = true
+//        //Can set this to improve performance if target size is known before hand
+//        //assetImgGenerate.maximumSize = CGSize(width,height)
+//        let time = CMTimeMakeWithSeconds(1.0, 600)
+//        do {
+//            let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
+//            let thumbnail = UIImage(cgImage: img)
+//
+//            thumbnails[url] = thumbnail
+//
+//            return thumbnail
+//        } catch {
+//            print(error.localizedDescription)
+//            return nil
+//        }
 //    }
-    func createThumbnailOfVideoFromRemoteUrl(url: String) -> UIImage? {
-        let asset = AVAsset(url: URL(string: url)!)
-        let assetImgGenerate = AVAssetImageGenerator(asset: asset)
-        assetImgGenerate.appliesPreferredTrackTransform = true
-        //Can set this to improve performance if target size is known before hand
-        //assetImgGenerate.maximumSize = CGSize(width,height)
-        let time = CMTimeMakeWithSeconds(1.0, 600)
-        do {
-            let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
-            let thumbnail = UIImage(cgImage: img)
-            
-            thumbnails[url] = thumbnail
-            
-            return thumbnail
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-        return videolinks.count+1
+        if videolinks.count > 0 {
+       
+            return videolinks.count + 1
+            
+        } else {
+            
+            return 1
+        }
         
     }
     
@@ -298,7 +287,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
             if cell.playerView.player?.isPlaying == true {
                 
                 cell.playerView.player?.pause()
-                cell.thumbnail.alpha = 0
+                cell.thumbnail.alpha = 1
                 
             } else {
                 cell.thumbnail.alpha = 0
@@ -317,41 +306,51 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
         cell.activityIndicator.alpha = 1
         cell.selectionStyle = .none
+        cell.tapjoin.layer.borderColor = mypink.cgColor
+        cell.tapjoin.layer.borderWidth = 0.5
+        
+        if indexPath.row == 0 {
+            
+            cell.activityIndicator.alpha = 0
+            cell.daylabel.alpha = 0
+            
+            cell.minipic.alpha = 0
+            cell.programn.alpha = 0
+            cell.profilepic.alpha = 1
+            cell.pitch.alpha = 1
+            cell.tapjoin.alpha = 1
+            cell.subs.alpha = 1
+            cell.dollers.alpha = 1
+            cell.name.alpha = 1
+            cell.sublabel.alpha = 1
+            cell.monthlylabel.alpha = 1
+            cell.profilepic.image = selectedimage
+            //                cell.profilepic.layer.cornerRadius = 5.0
+            //                cell.profilepic.layer.masksToBounds = true
+            cell.pitch.text = selectedpitch
+            cell.subs.text = selectedsubs
+            cell.dollers.text = "$\(selectedprice)"
+            cell.name.text = selectedname
+            cell.playerView.alpha = 0
+            //                cell.thumbnailpreview.alpha = 0
+            cell.descriptionlabel.text = ""
+            cell.descriptionlabel.alpha = 0
+            cell.thumbnail.alpha = 0
+            cell.tapaddstory.alpha = 1
+            
+        }
+        
+        cell.tapjoin.addTarget(self, action: #selector(tapDown(sender:)), for: .touchUpInside)
+
         if videolinks.count > indexPath.row-1 {
             
-                cell.tapjoin.addTarget(self, action: #selector(tapDown(sender:)), for: .touchUpInside)
-            
-            if indexPath.row == 0 {
+            if indexPath.row != 0 {
+//                let rect : CGRect = CGRect(x: cell.thumbnail.bounds.minX, y: cell.thumbnail.bounds.minY, width: cell.thumbnail.bounds.width, height: cell.thumbnail.bounds.height)
                 
-                cell.activityIndicator.alpha = 0
-                cell.daylabel.alpha = 0
-                
-                cell.minipic.alpha = 0
-                cell.programn.alpha = 0
-                cell.profilepic.alpha = 1
-                cell.pitch.alpha = 1
-                cell.tapjoin.alpha = 1
-                cell.subs.alpha = 1
-                cell.dollers.alpha = 1
-                cell.name.alpha = 1
-                cell.sublabel.alpha = 1
-                cell.monthlylabel.alpha = 1
-                cell.profilepic.image = selectedimage
-                //                cell.profilepic.layer.cornerRadius = 5.0
-                //                cell.profilepic.layer.masksToBounds = true
-                cell.pitch.text = selectedpitch
-                cell.subs.text = selectedsubs
-                cell.dollers.text = "$\(selectedprice)"
-                cell.name.text = selectedname
-                cell.playerView.alpha = 0
-                //                cell.thumbnailpreview.alpha = 0
-                cell.descriptionlabel.text = ""
-                cell.descriptionlabel.alpha = 0
-                cell.thumbnail.alpha = 0
-            } else {
+    
                 
                 cell.thumbnail.alpha = 1
-                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
                 cell.minipic.alpha = 1
                 cell.programn.alpha = 1
                 cell.minipic.image = selectedimage
@@ -367,14 +366,15 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.sublabel.alpha = 0
                 cell.monthlylabel.alpha = 0
                 cell.pitch.text = ""
+               cell.tapaddstory.alpha = 0
                 cell.descriptionlabel.alpha = 1
                 //                cell.thumbnailpreview.alpha = 1
                 //                cell.thumbnailpreview.image = thumbnails[videolinks[videoids[indexPath.row-1]]!]
                 
                 cell.daylabel.alpha = 1
                 
-                cell.daylabel.text = "Day \(indexPath.row)"
-                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
+                cell.daylabel.text = videotitles[videoids[indexPath.row]]
+                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
                 cell.activityIndicator.alpha = 0
                 
                 cell.playerView.player?.replaceCurrentItem(with: nil)
@@ -407,6 +407,8 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 
             }
+            
+            
         } else {
             
             
