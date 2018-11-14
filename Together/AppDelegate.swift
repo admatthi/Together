@@ -18,7 +18,7 @@ import FirebaseMessaging
 import UXCam
 import AVFoundation
 import Purchases
-
+import IQKeyboardManager
 var uid = String()
 var ref: DatabaseReference?
 
@@ -44,7 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
-        
+        IQKeyboardManager.shared().isEnabled = true
+
         FBSDKAppEvents.activateApp()
         
         UXCam.start(withKey: "8921dd89a4b98a3")
@@ -102,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var functioncounter = 0
         
-        ref?.child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             

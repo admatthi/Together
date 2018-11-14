@@ -25,8 +25,10 @@ class RevenueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        tapshare.alpha = 0
+        nofollows.alpha = 0
         ref = Database.database().reference()
-
+        
         propic.layer.masksToBounds = false
         propic.layer.cornerRadius = propic.frame.height/2
         propic.clipsToBounds = true
@@ -45,6 +47,29 @@ class RevenueViewController: UIViewController {
     }
     @IBOutlet weak var tapsubscribers: UIButton!
     
+    @IBOutlet weak var tapshare: UIButton!
+    
+    @IBAction func tapShare(_ sender: Any) {
+        
+        let textToShare = "Check out my app"
+        
+        if let myWebsite = URL(string: "http://\(yourdomain))") {//Enter link to your app here
+            let objectsToShare = [textToShare, myWebsite, UIAccessibilityTraitImage ] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //Excluded Activities
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            //
+            
+            activityVC.popoverPresentationController?.sourceView = sender as! UIView
+            self.present(activityVC, animated: true, completion: nil)
+        }
+        
+        
+    }
+    
+    
+    @IBOutlet weak var nofollows: UILabel!
     @IBOutlet weak var realvalue: UILabel!
     @IBOutlet weak var descriptivelabel: UILabel!
     @IBOutlet weak var tapmonthly: UIButton!
@@ -54,7 +79,7 @@ class RevenueViewController: UIViewController {
         tapsubscribers.alpha = 1
         tapmonthly.alpha = 0.25
         taptotal.alpha = 0.25
-        descriptivelabel.text = "Monthly Revenue"
+        descriptivelabel.text = "Monthly Recurring Revenue"
         realvalue.text = "$\(yourmrr)"
         
     }
@@ -76,6 +101,8 @@ class RevenueViewController: UIViewController {
         descriptivelabel.text = "Total Revenue"
         realvalue.text = "$\(yourtotalreve)"
     }
+    
+    var yourdomain = String()
     func queryforinfo() {
         
         yoursubscribers = "0"
@@ -90,6 +117,14 @@ class RevenueViewController: UIViewController {
                 
                 if var author2 = value?["Subscribers"] as? String {
                     
+                    if author2 == "0" {
+                        
+                        self.nofollows.alpha = 1
+                        
+                    } else {
+                        
+                        self.nofollows.alpha = 0
+                    }
                     let numberFormatter = NumberFormatter()
                     numberFormatter.numberStyle = NumberFormatter.Style.decimal
                     let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author2)!))
@@ -116,6 +151,13 @@ class RevenueViewController: UIViewController {
                     let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author4)!))
                     yourtotalreve = formattedNumber!
 
+                }
+                
+                if var author5 = value?["Domain"] as? String {
+                    
+                    self.yourdomain = "\(author5).joinmyfam.com"
+                    
+                    self.tapshare.alpha = 1
                 }
                 
                 if var views = value?["ProgramName"] as? String {
