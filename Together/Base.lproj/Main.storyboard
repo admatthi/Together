@@ -1124,7 +1124,7 @@
                                     <constraint firstAttribute="height" constant="40" id="wbl-53-ImQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Cancel">
+                                <state key="normal" title="Discard">
                                     <color key="titleColor" red="0.1176470588" green="0.1176470588" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1142,8 +1142,8 @@
                                     <action selector="btnSelectVideo_Action:" destination="8Ci-9S-R86" eventType="touchUpInside" id="dzl-XP-C6Z"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-Wd-fwU">
-                                <rect key="frame" x="17" y="475" width="342" height="33"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-Wd-fwU">
+                                <rect key="frame" x="15" y="475" width="342" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="342" id="R56-XB-AEu"/>
@@ -1156,8 +1156,8 @@
                                     <outlet property="delegate" destination="8Ci-9S-R86" id="XPI-OM-rzR"/>
                                 </connections>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write your caption" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vgJ-zI-cuf">
-                                <rect key="frame" x="16" y="517" width="343" height="80"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" text="Write your caption" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vgJ-zI-cuf">
+                                <rect key="frame" x="15" y="517" width="343" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="9qL-lV-72y"/>
@@ -1169,7 +1169,7 @@
                                     <outlet property="delegate" destination="8Ci-9S-R86" id="0fJ-6K-13J"/>
                                 </connections>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sweat Fitness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TuW-ck-fPo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TuW-ck-fPo">
                                 <rect key="frame" x="113.5" y="42" width="148" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="148" id="04w-mK-5fn"/>
@@ -1189,16 +1189,16 @@
                             <constraint firstItem="TuW-ck-fPo" firstAttribute="centerX" secondItem="ffG-kt-pJw" secondAttribute="centerX" id="4ZW-q3-fhv"/>
                             <constraint firstItem="Xr4-nB-Pou" firstAttribute="bottom" secondItem="KLa-Y5-GUv" secondAttribute="bottom" id="4oA-Wf-ARj"/>
                             <constraint firstItem="qR9-Ul-qUF" firstAttribute="top" secondItem="VDV-go-o9h" secondAttribute="bottom" constant="7" id="7ok-EC-3dq"/>
-                            <constraint firstItem="KLa-Y5-GUv" firstAttribute="trailing" secondItem="vgJ-zI-cuf" secondAttribute="trailing" constant="16" id="81T-O8-bHd"/>
+                            <constraint firstItem="KLa-Y5-GUv" firstAttribute="trailing" secondItem="vgJ-zI-cuf" secondAttribute="trailing" constant="17" id="81T-O8-bHd"/>
                             <constraint firstItem="Xr4-nB-Pou" firstAttribute="trailing" secondItem="KLa-Y5-GUv" secondAttribute="trailing" id="87q-H1-dmf"/>
                             <constraint firstItem="Xr4-nB-Pou" firstAttribute="top" secondItem="ffG-kt-pJw" secondAttribute="top" id="CX7-bz-MeH"/>
                             <constraint firstItem="KLa-Y5-GUv" firstAttribute="trailing" secondItem="b9M-jw-PeF" secondAttribute="trailing" id="Cjd-gQ-KJF"/>
                             <constraint firstItem="OiM-P5-NTp" firstAttribute="top" secondItem="VDV-go-o9h" secondAttribute="bottom" constant="6.5" id="Ght-Mx-MkA"/>
                             <constraint firstItem="OiM-P5-NTp" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="Ked-Gm-qVo"/>
-                            <constraint firstItem="vgJ-zI-cuf" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" constant="16" id="Nhs-5r-gYj"/>
+                            <constraint firstItem="vgJ-zI-cuf" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" constant="15" id="Nhs-5r-gYj"/>
                             <constraint firstItem="vgJ-zI-cuf" firstAttribute="top" secondItem="NSM-Wd-fwU" secondAttribute="bottom" constant="9" id="VUh-Fr-OXf"/>
                             <constraint firstItem="qR9-Ul-qUF" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="XVV-IR-lGg"/>
-                            <constraint firstItem="NSM-Wd-fwU" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" constant="17" id="a4V-fv-eR2"/>
+                            <constraint firstItem="NSM-Wd-fwU" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" constant="15" id="a4V-fv-eR2"/>
                             <constraint firstItem="VDV-go-o9h" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" constant="16" id="aTg-Nt-pkk"/>
                             <constraint firstItem="qR9-Ul-qUF" firstAttribute="trailing" secondItem="KLa-Y5-GUv" secondAttribute="trailing" id="e9o-v3-meM"/>
                             <constraint firstAttribute="bottom" secondItem="qR9-Ul-qUF" secondAttribute="bottom" id="eAl-8Q-c9J"/>

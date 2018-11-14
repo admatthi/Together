@@ -14,6 +14,8 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 
+var selectedid = String()
+
 var images = [String:UIImage]()
 var names = [String:String]()
 var prices = [String:String]()

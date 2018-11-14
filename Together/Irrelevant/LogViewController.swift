@@ -21,7 +21,6 @@ var selectednumber = String()
 var verified = [String:String]()
 var responses = [String:String]()
 var questionids = [String]()
-var selectedid = String()
 
 class LogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
