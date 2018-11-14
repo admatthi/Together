@@ -133,7 +133,7 @@ class RevenueViewController: UIViewController {
 
                     if var author3 = value?["Price"] as? String {
                         
-                        var newprice = Double(Int(author2)!) * Double(Int(author3)!)
+                    var newprice = Double(Int(author2)!) * Double(Int(author3)!)
                         
                         let numberFormatter = NumberFormatter()
                         numberFormatter.numberStyle = NumberFormatter.Style.decimal

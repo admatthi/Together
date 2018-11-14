@@ -86,6 +86,22 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                     
                 }
                 
+                if var views = value?["Phone Number"] as? String {
+                    selectednumber = views
+                    
+                }
+                
+                if var views = value?["Domain"] as? String {
+                    selecteddomain = views
+                    
+                }
+                
+                if var views = value?["Email"] as? String {
+                    selectedemail = views
+                    
+                }
+                
+                
                 if var views = value?["ProgramName"] as? String {
 
                     selectedprogramname = views
@@ -308,12 +324,13 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         cell.selectionStyle = .none
         cell.tapjoin.layer.borderColor = mypink.cgColor
         cell.tapjoin.layer.borderWidth = 0.5
+        cell.tapjoin.addTarget(self, action: #selector(tapDown(sender:)), for: .touchUpInside)
+        cell.tapcircle.addTarget(self, action: #selector(tapStory(sender:)), for: .touchUpInside)
         
         if indexPath.row == 0 {
             
             cell.activityIndicator.alpha = 0
             cell.daylabel.alpha = 0
-            
             cell.minipic.alpha = 0
             cell.programn.alpha = 0
             cell.profilepic.alpha = 1
@@ -337,11 +354,11 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
             cell.descriptionlabel.alpha = 0
             cell.thumbnail.alpha = 0
             cell.tapaddstory.alpha = 1
-            
+            cell.tapcircle.alpha = 1
         }
         
-        cell.tapjoin.addTarget(self, action: #selector(tapDown(sender:)), for: .touchUpInside)
-
+      
+        
         if videolinks.count > indexPath.row-1 {
             
             if indexPath.row != 0 {
@@ -421,7 +438,20 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @objc func tapDown(sender: UIButton){
         
       self.performSegue(withIdentifier: "EditToUpload", sender: self)
+        
+        
     }
+    
+    @objc func tapStory(sender: UIButton){
+        
+        selectedid = uid
+        
+        self.performSegue(withIdentifier: "InfluencerToPurchase", sender: self)
+        
+    }
+    
+  
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {

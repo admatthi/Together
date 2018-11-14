@@ -49,6 +49,12 @@ class PurchaseViewController: UIViewController {
     }
     
     
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: {
+            
+        })
+    }
     
     @IBAction func tapTerms(_ sender: Any) {
         
@@ -116,6 +122,22 @@ class PurchaseViewController: UIViewController {
         
         queryforinfo()
         
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+
+            
+        } else {
+            
+            if uid == selectedid {
+                
+                tapbuy.layer.backgroundColor = UIColor.gray.cgColor
+                tapbuy.isUserInteractionEnabled = false
+            } else {
+                tapbuy.isUserInteractionEnabled = true
+
+                
+            }
+        }
         
         //        whitelabel.layer.cornerRadius = 10.0
         //        whitelabel.layer.masksToBounds = true

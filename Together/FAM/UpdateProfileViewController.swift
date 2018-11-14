@@ -15,15 +15,48 @@ import FirebaseAuth
 import FBSDKCoreKit
 
 var newpropic = String()
+var selectedemail = String()
+var selecteddomain = String()
 
 class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @IBOutlet weak var nametf: UITextField!
     
+    var email = String()
+    var password = String()
+    var inputname = String()
+    var domainz = String()
+    var inputdescription = String()
+    var inputprice = String()
+    var inputprogramname = String()
+    var phonenumber = String()
+    
+    
+    @IBOutlet weak var pdtf: UITextField!
+    @IBOutlet weak var pntf: UITextField!
+    @IBOutlet weak var pn2tf: UITextField!
+    
+    @IBOutlet weak var nametf: UITextField!
+    @IBOutlet weak var passwordtf: UITextField!
+    @IBOutlet weak var emailtf: UITextField!
+
+    @IBOutlet weak var pricelabel: UILabel!
+    @IBOutlet weak var domainlabel: UILabel!
+    
+    @IBAction func tapDone(_ sender: Any) {
+        
+        email = "\(emailtf.text!)"
+        inputname = "\(nametf.text!)"
+        inputdescription = "\(pdtf.text!)"
+        inputprogramname = "\(pn2tf.text!)"
+        phonenumber = "\(pntf.text!)"
+        
+        uploadimage()
+
+    }
     @IBAction func tapAdd(_ sender: Any) {
         
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
-        imagePickerController.mediaTypes = ["public.movie"]
+//        imagePickerController.mediaTypes = ["public.movie"]
         present(imagePickerController, animated: true, completion: nil)
         
     }
@@ -39,8 +72,6 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
 
     
     @IBOutlet weak var tapadd: UIButton!
-    @IBOutlet weak var pdftf: UITextField!
-    @IBOutlet weak var pntf: UITextField!
     @IBOutlet weak var profileimage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,34 +85,37 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
         tapadd.layer.cornerRadius = tapadd.frame.height/2
         tapadd.clipsToBounds = true
         
-        pdftf.delegate = self
-        pntf.delegate = self
+        emailtf.delegate = self
         nametf.delegate = self
-        nametf.becomeFirstResponder()
+        emailtf.becomeFirstResponder()
         
-        if selectedname != "-" {
-            
+        
+        self.addLineToView(view: pntf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+        
+        self.addLineToView(view: pdtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+        
+        self.addLineToView(view: pn2tf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+        
+        self.addLineToView(view: pdtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+        
+        self.addLineToView(view: nametf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+        
+        self.addLineToView(view: emailtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+        
+        
+        
             nametf.text = selectedname
-        }
         
-        if selectedprogramname != "-" {
-            
-            pntf.text = selectedprogramname
-        }
+            pn2tf.text = selectedprogramname
         
-        if selectedpitch != "-" {
-            
-            pdftf.text = selectedpitch
-        }
-        
-        if selectedprice != "-" {
-            
+            pdtf.text = selectedpitch
+            emailtf.text = selectedemail
+            pntf.text = selectednumber
+            domainlabel.text = "\(selecteddomain).joinmyfam.com"
             pricelabel.text = "$\(selectedprice)"
-        }
         // Do any additional setup after loading the view.
     }
     
-    @IBOutlet weak var pricelabel: UILabel!
     var imagePickerController = UIImagePickerController()
 
     func uploadimage() {
@@ -106,8 +140,9 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
         
         metaData.contentType = "image/jpg"
         
+        let randomString = UUID().uuidString
         // Create a reference to the file you want to upload
-        let riversRef = storageRef.child(uid)
+        let riversRef = storageRef.child(randomString)
         
         let uploadTask = riversRef.putData(whatthough!, metadata: metaData) { metadata, error in
             guard let metadata = metadata else {
@@ -133,22 +168,26 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
                 print(downloadURL)
                 
                 let newpropic = downloadURL.absoluteString
-                ref!.child("Influencers").child(uid).updateChildValues(["ProgramName" : self.pntf.text!, "Description" : self.pdftf.text!, "Name" : self.nametf.text!, "ProPic" : newpropic])
+                ref?.child("Influencers").child(uid).updateChildValues(["Description" : self.inputdescription, "Phone Number" : self.phonenumber, "ProgramName" : self.inputprogramname, "ProPic" : newpropic, "Name" : self.inputname, "Email" : self.email])
                 
-                self.performSegue(withIdentifier: "UpdateToEdit", sender: self)
-                
+                self.dismiss(animated: true, completion: {
+                    
+                })
             }
         }
     }
     
     @IBAction func tapBack(_ sender: Any) {
         
+        self.dismiss(animated: true, completion: {
+            
+        })
        
-        if pntf.text != "" && pdftf.text != "" && nametf.text != "" {
-            
-                uploadimage()
-            
-        }
+//        if pntf.text != "" && pdftf.text != "" && nametf.text != "" {
+//
+//                uploadimage()
+//
+//        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -166,4 +205,30 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
     }
     */
 
+    enum LINE_POSITION {
+        case LINE_POSITION_TOP
+        case LINE_POSITION_BOTTOM
+    }
+    
+    func addLineToView(view : UIView, position : LINE_POSITION, color: UIColor, width: Double) {
+        let lineView = UIView()
+        lineView.backgroundColor = color
+        lineView.translatesAutoresizingMaskIntoConstraints = false // This is important!
+        view.addSubview(lineView)
+        
+        let metrics = ["width" : NSNumber(value: width)]
+        let views = ["lineView" : lineView]
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[lineView]|", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+        
+        switch position {
+        case .LINE_POSITION_TOP:
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[lineView(width)]", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+            break
+        case .LINE_POSITION_BOTTOM:
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[lineView(width)]|", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+            break
+        default:
+            break
+        }
+    }
 }
