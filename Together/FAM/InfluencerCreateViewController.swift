@@ -191,6 +191,8 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
                 //                self.addstaticbooks()
                 ref?.child("Influencers").child(uid).updateChildValues(["Description" : self.inputdescription, "Price" : self.inputprice, "Phone Number" : self.phonenumber, "ProgramName" : self.inputprogramname, "Subscribers" : "0", "Approved" : "False", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/y2mate.com%20-%20mvmt_social_ad_vertical_video_bjH6DShpolY_1080p.mp4?alt=media&token=6fd2dd4e-5890-4ba4-98b1-393c962dc053"])
                 
+                ref?.child("Users").child(uid).updateChildValues(["Approved" : "False"])
+
                 self.thankyou.alpha = 1
                 self.passwordtf.alpha = 0
                 self.domaintf.alpha = 0
@@ -202,13 +204,14 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
                 self.pdtf.alpha = 0
                self.pntf.alpha = 0
                 self.pricetf.alpha = 0
-            
+                self.demo.alpha = 0
             }
             
         }
         
     }
     
+    @IBOutlet weak var demo: UILabel!
     @IBOutlet weak var tapcreate: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -224,7 +227,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
         passwordtf.delegate = self
         nametf.delegate = self
         domaintf.delegate = self
-        emailtf.becomeFirstResponder()
+//        emailtf.becomeFirstResponder()
         
         tapcreate.layer.cornerRadius = 22.0
         tapcreate.layer.masksToBounds = true

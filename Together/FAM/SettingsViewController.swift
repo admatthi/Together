@@ -70,6 +70,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var imagePickerController = UIImagePickerController()
 
+    @IBOutlet weak var HEADERLABEL: UILabel!
     @IBAction func tapEditProfile(_ sender: Any) {
     }
     @IBAction func tapRevenue(_ sender: Any) {
@@ -116,6 +117,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     override func viewDidAppear(_ animated: Bool) {
         
+        HEADERLABEL.addCharacterSpacing()
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
             

@@ -108,13 +108,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 
             } else {
                 
-                DispatchQueue.main.async {
-                    
-                    //                    purchased = true
-                    
-                    self.performSegue(withIdentifier: "LoginToDiscover", sender: self)
-                    
-                }
             }
             
             

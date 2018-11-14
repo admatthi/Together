@@ -32,6 +32,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         activityIndicator.color = mypink
+        headerlabel.addCharacterSpacing()
         
         ref = Database.database().reference()
         
@@ -157,6 +158,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBOutlet weak var headerlabel: UILabel!
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectedid = projectids[indexPath.row]

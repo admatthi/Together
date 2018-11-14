@@ -27,6 +27,7 @@ var mypink = UIColor(red:0.96, green:0.10, blue:0.47, alpha:1.0)
 
 class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
+    @IBOutlet weak var headerlabel: UILabel!
     @IBOutlet weak var errorlabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -35,7 +36,8 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         activityIndicator.color = mypink
         ref = Database.database().reference()
         
-      
+        headerlabel.addCharacterSpacing()
+
 
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
