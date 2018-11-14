@@ -29,10 +29,13 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        activityIndicator.color = mypink
         
         ref = Database.database().reference()
         
-        
+        activityIndicator.alpha = 1
+        activityIndicator.startAnimating()
+        tableView.alpha = 0
         
         queryforids { () -> () in
             
@@ -52,7 +55,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         programnames.removeAll()
         prices.removeAll()
        toppics.removeAll()
-        ref?.child("Influencers").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Influencers").queryOrdered(byChild: "Approved").queryEqual(toValue: "True").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -109,7 +112,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if var views = value?["Price"] as? String {
                     prices[each] = views
-                    
+                    functioncounter += 1
+
                 }
                 
                 if var views = value?["ProgramName"] as? String {
@@ -123,7 +127,6 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 toppics[each] = UIImage(named: "\(each)pic")
                 
-                functioncounter += 1
                 
                 print(functioncounter)
                 
@@ -131,8 +134,10 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if functioncounter == projectids.count {
                     
+                    self.activityIndicator.alpha = 0
+                    self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
-                    
+                    self.tableView.alpha = 1
                 }
                 
                 
@@ -158,20 +163,32 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
-        return names.count
+        if subscribers.count > 0 {
+            
+            return subscribers.count
+
+        } else {
+            
+            return 0
+        }
         
     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Explore", for: indexPath) as! ExploreTableViewCell
         
-        if names.count > indexPath.row {
+        cell.subscriber.tag = indexPath.row
+        
+        cell.selectionStyle = .none
+        if names.count > indexPath.row && subscribers.count > indexPath.row {
+            
             
 //            cell.layer.borderWidth = 1.0
 //            cell.layer.borderColor = UIColor.lightGray.cgColor
-            
+            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
+
             cell.layer.cornerRadius = 3.0
             cell.layer.masksToBounds = true
             cell.name.text = names[projectids[indexPath.row]]
@@ -193,7 +210,30 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+            //            return 425
+            return UITableViewAutomaticDimension
+            
+    }
+    
+    @objc func tapJoin(sender: UIButton){
+        
+        let buttonTag = sender.tag
+        
+        selectedid = projectids[buttonTag]
+        selectedimage = images[projectids[buttonTag]]!
+        selectedname = names[projectids[buttonTag]]!
+        selectedpitch = descriptions[projectids[buttonTag]]!
+        selectedprice = prices[projectids[buttonTag]]!
+        //        selectedprogramnames = programnames[projectids[buttonTag]]!
+        selectedsubs = subscribers[projectids[buttonTag]]!
+        selectedprogramname = programnames[projectids[buttonTag]]!
+        
+        self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 

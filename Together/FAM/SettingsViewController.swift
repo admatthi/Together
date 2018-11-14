@@ -17,7 +17,7 @@ import UserNotifications
 
 var loggedin = Bool()
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var tapsubscriptions: UIButton!
     @IBOutlet weak var tapabout: UIButton!
     @IBOutlet weak var tapbilling: UIButton!
@@ -68,6 +68,52 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    var imagePickerController = UIImagePickerController()
+
+    @IBAction func tapEditProfile(_ sender: Any) {
+    }
+    @IBAction func tapRevenue(_ sender: Any) {
+    }
+    @IBAction func tapAdd(_ sender: Any) {
+        
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        imagePickerController.mediaTypes = ["public.movie"]
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        videoURL = info[UIImagePickerControllerMediaURL]as? NSURL
+        print(videoURL!)
+        do {
+//            let asset = AVURLAsset(url: videoURL as! URL , options: nil)
+//            let imgGenerator = AVAssetImageGenerator(asset: asset)
+//            imgGenerator.appliesPreferredTrackTransform = true
+//            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+//            let thumbnail = UIImage(cgImage: cgImage)
+            //            imgView.image = thumbnail
+            
+            
+            DispatchQueue.main.async {
+                
+                //                    purchased = true
+
+                self.dismiss(animated: true, completion: nil)
+
+                let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Upload") as UIViewController
+                
+                self.present(initialViewControlleripad, animated: true, completion: nil)
+                
+
+
+            }
+      
+            
+        } catch let error {
+            print("*** Error generating thumbnail: \(error.localizedDescription)")
+        }
+    }
     override func viewDidAppear(_ animated: Bool) {
         
         if Auth.auth().currentUser == nil {
@@ -83,9 +129,26 @@ class SettingsViewController: UIViewController {
             
         }
     }
+   
+    @IBOutlet weak var tapeditprofile: UIButton!
+    @IBOutlet weak var tapaddcontent: UIButton!
+    @IBOutlet weak var tapseerevenue: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if isInfluencer {
+            
+            tapaddcontent.alpha = 1
+            tapseerevenue.alpha = 1
+            tapeditprofile.alpha = 1
+            
+        } else {
+            
+            tapaddcontent.alpha = 0
+            tapseerevenue.alpha = 0
+            tapeditprofile.alpha = 0
+        }
+       
         tapsubscriptions.layer.cornerRadius = 25.0
         tapsubscriptions.layer.masksToBounds = true
         tapprivacy.layer.cornerRadius = 25.0
@@ -96,7 +159,12 @@ class SettingsViewController: UIViewController {
         tapabout.layer.masksToBounds = true
         tapbilling.layer.cornerRadius = 25.0
         tapbilling.layer.masksToBounds = true
-
+        tapaddcontent.layer.cornerRadius = 25.0
+        tapaddcontent.layer.masksToBounds = true
+        tapeditprofile.layer.cornerRadius = 25.0
+        tapeditprofile.layer.masksToBounds = true
+        tapseerevenue.layer.cornerRadius = 25.0
+        tapseerevenue.layer.masksToBounds = true
         
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
@@ -122,6 +190,8 @@ class SettingsViewController: UIViewController {
         
        
     }
+    
+    
     
     @IBOutlet weak var taplog: UIButton!
     /*

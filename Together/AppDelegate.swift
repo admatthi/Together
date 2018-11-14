@@ -23,6 +23,7 @@ var uid = String()
 var ref: DatabaseReference?
 
 var tryingtopurchase = Bool()
+var isInfluencer = Bool()
 
 protocol SnippetsPurchasesDelegate: AnyObject {
     
@@ -51,30 +52,100 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         purchases!.delegate = self
         
-        var tabBar: UITabBarController = self.window?.rootViewController as! UITabBarController
-        
+        isInfluencer = false
+
+        ref = Database.database().reference()
+
+
+//        var tabBar: UITabBarController =
+
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+       
+        let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
+//        
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
-            
-            tabBar.selectedIndex = 0
-            
-            
-        } else {
-            
-            tabBar.selectedIndex = 0
-            
-        }
+
+
+        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialViewControlleripad
+        self.window?.makeKeyAndVisible()//
         
+        
+        } else {
+
+            let currentUser = Auth.auth().currentUser
+    
+            uid = (currentUser?.uid)!
+            queryforinfo()
+          
+
+        }
+    
         return true
     }
     
     func letsgo() {
+        
+    
         
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Login") as UIViewController
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialViewControlleripad
         self.window?.makeKeyAndVisible()
+    }
+    
+    func queryforinfo() {
+        
+        var functioncounter = 0
+        
+        ref?.child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if var author2 = value?["Approved"] as? String {
+                
+                if author2 == "False" {
+                    
+                    let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+                    
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    self.window?.rootViewController = tabBarBuyer
+                    
+                    self.window?.makeKeyAndVisible()
+                    
+                } else {
+                    
+                    isInfluencer = true
+                    
+                    let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+           
+                    
+                    let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    self.window?.rootViewController = tabBarInfluencer
+                    self.window?.makeKeyAndVisible()
+                }
+                
+                
+            } else {
+                
+                let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = tabBarBuyer
+                
+                self.window?.makeKeyAndVisible()
+            }
+      
+            
+        })
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -94,9 +165,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
+    
+
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?
+        ) -> Void) -> Bool {
+        
+        // 1
+        
+        
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+            let url = userActivity.webpageURL,
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                return false
+        }
+        
+        // 2
+//        if let computer = ItemHandler.sharedInstance.items
+//            .filter({ $0.path == components.path}).first {
+//            presentDetailViewController(computer)
+//            return true
+//        }
+        
+        // 3
+        if let webpageUrl = URL(string: "http://joinmyfam.herokuapp.com") {
+            application.open(webpageUrl)
+            return false
+        }
+        
+        return false
+    }
+
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let urlPath : String = url.path as String!
+        let urlHost : String = url.host as String!
+        
+        if urlPath == "/wow" {
+            
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buy") as UIViewController
+            
+            selectedid = "11"
+            selectedimage = UIImage(named: "11pic")!
+            selectedname = "Kayla"
+            selectedpitch = "Sup"
+            selectedprice = "10"
+            //        selectedprogramnames = programnames[projectids[indexPath.row]]!
+            selectedsubs = "100"
+            selectedprogramname = "Sweat"
+            
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewControlleripad
+            self.window?.makeKeyAndVisible()
+            
+            return true
+        } else {
+            
+            return true
+        }
     }
 
 
@@ -109,6 +244,7 @@ extension AppDelegate: RCPurchasesDelegate {
         
         print("purchased")
         tryingtopurchase  = true
+        
         letsgo()
         
     }

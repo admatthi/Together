@@ -1,8 +1,8 @@
 //
-//  PlansViewController.swift
+//  EditProfileViewController.swift
 //  Together
 //
-//  Created by Alek Matthiessen on 11/7/18.
+//  Created by Alek Matthiessen on 11/12/18.
 //  Copyright © 2018 AA Tech. All rights reserved.
 //
 
@@ -15,95 +15,131 @@ import FirebaseAuth
 import FBSDKCoreKit
 import AVFoundation
 
-var videoids = [String]()
-var videolinks = [String:String]()
-var videodescriptions = [String:String]()
-var videotimes = [String:String]()
-
-var firstname = String()
-var selectedname = String()
-
-var unlockedids = [String]()
-var locked = Bool()
-
-
-class PlansViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class EditProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var programname: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         programname.text = selectedprogramname
-//        tableView.rowHeight = UITableViewAutomaticDimension
-
-//        cta.text = "Join \(firstname)'s FAM"
+        
+        //        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //        cta.text = "Join \(firstname)'s FAM"
         
         ref = Database.database().reference()
         
-
+        queryforpersonalinfo()
+        
         queryforids { () -> () in
             
             self.queryforinfo()
             
         }
         
-        if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
-
-            locked = true
-
-        } else {
-
-            locked = true
-
-            uid = (Auth.auth().currentUser?.uid)!
-
-            queryforpurchased()
-            
-        }
+        locked = false
+       
         
         
         
         // Do any additional setup after loading the view.
     }
     
-    func queryforpurchased() {
+    override func viewDidAppear(_ animated: Bool) {
         
-        var functioncounter = 0
-        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
+        queryforpersonalinfo()
+        
+        queryforids { () -> () in
             
-            var value = snapshot.value as? NSDictionary
+            self.queryforinfo()
             
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-                for each in snapDict {
-                    
-                    let ids = each.key
-                    
-                    if ids == selectedid {
-                        
-                        locked = false
-                        
-                    } else {
-                        
-                        locked = true
-                    }
-                    functioncounter += 1
-                    
-                    if functioncounter == snapDict.count {
-                        
-                        self.tableView.reloadData()
-                        
-                    }
-                    
-                    
-                }
-                
-            }
-            
-        })
+        }
+        
     }
     
+    func queryforpersonalinfo() {
+        
+        
+        var functioncounter = 0
+        
+            ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                if var author2 = value?["Subscribers"] as? String {
+                    
+                    selectedsubs = author2
+                    
+                } else {
+                    
+                    selectedsubs = "0"
+
+                }
+                
+                if var author2 = value?["Description"] as? String {
+                    selectedpitch = author2
+                    
+                } else {
+                    
+                    selectedpitch = "-"
+
+                }
+                
+                if var name = value?["Name"] as? String {
+                        selectedname = name
+                } else {
+                    
+                    selectedname = "-"
+
+                }
+                
+                if var views = value?["Price"] as? String {
+                    selectedprice = views
+                    
+                } else {
+                 
+                    selectedprice = "-"
+                }
+                
+                if var views = value?["ProgramName"] as? String {
+
+                    selectedprogramname = views
+                    self.programname.text = selectedprogramname
+                } else {
+                    
+                    selectedprogramname = "-"
+                    self.programname.text = selectedprogramname
+                }
+                
+                
+                if var profileUrl = value?["ProPic"] as? String {
+                    // Create a storage reference from the URL
+                    
+                    let url = URL(string: profileUrl)
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    selectedimage = UIImage(data: data!)!
+                    self.tableView.reloadData()
+
+                } else {
+                    
+                    selectedimage = UIImage(named: "Placeholder")!
+                    self.tableView.reloadData()
+
+
+                }
+                
+                
+                
+     
+                
+        })
+                
+                
+        
+            
+        }
+
+   
     func queryforids(completed: @escaping (() -> ()) ) {
         
         var functioncounter = 0
@@ -113,7 +149,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         videodescriptions.removeAll()
         thumbnails.removeAll()
         
-        ref?.child("Influencers").child(selectedid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -142,7 +178,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     var thumbnails = [String:UIImage]()
-
+    
     func queryforinfo() {
         
         var functioncounter = 0
@@ -150,15 +186,14 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         for each in videoids {
             
             
-            ref?.child("Influencers").child(selectedid).child("Plans").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("Influencers").child(uid).child("Plans").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
                 if var author2 = value?["URL"] as? String {
                     videolinks[each] = author2
                     
-                    
-                    
+                
                 }
                 
                 if var author2 = value?["Description"] as? String {
@@ -172,15 +207,15 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 }
                 
                 if var profileUrl = value?["Thumbnail"] as? String {
-                // Create a storage reference from the URL
-          
+                    // Create a storage reference from the URL
+                    
                     let url = URL(string: profileUrl)
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     self.thumbnails[each] = UIImage(data: data!)
-     
+                    
                     functioncounter += 1
                 }
-   
+                
                 print(functioncounter)
                 
                 
@@ -198,15 +233,22 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     @IBOutlet weak var tableView: UITableView!
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
+//
+//        cell.playerView.player?.pause()
+//
+//    }
     func createThumbnailOfVideoFromRemoteUrl(url: String) -> UIImage? {
         let asset = AVAsset(url: URL(string: url)!)
         let assetImgGenerate = AVAssetImageGenerator(asset: asset)
@@ -237,6 +279,13 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         if let cell = tableView.cellForRow(at: indexPath) as? PlansTableViewCell {
             
+            if indexPath.row == 0 {
+                
+                
+                
+                
+            } else {
+                
             let videourl = URL(string: videolinks[videoids[indexPath.row-1]]!)
             
             let avPlayer = AVPlayer(url: videourl! as URL)
@@ -245,8 +294,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             cell.playerView.playerLayer.player = avPlayer
             
-
-            
+                
             if cell.playerView.player?.isPlaying == true {
                 
                 cell.playerView.player?.pause()
@@ -255,13 +303,15 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 cell.thumbnail.alpha = 0
                 cell.playerView.player?.play()
-
+                
             }
-
+            
+            }
         }
-    }
-
-  
+            
+        }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
@@ -269,12 +319,8 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.selectionStyle = .none
         if videolinks.count > indexPath.row-1 {
             
+                cell.tapjoin.addTarget(self, action: #selector(tapDown(sender:)), for: .touchUpInside)
             
-            cell.tapjoin.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
-            cell.tapcircle.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
-
-            cell.tapjoin.tag = indexPath.row
-            cell.tapcircle.tag = indexPath.row
             if indexPath.row == 0 {
                 
                 cell.activityIndicator.alpha = 0
@@ -291,20 +337,19 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.sublabel.alpha = 1
                 cell.monthlylabel.alpha = 1
                 cell.profilepic.image = selectedimage
-//                cell.profilepic.layer.cornerRadius = 5.0
-//                cell.profilepic.layer.masksToBounds = true
+                //                cell.profilepic.layer.cornerRadius = 5.0
+                //                cell.profilepic.layer.masksToBounds = true
                 cell.pitch.text = selectedpitch
                 cell.subs.text = selectedsubs
                 cell.dollers.text = "$\(selectedprice)"
                 cell.name.text = selectedname
                 cell.playerView.alpha = 0
-//                cell.thumbnailpreview.alpha = 0
+                //                cell.thumbnailpreview.alpha = 0
                 cell.descriptionlabel.text = ""
                 cell.descriptionlabel.alpha = 0
                 cell.thumbnail.alpha = 0
-                cell.tapcircle.alpha = 1
             } else {
-                cell.tapcircle.alpha = 0
+                
                 cell.thumbnail.alpha = 1
                 cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
                 cell.minipic.alpha = 1
@@ -314,7 +359,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.playerView.alpha = 1
                 cell.profilepic.alpha = 0
                 cell.pitch.alpha = 0
-                cell.pitch.text = "" 
+                cell.pitch.text = ""
                 cell.tapjoin.alpha = 0
                 cell.subs.alpha = 0
                 cell.dollers.alpha = 0
@@ -323,86 +368,76 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.monthlylabel.alpha = 0
                 cell.pitch.text = ""
                 cell.descriptionlabel.alpha = 1
-//                cell.thumbnailpreview.alpha = 1
-//                cell.thumbnailpreview.image = thumbnails[videolinks[videoids[indexPath.row-1]]!]
+                //                cell.thumbnailpreview.alpha = 1
+                //                cell.thumbnailpreview.image = thumbnails[videolinks[videoids[indexPath.row-1]]!]
                 
                 cell.daylabel.alpha = 1
                 
                 cell.daylabel.text = "Day \(indexPath.row)"
                 cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
                 cell.activityIndicator.alpha = 0
-
-//                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
-//                cell.timelabel.text = videotimes[videoids[indexPath.row]]
-
-                if locked {
                 
-//                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-//                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//                    blurEffectView.frame = cell.playerView.bounds
-//                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//                    cell.playerView.addSubview(blurEffectView)
-//                    cell.lockimage.alpha = 1
+                cell.playerView.player?.replaceCurrentItem(with: nil)
+
+                //                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
+                //                cell.timelabel.text = videotimes[videoids[indexPath.row]]
+                
+                if locked {
                     
-//                    cell.isUserInteractionEnabled = false
+                    //                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+                    //                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                    //                    blurEffectView.frame = cell.playerView.bounds
+                    //                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    //                    cell.playerView.addSubview(blurEffectView)
+                    //                    cell.lockimage.alpha = 1
+                    
+                    //                    cell.isUserInteractionEnabled = false
                     
                 } else {
                     cell.isUserInteractionEnabled = true
-//                    cell.lockimage.alpha = 0
-
+                    //                    cell.lockimage.alpha = 0
+                    
                 }
-//                cell.playerView.player!.replaceCurrentItem(with: nil)
-
-//                cell.playerView.player?.pause()
-//
-//                cell.playerView.player?.play()
+                //                cell.playerView.player!.replaceCurrentItem(with: nil)
                 
-
-
+                //                cell.playerView.player?.pause()
+                //
+                //                cell.playerView.player?.play()
+                
+                
+                
             }
         } else {
             
-
+            
         }
+        
         
         return cell
     }
-
-     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-
-            return 220
-
-        } else {
-            
-//            return 425
-            return UITableViewAutomaticDimension
-
-        }
-    }
-    
-    var buttonspressedup = [String:String]()
-    
-    @objc func tapJoin(sender: UIButton){
-        
-        let buttonTag = sender.tag
-        
-     
-        self.performSegue(withIdentifier: "SaleToBuy", sender: self)
-    }
     
     @objc func tapDown(sender: UIButton){
-        let buttonTag = sender.tag
-
+        
+      self.performSegue(withIdentifier: "EditToUpload", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
             
-            tableView.reloadData()
+            return 220
+            
+        } else {
+            
+            //            return 425
+            return UITableViewAutomaticDimension
+            
         }
         
     }
-
-
-extension AVPlayer {
-    var isPlaying: Bool {
-        return rate != 0 && error == nil
+    @IBAction func tapLogout(_ sender: Any) {
+        
+        try! Auth.auth().signOut()
+        
+        self.performSegue(withIdentifier: "LogoutFromProfile", sender: self)
     }
 }

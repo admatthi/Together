@@ -60,6 +60,12 @@ class PurchaseViewController: UIViewController {
     }
     
     var purchasestring = String()
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        self.playerView.player?.pause()
+
+    }
     func queryforinfo() {
         
         var functioncounter = 0

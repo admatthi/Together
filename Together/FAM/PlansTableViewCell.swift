@@ -11,6 +11,7 @@ import UIKit
 class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var dollers: UILabel!
     @IBOutlet weak var tapjoin: UIButton!
+    @IBOutlet weak var thumbnail: UIImageView!
     
     @IBOutlet weak var monthlylabel: UILabel!
     @IBOutlet weak var sublabel: UILabel!
@@ -21,9 +22,11 @@ class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var tapjoin2: UIButton!
     @IBOutlet weak var programn: UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var minipic: UIImageView!
     @IBOutlet weak var playerView: PlayerViewClass!
 
+    @IBOutlet weak var tapcircle: UIButton!
     @IBOutlet weak var lockimage: UIImageView!
     @IBOutlet weak var descriptionlabel: UILabel!
     @IBOutlet weak var thumbnailpreview: UIImageView!
