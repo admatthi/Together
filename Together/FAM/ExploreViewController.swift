@@ -209,9 +209,9 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.programname.text = programnames[projectids[indexPath.row]]
             cell.name.text = names[projectids[indexPath.row]]
             cell.profilepic.image = images[projectids[indexPath.row]]
-            cell.subscribercount.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
+            cell.subscribercount.text = "\(subscribers[projectids[indexPath.row]]!)"
 //            cell.toppic.image = toppics[projectids[indexPath.row]]
-            cell.price.text = "$\(prices[projectids[indexPath.row]]!)/mo"
+            cell.price.text = "$\(prices[projectids[indexPath.row]]!)"
             
             
             

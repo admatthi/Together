@@ -16,6 +16,7 @@ import FBSDKCoreKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate     {
 
+    @IBOutlet weak var header: UILabel!
     @IBAction func tapLogin(_ sender: Any) {
         
         login()
@@ -172,6 +173,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        header.addCharacterSpacing()
         // Do any additional setup after loading the view.
         
         ref = Database.database().reference()

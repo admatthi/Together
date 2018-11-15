@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/Sign Up/OverviewCollectionViewCell.swift">
-   </FileRef>
-   <FileRef
       location = "group:Together.xcodeproj">
    </FileRef>
    <FileRef

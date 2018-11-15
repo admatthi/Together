@@ -30,6 +30,8 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func tapSignUp(_ sender: Any) {
         
+        self.view.endEditing(true)
+        demo.alpha = 0
     
         email = "\(emailtf.text!)"
         password = "\(passwordtf.text!)"
