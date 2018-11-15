@@ -331,7 +331,7 @@
 			path = TogetherUITests;
 			sourceTree = "<group>";
 		};
-		9DB8AE01219DDB9400D7D707 /* V2 */ = {
+		9DB8AE01219DDB9400D7D707 /* Buyer - V2 */ = {
 			isa = PBXGroup;
 			children = (
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
@@ -343,13 +343,13 @@
 				9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */,
 				9DB8ADFD219DD14D00D7D707 /* WatchViewController.swift */,
 			);
-			path = V2;
+			path = "Buyer - V2";
 			sourceTree = "<group>";
 		};
 		9DC0B2832193550B00F56A1A /* FAM */ = {
 			isa = PBXGroup;
 			children = (
-				9DB8AE01219DDB9400D7D707 /* V2 */,
+				9DB8AE01219DDB9400D7D707 /* Buyer - V2 */,
 				9D46D843219B2142006CE94C /* Sign Up */,
 				9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */,
 				9D5FD08A21949795001B40E1 /* AboutViewController.swift */,

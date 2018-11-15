@@ -30,6 +30,8 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lowercasename = selectedname
+        
         selectedname = selectedname.uppercased()
         
         activityIndicator.color = mypink
@@ -255,12 +257,16 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         if indexPath.row == 0 {
             
+            selectedtitle = videotitles[videoids[indexPath.row]]!
+
+            
             self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
 
         } else {
             
             selectedvideo = videolinks[videoids[indexPath.row]]!
             
+            selectedtitle = videotitles[videoids[indexPath.row]]!
             self.performSegue(withIdentifier: "VideoToWatch", sender: self)
         }
         

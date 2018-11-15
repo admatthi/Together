@@ -15,6 +15,8 @@ import FirebaseAuth
 import FBSDKCoreKit
 import AVFoundation
 
+var lowercasename = String()
+
 class WatchViewController: UIViewController {
     @IBAction func tapBack(_ sender: Any) {
         
@@ -36,7 +38,7 @@ class WatchViewController: UIViewController {
         
         ref = Database.database().reference()
 
-        influencername.text = selectedname
+        influencername.text = lowercasename
         videotitle.text = selectedtitle
         profileimage.image = selectedimage
         

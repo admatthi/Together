@@ -88,7 +88,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(downloadURL)
                 
                 let mystring2 = downloadURL.absoluteString
-            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Description" : self.tv.text!, "Title" : self.tv2.text!])
+            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : self.tv2.text!])
 
                 self.loadthumbnail()
                 
@@ -209,9 +209,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             playerView.playerLayer.player = avPlayer
             
             getThumbnailFrom(path: videoURL as! URL)
+            tv2.alpha = 1
 
-
-//            playerView.player?.play()
+            playerView.player?.play()
 
             
         } catch let error {
@@ -285,16 +285,14 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         present(imagePickerController, animated: true, completion: nil)
         
         ref = Database.database().reference()
-
-        tv.text = "Write a caption..."
-        tv.textColor = UIColor.lightGray
-        tv2.text = "Title"
+    
+ 
+        tv2.text = "Write your title.."
         tv2.textColor = UIColor.lightGray
-        tapplay.alpha = 1
+//        tapplay.alpha = 1
         queryforinfo()
         programname.addCharacterSpacing()
         self.addLineToView(view: tv2, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-        self.addLineToView(view: tv, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
 
 //        propic.layer.masksToBounds = false
 //        propic.layer.cornerRadius = propic.frame.height/2
@@ -306,6 +304,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
         strDate = dateFormatter.string(from: date)
+        tv2.alpha = 0
         
      
         //            imgView.image = thumbnail
@@ -342,7 +341,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             
 //            loadthumbnail()
 
-            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 375)
+            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 667)
             
             return mythumbnail
             
