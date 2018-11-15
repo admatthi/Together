@@ -61,7 +61,6 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         ref = Database.database().reference()
 
-        queryforpersonalinfo()
         
         queryforids { () -> () in
             
@@ -71,78 +70,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     
-    func queryforpersonalinfo() {
-        
-        
-        var functioncounter = 0
-        
-            ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                if var author2 = value?["Subscribers"] as? String {
-                    
-                    selectedsubs = author2
-                    
-                }
-                
-                if var author2 = value?["Description"] as? String {
-                    selectedpitch = author2
-                    
-                }
-                
-                if var name = value?["Name"] as? String {
-                        selectedname = name
-                }
-                
-                if var views = value?["Price"] as? String {
-                    selectedprice = views
-                    
-                }
-                
-                if var views = value?["Phone Number"] as? String {
-                    selectednumber = views
-                    
-                }
-                
-                if var views = value?["Domain"] as? String {
-                    selecteddomain = views
-                    
-                }
-                
-                if var views = value?["Email"] as? String {
-                    selectedemail = views
-                    
-                }
-                
-                
-                if var views = value?["ProgramName"] as? String {
-
-                    selectedprogramname = views
-//                    self.programname.text = selectedprogramname
-                }
-                
-                
-                if var profileUrl = value?["ProPic"] as? String {
-                    // Create a storage reference from the URL
-                    
-                    let url = URL(string: profileUrl)
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    selectedimage = UIImage(data: data!)!
-                    
-                    self.collectionView.reloadData()
-
-                }
-                
-                
-     
-                
-        })
-                
-                
-        
-            
-        }
+    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -329,7 +257,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         //        cell.subscriber.tag = indexPath.row
         
-        if images.count > indexPath.row{
+        if thumbnails.count > indexPath.row{
             
             
             //            cell.layer.borderWidth = 1.0

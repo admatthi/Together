@@ -294,7 +294,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         //        cell.subscriber.tag = indexPath.row
         
-        if images.count > indexPath.row{
+        if thumbnails.count > indexPath.row{
             
             
             //            cell.layer.borderWidth = 1.0

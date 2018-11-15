@@ -286,6 +286,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
 
+    @IBOutlet weak var headerlabel: UILabel!
     override func viewDidDisappear(_ animated: Bool) {
         
         if playerView.player?.isPlaying == true {
@@ -313,8 +314,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         tv2.textColor = UIColor.lightGray
 //        tapplay.alpha = 1
         queryforinfo()
-        programname.text = "UPLOAD"
-        programname.addCharacterSpacing()
+        headerlabel.text = "UPLOAD"
+        headerlabel.addCharacterSpacing()
         self.addLineToView(view: tv2, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
 
 //        propic.layer.masksToBounds = false
