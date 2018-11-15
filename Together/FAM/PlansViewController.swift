@@ -95,7 +95,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                     
                     if functioncounter == snapDict.count {
                         
-                        self.tableView.reloadData()
+//                        self.tableView.reloadData()
                         
                     }
                     
@@ -114,8 +114,9 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         videoids.removeAll()
         videolinks.removeAll()
         videodescriptions.removeAll()
-        thumbnails.removeAll()
         videotitles.removeAll()
+        thumbnails.removeAll()
+        
         ref?.child("Influencers").child(selectedid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -308,23 +309,22 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.tapcircle.alpha = 1
         }
         
-        if videolinks.count > indexPath.row {
+        if videolinks.count >= indexPath.row-1 {
             
             
+            print(indexPath.row)
             cell.tapjoin.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             cell.tapcircle.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
 
             cell.tapjoin.tag = indexPath.row
             cell.tapcircle.tag = indexPath.row
             cell.programn.addCharacterSpacing()
-            if indexPath.row == 0 {
-                
-                
-            } else {
+            
+            if indexPath.row != 0 {
                 
                 cell.tapcircle.alpha = 0
                 cell.thumbnail.alpha = 1
-                cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
                 cell.minipic.alpha = 1
                 cell.programn.alpha = 1
                 cell.minipic.image = selectedimage
@@ -332,7 +332,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.playerView.alpha = 1
                 cell.profilepic.alpha = 0
                 cell.pitch.alpha = 0
-                cell.pitch.text = "" 
+                cell.pitch.text = ""
                 cell.tapjoin.alpha = 0
                 cell.subs.alpha = 0
                 cell.dollers.alpha = 0
@@ -341,36 +341,40 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.monthlylabel.alpha = 0
                 cell.pitch.text = ""
                 cell.descriptionlabel.alpha = 1
-//                cell.thumbnailpreview.alpha = 1
-//                cell.thumbnailpreview.image = thumbnails[videolinks[videoids[indexPath.row-1]]!]
+                //                cell.thumbnailpreview.alpha = 1
+                //                cell.thumbnailpreview.image = thumbnails[videolinks[videoids[indexPath.row-1]]!]
                 
                 cell.daylabel.alpha = 1
                 
                 cell.daylabel.alpha = 1
                 
-                cell.daylabel.text = videotitles[videoids[indexPath.row]]
-                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
+                cell.daylabel.text = videotitles[videoids[indexPath.row-1]]
+                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
                 cell.activityIndicator.alpha = 0
+                
+            } else {
+                
+             
 
 //                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
 //                cell.timelabel.text = videotimes[videoids[indexPath.row]]
 
-                if locked {
-                
-//                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-//                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//                    blurEffectView.frame = cell.playerView.bounds
-//                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//                    cell.playerView.addSubview(blurEffectView)
-//                    cell.lockimage.alpha = 1
-                    
-//                    cell.isUserInteractionEnabled = false
-                    
-                } else {
-                    cell.isUserInteractionEnabled = true
-//                    cell.lockimage.alpha = 0
-
-                }
+//                if locked {
+//
+////                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+////                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+////                    blurEffectView.frame = cell.playerView.bounds
+////                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+////                    cell.playerView.addSubview(blurEffectView)
+////                    cell.lockimage.alpha = 1
+//
+////                    cell.isUserInteractionEnabled = false
+//
+//                } else {
+//                    cell.isUserInteractionEnabled = true
+////                    cell.lockimage.alpha = 0
+//
+//                }
 //                cell.playerView.player!.replaceCurrentItem(with: nil)
 
 //                cell.playerView.player?.pause()
@@ -380,6 +384,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
             }
+            
         } else {
             
 
@@ -415,7 +420,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         let buttonTag = sender.tag
 
             
-            tableView.reloadData()
+//            tableView.reloadData()
         }
         
     }

@@ -1182,6 +1182,8 @@
                         <outlet property="tv" destination="vgJ-zI-cuf" id="CSu-Vd-O5c"/>
                         <outlet property="tv2" destination="NSM-Wd-fwU" id="6rV-3z-UnK"/>
                         <segue destination="ah5-YE-gOK" kind="show" identifier="UploadToProfile" id="4rc-m4-ngi"/>
+                        <segue destination="fBf-RR-HZw" kind="show" identifier="SegueTo2nd" id="yNW-xH-ca5"/>
+                        <segue destination="fBf-RR-HZw" kind="show" id="rM7-pq-RM4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyr-ex-9gX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2133,7 +2135,7 @@ subscribers</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Activity" image="Activity Copy" id="W1w-Di-Tdq"/>
                     <connections>
-                        <outlet property="HEADERLABEL" destination="lo9-Jv-hr5" id="EYw-pm-5XP"/>
+                        <outlet property="HEADERLABEL" destination="AAO-7R-54e" id="erD-5I-pU9"/>
                         <outlet property="descriptivelabel" destination="Po1-nC-A1A" id="GHQ-5l-E38"/>
                         <outlet property="nofollows" destination="nDe-6R-NIH" id="qKP-XT-zfo"/>
                         <outlet property="payingsubscribers" destination="Oyx-1e-4iX" id="3vO-ia-jkE"/>
@@ -2996,10 +2998,10 @@ subscribers</string>
         <image name="X" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M33-Pf-dG8"/>
-        <segue reference="1v0-RG-bIt"/>
-        <segue reference="5yq-Py-qG7"/>
-        <segue reference="B63-Vt-gHS"/>
+        <segue reference="yNW-xH-ca5"/>
+        <segue reference="gW4-eh-4kP"/>
+        <segue reference="4rc-m4-ngi"/>
+        <segue reference="3iS-MX-CDv"/>
         <segue reference="raE-3f-wg2"/>
         <segue reference="XVp-MV-P5M"/>
     </inferredMetricsTieBreakers>

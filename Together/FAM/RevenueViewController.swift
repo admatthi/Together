@@ -102,6 +102,7 @@ class RevenueViewController: UIViewController {
         tapsubscribers.alpha = 0.25
         descriptivelabel.text = "Total Revenue"
         realvalue.text = "$\(yourtotalreve)"
+        
     }
     
     var yourdomain = String()

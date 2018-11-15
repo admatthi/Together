@@ -49,6 +49,8 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidAppear(_ animated: Bool) {
         
+        ref = Database.database().reference()
+
         queryforpersonalinfo()
         
         queryforids { () -> () in
@@ -293,7 +295,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 
             } else {
                 
-            let videourl = URL(string: videolinks[videoids[indexPath.row-1]]!)
+            let videourl = URL(string: videolinks[videoids[indexPath.row]]!)
             
             let avPlayer = AVPlayer(url: videourl! as URL)
             
@@ -361,12 +363,12 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
       
         
-        if videolinks.count > indexPath.row-1 {
+        if videolinks.count >= indexPath.row-1 {
             
             if indexPath.row != 0 {
 //                let rect : CGRect = CGRect(x: cell.thumbnail.bounds.minX, y: cell.thumbnail.bounds.minY, width: cell.thumbnail.bounds.width, height: cell.thumbnail.bounds.height)
                 
-    
+                cell.tapcircle.alpha = 0
                 
                 cell.thumbnail.alpha = 1
                 cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
@@ -396,27 +398,27 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
                 cell.activityIndicator.alpha = 0
                 
-                cell.playerView.player?.replaceCurrentItem(with: nil)
+            cell.playerView.player?.replaceCurrentItem(with: nil)
 
                 //                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
                 //                cell.timelabel.text = videotimes[videoids[indexPath.row]]
                 
-                if locked {
-                    
-                    //                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-                    //                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                    //                    blurEffectView.frame = cell.playerView.bounds
-                    //                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                    //                    cell.playerView.addSubview(blurEffectView)
-                    //                    cell.lockimage.alpha = 1
-                    
-                    //                    cell.isUserInteractionEnabled = false
-                    
-                } else {
-                    cell.isUserInteractionEnabled = true
-                    //                    cell.lockimage.alpha = 0
-                    
-                }
+//                if locked {
+//
+//                    //                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+//                    //                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                    //                    blurEffectView.frame = cell.playerView.bounds
+//                    //                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//                    //                    cell.playerView.addSubview(blurEffectView)
+//                    //                    cell.lockimage.alpha = 1
+//
+//                    //                    cell.isUserInteractionEnabled = false
+//
+//                } else {
+//                    cell.isUserInteractionEnabled = true
+//                    //                    cell.lockimage.alpha = 0
+//
+//                }
                 //                cell.playerView.player!.replaceCurrentItem(with: nil)
                 
                 //                cell.playerView.player?.pause()
