@@ -5,7 +5,6 @@
 //  Created by Alek Matthiessen on 11/8/18.
 //  Copyright © 2018 AA Tech. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import FirebaseCore
@@ -69,7 +68,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     var imagePickerController = UIImagePickerController()
-
+    
     @IBOutlet weak var HEADERLABEL: UILabel!
     @IBAction func tapEditProfile(_ sender: Any) {
     }
@@ -87,29 +86,28 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         videoURL = info[UIImagePickerControllerMediaURL]as? NSURL
         print(videoURL!)
         do {
-//            let asset = AVURLAsset(url: videoURL as! URL , options: nil)
-//            let imgGenerator = AVAssetImageGenerator(asset: asset)
-//            imgGenerator.appliesPreferredTrackTransform = true
-//            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
-//            let thumbnail = UIImage(cgImage: cgImage)
+            //            let asset = AVURLAsset(url: videoURL as! URL , options: nil)
+            //            let imgGenerator = AVAssetImageGenerator(asset: asset)
+            //            imgGenerator.appliesPreferredTrackTransform = true
+            //            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+            //            let thumbnail = UIImage(cgImage: cgImage)
             //            imgView.image = thumbnail
             
             
             DispatchQueue.main.async {
                 
                 //                    purchased = true
-
                 self.dismiss(animated: true, completion: nil)
-
+                
                 let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Upload") as UIViewController
                 
                 self.present(initialViewControlleripad, animated: true, completion: nil)
                 
-
-
+                
+                
             }
-      
+            
             
         } catch let error {
             print("*** Error generating thumbnail: \(error.localizedDescription)")
@@ -131,15 +129,15 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             
         }
     }
-   
+    
     @IBOutlet weak var tapeditprofile: UIButton!
     @IBOutlet weak var tapaddcontent: UIButton!
     @IBOutlet weak var tapseerevenue: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-  
-       
+        
+        
         tapsubscriptions.layer.cornerRadius = 25.0
         tapsubscriptions.layer.masksToBounds = true
         tapprivacy.layer.cornerRadius = 25.0
@@ -150,7 +148,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         tapabout.layer.masksToBounds = true
         tapbilling.layer.cornerRadius = 25.0
         tapbilling.layer.masksToBounds = true
-      
+        
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
             
@@ -161,7 +159,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             
             loggedin = true
             taplog.setTitle("Log Out", for: .normal)
-
+            
         }
         // Do any additional setup after loading the view.
     }
@@ -173,7 +171,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func taplog(_ sender: Any) {
         
-       
+        
     }
     
     
@@ -190,3 +188,4 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
      */
     
 }
+
