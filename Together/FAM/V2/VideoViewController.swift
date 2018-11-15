@@ -32,6 +32,11 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         selectedname = selectedname.uppercased()
         
+        activityIndicator.color = mypink
+
+        activityIndicator.startAnimating()
+        activityIndicator.alpha = 1
+        collectionView.alpha = 0
         programname.text = selectedname
         programname.addCharacterSpacing()
         //        tableView.rowHeight = UITableViewAutomaticDimension
@@ -213,6 +218,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
      */
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     func createThumbnailOfVideoFromRemoteUrl(url: String) -> UIImage? {
         let asset = AVAsset(url: URL(string: url)!)
         let assetImgGenerate = AVAssetImageGenerator(asset: asset)
@@ -275,9 +281,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     }
     
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
@@ -295,6 +299,9 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             cell.thumbnail.layer.masksToBounds = true
             cell.titlelabel.text = videotitles[videoids[indexPath.row]]
             cell.timeago.text = "14h ago"
+            activityIndicator.alpha = 0
+            collectionView.alpha = 1
+            activityIndicator.stopAnimating()
             
             cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
 

@@ -25,14 +25,24 @@ class WatchViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var influencername: UILabel!
     @IBOutlet weak var playerView: PlayerViewClass!
 
+    @IBOutlet weak var profileimage: UIImageView!
     
+    @IBOutlet weak var videotitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = Database.database().reference()
 
+        influencername.text = selectedname
+        videotitle.text = selectedtitle
+        profileimage.image = selectedimage
+        
+    profileimage.layer.masksToBounds = false
+        profileimage.layer.cornerRadius = profileimage.frame.height/2
+        profileimage.clipsToBounds = true
         
         let videourl = URL(string: selectedvideo)
         
