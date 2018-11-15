@@ -5,7 +5,6 @@
 //  Created by Alek Matthiessen on 11/13/18.
 //  Copyright © 2018 AA Tech. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import FirebaseCore
@@ -16,7 +15,7 @@ import FBSDKCoreKit
 
 
 class DomainViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBAction func tapNext(_ sender: Any) {
         
         if tf.text != "" {
