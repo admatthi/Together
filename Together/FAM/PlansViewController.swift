@@ -133,6 +133,8 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                     
                     if functioncounter == snapDict.count {
                         
+                        videoids = videoids.sorted()
+                        
                         completed()
                         
                     }
@@ -278,7 +280,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
         cell.activityIndicator.alpha = 1
         cell.selectionStyle = .none
-        
+         
         if indexPath.row == 0 {
             
             cell.activityIndicator.alpha = 0

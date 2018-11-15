@@ -31,13 +31,13 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         ref = Database.database().reference()
         
-        queryforpersonalinfo()
-        
-        queryforids { () -> () in
-            
-            self.queryforinfo()
-            
-        }
+//        queryforpersonalinfo()
+//
+//        queryforids { () -> () in
+//
+//            self.queryforinfo()
+//
+//        }
         
         locked = false
        
@@ -162,6 +162,8 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     if functioncounter == snapDict.count {
                         
+                        videoids = videoids.sorted()
+
                         completed()
                         
                     }
@@ -196,6 +198,12 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 if var author2 = value?["Description"] as? String {
                     videodescriptions[each] = author2
                     
+                }
+                
+                if var author2 = value?["ProgramName"] as? String {
+                    self.programname.text = author2
+                    selectedprogramname = author2
+                    self.programname.addCharacterSpacing()
                 }
                 
                 if var author2 = value?["Times"] as? String {
@@ -295,7 +303,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 
             } else {
                 
-            let videourl = URL(string: videolinks[videoids[indexPath.row]]!)
+            let videourl = URL(string: videolinks[videoids[indexPath.row-1]]!)
             
             let avPlayer = AVPlayer(url: videourl! as URL)
             
@@ -363,7 +371,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
       
         
-        if videolinks.count >= indexPath.row-1 {
+        if thumbnails.count >= indexPath.row-1 {
             
             if indexPath.row != 0 {
 //                let rect : CGRect = CGRect(x: cell.thumbnail.bounds.minX, y: cell.thumbnail.bounds.minY, width: cell.thumbnail.bounds.width, height: cell.thumbnail.bounds.height)
@@ -371,7 +379,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 cell.tapcircle.alpha = 0
                 
                 cell.thumbnail.alpha = 1
-                cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
                 cell.minipic.alpha = 1
                 cell.programn.alpha = 1
                 cell.minipic.image = selectedimage
@@ -394,8 +402,8 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 cell.daylabel.alpha = 1
                 
-                cell.daylabel.text = videotitles[videoids[indexPath.row]]
-                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
+                cell.daylabel.text = videotitles[videoids[indexPath.row-1]]
+                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
                 cell.activityIndicator.alpha = 0
                 
             cell.playerView.player?.replaceCurrentItem(with: nil)
@@ -472,8 +480,6 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
     }
     @IBAction func tapLogout(_ sender: Any) {
         
-        try! Auth.auth().signOut()
-        
-        self.performSegue(withIdentifier: "LogoutFromProfile", sender: self)
+       
     }
 }

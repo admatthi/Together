@@ -31,7 +31,7 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
     
     @IBOutlet weak var HEADERLABEL: UILabel!
     
-    @IBOutlet weak var pdtf: UITextField!
+    @IBOutlet weak var pdtf: UITextView!
     @IBOutlet weak var pntf: UITextField!
     @IBOutlet weak var pn2tf: UITextField!
     
@@ -42,6 +42,19 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
     @IBOutlet weak var pricelabel: UILabel!
     @IBOutlet weak var domainlabel: UILabel!
     
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        if textView.textColor == UIColor.lightGray {
+//            textView.text = nil
+//            textView.textColor = UIColor.black
+//        }
+//    }
+//
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Your program bio"
+            textView.textColor = UIColor.lightGray
+        }
+    }
     @IBAction func tapDone(_ sender: Any) {
         
         email = "\(emailtf.text!)"
@@ -82,6 +95,12 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
     @IBOutlet weak var tapadd: UIButton!
     @IBOutlet weak var profileimage: UIImageView!
 
+    @IBAction func tapLogout(_ sender: Any) {
+        
+        try! Auth.auth().signOut()
+        
+        self.performSegue(withIdentifier: "Logout4", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +131,7 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
         
         self.addLineToView(view: emailtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
-        
+
         
             nametf.text = selectedname
         
