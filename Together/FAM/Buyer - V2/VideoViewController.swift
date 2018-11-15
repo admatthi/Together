@@ -1,8 +1,8 @@
 //
-//  EditProfileViewController.swift
+//  VideoViewController.swift
 //  Together
 //
-//  Created by Alek Matthiessen on 11/12/18.
+//  Created by Alek Matthiessen on 11/15/18.
 //  Copyright © 2018 AA Tech. All rights reserved.
 //
 
@@ -15,52 +15,38 @@ import FirebaseAuth
 import FBSDKCoreKit
 import AVFoundation
 
-class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate   {
+var selectedvideoid = String()
 
+class VideoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBAction func tapBack(_ sender: Any) {
+        
+                self.dismiss(animated: true, completion: {
+        
+                })
+    }
+    
     @IBOutlet weak var programname: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         lowercasename = selectedname
-
-        collectionView.alpha = 0
-        activityIndicator.alpha = 1
+        
+        selectedname = selectedname.uppercased()
+        
         activityIndicator.color = mypink
+
         activityIndicator.startAnimating()
-        
-        selectedprogramname = selectedprogramname.uppercased()
-        
-        programname.text = selectedname.uppercased()
+        activityIndicator.alpha = 1
+        collectionView.alpha = 0
+        programname.text = selectedname
         programname.addCharacterSpacing()
-        
-        
         //        tableView.rowHeight = UITableViewAutomaticDimension
         
         //        cta.text = "Join \(firstname)'s FAM"
         
         ref = Database.database().reference()
         
-//        queryforpersonalinfo()
-//
-//        queryforids { () -> () in
-//
-//            self.queryforinfo()
-//
-//        }
-        
-        locked = false
-       
-        
-        
-        
-        // Do any additional setup after loading the view.
-    }
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        ref = Database.database().reference()
-
         
         queryforids { () -> () in
             
@@ -68,11 +54,62 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             
         }
         
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+            
+            locked = true
+            
+        } else {
+            
+            locked = true
+            
+            uid = (Auth.auth().currentUser?.uid)!
+            
+            queryforpurchased()
+            
+        }
+        
+        
+        
+        // Do any additional setup after loading the view.
     }
     
-    
-
-    @IBOutlet weak var tableView: UITableView!
+    func queryforpurchased() {
+        
+        var functioncounter = 0
+        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    if ids == selectedid {
+                        
+                        locked = false
+                        
+                    } else {
+                        
+                        locked = true
+                    }
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        //                        self.tableView.reloadData()
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
+    }
     
     func queryforids(completed: @escaping (() -> ()) ) {
         
@@ -84,7 +121,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         videotitles.removeAll()
         thumbnails.removeAll()
         
-        ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Influencers").child(selectedid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -101,7 +138,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                     if functioncounter == snapDict.count {
                         
                         videoids = videoids.sorted()
-
+                        
                         completed()
                         
                     }
@@ -116,6 +153,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     var thumbnails = [String:UIImage]()
     var videotitles = [String:String]()
+    
     func queryforinfo() {
         
         var functioncounter = 0
@@ -123,29 +161,19 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         for each in videoids {
             
             
-            ref?.child("Influencers").child(uid).child("Plans").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("Influencers").child(selectedid).child("Plans").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
                 if var author2 = value?["URL"] as? String {
                     videolinks[each] = author2
                     
-                
+                    
+                    
                 }
                 
                 if var author2 = value?["Description"] as? String {
                     videodescriptions[each] = author2
-                    
-                }
-                
-                if var author2 = value?["ProgramName"] as? String {
-                    self.programname.text = author2
-                    selectedprogramname = author2
-                    self.programname.addCharacterSpacing()
-                }
-                
-                if var author2 = value?["Times"] as? String {
-                    videotimes[each] = author2
                     
                 }
                 
@@ -179,7 +207,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             
         }
     }
+    @IBOutlet weak var tableView: UITableView!
     /*
+     @IBOutlet weak var collectionView: UICollectionView!
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -188,69 +218,76 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
      // Pass the selected object to the new view controller.
      }
      */
+    @IBOutlet weak var collectionView: UICollectionView!
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
-//
-//        cell.playerView.player?.pause()
-//
-////    }
-//    func createThumbnailOfVideoFromRemoteUrl(url: String) -> UIImage? {
-//        let asset = AVAsset(url: URL(string: url)!)
-//        let assetImgGenerate = AVAssetImageGenerator(asset: asset)
-//        assetImgGenerate.appliesPreferredTrackTransform = true
-//        //Can set this to improve performance if target size is known before hand
-//        //assetImgGenerate.maximumSize = CGSize(width,height)
-//        let time = CMTimeMakeWithSeconds(1.0, 600)
-//        do {
-//            let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
-//            let thumbnail = UIImage(cgImage: img)
-//
-//            thumbnails[url] = thumbnail
-//
-//            return thumbnail
-//        } catch {
-//            print(error.localizedDescription)
-//            return nil
-//        }
-//    }
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    func createThumbnailOfVideoFromRemoteUrl(url: String) -> UIImage? {
+        let asset = AVAsset(url: URL(string: url)!)
+        let assetImgGenerate = AVAssetImageGenerator(asset: asset)
+        assetImgGenerate.appliesPreferredTrackTransform = true
+        //Can set this to improve performance if target size is known before hand
+        //assetImgGenerate.maximumSize = CGSize(width,height)
+        let time = CMTimeMakeWithSeconds(1.0, 600)
+        do {
+            let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
+            let thumbnail = UIImage(cgImage: img)
+            
+            thumbnails[url] = thumbnail
+            
+            return thumbnail
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        if videolinks.count > 0 {
+            
+            return videolinks.count
+            
+        } else {
+            
+            return 1
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
             
             selectedtitle = videotitles[videoids[indexPath.row]]!
+
             
-            
-            self.performSegue(withIdentifier: "EditToPurchase", sender: self)
-            
+            self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
+
         } else {
             
             selectedvideo = videolinks[videoids[indexPath.row]]!
             
             selectedtitle = videotitles[videoids[indexPath.row]]!
-            self.performSegue(withIdentifier: "EditToWatch", sender: self)
+            self.performSegue(withIdentifier: "VideoToWatch", sender: self)
         }
         
         
     }
+ 
     
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if thumbnails.count > 0 {
-            
-            return thumbnails.count
-            
+        
+        return thumbnails.count
+        
         } else {
-            
+        
             return 0
         }
-        
+    
     }
     
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
@@ -273,7 +310,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             activityIndicator.stopAnimating()
             
             cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
-            
+
         } else {
             
             
@@ -282,27 +319,24 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         return cell
     }
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var buttonspressedup = [String:String]()
+    
+    @objc func tapJoin(sender: UIButton){
+        
+        let buttonTag = sender.tag
+        
+        
+        self.performSegue(withIdentifier: "SaleToBuy", sender: self)
+    }
+    
     @objc func tapDown(sender: UIButton){
+        let buttonTag = sender.tag
         
-      self.performSegue(withIdentifier: "EditToUpload", sender: self)
         
-        
+        //            tableView.reloadData()
     }
     
-    @objc func tapStory(sender: UIButton){
-        
-        selectedid = uid
-        
-        self.performSegue(withIdentifier: "InfluencerToPurchase", sender: self)
-        
-    }
-    
-  
-
-    
-    @IBAction func tapLogout(_ sender: Any) {
-        
-       
-    }
 }
+
+

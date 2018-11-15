@@ -23,8 +23,15 @@ var yourprogramname = String()
 var mythumbnail = UIImage()
 var yourpropic = UIImage()
 class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+    @IBOutlet weak var loadinglabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func tapShare(_ sender: Any) {
+        
+        activityIndicator.alpha = 1
+        activityIndicator.color = mypink
+        activityIndicator.startAnimating()
+        loadinglabel.alpha = 1
         
         if videoURL != nil {
         let data = Data()
@@ -34,7 +41,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 //        let localFile  = URL(string: )!
 
 
-        if tv.text != "" && tv2.text != "" {
+        if tv2.text != "" {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let currentUser = Auth.auth().currentUser
@@ -88,7 +95,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(downloadURL)
                 
                 let mystring2 = downloadURL.absoluteString
-            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Description" : self.tv.text!, "Title" : self.tv2.text!])
+            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : self.tv2.text!])
 
                 self.loadthumbnail()
                 
@@ -154,6 +161,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 let mystring2 = downloadURL.absoluteString
                 ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Thumbnail" : mystring2])
+                self.activityIndicator.alpha = 0
+                self.activityIndicator.stopAnimating()
+                self.loadinglabel.alpha = 0
                 
                 self.nextViewNumber = 1
                 self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
@@ -209,9 +219,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             playerView.playerLayer.player = avPlayer
             
             getThumbnailFrom(path: videoURL as! URL)
+            tv2.alpha = 1
 
-
-//            playerView.player?.play()
+            playerView.player?.play()
 
             
         } catch let error {
@@ -276,6 +286,18 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
 
+    @IBOutlet weak var headerlabel: UILabel!
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        if playerView.player?.isPlaying == true {
+            
+            playerView.player?.pause()
+            
+        } else {
+            playerView.player?.play()
+            
+        }
+    }
     
     override func viewDidLoad() {
         
@@ -285,16 +307,16 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         present(imagePickerController, animated: true, completion: nil)
         
         ref = Database.database().reference()
-
-        tv.text = "Write a caption..."
-        tv.textColor = UIColor.lightGray
-        tv2.text = "Title"
+    
+        self.activityIndicator.alpha = 0
+        self.loadinglabel.alpha = 0
+        tv2.text = "Write your title.."
         tv2.textColor = UIColor.lightGray
-        tapplay.alpha = 1
+//        tapplay.alpha = 1
         queryforinfo()
-        programname.addCharacterSpacing()
+        headerlabel.text = "UPLOAD"
+        headerlabel.addCharacterSpacing()
         self.addLineToView(view: tv2, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-        self.addLineToView(view: tv, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
 
 //        propic.layer.masksToBounds = false
 //        propic.layer.cornerRadius = propic.frame.height/2
@@ -306,6 +328,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
         strDate = dateFormatter.string(from: date)
+        tv2.alpha = 0
         
      
         //            imgView.image = thumbnail
@@ -342,7 +365,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             
 //            loadthumbnail()
 
-            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 375)
+            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 667)
             
             return mythumbnail
             
@@ -484,7 +507,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor.white
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
     }
 }

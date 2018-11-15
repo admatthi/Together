@@ -48,6 +48,10 @@
 		9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795E521656B5700211327 /* TogetherUITests.swift */; };
 		9DB795F421656CDF00211327 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795F321656CDF00211327 /* LogViewController.swift */; };
 		9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795F521656CEB00211327 /* LogTableViewCell.swift */; };
+		9DB8ADFE219DD14D00D7D707 /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8ADFD219DD14D00D7D707 /* WatchViewController.swift */; };
+		9DB8AE00219DDB0300D7D707 /* PeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8ADFF219DDB0300D7D707 /* PeopleCollectionViewCell.swift */; };
+		9DB8AE03219DE6C000D7D707 /* VideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8AE02219DE6C000D7D707 /* VideosCollectionViewCell.swift */; };
+		9DB8AE05219DE79200D7D707 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8AE04219DE79200D7D707 /* VideoViewController.swift */; };
 		9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B27F21910AB900F56A1A /* ProjectTableViewCell.swift */; };
 		9DC0B28221920DC500F56A1A /* PlayerViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B28121920DC500F56A1A /* PlayerViewClass.swift */; };
 		9DC0B2852193553300F56A1A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */; };
@@ -136,6 +140,10 @@
 		9DB795E721656B5700211327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DB795F321656CDF00211327 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		9DB795F521656CEB00211327 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		9DB8ADFD219DD14D00D7D707 /* WatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
+		9DB8ADFF219DDB0300D7D707 /* PeopleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DB8AE02219DE6C000D7D707 /* VideosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DB8AE04219DE79200D7D707 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		9DC0B27F21910AB900F56A1A /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		9DC0B28121920DC500F56A1A /* PlayerViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewClass.swift; sourceTree = "<group>"; };
 		9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTableViewCell.swift; sourceTree = "<group>"; };
@@ -326,24 +334,36 @@
 			path = TogetherUITests;
 			sourceTree = "<group>";
 		};
+		9DB8AE01219DDB9400D7D707 /* Buyer - V2 */ = {
+			isa = PBXGroup;
+			children = (
+				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
+				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
+				9DB8ADFF219DDB0300D7D707 /* PeopleCollectionViewCell.swift */,
+				9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */,
+				9DB8AE02219DE6C000D7D707 /* VideosCollectionViewCell.swift */,
+				9DB8AE04219DE79200D7D707 /* VideoViewController.swift */,
+				9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */,
+				9DB8ADFD219DD14D00D7D707 /* WatchViewController.swift */,
+			);
+			path = "Buyer - V2";
+			sourceTree = "<group>";
+		};
 		9DC0B2832193550B00F56A1A /* FAM */ = {
 			isa = PBXGroup;
 			children = (
+				9DB8AE01219DDB9400D7D707 /* Buyer - V2 */,
 				9D46D843219B2142006CE94C /* Sign Up */,
-				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
 				9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */,
-				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
 				9D5FD08A21949795001B40E1 /* AboutViewController.swift */,
 				9DB4D29321965344008A57FD /* VideoPlayerView.swift */,
 				9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */,
 				9DC0B28E219360C100F56A1A /* PlansTableViewCell.swift */,
 				9DC0B290219360EC00F56A1A /* PlansViewController.swift */,
-				9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */,
 				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
 				9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */,
 				9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */,
 				9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */,
-				9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */,
 				9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */,
 				9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */,
 			);
@@ -361,7 +381,7 @@
 				9DB795BE21656B5300211327 /* Sources */,
 				9DB795BF21656B5300211327 /* Frameworks */,
 				9DB795C021656B5300211327 /* Resources */,
-				341B223E49AF2FE17FF7CC7A /* [CP] Embed Pods Frameworks */,
+				E90F3C48C9DF829EE90877B3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -490,40 +510,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		341B223E49AF2FE17FF7CC7A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Together/Pods-Together-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Purchases/Purchases.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Purchases.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Together/Pods-Together-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		425D1238C4E5058509E4F7A3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +564,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E90F3C48C9DF829EE90877B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Together/Pods-Together-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Purchases/Purchases.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Purchases.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Together/Pods-Together-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -593,6 +613,7 @@
 				9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */,
 				9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */,
 				9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */,
+				9DB8ADFE219DD14D00D7D707 /* WatchViewController.swift in Sources */,
 				9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */,
 				9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */,
 				9DC0B28221920DC500F56A1A /* PlayerViewClass.swift in Sources */,
@@ -602,9 +623,11 @@
 				9DC0B2872193556300F56A1A /* ExploreViewController.swift in Sources */,
 				9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */,
 				9DB795C821656B5300211327 /* ViewController.swift in Sources */,
+				9DB8AE05219DE79200D7D707 /* VideoViewController.swift in Sources */,
 				9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */,
 				9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */,
 				9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */,
+				9DB8AE00219DDB0300D7D707 /* PeopleCollectionViewCell.swift in Sources */,
 				9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */,
 				9D0F86A221710A6400AE5F18 /* Constants.swift in Sources */,
 				9DC0B2852193553300F56A1A /* ExploreTableViewCell.swift in Sources */,
@@ -624,6 +647,7 @@
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
 				9D5DBE3C219A26B8000C46FC /* RevenueViewController.swift in Sources */,
 				9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */,
+				9DB8AE03219DE6C000D7D707 /* VideosCollectionViewCell.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
 				9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */,
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,

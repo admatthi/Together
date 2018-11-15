@@ -163,10 +163,16 @@ class RevenueViewController: UIViewController {
                     self.tapshare.alpha = 1
                 }
                 
+                if var views = value?["Name"] as? String {
+                    
+                    selectedname = views
+                }
+                
                 if var views = value?["ProgramName"] as? String {
                     
                     selectedprogramname = views
                     self.programname.text = selectedprogramname
+                    
                 } else {
                     
                     selectedprogramname = "-"

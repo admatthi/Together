@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
        
         let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
-//        
+//
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
 

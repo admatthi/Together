@@ -25,11 +25,13 @@ var myimages = [String:UIImage]()
 var mypink = UIColor(red:0.96, green:0.10, blue:0.47, alpha:1.0)
 
 
-class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class MyFamViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
 
     @IBOutlet weak var headerlabel: UILabel!
     @IBOutlet weak var errorlabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +45,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
             // Do smth if user is not logged in
             
             
-        tableView.alpha = 0
+        collectionView.alpha = 0
         errorlabel.alpha = 1
             
             
@@ -77,7 +79,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         mytoppics.removeAll()
         myimages.removeAll()
         
-        tableView.alpha = 0
+        collectionView.alpha = 0
         errorlabel.alpha = 1
         activityIndicator.alpha = 0
         ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -91,7 +93,7 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let ids = each.key
                     
                     myprojectids.append(ids)
-                    self.tableView.alpha = 1
+                    self.collectionView.alpha = 1
                     self.errorlabel.alpha = 0
                     functioncounter += 1
                     
@@ -183,8 +185,8 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
-                    self.tableView.alpha = 1
-                    self.tableView.reloadData()
+                    self.collectionView.alpha = 1
+                    self.collectionView.reloadData()
                     
                 }
                 
@@ -194,58 +196,54 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        selectedid = myprojectids[indexPath.row]
-        selectedimage = myimages[myprojectids[indexPath.row]]!
-        selectedname = mynames[myprojectids[indexPath.row]]!
-        selectedpitch = mydescriptions[myprojectids[indexPath.row]]!
-        selectedprice = myprices[myprojectids[indexPath.row]]!
-        //        selectedprogrammynames = myprogramnames[myprojectids[indexPath.row]]!
-        selectedsubs = subscribers[myprojectids[indexPath.row]]!
-        selectedprogramname = myprogramnames[myprojectids[indexPath.row]]!
+        selectedid = projectids[indexPath.row]
+        selectedimage = images[projectids[indexPath.row]]!
+        selectedname = names[projectids[indexPath.row]]!
+        selectedpitch = descriptions[projectids[indexPath.row]]!
+        selectedprice = prices[projectids[indexPath.row]]!
+        //        selectedprogramnames = programnames[projectids[indexPath.row]]!
+        selectedsubs = subscribers[projectids[indexPath.row]]!
+        selectedprogramname = programnames[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
+        
     }
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if mynames.count > 0 {
+        if images.count > 0 {
             
-            return mynames.count
-
+            return images.count
+            
         } else {
             
             return 0
-            
         }
-        
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Explore", for: indexPath) as! ExploreTableViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "People", for: indexPath) as! PeopleCollectionViewCell
         
-        cell.selectionStyle = .none
-        if mynames.count > indexPath.row {
+        //        cell.subscriber.tag = indexPath.row
+        
+        if images.count > indexPath.row{
+            
             
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
+            //            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             
-            cell.layer.cornerRadius = 3.0
-            cell.layer.masksToBounds = true
-            cell.name.text = mynames[myprojectids[indexPath.row]]
-            cell.descriptionlabel.text = mydescriptions[myprojectids[indexPath.row]]
-            cell.programname.text = myprogramnames[myprojectids[indexPath.row]]
-            cell.name.text = names[myprojectids[indexPath.row]]
-            cell.profilepic.image = myimages[myprojectids[indexPath.row]]
-            cell.subscribercount.text = "\(subscribers[myprojectids[indexPath.row]]!) subscribers"
-            cell.toppic.image = mytoppics[myprojectids[indexPath.row]]
-            cell.price.text = "$\(myprices[myprojectids[indexPath.row]]!)/mo"
-            cell.subscriber.setTitle("See More", for: .normal)
+            cell.thumbnail.layer.cornerRadius = 10.0
+            cell.thumbnail.layer.masksToBounds = true
+            cell.textlabel.text = names[projectids[indexPath.row]]
             
+            cell.thumbnail.image = images[projectids[indexPath.row]]
             
         } else {
             
@@ -255,7 +253,6 @@ class MyFamViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         return cell
     }
-    
     /*
      // MARK: - Navigation
      

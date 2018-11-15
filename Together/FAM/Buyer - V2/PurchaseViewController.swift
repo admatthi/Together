@@ -88,12 +88,19 @@ class PurchaseViewController: UIViewController {
                     
                     let videourl = URL(string: self.purchasestring)
                     
-                    let avPlayer = AVPlayer(url: videourl! as URL)
-                    
+                    self.avPLayer = AVPlayer(url: videourl! as URL)
+                    self.avPLayer.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+
                     self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
                     
-                    self.playerView.playerLayer.player = avPlayer
+                    self.playerView.playerLayer.player = self.avPLayer
+                   
+                   
                     self.playerView.player?.play()
+                    self.loadingscreen.alpha = 0
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.alpha = 0
+                    
                     
                 }
                 
@@ -102,14 +109,33 @@ class PurchaseViewController: UIViewController {
             
     }
     
+    var avPLayer = AVPlayer()
+    
     @IBOutlet weak var playerView: PlayerViewClass!
     @IBOutlet weak var tapterms: UIButton!
     @IBOutlet weak var tapbuy: UIButton!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingscreen: UILabel!
+    @IBOutlet weak var influencername: UILabel!
+
+        @IBOutlet weak var videotitle: UILabel!
+    @IBOutlet weak var profileimage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadingscreen.alpha = 1
+        activityIndicator.color = mypink
+        activityIndicator.startAnimating()
+        activityIndicator.alpha = 1
         ref = Database.database().reference()
-        
+        profileimage.layer.masksToBounds = false
+        profileimage.layer.cornerRadius = profileimage.frame.height/2
+        profileimage.clipsToBounds = true
+        influencername.text = lowercasename
+        videotitle.text = selectedtitle
+        profileimage.image = selectedimage
+
         tapbuy.layer.cornerRadius = 22.0
         tapbuy.layer.masksToBounds = true
         
@@ -142,8 +168,20 @@ class PurchaseViewController: UIViewController {
         //        whitelabel.layer.cornerRadius = 10.0
         //        whitelabel.layer.masksToBounds = true
         
-        
+     
     
 }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "rate" {
+            
+            print(avPLayer.rate)
+            
+            if avPLayer.rate > 0.5 {
+               
+                
+            }
+        }
+    }
 
 }
