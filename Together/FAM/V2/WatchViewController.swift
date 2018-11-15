@@ -24,19 +24,15 @@ class WatchViewController: UIViewController {
                 })
         
     }
-    @IBOutlet weak var titlel: UILabel!
     
     @IBOutlet weak var playerView: PlayerViewClass!
-    @IBOutlet weak var descriptionl: UILabel!
-    @IBOutlet weak var avPlayer: UIView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = Database.database().reference()
 
-        titlel.text = selectedtitlel
-        descriptionl.text = selectedescriptionl
         
         let videourl = URL(string: selectedvideo)
         

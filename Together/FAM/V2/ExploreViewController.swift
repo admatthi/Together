@@ -25,9 +25,10 @@ var projectids = [String]()
 var selectedimage = UIImage()
 var toppics = [String:UIImage]()
 
-class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+   
+    
 
-    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,7 +39,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         activityIndicator.alpha = 1
         activityIndicator.startAnimating()
-        tableView.alpha = 0
+        collectionView.alpha = 0
         
         queryforids { () -> () in
             
@@ -57,7 +58,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         names.removeAll()
         programnames.removeAll()
         prices.removeAll()
-       toppics.removeAll()
+        toppics.removeAll()
         ref?.child("Influencers").queryOrdered(byChild: "Approved").queryEqual(toValue: "True").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -148,8 +149,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
-                    self.tableView.reloadData()
-                    self.tableView.alpha = 1
+                    self.collectionView.reloadData()
+                    self.collectionView.alpha = 1
                 }
                 
                 
@@ -158,62 +159,58 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var headerlabel: UILabel!
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         selectedid = projectids[indexPath.row]
         selectedimage = images[projectids[indexPath.row]]!
         selectedname = names[projectids[indexPath.row]]!
         selectedpitch = descriptions[projectids[indexPath.row]]!
         selectedprice = prices[projectids[indexPath.row]]!
-//        selectedprogramnames = programnames[projectids[indexPath.row]]!
+        //        selectedprogramnames = programnames[projectids[indexPath.row]]!
         selectedsubs = subscribers[projectids[indexPath.row]]!
         selectedprogramname = programnames[projectids[indexPath.row]]!
         
-        self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.performSegue(withIdentifier: "ExploreToVideos", sender: self)
         
-        if subscribers.count > 0 {
+    }
+ 
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if images.count > 0 {
             
-            return subscribers.count
-
+            return images.count
+            
         } else {
             
             return 0
         }
         
     }
+    
+  
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Explore", for: indexPath) as! ExploreTableViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "People", for: indexPath) as! PeopleCollectionViewCell
         
-        cell.subscriber.tag = indexPath.row
+//        cell.subscriber.tag = indexPath.row
         
-        cell.selectionStyle = .none
-        if names.count > indexPath.row && subscribers.count > indexPath.row {
+        if images.count > indexPath.row{
             
             
-//            cell.layer.borderWidth = 1.0
-//            cell.layer.borderColor = UIColor.lightGray.cgColor
-            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
-
-            cell.layer.cornerRadius = 3.0
-            cell.layer.masksToBounds = true
-            cell.name.text = names[projectids[indexPath.row]]
-            cell.descriptionlabel.text = descriptions[projectids[indexPath.row]]
-            cell.programname.text = programnames[projectids[indexPath.row]]
-            cell.name.text = names[projectids[indexPath.row]]
-            cell.profilepic.image = images[projectids[indexPath.row]]
-            cell.subscribercount.text = "\(subscribers[projectids[indexPath.row]]!)"
-//            cell.toppic.image = toppics[projectids[indexPath.row]]
-            cell.price.text = "$\(prices[projectids[indexPath.row]]!)"
+            //            cell.layer.borderWidth = 1.0
+            //            cell.layer.borderColor = UIColor.lightGray.cgColor
+//            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             
-            
+            cell.thumbnail.layer.cornerRadius = 10.0
+            cell.thumbnail.layer.masksToBounds = true
+            cell.textlabel.text = names[projectids[indexPath.row]]
+     
+            cell.thumbnail.image = images[projectids[indexPath.row]]
             
         } else {
             
@@ -224,12 +221,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-            //            return 425
-            return UITableViewAutomaticDimension
-            
-    }
+  
     
     @objc func tapJoin(sender: UIButton){
         

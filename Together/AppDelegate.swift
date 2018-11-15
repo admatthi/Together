@@ -60,31 +60,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        var tabBar: UITabBarController =
 
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
-       
-        let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
+//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+//       
+//        let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
+////        
+//        if Auth.auth().currentUser == nil {
+//            // Do smth if user is not logged in
+//
+//
+//        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = initialViewControlleripad
+//        self.window?.makeKeyAndVisible()//
 //        
-        if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
-
-
-        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewControlleripad
-        self.window?.makeKeyAndVisible()//
-        
-        
-        } else {
-
-            let currentUser = Auth.auth().currentUser
-    
-            uid = (currentUser?.uid)!
-            queryforinfo()
-          
-
-        }
-    
+//        
+//        } else {
+//
+//            let currentUser = Auth.auth().currentUser
+//    
+//            uid = (currentUser?.uid)!
+//            queryforinfo()
+//          
+//
+//        }
+//    
         return true
     }
     

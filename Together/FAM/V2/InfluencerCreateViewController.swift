@@ -14,7 +14,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 
-class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
+class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate{
 
     var email = String()
     var password = String()
@@ -25,7 +25,19 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
     var inputprogramname = String()
     var phonenumber = String()
     
+        func textViewDidBeginEditing(_ textView: UITextView) {
+            if textView.textColor == UIColor.lightGray {
+                textView.text = nil
+                textView.textColor = UIColor.white
+            }
+        }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "What would you like to create?"
+            textView.textColor = UIColor.lightGray
+        }
+    }
     @IBOutlet weak var tapsign: UIButton!
     
     @IBAction func tapSignUp(_ sender: Any) {
@@ -40,7 +52,6 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
         inputdescription = "\(pdtf.text!)"
         inputprice = "\(pricetf.text!)"
         inputprogramname = "\(pn2tf.text!)"
-        phonenumber = "\(pntf.text!)"
         errorlabel.alpha = 0
         domainz = domainz.replacingOccurrences(of: " ", with: "-")
 //        if email != "" && password != "" && name != "" && domainz != "" {
@@ -63,9 +74,6 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
                 nametf.alpha = 0
                 tapsign.alpha = 0
                 pdtf.alpha = 0
-                pn2tf.alpha = 0
-                pdtf.alpha = 0
-                pntf.alpha = 0
                 pricetf.alpha = 0
             }
 
@@ -84,8 +92,8 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var domaintf: UITextField!
     
+    @IBOutlet weak var pdtf: UITextView!
     @IBOutlet weak var pricetf: UITextField!
-    @IBOutlet weak var pdtf: UITextField!
     @IBOutlet weak var pntf: UITextField!
     @IBOutlet weak var pn2tf: UITextField!
 
@@ -204,7 +212,6 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
                 self.pdtf.alpha = 0
                 self.pn2tf.alpha = 0
                 self.pdtf.alpha = 0
-               self.pntf.alpha = 0
                 self.pricetf.alpha = 0
                 self.demo.alpha = 0
             }
@@ -220,6 +227,8 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
         
+        pdtf.text = "What would you like to create?"
+        pdtf.textColor = UIColor.lightGray
         
         requestlabel.addCharacterSpacing()
         thankyou.alpha = 0
@@ -253,13 +262,10 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate {
         
         self.addLineToView(view: passwordtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
-                self.addLineToView(view: pntf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
                 self.addLineToView(view: pdtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
-                self.addLineToView(view: pn2tf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
-                self.addLineToView(view: pdtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
                 self.addLineToView(view: nametf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
