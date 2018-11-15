@@ -25,6 +25,7 @@ class RevenueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        HEADERLABEL.addCharacterSpacing()
         tapshare.alpha = 0
         nofollows.alpha = 0
         ref = Database.database().reference()
@@ -93,6 +94,7 @@ class RevenueViewController: UIViewController {
         realvalue.text = yoursubscribers
     }
     @IBOutlet weak var taptotal: UIButton!
+    @IBOutlet weak var HEADERLABEL: UILabel!
     @IBAction func tapTotal(_ sender: Any) {
         
         taptotal.alpha = 1

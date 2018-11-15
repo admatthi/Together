@@ -21,6 +21,8 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedprogramname = selectedprogramname.uppercased()
+        programname.addCharacterSpacing()
         programname.text = selectedprogramname
         
         //        tableView.rowHeight = UITableViewAutomaticDimension
@@ -105,7 +107,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 if var views = value?["ProgramName"] as? String {
 
                     selectedprogramname = views
-                    self.programname.text = selectedprogramname
+//                    self.programname.text = selectedprogramname
                 }
                 
                 

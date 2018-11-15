@@ -33,7 +33,10 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        selectedprogramname = selectedprogramname.uppercased()
+        
         programname.text = selectedprogramname
+        programname.addCharacterSpacing()
 //        tableView.rowHeight = UITableViewAutomaticDimension
 
 //        cta.text = "Join \(firstname)'s FAM"
@@ -112,7 +115,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         videolinks.removeAll()
         videodescriptions.removeAll()
         thumbnails.removeAll()
-        
+        videotitles.removeAll()
         ref?.child("Influencers").child(selectedid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -142,7 +145,8 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     var thumbnails = [String:UIImage]()
-
+    var videotitles = [String:String]()
+    
     func queryforinfo() {
         
         var functioncounter = 0
@@ -166,8 +170,8 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                     
                 }
                 
-                if var author2 = value?["Times"] as? String {
-                    videotimes[each] = author2
+                if var author2 = value?["Title"] as? String {
+                    self.videotitles[each] = author2
                     
                 }
                 
@@ -229,8 +233,14 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-        return videolinks.count+1
-        
+        if videolinks.count > 0 {
+            
+            return videolinks.count + 1
+            
+        } else {
+            
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -250,7 +260,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
             if cell.playerView.player?.isPlaying == true {
                 
                 cell.playerView.player?.pause()
-                cell.thumbnail.alpha = 0
+                cell.thumbnail.alpha = 1
                 
             } else {
                 cell.thumbnail.alpha = 0
@@ -267,7 +277,38 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
         cell.activityIndicator.alpha = 1
         cell.selectionStyle = .none
-        if videolinks.count > indexPath.row-1 {
+        
+        if indexPath.row == 0 {
+            
+            cell.activityIndicator.alpha = 0
+            cell.daylabel.alpha = 0
+            
+            cell.minipic.alpha = 0
+            cell.programn.alpha = 0
+            cell.profilepic.alpha = 1
+            cell.pitch.alpha = 1
+            cell.tapjoin.alpha = 1
+            cell.subs.alpha = 1
+            cell.dollers.alpha = 1
+            cell.name.alpha = 1
+            cell.sublabel.alpha = 1
+            cell.monthlylabel.alpha = 1
+            cell.profilepic.image = selectedimage
+            //                cell.profilepic.layer.cornerRadius = 5.0
+            //                cell.profilepic.layer.masksToBounds = true
+            cell.pitch.text = selectedpitch
+            cell.subs.text = selectedsubs
+            cell.dollers.text = "$\(selectedprice)"
+            cell.name.text = selectedname
+            cell.playerView.alpha = 0
+            //                cell.thumbnailpreview.alpha = 0
+            cell.descriptionlabel.text = ""
+            cell.descriptionlabel.alpha = 0
+            cell.thumbnail.alpha = 0
+            cell.tapcircle.alpha = 1
+        }
+        
+        if videolinks.count > indexPath.row {
             
             
             cell.tapjoin.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
@@ -275,38 +316,15 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
 
             cell.tapjoin.tag = indexPath.row
             cell.tapcircle.tag = indexPath.row
+            cell.programn.addCharacterSpacing()
             if indexPath.row == 0 {
                 
-                cell.activityIndicator.alpha = 0
-                cell.daylabel.alpha = 0
                 
-                cell.minipic.alpha = 0
-                cell.programn.alpha = 0
-                cell.profilepic.alpha = 1
-                cell.pitch.alpha = 1
-                cell.tapjoin.alpha = 1
-                cell.subs.alpha = 1
-                cell.dollers.alpha = 1
-                cell.name.alpha = 1
-                cell.sublabel.alpha = 1
-                cell.monthlylabel.alpha = 1
-                cell.profilepic.image = selectedimage
-//                cell.profilepic.layer.cornerRadius = 5.0
-//                cell.profilepic.layer.masksToBounds = true
-                cell.pitch.text = selectedpitch
-                cell.subs.text = selectedsubs
-                cell.dollers.text = "$\(selectedprice)"
-                cell.name.text = selectedname
-                cell.playerView.alpha = 0
-//                cell.thumbnailpreview.alpha = 0
-                cell.descriptionlabel.text = ""
-                cell.descriptionlabel.alpha = 0
-                cell.thumbnail.alpha = 0
-                cell.tapcircle.alpha = 1
             } else {
+                
                 cell.tapcircle.alpha = 0
                 cell.thumbnail.alpha = 1
-                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
                 cell.minipic.alpha = 1
                 cell.programn.alpha = 1
                 cell.minipic.image = selectedimage
@@ -328,8 +346,10 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 cell.daylabel.alpha = 1
                 
-                cell.daylabel.text = "Day \(indexPath.row)"
-                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
+                cell.daylabel.alpha = 1
+                
+                cell.daylabel.text = videotitles[videoids[indexPath.row]]
+                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
                 cell.activityIndicator.alpha = 0
 
 //                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]

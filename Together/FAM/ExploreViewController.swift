@@ -115,7 +115,6 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if var views = value?["Price"] as? String {
                     prices[each] = views
-                    functioncounter += 1
 
                 }
                 
@@ -133,11 +132,12 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                     images[each] = selectedimage
 
-                    
+                    functioncounter += 1
+
                 }
                 
                 
-                toppics[each] = UIImage(named: "\(each)pic")
+//                toppics[each] = UIImage(named: "\(each)pic")
                 
                 
                 print(functioncounter)
@@ -210,7 +210,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.name.text = names[projectids[indexPath.row]]
             cell.profilepic.image = images[projectids[indexPath.row]]
             cell.subscribercount.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
-            cell.toppic.image = toppics[projectids[indexPath.row]]
+//            cell.toppic.image = toppics[projectids[indexPath.row]]
             cell.price.text = "$\(prices[projectids[indexPath.row]]!)/mo"
             
             

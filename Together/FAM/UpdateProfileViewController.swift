@@ -29,6 +29,7 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
     var inputprogramname = String()
     var phonenumber = String()
     
+    @IBOutlet weak var HEADERLABEL: UILabel!
     
     @IBOutlet weak var pdtf: UITextField!
     @IBOutlet weak var pntf: UITextField!
@@ -52,44 +53,53 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
         uploadimage()
 
     }
+    
+    let imagePicker = UIImagePickerController()
+
     @IBAction func tapAdd(_ sender: Any) {
         
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-//        imagePickerController.mediaTypes = ["public.movie"]
-        present(imagePickerController, animated: true, completion: nil)
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
         
     }
-    
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
-        self.dismiss(animated: true, completion: { () -> Void in
+
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if var image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
-        })
-        
-        profileimage.image = image
-        selectedimage = image
+            image = cropToBounds(image: image, width: 40.0, height: 40.0)
+            profileimage.image = image
+            selectedimage = image
+            print("Success")
+            //save image
+            //display image
+        }
+        self.dismiss(animated: true, completion: nil)
     }
 
     
     @IBOutlet weak var tapadd: UIButton!
     @IBOutlet weak var profileimage: UIImageView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ref = Database.database().reference()
-
+        HEADERLABEL.addCharacterSpacing()
         profileimage.layer.masksToBounds = false
         profileimage.layer.cornerRadius = profileimage.frame.height/2
         profileimage.clipsToBounds = true
-        
+        imagePicker.delegate = self
         tapadd.layer.cornerRadius = tapadd.frame.height/2
         tapadd.clipsToBounds = true
         
         emailtf.delegate = self
         nametf.delegate = self
-        emailtf.becomeFirstResponder()
+//        emailtf.becomeFirstResponder()
         
-        
+        profileimage.image = selectedimage
         self.addLineToView(view: pntf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
         self.addLineToView(view: pdtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
@@ -116,7 +126,6 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
         // Do any additional setup after loading the view.
     }
     
-    var imagePickerController = UIImagePickerController()
 
     func uploadimage() {
         
@@ -177,6 +186,40 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
         }
     }
     
+    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
+        
+        let cgimage = image.cgImage!
+        let contextImage: UIImage = UIImage(cgImage: cgimage)
+        let contextSize: CGSize = contextImage.size
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        var cgwidth: CGFloat = CGFloat(width)
+        var cgheight: CGFloat = CGFloat(height)
+        
+        // See what size is longer and create the center off of that
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - contextSize.height) / 2)
+            posY = 0
+            cgwidth = contextSize.height
+            cgheight = contextSize.height
+        } else {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+            cgwidth = contextSize.width
+            cgheight = contextSize.width
+        }
+        
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
+        
+        // Create bitmap image from context using the rect
+        let imageRef: CGImage = cgimage.cropping(to: rect)!
+        
+        // Create a new image based on the imageRef and rotate back to the original orientation
+        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        
+        return image
+    }
+    
     @IBAction func tapBack(_ sender: Any) {
         
         self.dismiss(animated: true, completion: {
@@ -232,3 +275,4 @@ class UpdateProfileViewController: UIViewController, UITextFieldDelegate, UIImag
         }
     }
 }
+
