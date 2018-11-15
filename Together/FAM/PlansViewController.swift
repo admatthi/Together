@@ -26,6 +26,9 @@ var selectedname = String()
 var unlockedids = [String]()
 var locked = Bool()
 
+var selectedtitlel = String()
+var selectedescriptionl = String()
+var selectedvideo = String()
 
 class PlansViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
@@ -248,30 +251,14 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let cell = tableView.cellForRow(at: indexPath) as? PlansTableViewCell {
-            
-            let videourl = URL(string: videolinks[videoids[indexPath.row-1]]!)
-            
-            let avPlayer = AVPlayer(url: videourl! as URL)
-            
-            cell.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-            
-            cell.playerView.playerLayer.player = avPlayer
-            
-
-            
-            if cell.playerView.player?.isPlaying == true {
-                
-                cell.playerView.player?.pause()
-                cell.thumbnail.alpha = 1
-                
-            } else {
-                cell.thumbnail.alpha = 0
-                cell.playerView.player?.play()
-
-            }
-
-        }
+        selectedescriptionl = videodescriptions[videoids[indexPath.row-1]]!
+        selectedtitlel = videotitles[videoids[indexPath.row-1]]!
+        selectedvideo = videolinks[videoids[indexPath.row-1]]!
+        
+         
+        self.performSegue(withIdentifier: "Watch", sender: self)
+        
+           
     }
 
   
@@ -282,6 +269,10 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.selectionStyle = .none
          
         if indexPath.row == 0 {
+            
+//        cell.thumbnail.removeFromSuperview()  // this removes it from your view hierarchy
+           
+            cell.watchnow.alpha = 0
             
             cell.activityIndicator.alpha = 0
             cell.daylabel.alpha = 0
@@ -303,7 +294,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.subs.text = selectedsubs
             cell.dollers.text = "$\(selectedprice)"
             cell.name.text = selectedname
-            cell.playerView.alpha = 0
+//            cell.playerView.alpha = 0
             //                cell.thumbnailpreview.alpha = 0
             cell.descriptionlabel.text = ""
             cell.descriptionlabel.alpha = 0
@@ -323,7 +314,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.programn.addCharacterSpacing()
             
             if indexPath.row != 0 {
-                
+                cell.watchnow.alpha = 1
                 cell.tapcircle.alpha = 0
                 cell.thumbnail.alpha = 1
                 cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
@@ -331,7 +322,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.programn.alpha = 1
                 cell.minipic.image = selectedimage
                 cell.programn.text = selectedprogramname
-                cell.playerView.alpha = 1
+//                cell.playerView.alpha = 1
                 cell.profilepic.alpha = 0
                 cell.pitch.alpha = 0
                 cell.pitch.text = ""
@@ -396,16 +387,16 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-
-            return 220
-
-        } else {
-            
+//        if indexPath.row == 0 {
+//
+//            return 220
+//
+//        } else {
+        
 //            return 425
             return UITableViewAutomaticDimension
 
-        }
+//        }
     }
     
     var buttonspressedup = [String:String]()

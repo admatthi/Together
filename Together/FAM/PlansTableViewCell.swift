@@ -13,6 +13,7 @@ class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var tapjoin: UIButton!
     @IBOutlet weak var thumbnail: UIImageView!
     
+    @IBOutlet weak var watchnow: UIButton!
     @IBOutlet weak var monthlylabel: UILabel!
     @IBOutlet weak var sublabel: UILabel!
     @IBOutlet weak var pitch: UILabel!
