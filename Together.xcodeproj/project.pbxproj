@@ -60,6 +60,9 @@
 		9DC0B291219360EC00F56A1A /* PlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B290219360EC00F56A1A /* PlansViewController.swift */; };
 		9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */; };
 		9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */; };
+		A61B2110219E281100BDFD2B /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61B210F219E281100BDFD2B /* EmailViewController.swift */; };
+		A61B2112219E284800BDFD2B /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61B2111219E284800BDFD2B /* NameViewController.swift */; };
+		A61B2114219E289B00BDFD2B /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61B2113219E289B00BDFD2B /* PasswordViewController.swift */; };
 		A6F393ED219DBD2000A547A3 /* OverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F393EC219DBD2000A547A3 /* OverviewCollectionViewCell.swift */; };
 		A6F393EF219DBD7500A547A3 /* DomainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F393EE219DBD7500A547A3 /* DomainViewController.swift */; };
 		CDA65A340E0251A467ABD40B /* Pods_TogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AED522BDB9F8FBB8DE7FE7 /* Pods_TogetherUITests.framework */; };
@@ -152,6 +155,9 @@
 		9DC0B290219360EC00F56A1A /* PlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansViewController.swift; sourceTree = "<group>"; };
 		9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToReportViewController.swift; sourceTree = "<group>"; };
 		9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		A61B210F219E281100BDFD2B /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		A61B2111219E284800BDFD2B /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		A61B2113219E289B00BDFD2B /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		A6F393EC219DBD2000A547A3 /* OverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		A6F393EE219DBD7500A547A3 /* DomainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainViewController.swift; sourceTree = "<group>"; };
 		C5A42F47C5E03279E65B93BA /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +242,9 @@
 				9D5FD09021952BD5001B40E1 /* LoginViewController.swift */,
 				A6F393EC219DBD2000A547A3 /* OverviewCollectionViewCell.swift */,
 				A6F393EE219DBD7500A547A3 /* DomainViewController.swift */,
+				A61B210F219E281100BDFD2B /* EmailViewController.swift */,
+				A61B2111219E284800BDFD2B /* NameViewController.swift */,
+				A61B2113219E289B00BDFD2B /* PasswordViewController.swift */,
 			);
 			path = "Sign Up";
 			sourceTree = "<group>";
@@ -621,6 +630,7 @@
 				9DB795F421656CDF00211327 /* LogViewController.swift in Sources */,
 				9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */,
 				9DC0B2872193556300F56A1A /* ExploreViewController.swift in Sources */,
+				A61B2112219E284800BDFD2B /* NameViewController.swift in Sources */,
 				9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */,
 				9DB795C821656B5300211327 /* ViewController.swift in Sources */,
 				9DB8AE05219DE79200D7D707 /* VideoViewController.swift in Sources */,
@@ -645,9 +655,11 @@
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,
 				A6F393ED219DBD2000A547A3 /* OverviewCollectionViewCell.swift in Sources */,
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
+				A61B2114219E289B00BDFD2B /* PasswordViewController.swift in Sources */,
 				9D5DBE3C219A26B8000C46FC /* RevenueViewController.swift in Sources */,
 				9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */,
 				9DB8AE03219DE6C000D7D707 /* VideosCollectionViewCell.swift in Sources */,
+				A61B2110219E281100BDFD2B /* EmailViewController.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
 				9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */,
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,

@@ -5,7 +5,6 @@
 //  Created by Alek Matthiessen on 11/8/18.
 //  Copyright © 2018 AA Tech. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import FirebaseCore
@@ -15,7 +14,7 @@ import FirebaseAuth
 import FBSDKCoreKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate     {
-
+    
     @IBOutlet weak var header: UILabel!
     @IBAction func tapLogin(_ sender: Any) {
         
@@ -61,9 +60,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 dateFormatter.dateFormat = "MM-dd-yy"
                 var todaysdate =  dateFormatter.string(from: date)
                 
-//
-//                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
-//            ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Purchased" : true])
+                //
+                //                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
+                //            ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Purchased" : true])
                 
                 
                 self.queryforinfo()
@@ -104,7 +103,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                         self.performSegue(withIdentifier: "LoginToInfluencer", sender: self)
                         
                     }
-                        
+                    
                 }
                 
             } else {
@@ -136,7 +135,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 
                 uid = (Auth.auth().currentUser?.uid)!
                 
-//                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
+                //                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])
                 
                 let date = Date()
                 let calendar = Calendar.current
@@ -146,7 +145,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 let thirtyDaysAfterToday = Calendar.current.date(byAdding: .day, value: +30, to: date)!
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
-//                self.addstaticbooks()
+                //                self.addstaticbooks()
                 ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Password" : password, "Purchased" : true])
                 
                 
@@ -154,7 +153,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 
                 DispatchQueue.main.async {
                     
-//                    purchased = true
+                    //                    purchased = true
                     
                     self.performSegue(withIdentifier: "LoginToDiscover", sender: self)
                 }
@@ -279,4 +278,3 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
      */
     
 }
-
