@@ -23,8 +23,15 @@ var yourprogramname = String()
 var mythumbnail = UIImage()
 var yourpropic = UIImage()
 class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+    @IBOutlet weak var loadinglabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func tapShare(_ sender: Any) {
+        
+        activityIndicator.alpha = 1
+        activityIndicator.color = mypink
+        activityIndicator.startAnimating()
+        loadinglabel.alpha = 1
         
         if videoURL != nil {
         let data = Data()
@@ -34,7 +41,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 //        let localFile  = URL(string: )!
 
 
-        if tv.text != "" && tv2.text != "" {
+        if tv2.text != "" {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let currentUser = Auth.auth().currentUser
@@ -154,6 +161,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 let mystring2 = downloadURL.absoluteString
                 ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Thumbnail" : mystring2])
+                self.activityIndicator.alpha = 0
+                self.activityIndicator.stopAnimating()
+                self.loadinglabel.alpha = 0
                 
                 self.nextViewNumber = 1
                 self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
@@ -276,6 +286,17 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        if playerView.player?.isPlaying == true {
+            
+            playerView.player?.pause()
+            
+        } else {
+            playerView.player?.play()
+            
+        }
+    }
     
     override func viewDidLoad() {
         
@@ -286,11 +307,13 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         ref = Database.database().reference()
     
- 
+        self.activityIndicator.alpha = 0
+        self.loadinglabel.alpha = 0
         tv2.text = "Write your title.."
         tv2.textColor = UIColor.lightGray
 //        tapplay.alpha = 1
         queryforinfo()
+        programname.text = "UPLOAD"
         programname.addCharacterSpacing()
         self.addLineToView(view: tv2, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
 
@@ -483,7 +506,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor.white
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
     }
 }

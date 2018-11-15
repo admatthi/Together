@@ -15,15 +15,24 @@ import FirebaseAuth
 import FBSDKCoreKit
 import AVFoundation
 
-class EditProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate   {
 
     @IBOutlet weak var programname: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lowercasename = selectedname
+
+        collectionView.alpha = 0
+        activityIndicator.alpha = 1
+        activityIndicator.color = mypink
+        activityIndicator.startAnimating()
+        
         selectedprogramname = selectedprogramname.uppercased()
+        
+        programname.text = selectedname.uppercased()
         programname.addCharacterSpacing()
-        programname.text = selectedprogramname
+        
         
         //        tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -46,6 +55,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         // Do any additional setup after loading the view.
     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -120,7 +130,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     selectedimage = UIImage(data: data!)!
                     
-                    self.tableView.reloadData()
+                    self.collectionView.reloadData()
 
                 }
                 
@@ -232,7 +242,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 
                 if functioncounter == videoids.count {
                     
-                    self.tableView.reloadData()
+                    self.collectionView.reloadData()
                     
                 }
                 
@@ -278,165 +288,63 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
 //        }
 //    }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
-        if videolinks.count > 0 {
-       
-            return videolinks.count + 1
+        if indexPath.row == 0 {
+            
+            selectedtitle = videotitles[videoids[indexPath.row]]!
+            
+            
+            self.performSegue(withIdentifier: "EditToPurchase", sender: self)
             
         } else {
             
-            return 1
+            selectedvideo = videolinks[videoids[indexPath.row]]!
+            
+            selectedtitle = videotitles[videoids[indexPath.row]]!
+            self.performSegue(withIdentifier: "EditToWatch", sender: self)
+        }
+        
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if thumbnails.count > 0 {
+            
+            return thumbnails.count
+            
+        } else {
+            
+            return 0
         }
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if let cell = tableView.cellForRow(at: indexPath) as? PlansTableViewCell {
-            
-            if indexPath.row == 0 {
-                
-                
-                
-                
-            } else {
-                
-            let videourl = URL(string: videolinks[videoids[indexPath.row-1]]!)
-            
-            let avPlayer = AVPlayer(url: videourl! as URL)
-            
-            cell.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-            
-            cell.playerView.playerLayer.player = avPlayer
-            
-                
-            if cell.playerView.player?.isPlaying == true {
-                
-                cell.playerView.player?.pause()
-                cell.thumbnail.alpha = 1
-                
-            } else {
-                cell.thumbnail.alpha = 0
-                cell.playerView.player?.play()
-                
-            }
-            
-            }
-        }
-            
-        }
     
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
-        cell.activityIndicator.alpha = 1
-        cell.selectionStyle = .none
-        cell.tapjoin.layer.borderColor = mypink.cgColor
-        cell.tapjoin.layer.borderWidth = 0.5
-        cell.tapjoin.addTarget(self, action: #selector(tapDown(sender:)), for: .touchUpInside)
-        cell.tapcircle.addTarget(self, action: #selector(tapStory(sender:)), for: .touchUpInside)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
         
-        if indexPath.row == 0 {
+        //        cell.subscriber.tag = indexPath.row
+        
+        if images.count > indexPath.row{
             
-            cell.activityIndicator.alpha = 0
-            cell.daylabel.alpha = 0
-            cell.minipic.alpha = 0
-            cell.programn.alpha = 0
-            cell.profilepic.alpha = 1
-            cell.pitch.alpha = 1
-            cell.tapjoin.alpha = 1
-            cell.subs.alpha = 1
-            cell.dollers.alpha = 1
-            cell.name.alpha = 1
-            cell.sublabel.alpha = 1
-            cell.monthlylabel.alpha = 1
-            cell.profilepic.image = selectedimage
-            //                cell.profilepic.layer.cornerRadius = 5.0
-            //                cell.profilepic.layer.masksToBounds = true
-            cell.pitch.text = selectedpitch
-            cell.subs.text = selectedsubs
-            cell.dollers.text = "$\(selectedprice)"
-            cell.name.text = selectedname
-            cell.playerView.alpha = 0
-            //                cell.thumbnailpreview.alpha = 0
-            cell.descriptionlabel.text = ""
-            cell.descriptionlabel.alpha = 0
-            cell.thumbnail.alpha = 0
-            cell.tapaddstory.alpha = 1
-            cell.tapcircle.alpha = 1
-        }
-        
-      
-        
-        if thumbnails.count >= indexPath.row-1 {
             
-            if indexPath.row != 0 {
-//                let rect : CGRect = CGRect(x: cell.thumbnail.bounds.minX, y: cell.thumbnail.bounds.minY, width: cell.thumbnail.bounds.width, height: cell.thumbnail.bounds.height)
-                
-                cell.tapcircle.alpha = 0
-                
-                cell.thumbnail.alpha = 1
-                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
-                cell.minipic.alpha = 1
-                cell.programn.alpha = 1
-                cell.minipic.image = selectedimage
-                cell.programn.text = selectedprogramname
-                cell.playerView.alpha = 1
-                cell.profilepic.alpha = 0
-                cell.pitch.alpha = 0
-                cell.pitch.text = ""
-                cell.tapjoin.alpha = 0
-                cell.subs.alpha = 0
-                cell.dollers.alpha = 0
-                cell.name.alpha = 0
-                cell.sublabel.alpha = 0
-                cell.monthlylabel.alpha = 0
-                cell.pitch.text = ""
-               cell.tapaddstory.alpha = 0
-                cell.descriptionlabel.alpha = 1
-                //                cell.thumbnailpreview.alpha = 1
-                //                cell.thumbnailpreview.image = thumbnails[videolinks[videoids[indexPath.row-1]]!]
-                
-                cell.daylabel.alpha = 1
-                
-                cell.daylabel.text = videotitles[videoids[indexPath.row-1]]
-                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row-1]]
-                cell.activityIndicator.alpha = 0
-                
-            cell.playerView.player?.replaceCurrentItem(with: nil)
-
-                //                cell.descriptionlabel.text = videodescriptions[videoids[indexPath.row]]
-                //                cell.timelabel.text = videotimes[videoids[indexPath.row]]
-                
-//                if locked {
-//
-//                    //                    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-//                    //                    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//                    //                    blurEffectView.frame = cell.playerView.bounds
-//                    //                    blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//                    //                    cell.playerView.addSubview(blurEffectView)
-//                    //                    cell.lockimage.alpha = 1
-//
-//                    //                    cell.isUserInteractionEnabled = false
-//
-//                } else {
-//                    cell.isUserInteractionEnabled = true
-//                    //                    cell.lockimage.alpha = 0
-//
-//                }
-                //                cell.playerView.player!.replaceCurrentItem(with: nil)
-                
-                //                cell.playerView.player?.pause()
-                //
-                //                cell.playerView.player?.play()
-                
-                
-                
-            }
+            //            cell.layer.borderWidth = 1.0
+            //            cell.layer.borderColor = UIColor.lightGray.cgColor
+            //            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             
+            cell.thumbnail.layer.cornerRadius = 10.0
+            cell.thumbnail.layer.masksToBounds = true
+            cell.titlelabel.text = videotitles[videoids[indexPath.row]]
+            cell.timeago.text = "14h ago"
+            activityIndicator.alpha = 0
+            collectionView.alpha = 1
+            activityIndicator.stopAnimating()
+            
+            cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
             
         } else {
             
@@ -446,7 +354,7 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
         
         return cell
     }
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     @objc func tapDown(sender: UIButton){
         
       self.performSegue(withIdentifier: "EditToUpload", sender: self)
@@ -465,19 +373,6 @@ class EditProfileViewController: UIViewController, UITableViewDataSource, UITabl
   
 
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            
-            return 220
-            
-        } else {
-            
-            //            return 425
-            return UITableViewAutomaticDimension
-            
-        }
-        
-    }
     @IBAction func tapLogout(_ sender: Any) {
         
        
