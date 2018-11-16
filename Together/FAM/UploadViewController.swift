@@ -29,9 +29,18 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func tapShare(_ sender: Any) {
         
-        headerlabel.text = "Uploading..."
+        var snaplabel = String()
+        if tv2.text != "" {
+            
+            snaplabel = tv2.text!
+            
+        } else {
+            
+            snaplabel = " "
+        }
+        headerlabel.text = "Uploading...This May Take A Moment."
         headerlabel.alpha = 1
-        headerlabel.addCharacterSpacing()
+//        headerlabel.addCharacterSpacing()
         
         if playerView.player?.isPlaying == true {
             
@@ -68,7 +77,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd HH" //Specify your format that you want
+        dateFormatter.dateFormat = "y-MM-dd H:m:ss" //Specify your format that you want
+        
         var mystring = videoURL!.absoluteString
         let localFile = URL(string: mystring!)
 
@@ -113,10 +123,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     
                     ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
 
+                        noothervids == false
                     
                 } else {
                     
-                    ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : self.tv2.text!, "Date" : thisdate])
+                    ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : snaplabel, "Date" : thisdate])
 
                 }
                 self.loadthumbnail()
@@ -194,9 +205,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
                     
                 }
-                self.activityIndicator.alpha = 0
-                self.activityIndicator.stopAnimating()
-                self.loadinglabel.alpha = 0
+//                self.activityIndicator.alpha = 0
+//                self.activityIndicator.stopAnimating()
+//                self.loadinglabel.alpha = 0
                 
                 self.nextViewNumber = 1
                 self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
@@ -252,16 +263,22 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             playerView.playerLayer.player = avPlayer
             
             getThumbnailFrom(path: videoURL as! URL)
-//            tv2.alpha = 1
+            tv2.alpha = 1
 
             playerView.player?.play()
 
+//            let item = AVPlayerItem(asset: asset)
+//            let player = AVQueuePlayer(playerItem: item)
+//            let videoLooper = AVPlayerLooper(player: player, templateItem: item)
+//
+//            videoLooper.
             headerlabel.alpha = 0
             tapshowtv.alpha = 1
             tapshare.alpha = 1
             tapnew.alpha = 0
             tapcancel.alpha = 0.5
-            
+            self.tabBarController?.tabBar.isHidden = true
+
         } catch let error {
             print("*** Error generating thumbnail: \(error.localizedDescription)")
         }
@@ -281,6 +298,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     */
     @IBAction func tapCancel(_ sender: Any) {
         
+        self.tabBarController?.tabBar.isHidden = false
+
         playerView.player?.replaceCurrentItem(with: nil)
     }
     
@@ -308,7 +327,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+        dateFormatter.dateFormat = "y-MM-dd H:m:ss" //Specify your format that you want
         strDate = dateFormatter.string(from: date)
         
 
@@ -352,6 +371,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         
+        self.tabBarController?.tabBar.isHidden = false
+
         tapshowtv.alpha = 0
 //        imagePickerController.sourceType = .photoLibrary
 //        imagePickerController.delegate = self
@@ -388,7 +409,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+        dateFormatter.dateFormat = "y-MM-dd H:m:ss.SSSS" //Specify your format that you want
         strDate = dateFormatter.string(from: date)
         tv2.alpha = 0
 
@@ -418,11 +439,14 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 //        playerView.player?.pause()
     }
     
+
     @IBOutlet weak var tapshowtv: UIButton!
     @IBAction func tapShowTV(_ sender: Any) {
         
         tv2.alpha = 1
-                tv2.becomeFirstResponder()
+    
+
+        tv2.becomeFirstResponder()
 
     }
     func getThumbnailFrom(path: URL) -> UIImage? {

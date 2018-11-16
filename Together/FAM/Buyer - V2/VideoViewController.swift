@@ -52,6 +52,11 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             locked = false
         }
         
+        if myprojectids.contains(selectedid) {
+            
+            locked = false
+        }
+        
         ref = Database.database().reference()
         
         

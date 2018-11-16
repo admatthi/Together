@@ -43,6 +43,15 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
     
     @IBAction func tapSignUp(_ sender: Any) {
         
+        thankyou.alpha = 1
+        passwordtf.alpha = 0
+        domaintf.alpha = 0
+        emailtf.alpha = 0
+        nametf.alpha = 0
+        tapsign.alpha = 0
+        pdtf.alpha = 0
+        pricetf.alpha = 0
+        
         self.view.endEditing(true)
         demo.alpha = 0
     
@@ -73,14 +82,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
 //
                 ref?.child("Influencers").child(uid).updateChildValues(["Description" : self.inputdescription, "Price" : self.inputprice, "Phone Number" : self.phonenumber, "Subscribers" : "0", "Approved" : "False", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-"])
 
-                thankyou.alpha = 1
-                passwordtf.alpha = 0
-                domaintf.alpha = 0
-                emailtf.alpha = 0
-                nametf.alpha = 0
-                tapsign.alpha = 0
-                pdtf.alpha = 0
-                pricetf.alpha = 0
+        
             }
 
 

@@ -24,6 +24,7 @@ var mynames = [String:String]()
 var myimages = [String:UIImage]()
 var mypink = UIColor(red:0.96, green:0.10, blue:0.47, alpha:1.0)
 
+var unlockedid = String()
 
 class MyFamViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
 
@@ -198,16 +199,17 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        selectedid = projectids[indexPath.row]
-        selectedimage = images[projectids[indexPath.row]]!
-        selectedname = names[projectids[indexPath.row]]!
-        selectedpitch = descriptions[projectids[indexPath.row]]!
-        selectedprice = prices[projectids[indexPath.row]]!
+        unlockedid = myprojectids[indexPath.row]
+        myselectedimage = myimages[myprojectids[indexPath.row]]!
+        selectedname = mynames[myprojectids[indexPath.row]]!
+        selectedpitch = mydescriptions[myprojectids[indexPath.row]]!
+        selectedprice = myprices[myprojectids[indexPath.row]]!
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedsubs = subscribers[projectids[indexPath.row]]!
-        selectedprogramname = programnames[projectids[indexPath.row]]!
+        selectedsubs = subscribers[myprojectids[indexPath.row]]!
+        selectedprogramname = myprogramnames[myprojectids[indexPath.row]]!
         
-        self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
+        
+        self.performSegue(withIdentifier: "MyFamToVideo", sender: self)
         
     }
     
@@ -224,15 +226,14 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
         
     }
     
-    
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "People", for: indexPath) as! PeopleCollectionViewCell
         
         //        cell.subscriber.tag = indexPath.row
         
-        if images.count > indexPath.row{
+        if myimages.count > indexPath.row && mynames.count > indexPath.row{
             
             
             //            cell.layer.borderWidth = 1.0
@@ -241,9 +242,10 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
             
             cell.thumbnail.layer.cornerRadius = 10.0
             cell.thumbnail.layer.masksToBounds = true
-            cell.textlabel.text = names[projectids[indexPath.row]]
+            cell.textlabel.text = mynames[myprojectids[indexPath.row]]
             
-            cell.thumbnail.image = images[projectids[indexPath.row]]
+            cell.thumbnail.image = myimages[myprojectids[indexPath.row]]
+            cell.subscribers.text = "\(subscribers[myprojectids[indexPath.row]]!) subscribers"
             
         } else {
             

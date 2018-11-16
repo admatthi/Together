@@ -175,7 +175,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         selectedprice = prices[projectids[indexPath.row]]!
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
         selectedsubs = subscribers[projectids[indexPath.row]]!
-        selectedprogramname = programnames[projectids[indexPath.row]]!
+//        selectedprogramname = programnames[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "ExploreToVideos", sender: self)
         

@@ -81,7 +81,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
             uid = (currentUser?.uid)!
             queryforinfo()
-          
+            
+            queryforids { () -> () in
+                
+                
+            }
 
         }
     
@@ -97,6 +101,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialViewControlleripad
         self.window?.makeKeyAndVisible()
+        
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+            
+
+        } else {
+            
+            let currentUser = Auth.auth().currentUser
+            
+            uid = (currentUser?.uid)!
+        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
+
+        }
+
     }
     
     func queryforinfo() {
@@ -122,6 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if profileUrl2 == "-" {
                     
                     noothervids = true
+                    
                 } else {
                     
                     noothervids = false
@@ -192,6 +211,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+    
+    func queryforids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+    
+        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    myprojectids.append(ids)
+         
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        completed()
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
     }
     
 
