@@ -261,6 +261,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             tapshare.alpha = 1
             tapnew.alpha = 0
             tapcancel.alpha = 0.5
+            
         } catch let error {
             print("*** Error generating thumbnail: \(error.localizedDescription)")
         }

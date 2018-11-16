@@ -27,6 +27,16 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         lowercasename = selectedname
         selectedid = uid
 
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        
+        dateFormatter.dateFormat = "MMM dd"
+        
+        thisdate = dateFormatter.string(from: date)
+        
+        
         locked = true
         
         if uid == selectedid {
@@ -281,7 +291,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         if indexPath.row == 0 {
             
-            selectedtitle = "Start Here"
+            selectedtitle = "Subscribe Now"
             selectedthumbnailurl = thumbnailurls["0"]!
             selectedvideourl = videolinks["0"]!
             self.performSegue(withIdentifier: "EditToPurchase", sender: self)
@@ -325,7 +335,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             if indexPath.row == 0 {
                 
                 cell.thumbnail.image = thumbnails["0"]
-                cell.titlelabel.text = "Start Here"
+                cell.titlelabel.text = "Subscribe Now"
                 cell.timeago.text = "\(selectedsubs) subscribers"
                 cell.whitelabel.alpha = 0
                 cell.isUserInteractionEnabled = true

@@ -127,7 +127,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         videodescriptions.removeAll()
         videotitles.removeAll()
         thumbnails.removeAll()
-        
+        videodates.removeAll()
         ref?.child("Influencers").child(selectedid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -186,6 +186,13 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
                 if var author2 = value?["Title"] as? String {
                     self.videotitles[each] = author2
+                    
+                }
+                
+                
+                if var author2 = value?["Date"] as? String {
+                
+                    videodates[each] = author2
                     
                 }
                 
@@ -250,9 +257,9 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-        if videolinks.count > 0 {
+        if thumbnails.count > 0 {
             
-            return videolinks.count
+            return thumbnails.count + 1
             
         } else {
             
@@ -264,9 +271,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         if indexPath.row == 0 {
             
-            selectedtitle = videotitles[videoids[indexPath.row]]!
-            selectedvideoid = videoids[indexPath.row]
-            
+            selectedtitle = "Subscribe Now"
             
             self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
 
@@ -286,11 +291,11 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
         if thumbnails.count > 0 {
         
-        return thumbnails.count
+        return thumbnails.count + 1
         
         } else {
         
-            return 0
+            return 1
         }
     
     }
@@ -302,12 +307,12 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         //        cell.subscriber.tag = indexPath.row
         
-        if thumbnails.count > indexPath.row{
+        if thumbnails.count >= indexPath.row{
             
             if indexPath.row == 0 {
                 
                 cell.thumbnail.image = myselectedimage
-                cell.titlelabel.text = "Start Here"
+                cell.titlelabel.text = "Subscribe Now"
                 cell.timeago.text = "\(selectedsubs) subscribers"
                 cell.whitelabel.alpha = 0
 
@@ -324,7 +329,6 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                     
                     cell.whitelabel.alpha = 0.5
                     cell.isUserInteractionEnabled = false
-    
                 } else {
                     cell.whitelabel.alpha = 0
                     

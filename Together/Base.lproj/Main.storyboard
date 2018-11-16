@@ -347,7 +347,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Principles" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVn-Kd-myV">
-                                        <rect key="frame" x="11" y="46" width="206" height="22"/>
+                                        <rect key="frame" x="11" y="52" width="206" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="206" id="4jf-fM-NZT"/>
                                             <constraint firstAttribute="height" constant="22" id="79U-9O-Clz"/>
@@ -358,7 +358,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ray Dalio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZ1-Up-yAp">
-                                        <rect key="frame" x="11" y="65" width="246" height="22"/>
+                                        <rect key="frame" x="11" y="71" width="246" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="1sz-Mb-O4n"/>
                                             <constraint firstAttribute="width" constant="246" id="DMv-6U-aNM"/>
@@ -419,9 +419,9 @@
                                     <constraint firstItem="fZ1-Up-yAp" firstAttribute="leading" secondItem="EVn-Kd-myV" secondAttribute="trailing" constant="-206" id="WYe-5C-3wK"/>
                                     <constraint firstItem="izi-r8-WHJ" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="49" id="cgY-vV-2AU"/>
                                     <constraint firstAttribute="bottom" secondItem="8dj-gA-MHf" secondAttribute="bottom" constant="18.5" id="daV-Uu-eOu"/>
-                                    <constraint firstItem="EVn-Kd-myV" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="46" id="fdT-az-MTu"/>
+                                    <constraint firstItem="EVn-Kd-myV" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="52" id="fdT-az-MTu"/>
                                     <constraint firstItem="EVn-Kd-myV" firstAttribute="leading" secondItem="izi-r8-WHJ" secondAttribute="trailing" constant="-25" id="fnG-2q-2ob"/>
-                                    <constraint firstItem="fZ1-Up-yAp" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="65" id="gHD-mj-pVg"/>
+                                    <constraint firstItem="fZ1-Up-yAp" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="71" id="gHD-mj-pVg"/>
                                     <constraint firstItem="fZ1-Up-yAp" firstAttribute="top" secondItem="EVn-Kd-myV" secondAttribute="bottom" constant="-3" id="qMq-T6-3Ww"/>
                                     <constraint firstAttribute="trailing" secondItem="lKR-YA-l3a" secondAttribute="trailing" constant="13" id="t6k-H1-bxI"/>
                                     <constraint firstItem="izi-r8-WHJ" firstAttribute="leading" secondItem="GBR-ig-isg" secondAttribute="leading" constant="8" id="xOX-SZ-gUN"/>
@@ -1280,7 +1280,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Principles" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zkq-KN-oZB">
-                                        <rect key="frame" x="18" y="32" width="206" height="22"/>
+                                        <rect key="frame" x="18" y="37" width="206" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="1hk-2O-pUy"/>
                                             <constraint firstAttribute="height" constant="22" id="bg6-08-zs9"/>
@@ -1291,7 +1291,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ray Dalio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaR-Vo-NWe">
-                                        <rect key="frame" x="18" y="51" width="246" height="22"/>
+                                        <rect key="frame" x="18" y="56" width="246" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="84E-ua-eMC"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="8QW-lU-iSv"/>
@@ -1329,7 +1329,7 @@
                                     <constraint firstItem="4lD-cz-HxQ" firstAttribute="top" secondItem="A01-5V-f1s" secondAttribute="top" constant="35" id="SSB-iu-8gE"/>
                                     <constraint firstItem="jaR-Vo-NWe" firstAttribute="leading" secondItem="Zkq-KN-oZB" secondAttribute="trailing" constant="-206" id="cBu-T7-Md3"/>
                                     <constraint firstAttribute="trailing" secondItem="U84-Gi-iwt" secondAttribute="trailing" constant="9" id="joR-QE-JnO"/>
-                                    <constraint firstItem="Zkq-KN-oZB" firstAttribute="top" secondItem="A01-5V-f1s" secondAttribute="top" constant="32" id="wFl-PG-ZyQ"/>
+                                    <constraint firstItem="Zkq-KN-oZB" firstAttribute="top" secondItem="A01-5V-f1s" secondAttribute="top" constant="37" id="wFl-PG-ZyQ"/>
                                     <constraint firstItem="4lD-cz-HxQ" firstAttribute="leading" secondItem="A01-5V-f1s" secondAttribute="leading" constant="8" id="xui-Ht-Qe9"/>
                                     <constraint firstItem="Zkq-KN-oZB" firstAttribute="leading" secondItem="4lD-cz-HxQ" secondAttribute="trailing" constant="-18" id="zfk-MS-Wa3"/>
                                 </constraints>

@@ -44,8 +44,13 @@ class WatchViewController: UIViewController {
                 print("default")
                 
                 //                self.playerView.player?.pause()
+               
                 ref?.child("Influencers").child(selectedid).updateChildValues(["ProPic" : selectedthumbnailurl, "Purchase" : selectedvideo])
+
                 
+                ref?.child("Influencers").child(selectedid).child("Plans").child(selectedvideoid).removeValue()
+
+                ref!.child("Influencers").child(selectedid).child("Plans").childByAutoId().updateChildValues(["Date" : thisdate, "Thumbnail" : thumbnailurls["0"], "Title" : "", "URL" : videolinks["0"]])
                 
                 self.performSegue(withIdentifier: "WatchToNav", sender: self)
             case .cancel:
