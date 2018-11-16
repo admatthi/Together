@@ -27,7 +27,12 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         lowercasename = selectedname
         selectedid = uid
 
+        locked = true
         
+        if uid == selectedid {
+            
+            locked = false
+        }
         selectedprogramname = selectedprogramname.uppercased()
         
         programname.text = selectedname.uppercased()
@@ -246,14 +251,15 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             selectedtitle = videotitles[videoids[indexPath.row]]!
             selectedthumbnailurl = thumbnailurls[videoids[indexPath.row]]!
             selectedvideoid = videoids[indexPath.row]
+            selectedvideourl = videolinks[videoids[indexPath.row]]!
             self.performSegue(withIdentifier: "EditToPurchase", sender: self)
             
         } else {
             
-            selectedthumbnailurl = thumbnailurls[videoids[indexPath.row]]!
-            selectedvideo = videolinks[videoids[indexPath.row]]!
-            selectedvideoid = videoids[indexPath.row]
-            selectedtitle = videotitles[videoids[indexPath.row]]!
+            selectedthumbnailurl = thumbnailurls[videoids[indexPath.row-1]]!
+            selectedvideo = videolinks[videoids[indexPath.row-1]]!
+            selectedvideoid = videoids[indexPath.row-1]
+            selectedtitle = videotitles[videoids[indexPath.row-1]]!
             
             self.performSegue(withIdentifier: "EditToWatch", sender: self)
         }
@@ -266,11 +272,11 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         if thumbnails.count > 0 {
             
-            return thumbnails.count
+            return thumbnails.count + 1
             
         } else {
             
-            return 0
+            return 1
         }
         
     }
@@ -281,7 +287,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
         
         //        cell.subscriber.tag = indexPath.row
-        
+    
         if thumbnails.count > indexPath.row {
             
             if indexPath.row == 0 {
@@ -289,6 +295,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 cell.thumbnail.image = myselectedimage
                 cell.titlelabel.text = "Start Here"
                 cell.timeago.text = "\(selectedsubs) subscribers"
+                cell.whitelabel.alpha = 0
+                cell.isUserInteractionEnabled = true
                 
             } else {
                 
@@ -296,6 +304,16 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 
                 cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
                 cell.timeago.text = videodates[videoids[indexPath.row-1]]
+                
+                if locked {
+                    
+                    cell.whitelabel.alpha = 0.5
+                    cell.isUserInteractionEnabled = false
+                } else {
+                    cell.whitelabel.alpha = 0
+
+                    cell.isUserInteractionEnabled = true
+                }
                 
             }
             

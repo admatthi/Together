@@ -106,6 +106,13 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 let mystring2 = downloadURL.absoluteString
                 ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : self.tv2.text!, "Date" : thisdate])
 
+                
+                if noothervids == true {
+                    
+                    ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
+
+                    
+                }
                 self.loadthumbnail()
                 
            
@@ -170,6 +177,14 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 let mystring2 = downloadURL.absoluteString
                 ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Thumbnail" : mystring2])
+                
+                
+                if noothervids == true {
+                    
+                    ref!.child("Influencers").child(uid).updateChildValues(["ProPic" : mystring2])
+                    
+                    
+                }
                 self.activityIndicator.alpha = 0
                 self.activityIndicator.stopAnimating()
                 self.loadinglabel.alpha = 0

@@ -45,6 +45,13 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         //        cta.text = "Join \(firstname)'s FAM"
         
+        locked = true
+        
+        if uid == selectedid {
+            
+            locked = false
+        }
+        
         ref = Database.database().reference()
         
         
@@ -260,13 +267,14 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             selectedtitle = videotitles[videoids[indexPath.row]]!
             selectedvideoid = videoids[indexPath.row]
             
+            
             self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
 
         } else {
             
-            selectedvideo = videolinks[videoids[indexPath.row]]!
-            selectedvideoid = videoids[indexPath.row]
-            selectedtitle = videotitles[videoids[indexPath.row]]!
+            selectedvideo = videolinks[videoids[indexPath.row-1]]!
+            selectedvideoid = videoids[indexPath.row-1]
+            selectedtitle = videotitles[videoids[indexPath.row-1]]!
             self.performSegue(withIdentifier: "VideoToWatch", sender: self)
         }
         
@@ -301,7 +309,10 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 cell.thumbnail.image = myselectedimage
                 cell.titlelabel.text = "Start Here"
                 cell.timeago.text = "\(selectedsubs) subscribers"
-                
+                cell.whitelabel.alpha = 0
+
+                cell.isUserInteractionEnabled = true
+
             } else {
                 
                 cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
@@ -309,6 +320,16 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
                 cell.timeago.text = videodates[videoids[indexPath.row-1]]
                 
+                if locked {
+                    
+                    cell.whitelabel.alpha = 0.5
+                    cell.isUserInteractionEnabled = false
+    
+                } else {
+                    cell.whitelabel.alpha = 0
+                    
+                    cell.isUserInteractionEnabled = true
+                }
             }
             
             //            cell.layer.borderWidth = 1.0
@@ -322,7 +343,10 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             activityIndicator.alpha = 0
             collectionView.alpha = 1
             activityIndicator.stopAnimating()
+            cell.whitelabel.layer.cornerRadius = 10.0
+            cell.whitelabel.layer.masksToBounds = true
             
+      
 
         } else {
             

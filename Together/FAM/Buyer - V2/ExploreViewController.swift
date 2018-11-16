@@ -48,6 +48,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.queryforinfo()
             
         }
+        
+      
         // Do any additional setup after loading the view.
     }
     

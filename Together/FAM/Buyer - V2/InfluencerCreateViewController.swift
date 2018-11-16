@@ -45,15 +45,20 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
         self.view.endEditing(true)
         demo.alpha = 0
     
+//        pn2tf.text = " "
+//        pricetf.text = " "
+//        pdtf.text = " "
+//        domaintf.text = " "
+//
         email = "\(emailtf.text!)"
         password = "\(passwordtf.text!)"
         inputname = "\(nametf.text!)"
         domainz = "\(domaintf.text!)"
         inputdescription = "\(pdtf.text!)"
         inputprice = "\(pricetf.text!)"
-        inputprogramname = "\(pn2tf.text!)"
         errorlabel.alpha = 0
-        domainz = domainz.replacingOccurrences(of: " ", with: "-")
+
+//        domainz = domainz.replacingOccurrences(of: " ", with: "-")
 //        if email != "" && password != "" && name != "" && domainz != "" {
         
             if Auth.auth().currentUser == nil {
@@ -65,7 +70,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
             } else {
                 
 //
-                ref?.child("Influencers").child(uid).updateChildValues(["Description" : inputdescription, "Price" : inputprice, "Phone Number" : phonenumber, "ProgramName" : inputprogramname, "Subscribers" : "0", "Approved" : "False", "Name" : inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : email, "Password" : password, "Domain" : domainz, "Purchase" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/y2mate.com%20-%20mvmt_social_ad_vertical_video_bjH6DShpolY_1080p.mp4?alt=media&token=6fd2dd4e-5890-4ba4-98b1-393c962dc053"])
+                ref?.child("Influencers").child(uid).updateChildValues(["Description" : inputdescription, "Price" : inputprice, "Phone Number" : phonenumber, "Subscribers" : "0", "Approved" : "False", "Name" : inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : email, "Password" : password, "Domain" : domainz, "Purchase" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/y2mate.com%20-%20mvmt_social_ad_vertical_video_bjH6DShpolY_1080p.mp4?alt=media&token=6fd2dd4e-5890-4ba4-98b1-393c962dc053"])
 
                 thankyou.alpha = 1
                 passwordtf.alpha = 0
@@ -199,7 +204,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
                 //                self.addstaticbooks()
-                ref?.child("Influencers").child(uid).updateChildValues(["Description" : self.inputdescription, "Price" : self.inputprice, "Phone Number" : self.phonenumber, "ProgramName" : self.inputprogramname, "Subscribers" : "0", "Approved" : "False", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/y2mate.com%20-%20mvmt_social_ad_vertical_video_bjH6DShpolY_1080p.mp4?alt=media&token=6fd2dd4e-5890-4ba4-98b1-393c962dc053"])
+                ref?.child("Influencers").child(uid).updateChildValues(["Description" : self.inputdescription, "Price" : self.inputprice, "Phone Number" : self.phonenumber, "ProgramName" : self.inputprogramname, "Subscribers" : "0", "Approved" : "False", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-"])
                 
                 ref?.child("Users").child(uid).updateChildValues(["Approved" : "False"])
 
@@ -210,10 +215,10 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
                 self.nametf.alpha = 0
                 self.tapsign.alpha = 0
                 self.pdtf.alpha = 0
-                self.pn2tf.alpha = 0
-                self.pdtf.alpha = 0
                 self.pricetf.alpha = 0
                 self.demo.alpha = 0
+                
+                
             }
             
         }
@@ -230,7 +235,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
         pdtf.text = "What would you like to create?"
         pdtf.textColor = mygray
         
-        pdtf.layer.borderColor = mygray.cgColor 
+        pdtf.layer.borderColor = mygray.cgColor
         pdtf.layer.borderWidth = 0.5
         requestlabel.addCharacterSpacing()
         thankyou.alpha = 0

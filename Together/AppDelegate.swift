@@ -116,6 +116,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             }
             
+            if var profileUrl2 = value?["Purchase"] as? String {
+                // Create a storage reference from the URL
+                
+                if profileUrl2 == "-" {
+                    
+                    noothervids = true
+                } else {
+                    
+                    noothervids = false
+                }
+            }
+            
+            
+            
             if var author2 = value?["Subscribers"] as? String {
                 
                 selectedsubs = author2

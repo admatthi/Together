@@ -16,6 +16,7 @@ import FBSDKCoreKit
 import Purchases
 import AVFoundation
 
+var noothervids = Bool()
 class PurchaseViewController: UIViewController {
     var attrs = [
         NSAttributedStringKey.foregroundColor : UIColor.lightGray,
@@ -73,40 +74,40 @@ class PurchaseViewController: UIViewController {
 
     }
     func queryforinfo() {
-        
+
         var functioncounter = 0
-        
-            
+
+
             ref?.child("Influencers").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
-                
+
                 var value = snapshot.value as? NSDictionary
-                
+
                 if var author2 = value?["Purchase"] as? String {
                     self.purchasestring = author2
-                    
+
                     //                    self.createThumbnailOfVideoFromRemoteUrl(url: author2)
-                    
+
                     let videourl = URL(string: self.purchasestring)
-                    
+
                     self.avPLayer = AVPlayer(url: videourl! as URL)
                     self.avPLayer.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
 
                     self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                    
+
                     self.playerView.playerLayer.player = self.avPLayer
-                   
-                   
+
+
                     self.playerView.player?.play()
                     self.loadingscreen.alpha = 0
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.alpha = 0
-                    
-                    
+
+
                 }
-                
-                
+
+
             })
-            
+
     }
     
     var avPLayer = AVPlayer()
@@ -137,6 +138,8 @@ class PurchaseViewController: UIViewController {
 
         tapbuy.layer.cornerRadius = 22.0
         tapbuy.layer.masksToBounds = true
+        
+        
         
         tapterms.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
         
