@@ -123,7 +123,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     
                     ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
 
-                        noothervids == false
+                        noothervids = false
                     
                 } else {
                     
