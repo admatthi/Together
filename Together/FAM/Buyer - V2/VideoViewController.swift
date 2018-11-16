@@ -258,14 +258,14 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         if indexPath.row == 0 {
             
             selectedtitle = videotitles[videoids[indexPath.row]]!
-
+            selectedvideoid = videoids[indexPath.row]
             
             self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
 
         } else {
             
             selectedvideo = videolinks[videoids[indexPath.row]]!
-            
+            selectedvideoid = videoids[indexPath.row]
             selectedtitle = videotitles[videoids[indexPath.row]]!
             self.performSegue(withIdentifier: "VideoToWatch", sender: self)
         }
@@ -302,6 +302,8 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             //            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             
             cell.thumbnail.layer.cornerRadius = 10.0
+            cell.layer.cornerRadius = 10.0
+            cell.layer.masksToBounds = true
             cell.thumbnail.layer.masksToBounds = true
             cell.titlelabel.text = videotitles[videoids[indexPath.row]]
             cell.timeago.text = "14h ago"

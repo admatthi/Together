@@ -15,6 +15,9 @@ import FirebaseAuth
 import FBSDKCoreKit
 import AVFoundation
 
+var thumbnailurls = [String:String]()
+var selectedthumbnailurl = String()
+var selectedvideourl = String()
 class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate   {
 
     @IBOutlet weak var programname: UILabel!
@@ -22,11 +25,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         super.viewDidLoad()
         
         lowercasename = selectedname
+        selectedid = uid
 
-        collectionView.alpha = 0
-        activityIndicator.alpha = 1
-        activityIndicator.color = mypink
-        activityIndicator.startAnimating()
         
         selectedprogramname = selectedprogramname.uppercased()
         
@@ -61,12 +61,28 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         ref = Database.database().reference()
 
-        
-        queryforids { () -> () in
+        if thumbnails.count >  0 {
             
-            self.queryforinfo()
+            collectionView.alpha = 1
+            activityIndicator.alpha = 0
+            collectionView.reloadData()
+            
+        } else {
+            
+            collectionView.alpha = 0
+            activityIndicator.alpha = 1
+            activityIndicator.color = mypink
+            activityIndicator.startAnimating()
+            
+            queryforids { () -> () in
+                
+                self.queryforinfo()
+                
+            }
             
         }
+        
+      
         
     }
     
@@ -83,7 +99,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         videodescriptions.removeAll()
         videotitles.removeAll()
         thumbnails.removeAll()
-        
+        thumbnailurls.removeAll()
         ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -158,6 +174,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                     // Create a storage reference from the URL
                     
                     let url = URL(string: profileUrl)
+                    thumbnailurls[each] = profileUrl
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     self.thumbnails[each] = UIImage(data: data!)
                     
@@ -221,15 +238,17 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         if indexPath.row == 0 {
             
             selectedtitle = videotitles[videoids[indexPath.row]]!
-            
-            
+            selectedthumbnailurl = thumbnailurls[videoids[indexPath.row]]!
+            selectedvideoid = videoids[indexPath.row]
             self.performSegue(withIdentifier: "EditToPurchase", sender: self)
             
         } else {
             
+            selectedthumbnailurl = thumbnailurls[videoids[indexPath.row]]!
             selectedvideo = videolinks[videoids[indexPath.row]]!
-            
+            selectedvideoid = videoids[indexPath.row]
             selectedtitle = videotitles[videoids[indexPath.row]]!
+            
             self.performSegue(withIdentifier: "EditToWatch", sender: self)
         }
         
@@ -266,6 +285,10 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             
             cell.thumbnail.layer.cornerRadius = 10.0
             cell.thumbnail.layer.masksToBounds = true
+            
+            cell.layer.cornerRadius = 10.0
+            cell.layer.masksToBounds = true
+            
             cell.titlelabel.text = videotitles[videoids[indexPath.row]]
             cell.timeago.text = "14h ago"
             activityIndicator.alpha = 0
@@ -302,7 +325,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 
     
     @IBAction func tapLogout(_ sender: Any) {
+        try! Auth.auth().signOut()
         
+        self.performSegue(withIdentifier: "Logout5", sender: self)
        
     }
 }

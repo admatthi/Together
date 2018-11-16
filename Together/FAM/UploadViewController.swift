@@ -298,6 +298,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             
         }
     }
+
     
     override func viewDidLoad() {
         
