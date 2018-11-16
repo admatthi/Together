@@ -230,6 +230,8 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
         pdtf.text = "What would you like to create?"
         pdtf.textColor = mygray
         
+        pdtf.layer.borderColor = mygray.cgColor 
+        pdtf.layer.borderWidth = 0.5
         requestlabel.addCharacterSpacing()
         thankyou.alpha = 0
         ref = Database.database().reference()
