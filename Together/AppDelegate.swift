@@ -24,7 +24,7 @@ var ref: DatabaseReference?
 
 var tryingtopurchase = Bool()
 var isInfluencer = Bool()
-
+var myselectedimage = UIImage()
 protocol SnippetsPurchasesDelegate: AnyObject {
     
     func purchaseCompleted(product: String)
@@ -107,6 +107,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             var value = snapshot.value as? NSDictionary
             
+            if var profileUrl = value?["ProPic"] as? String {
+                // Create a storage reference from the URL
+                
+                let url = URL(string: profileUrl)
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                myselectedimage = UIImage(data: data!)!
+                
+            }
+            
+            if var author2 = value?["Subscribers"] as? String {
+                
+                selectedsubs = author2
+            }
             if var author2 = value?["Approved"] as? String {
                 
                 if author2 == "False" {

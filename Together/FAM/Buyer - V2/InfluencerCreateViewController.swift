@@ -228,7 +228,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
         // Do any additional setup after loading the view.
         
         pdtf.text = "What would you like to create?"
-        pdtf.textColor = UIColor.lightGray
+        pdtf.textColor = mygray
         
         requestlabel.addCharacterSpacing()
         thankyou.alpha = 0

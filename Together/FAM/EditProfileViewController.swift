@@ -94,6 +94,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         var functioncounter = 0
         
+        videodates.removeAll()
         videoids.removeAll()
         videolinks.removeAll()
         videodescriptions.removeAll()
@@ -167,6 +168,11 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 
                 if var author2 = value?["Title"] as? String {
                     self.videotitles[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Date"] as? String {
+                    videodates[each] = author2
                     
                 }
                 
@@ -276,8 +282,22 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         //        cell.subscriber.tag = indexPath.row
         
-        if thumbnails.count > indexPath.row{
+        if thumbnails.count > indexPath.row {
             
+            if indexPath.row == 0 {
+                
+                cell.thumbnail.image = myselectedimage
+                cell.titlelabel.text = "Start Here"
+                cell.timeago.text = "\(selectedsubs) subscribers"
+                
+            } else {
+                
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
+
+                cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
+                cell.timeago.text = videodates[videoids[indexPath.row-1]]
+                
+            }
             
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -289,13 +309,11 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             cell.layer.cornerRadius = 10.0
             cell.layer.masksToBounds = true
             
-            cell.titlelabel.text = videotitles[videoids[indexPath.row]]
-            cell.timeago.text = "14h ago"
+     
             activityIndicator.alpha = 0
             collectionView.alpha = 1
             activityIndicator.stopAnimating()
             
-            cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
             
         } else {
             

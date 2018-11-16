@@ -335,8 +335,8 @@
 			isa = PBXGroup;
 			children = (
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
-				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
 				9DB8ADFF219DDB0300D7D707 /* PeopleCollectionViewCell.swift */,
+				9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */,
 				9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */,
 				9DB8AE02219DE6C000D7D707 /* VideosCollectionViewCell.swift */,
 				9DB8AE04219DE79200D7D707 /* VideoViewController.swift */,

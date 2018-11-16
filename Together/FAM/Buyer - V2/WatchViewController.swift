@@ -106,11 +106,10 @@ class WatchViewController: UIViewController {
 
         influencername.text = lowercasename
         videotitle.text = selectedtitle
-        profileimage.image = selectedimage
+        profileimage.image = myselectedimage
         
-        profileimage.layer.masksToBounds = false
-        profileimage.layer.cornerRadius = profileimage.frame.height/2
-        profileimage.clipsToBounds = true
+        profileimage.layer.masksToBounds = true
+        profileimage.layer.cornerRadius = 5.0
         
         let videourl = URL(string: selectedvideo)
         

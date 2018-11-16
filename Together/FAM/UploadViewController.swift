@@ -18,7 +18,8 @@ import AVKit
 import MobileCoreServices
 
 var videoURL : NSURL?
-
+var thisdate = String()
+var videodates = [String:String]()
 var yourprogramname = String()
 var mythumbnail = UIImage()
 var yourpropic = UIImage()
@@ -27,6 +28,14 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func tapShare(_ sender: Any) {
+        
+        if playerView.player?.isPlaying == true {
+            
+            playerView.player?.pause()
+            
+        } else {
+            
+        }
         
         activityIndicator.alpha = 1
         activityIndicator.color = mypink
@@ -95,7 +104,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(downloadURL)
                 
                 let mystring2 = downloadURL.absoluteString
-            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : self.tv2.text!])
+                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : self.tv2.text!, "Date" : thisdate])
 
                 self.loadthumbnail()
                 
@@ -294,7 +303,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             playerView.player?.pause()
             
         } else {
-            playerView.player?.play()
             
         }
     }
@@ -330,6 +338,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
         strDate = dateFormatter.string(from: date)
         tv2.alpha = 0
+
+        dateFormatter.dateFormat = "MMM dd"
+
+        thisdate = dateFormatter.string(from: date)
+        
         
      
         //            imgView.image = thumbnail

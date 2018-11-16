@@ -14,6 +14,8 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 
+var mygray = UIColor(red:0.45, green:0.43, blue:0.43, alpha:1.0)
+
 var selectedid = String()
 
 var images = [String:UIImage]()
@@ -165,7 +167,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         selectedid = projectids[indexPath.row]
-        selectedimage = images[projectids[indexPath.row]]!
+        myselectedimage = images[projectids[indexPath.row]]!
         selectedname = names[projectids[indexPath.row]]!
         selectedpitch = descriptions[projectids[indexPath.row]]!
         selectedprice = prices[projectids[indexPath.row]]!
@@ -199,7 +201,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
 //        cell.subscriber.tag = indexPath.row
         
-        if images.count > indexPath.row{
+        if images.count > indexPath.row && names.count > indexPath.row{
             
             
             //            cell.layer.borderWidth = 1.0
@@ -211,6 +213,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             cell.textlabel.text = names[projectids[indexPath.row]]
      
             cell.thumbnail.image = images[projectids[indexPath.row]]
+            cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
             
         } else {
             

@@ -120,6 +120,7 @@ class RevenueViewController: UIViewController {
                 
                 if var author2 = value?["Subscribers"] as? String {
                     
+                    selectedsubs = author2
                     if author2 == "0" {
                         
                         self.nofollows.alpha = 1
@@ -184,16 +185,12 @@ class RevenueViewController: UIViewController {
                     
                     let url = URL(string: profileUrl)
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    selectedimage = UIImage(data: data!)!
+                    myselectedimage = UIImage(data: data!)!
                     self.propic.image = selectedimage
 
-                } else {
-                    
-                    selectedimage = UIImage(named: "Placeholder")!
-                    self.propic.image = selectedimage
-                    
-                    
                 }
+                    
+                
                 
             })
             

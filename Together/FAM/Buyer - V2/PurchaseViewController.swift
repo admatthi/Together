@@ -129,12 +129,11 @@ class PurchaseViewController: UIViewController {
         activityIndicator.startAnimating()
         activityIndicator.alpha = 1
         ref = Database.database().reference()
-        profileimage.layer.masksToBounds = false
-        profileimage.layer.cornerRadius = profileimage.frame.height/2
-        profileimage.clipsToBounds = true
+        profileimage.layer.masksToBounds = true
+        profileimage.layer.cornerRadius = 5.0
         influencername.text = lowercasename
         videotitle.text = selectedtitle
-        profileimage.image = selectedimage
+        profileimage.image = myselectedimage
 
         tapbuy.layer.cornerRadius = 22.0
         tapbuy.layer.masksToBounds = true

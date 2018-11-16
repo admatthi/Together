@@ -296,6 +296,20 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         if thumbnails.count > indexPath.row{
             
+            if indexPath.row == 0 {
+                
+                cell.thumbnail.image = myselectedimage
+                cell.titlelabel.text = "Start Here"
+                cell.timeago.text = "\(selectedsubs) subscribers"
+                
+            } else {
+                
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
+                
+                cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
+                cell.timeago.text = videodates[videoids[indexPath.row-1]]
+                
+            }
             
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -305,13 +319,10 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             cell.layer.cornerRadius = 10.0
             cell.layer.masksToBounds = true
             cell.thumbnail.layer.masksToBounds = true
-            cell.titlelabel.text = videotitles[videoids[indexPath.row]]
-            cell.timeago.text = "14h ago"
             activityIndicator.alpha = 0
             collectionView.alpha = 1
             activityIndicator.stopAnimating()
             
-            cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
 
         } else {
             
