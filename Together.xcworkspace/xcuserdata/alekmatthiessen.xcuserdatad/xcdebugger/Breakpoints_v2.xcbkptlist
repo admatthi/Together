@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/Buyer - V2/InfluencerCreateViewController.swift"
-            timestampString = "564038590.740693"
+            timestampString = "564083289.336044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "tapSignUp(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/InfluencerCreateViewController.swift"
-            timestampString = "564038590.7408"
+            filePath = "Together/FAM/UploadViewController.swift"
+            timestampString = "564083289.336113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "tapSignUp(_:)"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "tapShare(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/InfluencerCreateViewController.swift"
-            timestampString = "564038590.740863"
+            filePath = "Together/FAM/UploadViewController.swift"
+            timestampString = "564083289.336166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "tapSignUp(_:)"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "tapShare(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,29 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/InfluencerCreateViewController.swift"
-            timestampString = "564038590.740988"
+            filePath = "Together/FAM/UploadViewController.swift"
+            timestampString = "564083289.336211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "signup()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/InfluencerCreateViewController.swift"
-            timestampString = "564038590.741112"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "signup()"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "loadthumbnail()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -29,6 +29,10 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func tapShare(_ sender: Any) {
         
+        headerlabel.text = "Uploading..."
+        headerlabel.alpha = 1
+        headerlabel.addCharacterSpacing()
+        
         if playerView.player?.isPlaying == true {
             
             playerView.player?.pause()
@@ -50,7 +54,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 //        let localFile  = URL(string: )!
 
 
-        if tv2.text != "" {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let currentUser = Auth.auth().currentUser
@@ -104,7 +107,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(downloadURL)
                 
                 let mystring2 = downloadURL.absoluteString
-                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : self.tv2.text!, "Date" : thisdate])
 
                 
                 if noothervids == true {
@@ -112,6 +114,10 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
 
                     
+                } else {
+                    
+                    ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : self.tv2.text!, "Date" : thisdate])
+
                 }
                 self.loadthumbnail()
                 
@@ -120,7 +126,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
                 
-        }
             
         }
     }
@@ -176,13 +181,17 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(downloadURL)
                 
                 let mystring2 = downloadURL.absoluteString
-                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Thumbnail" : mystring2])
                 
                 
                 if noothervids == true {
                     
                     ref!.child("Influencers").child(uid).updateChildValues(["ProPic" : mystring2])
                     
+                    
+                } else {
+                    
+                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Thumbnail" : mystring2])
+
                     
                 }
                 self.activityIndicator.alpha = 0
@@ -243,26 +252,38 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             playerView.playerLayer.player = avPlayer
             
             getThumbnailFrom(path: videoURL as! URL)
-            tv2.alpha = 1
+//            tv2.alpha = 1
 
             playerView.player?.play()
 
-            
+            headerlabel.alpha = 0
+            tapshowtv.alpha = 1
+            tapshare.alpha = 1
+            tapnew.alpha = 0
+            tapcancel.alpha = 0.5
         } catch let error {
             print("*** Error generating thumbnail: \(error.localizedDescription)")
         }
         self.dismiss(animated: true, completion: nil)
     }
     /*
-    // MARK: - Navigation
-
+     @IBAction func tapCancel(_ sender: Any) {
+     }
+     // MARK: - Navigation
+     @IBOutlet weak var tapcancel: UIButton!
+     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func tapCancel(_ sender: Any) {
+        
+        playerView.player?.replaceCurrentItem(with: nil)
+    }
+    
+    @IBOutlet weak var tapcancel: UIButton!
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
@@ -278,6 +299,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     @IBOutlet weak var propic: UIImageView!
 
+    @IBOutlet weak var tapnew: UIButton!
+    @IBOutlet weak var tapshare: UIButton!
     override func viewDidAppear(_ animated: Bool) {
         
         let date = Date()
@@ -286,6 +309,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
         strDate = dateFormatter.string(from: date)
+        
+
+
         
     }
     
@@ -325,17 +351,28 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        imagePickerController.mediaTypes = [kUTTypeMovie as String]
-        present(imagePickerController, animated: true, completion: nil)
+        tapshowtv.alpha = 0
+//        imagePickerController.sourceType = .photoLibrary
+//        imagePickerController.delegate = self
+//        imagePickerController.mediaTypes = [kUTTypeMovie as String]
+//        present(imagePickerController, animated: true, completion: nil)
+        
+        
+        tapnew.alpha = 1
+        tapshare.alpha = 0
+        tapcancel.alpha = 0
         
         ref = Database.database().reference()
     
         self.activityIndicator.alpha = 0
         self.loadinglabel.alpha = 0
-        tv2.text = "Write your title.."
-        tv2.textColor = UIColor.lightGray
+        tv2.text = ""
+        tv2.tintColor = .white
+//        tv2.textColor = UIColor.white
+        
+        tv2.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
+
+
 //        tapplay.alpha = 1
         queryforinfo()
         headerlabel.text = "UPLOAD"
@@ -380,6 +417,13 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 //        playerView.player?.pause()
     }
     
+    @IBOutlet weak var tapshowtv: UIButton!
+    @IBAction func tapShowTV(_ sender: Any) {
+        
+        tv2.alpha = 1
+                tv2.becomeFirstResponder()
+
+    }
     func getThumbnailFrom(path: URL) -> UIImage? {
         
         do {
@@ -534,13 +578,17 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.white
-        }
+        textView.textAlignment = .left
+
+//        if textView.textColor == UIColor.lightGray {
+//            textView.text = ""
+//            textView.textColor = UIColor.white
+//        }
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.textAlignment = .center
+
     }
+
 }

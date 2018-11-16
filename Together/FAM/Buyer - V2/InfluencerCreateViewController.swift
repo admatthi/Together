@@ -25,9 +25,10 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
     var inputprogramname = String()
     var phonenumber = String()
     
-        func textViewDidBeginEditing(_ textView: UITextView) {
-            if textView.textColor == UIColor.lightGray {
-                textView.text = nil
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+            if textView.textColor == mygray {
+                textView.text = ""
                 textView.textColor = UIColor.white
             }
         }
@@ -70,7 +71,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
             } else {
                 
 //
-                ref?.child("Influencers").child(uid).updateChildValues(["Description" : inputdescription, "Price" : inputprice, "Phone Number" : phonenumber, "Subscribers" : "0", "Approved" : "False", "Name" : inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : email, "Password" : password, "Domain" : domainz, "Purchase" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/y2mate.com%20-%20mvmt_social_ad_vertical_video_bjH6DShpolY_1080p.mp4?alt=media&token=6fd2dd4e-5890-4ba4-98b1-393c962dc053"])
+                ref?.child("Influencers").child(uid).updateChildValues(["Description" : self.inputdescription, "Price" : self.inputprice, "Phone Number" : self.phonenumber, "Subscribers" : "0", "Approved" : "False", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-"])
 
                 thankyou.alpha = 1
                 passwordtf.alpha = 0
@@ -204,7 +205,7 @@ class InfluencerCreateViewController: UIViewController, UITextFieldDelegate, UIT
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
                 //                self.addstaticbooks()
-                ref?.child("Influencers").child(uid).updateChildValues(["Description" : self.inputdescription, "Price" : self.inputprice, "Phone Number" : self.phonenumber, "ProgramName" : self.inputprogramname, "Subscribers" : "0", "Approved" : "False", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-"])
+                ref?.child("Influencers").child(uid).updateChildValues(["Description" : self.inputdescription, "Price" : self.inputprice, "Phone Number" : self.phonenumber, "Subscribers" : "0", "Approved" : "False", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-"])
                 
                 ref?.child("Users").child(uid).updateChildValues(["Approved" : "False"])
 

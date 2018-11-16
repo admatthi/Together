@@ -30,6 +30,7 @@ class RevenueViewController: UIViewController {
         nofollows.alpha = 0
         ref = Database.database().reference()
         
+        
         propic.layer.masksToBounds = false
         propic.layer.cornerRadius = propic.frame.height/2
         propic.clipsToBounds = true
@@ -123,7 +124,7 @@ class RevenueViewController: UIViewController {
                     selectedsubs = author2
                     if author2 == "0" {
                         
-                        self.nofollows.alpha = 1
+//                        self.nofollows.alpha = 1
                         
                     } else {
                         
@@ -161,7 +162,7 @@ class RevenueViewController: UIViewController {
                     
                     self.yourdomain = "\(author5).joinmyfam.com"
                     
-                    self.tapshare.alpha = 1
+//                    self.tapshare.alpha = 1
                 }
                 
                 if var views = value?["Name"] as? String {

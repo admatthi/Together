@@ -18,7 +18,7 @@ import AVFoundation
 var thumbnailurls = [String:String]()
 var selectedthumbnailurl = String()
 var selectedvideourl = String()
-class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate   {
+class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate   {
 
     @IBOutlet weak var programname: UILabel!
     override func viewDidLoad() {
@@ -79,6 +79,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             activityIndicator.color = mypink
             activityIndicator.startAnimating()
             
+            queryforhighlevelinfo()
+            
             queryforids { () -> () in
                 
                 self.queryforinfo()
@@ -92,7 +94,38 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     
-
+    func queryforhighlevelinfo() {
+        
+        var functioncounter = 0
+        
+        ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            
+           
+            if var profileUrl = value?["ProPic"] as? String {
+                // Create a storage reference from the URL
+                
+                let url = URL(string: profileUrl)
+                thumbnailurls["0"] = profileUrl
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                self.thumbnails["0"] = UIImage(data: data!)
+                
+            }
+            
+            
+            if var author2 = value?["Purchase"] as? String {
+                videolinks["0"] = author2
+                
+                
+            }
+            
+            self.collectionView.reloadData()
+        })
+        
+    }
+                
     @IBOutlet weak var tableView: UITableView!
     
     func queryforids(completed: @escaping (() -> ()) ) {
@@ -248,10 +281,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         if indexPath.row == 0 {
             
-            selectedtitle = videotitles[videoids[indexPath.row]]!
-            selectedthumbnailurl = thumbnailurls[videoids[indexPath.row]]!
-            selectedvideoid = videoids[indexPath.row]
-            selectedvideourl = videolinks[videoids[indexPath.row]]!
+            selectedtitle = "Start Here"
+            selectedthumbnailurl = thumbnailurls["0"]!
+            selectedvideourl = videolinks["0"]!
             self.performSegue(withIdentifier: "EditToPurchase", sender: self)
             
         } else {
@@ -272,11 +304,11 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         if thumbnails.count > 0 {
             
-            return thumbnails.count + 1
+            return thumbnails.count
             
         } else {
             
-            return 1
+            return 0
         }
         
     }
@@ -292,7 +324,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             
             if indexPath.row == 0 {
                 
-                cell.thumbnail.image = myselectedimage
+                cell.thumbnail.image = thumbnails["0"]
                 cell.titlelabel.text = "Start Here"
                 cell.timeago.text = "\(selectedsubs) subscribers"
                 cell.whitelabel.alpha = 0
@@ -348,6 +380,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         
     }
+    
+    
     
     @objc func tapStory(sender: UIButton){
         
