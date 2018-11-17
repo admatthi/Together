@@ -149,7 +149,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
 //                self.addstaticbooks()
-                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Password" : password, "Purchased" : true])
+                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Password" : password, "Purchased" : true, "Approved" : "False"])
                 
                 
                 
