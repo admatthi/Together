@@ -56,11 +56,11 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
 
-            locked = true
+//            locked = true
 
         } else {
 
-            locked = true
+//            locked = true
 
             uid = (Auth.auth().currentUser?.uid)!
 
@@ -92,7 +92,7 @@ class PlansViewController: UIViewController, UITableViewDataSource, UITableViewD
                         
                     } else {
                         
-                        locked = true
+//                        locked = true
                     }
                     functioncounter += 1
                     

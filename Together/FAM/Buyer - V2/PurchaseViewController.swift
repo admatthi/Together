@@ -32,7 +32,7 @@ class PurchaseViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var purchases = RCPurchases(apiKey: "RDlbQdhQOSZKZUtWvzWnfocZNPLbDFfw")
+    var purchases = RCPurchases(apiKey: "CtGggTihmnxBAjLMnrzaYrSdGVjXtYHo")
     
     @IBAction func tapLogin(_ sender: Any) {
     }
@@ -48,7 +48,8 @@ class PurchaseViewController: UIViewController {
             
             
         }
-        
+        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
+
         
     }
     
@@ -62,7 +63,7 @@ class PurchaseViewController: UIViewController {
     
     @IBAction func tapTerms(_ sender: Any) {
         
-        if let url = NSURL(string: "https://www.mysnippetsapp.weebly.com/privacy-policy.html"
+        if let url = NSURL(string: "https://938152110718650409.weebly.com/privacy-policy.html"
             ) {
             UIApplication.shared.openURL(url as URL)
         }

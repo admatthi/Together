@@ -590,6 +590,9 @@
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapSignUp:" destination="ezu-Il-3kv" eventType="touchUpInside" id="E65-X0-JHc"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80p-vX-GYQ">
                                 <rect key="frame" x="16" y="173" width="343" height="53"/>
@@ -835,7 +838,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tapSignUp:" destination="kIY-P3-Fhm" eventType="touchUpInside" id="65G-om-G00"/>
-                                    <action selector="tapSignUp:" destination="ezu-Il-3kv" eventType="touchUpInside" id="xpb-TZ-7xe"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apply to create on Fam. Only approved creators are permitted to list." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FU-v4-6Nk">
@@ -1507,13 +1509,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5uX-Su-b8j">
-                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="rc1-sI-u7x"/>
-                                    <constraint firstAttribute="width" constant="20" id="uO0-r3-V4n"/>
-                                </constraints>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYF-e9-OYY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1596,8 +1591,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="PaW-4O-GCW" id="Lj2-bf-sdP"/>
-                                    <outlet property="delegate" destination="PaW-4O-GCW" id="Cyg-GR-CFw"/>
+                                    <outlet property="dataSource" destination="Y95-26-knQ" id="Ngz-Zg-Dhn"/>
+                                    <outlet property="delegate" destination="Y95-26-knQ" id="tD1-ra-96t"/>
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't subscribed to anyone yet. Subscribe now!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCN-zN-RuB">
@@ -1621,6 +1616,13 @@
                                 <color key="textColor" red="0.95686274510000002" green="0.1019607843" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5uX-Su-b8j">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="rc1-sI-u7x"/>
+                                    <constraint firstAttribute="width" constant="20" id="uO0-r3-V4n"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2514,13 +2516,13 @@
         <image name="X" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yNW-xH-ca5"/>
-        <segue reference="ghm-eP-2Xv"/>
+        <segue reference="69d-3Z-lQE"/>
+        <segue reference="dAi-mR-jNJ"/>
         <segue reference="4rc-m4-ngi"/>
-        <segue reference="3iS-MX-CDv"/>
+        <segue reference="thP-jo-JVF"/>
         <segue reference="IYV-ip-BkV"/>
         <segue reference="FNQ-2Z-Lgo"/>
-        <segue reference="hE5-9B-jLW"/>
-        <segue reference="7Es-kF-ufi"/>
+        <segue reference="gwA-QQ-3Vd"/>
+        <segue reference="qos-G9-AVk"/>
     </inferredMetricsTieBreakers>
 </document>

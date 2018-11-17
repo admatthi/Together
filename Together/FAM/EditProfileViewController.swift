@@ -37,7 +37,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         thisdate = dateFormatter.string(from: date)
         
         
-        locked = true
+//        locked = true
         
         if uid == selectedid {
             
