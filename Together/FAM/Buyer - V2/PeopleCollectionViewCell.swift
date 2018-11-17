@@ -13,6 +13,7 @@ class PeopleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var textlabel: UILabel!
     
+    @IBOutlet weak var subscribers: UILabel!
     @IBOutlet weak var darkness: UIImageView!
     
 }

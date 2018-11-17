@@ -15,19 +15,34 @@ import FirebaseAuth
 import FBSDKCoreKit
 import AVFoundation
 
-class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate   {
+var thumbnailurls = [String:String]()
+var selectedthumbnailurl = String()
+var selectedvideourl = String()
+class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate   {
 
     @IBOutlet weak var programname: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         lowercasename = selectedname
+        selectedid = uid
 
-        collectionView.alpha = 0
-        activityIndicator.alpha = 1
-        activityIndicator.color = mypink
-        activityIndicator.startAnimating()
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
         
+        dateFormatter.dateFormat = "MMM dd"
+        
+        thisdate = dateFormatter.string(from: date)
+        
+        
+        locked = true
+        
+        if uid == selectedid {
+            
+            locked = false
+        }
         selectedprogramname = selectedprogramname.uppercased()
         
         programname.text = selectedname.uppercased()
@@ -61,29 +76,79 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         ref = Database.database().reference()
 
-        
-        queryforids { () -> () in
+        if thumbnails.count >  0 {
             
-            self.queryforinfo()
+            collectionView.alpha = 1
+            activityIndicator.alpha = 0
+            collectionView.reloadData()
+            
+        } else {
+            
+            collectionView.alpha = 0
+            activityIndicator.alpha = 1
+            activityIndicator.color = mypink
+            activityIndicator.startAnimating()
+            
+            queryforhighlevelinfo()
+            
+            queryforids { () -> () in
+                
+                self.queryforinfo()
+                
+            }
             
         }
+        
+      
         
     }
     
     
-
+    func queryforhighlevelinfo() {
+        
+        var functioncounter = 0
+        
+        ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            
+           
+            if var profileUrl = value?["ProPic"] as? String {
+                // Create a storage reference from the URL
+                
+                let url = URL(string: profileUrl)
+                thumbnailurls["0"] = profileUrl
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                self.thumbnails["0"] = UIImage(data: data!)
+                
+            }
+            
+            
+            if var author2 = value?["Purchase"] as? String {
+                videolinks["0"] = author2
+                
+                
+            }
+            
+            self.collectionView.reloadData()
+        })
+        
+    }
+                
     @IBOutlet weak var tableView: UITableView!
     
     func queryforids(completed: @escaping (() -> ()) ) {
         
         var functioncounter = 0
         
+        videodates.removeAll()
         videoids.removeAll()
         videolinks.removeAll()
         videodescriptions.removeAll()
         videotitles.removeAll()
         thumbnails.removeAll()
-        
+        thumbnailurls.removeAll()
         ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -154,10 +219,16 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                     
                 }
                 
+                if var author2 = value?["Date"] as? String {
+                    videodates[each] = author2
+                    
+                }
+                
                 if var profileUrl = value?["Thumbnail"] as? String {
                     // Create a storage reference from the URL
                     
                     let url = URL(string: profileUrl)
+                    thumbnailurls[each] = profileUrl
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     self.thumbnails[each] = UIImage(data: data!)
                     
@@ -220,16 +291,18 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         if indexPath.row == 0 {
             
-            selectedtitle = videotitles[videoids[indexPath.row]]!
-            
-            
+            selectedtitle = "Subscribe Now"
+            selectedthumbnailurl = thumbnailurls["0"]!
+            selectedvideourl = videolinks["0"]!
             self.performSegue(withIdentifier: "EditToPurchase", sender: self)
             
         } else {
             
-            selectedvideo = videolinks[videoids[indexPath.row]]!
+            selectedthumbnailurl = thumbnailurls[videoids[indexPath.row-1]]!
+            selectedvideo = videolinks[videoids[indexPath.row-1]]!
+            selectedvideoid = videoids[indexPath.row-1]
+            selectedtitle = videotitles[videoids[indexPath.row-1]]!
             
-            selectedtitle = videotitles[videoids[indexPath.row]]!
             self.performSegue(withIdentifier: "EditToWatch", sender: self)
         }
         
@@ -256,9 +329,35 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
         
         //        cell.subscriber.tag = indexPath.row
-        
-        if thumbnails.count > indexPath.row{
+    
+        if thumbnails.count > indexPath.row {
             
+            if indexPath.row == 0 {
+                
+                cell.thumbnail.image = thumbnails["0"]
+                cell.titlelabel.text = "Subscribe Now"
+                cell.timeago.text = "\(selectedsubs) subscribers"
+                cell.whitelabel.alpha = 0
+                cell.isUserInteractionEnabled = true
+                
+            } else {
+                
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
+
+                cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
+                cell.timeago.text = videodates[videoids[indexPath.row-1]]
+                
+                if locked {
+                    
+                    cell.whitelabel.alpha = 0.5
+                    cell.isUserInteractionEnabled = false
+                } else {
+                    cell.whitelabel.alpha = 0
+
+                    cell.isUserInteractionEnabled = true
+                }
+                
+            }
             
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -266,13 +365,15 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             
             cell.thumbnail.layer.cornerRadius = 10.0
             cell.thumbnail.layer.masksToBounds = true
-            cell.titlelabel.text = videotitles[videoids[indexPath.row]]
-            cell.timeago.text = "14h ago"
+            
+            cell.layer.cornerRadius = 10.0
+            cell.layer.masksToBounds = true
+            
+     
             activityIndicator.alpha = 0
             collectionView.alpha = 1
             activityIndicator.stopAnimating()
             
-            cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
             
         } else {
             
@@ -290,6 +391,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     
+    
+    
     @objc func tapStory(sender: UIButton){
         
         selectedid = uid
@@ -302,7 +405,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 
     
     @IBAction func tapLogout(_ sender: Any) {
+        try! Auth.auth().signOut()
         
+        self.performSegue(withIdentifier: "Logout5", sender: self)
        
     }
 }

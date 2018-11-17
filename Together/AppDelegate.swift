@@ -24,7 +24,7 @@ var ref: DatabaseReference?
 
 var tryingtopurchase = Bool()
 var isInfluencer = Bool()
-
+var myselectedimage = UIImage()
 protocol SnippetsPurchasesDelegate: AnyObject {
     
     func purchaseCompleted(product: String)
@@ -81,7 +81,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
             uid = (currentUser?.uid)!
             queryforinfo()
-          
+            
+            queryforids { () -> () in
+                
+                
+            }
 
         }
     
@@ -97,6 +101,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialViewControlleripad
         self.window?.makeKeyAndVisible()
+        
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+            
+
+        } else {
+            
+            let currentUser = Auth.auth().currentUser
+            
+            uid = (currentUser?.uid)!
+        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
+
+        }
+
     }
     
     func queryforinfo() {
@@ -107,6 +125,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             var value = snapshot.value as? NSDictionary
             
+            if var profileUrl = value?["ProPic"] as? String {
+                // Create a storage reference from the URL
+                
+                let url = URL(string: profileUrl)
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                myselectedimage = UIImage(data: data!)!
+                
+            }
+            
+            if var profileUrl2 = value?["Purchase"] as? String {
+                // Create a storage reference from the URL
+                
+                if profileUrl2 == "-" {
+                    
+                    noothervids = true
+                    
+                } else {
+                    
+                    noothervids = false
+                }
+            }
+            
+            
+            
+            if var author2 = value?["Subscribers"] as? String {
+                
+                selectedsubs = author2
+            }
             if var author2 = value?["Approved"] as? String {
                 
                 if author2 == "False" {
@@ -165,6 +211,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+    
+    func queryforids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+    
+        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    myprojectids.append(ids)
+         
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        completed()
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
     }
     
 

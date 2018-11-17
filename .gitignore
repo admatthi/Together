@@ -1,0 +1,8 @@
+.DS_Store
+Podfile
+Podfile.lock
+Pods/
+Together.xcodeproj/xcuserdata/user912215.xcuserdatad/
+Together.xcworkspace/
+Together/.DS_Store
+Together/FAM/.DS_Store

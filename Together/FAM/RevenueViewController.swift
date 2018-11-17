@@ -30,6 +30,7 @@ class RevenueViewController: UIViewController {
         nofollows.alpha = 0
         ref = Database.database().reference()
         
+        
         propic.layer.masksToBounds = false
         propic.layer.cornerRadius = propic.frame.height/2
         propic.clipsToBounds = true
@@ -120,9 +121,10 @@ class RevenueViewController: UIViewController {
                 
                 if var author2 = value?["Subscribers"] as? String {
                     
+                    selectedsubs = author2
                     if author2 == "0" {
                         
-                        self.nofollows.alpha = 1
+//                        self.nofollows.alpha = 1
                         
                     } else {
                         
@@ -160,7 +162,7 @@ class RevenueViewController: UIViewController {
                     
                     self.yourdomain = "\(author5).joinmyfam.com"
                     
-                    self.tapshare.alpha = 1
+//                    self.tapshare.alpha = 1
                 }
                 
                 if var views = value?["Name"] as? String {
@@ -184,16 +186,12 @@ class RevenueViewController: UIViewController {
                     
                     let url = URL(string: profileUrl)
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    selectedimage = UIImage(data: data!)!
+                    myselectedimage = UIImage(data: data!)!
                     self.propic.image = selectedimage
 
-                } else {
-                    
-                    selectedimage = UIImage(named: "Placeholder")!
-                    self.propic.image = selectedimage
-                    
-                    
                 }
+                    
+                
                 
             })
             

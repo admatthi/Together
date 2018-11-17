@@ -45,6 +45,18 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         //        cta.text = "Join \(firstname)'s FAM"
         
+        locked = true
+        
+        if uid == selectedid {
+            
+            locked = false
+        }
+        
+        if myprojectids.contains(selectedid) {
+            
+            locked = false
+        }
+        
         ref = Database.database().reference()
         
         
@@ -120,7 +132,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         videodescriptions.removeAll()
         videotitles.removeAll()
         thumbnails.removeAll()
-        
+        videodates.removeAll()
         ref?.child("Influencers").child(selectedid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -179,6 +191,13 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
                 if var author2 = value?["Title"] as? String {
                     self.videotitles[each] = author2
+                    
+                }
+                
+                
+                if var author2 = value?["Date"] as? String {
+                
+                    videodates[each] = author2
                     
                 }
                 
@@ -243,9 +262,9 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
-        if videolinks.count > 0 {
+        if thumbnails.count > 0 {
             
-            return videolinks.count
+            return thumbnails.count + 1
             
         } else {
             
@@ -257,16 +276,15 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         if indexPath.row == 0 {
             
-            selectedtitle = videotitles[videoids[indexPath.row]]!
-
+            selectedtitle = "Subscribe Now"
             
             self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
 
         } else {
             
-            selectedvideo = videolinks[videoids[indexPath.row]]!
-            
-            selectedtitle = videotitles[videoids[indexPath.row]]!
+            selectedvideo = videolinks[videoids[indexPath.row-1]]!
+            selectedvideoid = videoids[indexPath.row-1]
+            selectedtitle = videotitles[videoids[indexPath.row-1]]!
             self.performSegue(withIdentifier: "VideoToWatch", sender: self)
         }
         
@@ -278,11 +296,11 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
         if thumbnails.count > 0 {
         
-        return thumbnails.count
+        return thumbnails.count + 1
         
         } else {
         
-            return 0
+            return 1
         }
     
     }
@@ -294,22 +312,50 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         //        cell.subscriber.tag = indexPath.row
         
-        if thumbnails.count > indexPath.row{
+        if thumbnails.count >= indexPath.row{
             
+            if indexPath.row == 0 {
+                
+                cell.thumbnail.image = myselectedimage
+                cell.titlelabel.text = "Subscribe Now"
+                cell.timeago.text = "\(selectedsubs) subscribers"
+                cell.whitelabel.alpha = 0
+
+                cell.isUserInteractionEnabled = true
+
+            } else {
+                
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
+                
+                cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
+                cell.timeago.text = videodates[videoids[indexPath.row-1]]
+                
+                if locked {
+                    
+                    cell.whitelabel.alpha = 0.5
+                    cell.isUserInteractionEnabled = false
+                } else {
+                    cell.whitelabel.alpha = 0
+                    
+                    cell.isUserInteractionEnabled = true
+                }
+            }
             
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
             //            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             
             cell.thumbnail.layer.cornerRadius = 10.0
+            cell.layer.cornerRadius = 10.0
+            cell.layer.masksToBounds = true
             cell.thumbnail.layer.masksToBounds = true
-            cell.titlelabel.text = videotitles[videoids[indexPath.row]]
-            cell.timeago.text = "14h ago"
             activityIndicator.alpha = 0
             collectionView.alpha = 1
             activityIndicator.stopAnimating()
+            cell.whitelabel.layer.cornerRadius = 10.0
+            cell.whitelabel.layer.masksToBounds = true
             
-            cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
+      
 
         } else {
             

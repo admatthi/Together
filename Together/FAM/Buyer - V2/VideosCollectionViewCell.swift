@@ -10,6 +10,7 @@ import UIKit
 
 class VideosCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var whitelabel: UILabel!
     @IBOutlet weak var timeago: UILabel!
     @IBOutlet weak var darkness: UIImageView!
     @IBOutlet weak var thumbnail: UIImageView!

@@ -16,9 +16,11 @@ import FBSDKCoreKit
 import Purchases
 import AVFoundation
 
+var noothervids = Bool()
 class PurchaseViewController: UIViewController {
+    @IBOutlet weak var pricelabel: UILabel!
     var attrs = [
-        NSAttributedStringKey.foregroundColor : UIColor.lightGray,
+        NSAttributedStringKey.foregroundColor : UIColor.white,
         NSAttributedStringKey.underlineStyle : 1] as [NSAttributedStringKey : Any]
     
     var attrs2 = [NSAttributedStringKey.font : UIFont(name: "AvenirNext-Bold", size: 17.0),
@@ -40,12 +42,14 @@ class PurchaseViewController: UIViewController {
 
         purchases.entitlements { entitlements in
             guard let pro = entitlements?["Subscriptions"] else { return }
-            guard let monthly = pro.offerings["Weekly"] else { return }
+            guard let monthly = pro.offerings["\(selectedprice)price"] else { return }
             guard let product = monthly.activeProduct else { return }
             self.purchases.makePurchase(product)
             
             
         }
+        
+        
     }
     
     
@@ -65,6 +69,7 @@ class PurchaseViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var termsbs: UILabel!
     var purchasestring = String()
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -73,40 +78,47 @@ class PurchaseViewController: UIViewController {
 
     }
     func queryforinfo() {
-        
+
         var functioncounter = 0
-        
-            
+
+
             ref?.child("Influencers").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
-                
+
                 var value = snapshot.value as? NSDictionary
-                
+
+                 if var author2 = value?["Price"] as? String {
+                    
+                    selectedprice = author2
+                    self.pricelabel.text = "$\(selectedprice)/mo"
+                    
+                    self.termsbs.text = "Account will be charged for renewal within 24-hours prior to the end of the current period for $\(selectedprice). Payment will be charged to iTunes Account at confirmation of purchase. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable To learn more, check out our terms of use."
+                }
                 if var author2 = value?["Purchase"] as? String {
                     self.purchasestring = author2
-                    
+
                     //                    self.createThumbnailOfVideoFromRemoteUrl(url: author2)
-                    
+
                     let videourl = URL(string: self.purchasestring)
-                    
+
                     self.avPLayer = AVPlayer(url: videourl! as URL)
                     self.avPLayer.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
 
                     self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                    
+
                     self.playerView.playerLayer.player = self.avPLayer
-                   
-                   
+
+
                     self.playerView.player?.play()
                     self.loadingscreen.alpha = 0
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.alpha = 0
-                    
-                    
+
+
                 }
-                
-                
+
+
             })
-            
+
     }
     
     var avPLayer = AVPlayer()
@@ -129,15 +141,16 @@ class PurchaseViewController: UIViewController {
         activityIndicator.startAnimating()
         activityIndicator.alpha = 1
         ref = Database.database().reference()
-        profileimage.layer.masksToBounds = false
-        profileimage.layer.cornerRadius = profileimage.frame.height/2
-        profileimage.clipsToBounds = true
+        profileimage.layer.masksToBounds = true
+        profileimage.layer.cornerRadius = 5.0
         influencername.text = lowercasename
         videotitle.text = selectedtitle
-        profileimage.image = selectedimage
+        profileimage.image = myselectedimage
 
         tapbuy.layer.cornerRadius = 22.0
         tapbuy.layer.masksToBounds = true
+        
+        
         
         tapterms.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
         
