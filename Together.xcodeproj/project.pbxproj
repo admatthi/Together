@@ -440,6 +440,9 @@
 					9DB795C121656B5300211327 = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 0;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};

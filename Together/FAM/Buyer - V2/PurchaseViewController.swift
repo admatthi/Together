@@ -35,6 +35,8 @@ class PurchaseViewController: UIViewController {
     var purchases = RCPurchases(apiKey: "CtGggTihmnxBAjLMnrzaYrSdGVjXtYHo")
     
     @IBAction func tapLogin(_ sender: Any) {
+        
+        
     }
     @IBAction func tapBuy(_ sender: Any) {
         
@@ -48,7 +50,7 @@ class PurchaseViewController: UIViewController {
             
             
         }
-        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
+//        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
 
         
     }
