@@ -446,13 +446,12 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     
-  
-
     
     @IBAction func tapLogout(_ sender: Any) {
-        try! Auth.auth().signOut()
         
-        self.performSegue(withIdentifier: "Logout5", sender: self)
+//        try! Auth.auth().signOut()
+//
+//        self.performSegue(withIdentifier: "Logout5", sender: self)
        
     }
 }
