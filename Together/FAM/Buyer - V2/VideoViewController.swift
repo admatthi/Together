@@ -73,11 +73,14 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             
         } else {
             
-            locked = true
+            if selectedid == unlockedid {
+                
+                locked = false
+            }
             
-            uid = (Auth.auth().currentUser?.uid)!
+        
             
-            queryforpurchased()
+//            queryforpurchased()
             
         }
         
@@ -86,42 +89,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         // Do any additional setup after loading the view.
     }
     
-    func queryforpurchased() {
-        
-        var functioncounter = 0
-        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            var value = snapshot.value as? NSDictionary
-            
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-                for each in snapDict {
-                    
-                    let ids = each.key
-                    
-                    if ids == selectedid {
-                        
-                        locked = false
-                        
-                    } else {
-                        
-                        locked = true
-                    }
-                    functioncounter += 1
-                    
-                    if functioncounter == snapDict.count {
-                        
-                        //                        self.tableView.reloadData()
-                        
-                    }
-                    
-                    
-                }
-                
-            }
-            
-        })
-    }
+  
     
     func queryforids(completed: @escaping (() -> ()) ) {
         

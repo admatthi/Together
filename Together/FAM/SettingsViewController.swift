@@ -25,14 +25,14 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func tapBilling(_ sender: Any) {
         
-        if let url = NSURL(string: "https://www.mysnippetsapp.weebly.com/billing-terms.html"
+        if let url = NSURL(string: "https://938152110718650409.weebly.com/billing-terms.html"
             ) {
             UIApplication.shared.openURL(url as URL)
         }
     }
     @IBAction func tapAbout(_ sender: Any) {
         
-        if let url = NSURL(string: "https://www.mysnippetsapp.weebly.com"
+        if let url = NSURL(string: "https://938152110718650409.weebly.com/"
             ) {
             UIApplication.shared.openURL(url as URL)
         }
@@ -53,7 +53,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     @IBAction func tapTerms(_ sender: Any) {
         
-        if let url = NSURL(string: "https://www.mysnippetsapp.weebly.com/terms.html"
+        if let url = NSURL(string: "https://938152110718650409.weebly.com/terms.html"
             ) {
             UIApplication.shared.openURL(url as URL)
         }
@@ -61,7 +61,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func tapPrivacy(_ sender: Any) {
         
-        if let url = NSURL(string: "https://www.mysnippetsapp.weebly.com/privacy-policy.html"
+        if let url = NSURL(string: "https://938152110718650409.weebly.com//privacy-policy.html"
             ) {
             UIApplication.shared.openURL(url as URL)
         }

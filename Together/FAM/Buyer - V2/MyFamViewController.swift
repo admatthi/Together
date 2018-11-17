@@ -23,7 +23,7 @@ var mytoppics = [String:UIImage]()
 var mynames = [String:String]()
 var myimages = [String:UIImage]()
 var mypink = UIColor(red:0.96, green:0.10, blue:0.47, alpha:1.0)
-
+var mysubscribers = [String:String]()
 var unlockedid = String()
 
 class MyFamViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
@@ -79,6 +79,7 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
         myprices.removeAll()
         mytoppics.removeAll()
         myimages.removeAll()
+        mysubscribers.removeAll()
         
         collectionView.alpha = 0
         errorlabel.alpha = 1
@@ -94,8 +95,7 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
                     let ids = each.key
                     
                     myprojectids.append(ids)
-                    self.collectionView.alpha = 1
-                    self.errorlabel.alpha = 0
+
                     functioncounter += 1
                     
                     if functioncounter == snapDict.count {
@@ -127,56 +127,38 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
                 var value = snapshot.value as? NSDictionary
                 
                 if var author2 = value?["Subscribers"] as? String {
-                    self.subscribers[each] = author2
+                    mysubscribers[each] = author2
                     
-                } else {
-                    
-                    self.subscribers[each] = "0"
-
                 }
                 
-                if var author2 = value?["Description"] as? String {
-                    mydescriptions[each] = author2
-                    
-                } else {
-                    mydescriptions[each] = "-"
-
-                    
-                }
+             
                 if var name = value?["Name"] as? String {
                     mynames[each] = name
                     
-                } else {
-                    
-                    mynames[each] = "-"
-
                 }
                 
                 if var views = value?["Price"] as? String {
                     myprices[each] = views
                     
-                } else {
-                    
-                    myprices[each] = "0"
-
-                }
-                
-                if var views = value?["ProgramName"] as? String {
-                    myprogramnames[each] = views
-                    
-                } else {
-                    
-                    myprogramnames[each] = "-"
-
                 }
                 
                 
                 
-                myimages[each] = UIImage(named: "\(each)")
                 
-                mytoppics[each] = UIImage(named: "\(each)pic")
+                if var profileUrl = value?["ProPic"] as? String {
+                    // Create a storage reference from the URL
+                    
+                    let url = URL(string: profileUrl)
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    selectedimage = UIImage(data: data!)!
+                    
+                    myimages[each] = selectedimage
+                    
+                    functioncounter += 1
+                    
+                }
                 
-                functioncounter += 1
+                
                 
                 print(functioncounter)
                 
@@ -186,6 +168,7 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
                     
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
+                    self.errorlabel.alpha = 0
                     self.collectionView.alpha = 1
                     self.collectionView.reloadData()
                     
@@ -199,14 +182,14 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        selectedid = myprojectids[indexPath.row]
+        
         unlockedid = myprojectids[indexPath.row]
         myselectedimage = myimages[myprojectids[indexPath.row]]!
         selectedname = mynames[myprojectids[indexPath.row]]!
-        selectedpitch = mydescriptions[myprojectids[indexPath.row]]!
         selectedprice = myprices[myprojectids[indexPath.row]]!
+        selectedsubs = mysubscribers[myprojectids[indexPath.row]]!
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedsubs = subscribers[myprojectids[indexPath.row]]!
-        selectedprogramname = myprogramnames[myprojectids[indexPath.row]]!
         
         
         self.performSegue(withIdentifier: "MyFamToVideo", sender: self)
@@ -215,9 +198,9 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if images.count > 0 {
+        if myimages.count > 0 {
             
-            return images.count
+            return myimages.count
             
         } else {
             
@@ -245,7 +228,7 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
             cell.textlabel.text = mynames[myprojectids[indexPath.row]]
             
             cell.thumbnail.image = myimages[myprojectids[indexPath.row]]
-            cell.subscribers.text = "\(subscribers[myprojectids[indexPath.row]]!) subscribers"
+            cell.subscribers.text = "\(mysubscribers[myprojectids[indexPath.row]]!) subscribers"
             
         } else {
             

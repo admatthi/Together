@@ -48,6 +48,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 self.errorlabel.alpha = 1
                 self.errorlabel.text = error.localizedDescription
                 
+                
+                
                 return
                 
             } else {
