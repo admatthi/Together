@@ -80,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let currentUser = Auth.auth().currentUser
     
             uid = (currentUser?.uid)!
+            
             queryforinfo()
             
             queryforids { () -> () in
@@ -132,6 +133,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 myselectedimage = UIImage(data: data!)!
                 
+                
+                thumbnailurls["0"] = profileUrl
+                thumbnails["0"] = UIImage(data: data!)
+                
             }
             
             if var profileUrl2 = value?["Purchase"] as? String {
@@ -143,6 +148,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 } else {
                     
+                videolinks["0"] = profileUrl2
+                        
+                        
                     noothervids = false
                 }
             }

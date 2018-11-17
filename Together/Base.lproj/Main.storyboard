@@ -394,10 +394,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKR-YA-l3a">
-                                        <rect key="frame" x="302" y="588" width="60" height="60"/>
+                                        <rect key="frame" x="309" y="595" width="53" height="53"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="2qh-JQ-e4L"/>
-                                            <constraint firstAttribute="height" constant="60" id="Sei-IU-sQe"/>
+                                            <constraint firstAttribute="width" constant="53" id="2qh-JQ-e4L"/>
+                                            <constraint firstAttribute="height" constant="53" id="Sei-IU-sQe"/>
                                         </constraints>
                                         <state key="normal" image="AddToTop"/>
                                         <connections>
@@ -1156,8 +1156,8 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="131" id="hkm-7X-FQr"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsv-xS-6hW">
-                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsv-xS-6hW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -1180,23 +1180,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6s0-lw-DUX">
-                                <rect key="frame" x="0.0" y="588" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="553"/>
                                 <connections>
                                     <action selector="tapShowTV:" destination="8Ci-9S-R86" eventType="touchUpInside" id="i8R-OD-p8b"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDV-go-o9h">
-                                <rect key="frame" x="126.5" y="279" width="122" height="122"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="PQJ-UV-DyT"/>
-                                    <constraint firstAttribute="height" constant="122" id="SlH-1i-let"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" image="Upload">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapBack:" destination="8Ci-9S-R86" eventType="touchUpInside" id="Bi3-8s-cLg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXT-ua-mTA">
@@ -1225,24 +1211,41 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapBack:" destination="8Ci-9S-R86" eventType="touchUpInside" id="hBh-CF-H8M"/>
                                     <action selector="tapCancel:" destination="8Ci-9S-R86" eventType="touchUpInside" id="mBw-EZ-smB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDV-go-o9h">
+                                <rect key="frame" x="126" y="280" width="122" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="PQJ-UV-DyT"/>
+                                    <constraint firstAttribute="height" constant="122" id="SlH-1i-let"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="Upload">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBack:" destination="8Ci-9S-R86" eventType="touchUpInside" id="8XD-cj-XcP"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xr4-nB-Pou" firstAttribute="bottom" secondItem="KLa-Y5-GUv" secondAttribute="bottom" id="4oA-Wf-ARj"/>
+                            <constraint firstItem="6s0-lw-DUX" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="4y8-XM-AAT"/>
                             <constraint firstItem="0Ls-GO-y5I" firstAttribute="centerY" secondItem="ffG-kt-pJw" secondAttribute="centerY" id="7Y3-Sf-Kcm"/>
                             <constraint firstItem="Xr4-nB-Pou" firstAttribute="trailing" secondItem="KLa-Y5-GUv" secondAttribute="trailing" id="87q-H1-dmf"/>
+                            <constraint firstItem="6s0-lw-DUX" firstAttribute="top" secondItem="7ct-1N-exP" secondAttribute="bottom" constant="10" id="8Uh-s7-08u"/>
                             <constraint firstItem="Xr4-nB-Pou" firstAttribute="top" secondItem="ffG-kt-pJw" secondAttribute="top" id="CX7-bz-MeH"/>
                             <constraint firstItem="23D-AM-gLB" firstAttribute="top" secondItem="ffG-kt-pJw" secondAttribute="top" id="DH2-1C-ZsN"/>
                             <constraint firstItem="KLa-Y5-GUv" firstAttribute="bottom" secondItem="KXT-ua-mTA" secondAttribute="bottom" constant="8" id="Gmv-Na-1zS"/>
                             <constraint firstAttribute="bottom" secondItem="Vsv-xS-6hW" secondAttribute="bottom" id="Itp-Q2-sev"/>
+                            <constraint firstItem="6s0-lw-DUX" firstAttribute="bottom" secondItem="KLa-Y5-GUv" secondAttribute="bottom" id="QrJ-dB-ca5"/>
                             <constraint firstItem="VDV-go-o9h" firstAttribute="centerX" secondItem="ffG-kt-pJw" secondAttribute="centerX" id="SRw-Wd-TMB"/>
                             <constraint firstItem="23D-AM-gLB" firstAttribute="trailing" secondItem="KLa-Y5-GUv" secondAttribute="trailing" id="ULX-Bf-jgv"/>
                             <constraint firstItem="KLa-Y5-GUv" firstAttribute="trailing" secondItem="KXT-ua-mTA" secondAttribute="trailing" constant="8" id="UqL-IP-luO"/>
                             <constraint firstItem="qR9-Ul-qUF" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="XVV-IR-lGg"/>
+                            <constraint firstItem="6s0-lw-DUX" firstAttribute="trailing" secondItem="KLa-Y5-GUv" secondAttribute="trailing" id="XVe-yf-1zy"/>
                             <constraint firstItem="0Ls-GO-y5I" firstAttribute="centerX" secondItem="ffG-kt-pJw" secondAttribute="centerX" id="aDf-i5-1fN"/>
                             <constraint firstItem="Vsv-xS-6hW" firstAttribute="trailing" secondItem="KLa-Y5-GUv" secondAttribute="trailing" id="cBQ-vA-3PY"/>
                             <constraint firstItem="7ct-1N-exP" firstAttribute="top" secondItem="KLa-Y5-GUv" secondAttribute="top" constant="13" id="dzI-AL-hch"/>
@@ -1250,17 +1253,14 @@
                             <constraint firstAttribute="bottom" secondItem="qR9-Ul-qUF" secondAttribute="bottom" id="eAl-8Q-c9J"/>
                             <constraint firstAttribute="bottom" secondItem="b9M-jw-PeF" secondAttribute="bottom" id="eYZ-W1-PKz"/>
                             <constraint firstItem="b9M-jw-PeF" firstAttribute="trailing" secondItem="KLa-Y5-GUv" secondAttribute="trailing" id="eeG-2V-MBE"/>
-                            <constraint firstItem="6s0-lw-DUX" firstAttribute="trailing" secondItem="KLa-Y5-GUv" secondAttribute="trailing" id="f5w-hL-O8v"/>
                             <constraint firstItem="Vsv-xS-6hW" firstAttribute="top" secondItem="ffG-kt-pJw" secondAttribute="top" id="jGg-o6-pib"/>
                             <constraint firstItem="Xr4-nB-Pou" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="jto-TQ-URK"/>
                             <constraint firstItem="23D-AM-gLB" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="kNx-Cy-OTz"/>
                             <constraint firstItem="b9M-jw-PeF" firstAttribute="top" secondItem="ffG-kt-pJw" secondAttribute="top" id="ooc-5B-h09"/>
                             <constraint firstItem="7ct-1N-exP" firstAttribute="top" secondItem="KLa-Y5-GUv" secondAttribute="top" constant="13" id="rDj-Yq-3lZ"/>
-                            <constraint firstItem="6s0-lw-DUX" firstAttribute="bottom" secondItem="KLa-Y5-GUv" secondAttribute="bottom" id="rJw-Ay-DH9"/>
-                            <constraint firstItem="VDV-go-o9h" firstAttribute="centerY" secondItem="ffG-kt-pJw" secondAttribute="centerY" constant="6.5" id="tk4-BZ-7jw"/>
+                            <constraint firstItem="VDV-go-o9h" firstAttribute="centerY" secondItem="ffG-kt-pJw" secondAttribute="centerY" constant="7.5" id="tk4-BZ-7jw"/>
                             <constraint firstItem="b9M-jw-PeF" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="uiZ-Ko-k8f"/>
                             <constraint firstItem="syz-Rg-YSa" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" constant="16" id="vYb-QN-bul"/>
-                            <constraint firstItem="6s0-lw-DUX" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="wa1-1a-sGj"/>
                             <constraint firstItem="syz-Rg-YSa" firstAttribute="centerY" secondItem="7ct-1N-exP" secondAttribute="centerY" id="wc8-5F-GOg"/>
                             <constraint firstItem="Vsv-xS-6hW" firstAttribute="leading" secondItem="KLa-Y5-GUv" secondAttribute="leading" id="zJu-bd-JIq"/>
                             <constraint firstItem="7ct-1N-exP" firstAttribute="centerX" secondItem="ffG-kt-pJw" secondAttribute="centerX" id="zvv-to-GRt"/>
@@ -1683,7 +1683,6 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="Back"/>
                                 <connections>
-                                    <action selector="tapBack:" destination="8Ci-9S-R86" eventType="touchUpInside" id="qvH-cm-y8y"/>
                                     <segue destination="aKb-gB-eWT" kind="show" id="ghm-eP-2Xv"/>
                                 </connections>
                             </button>
@@ -1867,7 +1866,6 @@
                                 </constraints>
                                 <state key="normal" title="Select" image="Back"/>
                                 <connections>
-                                    <action selector="tapBack:" destination="8Ci-9S-R86" eventType="touchUpInside" id="n1n-QK-SDn"/>
                                     <segue destination="aKb-gB-eWT" kind="show" id="gW4-eh-4kP"/>
                                 </connections>
                             </button>
@@ -1878,7 +1876,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I5L-yU-AZL">
-                                <rect key="frame" x="16" y="80" width="342" height="736"/>
+                                <rect key="frame" x="16" y="80" width="342" height="785"/>
                                 <color key="backgroundColor" red="0.12549019610000001" green="0.16078431369999999" blue="0.20784313730000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="l3m-lx-zM2">
                                     <size key="itemSize" width="164" height="287"/>
@@ -2085,7 +2083,6 @@
                                     <color key="titleColor" red="0.1176470588" green="0.1176470588" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapBack:" destination="8Ci-9S-R86" eventType="touchUpInside" id="5Th-xP-AHJ"/>
                                     <action selector="tapDone:" destination="foE-fE-xxn" eventType="touchUpInside" id="6FC-S9-5xj"/>
                                 </connections>
                             </button>
@@ -2099,7 +2096,6 @@
                                     <color key="titleColor" red="0.1176470588" green="0.1176470588" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapBack:" destination="8Ci-9S-R86" eventType="touchUpInside" id="VWa-MN-i33"/>
                                     <action selector="tapBack:" destination="foE-fE-xxn" eventType="touchUpInside" id="yCg-dX-38f"/>
                                 </connections>
                             </button>
@@ -2519,9 +2515,9 @@
         <image name="X" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nz8-jF-XD8"/>
+        <segue reference="rM7-pq-RM4"/>
         <segue reference="ghm-eP-2Xv"/>
-        <segue reference="wtb-LV-Gfx"/>
+        <segue reference="4rc-m4-ngi"/>
         <segue reference="luB-Wl-YsN"/>
         <segue reference="IYV-ip-BkV"/>
         <segue reference="XVp-MV-P5M"/>

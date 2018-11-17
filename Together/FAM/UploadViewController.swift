@@ -29,6 +29,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func tapShare(_ sender: Any) {
         
+        tapcancel.alpha = 0
+        tapshare.alpha = 0
         var snaplabel = String()
         if tv2.text != "" {
             
@@ -245,6 +247,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var tv2: UITextView!
     @IBOutlet weak var tv: UITextView!
     
+    var avPlayer = AVPlayer()
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         videoURL = info[UIImagePickerControllerMediaURL]as? NSURL
         print(videoURL!)
@@ -256,14 +260,14 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             let thumbnail = UIImage(cgImage: cgImage)
 //            imgView.image = thumbnail
             
-            let avPlayer = AVPlayer(url: videoURL! as URL)
+            avPlayer = AVPlayer(url: videoURL! as URL)
             
             playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
             
             playerView.playerLayer.player = avPlayer
             
             getThumbnailFrom(path: videoURL as! URL)
-            tv2.alpha = 1
+            tv2.alpha = 0
 
             playerView.player?.play()
 
@@ -280,8 +284,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.tabBarController?.tabBar.isHidden = true
 
         } catch let error {
+            
+            
             print("*** Error generating thumbnail: \(error.localizedDescription)")
         }
+        
+        
         self.dismiss(animated: true, completion: nil)
     }
     /*
@@ -300,7 +308,13 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         self.tabBarController?.tabBar.isHidden = false
 
+        tapcancel.alpha = 0
+        tapshare.alpha = 0
+        tapshowtv.alpha = 0
+        tapnew.alpha = 1
+        headerlabel.alpha = 1
         playerView.player?.replaceCurrentItem(with: nil)
+        
     }
     
     @IBOutlet weak var tapcancel: UIButton!
@@ -373,6 +387,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         self.tabBarController?.tabBar.isHidden = false
 
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(UploadViewController.playerItemDidReachEnd),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: avPlayer.currentItem)
+        
+        
         tapshowtv.alpha = 0
 //        imagePickerController.sourceType = .photoLibrary
 //        imagePickerController.delegate = self
@@ -443,12 +463,36 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var tapshowtv: UIButton!
     @IBAction func tapShowTV(_ sender: Any) {
         
-        tv2.alpha = 1
-    
+        if tv2.alpha == 1 {
+            
+            tv2.alpha = 0
+            self.view.endEditing(true)
 
-        tv2.becomeFirstResponder()
+        } else {
+            
+            tv2.alpha = 1
+            
+            
+            tv2.becomeFirstResponder()
+            
+        }
+   
 
     }
+    
+    @objc func playerItemDidReachEnd(notification: Notification) {
+        
+        if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
+            
+            playerItem.seek(to: kCMTimeZero, completionHandler: nil)
+            print("done")
+            
+            self.playerView.player?.play()
+            
+        }
+        
+    }
+    
     func getThumbnailFrom(path: URL) -> UIImage? {
         
         do {

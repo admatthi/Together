@@ -18,6 +18,8 @@ import AVFoundation
 var thumbnailurls = [String:String]()
 var selectedthumbnailurl = String()
 var selectedvideourl = String()
+var thumbnails = [String:UIImage]()
+
 class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate   {
 
     @IBOutlet weak var programname: UILabel!
@@ -43,6 +45,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             
             locked = false
         }
+        
         selectedprogramname = selectedprogramname.uppercased()
         
         programname.text = selectedname.uppercased()
@@ -66,30 +69,66 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         locked = false
        
         
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(EditProfileViewController.refresh), for: UIControlEvents.valueChanged)
+        refreshControl.tintColor  = mypink
+        collectionView.addSubview(refreshControl)
         
-        
+
         // Do any additional setup after loading the view.
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var refreshControl = UIRefreshControl()
+
+    @objc func refresh() {
+        // Code to refresh table view
+        
+        videodates.removeAll()
+        videoids.removeAll()
+                videolinks.removeAll()
+        videodescriptions.removeAll()
+        videotitles.removeAll()
+                thumbnails.removeAll()
+                thumbnailurls.removeAll()
+        
+        collectionView.alpha = 0
+        activityIndicator.alpha = 1
+        activityIndicator.color = mypink
+        activityIndicator.startAnimating()
+        
+        queryforhighlevelinfo()
+        
+        queryforids { () -> () in
+            
+            self.queryforinfo()
+            
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         
         ref = Database.database().reference()
 
-        if thumbnails.count >  0 {
+        if thumbnails.count >  1 {
             
             collectionView.alpha = 1
             activityIndicator.alpha = 0
+            activityIndicator.stopAnimating()
             collectionView.reloadData()
             
         } else {
+            
+            if thumbnails["0"] == nil {
+                
+                            queryforhighlevelinfo()
+
+            }
             
             collectionView.alpha = 0
             activityIndicator.alpha = 1
             activityIndicator.color = mypink
             activityIndicator.startAnimating()
             
-            queryforhighlevelinfo()
             
             queryforids { () -> () in
                 
@@ -120,7 +159,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 let url = URL(string: profileUrl)
                 thumbnailurls["0"] = profileUrl
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                self.thumbnails["0"] = UIImage(data: data!)
+                thumbnails["0"] = UIImage(data: data!)
                 
             }
             
@@ -131,7 +170,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 
             }
             
-            self.collectionView.reloadData()
+//            self.collectionView.reloadData()
         })
         
     }
@@ -144,11 +183,12 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         videodates.removeAll()
         videoids.removeAll()
-        videolinks.removeAll()
+//        videolinks.removeAll()
         videodescriptions.removeAll()
         videotitles.removeAll()
-        thumbnails.removeAll()
-        thumbnailurls.removeAll()
+//        thumbnails.removeAll()
+//        thumbnailurls.removeAll()
+        
         ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -179,7 +219,6 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         })
     }
     
-    var thumbnails = [String:UIImage]()
     var videotitles = [String:String]()
     func queryforinfo() {
         
@@ -230,7 +269,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                     let url = URL(string: profileUrl)
                     thumbnailurls[each] = profileUrl
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    self.thumbnails[each] = UIImage(data: data!)
+                    thumbnails[each] = UIImage(data: data!)
                     
                     functioncounter += 1
                 }
@@ -241,6 +280,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 
                 if functioncounter == videoids.count {
                     
+          
                     self.collectionView.reloadData()
                     
                 }
@@ -342,6 +382,10 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 
             } else {
                 
+                self.collectionView.alpha = 1
+                activityIndicator.alpha = 0
+                activityIndicator.stopAnimating()
+
                 cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
 
                 cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
@@ -368,7 +412,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             
             cell.layer.cornerRadius = 10.0
             cell.layer.masksToBounds = true
-            
+            refreshControl.endRefreshing()
+
      
             activityIndicator.alpha = 0
             collectionView.alpha = 1
