@@ -49,7 +49,7 @@ class ContacViewController: UIViewController, UITextViewDelegate {
         requestlabel.addCharacterSpacing()
         ref = Database.database().reference()
         
-        tv.text = "What would you like to create?"
+        tv.text = "Your message here..."
         tv.textColor = mygray
         
         tv.layer.borderColor = mygray.cgColor
@@ -64,9 +64,22 @@ class ContacViewController: UIViewController, UITextViewDelegate {
     @IBAction func tapSubmit(_ sender: Any) {
         
         if tv.text != "" {
-    ref?.child("Feedback").childByAutoId().updateChildValues(["Text" : "\(tv.text!)"])
+   
+            if uid != "" {
+                
+                ref?.child("Feedback").child(uid).childByAutoId().updateChildValues(["Text" : "\(tv.text!)"])
+
+                
+            } else {
+                
+                ref?.child("Feedback").childByAutoId().updateChildValues(["Text" : "\(tv.text!)"])
+
+                
+            }
             
         }
+        
+       
 
         self.dismiss(animated: true, completion: {
             

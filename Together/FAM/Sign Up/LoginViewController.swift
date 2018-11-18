@@ -28,9 +28,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
     
     @IBAction func tapBack(_ sender: Any) {
         
-        //        self.dismiss(animated: true, completion: {
-        //
-        //        })
+                self.dismiss(animated: true, completion: {
+        
+                })
     }
     
     @IBOutlet weak var passwordtf: UITextField!

@@ -27,6 +27,7 @@
 		9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */; };
 		9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */; };
 		9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD09021952BD5001B40E1 /* LoginViewController.swift */; };
+		9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
 		9D7A6A68219C7BE400FBEC22 /* TabInfluencerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */; };
 		9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */; };
@@ -112,6 +113,7 @@
 		9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamViewController.swift; sourceTree = "<group>"; };
 		9D5FD09021952BD5001B40E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2LoginViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfluencerViewController.swift; sourceTree = "<group>"; };
 		9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCreateViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,14 @@
 			path = Irrelevant;
 			sourceTree = "<group>";
 		};
+		9D6E91CA21A0CE290013BED6 /* Seller - V2 */ = {
+			isa = PBXGroup;
+			children = (
+				9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */,
+			);
+			path = "Seller - V2";
+			sourceTree = "<group>";
+		};
 		9DB795B921656B5300211327 = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +364,7 @@
 				9DB8AE01219DDB9400D7D707 /* Buyer - V2 */,
 				9D46D843219B2142006CE94C /* Sign Up */,
 				9DC0B2842193553300F56A1A /* ExploreTableViewCell.swift */,
+				9D6E91CA21A0CE290013BED6 /* Seller - V2 */,
 				9D5FD08A21949795001B40E1 /* AboutViewController.swift */,
 				9DB4D29321965344008A57FD /* VideoPlayerView.swift */,
 				9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */,
@@ -639,6 +650,7 @@
 				9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */,
 				9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
+				9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */,
 				9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */,
 				9D46D84F219B2A02006CE94C /* OverviewCollectionViewCell.swift in Sources */,
 				9D5DBE3E219A31D5000C46FC /* EditProfileViewController.swift in Sources */,

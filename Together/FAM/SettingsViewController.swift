@@ -134,6 +134,15 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
    
     @IBOutlet weak var tapeditprofile: UIButton!
     @IBOutlet weak var tapaddcontent: UIButton!
+
+    @IBAction func tapback(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: {
+            
+        })
+        
+    }
+    @IBOutlet weak var tapcontact: UIButton!
     @IBOutlet weak var tapseerevenue: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,7 +159,9 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         tapabout.layer.masksToBounds = true
         tapbilling.layer.cornerRadius = 25.0
         tapbilling.layer.masksToBounds = true
-      
+        tapcontact.layer.cornerRadius = 25.0
+        tapcontact.layer.masksToBounds = true
+        
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
             
