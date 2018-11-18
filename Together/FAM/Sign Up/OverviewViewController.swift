@@ -15,22 +15,25 @@ import FBSDKCoreKit
 
 class OverviewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate    {
 
+    @IBOutlet weak var TAPJOIN: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        images.append(UIImage(named: "CC1")!)
-        images.append(UIImage(named: "CC2")!)
+        TAPJOIN.addTextSpacing(2.0)
+        
+        images.append(UIImage(named: "CC1 Copy")!)
+        images.append(UIImage(named: "CC2 Copy")!)
 
-        images.append(UIImage(named: "CC3")!)
+        images.append(UIImage(named: "CC3 Copy")!)
 
-        images.append(UIImage(named: "CC4")!)
+        images.append(UIImage(named: "CC4 Copy")!)
         
         mainimage.image = images[counter]
         
-         setupimage.image = UIImage(named: "Setup\(counter)")
+        setupimage.image = UIImage(named: "Setup\(counter)")
         let swipeRightRec = UISwipeGestureRecognizer()
         let swipeLeftRec = UISwipeGestureRecognizer()
         let swipeUpRec = UISwipeGestureRecognizer()
@@ -176,4 +179,13 @@ extension UIView {
         // Add the animation to the View's layer
         self.layer.add(slideInFromRightTransition, forKey: "slideInFromRightTransition")
     }
+}
+extension UIButton{
+    
+    func addTextSpacing(_ letterSpacing: CGFloat){
+        let attributedString = NSMutableAttributedString(string: (self.titleLabel?.text!)!)
+        attributedString.addAttribute(NSAttributedStringKey.kern, value: letterSpacing, range: NSRange(location: 0, length: (self.titleLabel?.text!.count)!))
+        self.setAttributedTitle(attributedString, for: .normal)
+    }
+    
 }

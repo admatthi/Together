@@ -28,9 +28,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
     
     @IBAction func tapBack(_ sender: Any) {
         
-                self.dismiss(animated: true, completion: {
-        
-                })
+//                self.dismiss(animated: true, completion: {
+//        
+//                })
     }
     
     @IBOutlet weak var passwordtf: UITextField!
@@ -131,7 +131,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 
                 self.errorlabel.alpha = 1
                 self.errorlabel.text = error.localizedDescription
-                
+                self.login()
                 return
                 
             } else {
@@ -178,14 +178,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
         header.addCharacterSpacing()
         // Do any additional setup after loading the view.
         
+        self.addLineToView(view: emailtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+
+        self.addLineToView(view: passwordtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+
+        
         ref = Database.database().reference()
         
         emailtf.delegate = self
         passwordtf.delegate = self
         emailtf.becomeFirstResponder()
-        
-        tapcreate.layer.cornerRadius = 22.0
-        tapcreate.layer.masksToBounds = true
+        tapcreate.addTextSpacing(2.0)
+//        tapcreate.layer.cornerRadius = 22.0
+//        tapcreate.layer.masksToBounds = true
         
         errorlabel.alpha = 0
         
@@ -216,5 +221,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
      }
      */
     
+    enum LINE_POSITION {
+        case LINE_POSITION_TOP
+        case LINE_POSITION_BOTTOM
+    }
+    
+    func addLineToView(view : UIView, position : LINE_POSITION, color: UIColor, width: Double) {
+        let lineView = UIView()
+        lineView.backgroundColor = color
+        lineView.translatesAutoresizingMaskIntoConstraints = false // This is important!
+        view.addSubview(lineView)
+        
+        let metrics = ["width" : NSNumber(value: width)]
+        let views = ["lineView" : lineView]
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[lineView]|", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+        
+        switch position {
+        case .LINE_POSITION_TOP:
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[lineView(width)]", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+            break
+        case .LINE_POSITION_BOTTOM:
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[lineView(width)]|", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+            break
+        default:
+            break
+        }
+    }
 }
 

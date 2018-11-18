@@ -19,7 +19,6 @@ import UXCam
 import AVFoundation
 import Purchases
 import IQKeyboardManager
-import YPImagePicker
 
 var uid = String()
 var ref: DatabaseReference?
@@ -60,37 +59,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ref = Database.database().reference()
 
 
-//        var tabBar: UITabBarController =
 
-//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
-//       
-//        let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
-////
-//        if Auth.auth().currentUser == nil {
-//            // Do smth if user is not logged in
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+       
+        let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
 //
-//
-//        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
-//        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        self.window?.rootViewController = initialViewControlleripad
-//        self.window?.makeKeyAndVisible()//
-//        
-//        
-//        } else {
-//
-//            let currentUser = Auth.auth().currentUser
-//    
-//            uid = (currentUser?.uid)!
-//            
-//            queryforinfo()
-//            
-//            queryforids { () -> () in
-//                
-//                
-//            }
-//
-//        }
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+
+
+        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialViewControlleripad
+        self.window?.makeKeyAndVisible()//
+        
+        
+        } else {
+
+            let currentUser = Auth.auth().currentUser
+    
+            uid = (currentUser?.uid)!
+            
+            queryforinfo()
+            
+            queryforids { () -> () in
+                
+                
+            }
+
+        }
     
         return true
     }
@@ -310,16 +308,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //        selectedprogramnames = programnames[projectids[indexPath.row]]!
             selectedsubs = "100"
             selectedprogramname = "Sweat"
-            
+
             
             self.window = UIWindow(frame: UIScreen.main.bounds)
             self.window?.rootViewController = initialViewControlleripad
             self.window?.makeKeyAndVisible()
             
             return true
+            
         } else {
             
             return true
+            
         }
     }
 

@@ -279,6 +279,16 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
 
                 cell.isUserInteractionEnabled = true
 
+                cell.thumbnail.layer.cornerRadius = 10.0
+                cell.layer.cornerRadius = 10.0
+                cell.layer.masksToBounds = true
+                cell.thumbnail.layer.masksToBounds = true
+                activityIndicator.alpha = 0
+                collectionView.alpha = 1
+                activityIndicator.stopAnimating()
+                cell.whitelabel.layer.cornerRadius = 10.0
+                cell.whitelabel.layer.masksToBounds = true
+                
             } else {
                 
                 cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]

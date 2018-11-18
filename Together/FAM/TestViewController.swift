@@ -41,6 +41,10 @@ class TestViewController: UIViewController {
                 print(video.url)
                 
                 
+            } else {
+                
+                
+                
             }
             
             picker.dismiss(animated: true, completion: nil)
