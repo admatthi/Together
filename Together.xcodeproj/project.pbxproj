@@ -28,6 +28,7 @@
 		9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */; };
 		9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD09021952BD5001B40E1 /* LoginViewController.swift */; };
 		9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */; };
+		9D6E91CE21A0F0BD0013BED6 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
 		9D7A6A68219C7BE400FBEC22 /* TabInfluencerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */; };
 		9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */; };
@@ -114,6 +115,7 @@
 		9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamViewController.swift; sourceTree = "<group>"; };
 		9D5FD09021952BD5001B40E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2LoginViewController.swift; sourceTree = "<group>"; };
+		9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfluencerViewController.swift; sourceTree = "<group>"; };
 		9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCreateViewController.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */,
 				9DEA5F1721A0B820000137A3 /* ContacViewController.swift */,
 				9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */,
+				9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */,
 			);
 			path = FAM;
 			sourceTree = "<group>";
@@ -591,7 +594,10 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Purchases/Purchases.framework",
+				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
+				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -603,7 +609,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Purchases.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -633,6 +642,7 @@
 				9DC0B28221920DC500F56A1A /* PlayerViewClass.swift in Sources */,
 				9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */,
 				9DB795F421656CDF00211327 /* LogViewController.swift in Sources */,
+				9D6E91CE21A0F0BD0013BED6 /* TestViewController.swift in Sources */,
 				9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */,
 				9DC0B2872193556300F56A1A /* ExploreViewController.swift in Sources */,
 				9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */,

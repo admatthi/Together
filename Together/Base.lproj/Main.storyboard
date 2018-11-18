@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bUT-qL-AeE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fNE-MH-JdK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -2475,6 +2475,50 @@
             </objects>
             <point key="canvasLocation" x="4580" y="3583.3583208395803"/>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="5FR-bT-lxx">
+            <objects>
+                <viewController id="fNE-MH-JdK" customClass="TestViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1YC-wB-mCC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="11" translatesAutoresizingMaskIntoConstraints="NO" id="nqW-aR-L8X">
+                                <rect key="frame" x="67.5" y="207" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="LjC-b0-MZi"/>
+                                    <constraint firstAttribute="width" constant="240" id="mI1-0D-CfK"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jb5-OM-QFr">
+                                <rect key="frame" x="164.5" y="447" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0zq-TY-dso"/>
+                                    <constraint firstAttribute="width" constant="46" id="68D-Cj-KMb"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="tapShow:" destination="fNE-MH-JdK" eventType="touchUpInside" id="Y6J-gU-mRd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nqW-aR-L8X" firstAttribute="centerX" secondItem="1YC-wB-mCC" secondAttribute="centerX" id="9S3-YN-Icz"/>
+                            <constraint firstItem="nqW-aR-L8X" firstAttribute="top" secondItem="3VU-Xn-SVC" secondAttribute="top" constant="187" id="btv-d3-HSJ"/>
+                            <constraint firstItem="Jb5-OM-QFr" firstAttribute="centerX" secondItem="1YC-wB-mCC" secondAttribute="centerX" id="css-fr-NON"/>
+                            <constraint firstItem="Jb5-OM-QFr" firstAttribute="top" secondItem="nqW-aR-L8X" secondAttribute="bottom" constant="112" id="tJG-kY-egT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3VU-Xn-SVC"/>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="nqW-aR-L8X" id="ffU-aG-hpM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1pj-RB-0SF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2724" y="5852"/>
+        </scene>
         <!--Update Profile View Controller-->
         <scene sceneID="a3P-QJ-cRH">
             <objects>
@@ -2929,6 +2973,7 @@
     <resources>
         <image name="0" width="16" height="16"/>
         <image name="1" width="16" height="16"/>
+        <image name="11" width="320" height="320"/>
         <image name="13" width="320" height="320"/>
         <image name="Account-1" width="40" height="40"/>
         <image name="Add" width="30" height="30"/>
