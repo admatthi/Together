@@ -104,8 +104,29 @@ class WatchViewController: UIViewController {
         
     }
     @IBOutlet weak var videotitle: UILabel!
+    
+    @objc func playerItemDidReachEnd(notification: Notification) {
+        
+        if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
+            
+            playerItem.seek(to: kCMTimeZero, completionHandler: nil)
+            print("done")
+            
+            self.playerView.player?.play()
+            
+        }
+        
+    }
+    
+    var avPlayer = AVPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(WatchViewController.playerItemDidReachEnd),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: avPlayer.currentItem)
+        
         
         ref = Database.database().reference()
 
@@ -118,7 +139,7 @@ class WatchViewController: UIViewController {
         
         let videourl = URL(string: selectedvideo)
         
-        let avPlayer = AVPlayer(url: videourl! as URL)
+        avPlayer = AVPlayer(url: videourl! as URL)
         
         playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
         

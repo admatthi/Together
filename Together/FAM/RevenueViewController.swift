@@ -20,6 +20,7 @@ var yourtotalreve = String()
 class RevenueViewController: UIViewController {
     @IBOutlet weak var mrr: UILabel!
     
+    @IBOutlet weak var domainlabel: UILabel!
     @IBOutlet weak var totalrevenue: UILabel!
     @IBOutlet weak var payingsubscribers: UILabel!
     override func viewDidLoad() {
@@ -161,8 +162,8 @@ class RevenueViewController: UIViewController {
                 if var author5 = value?["Domain"] as? String {
                     
                     self.yourdomain = "\(author5).joinmyfam.com"
-                    
-//                    self.tapshare.alpha = 1
+                    self.domainlabel.text = self.yourdomain
+                    self.tapshare.alpha = 1
                 }
                 
                 if var views = value?["Name"] as? String {

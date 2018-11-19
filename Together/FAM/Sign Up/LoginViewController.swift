@@ -27,9 +27,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
     
     @IBAction func tapBack(_ sender: Any) {
         
-        //        self.dismiss(animated: true, completion: {
-        //
-        //        })
+                self.dismiss(animated: true, completion: {
+        
+                })
     }
     
     @IBOutlet weak var passwordtf: UITextField!
@@ -147,8 +147,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate     {
                 let thirtyDaysAfterToday = Calendar.current.date(byAdding: .day, value: +30, to: date)!
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
-                //                self.addstaticbooks()
-                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Password" : password, "Purchased" : true])
+//                self.addstaticbooks()
+                ref?.child("Users").child(uid).updateChildValues(["Email" : email, "Password" : password, "Purchased" : true, "Approved" : "False"])
                 
                 
                 

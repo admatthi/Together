@@ -35,6 +35,8 @@ class PurchaseViewController: UIViewController {
     var purchases = RCPurchases(apiKey: "CtGggTihmnxBAjLMnrzaYrSdGVjXtYHo")
     
     @IBAction func tapLogin(_ sender: Any) {
+        
+        
     }
     @IBAction func tapBuy(_ sender: Any) {
         
@@ -48,7 +50,8 @@ class PurchaseViewController: UIViewController {
             
             
         }
-        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
+
+//        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
 
         
     }
@@ -113,13 +116,28 @@ class PurchaseViewController: UIViewController {
                     self.loadingscreen.alpha = 0
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.alpha = 0
-
+                    
+                    
+                  
 
                 }
 
 
             })
 
+    }
+
+@objc func playerItemDidReachEnd(notification: Notification) {
+    
+    if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
+        
+            playerItem.seek(to: kCMTimeZero, completionHandler: nil)
+            print("done")
+        
+        self.playerView.player?.play()
+
+        }
+    
     }
     
     var avPLayer = AVPlayer()
@@ -159,6 +177,11 @@ class PurchaseViewController: UIViewController {
         attributedString.append(buttonTitleStr)
         tapterms.setAttributedTitle(attributedString, for: .normal)
         tapterms.setTitleColor(.black, for: .normal)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(PurchaseViewController.playerItemDidReachEnd),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: avPLayer.currentItem)
         
         queryforinfo()
         

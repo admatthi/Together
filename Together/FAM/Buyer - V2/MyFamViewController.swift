@@ -48,7 +48,7 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
             
         collectionView.alpha = 0
         errorlabel.alpha = 1
-            
+        activityIndicator.alpha = 0
             
         } else {
             

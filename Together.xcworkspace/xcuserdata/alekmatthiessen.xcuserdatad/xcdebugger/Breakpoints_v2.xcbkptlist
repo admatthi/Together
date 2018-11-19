@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564107325.492792"
+            timestampString = "564197311.7694139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "tapShare(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564107325.492871"
+            timestampString = "564197311.769484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "tapShare(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -57,12 +57,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/AppDelegate.swift"
-            timestampString = "564107325.492945"
+            filePath = "Together/FAM/Sign Up/LoginViewController.swift"
+            timestampString = "564190538.799485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "queryforinfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/AppDelegate.swift"
-            timestampString = "564107325.493013"
+            filePath = "Together/FAM/UploadViewController.swift"
+            timestampString = "564197311.769591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "queryforinfo()"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
+            landmarkName = "tapShowTV(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564107325.49308"
+            filePath = "Together/FAM/UploadViewController.swift"
+            timestampString = "564197311.769644"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "tapShowTV(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564107325.493147"
+            filePath = "Together/FAM/Buyer - V2/PurchaseViewController.swift"
+            timestampString = "564167629.783457"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "playerItemDidReachEnd(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564107325.4932131"
+            filePath = "Together/FAM/Buyer - V2/PurchaseViewController.swift"
+            timestampString = "564167629.783505"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "playerItemDidReachEnd(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,13 +137,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564107325.4932801"
+            filePath = "Together/FAM/Buyer - V2/PurchaseViewController.swift"
+            timestampString = "564167629.78355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "playerItemDidReachEnd(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564107325.4933439"
+            filePath = "Together/FAM/UploadViewController.swift"
+            timestampString = "564197311.76978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -169,13 +169,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564107325.493409"
+            filePath = "Together/FAM/UploadViewController.swift"
+            timestampString = "564197311.769832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Together.UploadViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Together"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/UploadViewController.swift"
+                  timestampString = "564203187.519883"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "5388">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Together.UploadViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Together"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/UploadViewController.swift"
+                  timestampString = "564203187.521521"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "6084">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Together/FAM/UploadViewController.swift"
+            timestampString = "564197311.769877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,13 +233,27 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Sign Up/LoginViewController.swift"
-            timestampString = "564114287.214848"
+            filePath = "Together/FAM/TestViewController.swift"
+            timestampString = "564203187.067476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "login()"
+            startingLineNumber = "73"
+            endingLineNumber = "73">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/YPImagePicker/Source/Filters/Video/YPVideoFiltersVC.swift"
+            timestampString = "564203187.067849"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "didChangePositionBar(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,13 +263,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/Sign Up/LoginViewController.swift"
-            timestampString = "564114287.215583"
+            filePath = "Pods/PryntTrimmerView/PryntTrimmerView/Classes/ThumbSelectorView.swift"
+            timestampString = "564203187.067917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "tapLogin(_:)"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "setupThumbnailGenerator(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/YPImagePicker/Source/Filters/Video/YPVideoFiltersVC.swift"
+            timestampString = "564203187.0679671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "onPlaybackTimeChecker()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

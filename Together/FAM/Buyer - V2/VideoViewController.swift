@@ -131,7 +131,6 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         })
     }
     
-    var thumbnails = [String:UIImage]()
     var videotitles = [String:String]()
     
     func queryforinfo() {
@@ -174,7 +173,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                     
                     let url = URL(string: profileUrl)
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    self.thumbnails[each] = UIImage(data: data!)
+                    thumbnails[each] = UIImage(data: data!)
                     
                     functioncounter += 1
                 }
@@ -227,18 +226,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             return nil
         }
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        if thumbnails.count > 0 {
-            
-            return thumbnails.count + 1
-            
-        } else {
-            
-            return 1
-        }
-    }
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -264,7 +252,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
         if thumbnails.count > 0 {
         
-        return thumbnails.count + 1
+        return thumbnails.count
         
         } else {
         
@@ -307,21 +295,23 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                     
                     cell.isUserInteractionEnabled = true
                 }
+                
+                cell.thumbnail.layer.cornerRadius = 10.0
+                cell.layer.cornerRadius = 10.0
+                cell.layer.masksToBounds = true
+                cell.thumbnail.layer.masksToBounds = true
+                activityIndicator.alpha = 0
+                collectionView.alpha = 1
+                activityIndicator.stopAnimating()
+                cell.whitelabel.layer.cornerRadius = 10.0
+                cell.whitelabel.layer.masksToBounds = true
             }
             
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
             //            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             
-            cell.thumbnail.layer.cornerRadius = 10.0
-            cell.layer.cornerRadius = 10.0
-            cell.layer.masksToBounds = true
-            cell.thumbnail.layer.masksToBounds = true
-            activityIndicator.alpha = 0
-            collectionView.alpha = 1
-            activityIndicator.stopAnimating()
-            cell.whitelabel.layer.cornerRadius = 10.0
-            cell.whitelabel.layer.masksToBounds = true
+   
             
       
 
