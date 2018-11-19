@@ -250,7 +250,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         if indexPath.row == 0 {
             
-            selectedtitle = "Subscribe Now"
+            selectedtitle = "Tap To Watch"
             
             self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
 

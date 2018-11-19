@@ -163,7 +163,7 @@ class PurchaseViewController: UIViewController {
         profileimage.layer.masksToBounds = true
         profileimage.layer.cornerRadius = 5.0
         influencername.text = lowercasename
-        videotitle.text = selectedtitle
+        videotitle.text = "Subscribe Now"
         profileimage.image = myselectedimage
 
         tapbuy.layer.cornerRadius = 22.0

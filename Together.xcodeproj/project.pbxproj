@@ -37,6 +37,7 @@
 		9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */; };
 		9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934CA2174113F001AEF8E /* PromptViewController.swift */; };
 		9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9019C7216FA81A00668852 /* RespondViewController.swift */; };
+		9D9C665921A321B800309443 /* YourChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9C665821A321B800309443 /* YourChannelViewController.swift */; };
 		9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */; };
 		9D9E4A4721862B1700B3C74C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9E4A4621862B1700B3C74C /* StoreKit.framework */; };
 		9D9E4A49218630D300B3C74C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D9E4A48218630D300B3C74C /* GoogleService-Info.plist */; };
@@ -51,6 +52,7 @@
 		9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795E521656B5700211327 /* TogetherUITests.swift */; };
 		9DB795F421656CDF00211327 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795F321656CDF00211327 /* LogViewController.swift */; };
 		9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795F521656CEB00211327 /* LogTableViewCell.swift */; };
+		9DB7BCF021A31ED3009B63B4 /* CreateAPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7BCEF21A31ED3009B63B4 /* CreateAPlanViewController.swift */; };
 		9DB8ADFE219DD14D00D7D707 /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8ADFD219DD14D00D7D707 /* WatchViewController.swift */; };
 		9DB8AE00219DDB0300D7D707 /* PeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8ADFF219DDB0300D7D707 /* PeopleCollectionViewCell.swift */; };
 		9DB8AE03219DE6C000D7D707 /* VideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB8AE02219DE6C000D7D707 /* VideosCollectionViewCell.swift */; };
@@ -125,6 +127,7 @@
 		9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		9D8934CA2174113F001AEF8E /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
 		9D9019C7216FA81A00668852 /* RespondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViewController.swift; sourceTree = "<group>"; };
+		9D9C665821A321B800309443 /* YourChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChannelViewController.swift; sourceTree = "<group>"; };
 		9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover2ViewController.swift; sourceTree = "<group>"; };
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D9E4A48218630D300B3C74C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 		9DB795E721656B5700211327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DB795F321656CDF00211327 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		9DB795F521656CEB00211327 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		9DB7BCEF21A31ED3009B63B4 /* CreateAPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAPlanViewController.swift; sourceTree = "<group>"; };
 		9DB8ADFD219DD14D00D7D707 /* WatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
 		9DB8ADFF219DDB0300D7D707 /* PeopleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB8AE02219DE6C000D7D707 /* VideosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		9D46D843219B2142006CE94C /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
+				9DB7BCEF21A31ED3009B63B4 /* CreateAPlanViewController.swift */,
 				9D46D84E219B2A02006CE94C /* OverviewCollectionViewCell.swift */,
 				9D46D84C219B29C0006CE94C /* OverviewViewController.swift */,
 				9D5FD09021952BD5001B40E1 /* LoginViewController.swift */,
@@ -281,6 +286,7 @@
 		9D6E91CA21A0CE290013BED6 /* Seller - V2 */ = {
 			isa = PBXGroup;
 			children = (
+				9D9C665821A321B800309443 /* YourChannelViewController.swift */,
 				9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */,
 			);
 			path = "Seller - V2";
@@ -669,10 +675,12 @@
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
+				9D9C665921A321B800309443 /* YourChannelViewController.swift in Sources */,
 				9D5DBE3C219A26B8000C46FC /* RevenueViewController.swift in Sources */,
 				9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */,
 				9DB8AE03219DE6C000D7D707 /* VideosCollectionViewCell.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
+				9DB7BCF021A31ED3009B63B4 /* CreateAPlanViewController.swift in Sources */,
 				9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */,
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,
 				9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */,

@@ -62,7 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
-       
+
+        
         let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
 //
         if Auth.auth().currentUser == nil {
@@ -73,23 +74,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialViewControlleripad
         self.window?.makeKeyAndVisible()//
-        
-        
+
+
         } else {
 
             let currentUser = Auth.auth().currentUser
-    
+
             uid = (currentUser?.uid)!
-            
+
             queryforinfo()
-            
+
             queryforids { () -> () in
-                
-                
+
+
             }
 
         }
-    
+//
         return true
     }
     

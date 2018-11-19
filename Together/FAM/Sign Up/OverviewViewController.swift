@@ -24,12 +24,12 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
         
         TAPJOIN.addTextSpacing(2.0)
         
-        images.append(UIImage(named: "CC1 Copy")!)
-        images.append(UIImage(named: "CC2 Copy")!)
+        images.append(UIImage(named: "CC1 Copy-1")!)
+        images.append(UIImage(named: "CC2 Copy-1")!)
 
-        images.append(UIImage(named: "CC3 Copy")!)
+        images.append(UIImage(named: "CC3 Copy-1")!)
 
-        images.append(UIImage(named: "CC4 Copy")!)
+        images.append(UIImage(named: "CC4 Copy-1")!)
         
         mainimage.image = images[counter]
         
