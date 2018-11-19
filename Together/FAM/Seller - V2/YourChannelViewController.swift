@@ -47,6 +47,9 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
             
             playerView.player?.pause()
             
+            getThumbnailFrom(path: videoURL as! URL)
+
+            
             //            let item = AVPlayerItem(asset: asset)
             //            let player = AVQueuePlayer(playerItem: item)
             //            let videoLooper = AVPlayerLooper(player: player, templateItem: item)
@@ -76,7 +79,147 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
     }
     
+    func getThumbnailFrom(path: URL) -> UIImage? {
+        
+        do {
+            
+            let asset = AVURLAsset(url: path , options: nil)
+            let imgGenerator = AVAssetImageGenerator(asset: asset)
+            imgGenerator.appliesPreferredTrackTransform = true
+            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+            mythumbnail = UIImage(cgImage: cgImage)
+            
+            //            tapplay.setBackgroundImage(mythumbnail, for: .normal)
+            
+            
+            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 667)
+            
+            loadthumbnail()
 
+            return mythumbnail
+            
+            
+            
+        } catch let error {
+            
+            print("*** Error generating thumbnail: \(error.localizedDescription)")
+            return nil
+            
+        }
+        
+    }
+    
+    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
+        
+        let cgimage = image.cgImage!
+        let contextImage: UIImage = UIImage(cgImage: cgimage)
+        let contextSize: CGSize = contextImage.size
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        var cgwidth: CGFloat = CGFloat(width)
+        var cgheight: CGFloat = CGFloat(height)
+        
+        // See what size is longer and create the center off of that
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - contextSize.height) / 2)
+            posY = 0
+            cgwidth = contextSize.height
+            cgheight = contextSize.height
+        } else {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+            cgwidth = contextSize.width
+            cgheight = contextSize.width
+        }
+        
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
+        
+        // Create bitmap image from context using the rect
+        let imageRef: CGImage = cgimage.cropping(to: rect)!
+        
+        // Create a new image based on the imageRef and rotate back to the original orientation
+        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        
+        return image
+    }
+    
+    func loadthumbnail() {
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let currentUser = Auth.auth().currentUser
+        
+        //        let metaData = StorageMetadata()
+        //
+        //        metaData.contentType = "image/jpg"
+        
+        uid = (currentUser?.uid)!
+        
+        
+        
+        
+        var whatthough = UIImageJPEGRepresentation(mythumbnail, 1.0)
+        
+        
+        let metaData = StorageMetadata()
+        
+        metaData.contentType = "image/jpg"
+        
+        // Create a reference to the file you want to upload
+        let randomString = UUID().uuidString
+        // Create a reference to the file you want to upload
+        let riversRef = storageRef.child(randomString)
+        
+        let uploadTask = riversRef.putData(whatthough!, metadata: metaData) { metadata, error in
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                print(error?.localizedDescription)
+                
+                return
+            }
+            // Metadata contains file metadata such as size, content-type.
+            let size = metadata.size
+            // You can also access to download URL after upload.
+            
+            //            metadata.download
+            
+            
+            riversRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    print(error?.localizedDescription)
+                    return
+                }
+                
+                print(downloadURL)
+                
+                let mystring2 = downloadURL.absoluteString
+                
+                
+                ref!.child("Influencers").child(uid).updateChildValues(["ProPic" : mystring2])
+                    
+                    
+               
+                //                self.activityIndicator.alpha = 0
+                //                self.activityIndicator.stopAnimating()
+                //                self.loadinglabel.alpha = 0
+                
+//                self.nextViewNumber = 1
+//                self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
+                
+                //                DispatchQueue.main.async {
+                //
+                //                    self.performSegue(withIdentifier: "UploadToProfile", sender: self)
+                //
+                //
+                //
+                //                }
+                
+            }
+        }
+    }
+    
+    var strDate = String()
     @IBOutlet weak var tapsign: UIButton!
     
     @IBOutlet weak var paypaltf: UITextField!
@@ -103,14 +246,87 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
 
             
             //
-        ref?.child("Influencers").child(uid).updateChildValues(["Channel Name" : channelname, "Channel Price" : channelprice, "PayPal" : paypalname])
+        ref?.child("Influencers").child(uid).updateChildValues(["Channel Name" : channelname, "Price" : channelprice, "PayPal" : paypalname])
             
             tapsave.alpha = 0.5
         
-        
-        
-        
-        //        }
+        if videoURL != nil {
+            
+            let data = Data()
+            
+            // Create a reference to the file you want to upload
+            
+            //        let localFile  = URL(string: )!
+            
+            
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let currentUser = Auth.auth().currentUser
+            
+            //        let metaData = StorageMetadata()
+            //
+            //        metaData.contentType = "image/jpg"
+            
+            uid = (currentUser?.uid)!
+            
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+            dateFormatter.locale = NSLocale.current
+            dateFormatter.dateFormat = "y-MM-dd H:m:ss" //Specify your format that you want
+            
+            var mystring = videoURL!.absoluteString
+            let localFile = URL(string: mystring!)
+            
+            let timestamp = NSDate().timeIntervalSince1970
+            
+            let randomString = UUID().uuidString
+            // Create a reference to the file you want to upload
+            let riversRef = storageRef.child(randomString)
+            
+            //        let metaData = StorageMetadata()
+            //
+            //        metaData.contentType = "image/jpg"
+            
+            // Upload the file to the path "images/rivers.jpg"
+            let uploadTask = riversRef.putFile(from: localFile!, metadata: nil) { metadata, error in
+                guard let metadata = metadata else {
+                    // Uh-oh, an error occurred!
+                    print(error?.localizedDescription)
+                    
+                    return
+                }
+                // Metadata contains file metadata such as size, content-type.
+                let size = metadata.size
+                // You can also access to download URL after upload.
+                
+                //            metadata.download
+                
+                
+                riversRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        // Uh-oh, an error occurred!
+                        print(error?.localizedDescription)
+                        return
+                    }
+                    
+                    print(downloadURL)
+                    
+                    let mystring2 = downloadURL.absoluteString
+                    
+                    
+                    
+                        ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
+                        
+
+                    
+                    
+                }
+            }
+            
+            
+        }
+
         
     }
     
@@ -199,8 +415,13 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         tapsave.layer.cornerRadius = 22.0
         tapsave.layer.masksToBounds = true
 
-        
+        queryforinfo()
  
+        tapchoosevideo.layer.masksToBounds = false
+        tapchoosevideo.layer.cornerRadius = tapchoosevideo.frame.height/2
+        tapchoosevideo.clipsToBounds = true
+        
+        
         self.addLineToView(view: channeltf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
         
@@ -212,6 +433,96 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         
 
         
+        
+    }
+    
+    func queryforinfo() {
+        
+        var functioncounter = 0
+        
+        ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            
+            if var profileUrl2 = value?["Purchase"] as? String {
+                // Create a storage reference from the URL
+                
+                
+                if profileUrl2 == "-" {
+                    
+                    
+                } else {
+                    
+                    videolinks["0"] = profileUrl2
+                    
+                    myintrovideo = profileUrl2
+                    
+                }
+                
+                
+            }
+            
+            
+            
+            if var author2 = value?["Subscribers"] as? String {
+                
+                selectedsubs = author2
+            }
+            
+            
+            if var author2 = value?["Price"] as? String {
+                
+                mychannelprice = author2
+            }
+            
+            if var author2 = value?["PayPal"] as? String {
+                
+                mypaypal = author2
+            }
+            
+            if var author2 = value?["Channel Name"] as? String {
+                
+                mychannelname = author2
+            }
+            
+            if mychannelprice != "" {
+                
+                self.channeltf.text = mychannelprice
+            }
+            
+            if mychannelname != "" {
+                
+                self.channelnametf.text = mychannelname
+            }
+            
+            if mypaypal != "" {
+                
+                self.paypaltf.text = mypaypal
+            }
+            
+            if myintrovideo != "" {
+                
+                //            let asset = AVURLAsset(url: videoURL as! URL , options: nil)
+                //            let imgGenerator = AVAssetImageGenerator(asset: asset)
+                //            imgGenerator.appliesPreferredTrackTransform = true
+                ////            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+                //            let thumbnail = UIImage(cgImage: cgImage)
+                //            imgView.image = thumbnail
+                
+                let videourl = URL(string: myintrovideo)
+                
+                self.avPlayer = AVPlayer(url: videourl! as URL)
+                
+                
+                self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+                
+                self.playerView.playerLayer.player = self.avPlayer
+                
+                self.playerView.player?.pause()
+            }
+            
+        })
         
     }
     

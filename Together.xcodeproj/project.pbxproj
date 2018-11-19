@@ -27,6 +27,7 @@
 		9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */; };
 		9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */; };
 		9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD09021952BD5001B40E1 /* LoginViewController.swift */; };
+		9D60C09921A34E24002BBF0C /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C09821A34E24002BBF0C /* Test2ViewController.swift */; };
 		9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */; };
 		9D6E91CE21A0F0BD0013BED6 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
@@ -116,6 +117,7 @@
 		9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamViewController.swift; sourceTree = "<group>"; };
 		9D5FD09021952BD5001B40E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9D60C09821A34E24002BBF0C /* Test2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2ViewController.swift; sourceTree = "<group>"; };
 		9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2LoginViewController.swift; sourceTree = "<group>"; };
 		9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				9D9C665821A321B800309443 /* YourChannelViewController.swift */,
+				9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */,
 				9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */,
 			);
 			path = "Seller - V2";
@@ -295,6 +298,7 @@
 		9DB795B921656B5300211327 = {
 			isa = PBXGroup;
 			children = (
+				9D60C09821A34E24002BBF0C /* Test2ViewController.swift */,
 				9DB795C421656B5300211327 /* Together */,
 				9DB795D921656B5700211327 /* TogetherTests */,
 				9DB795E421656B5700211327 /* TogetherUITests */,
@@ -382,7 +386,6 @@
 				9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */,
 				9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */,
 				9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */,
-				9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */,
 				9DEA5F1721A0B820000137A3 /* ContacViewController.swift */,
 				9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */,
 				9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */,
@@ -647,6 +650,7 @@
 				9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */,
 				9DC0B28221920DC500F56A1A /* PlayerViewClass.swift in Sources */,
 				9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */,
+				9D60C09921A34E24002BBF0C /* Test2ViewController.swift in Sources */,
 				9DB795F421656CDF00211327 /* LogViewController.swift in Sources */,
 				9D6E91CE21A0F0BD0013BED6 /* TestViewController.swift in Sources */,
 				9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */,

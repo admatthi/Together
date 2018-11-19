@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564342764.735114"
+            timestampString = "564349846.097469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564342764.735219"
+            timestampString = "564349846.0976059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564342764.735357"
+            timestampString = "564349846.0977319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "473"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564342764.7354389"
+            timestampString = "564349846.09782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "468"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564342764.735571"
+            timestampString = "564349846.097967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "288"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564342764.735625"
+            timestampString = "564349846.0980721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "285"
@@ -170,7 +170,7 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/UploadViewController.swift"
-                  timestampString = "564260027.312717"
+                  timestampString = "564350111.640949"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "286"
@@ -185,7 +185,7 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/UploadViewController.swift"
-                  timestampString = "564260027.315486"
+                  timestampString = "564350111.644075"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "286"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564342764.735669"
+            timestampString = "564349846.098159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "291"
@@ -408,7 +408,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/Buyer - V2/WatchViewController.swift"
-            timestampString = "564207104.700887"
+            timestampString = "564348402.732501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
@@ -424,7 +424,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564342764.735911"
+            timestampString = "564349846.098556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "486"
@@ -600,11 +600,11 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/Buyer%20-%20V2/VideoViewController.swift"
-                  timestampString = "564260027.389047"
+                  timestampString = "564350111.775792"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "143"
-                  endingLineNumber = "143"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
                   offsetFromSymbolStart = "364">
                </Location>
                <Location
@@ -615,11 +615,11 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/Buyer%20-%20V2/VideoViewController.swift"
-                  timestampString = "564260027.391641"
+                  timestampString = "564350111.779566"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "138"
-                  endingLineNumber = "138"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
                   offsetFromSymbolStart = "84">
                </Location>
             </Locations>
@@ -654,6 +654,38 @@
             startingLineNumber = "363"
             endingLineNumber = "363"
             landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Together/FAM/Seller - V2/EditProfileViewController.swift"
+            timestampString = "564350788.287084"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Together/FAM/Seller - V2/EditProfileViewController.swift"
+            timestampString = "564350788.287203"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

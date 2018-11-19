@@ -209,7 +209,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.pricelabel.layer.masksToBounds = true
 
         
-        if images.count > indexPath.row && names.count > indexPath.row{
+        if images.count > indexPath.row && names.count > indexPath.row {
             
             cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)"
 

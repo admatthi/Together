@@ -109,34 +109,34 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         ref = Database.database().reference()
 
-        if thumbnails.count >  1 {
-            
-            collectionView.alpha = 1
-            activityIndicator.alpha = 0
-            activityIndicator.stopAnimating()
-            collectionView.reloadData()
-            
-        } else {
-            
-            if thumbnails["0"] == nil {
-                
-                            queryforhighlevelinfo()
+//        if thumbnails.count ==  1 {
+//
+//            collectionView.alpha = 1
+//            activityIndicator.alpha = 0
+//            activityIndicator.stopAnimating()
+//            collectionView.reloadData()
+//
+//        } else {
+//
+//            if thumbnails["0"] == nil {
+//
+                queryforhighlevelinfo()
 
-            }
-            
-            collectionView.alpha = 0
-            activityIndicator.alpha = 1
-            activityIndicator.color = mypink
-            activityIndicator.startAnimating()
-            
+//            }
+        
+//            collectionView.alpha = 0
+//            activityIndicator.alpha = 1
+//            activityIndicator.color = mypink
+//            activityIndicator.startAnimating()
+//            
             
             queryforids { () -> () in
                 
                 self.queryforinfo()
                 
             }
-            
-        }
+//
+//        }
         
       
         
@@ -331,7 +331,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         if indexPath.row == 0 {
             
-            selectedtitle = "Subscribe Now"
+            selectedtitle = "Welcome!"
             selectedthumbnailurl = thumbnailurls["0"]!
             selectedvideourl = videolinks["0"]!
             self.performSegue(withIdentifier: "EditToPurchase", sender: self)

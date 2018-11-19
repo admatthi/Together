@@ -22,7 +22,10 @@ import IQKeyboardManager
 
 var uid = String()
 var ref: DatabaseReference?
-
+var mychannelname = String()
+var mychannelprice = String()
+var myintrovideo = String()
+var mypaypal = String()
 var tryingtopurchase = Bool()
 var isInfluencer = Bool()
 var myselectedimage = UIImage()
@@ -60,36 +63,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
-
-        
-        let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
+//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
 //
-        if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
-
-
-        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewControlleripad
-        self.window?.makeKeyAndVisible()//
-
-
-        } else {
-
-            let currentUser = Auth.auth().currentUser
-
-            uid = (currentUser?.uid)!
-
-            queryforinfo()
-
-            queryforids { () -> () in
-
-
-            }
-
-        }
+//        
+//        let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
+////
+//        if Auth.auth().currentUser == nil {
+//            // Do smth if user is not logged in
+//
+//
+//        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = initialViewControlleripad
+//        self.window?.makeKeyAndVisible()//
+//
+//
+//        } else {
+//
+//            let currentUser = Auth.auth().currentUser
+//
+//            uid = (currentUser?.uid)!
+//
+//            queryforinfo()
+//
+//            queryforids { () -> () in
+//                
+//                
+//            }
+//
+//        }
 //
         return true
     }
@@ -143,15 +146,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if var profileUrl2 = value?["Purchase"] as? String {
                 // Create a storage reference from the URL
                 
+                
                 if profileUrl2 == "-" {
                     
                     noothervids = true
                     
                 } else {
                     
-                videolinks["0"] = profileUrl2
+                    videolinks["0"] = profileUrl2
                         
-                        
+                    myintrovideo = profileUrl2
+                    
                     noothervids = false
                 }
             }
@@ -162,6 +167,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 selectedsubs = author2
             }
+            
+
+            if var author2 = value?["Price"] as? String {
+                
+                mychannelprice = author2
+            }
+            
+            if var author2 = value?["PayPal"] as? String {
+                
+                mypaypal = author2
+            }
+            
+            if var author2 = value?["Channel Name"] as? String {
+                
+                mychannelname = author2
+            }
+            
             if var author2 = value?["Approved"] as? String {
                 
                 if author2 == "False" {
