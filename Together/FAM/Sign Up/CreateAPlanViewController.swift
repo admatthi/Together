@@ -185,9 +185,9 @@ class CreateAPlanViewController: UIViewController, UITextFieldDelegate, UITextVi
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
                 //                self.addstaticbooks()
-                ref?.child("Influencers").child(uid).updateChildValues(["Subscribers" : "0", "Approved" : "False", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-"])
+                ref?.child("Influencers").child(uid).updateChildValues(["Subscribers" : "0", "Approved" : "True", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-"])
                 
-                ref?.child("Users").child(uid).updateChildValues(["Approved" : "False"])
+                ref?.child("Users").child(uid).updateChildValues(["Approved" : "True"])
                 
 
                 self.performSegue(withIdentifier: "CreateToYourChannel", sender: self)
@@ -210,15 +210,15 @@ class CreateAPlanViewController: UIViewController, UITextFieldDelegate, UITextVi
 
         requestlabel.addCharacterSpacing()
         ref = Database.database().reference()
-        
+        tapcreate.addTextSpacing(2.0)
         emailtf.delegate = self
         passwordtf.delegate = self
         nametf.delegate = self
         domaintf.delegate = self
         //        emailtf.becomeFirstResponder()
         
-        tapcreate.layer.cornerRadius = 22.0
-        tapcreate.layer.masksToBounds = true
+//        tapcreate.layer.cornerRadius = 22.0
+//        tapcreate.layer.masksToBounds = true
         
         FBSDKAppEvents.logEvent("LoginScreen")
         
@@ -231,6 +231,10 @@ class CreateAPlanViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         self.addLineToView(view: domaintf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
 
+        mychannelname = ""
+        mypaypal = ""
+        myintrovideo = ""
+        mychannelprice = ""
     }
     
     @IBOutlet weak var requestlabel: UILabel!

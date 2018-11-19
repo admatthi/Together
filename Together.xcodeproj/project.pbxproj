@@ -242,10 +242,10 @@
 		9D46D843219B2142006CE94C /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
-				9DB7BCEF21A31ED3009B63B4 /* CreateAPlanViewController.swift */,
-				9D46D84E219B2A02006CE94C /* OverviewCollectionViewCell.swift */,
 				9D46D84C219B29C0006CE94C /* OverviewViewController.swift */,
 				9D5FD09021952BD5001B40E1 /* LoginViewController.swift */,
+				9DB7BCEF21A31ED3009B63B4 /* CreateAPlanViewController.swift */,
+				9D46D84E219B2A02006CE94C /* OverviewCollectionViewCell.swift */,
 			);
 			path = "Sign Up";
 			sourceTree = "<group>";

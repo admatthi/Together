@@ -182,15 +182,15 @@ class RevenueViewController: UIViewController {
                     self.programname.text = selectedprogramname
                 }
    
-                if var profileUrl = value?["ProPic"] as? String {
-                    // Create a storage reference from the URL
-                    
-                    let url = URL(string: profileUrl)
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    myselectedimage = UIImage(data: data!)!
-                    self.propic.image = selectedimage
-
-                }
+//                if var profileUrl = value?["ProPic"] as? String {
+//                    // Create a storage reference from the URL
+//                    
+//                    let url = URL(string: profileUrl)
+//                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+//                    myselectedimage = UIImage(data: data!)!
+//                    self.propic.image = selectedimage
+//
+//                }
                     
                 
                 

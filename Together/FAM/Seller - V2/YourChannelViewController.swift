@@ -143,6 +143,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         return image
     }
     
+    var myString3 = String()
     func loadthumbnail() {
         
         let storage = Storage.storage()
@@ -193,30 +194,72 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 
                 print(downloadURL)
                 
-                let mystring2 = downloadURL.absoluteString
+                self.myString3 = downloadURL.absoluteString
                 
                 
-                ref!.child("Influencers").child(uid).updateChildValues(["ProPic" : mystring2])
-                    
-                    
+                
+                
                
-                //                self.activityIndicator.alpha = 0
-                //                self.activityIndicator.stopAnimating()
-                //                self.loadinglabel.alpha = 0
+//                                self.activityIndicator.alpha = 0
+//                                self.activityIndicator.stopAnimating()
+//                                self.loadinglabel.alpha = 0
                 
-//                self.nextViewNumber = 1
-//                self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
-                
-                //                DispatchQueue.main.async {
-                //
-                //                    self.performSegue(withIdentifier: "UploadToProfile", sender: self)
-                //
-                //
-                //
-                //                }
+           
+//                                DispatchQueue.main.async {
+//                
+//                                    self.performSegue(withIdentifier: "UploadToProfile", sender: self)
+//                
+//                
+//                
+//                                }
                 
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueTo3rd" {
+            
+            let nextView = segue.destination as! TabInfluencerViewController
+            
+            switch (nextViewNumber) {
+            case 1:
+                nextView.selectedIndex = 2
+                
+            case 2:
+                nextView.selectedIndex = 1
+                
+            default:
+                break
+            }
+        }
+    }
+
+    
+    var nextViewNumber = Int()
+    @IBOutlet weak var B3: UIButton!
+    @IBOutlet weak var B2: UIButton!
+    @IBOutlet weak var B1: UIButton!
+    @IBAction func b3(_ sender: Any) {
+        
+        B3.setTitleColor(mypink, for: .normal)
+        B2.setTitleColor(.white, for: .normal)
+        B1.setTitleColor(.white, for: .normal)
+        mychannelprice = "100"
+    }
+    @IBAction func b2(_ sender: Any) {
+        
+        B2.setTitleColor(mypink, for: .normal)
+        B1.setTitleColor(.white, for: .normal)
+        B3.setTitleColor(.white, for: .normal)
+        mychannelprice = "25"
+    }
+    @IBAction func b1(_ sender: Any) {
+        
+        B1.setTitleColor(mypink, for: .normal)
+        B2.setTitleColor(.white, for: .normal)
+        B3.setTitleColor(.white, for: .normal)
+        mychannelprice = "5"
     }
     
     var strDate = String()
@@ -230,6 +273,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBAction func tapSave(_ sender: Any) {
         
         
+   
         self.view.endEditing(true)
         
         //        pn2tf.text = " "
@@ -239,16 +283,17 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         //
         channelname = "\(channelnametf.text!)"
         paypalname = "\(paypaltf.text!)"
-        channelprice = "\(channeltf.text!)"
+        channelprice = mychannelprice
         
+             if channelname != "" && paypalname != "" && mychannelprice != "" {
         //        domainz = domainz.replacingOccurrences(of: " ", with: "-")
         //        if email != "" && password != "" && name != "" && domainz != "" {
 
             
             //
         ref?.child("Influencers").child(uid).updateChildValues(["Channel Name" : channelname, "Price" : channelprice, "PayPal" : paypalname])
+        
             
-            tapsave.alpha = 0.5
         
         if videoURL != nil {
             
@@ -316,18 +361,27 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                     
                     
                     
-                        ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
-                        
+                ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
+                    ref!.child("Influencers").child(uid).updateChildValues(["ProPic" : self.myString3])
 
+
+                    self.nextViewNumber = 1
+                    self.performSegue(withIdentifier: "SegueTo3rd", sender: self)
                     
+                    //
                     
                 }
             }
             
             
+        } else {
+            
+            self.nextViewNumber = 1
+            self.performSegue(withIdentifier: "SegueTo3rd", sender: self)
+            
         }
 
-        
+        }
     }
     
     @IBAction func tapBack(_ sender: Any) {
@@ -395,6 +449,9 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     @IBOutlet weak var requestlabel: UILabel!
     
+    @IBOutlet weak var tapBack: UIButton!
+    @IBAction func tapback(_ sender: Any) {
+    }
     @IBOutlet weak var demo: UILabel!
     @IBOutlet weak var tapcreate: UIButton!
     override func viewDidLoad() {
@@ -407,13 +464,11 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         requestlabel.addCharacterSpacing()
         ref = Database.database().reference()
         
-        channeltf.delegate = self
         paypaltf.delegate = self
         channelnametf.delegate = self
    //        emailtf.becomeFirstResponder()
     
-        tapsave.layer.cornerRadius = 22.0
-        tapsave.layer.masksToBounds = true
+        tapsave.addTextSpacing(2.0)
 
         queryforinfo()
  
@@ -422,7 +477,6 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         tapchoosevideo.clipsToBounds = true
         
         
-        self.addLineToView(view: channeltf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
         
         self.addLineToView(view: paypaltf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
@@ -431,7 +485,6 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         self.addLineToView(view: channelnametf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
-
         
         
     }
@@ -457,7 +510,16 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                     videolinks["0"] = profileUrl2
                     
                     myintrovideo = profileUrl2
+                    let videourl = URL(string: myintrovideo)
                     
+                    self.avPlayer = AVPlayer(url: videourl! as URL)
+                    
+                    
+                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+                    
+                    self.playerView.playerLayer.player = self.avPlayer
+                    
+                    self.playerView.player?.pause()
                 }
                 
                 
@@ -474,54 +536,53 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
             if var author2 = value?["Price"] as? String {
                 
                 mychannelprice = author2
+                
+                if mychannelprice == "5" {
+                    
+                    self.B1.setTitleColor(mypink, for: .normal)
+                    self.B2.setTitleColor(.white, for: .normal)
+                    self.B3.setTitleColor(.white, for: .normal)
+                    mychannelprice = "100"                }
+                
+                if mychannelprice == "25" {
+                    
+                    self.B2.setTitleColor(mypink, for: .normal)
+                    self.B3.setTitleColor(.white, for: .normal)
+                    self.B1.setTitleColor(.white, for: .normal)
+                    mychannelprice = "100"                }
+                
+                if mychannelprice == "100" {
+                    
+                    self.B3.setTitleColor(mypink, for: .normal)
+                    self.B2.setTitleColor(.white, for: .normal)
+                    self.B1.setTitleColor(.white, for: .normal)
+                    mychannelprice = "100"                }
+            
+            
+            } else {
+                
+                self.tapBack.alpha = 0
+
             }
             
             if var author2 = value?["PayPal"] as? String {
                 
                 mypaypal = author2
+                self.paypaltf.text = mypaypal
+
             }
             
             if var author2 = value?["Channel Name"] as? String {
                 
                 mychannelname = author2
-            }
-            
-            if mychannelprice != "" {
-                
-                self.channeltf.text = mychannelprice
-            }
-            
-            if mychannelname != "" {
-                
                 self.channelnametf.text = mychannelname
+
             }
             
-            if mypaypal != "" {
-                
-                self.paypaltf.text = mypaypal
-            }
             
-            if myintrovideo != "" {
                 
-                //            let asset = AVURLAsset(url: videoURL as! URL , options: nil)
-                //            let imgGenerator = AVAssetImageGenerator(asset: asset)
-                //            imgGenerator.appliesPreferredTrackTransform = true
-                ////            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
-                //            let thumbnail = UIImage(cgImage: cgImage)
-                //            imgView.image = thumbnail
-                
-                let videourl = URL(string: myintrovideo)
-                
-                self.avPlayer = AVPlayer(url: videourl! as URL)
-                
-                
-                self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                
-                self.playerView.playerLayer.player = self.avPlayer
-                
-                self.playerView.player?.pause()
-            }
             
+  
         })
         
     }

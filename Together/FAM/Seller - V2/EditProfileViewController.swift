@@ -128,8 +128,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 //            activityIndicator.alpha = 1
 //            activityIndicator.color = mypink
 //            activityIndicator.startAnimating()
-//            
-            
+//
+        
             queryforids { () -> () in
                 
                 self.queryforinfo()
@@ -160,7 +160,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 thumbnailurls["0"] = profileUrl
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 thumbnails["0"] = UIImage(data: data!)
-                
+             
+                self.collectionView.reloadData()
             }
             
             
