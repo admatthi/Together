@@ -50,22 +50,30 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         if uid == selectedid {
             
             locked = false
+            
+            queryforids { () -> () in
+                
+                self.queryforinfo()
+                
+            }
+            
         }
         
         if myprojectids.contains(selectedid) {
             
             locked = false
+            
+            queryforids { () -> () in
+                
+                self.queryforinfo()
+                
+            }
+            
         }
         
         ref = Database.database().reference()
         
-        
-        queryforids { () -> () in
-            
-            self.queryforinfo()
-            
-        }
-        
+ 
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
             
@@ -76,6 +84,15 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             if selectedid == unlockedid {
                 
                 locked = false
+                
+                queryforids { () -> () in
+                    
+                    self.queryforinfo()
+                    
+                }
+                
+                
+                
             }
             
         
@@ -85,6 +102,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         
+        collectionView.reloadData()
         
         // Do any additional setup after loading the view.
     }
@@ -250,13 +268,21 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
+    if locked {
+        
+        return 24
+        
+    } else {
+        
         if thumbnails.count > 0 {
+            
+            return thumbnails.count
+            
+            } else {
+            
+                return 1
+            }
         
-        return thumbnails.count
-        
-        } else {
-        
-            return 1
         }
     
     }
@@ -267,6 +293,19 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
         
         //        cell.subscriber.tag = indexPath.row
+        
+        if locked {
+            
+            cell.whitelabel.alpha = 0.5
+            cell.isUserInteractionEnabled = false
+            cell.lockimage.alpha = 1
+            
+            cell.thumbnail.image = nil
+            
+            cell.titlelabel.text = ""
+            cell.timeago.text = ""
+            
+        }
         
         if thumbnails.count >= indexPath.row{
             
@@ -288,19 +327,33 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 activityIndicator.stopAnimating()
                 cell.whitelabel.layer.cornerRadius = 10.0
                 cell.whitelabel.layer.masksToBounds = true
+                cell.lockimage.alpha = 0
                 
             } else {
                 
-                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
                 
-                cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
-                cell.timeago.text = videodates[videoids[indexPath.row-1]]
+                
+              
                 
                 if locked {
                     
                     cell.whitelabel.alpha = 0.5
                     cell.isUserInteractionEnabled = false
+                    cell.lockimage.alpha = 1
+                    
+                    cell.thumbnail.image = nil
+                    
+                    cell.titlelabel.text = ""
+                    cell.timeago.text = ""
+                    
                 } else {
+                    
+                    cell.lockimage.alpha = 0
+                    cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
+                    
+                    cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
+                    cell.timeago.text = videodates[videoids[indexPath.row-1]]
+                    
                     cell.whitelabel.alpha = 0
                     
                     cell.isUserInteractionEnabled = true

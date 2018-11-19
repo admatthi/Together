@@ -10,6 +10,7 @@ import UIKit
 
 class PeopleCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var pricelabel: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var textlabel: UILabel!
     

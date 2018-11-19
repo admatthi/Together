@@ -192,7 +192,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             
             return 0
         }
-        
+     
     }
     
   
@@ -204,9 +204,15 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
 //        cell.subscriber.tag = indexPath.row
         
+        cell.pricelabel.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
+        cell.pricelabel.layer.cornerRadius = 5.0
+        cell.pricelabel.layer.masksToBounds = true
+
+        
         if images.count > indexPath.row && names.count > indexPath.row{
             
-            
+            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)"
+
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
 //            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
