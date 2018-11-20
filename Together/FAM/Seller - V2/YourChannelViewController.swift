@@ -285,15 +285,15 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         paypalname = "\(paypaltf.text!)"
         channelprice = mychannelprice
         
-        if channelname != "" {
-//             if channelname != "" && paypalname != "" && mychannelprice != "" {
+//        if channelname != "" {
+             if channelname != "" && paypalname != "" && mychannelprice != "" && videoURL != nil {
         //        domainz = domainz.replacingOccurrences(of: " ", with: "-")
         //        if email != "" && password != "" && name != "" && domainz != "" {
 
             
             //
         ref?.child("Influencers").child(uid).updateChildValues(["Channel Name" : channelname, "Price" : channelprice, "PayPal" : paypalname])
-        ref?.child("Influencers").child(uid).updateChildValues(["Channel Name" : channelname])
+//        ref?.child("Influencers").child(uid).updateChildValues(["Channel Name" : channelname])
 
             
         

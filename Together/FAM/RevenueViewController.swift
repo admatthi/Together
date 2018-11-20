@@ -26,14 +26,20 @@ class RevenueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-       backlabel.layer.cornerRadius = 5.0
+       backlabel.layer.cornerRadius = 10.0
         backlabel.layer.masksToBounds = true
+        back2.layer.cornerRadius = 10.0
+        back2.layer.masksToBounds = true
+        back3.layer.cornerRadius = 10.0
+        back3.layer.masksToBounds = true
+
         
+        HEADER3.addCharacterSpacing()
+        header4.addCharacterSpacing()
         HEADERLABEL.addCharacterSpacing()
         tapshare.alpha = 0
         nofollows.alpha = 0
         ref = Database.database().reference()
-        
         
         propic.layer.masksToBounds = false
         propic.layer.cornerRadius = propic.frame.height/2
@@ -46,10 +52,11 @@ class RevenueViewController: UIViewController {
 //        tapmonthly.alpha = 1
 //        tapsubscribers.alpha = 0.25
 //        taptotal.alpha = 0.25
-        descriptivelabel.text = "Total Active Subscribers"
-        realvalue.text = "0"
+//        descriptivelabel.text = "Total Active Subscribers"
+//        realvalue.text = "0"
         
-    
+        descriptivelabel.addCharacterSpacing()
+
         
         // Do any additional setup after loading the view.
     }
@@ -111,7 +118,11 @@ class RevenueViewController: UIViewController {
         realvalue.text = "$\(yourtotalreve)"
         
     }
+    @IBOutlet weak var back3: UILabel!
     
+    @IBOutlet weak var back2: UILabel!
+    @IBOutlet weak var header4: UILabel!
+    @IBOutlet weak var HEADER3: UILabel!
     @IBOutlet weak var backlabel: UILabel!
     var yourdomain = String()
     func queryforinfo() {
@@ -137,33 +148,49 @@ class RevenueViewController: UIViewController {
                         
                         self.nofollows.alpha = 0
                     }
-//                    let numberFormatter = NumberFormatter()
-//                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
-//                    let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author2)!))
-//                    yoursubscribers = formattedNumber!
-//                    self.realvalue.text = yoursubscribers
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
+                    let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author2)!))
+                    yoursubscribers = formattedNumber!
+                    self.realvalue.text = yoursubscribers
 
                     if var author3 = value?["Price"] as? String {
                         
-//                    var newprice = Double(Int(author2)!) * Double(Int(author3)!)
-                        
-//                        var newprice = Double(Int(author3)!)
-//
-//                        let numberFormatter = NumberFormatter()
-//                        numberFormatter.numberStyle = NumberFormatter.Style.decimal
-//                        let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(newprice)))
-//                        yourmrr = formattedNumber!
+                    
+                        if yoursubscribers != "0" && author3 != "" {
+                            
+                            var newprice = Double(Int(author2)!) * Double(Int(author3)!)
+                                                        
+                            let numberFormatter = NumberFormatter()
+                            numberFormatter.numberStyle = NumberFormatter.Style.decimal
+                            let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(newprice)))
+                            yourmrr = formattedNumber!
+                            self.mrr.text = "$\(yourmrr)"
+                            
+                        } else {
+                            
+                            
+                            self.mrr.text = "$0"
 
+                        }
+               
                     }
                     
                 }
                 
                 if var author4 = value?["Total Revenue"] as? String {
                     
-//                    let numberFormatter = NumberFormatter()
-//                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
-//                    let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author4)!))
-//                    yourtotalreve = formattedNumber!
+                    if author4 != "0" {
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
+                    let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author4)!))
+                    yourtotalreve = formattedNumber!
+                        self.totalrevenue.text = "$\(yourtotalreve)"
+                    } else {
+                        
+                        self.totalrevenue.text = "$0"
+
+                    }
 
                 }
                 
