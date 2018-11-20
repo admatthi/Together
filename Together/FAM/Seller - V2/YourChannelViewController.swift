@@ -285,14 +285,16 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         paypalname = "\(paypaltf.text!)"
         channelprice = mychannelprice
         
-             if channelname != "" && paypalname != "" && mychannelprice != "" {
+        if channelname != "" {
+//             if channelname != "" && paypalname != "" && mychannelprice != "" {
         //        domainz = domainz.replacingOccurrences(of: " ", with: "-")
         //        if email != "" && password != "" && name != "" && domainz != "" {
 
             
             //
         ref?.child("Influencers").child(uid).updateChildValues(["Channel Name" : channelname, "Price" : channelprice, "PayPal" : paypalname])
-        
+        ref?.child("Influencers").child(uid).updateChildValues(["Channel Name" : channelname])
+
             
         
         if videoURL != nil {
@@ -381,6 +383,9 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
             
         }
 
+        } else {
+            
+            errorlabel.alpha = 1
         }
     }
     
@@ -458,7 +463,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+        errorlabel.alpha = 0
         playerView.layer.cornerRadius = 5.0
         playerView.layer.masksToBounds = true
         requestlabel.addCharacterSpacing()
@@ -489,6 +494,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         
     }
     
+    @IBOutlet weak var errorlabel: UILabel!
     func queryforinfo() {
         
         var functioncounter = 0
@@ -587,7 +593,6 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         
     }
     
-    @IBOutlet weak var errorlabel: UILabel!
     
     
     

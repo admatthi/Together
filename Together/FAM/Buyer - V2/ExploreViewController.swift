@@ -52,14 +52,18 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
             self.tabBarController?.tabBar.isHidden = true
+            tapBack.alpha = 1
 
         } else {
             
             self.tabBarController?.tabBar.isHidden = false
-
+            tapBack.alpha = 0
         }
       
         // Do any additional setup after loading the view.
+    }
+    @IBOutlet weak var tapBack: UIButton!
+    @IBAction func tapback(_ sender: Any) {
     }
     
     func queryforids(completed: @escaping (() -> ()) ) {
@@ -181,7 +185,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         selectedname = names[projectids[indexPath.row]]!
         
 //        selectedpitch = descriptions[projectids[indexPath.row]]!
-        selectedprice = prices[projectids[indexPath.row]]!
+//        selectedprice = prices[projectids[indexPath.row]]!
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
         selectedsubs = subscribers[projectids[indexPath.row]]!
 //        selectedprogramname = programnames[projectids[indexPath.row]]!
@@ -220,7 +224,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         if images.count > indexPath.row && names.count > indexPath.row {
             
-            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)/mo"
+//            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)/mo"
 
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor

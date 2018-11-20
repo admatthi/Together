@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1014750153767-oko8h360s94av9e6dk1uscns35jokudf.apps.googleusercontent.com</string>
+	<string>1014750153767-q5ki8qhpkku1tktasj6pr4a0jd6lkvrl.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1014750153767-oko8h360s94av9e6dk1uscns35jokudf</string>
+	<string>com.googleusercontent.apps.1014750153767-q5ki8qhpkku1tktasj6pr4a0jd6lkvrl</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBKCVcjCM8HEwMAKciSbN3pzlQXV_Lngm0</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.aatech.Together</string>
+	<string>com.aatech.Fam</string>
 	<key>PROJECT_ID</key>
 	<string>deploy-141ca</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1014750153767:ios:0ecf34665773aed0</string>
+	<string>1:1014750153767:ios:e5a336d941e174c4</string>
 	<key>DATABASE_URL</key>
 	<string>https://deploy-141ca.firebaseio.com</string>
 </dict>

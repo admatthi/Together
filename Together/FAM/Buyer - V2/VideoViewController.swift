@@ -313,7 +313,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
                 cell.thumbnail.image = myselectedimage
                 cell.titlelabel.text = "Welcome!"
-                cell.timeago.text = "\(selectedsubs)"
+//                cell.timeago.text = "Tap To Preview"
                 cell.whitelabel.alpha = 0
 
                 cell.isUserInteractionEnabled = true

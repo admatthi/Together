@@ -171,6 +171,15 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 
             }
             
+            if var author2 = value?["Name"] as? String {
+                
+                selectedname = author2
+                self.programname.text = selectedname.uppercased()
+                self.programname.addCharacterSpacing()
+                
+            }
+            
+            
 //            self.collectionView.reloadData()
         })
         
@@ -376,7 +385,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             if indexPath.row == 0 {
                 
                 cell.thumbnail.image = thumbnails["0"]
-                cell.titlelabel.text = "Subscribe Now"
+                cell.titlelabel.text = "Welcome!"
                 cell.timeago.text = "\(selectedsubs) subscribers"
                 cell.whitelabel.alpha = 0
                 cell.isUserInteractionEnabled = true

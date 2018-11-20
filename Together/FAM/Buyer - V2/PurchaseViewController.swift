@@ -42,16 +42,25 @@ class PurchaseViewController: UIViewController {
         
         FBSDKAppEvents.logEvent("Trial Pressed")
 
-        purchases.entitlements { entitlements in
-            guard let pro = entitlements?["Subscriptions"] else { return }
-            guard let monthly = pro.offerings["\(selectedprice)price"] else { return }
-            guard let product = monthly.activeProduct else { return }
-            self.purchases.makePurchase(product)
-            
-            
-        }
+//        purchases.entitlements { entitlements in
+//            guard let pro = entitlements?["Subscriptions"] else { return }
+//            guard let monthly = pro.offerings["\(selectedprice)price"] else { return }
+//            guard let product = monthly.activeProduct else { return }
+//            self.purchases.makePurchase(product)
+//
+//
+//        }
 
-//        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
+        if Auth.auth().currentUser == nil {
+
+            self.performSegue(withIdentifier: "PurchaseToCreate", sender: self)
+
+            
+        } else {
+            ref?.child("Users").child(uid).child("Requested").child(selectedid).updateChildValues(["Title" : "x"])
+
+                self.performSegue(withIdentifier: "PurchaseToHome2", sender: self)
+        }
 
         
     }
@@ -192,11 +201,14 @@ class PurchaseViewController: UIViewController {
             
             if uid == selectedid {
                 
-                tapbuy.layer.backgroundColor = UIColor.gray.cgColor
-                tapbuy.isUserInteractionEnabled = false
+                tapbuy.alpha = 0
+                requestlabel.alpha = 0
+                
             } else {
+                
                 tapbuy.isUserInteractionEnabled = true
-
+                tapbuy.alpha = 1
+                requestlabel.alpha = 1
                 
             }
         }
@@ -207,6 +219,7 @@ class PurchaseViewController: UIViewController {
      
     
 }
+    @IBOutlet weak var requestlabel: UILabel!
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "rate" {

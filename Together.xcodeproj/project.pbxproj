@@ -28,6 +28,8 @@
 		9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */; };
 		9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD09021952BD5001B40E1 /* LoginViewController.swift */; };
 		9D60C09921A34E24002BBF0C /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C09821A34E24002BBF0C /* Test2ViewController.swift */; };
+		9D60C09B21A455F6002BBF0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D60C09A21A455F5002BBF0C /* GoogleService-Info.plist */; };
+		9D60C09D21A46275002BBF0C /* BuyerLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C09C21A46275002BBF0C /* BuyerLoginViewController.swift */; };
 		9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */; };
 		9D6E91CE21A0F0BD0013BED6 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
@@ -41,7 +43,6 @@
 		9D9C665921A321B800309443 /* YourChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9C665821A321B800309443 /* YourChannelViewController.swift */; };
 		9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */; };
 		9D9E4A4721862B1700B3C74C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9E4A4621862B1700B3C74C /* StoreKit.framework */; };
-		9D9E4A49218630D300B3C74C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D9E4A48218630D300B3C74C /* GoogleService-Info.plist */; };
 		9D9E4A4B21864CC000B3C74C /* FundedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */; };
 		9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4D29321965344008A57FD /* VideoPlayerView.swift */; };
 		9DB795C621656B5300211327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C521656B5300211327 /* AppDelegate.swift */; };
@@ -118,6 +119,8 @@
 		9D5FD08E2194E794001B40E1 /* MyFamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamViewController.swift; sourceTree = "<group>"; };
 		9D5FD09021952BD5001B40E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D60C09821A34E24002BBF0C /* Test2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2ViewController.swift; sourceTree = "<group>"; };
+		9D60C09A21A455F5002BBF0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9D60C09C21A46275002BBF0C /* BuyerLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerLoginViewController.swift; sourceTree = "<group>"; };
 		9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2LoginViewController.swift; sourceTree = "<group>"; };
 		9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,7 +135,6 @@
 		9D9C665821A321B800309443 /* YourChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChannelViewController.swift; sourceTree = "<group>"; };
 		9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover2ViewController.swift; sourceTree = "<group>"; };
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		9D9E4A48218630D300B3C74C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundedViewController.swift; sourceTree = "<group>"; };
 		9DB4D29321965344008A57FD /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		9DB795C221656B5300211327 /* Together.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Together.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,7 +334,7 @@
 				9DB795CC21656B5600211327 /* Assets.xcassets */,
 				9DB795CE21656B5600211327 /* LaunchScreen.storyboard */,
 				9DB795D121656B5700211327 /* Info.plist */,
-				9D9E4A48218630D300B3C74C /* GoogleService-Info.plist */,
+				9D60C09A21A455F5002BBF0C /* GoogleService-Info.plist */,
 			);
 			path = Together;
 			sourceTree = "<group>";
@@ -365,6 +367,7 @@
 				9DB8AE02219DE6C000D7D707 /* VideosCollectionViewCell.swift */,
 				9DB8AE04219DE79200D7D707 /* VideoViewController.swift */,
 				9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */,
+				9D60C09C21A46275002BBF0C /* BuyerLoginViewController.swift */,
 				9DB8ADFD219DD14D00D7D707 /* WatchViewController.swift */,
 			);
 			path = "Buyer - V2";
@@ -512,7 +515,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D9E4A49218630D300B3C74C /* GoogleService-Info.plist in Resources */,
+				9D60C09B21A455F6002BBF0C /* GoogleService-Info.plist in Resources */,
 				9DB795D021656B5600211327 /* LaunchScreen.storyboard in Resources */,
 				9DB795CD21656B5600211327 /* Assets.xcassets in Resources */,
 				9DB795CB21656B5300211327 /* Main.storyboard in Resources */,
@@ -654,6 +657,7 @@
 				9DB795F421656CDF00211327 /* LogViewController.swift in Sources */,
 				9D6E91CE21A0F0BD0013BED6 /* TestViewController.swift in Sources */,
 				9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */,
+				9D60C09D21A46275002BBF0C /* BuyerLoginViewController.swift in Sources */,
 				9DC0B2872193556300F56A1A /* ExploreViewController.swift in Sources */,
 				9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */,
 				9DB795C821656B5300211327 /* ViewController.swift in Sources */,
@@ -871,7 +875,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.Together;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.Fam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -892,7 +896,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.Together;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.Fam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

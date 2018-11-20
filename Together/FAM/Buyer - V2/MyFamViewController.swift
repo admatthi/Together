@@ -84,7 +84,7 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
         collectionView.alpha = 0
         errorlabel.alpha = 1
         activityIndicator.alpha = 0
-        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Users").child(uid).child("Requested").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -191,8 +191,16 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
         selectedsubs = mysubscribers[myprojectids[indexPath.row]]!
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
         
+        if uid == "YLFsqzCdigQfciZmPmgfqxHpEN13" {
+            
+            self.performSegue(withIdentifier: "MyFamToVideo", sender: self)
+
+            
+        } else {
+            
+            
+        }
         
-        self.performSegue(withIdentifier: "MyFamToVideo", sender: self)
         
     }
     
@@ -216,6 +224,9 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         //        cell.subscriber.tag = indexPath.row
         
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true
+
         if myimages.count > indexPath.row && mynames.count > indexPath.row{
             
             
@@ -228,7 +239,19 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
             cell.textlabel.text = mynames[myprojectids[indexPath.row]]
             
             cell.thumbnail.image = myimages[myprojectids[indexPath.row]]
-            cell.subscribers.text = "\(mysubscribers[myprojectids[indexPath.row]]!) subscribers"
+//            cell.subscribers.text = "\(mysubscribers[myprojectids[indexPath.row]]!) subscribers"
+            
+            if uid == "YLFsqzCdigQfciZmPmgfqxHpEN13" {
+                
+                cell.subscribers.text = "Approved"
+
+                
+            } else {
+                
+                cell.subscribers.text = "Requested"
+
+            }
+
             
         } else {
             

@@ -26,6 +26,9 @@ class RevenueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+       backlabel.layer.cornerRadius = 5.0
+        backlabel.layer.masksToBounds = true
+        
         HEADERLABEL.addCharacterSpacing()
         tapshare.alpha = 0
         nofollows.alpha = 0
@@ -38,13 +41,15 @@ class RevenueViewController: UIViewController {
         
         queryforinfo()
         
-        tapmonthly.setTitle("Paid Subscribers", for: .normal)
-        tapsubscribers.setTitle("Monthly Revenue", for: .normal)
-        tapmonthly.alpha = 1
-        tapsubscribers.alpha = 0.25
-        taptotal.alpha = 0.25
-        descriptivelabel.text = "Total Paid Subscribers"
-        realvalue.text = yoursubscribers
+//        tapmonthly.setTitle("Paid Subscribers", for: .normal)
+//        tapsubscribers.setTitle("Monthly Revenue", for: .normal)
+//        tapmonthly.alpha = 1
+//        tapsubscribers.alpha = 0.25
+//        taptotal.alpha = 0.25
+        descriptivelabel.text = "Total Active Subscribers"
+        realvalue.text = "0"
+        
+    
         
         // Do any additional setup after loading the view.
     }
@@ -107,6 +112,7 @@ class RevenueViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var backlabel: UILabel!
     var yourdomain = String()
     func queryforinfo() {
         
@@ -141,12 +147,12 @@ class RevenueViewController: UIViewController {
                         
 //                    var newprice = Double(Int(author2)!) * Double(Int(author3)!)
                         
-                        var newprice = Double(Int(author3)!)
-
-                        let numberFormatter = NumberFormatter()
-                        numberFormatter.numberStyle = NumberFormatter.Style.decimal
-                        let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(newprice)))
-                        yourmrr = formattedNumber!
+//                        var newprice = Double(Int(author3)!)
+//
+//                        let numberFormatter = NumberFormatter()
+//                        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+//                        let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(newprice)))
+//                        yourmrr = formattedNumber!
 
                     }
                     
@@ -154,18 +160,18 @@ class RevenueViewController: UIViewController {
                 
                 if var author4 = value?["Total Revenue"] as? String {
                     
-                    let numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
-                    let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author4)!))
-                    yourtotalreve = formattedNumber!
+//                    let numberFormatter = NumberFormatter()
+//                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
+//                    let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author4)!))
+//                    yourtotalreve = formattedNumber!
 
                 }
                 
                 if var author5 = value?["Domain"] as? String {
                     
-                    self.yourdomain = "\(author5).joinmyfam.com"
-                    self.domainlabel.text = self.yourdomain
-                    self.tapshare.alpha = 1
+//                    self.yourdomain = "\(author5).joinmyfam.com"
+//                    self.domainlabel.text = self.yourdomain
+//                    self.tapshare.alpha = 0
                 }
                 
                 if var views = value?["Name"] as? String {
