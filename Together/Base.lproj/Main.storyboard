@@ -92,11 +92,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-RH-sqb">
-                                                    <rect key="frame" x="111" y="247" width="46" height="15"/>
+                                                    <rect key="frame" x="102" y="247" width="55" height="15"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="Kb5-0F-ZTo"/>
-                                                        <constraint firstAttribute="width" constant="46" id="tpy-QQ-SaA"/>
+                                                        <constraint firstAttribute="width" constant="55" id="tpy-QQ-SaA"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="11"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

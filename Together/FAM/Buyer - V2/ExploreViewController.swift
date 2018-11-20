@@ -220,7 +220,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         if images.count > indexPath.row && names.count > indexPath.row {
             
-            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)"
+            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)/mo"
 
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
