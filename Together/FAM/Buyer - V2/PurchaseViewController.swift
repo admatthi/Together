@@ -170,7 +170,6 @@ class PurchaseViewController: UIViewController {
         tapbuy.layer.masksToBounds = true
         
         
-        
         tapterms.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
         
         let buttonTitleStr = NSMutableAttributedString(string:"By continuing, you accept our Terms of Use & Privacy Policy", attributes:attrs)

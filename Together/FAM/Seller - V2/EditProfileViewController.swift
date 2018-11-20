@@ -120,7 +120,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 //
 //            if thumbnails["0"] == nil {
 //
-                queryforhighlevelinfo()
+                 queryforhighlevelinfo()
 
 //            }
         

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8R-oJ-gJk">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -81,17 +81,17 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="14h ago" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4h-9E-hE7">
-                                                    <rect key="frame" x="10" y="247" width="72" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14h ago" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4h-9E-hE7">
+                                                    <rect key="frame" x="10" y="247" width="136" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="151" id="mXf-j3-4ls"/>
+                                                        <constraint firstAttribute="width" constant="136" id="mXf-j3-4ls"/>
                                                         <constraint firstAttribute="height" constant="15" id="p4u-Zd-BCA"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="11"/>
                                                     <color key="textColor" red="0.86002934644670048" green="0.86002934644670048" blue="0.86002934644670048" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-RH-sqb">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-RH-sqb">
                                                     <rect key="frame" x="111" y="247" width="46" height="15"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -109,7 +109,7 @@
                                             <constraint firstItem="7Gy-lU-AAC" firstAttribute="leading" secondItem="F8Q-kL-Eu9" secondAttribute="leading" id="4ni-tZ-mzQ"/>
                                             <constraint firstItem="u6m-Ok-4k6" firstAttribute="leading" secondItem="F8Q-kL-Eu9" secondAttribute="leading" constant="10" id="6dM-Jw-KUg"/>
                                             <constraint firstAttribute="bottom" secondItem="u6m-Ok-4k6" secondAttribute="bottom" constant="20" id="8o6-TZ-n96"/>
-                                            <constraint firstAttribute="trailing" secondItem="d4h-9E-hE7" secondAttribute="trailing" constant="5" id="Cu8-GL-wN9"/>
+                                            <constraint firstAttribute="trailing" secondItem="d4h-9E-hE7" secondAttribute="trailing" constant="20" id="Cu8-GL-wN9"/>
                                             <constraint firstItem="u6m-Ok-4k6" firstAttribute="leading" secondItem="F8Q-kL-Eu9" secondAttribute="leading" constant="10" id="M1T-p9-RT1"/>
                                             <constraint firstItem="d4h-9E-hE7" firstAttribute="leading" secondItem="F8Q-kL-Eu9" secondAttribute="leading" constant="10" id="RTC-rc-XFg"/>
                                             <constraint firstAttribute="bottom" secondItem="DVG-7P-1Fc" secondAttribute="bottom" id="Rak-WJ-nJC"/>
@@ -521,7 +521,7 @@
                                     <constraint firstAttribute="width" constant="75" id="l6w-Ad-2rk"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CC1" translatesAutoresizingMaskIntoConstraints="NO" id="27X-9P-kNU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CC1 Copy-1" translatesAutoresizingMaskIntoConstraints="NO" id="27X-9P-kNU">
                                 <rect key="frame" x="16" y="60" width="343" height="475"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="27X-9P-kNU" secondAttribute="height" multiplier="343:475" id="Y0e-Ay-Doe"/>
@@ -535,6 +535,15 @@
                                 </constraints>
                                 <connections>
                                     <segue destination="aKb-gB-eWT" kind="show" id="94P-kH-v8c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zq-fK-TPc">
+                                <rect key="frame" x="16" y="470" width="343" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="xYc-39-lSE"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PaW-4O-GCW" kind="show" id="qaw-06-iaE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hC-Fz-SNL">
@@ -558,14 +567,18 @@
                             <constraint firstAttribute="bottom" secondItem="P10-8n-2HV" secondAttribute="bottom" id="2kd-xv-dVN"/>
                             <constraint firstItem="HfI-wI-amD" firstAttribute="top" secondItem="0Vb-Ur-IhW" secondAttribute="top" id="5eH-Xb-n5h"/>
                             <constraint firstItem="6QS-JK-386" firstAttribute="trailing" secondItem="9hC-Fz-SNL" secondAttribute="trailing" constant="16" id="7q2-5o-oPw"/>
+                            <constraint firstItem="5Zq-fK-TPc" firstAttribute="top" secondItem="27X-9P-kNU" secondAttribute="bottom" constant="-65" id="BvI-z0-QW4"/>
                             <constraint firstItem="HfI-wI-amD" firstAttribute="trailing" secondItem="6QS-JK-386" secondAttribute="trailing" id="GzO-B6-CTe"/>
                             <constraint firstItem="P10-8n-2HV" firstAttribute="top" secondItem="tNP-Zw-Q65" secondAttribute="bottom" constant="23" id="O0W-4G-QlW"/>
                             <constraint firstItem="sxS-ch-LFH" firstAttribute="leading" secondItem="27X-9P-kNU" secondAttribute="trailing" constant="-255" id="RYA-C6-fhh"/>
                             <constraint firstItem="27X-9P-kNU" firstAttribute="top" secondItem="6QS-JK-386" secondAttribute="top" constant="40" id="T65-T1-Oqa"/>
                             <constraint firstItem="HfI-wI-amD" firstAttribute="leading" secondItem="6QS-JK-386" secondAttribute="leading" id="a2X-Fv-1iI"/>
                             <constraint firstItem="HfI-wI-amD" firstAttribute="bottom" secondItem="6QS-JK-386" secondAttribute="bottom" id="bZI-kB-pW8"/>
+                            <constraint firstItem="5Zq-fK-TPc" firstAttribute="centerX" secondItem="0Vb-Ur-IhW" secondAttribute="centerX" id="d0W-cO-CpN"/>
                             <constraint firstItem="27X-9P-kNU" firstAttribute="leading" secondItem="6QS-JK-386" secondAttribute="leading" constant="16" id="eJk-KU-UVH"/>
+                            <constraint firstItem="6QS-JK-386" firstAttribute="trailing" secondItem="5Zq-fK-TPc" secondAttribute="trailing" constant="16" id="hL2-rv-5MX"/>
                             <constraint firstItem="P10-8n-2HV" firstAttribute="bottom" secondItem="6QS-JK-386" secondAttribute="bottom" id="iPW-Bo-gqH"/>
+                            <constraint firstItem="5Zq-fK-TPc" firstAttribute="leading" secondItem="6QS-JK-386" secondAttribute="leading" constant="16" id="jAr-rL-Pt2"/>
                             <constraint firstItem="tNP-Zw-Q65" firstAttribute="centerX" secondItem="0Vb-Ur-IhW" secondAttribute="centerX" id="nU9-8A-v1b"/>
                             <constraint firstItem="9hC-Fz-SNL" firstAttribute="top" secondItem="6QS-JK-386" secondAttribute="top" id="pTg-V1-zqF"/>
                             <constraint firstItem="P10-8n-2HV" firstAttribute="leading" secondItem="6QS-JK-386" secondAttribute="leading" id="sbD-f9-kF8"/>
@@ -583,7 +596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIt-TD-5KG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1298" y="3707"/>
+            <point key="canvasLocation" x="-1298.4000000000001" y="3706.5967016491759"/>
         </scene>
         <!--CreateA Plan View Controller-->
         <scene sceneID="iRI-de-nl8">
@@ -3508,7 +3521,7 @@
         <image name="Back" width="40" height="40"/>
         <image name="Back Copy" width="40" height="40"/>
         <image name="BottomDarkBackground" width="375" height="64"/>
-        <image name="CC1" width="343" height="475"/>
+        <image name="CC1 Copy-1" width="343" height="475"/>
         <image name="DarkBackground-4" width="221" height="170"/>
         <image name="Delete" width="50" height="50"/>
         <image name="Explore" width="40" height="40"/>
@@ -3525,16 +3538,18 @@
         <image name="WhiteX" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="kO3-oP-4hD"/>
         <segue reference="NxD-3C-buS"/>
-        <segue reference="gW4-eh-4kP"/>
+        <segue reference="94P-kH-v8c"/>
         <segue reference="4rc-m4-ngi"/>
         <segue reference="3iS-MX-CDv"/>
         <segue reference="raE-3f-wg2"/>
         <segue reference="8VF-5Q-hE3"/>
-        <segue reference="XVp-MV-P5M"/>
+        <segue reference="Y9T-hj-3UN"/>
         <segue reference="QdN-Vt-e2y"/>
         <segue reference="VNf-YZ-AaV"/>
         <segue reference="hE5-9B-jLW"/>
         <segue reference="7Es-kF-ufi"/>
+        <segue reference="qaw-06-iaE"/>
     </inferredMetricsTieBreakers>
 </document>

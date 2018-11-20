@@ -312,7 +312,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             if indexPath.row == 0 {
                 
                 cell.thumbnail.image = myselectedimage
-                cell.titlelabel.text = "Subscribe Now"
+                cell.titlelabel.text = "Welcome!"
                 cell.timeago.text = "\(selectedsubs) subscribers"
                 cell.whitelabel.alpha = 0
 

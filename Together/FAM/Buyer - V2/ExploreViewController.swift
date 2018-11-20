@@ -49,6 +49,15 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             
         }
         
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+            self.tabBarController?.tabBar.isHidden = true
+
+        } else {
+            
+            self.tabBarController?.tabBar.isHidden = false
+
+        }
       
         // Do any additional setup after loading the view.
     }
@@ -98,9 +107,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         var functioncounter = 0
         
         for each in projectids {
-            
-            
-            ref?.child("Influencers").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Influencers").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -207,7 +214,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.pricelabel.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
         cell.pricelabel.layer.cornerRadius = 5.0
         cell.pricelabel.layer.masksToBounds = true
-
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true
         
         if images.count > indexPath.row && names.count > indexPath.row {
             
@@ -222,8 +230,9 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             cell.textlabel.text = names[projectids[indexPath.row]]
      
             cell.thumbnail.image = images[projectids[indexPath.row]]
-            cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
-            
+//            cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
+                        cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!)"
+
         } else {
             
             
