@@ -29,6 +29,7 @@ var mypaypal = String()
 var tryingtopurchase = Bool()
 var isInfluencer = Bool()
 var myselectedimage = UIImage()
+
 protocol SnippetsPurchasesDelegate: AnyObject {
     
     func purchaseCompleted(product: String)
@@ -65,34 +66,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       
 //
-        if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
-
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            
-        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewControlleripad
-        self.window?.makeKeyAndVisible()//
-
-
-        } else {
-
-            let currentUser = Auth.auth().currentUser
-
-            uid = (currentUser?.uid)!
-
-            queryforinfo()
-            
-            queryforids { () -> () in
-                
-                
-            }
-
-            
-        }
+//        if Auth.auth().currentUser == nil {
+//            // Do smth if user is not logged in
 //
+//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//
+//        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = initialViewControlleripad
+//        self.window?.makeKeyAndVisible()//
+//
+//
+//        } else {
+//
+//            let currentUser = Auth.auth().currentUser
+//
+//            uid = (currentUser?.uid)!
+//
+//            queryforinfo()
+//
+//            queryforids { () -> () in
+//
+//
+//            }
+//
+//
+//        }
+////
         return true
     }
     
