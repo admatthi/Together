@@ -491,7 +491,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 //        present(imagePickerController, animated: true, completion: nil)
         
         
-        tapnew.alpha = 1
+//        tapnew.alpha = 1
         tapshare.alpha = 0
         tapcancel.alpha = 0
         

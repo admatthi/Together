@@ -2096,7 +2096,7 @@
                                     <action selector="tapCancel:" destination="8Ci-9S-R86" eventType="touchUpInside" id="mBw-EZ-smB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDV-go-o9h">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDV-go-o9h">
                                 <rect key="frame" x="126.5" y="280" width="122" height="122"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="122" id="PQJ-UV-DyT"/>
@@ -3085,7 +3085,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14h ago" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSh-pS-e2L">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSh-pS-e2L">
                                                     <rect key="frame" x="10" y="263" width="151" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="151" id="0ZL-ox-Kdn"/>
@@ -3666,7 +3666,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qEK-XO-MQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4161" y="6085"/>
+            <point key="canvasLocation" x="3658" y="6071"/>
         </scene>
         <!--Buyer-->
         <scene sceneID="dqZ-u8-LjC">
@@ -3739,16 +3739,16 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rM7-pq-RM4"/>
-        <segue reference="94P-kH-v8c"/>
+        <segue reference="gW4-eh-4kP"/>
         <segue reference="4rc-m4-ngi"/>
         <segue reference="3iS-MX-CDv"/>
         <segue reference="raE-3f-wg2"/>
         <segue reference="7sY-YI-vyP"/>
-        <segue reference="Y9T-hj-3UN"/>
+        <segue reference="6ka-Xn-OMa"/>
         <segue reference="QdN-Vt-e2y"/>
         <segue reference="KRW-lB-4yB"/>
         <segue reference="hE5-9B-jLW"/>
-        <segue reference="7Es-kF-ufi"/>
+        <segue reference="qos-G9-AVk"/>
         <segue reference="qaw-06-iaE"/>
     </inferredMetricsTieBreakers>
 </document>

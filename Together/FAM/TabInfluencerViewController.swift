@@ -31,7 +31,12 @@ class TabInfluencerViewController: UITabBarController, UITabBarControllerDelegat
         // Do any additional setup after loading the view.
     }
     
-
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        if let firstVC = viewController as? UploadViewController {
+            firstVC.showPicker()
+        }
+    }
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
 //        let application = UIApplication.shared.delegate as! AppDelegate
@@ -53,15 +58,6 @@ class TabInfluencerViewController: UITabBarController, UITabBarControllerDelegat
     
   
 
-    
-    // UITabBarControllerDelegate
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
-    
-        print("Selected view controller")
-        
-        
-    }
 
     /*
     // MARK: - Navigation

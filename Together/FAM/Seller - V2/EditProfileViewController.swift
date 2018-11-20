@@ -386,7 +386,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 
                 cell.thumbnail.image = thumbnails["0"]
                 cell.titlelabel.text = "Welcome!"
-                cell.timeago.text = "\(selectedsubs) subscribers"
+//                cell.timeago.text = "\(selectedsubs)"
                 cell.whitelabel.alpha = 0
                 cell.isUserInteractionEnabled = true
                 
