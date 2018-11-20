@@ -510,7 +510,8 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 
                 if profileUrl2 == "-" {
                     
-                    
+                    self.tapBack.alpha = 0
+
                 } else {
                     
                     videolinks["0"] = profileUrl2
@@ -526,6 +527,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                     self.playerView.playerLayer.player = self.avPlayer
                     
                     self.playerView.player?.pause()
+                    self.tapBack.alpha = 1
                 }
                 
                 
@@ -563,7 +565,8 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                     self.B2.setTitleColor(.white, for: .normal)
                     self.B1.setTitleColor(.white, for: .normal)
                     mychannelprice = "100"                }
-            
+                self.tapBack.alpha = 1
+
             
             } else {
                 
@@ -575,6 +578,11 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 
                 mypaypal = author2
                 self.paypaltf.text = mypaypal
+                self.tapBack.alpha = 1
+
+            } else {
+                
+                self.tapBack.alpha = 0
 
             }
             
@@ -582,7 +590,12 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 
                 mychannelname = author2
                 self.channelnametf.text = mychannelname
+                self.tapBack.alpha = 1
 
+
+            } else {
+                
+                self.tapBack.alpha = 0
             }
             
             
