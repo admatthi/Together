@@ -13,9 +13,11 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
+import MobileCoreServices
+import YPImagePicker
 import AVFoundation
 import AVKit
-import MobileCoreServices
+import Photos
 
 var videoURL : NSURL?
 var thisdate = String()
@@ -266,7 +268,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             playerView.playerLayer.player = avPlayer
             
-            getThumbnailFrom(path: videoURL as! URL)
+//            getThumbnailFrom(path: videoURL as! URL)
             tv2.alpha = 0
 
             playerView.player?.play()
@@ -324,12 +326,101 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
+    var selectedItems = [YPMediaItem]()
+
     @IBOutlet weak var programname: UILabel!
     @IBAction func tapBack(_ sender: Any) {
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        imagePickerController.mediaTypes = [kUTTypeMovie as String]
-        present(imagePickerController, animated: true, completion: nil)
+    
+        showPicker()
+        
+    }
+    var selectedImageV = UIImage()
+
+    func showPicker() {
+        var config = YPImagePickerConfiguration()
+
+        config.library.mediaType = .video
+
+        config.shouldSaveNewPicturesToAlbum = false
+
+        config.video.compression = AVAssetExportPresetMediumQuality
+
+        config.startOnScreen = .library
+
+        config.screens = [.library, .video]
+
+        config.video.libraryTimeLimit = 500.0
+        
+        config.showsCrop = .rectangle(ratio: (9/16))
+        
+        config.wordings.libraryTitle = "Choose Video"
+
+        config.hidesBottomBar = false
+        config.hidesStatusBar = false
+        config.library.maxNumberOfItems = 5
+        let picker = YPImagePicker(configuration: config)
+
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            
+            if cancelled {
+                print("Picker was canceled")
+                picker.dismiss(animated: true, completion: nil)
+                return
+            }
+            _ = items.map { print("🧀 \($0)") }
+            
+            self.selectedItems = items
+            if let firstItem = items.first {
+                switch firstItem {
+                case .video(let video):
+                    self.selectedImageV = video.thumbnail
+                    
+                    let videoURL = video.url
+                    let playerVC = AVPlayerViewController()
+                    self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:videoURL))
+                    
+                    
+                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+                    
+                    self.playerView.playerLayer.player = self.avPlayer
+                    
+                    //            getThumbnailFrom(path: videoURL as! URL)
+                    
+                    self.playerView.player?.play()
+                    self.headerlabel.alpha = 0
+                    self.tapshowtv.alpha = 1
+                    self.tapshare.alpha = 1
+                    self.tapnew.alpha = 0
+                    self.tapcancel.alpha = 0.5
+                    self.tabBarController?.tabBar.isHidden = true
+                    
+                    picker.dismiss(animated: true, completion: { [weak self] in
+//                        self?.present(playerVC, animated: true, completion: nil)
+//                        print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
+                    })
+                case .photo(let photo):
+                    
+//                    self.selectedImageV.image = photo.image
+                    picker.dismiss(animated: true, completion: nil)
+                }
+            
+            }
+        }
+        
+        present(picker, animated: true, completion: nil)
+
+    }
+    
+    func showResults() {
+        if selectedItems.count > 0 {
+            let gallery = YPSelectionsGalleryVC(items: selectedItems) { g, _ in
+                g.dismiss(animated: true, completion: nil)
+            }
+            let navC = UINavigationController(rootViewController: gallery)
+            self.present(navC, animated: true, completion: nil)
+        } else {
+            print("No items selected yet.")
+        }
     }
     @IBOutlet weak var propic: UIImageView!
 
@@ -492,35 +583,35 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
     }
-    
-    func getThumbnailFrom(path: URL) -> UIImage? {
-        
-        do {
-            
-            let asset = AVURLAsset(url: path , options: nil)
-            let imgGenerator = AVAssetImageGenerator(asset: asset)
-            imgGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
-            mythumbnail = UIImage(cgImage: cgImage)
-            
-//            tapplay.setBackgroundImage(mythumbnail, for: .normal)
-            
-//            loadthumbnail()
-
-            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 667)
-            
-            return mythumbnail
-            
-            
-            
-        } catch let error {
-            
-            print("*** Error generating thumbnail: \(error.localizedDescription)")
-            return nil
-            
-        }
-        
-    }
+//
+//    func getThumbnailFrom(path: URL) -> UIImage? {
+//
+//        do {
+//
+//            let asset = AVURLAsset(url: path , options: nil)
+//            let imgGenerator = AVAssetImageGenerator(asset: asset)
+//            imgGenerator.appliesPreferredTrackTransform = true
+//            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+//            mythumbnail = UIImage(cgImage: cgImage)
+//
+////            tapplay.setBackgroundImage(mythumbnail, for: .normal)
+//
+////            loadthumbnail()
+//
+//            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 667)
+//
+//            return mythumbnail
+//
+//
+//
+//        } catch let error {
+//
+//            print("*** Error generating thumbnail: \(error.localizedDescription)")
+//            return nil
+//
+//        }
+//
+//    }
     
     func queryforinfo() {
         
