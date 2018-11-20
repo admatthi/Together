@@ -44,9 +44,9 @@
 		<true/>
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Upload Videos</string>
+	<string>$(PRODUCT_NAME) photo use</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Upload Videos</string>
+	<string>$(PRODUCT_NAME) camera use</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Upload Video</string>
 	<key>UILaunchStoryboardName</key>
