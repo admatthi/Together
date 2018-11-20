@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fNE-MH-JdK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bUT-qL-AeE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -91,7 +91,7 @@
                                                     <color key="textColor" red="0.86002934644670048" green="0.86002934644670048" blue="0.86002934644670048" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-RH-sqb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-RH-sqb">
                                                     <rect key="frame" x="111" y="247" width="46" height="15"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -153,6 +153,7 @@
                             <constraint firstItem="x8R-oJ-gJk" firstAttribute="leading" secondItem="rlR-UD-QQU" secondAttribute="leading" id="9Aj-Qb-WCk"/>
                             <constraint firstAttribute="bottom" secondItem="Pl6-U2-GME" secondAttribute="bottom" constant="-3" id="EQZ-mg-ADt"/>
                             <constraint firstItem="34C-sj-ZEc" firstAttribute="centerX" secondItem="oF3-RS-9JA" secondAttribute="centerX" id="InI-lr-2rA"/>
+                            <constraint firstAttribute="bottom" secondItem="x8R-oJ-gJk" secondAttribute="bottom" id="N67-9e-VjR"/>
                             <constraint firstItem="x8R-oJ-gJk" firstAttribute="trailing" secondItem="rlR-UD-QQU" secondAttribute="trailing" id="O26-Fc-Br6"/>
                             <constraint firstItem="WNk-bf-FMP" firstAttribute="centerY" secondItem="oF3-RS-9JA" secondAttribute="centerY" id="QzK-he-0dF"/>
                             <constraint firstItem="Pl6-U2-GME" firstAttribute="leading" secondItem="rlR-UD-QQU" secondAttribute="leading" constant="16" id="WAG-Wi-bGp"/>
@@ -3538,7 +3539,6 @@
         <image name="WhiteX" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kO3-oP-4hD"/>
         <segue reference="NxD-3C-buS"/>
         <segue reference="94P-kH-v8c"/>
         <segue reference="4rc-m4-ngi"/>

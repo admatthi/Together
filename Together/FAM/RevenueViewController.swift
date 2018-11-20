@@ -131,16 +131,18 @@ class RevenueViewController: UIViewController {
                         
                         self.nofollows.alpha = 0
                     }
-                    let numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
-                    let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author2)!))
-                    yoursubscribers = formattedNumber!
-                    self.realvalue.text = yoursubscribers
+//                    let numberFormatter = NumberFormatter()
+//                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
+//                    let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(author2)!))
+//                    yoursubscribers = formattedNumber!
+//                    self.realvalue.text = yoursubscribers
 
                     if var author3 = value?["Price"] as? String {
                         
-                    var newprice = Double(Int(author2)!) * Double(Int(author3)!)
+//                    var newprice = Double(Int(author2)!) * Double(Int(author3)!)
                         
+                        var newprice = Double(Int(author3)!)
+
                         let numberFormatter = NumberFormatter()
                         numberFormatter.numberStyle = NumberFormatter.Style.decimal
                         let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(newprice)))

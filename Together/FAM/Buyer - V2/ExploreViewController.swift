@@ -179,7 +179,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         unlockedid = "0"
         myselectedimage = images[projectids[indexPath.row]]!
         selectedname = names[projectids[indexPath.row]]!
-        selectedpitch = descriptions[projectids[indexPath.row]]!
+        
+//        selectedpitch = descriptions[projectids[indexPath.row]]!
         selectedprice = prices[projectids[indexPath.row]]!
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
         selectedsubs = subscribers[projectids[indexPath.row]]!
