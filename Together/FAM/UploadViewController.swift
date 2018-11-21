@@ -419,7 +419,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
         config.hidesBottomBar = false
         config.hidesStatusBar = false
-        config.library.maxNumberOfItems = 5
+        config.library.maxNumberOfItems = 8
         let picker = YPImagePicker(configuration: config)
         vids.removeAll()
         picker.didFinishPicking { [unowned picker] items, cancelled in
@@ -599,7 +599,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
         self.activityIndicator.alpha = 0
         self.loadinglabel.alpha = 0
-        tv2.text = "Write your title..."
+        tv2.text = "Title your post..."
         tv2.textColor = .white
 //        tv2.textColor = UIColor.white
         
