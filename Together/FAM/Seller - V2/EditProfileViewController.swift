@@ -96,7 +96,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         activityIndicator.color = mypink
         activityIndicator.startAnimating()
         
-        queryforhighlevelinfo()
+//        queryforhighlevelinfo()
         
         queryforids { () -> () in
             
@@ -120,7 +120,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 //
 //            if thumbnails["0"] == nil {
 //
-                 queryforhighlevelinfo()
+//                 queryforhighlevelinfo()
 
 //            }
         
@@ -140,6 +140,46 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
       
         
+    }
+    
+    func queryforids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+        
+        videoids.removeAll()
+        videolinks.removeAll()
+        videodescriptions.removeAll()
+        videotitles.removeAll()
+        thumbnails.removeAll()
+        
+        ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    videoids.append(ids)
+                    
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        videoids = videoids.sorted()
+                        
+                        completed()
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
     }
     
     
@@ -187,47 +227,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 
     @IBOutlet weak var tableView: UITableView!
     
-    func queryforids(completed: @escaping (() -> ()) ) {
-        
-        var functioncounter = 0
-        
-        videodates.removeAll()
-        videoids.removeAll()
-//        videolinks.removeAll()
-        videodescriptions.removeAll()
-        videotitles.removeAll()
-//        thumbnails.removeAll()
-//        thumbnailurls.removeAll()
-        
-        ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            var value = snapshot.value as? NSDictionary
-            
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-                for each in snapDict {
-                    
-                    let ids = each.key
-                    
-                    videoids.append(ids)
-                    
-                    functioncounter += 1
-                    
-                    if functioncounter == snapDict.count {
-                        
-                        videoids = videoids.sorted()
-
-                        completed()
-                        
-                    }
-                    
-                    
-                }
-                
-            }
-            
-        })
-    }
+    
     
     var videotitles = [String:String]()
     func queryforinfo() {
@@ -339,22 +339,22 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 {
-            
-            selectedtitle = "Welcome!"
-            selectedthumbnailurl = thumbnailurls["0"]!
-            selectedvideourl = videolinks["0"]!
-            self.performSegue(withIdentifier: "EditToPurchase", sender: self)
-            
-        } else {
-            
-            selectedthumbnailurl = thumbnailurls[videoids[indexPath.row-1]]!
-            selectedvideo = videolinks[videoids[indexPath.row-1]]!
-            selectedvideoid = videoids[indexPath.row-1]
-            selectedtitle = videotitles[videoids[indexPath.row-1]]!
+//        if indexPath.row == 0 {
+//
+//            selectedtitle = "Welcome!"
+//            selectedthumbnailurl = thumbnailurls["0"]!
+//            selectedvideourl = videolinks["0"]!
+//            self.performSegue(withIdentifier: "EditToPurchase", sender: self)
+//
+//        } else {
+        
+//            selectedthumbnailurl = thumbnailurls[videoids[indexPath.row-1]]!
+//            selectedvideo = videolinks[videoids[indexPath.row]]!
+            selectedvideoid = videoids[indexPath.row]
+            selectedtitle = videotitles[videoids[indexPath.row]]!
             
             self.performSegue(withIdentifier: "EditToWatch", sender: self)
-        }
+//        }
         
         
     }
@@ -362,9 +362,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if thumbnails.count > 0 {
+        if videoids.count > 0 {
             
-            return thumbnails.count
+            return videoids.count
             
         } else {
             
@@ -382,34 +382,26 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
     
         if thumbnails.count > indexPath.row {
             
-            if indexPath.row == 0 {
-                
-                cell.thumbnail.image = thumbnails["0"]
-                cell.titlelabel.text = "Welcome!"
-//                cell.timeago.text = "\(selectedsubs)"
-                cell.whitelabel.alpha = 0
-                cell.isUserInteractionEnabled = true
-                
-            } else {
-                
+            cell.darkness.alpha = 0
+//            if indexPath.row == 0 {
+//
+//                cell.thumbnail.image = thumbnails["0"]
+//                cell.titlelabel.text = "Welcome!"
+////                cell.timeago.text = "\(selectedsubs)"
+//                cell.whitelabel.alpha = 0
+//                cell.isUserInteractionEnabled = true
+//
+//            } else {
+//
                 self.collectionView.alpha = 1
                 activityIndicator.alpha = 0
                 activityIndicator.stopAnimating()
 
-                cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
+                cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
 
-                cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
-                cell.timeago.text = videodates[videoids[indexPath.row-1]]
-                
-                if locked {
-                    
-                    cell.whitelabel.alpha = 0.5
-                    cell.isUserInteractionEnabled = false
-                } else {
-                    cell.whitelabel.alpha = 0
-
-                    cell.isUserInteractionEnabled = true
-                }
+                cell.titlelabel.text = videotitles[videoids[indexPath.row]]
+                cell.timeago.text = videodates[videoids[indexPath.row]]
+            
                 
             }
             
@@ -429,11 +421,6 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             collectionView.alpha = 1
             activityIndicator.stopAnimating()
             
-            
-        } else {
-            
-            
-        }
         
         
         return cell

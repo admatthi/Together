@@ -14,6 +14,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 import AVFoundation
+import AVKit
 
 var lowercasename = String()
 
@@ -65,7 +66,62 @@ class WatchViewController: UIViewController {
         
     }
     @IBOutlet weak var tapdelete: UIButton!
+    var counter = 0
+    var vids = [URL]()
     
+    @IBAction func tapRight(_ sender: Any) {
+        
+        tapnext()
+        
+    }
+    @IBAction func tapLeft(_ sender: Any) {
+        
+         tapleft()
+    }
+    
+    func tapnext() {
+        
+        if counter < vids.count-1 {
+            
+            print(counter)
+            
+            counter += 1
+            
+            let playerVC = AVPlayerViewController()
+            self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[counter]))
+            
+            
+            self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+            
+            self.playerView.playerLayer.player = self.avPlayer
+            
+            self.playerView.player?.play()
+            
+            
+        }
+        
+        
+    }
+    
+    func tapleft() {
+        
+        if counter > 0 && vids.count > 0 {
+            
+            counter -= 1
+            
+            let playerVC = AVPlayerViewController()
+            self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[counter]))
+            
+            
+            self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+            
+            self.playerView.playerLayer.player = self.avPlayer
+            
+            self.playerView.player?.play()
+        }
+        
+        
+    }
     override func viewDidDisappear(_ animated: Bool) {
         
         if playerView.player?.isPlaying == true {
@@ -122,6 +178,7 @@ class WatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        vids.removeAll()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(WatchViewController.playerItemDidReachEnd),
                                                name: Notification.Name.AVPlayerItemDidPlayToEndTime,
@@ -137,29 +194,32 @@ class WatchViewController: UIViewController {
         profileimage.layer.masksToBounds = true
         profileimage.layer.cornerRadius = 5.0
         
-        let videourl = URL(string: selectedvideo)
+//        let videourl = URL(string: selectedvideo)
+//
+//        avPlayer = AVPlayer(url: videourl! as URL)
+//
+//        playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+//
+//        playerView.playerLayer.player = avPlayer
         
-        avPlayer = AVPlayer(url: videourl! as URL)
+                queryforids { () -> () in
         
-        playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+                    self.queryforinfo()
         
-        playerView.playerLayer.player = avPlayer
+                }
         
-        
-        
-        if playerView.player?.isPlaying == true {
-            
-            playerView.player?.pause()
-            
-        } else {
-            playerView.player?.play()
-            
-        }
+//        if playerView.player?.isPlaying == true {
+//
+//            playerView.player?.pause()
+//
+//        } else {
+//            playerView.player?.play()
+//
+//        }
         
         if uid == selectedid {
             
             tapdelete.alpha = 1
-            tapwelcome.alpha = 1
             
         } else {
             
@@ -171,7 +231,97 @@ class WatchViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    var vidids = [String]()
+    func queryforids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+        
+        vids.removeAll()
+        vidids.removeAll()
+        ref?.child("Influencers").child(selectedid).child("Plans").child(selectedvideoid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    if ids != "Date" && ids != "Thumbnail" && ids != "Title" {
+                        
+                        self.vidids.append(ids)
+                    
+                        functioncounter += 1
+                        
+                    }
+                    
+                    if functioncounter == snapDict.count-3 {
+                        
+                        self.vidids = self.vidids.sorted()
+                        completed()
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
+    }
 
+    func queryforinfo() {
+        
+        var functioncounter = 0
+        
+        for each in vidids {
+            
+            
+            ref?.child("Influencers").child(selectedid).child("Plans").child(selectedvideoid).child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                print(each)
+                var value = snapshot.value as? NSDictionary
+                
+                if var author2 = value?["URL"] as? String {
+                    
+                    let videourl = URL(string: author2)
+
+                    if self.vids.contains(videourl!) {
+                        
+                        
+                    } else {
+                        
+                    
+
+
+                    if self.vids.count == 0 {
+                        self.vids.append(videourl!)
+
+
+                    self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[0]))
+
+                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+                    
+                    self.playerView.playerLayer.player = self.avPlayer
+                    
+                    self.playerView.player?.play()
+                        
+                    self.counter = 0
+                        
+                    } else {
+                        self.vids.append(videourl!)
+
+
+                    }
+                        
+                    }
+                }
+                
+            })
+            
+        }
+    }
     /*
     // MARK: - Navigation
 

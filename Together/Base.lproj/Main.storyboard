@@ -425,18 +425,6 @@
                                             <constraint firstAttribute="height" constant="37" id="TfS-26-BjZ"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rc-0c-vAy">
-                                        <rect key="frame" x="312" y="28" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="5B0-hb-BxO"/>
-                                            <constraint firstAttribute="width" constant="50" id="J5y-Al-sl7"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.12549019610000001" green="0.16078431369999999" blue="0.20784313730000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="WhiteX"/>
-                                        <connections>
-                                            <action selector="tapBack:" destination="XrQ-lf-pbQ" eventType="touchUpInside" id="oP2-Ry-e7l"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKR-YA-l3a">
                                         <rect key="frame" x="309" y="595" width="53" height="53"/>
                                         <constraints>
@@ -459,22 +447,56 @@
                                             <action selector="tapDelete:" destination="XrQ-lf-pbQ" eventType="touchUpInside" id="OJG-8h-Vnc"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICO-Bi-X0e">
+                                        <rect key="frame" x="0.0" y="65" width="170" height="602"/>
+                                        <connections>
+                                            <action selector="tapLeft:" destination="XrQ-lf-pbQ" eventType="touchUpInside" id="rif-qG-VOK"/>
+                                            <action selector="tapLeft:" destination="8Ci-9S-R86" eventType="touchUpInside" id="tw7-F8-PhL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yc9-FE-DHC">
+                                        <rect key="frame" x="178" y="0.0" width="198" height="667"/>
+                                        <connections>
+                                            <action selector="tapRight:" destination="XrQ-lf-pbQ" eventType="touchUpInside" id="NAS-bq-WHn"/>
+                                            <action selector="tapRight:" destination="8Ci-9S-R86" eventType="touchUpInside" id="Wtk-RA-9L5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rc-0c-vAy">
+                                        <rect key="frame" x="312" y="28" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="5B0-hb-BxO"/>
+                                            <constraint firstAttribute="width" constant="50" id="J5y-Al-sl7"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.12549019610000001" green="0.16078431369999999" blue="0.20784313730000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="WhiteX"/>
+                                        <connections>
+                                            <action selector="tapBack:" destination="XrQ-lf-pbQ" eventType="touchUpInside" id="oP2-Ry-e7l"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="6rc-0c-vAy" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="28" id="4Jc-i1-1Od"/>
+                                    <constraint firstItem="ICO-Bi-X0e" firstAttribute="top" secondItem="EVn-Kd-myV" secondAttribute="bottom" constant="5" id="5ui-el-zKW"/>
                                     <constraint firstItem="cXX-DN-wiy" firstAttribute="leading" secondItem="GBR-ig-isg" secondAttribute="leading" id="6WI-GT-fgV"/>
+                                    <constraint firstItem="Yc9-FE-DHC" firstAttribute="leading" secondItem="ICO-Bi-X0e" secondAttribute="trailing" constant="8" id="8wV-xT-6ie"/>
                                     <constraint firstItem="cXX-DN-wiy" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" id="COg-g3-F69"/>
                                     <constraint firstAttribute="trailing" secondItem="cXX-DN-wiy" secondAttribute="trailing" id="GGP-w5-G6N"/>
+                                    <constraint firstItem="ICO-Bi-X0e" firstAttribute="leading" secondItem="GBR-ig-isg" secondAttribute="leading" id="L7r-Na-0QU"/>
                                     <constraint firstAttribute="bottom" secondItem="lKR-YA-l3a" secondAttribute="bottom" constant="19" id="PVZ-ms-eIf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yc9-FE-DHC" secondAttribute="bottom" id="REg-FG-EkV"/>
                                     <constraint firstItem="8dj-gA-MHf" firstAttribute="leading" secondItem="GBR-ig-isg" secondAttribute="leading" constant="11" id="Rah-A4-6nA"/>
                                     <constraint firstAttribute="trailing" secondItem="6rc-0c-vAy" secondAttribute="trailing" constant="13" id="WOF-kc-Q26"/>
                                     <constraint firstItem="fZ1-Up-yAp" firstAttribute="leading" secondItem="EVn-Kd-myV" secondAttribute="trailing" constant="-206" id="WYe-5C-3wK"/>
                                     <constraint firstItem="izi-r8-WHJ" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="49" id="cgY-vV-2AU"/>
+                                    <constraint firstAttribute="bottom" secondItem="ICO-Bi-X0e" secondAttribute="bottom" id="coY-db-Nh8"/>
                                     <constraint firstAttribute="bottom" secondItem="8dj-gA-MHf" secondAttribute="bottom" constant="18.5" id="daV-Uu-eOu"/>
                                     <constraint firstItem="EVn-Kd-myV" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="38" id="fdT-az-MTu"/>
                                     <constraint firstItem="EVn-Kd-myV" firstAttribute="leading" secondItem="izi-r8-WHJ" secondAttribute="trailing" constant="-25" id="fnG-2q-2ob"/>
                                     <constraint firstItem="fZ1-Up-yAp" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" constant="57" id="gHD-mj-pVg"/>
+                                    <constraint firstItem="Yc9-FE-DHC" firstAttribute="leading" secondItem="cXX-DN-wiy" secondAttribute="trailing" constant="-197" id="guU-Ty-pms"/>
+                                    <constraint firstItem="Yc9-FE-DHC" firstAttribute="top" secondItem="GBR-ig-isg" secondAttribute="top" id="ny4-BZ-6H8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yc9-FE-DHC" secondAttribute="trailing" constant="-1" id="pyo-Lw-MsZ"/>
                                     <constraint firstItem="fZ1-Up-yAp" firstAttribute="top" secondItem="EVn-Kd-myV" secondAttribute="bottom" constant="-3" id="qMq-T6-3Ww"/>
                                     <constraint firstAttribute="trailing" secondItem="lKR-YA-l3a" secondAttribute="trailing" constant="13" id="t6k-H1-bxI"/>
                                     <constraint firstItem="izi-r8-WHJ" firstAttribute="leading" secondItem="GBR-ig-isg" secondAttribute="leading" constant="8" id="xOX-SZ-gUN"/>
@@ -3744,13 +3766,13 @@
         <image name="WhiteX" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rM7-pq-RM4"/>
-        <segue reference="gW4-eh-4kP"/>
+        <segue reference="nz8-jF-XD8"/>
+        <segue reference="94P-kH-v8c"/>
         <segue reference="4rc-m4-ngi"/>
         <segue reference="Rcl-gK-RFx"/>
         <segue reference="raE-3f-wg2"/>
         <segue reference="7sY-YI-vyP"/>
-        <segue reference="6ka-Xn-OMa"/>
+        <segue reference="Y9T-hj-3UN"/>
         <segue reference="QdN-Vt-e2y"/>
         <segue reference="zF5-ec-aup"/>
         <segue reference="hE5-9B-jLW"/>

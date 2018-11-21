@@ -31,6 +31,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     var vids = [URL]()
 
+    var uploadcounter = 1234
     
     @IBAction func tapShare(_ sender: Any) {
         
@@ -134,10 +135,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 
 //                self.strDate = dateFormatter.string(from: date)
-            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).childByAutoId().updateChildValues(["URL" : mystring2, ])
+                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).child("\(self.uploadcounter)").updateChildValues(["URL" : mystring2, ])
 
             ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Title" : snaplabel, "Date" : thisdate])
 
+                self.uploadcounter += 1
                 self.loadthumbnail()
                 
            
@@ -283,7 +285,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 //
 //            videoLooper.
             headerlabel.alpha = 0
-            tapshowtv.alpha = 1
             tapshare.alpha = 1
             tapnew.alpha = 0
             tapcancel.alpha = 0.5
@@ -317,7 +318,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         tv2.alpha = 0
         tapcancel.alpha = 0
         tapshare.alpha = 0
-        tapshowtv.alpha = 0
 //        tapnew.alpha = 1
         headerlabel.alpha = 1
         playerView.player?.replaceCurrentItem(with: nil)
@@ -459,7 +459,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     
         self.playerView.player?.play()
         self.headerlabel.alpha = 0
-        self.tapshowtv.alpha = 1
         self.tapshare.alpha = 1
         self.tapnew.alpha = 0
                 self.tapcancel.alpha = 0.5
@@ -586,7 +585,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                                                object: avPlayer.currentItem)
         
         
-        tapshowtv.alpha = 0
 //        imagePickerController.sourceType = .photoLibrary
 //        imagePickerController.delegate = self
 //        imagePickerController.mediaTypes = [kUTTypeMovie as String]

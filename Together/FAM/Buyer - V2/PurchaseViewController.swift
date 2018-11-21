@@ -36,7 +36,6 @@ class PurchaseViewController: UIViewController {
     
     @IBAction func tapLogin(_ sender: Any) {
         
-        
     }
     @IBAction func tapBuy(_ sender: Any) {
         
