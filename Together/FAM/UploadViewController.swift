@@ -29,11 +29,16 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var loadinglabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    var vids = [URL]()
+
+    
     @IBAction func tapShare(_ sender: Any) {
         
         tapcancel.alpha = 0
         tapshare.alpha = 0
+        tv2.alpha = 0
         var snaplabel = String()
+        
         if tv2.text != "" {
             
             snaplabel = tv2.text!
@@ -59,7 +64,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         activityIndicator.startAnimating()
         loadinglabel.alpha = 1
         
-        if videoURL != nil {
+        for each in vids {
+        
+        if vids.count > 0 {
+            
+        videoURL = each as NSURL
+            
         let data = Data()
         
         // Create a reference to the file you want to upload
@@ -82,7 +92,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "y-MM-dd H:m:ss" //Specify your format that you want
-        
+
         var mystring = videoURL!.absoluteString
         let localFile = URL(string: mystring!)
 
@@ -122,25 +132,19 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 let mystring2 = downloadURL.absoluteString
 
-                
-                if noothervids == true {
-                    
-                    ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
 
-                        noothervids = false
-                    
-                } else {
-                    
-                    ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["URL" : mystring2, "Title" : snaplabel, "Date" : thisdate])
+//                self.strDate = dateFormatter.string(from: date)
+            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).childByAutoId().updateChildValues(["URL" : mystring2, ])
 
-                }
+            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Title" : snaplabel, "Date" : thisdate])
+
                 self.loadthumbnail()
                 
            
                 
+                }
             }
         }
-                
             
         }
     }
@@ -310,10 +314,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         self.tabBarController?.tabBar.isHidden = false
 
+        tv2.alpha = 0
         tapcancel.alpha = 0
         tapshare.alpha = 0
         tapshowtv.alpha = 0
-        tapnew.alpha = 1
+//        tapnew.alpha = 1
         headerlabel.alpha = 1
         playerView.player?.replaceCurrentItem(with: nil)
         
@@ -336,6 +341,63 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     var selectedImageV = UIImage()
 
+    var counter = 0
+    
+    @IBAction func tapLeft(_ sender: Any) {
+        
+        tapleft()
+        
+        self.view.endEditing(true)
+
+    }
+    @IBAction func tapRight(_ sender: Any) {
+        
+        tapnext()
+                    self.view.endEditing(true)
+
+        
+    }
+    func tapnext() {
+        
+        if counter < vids.count-1 {
+            
+            counter += 1
+            
+            let playerVC = AVPlayerViewController()
+            self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[counter]))
+            
+            
+            self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+            
+            self.playerView.playerLayer.player = self.avPlayer
+            
+            self.playerView.player?.play()
+            
+            
+        }
+    
+      
+    }
+    
+    func tapleft() {
+        
+        if counter > 0 && vids.count > 0 {
+            
+            counter -= 1
+            
+            let playerVC = AVPlayerViewController()
+            self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[counter]))
+            
+            
+            self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+            
+            self.playerView.playerLayer.player = self.avPlayer
+            
+            self.playerView.player?.play()
+        }
+        
+        
+    }
     func showPicker() {
         var config = YPImagePickerConfiguration()
 
@@ -359,7 +421,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         config.hidesStatusBar = false
         config.library.maxNumberOfItems = 5
         let picker = YPImagePicker(configuration: config)
-
+        vids.removeAll()
         picker.didFinishPicking { [unowned picker] items, cancelled in
             
             if cancelled {
@@ -370,42 +432,81 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             _ = items.map { print("🧀 \($0)") }
             
             self.selectedItems = items
-            if let firstItem = items.first {
-                switch firstItem {
-                case .video(let video):
-                    self.selectedImageV = video.thumbnail
-                    
-                    let videoURL = video.url
-                    let playerVC = AVPlayerViewController()
-                    self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:videoURL))
-                    
-                    
-                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                    
-                    self.playerView.playerLayer.player = self.avPlayer
-                    
-                    //            getThumbnailFrom(path: videoURL as! URL)
-                    
-                    self.playerView.player?.play()
-                    self.headerlabel.alpha = 0
-                    self.tapshowtv.alpha = 1
-                    self.tapshare.alpha = 1
-                    self.tapnew.alpha = 0
-                    self.tapcancel.alpha = 0.5
-                    self.tabBarController?.tabBar.isHidden = true
-                    
-                    picker.dismiss(animated: true, completion: { [weak self] in
-//                        self?.present(playerVC, animated: true, completion: nil)
-//                        print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
-                    })
+            for item in items {
+                switch item {
                 case .photo(let photo):
                     
+                    print(photo)
+                    
+                case .video(let video):
+                    
+                if self.counter == 0 {
+                        
+                        mythumbnail = video.thumbnail
+
+                }
+                    //
+                    
+                    let videoURL = video.url
+                    self.vids.append(videoURL)
+    let playerVC = AVPlayerViewController()
+                    self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[0]))
+                    
+                    
+    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+                    
+            self.playerView.playerLayer.player = self.avPlayer
+                    
+        self.playerView.player?.play()
+        self.headerlabel.alpha = 0
+        self.tapshowtv.alpha = 1
+        self.tapshare.alpha = 1
+        self.tapnew.alpha = 0
+                self.tapcancel.alpha = 0.5
+                    self.tv2.alpha = 1
+                self.tabBarController?.tabBar.isHidden = true
+                    
+                    self.counter += 1
+
+                }
+            }
+//            if let firstItem = items.first {
+//                switch firstItem {
+////                case .video(let video):
+//                    self.selectedImageV = video.thumbnail
+////
+//                    let videoURL = video.url
+//                    let playerVC = AVPlayerViewController()
+//                    self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:videoURL))
+//
+//
+//                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+//
+//                    self.playerView.playerLayer.player = self.avPlayer
+//
+//                    //            getThumbnailFrom(path: videoURL as! URL)
+//
+//                    self.playerView.player?.play()
+//                    self.headerlabel.alpha = 0
+//                    self.tapshowtv.alpha = 1
+//                    self.tapshare.alpha = 1
+//                    self.tapnew.alpha = 0
+//                    self.tapcancel.alpha = 0.5
+//                    self.tabBarController?.tabBar.isHidden = true
+//
+//                    picker.dismiss(animated: true, completion: { [weak self] in
+////                        self?.present(playerVC, animated: true, completion: nil)
+////                        print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
+//                    })
+//                case .photo(let photo):
+            
 //                    self.selectedImageV.image = photo.image
                     picker.dismiss(animated: true, completion: nil)
+            
                 }
             
-            }
-        }
+        
+    
         
         present(picker, animated: true, completion: nil)
 
@@ -428,6 +529,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var tapshare: UIButton!
     override func viewDidAppear(_ animated: Bool) {
         
+        counter = 0
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
@@ -499,18 +601,18 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
         self.activityIndicator.alpha = 0
         self.loadinglabel.alpha = 0
-        tv2.text = ""
-        tv2.tintColor = .white
+        tv2.text = "Write your title..."
+        tv2.textColor = .white
 //        tv2.textColor = UIColor.white
         
-        tv2.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
+//        tv2.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
 
 
 //        tapplay.alpha = 1
         queryforinfo()
         headerlabel.text = "UPLOAD"
         headerlabel.addCharacterSpacing()
-        self.addLineToView(view: tv2, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//        self.addLineToView(view: tv2, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
 
 //        propic.layer.masksToBounds = false
 //        propic.layer.cornerRadius = propic.frame.height/2
@@ -552,24 +654,24 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
 
     @IBOutlet weak var tapshowtv: UIButton!
-    @IBAction func tapShowTV(_ sender: Any) {
-        
-        if tv2.alpha == 1 {
-            
-            tv2.alpha = 0
-            self.view.endEditing(true)
-
-        } else {
-            
-            tv2.alpha = 1
-            
-            
-            tv2.becomeFirstResponder()
-            
-        }
-   
-
-    }
+//    @IBAction func tapShowTV(_ sender: Any) {
+//
+//        if tv2.alpha == 1 {
+//
+//            tv2.alpha = 0
+//            self.view.endEditing(true)
+//
+//        } else {
+//
+//            tv2.alpha = 1
+//
+//
+//            tv2.becomeFirstResponder()
+//
+//        }
+//
+//
+//    }
     
     @objc func playerItemDidReachEnd(notification: Notification) {
         
@@ -596,7 +698,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 //
 ////            tapplay.setBackgroundImage(mythumbnail, for: .normal)
 //
-////            loadthumbnail()
+//            loadthumbnail()
 //
 //            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 667)
 //
@@ -740,14 +842,14 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         textView.textAlignment = .left
 
-//        if textView.textColor == UIColor.lightGray {
-//            textView.text = ""
-//            textView.textColor = UIColor.white
-//        }
+        if textView.textColor == UIColor.white {
+            textView.text = ""
+            textView.textColor = UIColor.white
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textView.textAlignment = .center
+//        textView.textAlignment = .center
 
     }
 

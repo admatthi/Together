@@ -25,38 +25,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564444884.563576"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "tapShare(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564444884.564137"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "tapShare(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Together/FAM/Sign Up/LoginViewController.swift"
             timestampString = "564352824.142064"
             startingColumnNumber = "9223372036854775807"
@@ -64,38 +32,6 @@
             startingLineNumber = "93"
             endingLineNumber = "93"
             landmarkName = "queryforinfo()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564444884.564657"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "564"
-            endingLineNumber = "564"
-            landmarkName = "tapShowTV(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564444884.565595"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
-            landmarkName = "tapShowTV(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564444884.566196"
+            timestampString = "564454805.951844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564444884.5666651"
+            timestampString = "564454805.952445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
             <Locations>
@@ -170,12 +106,12 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/UploadViewController.swift"
-                  timestampString = "564443507.70697"
+                  timestampString = "564454806.761767"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "6169">
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "4980">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -185,12 +121,12 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/UploadViewController.swift"
-                  timestampString = "564443507.709761"
+                  timestampString = "564454806.765222"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "7025">
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "5676">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -202,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/UploadViewController.swift"
-            timestampString = "564444884.567121"
+            timestampString = "564454805.952896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -233,22 +169,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/PryntTrimmerView/PryntTrimmerView/Classes/ThumbSelectorView.swift"
-            timestampString = "564207544.455054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "setupThumbnailGenerator(with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Pods/YPImagePicker/Source/Filters/Video/YPVideoFiltersVC.swift"
             timestampString = "564443975.075189"
             startingColumnNumber = "9223372036854775807"
@@ -256,22 +176,6 @@
             startingLineNumber = "233"
             endingLineNumber = "233"
             landmarkName = "onPlaybackTimeChecker()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/YPImagePicker/Source/Filters/Video/YPVideoFiltersVC.swift"
-            timestampString = "564443975.0752881"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -425,24 +329,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/YPImagePicker/Source/Filters/Video/YPVideoView.swift"
-            timestampString = "564443975.075846"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "stop()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564424048.008376"
+            timestampString = "564453318.274286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
@@ -458,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564424048.008446"
+            timestampString = "564453318.274341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
@@ -474,12 +362,12 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/Buyer%20-%20V2/VideoViewController.swift"
-                  timestampString = "564443507.788497"
+                  timestampString = "564454806.812428"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "161"
                   endingLineNumber = "161"
-                  offsetFromSymbolStart = "462">
+                  offsetFromSymbolStart = "364">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -489,12 +377,12 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/Buyer%20-%20V2/VideoViewController.swift"
-                  timestampString = "564443507.7925431"
+                  timestampString = "564454806.815292"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "156"
                   endingLineNumber = "156"
-                  offsetFromSymbolStart = "119">
+                  offsetFromSymbolStart = "84">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -506,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564424048.008492"
+            timestampString = "564453318.274388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
@@ -522,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/FAM/Buyer - V2/VideoViewController.swift"
-            timestampString = "564424048.008536"
+            timestampString = "564453318.274431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "363"
@@ -634,12 +522,12 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/Seller%20-%20V2/YourChannelViewController.swift"
-                  timestampString = "564443507.864337"
+                  timestampString = "564454806.870434"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "502"
                   endingLineNumber = "502"
-                  offsetFromSymbolStart = "41">
+                  offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -649,12 +537,12 @@
                   moduleName = "Together"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/FAM/Seller%20-%20V2/YourChannelViewController.swift"
-                  timestampString = "564443507.869369"
+                  timestampString = "564454806.8738461"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "504"
                   endingLineNumber = "504"
-                  offsetFromSymbolStart = "89">
+                  offsetFromSymbolStart = "76">
                </Location>
             </Locations>
          </BreakpointContent>
