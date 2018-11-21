@@ -39,6 +39,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         activityIndicator.startAnimating()
         activityIndicator.alpha = 1
         collectionView.alpha = 0
+        errorlabel.alpha = 0
         programname.text = selectedname
         programname.addCharacterSpacing()
         //        tableView.rowHeight = UITableViewAutomaticDimension
@@ -47,27 +48,21 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         locked = true
         
+        queryforids { () -> () in
+            
+            self.queryforinfo()
+            
+        }
+        
         if uid == selectedid {
             
             locked = false
-            
-            queryforids { () -> () in
-                
-                self.queryforinfo()
-                
-            }
             
         }
         
         if myprojectids.contains(selectedid) {
             
             locked = false
-            
-            queryforids { () -> () in
-                
-                self.queryforinfo()
-                
-            }
             
         }
         
@@ -84,14 +79,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             if selectedid == unlockedid {
                 
                 locked = false
-                
-                queryforids { () -> () in
-                    
-                    self.queryforinfo()
-                    
-                }
-                
-                
+
                 
             }
             
@@ -248,17 +236,15 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 {
-            
-            selectedtitle = "Tap To Watch"
+        if locked {
             
             self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
 
         } else {
             
-            selectedvideo = videolinks[videoids[indexPath.row-1]]!
-            selectedvideoid = videoids[indexPath.row-1]
-            selectedtitle = videotitles[videoids[indexPath.row-1]]!
+//            selectedvideo = videolinks[videoids[indexPath.row]]!
+            selectedvideoid = videoids[indexPath.row]
+            selectedtitle = videotitles[videoids[indexPath.row]]!
             self.performSegue(withIdentifier: "VideoToWatch", sender: self)
         }
         
@@ -268,123 +254,61 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    if locked {
-        
-        return 24
-        
+    if thumbnails.count > 0 {
+            
+        return thumbnails.count
+            
     } else {
+            
+        return 1
+    }
         
-        if thumbnails.count > 0 {
-            
-            return thumbnails.count
-            
-            } else {
-            
-                return 1
-            }
-        
-        }
     
     }
     
-        
+    @IBOutlet weak var errorlabel: UILabel!
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
         
         //        cell.subscriber.tag = indexPath.row
-        
-        if locked {
+
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true
+        cell.thumbnail.layer.cornerRadius = 10.0
+        cell.thumbnail.layer.masksToBounds = true
+        if thumbnails.count > indexPath.row{
             
-            cell.whitelabel.alpha = 0.5
-            cell.isUserInteractionEnabled = false
-            cell.lockimage.alpha = 1
+            collectionView.alpha = 1
+            errorlabel.alpha = 0
+            activityIndicator.alpha = 0
+            cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
+                    
+            cell.titlelabel.text = videotitles[videoids[indexPath.row]]
+            cell.timeago.text = videodates[videoids[indexPath.row]]
             
-            cell.thumbnail.image = nil
+            cell.isUserInteractionEnabled = true
             
-            cell.titlelabel.text = ""
-            cell.timeago.text = ""
+            
+        } else {
+            
+            collectionView.alpha = 0
+            errorlabel.alpha = 1
+            activityIndicator.alpha = 0
             
         }
+                
+            return cell
         
-        if thumbnails.count >= indexPath.row{
-            
-            if indexPath.row == 0 {
-                
-                cell.thumbnail.image = myselectedimage
-                cell.titlelabel.text = "Welcome!"
-//                cell.timeago.text = "Tap To Preview"
-                cell.whitelabel.alpha = 0
-
-                cell.isUserInteractionEnabled = true
-
-                cell.thumbnail.layer.cornerRadius = 10.0
-                cell.layer.cornerRadius = 10.0
-                cell.layer.masksToBounds = true
-                cell.thumbnail.layer.masksToBounds = true
-                activityIndicator.alpha = 0
-                collectionView.alpha = 1
-                activityIndicator.stopAnimating()
-                cell.whitelabel.layer.cornerRadius = 10.0
-                cell.whitelabel.layer.masksToBounds = true
-                cell.lockimage.alpha = 0
-                
-            } else {
-                
-                
-                
-              
-                
-                if locked {
-                    
-                    cell.whitelabel.alpha = 0.5
-                    cell.isUserInteractionEnabled = false
-                    cell.lockimage.alpha = 1
-                    
-                    cell.thumbnail.image = nil
-                    
-                    cell.titlelabel.text = ""
-                    cell.timeago.text = ""
-                    
-                } else {
-                    
-                    cell.lockimage.alpha = 0
-                    cell.thumbnail.image = thumbnails[videoids[indexPath.row-1]]
-                    
-                    cell.titlelabel.text = videotitles[videoids[indexPath.row-1]]
-                    cell.timeago.text = videodates[videoids[indexPath.row-1]]
-                    
-                    cell.whitelabel.alpha = 0
-                    
-                    cell.isUserInteractionEnabled = true
-                }
-                
-                cell.thumbnail.layer.cornerRadius = 10.0
-                cell.layer.cornerRadius = 10.0
-                cell.layer.masksToBounds = true
-                cell.thumbnail.layer.masksToBounds = true
-                activityIndicator.alpha = 0
-                collectionView.alpha = 1
-                activityIndicator.stopAnimating()
-                cell.whitelabel.layer.cornerRadius = 10.0
-                cell.whitelabel.layer.masksToBounds = true
-            }
-            
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
             //            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
             
    
-            
-      
-
-        } else {
-            
-            
-        }
+    
         
         
-        return cell
     }
     
     var buttonspressedup = [String:String]()

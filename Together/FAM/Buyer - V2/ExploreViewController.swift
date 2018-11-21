@@ -76,6 +76,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         programnames.removeAll()
         prices.removeAll()
         toppics.removeAll()
+        images.removeAll()
+        
         ref?.child("Influencers").queryOrdered(byChild: "Approved").queryEqual(toValue: "True").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -236,7 +238,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
      
             cell.thumbnail.image = images[projectids[indexPath.row]]
 //            cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
-                        cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!)"
+                        cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
 
         } else {
             

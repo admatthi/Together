@@ -128,9 +128,7 @@ class WatchViewController: UIViewController {
             
             playerView.player?.pause()
             
-        } else {
-            playerView.player?.play()
-            
+        NotificationCenter.default.removeObserver(Notification.Name.AVPlayerItemDidPlayToEndTime)
         }
     }
     
@@ -194,29 +192,14 @@ class WatchViewController: UIViewController {
         profileimage.layer.masksToBounds = true
         profileimage.layer.cornerRadius = 5.0
         
-//        let videourl = URL(string: selectedvideo)
-//
-//        avPlayer = AVPlayer(url: videourl! as URL)
-//
-//        playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-//
-//        playerView.playerLayer.player = avPlayer
         
-                queryforids { () -> () in
+        queryforids { () -> () in
         
-                    self.queryforinfo()
+            self.queryforinfo()
         
-                }
+        }
         
-//        if playerView.player?.isPlaying == true {
-//
-//            playerView.player?.pause()
-//
-//        } else {
-//            playerView.player?.play()
-//
-//        }
-        
+
         if uid == selectedid {
             
             tapdelete.alpha = 1
@@ -252,11 +235,14 @@ class WatchViewController: UIViewController {
                         
                         self.vidids.append(ids)
                     
-                        functioncounter += 1
-                        
+                        print(functioncounter)
+                        print(snapDict.count)
                     }
                     
-                    if functioncounter == snapDict.count-3 {
+                    functioncounter += 1
+
+                    
+                    if functioncounter == snapDict.count {
                         
                         self.vidids = self.vidids.sorted()
                         completed()
@@ -287,18 +273,14 @@ class WatchViewController: UIViewController {
                     
                     let videourl = URL(string: author2)
 
-                    if self.vids.contains(videourl!) {
-                        
-                        
-                    } else {
-                        
+                    self.vids.append(videourl!)
+
+                    print(each)
+                    print(videourl)
+                    if self.vids.count == 1 {
+
+
                     
-
-
-                    if self.vids.count == 0 {
-                        self.vids.append(videourl!)
-
-
                     self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[0]))
 
                     self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
@@ -309,13 +291,9 @@ class WatchViewController: UIViewController {
                         
                     self.counter = 0
                         
-                    } else {
-                        self.vids.append(videourl!)
-
-
                     }
-                        
-                    }
+                    
+                
                 }
                 
             })

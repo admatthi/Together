@@ -26,6 +26,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        errorlabel.alpha = 1
+        collectionView.alpha = 0
         lowercasename = selectedname
         selectedid = uid
 
@@ -141,6 +143,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
       
         
     }
+    @IBOutlet weak var errorlabel: UILabel!
     
     func queryforids(completed: @escaping (() -> ()) ) {
         
@@ -381,6 +384,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         //        cell.subscriber.tag = indexPath.row
     
         if thumbnails.count > indexPath.row {
+            
+            errorlabel.alpha = 0
+            collectionView.alpha = 1
             
             cell.darkness.alpha = 0
 //            if indexPath.row == 0 {
