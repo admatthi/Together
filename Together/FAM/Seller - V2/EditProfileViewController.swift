@@ -185,48 +185,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         })
     }
     
-    
-    func queryforhighlevelinfo() {
-        
-        var functioncounter = 0
-        
-        ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            var value = snapshot.value as? NSDictionary
-            
-            
-           
-            if var profileUrl = value?["ProPic"] as? String {
-                // Create a storage reference from the URL
-                
-                let url = URL(string: profileUrl)
-                thumbnailurls["0"] = profileUrl
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                thumbnails["0"] = UIImage(data: data!)
-             
-                self.collectionView.reloadData()
-            }
-            
-            
-            if var author2 = value?["Purchase"] as? String {
-                videolinks["0"] = author2
-                
-                
-            }
-            
-            if var author2 = value?["Name"] as? String {
-                
-                selectedname = author2
-                self.programname.text = selectedname.uppercased()
-                self.programname.addCharacterSpacing()
-                
-            }
-            
-            
-//            self.collectionView.reloadData()
-        })
-        
-    }
+   
                 
     @IBOutlet weak var tableView: UITableView!
     
@@ -294,7 +253,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 if functioncounter == videoids.count {
                     
           
-                    self.collectionView.reloadData()
+            self.collectionView.reloadData()
                     
                 }
                 

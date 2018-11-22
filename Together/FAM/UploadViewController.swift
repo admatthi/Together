@@ -139,8 +139,24 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
             ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Title" : snaplabel, "Date" : thisdate])
 
-                self.uploadcounter += 1
-                self.loadthumbnail()
+                if self.uploadcounter == 1234 {
+                    
+                    self.loadthumbnail()
+                    
+                    self.uploadcounter += 1
+
+                } else {
+                    
+                    self.uploadcounter += 1
+
+                    if self.uploadcounter == (1234 + self.vids.count) {
+                        
+                        self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
+                        
+                    }
+                    
+                }
+                
                 
            
                 
@@ -203,24 +219,20 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 
                 let mystring2 = downloadURL.absoluteString
                 
-                
-                if noothervids == true {
-                    
-                    ref!.child("Influencers").child(uid).updateChildValues(["ProPic" : mystring2])
-                    
-                    
-                } else {
-                    
-                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Thumbnail" : mystring2])
 
-                    
-                }
-//                self.activityIndicator.alpha = 0
+            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Thumbnail" : mystring2])
+
+                    //                self.activityIndicator.alpha = 0
 //                self.activityIndicator.stopAnimating()
 //                self.loadinglabel.alpha = 0
                 
                 self.nextViewNumber = 1
-                self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
+                
+                if self.uploadcounter == self.vids.count {
+                    
+                    self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
+
+                }
                 
 //                DispatchQueue.main.async {
 //                    
