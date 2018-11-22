@@ -13,59 +13,21 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
+import YPImagePicker
 import AVFoundation
 import AVKit
+import Photos
 
 class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     @IBOutlet weak var tapchoosevideo: UIButton!
     
     @IBAction func tapChooseVideo(_ sender: Any) {
         
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        imagePickerController.mediaTypes = ["public.movie"]
-        present(imagePickerController, animated: true, completion: nil)
+        showPicker()
     }
     var imagePickerController = UIImagePickerController()
     var avPlayer = AVPlayer()
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        videoURL = info[UIImagePickerControllerMediaURL]as? NSURL
-        print(videoURL!)
-        do {
-            let asset = AVURLAsset(url: videoURL as! URL , options: nil)
-            let imgGenerator = AVAssetImageGenerator(asset: asset)
-            imgGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
-            let thumbnail = UIImage(cgImage: cgImage)
-            //            imgView.image = thumbnail
-            
-            avPlayer = AVPlayer(url: videoURL! as URL)
-            
-            playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-            
-            playerView.playerLayer.player = avPlayer
-            
-            playerView.player?.pause()
-            
-            getThumbnailFrom(path: videoURL as! URL)
-
-            
-            //            let item = AVPlayerItem(asset: asset)
-            //            let player = AVQueuePlayer(playerItem: item)
-            //            let videoLooper = AVPlayerLooper(player: player, templateItem: item)
-            //
-            //            videoLooper.
-
-            
-        } catch let error {
-            
-            
-            print("*** Error generating thumbnail: \(error.localizedDescription)")
-        }
-        
-        
-        self.dismiss(animated: true, completion: nil)
-    }
+    
     @IBOutlet weak var playerView: PlayerViewClass!
     var channelname = String()
     var channelprice = String()
@@ -79,36 +41,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
     }
     
-    func getThumbnailFrom(path: URL) -> UIImage? {
-        
-        do {
-            
-            let asset = AVURLAsset(url: path , options: nil)
-            let imgGenerator = AVAssetImageGenerator(asset: asset)
-            imgGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
-            mythumbnail = UIImage(cgImage: cgImage)
-            
-            //            tapplay.setBackgroundImage(mythumbnail, for: .normal)
-            
-            
-            mythumbnail = cropToBounds(image: mythumbnail, width: 375, height: 667)
-            
-            loadthumbnail()
-
-            return mythumbnail
-            
-            
-            
-        } catch let error {
-            
-            print("*** Error generating thumbnail: \(error.localizedDescription)")
-            return nil
-            
-        }
-        
-    }
-    
+ 
     func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
         
         let cgimage = image.cgImage!
@@ -267,6 +200,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     @IBOutlet weak var paypaltf: UITextField!
 
+    @IBOutlet weak var thumbnailview: UIImageView!
     @IBOutlet weak var tapsave: UIButton!
     @IBOutlet weak var channelnametf: UITextField!
     @IBOutlet weak var channeltf: UITextField!
@@ -363,7 +297,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                     
                     
                     
-                ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
+                    ref!.child("Influencers").child(uid).updateChildValues(["Purchase" : mystring2])
                     ref!.child("Influencers").child(uid).updateChildValues(["ProPic" : self.myString3])
 
 
@@ -387,6 +321,81 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
             
             errorlabel.alpha = 1
         }
+    }
+    
+    var selectedItems = [YPMediaItem]()
+
+    func showPicker() {
+        var config = YPImagePickerConfiguration()
+        
+        config.library.mediaType = .video
+        
+        config.shouldSaveNewPicturesToAlbum = false
+        
+        config.video.compression = AVAssetExportPresetMediumQuality
+        
+        config.startOnScreen = .library
+        
+        config.screens = [.library, .video]
+        
+        config.video.libraryTimeLimit = 500.0
+        
+        config.showsCrop = .rectangle(ratio: (9/16))
+        
+        config.wordings.libraryTitle = "Choose Video"
+        
+        config.hidesBottomBar = false
+        config.hidesStatusBar = false
+        config.library.maxNumberOfItems = 1
+        let picker = YPImagePicker(configuration: config)
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            
+            if cancelled {
+                print("Picker was canceled")
+                picker.dismiss(animated: true, completion: nil)
+                return
+            }
+            _ = items.map { print("🧀 \($0)") }
+            
+            self.selectedItems = items
+            for item in items {
+                switch item {
+                case .photo(let photo):
+                    
+                    print(photo)
+                    
+                case .video(let video):
+                    
+                    
+                        mythumbnail = video.thumbnail
+                        self.thumbnailview.image = mythumbnail
+                        self.loadthumbnail()
+                    //
+                    
+                    videoURL = video.url as NSURL
+                    let playerVC = AVPlayerViewController()
+                        self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:videoURL as! URL))
+                    
+                    
+                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+                    
+                    self.playerView.playerLayer.player = self.avPlayer
+                    
+                    self.playerView.player?.pause()
+         
+                    self.tabBarController?.tabBar.isHidden = true
+                    
+                    
+                }
+            }
+            picker.dismiss(animated: true, completion: nil)
+            
+        }
+        
+        
+        
+        present(picker, animated: true, completion: nil)
+        
     }
     
     @IBAction func tapBack(_ sender: Any) {
@@ -466,9 +475,13 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         errorlabel.alpha = 0
         playerView.layer.cornerRadius = 5.0
         playerView.layer.masksToBounds = true
+        thumbnailview.layer.cornerRadius = 5.0
+        thumbnailview.layer.masksToBounds = true
+        
         requestlabel.addCharacterSpacing()
         ref = Database.database().reference()
         
+        playerView.backgroundColor = .white
         paypaltf.delegate = self
         channelnametf.delegate = self
    //        emailtf.becomeFirstResponder()
@@ -504,29 +517,23 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
             var value = snapshot.value as? NSDictionary
             
             
-            if var profileUrl2 = value?["Purchase"] as? String {
+            if var profileUrl2 = value?["ProPic"] as? String {
                 // Create a storage reference from the URL
                 
                 
-                if profileUrl2 == "-" {
+                if profileUrl2 == "" {
                     
                     self.tapBack.alpha = 0
 
                 } else {
                     
-                    videolinks["0"] = profileUrl2
                     
-                    myintrovideo = profileUrl2
-                    let videourl = URL(string: myintrovideo)
+                    let url = URL(string: profileUrl2)
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    selectedimage = UIImage(data: data!)!
                     
-                    self.avPlayer = AVPlayer(url: videourl! as URL)
+                    self.thumbnailview.image = selectedimage
                     
-                    
-                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                    
-                    self.playerView.playerLayer.player = self.avPlayer
-                    
-                    self.playerView.player?.pause()
                     self.tapBack.alpha = 1
                 }
                 

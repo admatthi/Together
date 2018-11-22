@@ -290,6 +290,8 @@
 		9D6E91CA21A0CE290013BED6 /* Seller - V2 */ = {
 			isa = PBXGroup;
 			children = (
+				9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */,
+				9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */,
 				9D9C665821A321B800309443 /* YourChannelViewController.swift */,
 				9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */,
 				9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */,
@@ -386,8 +388,6 @@
 				9DC0B28E219360C100F56A1A /* PlansTableViewCell.swift */,
 				9DC0B290219360EC00F56A1A /* PlansViewController.swift */,
 				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
-				9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */,
-				9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */,
 				9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */,
 				9DEA5F1721A0B820000137A3 /* ContacViewController.swift */,
 				9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */,

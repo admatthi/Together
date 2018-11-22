@@ -951,7 +951,7 @@
                                     <segue destination="RXw-ci-tPN" kind="show" id="NvI-lz-rNN"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wth-Wz-Nkn" customClass="PlayerViewClass" customModule="Together" customModuleProvider="target">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wth-Wz-Nkn" customClass="PlayerViewClass" customModule="Together" customModuleProvider="target">
                                 <rect key="frame" x="16" y="202" width="97" height="183"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1080,8 +1080,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kKb-d6-PY9">
+                                <rect key="frame" x="16" y="202" width="102" height="181"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="RB2-JJ-uKM"/>
+                                    <constraint firstAttribute="height" constant="181" id="ufB-ve-dyQ"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oob-mO-PHz">
-                                <rect key="frame" x="106" y="371" width="30" height="27"/>
+                                <rect key="frame" x="106" y="365" width="30" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="rnS-N1-j5J"/>
@@ -1105,11 +1112,12 @@
                             <constraint firstItem="lOf-71-lI3" firstAttribute="top" secondItem="3NM-0e-r1C" secondAttribute="bottom" constant="14" id="5yz-TP-Pg4"/>
                             <constraint firstItem="6In-Cj-coB" firstAttribute="leading" secondItem="3lb-qn-PfH" secondAttribute="leading" id="6Y8-Ea-7k2"/>
                             <constraint firstItem="ynn-yH-hFE" firstAttribute="bottom" secondItem="3lb-qn-PfH" secondAttribute="bottom" id="7mv-Jg-Jar"/>
+                            <constraint firstItem="kKb-d6-PY9" firstAttribute="top" secondItem="lOf-71-lI3" secondAttribute="bottom" constant="5.5" id="A58-lQ-YN6"/>
                             <constraint firstItem="lOf-71-lI3" firstAttribute="top" secondItem="3NM-0e-r1C" secondAttribute="bottom" constant="14" id="AKM-Da-rEU"/>
                             <constraint firstItem="XXD-43-aKq" firstAttribute="top" secondItem="tMF-Ac-uFs" secondAttribute="bottom" constant="24.5" id="Ank-h9-z6i"/>
                             <constraint firstItem="XfK-ye-WvY" firstAttribute="centerY" secondItem="JZc-uq-C5I" secondAttribute="centerY" id="BEr-PX-ctV"/>
                             <constraint firstItem="W8u-3p-EEA" firstAttribute="centerX" secondItem="AgQ-PM-3PS" secondAttribute="centerX" id="EDc-tN-h2f"/>
-                            <constraint firstItem="oob-mO-PHz" firstAttribute="top" secondItem="Wth-Wz-Nkn" secondAttribute="bottom" constant="-14" id="EXn-II-lts"/>
+                            <constraint firstItem="oob-mO-PHz" firstAttribute="top" secondItem="Wth-Wz-Nkn" secondAttribute="bottom" constant="-20" id="EXn-II-lts"/>
                             <constraint firstItem="Wth-Wz-Nkn" firstAttribute="leading" secondItem="3lb-qn-PfH" secondAttribute="leading" constant="16" id="FOk-md-Can"/>
                             <constraint firstItem="oob-mO-PHz" firstAttribute="leading" secondItem="Wth-Wz-Nkn" secondAttribute="trailing" constant="-7" id="H87-iX-Uy2"/>
                             <constraint firstItem="ynn-yH-hFE" firstAttribute="leading" secondItem="3lb-qn-PfH" secondAttribute="leading" id="Hkm-j5-e7Z"/>
@@ -1132,6 +1140,7 @@
                             <constraint firstItem="wOi-6K-8Pl" firstAttribute="top" secondItem="xR8-bk-hO7" secondAttribute="bottom" constant="13.5" id="ksc-Iv-gbV"/>
                             <constraint firstItem="ynn-yH-hFE" firstAttribute="trailing" secondItem="3lb-qn-PfH" secondAttribute="trailing" id="kwf-cz-NUd"/>
                             <constraint firstItem="Vdh-Ap-7UM" firstAttribute="centerY" secondItem="JZc-uq-C5I" secondAttribute="centerY" id="lZ6-Jt-AgM"/>
+                            <constraint firstItem="kKb-d6-PY9" firstAttribute="leading" secondItem="3lb-qn-PfH" secondAttribute="leading" constant="16" id="nOs-Qx-5Zx"/>
                             <constraint firstItem="tMF-Ac-uFs" firstAttribute="top" secondItem="xR8-bk-hO7" secondAttribute="bottom" constant="59.5" id="nxG-5A-Xez"/>
                             <constraint firstItem="3lb-qn-PfH" firstAttribute="trailing" secondItem="Vdh-Ap-7UM" secondAttribute="trailing" constant="16" id="p7x-Ao-V95"/>
                             <constraint firstItem="tMF-Ac-uFs" firstAttribute="leading" secondItem="3lb-qn-PfH" secondAttribute="leading" constant="16" id="qvG-im-HKz"/>
@@ -1158,6 +1167,7 @@
                         <outlet property="tapBack" destination="XfK-ye-WvY" id="dEO-sD-iSj"/>
                         <outlet property="tapchoosevideo" destination="oob-mO-PHz" id="dXQ-5Q-9kT"/>
                         <outlet property="tapsave" destination="ynn-yH-hFE" id="77G-Fg-KYS"/>
+                        <outlet property="thumbnailview" destination="kKb-d6-PY9" id="qwX-hK-OyX"/>
                         <segue destination="fBf-RR-HZw" kind="show" identifier="SegueTo3rd" id="in3-vB-6x7"/>
                     </connections>
                 </viewController>

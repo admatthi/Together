@@ -481,44 +481,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
                 }
             }
-//            if let firstItem = items.first {
-//                switch firstItem {
-////                case .video(let video):
-//                    self.selectedImageV = video.thumbnail
-////
-//                    let videoURL = video.url
-//                    let playerVC = AVPlayerViewController()
-//                    self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:videoURL))
-//
-//
-//                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-//
-//                    self.playerView.playerLayer.player = self.avPlayer
-//
-//                    //            getThumbnailFrom(path: videoURL as! URL)
-//
-//                    self.playerView.player?.play()
-//                    self.headerlabel.alpha = 0
-//                    self.tapshowtv.alpha = 1
-//                    self.tapshare.alpha = 1
-//                    self.tapnew.alpha = 0
-//                    self.tapcancel.alpha = 0.5
-//                    self.tabBarController?.tabBar.isHidden = true
-//
-//                    picker.dismiss(animated: true, completion: { [weak self] in
-////                        self?.present(playerVC, animated: true, completion: nil)
-////                        print("😀 \(String(describing: self?.resolutionForLocalVideo(url: assetURL)!))")
-//                    })
-//                case .photo(let photo):
+        picker.dismiss(animated: true, completion: nil)
             
-//                    self.selectedImageV.image = photo.image
-                    picker.dismiss(animated: true, completion: nil)
-            
-                }
+    }
             
         
     
-        
         present(picker, animated: true, completion: nil)
 
     }
