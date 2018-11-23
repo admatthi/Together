@@ -215,7 +215,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         //        pdtf.text = " "
         //        domaintf.text = " "
         //
-        channelname = "\(channelnametf.text!)"
+        channelname = "24"
         paypalname = "Whatever"
         channelprice = "25"
         
@@ -478,12 +478,14 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         thumbnailview.layer.cornerRadius = 5.0
         thumbnailview.layer.masksToBounds = true
         
+        shareurl.text = "jointhefam://Profiles/\(uid)"
+        selectedshareurl = "jointhefam://Profiles/\(uid)"
         requestlabel.addCharacterSpacing()
         ref = Database.database().reference()
         
         playerView.backgroundColor = .white
         paypaltf.delegate = self
-        channelnametf.delegate = self
+//        channelnametf.delegate = self
    //        emailtf.becomeFirstResponder()
     
         tapsave.addTextSpacing(2.0)
@@ -501,12 +503,34 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         
         
-        self.addLineToView(view: channelnametf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//        self.addLineToView(view: channelnametf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
         
         
     }
     
+    @IBAction func tapShare(_ sender: Any) {
+        
+        let text = "Follow Me on FAM"
+        
+        var image = UIImage()
+
+            image = UIImage(named: "FamLogo")!
+            
+        
+        let myWebsite = NSURL(string: selectedshareurl)
+        let shareAll : Array = [myWebsite] as [Any]
+        
+        
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        
+        activityViewController.excludedActivityTypes = [UIActivityType.print, UIActivityType.postToWeibo, UIActivityType.addToReadingList, UIActivityType.postToVimeo, UIActivityType.saveToCameraRoll, UIActivityType.assignToContact]
+        
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    @IBOutlet weak var shareurl: UILabel!
     @IBOutlet weak var errorlabel: UILabel!
     func queryforinfo() {
         
@@ -548,6 +572,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 
                 selectedsubs = author2
             }
+            
             
             
             if var author2 = value?["Price"] as? String {
@@ -597,19 +622,19 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
 
             }
             
-            if var author2 = value?["Channel Name"] as? String {
-                
-                mychannelname = author2
-                self.channelnametf.text = mychannelname
-                self.tapBack.alpha = 1
-                self.tapmore.alpha = 1
-
-
-            } else {
-                self.tapmore.alpha = 0
-
-                self.tapBack.alpha = 0
-            }
+//            if var author2 = value?["Channel Name"] as? String {
+//
+//                mychannelname = author2
+//                self.channelnametf.text = mychannelname
+//                self.tapBack.alpha = 1
+//                self.tapmore.alpha = 1
+//
+//
+//            } else {
+//                self.tapmore.alpha = 0
+//
+//                self.tapBack.alpha = 0
+//            }
             
             
                 

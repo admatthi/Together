@@ -47,7 +47,8 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         lowercasename = selectedname
         
-        
+        selectedshareurl = "jointhefam://Profiles/\(selectedid)"
+
         activityIndicator.color = mypink
 
         activityIndicator.startAnimating()
@@ -319,7 +320,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             
         } else {
             
-            image = UIImage(named: "FAMLOGO")!
+            image = UIImage(named: "FamLogo")!
             
         }
         let myWebsite = NSURL(string: selectedshareurl)

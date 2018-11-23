@@ -40,6 +40,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         dateFormatter.dateFormat = "MMM dd"
         
+        selectedshareurl = "jointhefam://Profiles/\(uid)"
+
         thisdate = dateFormatter.string(from: date)
         
         
@@ -319,7 +321,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 
         } else {
             
-            image = UIImage(named: "FAMLOGO")!
+            image = UIImage(named: "FamLogo")!
 
         }
         let myWebsite = NSURL(string: selectedshareurl)
