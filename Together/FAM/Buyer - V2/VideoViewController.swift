@@ -25,14 +25,28 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
                 })
     }
+    @IBOutlet weak var tapback: UIButton!
     
     @IBOutlet weak var programname: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if selectedname == "" {
+            
+            queryforname()
+            
+            
+            tapback.alpha = 0
+            
+        } else {
+            
+            tapback.alpha = 1
+            selectedname = selectedname.uppercased()
+
+        }
+        
         lowercasename = selectedname
         
-        selectedname = selectedname.uppercased()
         
         activityIndicator.color = mypink
 
@@ -142,6 +156,25 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
             
         })
+    }
+    
+    func queryforname() {
+        
+        ref?.child("Influencers").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if var author2 = value?["Name"] as? String {
+                selectedname = author2
+                lowercasename = author2
+                selectedname = selectedname.uppercased()
+                self.programname.text = selectedname
+                self.programname.addCharacterSpacing()
+                
+            }
+            
+        })
+        
     }
     
     var videotitles = [String:String]()

@@ -197,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="4580" y="2202.5487256371816"/>
         </scene>
-        <!--Video View Controller-->
+        <!--Profiles-->
         <scene sceneID="trz-jM-SRE">
             <objects>
-                <viewController id="fDi-vE-IAf" customClass="VideoViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profiles" title="Profiles" id="fDi-vE-IAf" customClass="VideoViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yzb-Cl-t4t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,6 +379,7 @@
                         <outlet property="collectionView" destination="1Nz-hf-dYA" id="0LW-vN-h06"/>
                         <outlet property="errorlabel" destination="DVW-Sf-WLv" id="HhX-xf-kDW"/>
                         <outlet property="programname" destination="TNn-Ij-COa" id="Mvv-0S-Si3"/>
+                        <outlet property="tapback" destination="yn5-pD-p1G" id="gr3-Y2-lgk"/>
                         <segue destination="9Nm-Jw-lFb" kind="show" identifier="VideoToPurchase" id="thP-jo-JVF"/>
                         <segue destination="9Nm-Jw-lFb" kind="show" id="EQJ-2I-dUy"/>
                         <segue destination="XrQ-lf-pbQ" kind="show" identifier="VideoToWatch" id="gwA-QQ-3Vd"/>
@@ -987,7 +988,7 @@
                                 <color key="textColor" red="0.95686274510000002" green="0.1019607843" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANNEL NAME" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7e-x2-cTN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR URL" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7e-x2-cTN">
                                 <rect key="frame" x="16" y="106" width="330" height="15.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="BfN-pb-Fwp"/>

@@ -64,36 +64,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-      
-
-        if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
-
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-
-
-        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewControlleripad
-        self.window?.makeKeyAndVisible()//
-
-
-        } else {
-
-            let currentUser = Auth.auth().currentUser
-
-            uid = (currentUser?.uid)!
-
-            queryforinfo()
-
-            queryforids { () -> () in
-
-
-            }
-
-
-        }
 //
+//
+//        if Auth.auth().currentUser == nil {
+//            // Do smth if user is not logged in
+//
+//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//
+//        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = initialViewControlleripad
+//        self.window?.makeKeyAndVisible()//
+//
+//
+//        } else {
+//
+//            let currentUser = Auth.auth().currentUser
+//
+//            uid = (currentUser?.uid)!
+//
+//            queryforinfo()
+//
+//            queryforids { () -> () in
+//
+//
+//            }
+//
+//
+//        }
+////
         return true
     }
     
@@ -277,61 +277,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 
-    func application(
-        _ application: UIApplication,
-        continue userActivity: NSUserActivity,
-        restorationHandler: @escaping ([UIUserActivityRestoring]?
-        ) -> Void) -> Bool {
-        
-        // 1
-        
-        
-        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-            let url = userActivity.webpageURL,
-            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-                return false
-        }
-        
-        // 2
-//        if let computer = ItemHandler.sharedInstance.items
-//            .filter({ $0.path == components.path}).first {
-//            presentDetailViewController(computer)
-//            return true
-//        }
-        
-        // 3
-        if let webpageUrl = URL(string: "http://joinmyfam.herokuapp.com") {
-            application.open(webpageUrl)
-            return false
-        }
-        
-        return false
-    }
-
-
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
+        print ("\(url)")
+        print ("\(url.host!)")
+        print ("\(url.path)")
+        
         let urlPath : String = url.path as String!
+        
         let urlHost : String = url.host as String!
         
-        if urlPath == "/wow" {
+        if urlHost == "Profiles" {
             
             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buy") as UIViewController
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Profiles") as UIViewController
             
-            selectedid = "11"
-            selectedimage = UIImage(named: "11pic")!
-            selectedname = "Kayla"
-            selectedpitch = "Sup"
-            selectedprice = "10"
-            //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-            selectedsubs = "100"
-            selectedprogramname = "Sweat"
+            print(urlPath)
+            print(selectedid)
+            
+            selectedid = urlPath.replacingOccurrences(of: "/", with: "", options: NSString.CompareOptions.literal, range: nil)
 
+            print(urlPath)
+            print(selectedid)
             
             self.window = UIWindow(frame: UIScreen.main.bounds)
             self.window?.rootViewController = initialViewControlleripad
