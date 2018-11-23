@@ -185,7 +185,7 @@ class CreateAPlanViewController: UIViewController, UITextFieldDelegate, UITextVi
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
                 //                self.addstaticbooks()
-                ref?.child("Influencers").child(uid).updateChildValues(["Subscribers" : "0", "Approved" : "True", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-"])
+                ref?.child("Influencers").child(uid).updateChildValues(["Subscribers" : "0", "Approved" : "True", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : self.domainz, "Purchase" : "-", "Price" : "20"])
                 
                 ref?.child("Users").child(uid).updateChildValues(["Approved" : "True"])
                 

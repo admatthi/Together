@@ -275,14 +275,15 @@ class WatchViewController: UIViewController {
 
                     self.vids.append(videourl!)
 
-                    print(each)
-                    print(videourl)
+                
                     if self.vids.count == 1 {
 
 
                     
                     self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[0]))
-
+                        print(each)
+                        print(videourl)
+                        print(self.vids)
                     self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
                     
                     self.playerView.playerLayer.player = self.avPlayer
@@ -293,7 +294,7 @@ class WatchViewController: UIViewController {
                         
                     }
                     
-                
+                    print(self.vids)
                 }
                 
             })

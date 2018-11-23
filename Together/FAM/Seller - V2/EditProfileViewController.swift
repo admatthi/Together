@@ -20,6 +20,8 @@ var selectedthumbnailurl = String()
 var selectedvideourl = String()
 var thumbnails = [String:UIImage]()
 
+var selectedshareurl = String()
+
 class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate   {
 
     @IBOutlet weak var programname: UILabel!
@@ -127,9 +129,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 //            }
         
 //            collectionView.alpha = 0
-//            activityIndicator.alpha = 1
-//            activityIndicator.color = mypink
-//            activityIndicator.startAnimating()
+            activityIndicator.alpha = 1
+            activityIndicator.color = mypink
+            activityIndicator.startAnimating()
 //
         
             queryforids { () -> () in
@@ -147,6 +149,10 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     func queryforids(completed: @escaping (() -> ()) ) {
         
+        activityIndicator.alpha = 0
+        collectionView.alpha = 0
+        errorlabel.alpha = 1
+        
         var functioncounter = 0
         
         videoids.removeAll()
@@ -160,6 +166,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             var value = snapshot.value as? NSDictionary
             
             if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                self.activityIndicator.alpha = 1
+                self.errorlabel.alpha = 0
                 
                 for each in snapDict {
                     
@@ -299,6 +308,32 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 //        }
 //    }
 
+    @IBAction func tapShare(_ sender: Any) {
+        
+        let text = "\(selectedname) on FAM"
+        
+        var image = UIImage()
+        if thumbnails.count > 0 {
+            
+            image = thumbnails[videoids[0]]!
+
+        } else {
+            
+            image = UIImage(named: "FAMLOGO")!
+
+        }
+        let myWebsite = NSURL(string: selectedshareurl)
+        let shareAll : Array = [text , image , myWebsite] as [Any]
+        
+        
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+       
+        activityViewController.excludedActivityTypes = [UIActivityType.print, UIActivityType.postToWeibo, UIActivityType.addToReadingList, UIActivityType.postToVimeo, UIActivityType.saveToCameraRoll, UIActivityType.assignToContact]
+
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
 //        if indexPath.row == 0 {
@@ -345,6 +380,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         if thumbnails.count > indexPath.row {
             
             errorlabel.alpha = 0
+            activityIndicator.alpha = 0
             collectionView.alpha = 1
             
             cell.darkness.alpha = 0
@@ -368,7 +404,10 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 cell.timeago.text = videodates[videoids[indexPath.row]]
             
                 
-            }
+        } else {
+            
+            collectionView.alpha = 0
+        }
             
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor

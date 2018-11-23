@@ -99,7 +99,12 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func queryforids(completed: @escaping (() -> ()) ) {
         
+        collectionView.alpha = 0
+        errorlabel.alpha = 1
+        activityIndicator.alpha = 0
+        
         var functioncounter = 0
+        
         
         videoids.removeAll()
         videolinks.removeAll()
@@ -113,6 +118,8 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             
             if let snapDict = snapshot.value as? [String:AnyObject] {
                 
+                self.errorlabel.alpha = 0
+                self.activityIndicator.alpha = 1
                 for each in snapDict {
                     
                     let ids = each.key
@@ -268,6 +275,32 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     @IBOutlet weak var errorlabel: UILabel!
     
+    @IBAction func tapShare(_ sender: Any) {
+        
+        let text = "\(selectedname) on FAM"
+        
+        var image = UIImage()
+        if thumbnails.count > 0 {
+            
+            image = thumbnails[videoids[0]]!
+            
+        } else {
+            
+            image = UIImage(named: "FAMLOGO")!
+            
+        }
+        let myWebsite = NSURL(string: selectedshareurl)
+        let shareAll : Array = [text , image , myWebsite] as [Any]
+        
+        
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        
+        activityViewController.excludedActivityTypes = [UIActivityType.print, UIActivityType.postToWeibo, UIActivityType.addToReadingList, UIActivityType.postToVimeo, UIActivityType.saveToCameraRoll, UIActivityType.assignToContact]
+        
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
@@ -294,8 +327,6 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         } else {
             
             collectionView.alpha = 0
-            errorlabel.alpha = 1
-            activityIndicator.alpha = 0
             
         }
                 

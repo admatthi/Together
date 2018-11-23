@@ -19,7 +19,10 @@ var yourtotalreve = String()
 
 class RevenueViewController: UIViewController {
     @IBOutlet weak var mrr: UILabel!
+    @IBOutlet weak var payoutdate: UILabel!
     
+    @IBOutlet weak var payoutlabel: UILabel!
+    @IBOutlet weak var backlabel5: UILabel!
     @IBOutlet weak var domainlabel: UILabel!
     @IBOutlet weak var totalrevenue: UILabel!
     @IBOutlet weak var payingsubscribers: UILabel!
@@ -33,7 +36,12 @@ class RevenueViewController: UIViewController {
         back3.layer.cornerRadius = 10.0
         back3.layer.masksToBounds = true
 
+        backlabel5.layer.cornerRadius = 10.0
+        backlabel5.layer.masksToBounds = true
+
+        queryforpayout()
         
+        payoutlabel.addCharacterSpacing()
         HEADER3.addCharacterSpacing()
         header4.addCharacterSpacing()
         HEADERLABEL.addCharacterSpacing()
@@ -41,9 +49,9 @@ class RevenueViewController: UIViewController {
         nofollows.alpha = 0
         ref = Database.database().reference()
         
-        propic.layer.masksToBounds = false
-        propic.layer.cornerRadius = propic.frame.height/2
-        propic.clipsToBounds = true
+//        propic.layer.masksToBounds = false
+//        propic.layer.cornerRadius = propic.frame.height/2
+//        propic.clipsToBounds = true
         
         queryforinfo()
         
@@ -125,6 +133,24 @@ class RevenueViewController: UIViewController {
     @IBOutlet weak var HEADER3: UILabel!
     @IBOutlet weak var backlabel: UILabel!
     var yourdomain = String()
+    
+    func queryforpayout() {
+        
+        ref?.child("Payout").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            
+            if var author2 = value?["Payout Date"] as? String {
+                
+                self.payoutdate.text = author2
+            }
+            
+        })
+            
+    }
+    
+    
     func queryforinfo() {
         
         yoursubscribers = "0"

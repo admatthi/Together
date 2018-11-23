@@ -522,7 +522,8 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 
                 
                 if profileUrl2 == "" {
-                    
+                    self.tapmore.alpha = 0
+
                     self.tapBack.alpha = 0
 
                 } else {
@@ -535,6 +536,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                     self.thumbnailview.image = selectedimage
                     
                     self.tapBack.alpha = 1
+                    self.tapmore.alpha = 1
                 }
                 
                 
@@ -573,10 +575,10 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                     self.B1.setTitleColor(.white, for: .normal)
                     mychannelprice = "100"                }
                 self.tapBack.alpha = 1
-
+                self.tapmore.alpha = 1
             
             } else {
-                
+                self.tapmore.alpha = 0
                 self.tapBack.alpha = 0
 
             }
@@ -586,9 +588,11 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 mypaypal = author2
                 self.paypaltf.text = mypaypal
                 self.tapBack.alpha = 1
+                self.tapmore.alpha = 1
 
             } else {
-                
+                self.tapmore.alpha = 0
+
                 self.tapBack.alpha = 0
 
             }
@@ -598,10 +602,12 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 mychannelname = author2
                 self.channelnametf.text = mychannelname
                 self.tapBack.alpha = 1
+                self.tapmore.alpha = 1
 
 
             } else {
-                
+                self.tapmore.alpha = 0
+
                 self.tapBack.alpha = 0
             }
             
@@ -618,6 +624,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     
     
+    @IBOutlet weak var tapmore: UIButton!
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
