@@ -68,10 +68,13 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var setupimage: UIImageView!
     @IBAction func tapNext(_ sender: AnyObject?) {
         
-        counter += 1
     
-        if counter < images.count {
+        if counter < images.count-1 {
+            
+            counter += 1
+
              setupimage.image = UIImage(named: "Setup\(counter)")
+            print(counter)
             mainimage.image = images[counter]
             mainimage.slideInFromRight()
             
@@ -81,10 +84,11 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBAction func tapPrevious(_ sender: AnyObject?) {
         
-        counter -= 1
         
-        if counter >= 0 {
-            
+        if counter > 0  {
+        
+            counter -= 1
+
             setupimage.image = UIImage(named: "Setup\(counter)")
             print(counter)
         mainimage.image = images[counter]

@@ -41,6 +41,30 @@
                                     <constraint firstAttribute="width" constant="20" id="Lst-mQ-B58"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health &amp; Fitness" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34C-sj-ZEc">
+                                <rect key="frame" x="116.5" y="72" width="142" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="5tj-Pk-cGf"/>
+                                    <constraint firstAttribute="width" constant="142" id="wzg-KP-RB0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHi-aB-4Ch">
+                                <rect key="frame" x="16" y="26" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="FWa-rH-xtx"/>
+                                    <constraint firstAttribute="height" constant="50" id="RRL-fT-H2V"/>
+                                </constraints>
+                                <color key="tintColor" red="0.12549019610000001" green="0.16078431369999999" blue="0.20784313730000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="Back Copy"/>
+                                <connections>
+                                    <action selector="tapBack:" destination="XrQ-lf-pbQ" eventType="touchUpInside" id="afs-Tz-Nui"/>
+                                    <action selector="tapback:" destination="PaW-4O-GCW" eventType="touchUpInside" id="wbC-rX-0ml"/>
+                                    <segue destination="bUT-qL-AeE" kind="show" id="zF5-ec-aup"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pl6-U2-GME">
                                 <rect key="frame" x="16" y="109" width="342" height="561"/>
                                 <color key="backgroundColor" red="0.12549019610000001" green="0.16078431369999999" blue="0.20784313730000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -135,30 +159,6 @@
                                     <outlet property="delegate" destination="PaW-4O-GCW" id="liO-Xn-G7o"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health &amp; Fitness" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34C-sj-ZEc">
-                                <rect key="frame" x="116.5" y="72" width="142" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="5tj-Pk-cGf"/>
-                                    <constraint firstAttribute="width" constant="142" id="wzg-KP-RB0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHi-aB-4Ch">
-                                <rect key="frame" x="16" y="26" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="FWa-rH-xtx"/>
-                                    <constraint firstAttribute="height" constant="50" id="RRL-fT-H2V"/>
-                                </constraints>
-                                <color key="tintColor" red="0.12549019610000001" green="0.16078431369999999" blue="0.20784313730000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="Back Copy"/>
-                                <connections>
-                                    <action selector="tapBack:" destination="XrQ-lf-pbQ" eventType="touchUpInside" id="afs-Tz-Nui"/>
-                                    <action selector="tapback:" destination="PaW-4O-GCW" eventType="touchUpInside" id="wbC-rX-0ml"/>
-                                    <segue destination="bUT-qL-AeE" kind="show" id="zF5-ec-aup"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
