@@ -21,9 +21,16 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     @IBAction func tapBack(_ sender: Any) {
         
+        if linkedin {
+            
+            self.performSegue(withIdentifier: "VideoToExplore", sender: self)
+            
+        } else {
                 self.dismiss(animated: true, completion: {
         
                 })
+            
+        }
     }
     @IBOutlet weak var tapback: UIButton!
     
@@ -35,11 +42,12 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             
             queryforname()
             
+            linkedin = true
             
-            tapback.alpha = 0
             
         } else {
             
+            linkedin = false
             tapback.alpha = 1
             selectedname = selectedname.uppercased()
 

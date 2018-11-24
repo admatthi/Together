@@ -465,6 +465,10 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     @IBOutlet weak var tapBack: UIButton!
     @IBAction func tapback(_ sender: Any) {
+        
+                self.dismiss(animated: true, completion: {
+        
+                })
     }
     @IBOutlet weak var demo: UILabel!
     @IBOutlet weak var tapcreate: UIButton!

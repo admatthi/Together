@@ -30,6 +30,8 @@ var tryingtopurchase = Bool()
 var isInfluencer = Bool()
 var myselectedimage = UIImage()
 
+var linkedin = Bool()
+
 protocol SnippetsPurchasesDelegate: AnyObject {
     
     func purchaseCompleted(product: String)
