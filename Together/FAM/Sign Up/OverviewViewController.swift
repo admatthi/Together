@@ -86,6 +86,7 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
         if counter >= 0 {
             
             setupimage.image = UIImage(named: "Setup\(counter)")
+            print(counter)
         mainimage.image = images[counter]
         mainimage.slideInFromLeft()
             
