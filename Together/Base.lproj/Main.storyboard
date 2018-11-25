@@ -96,17 +96,17 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kayla Itsines" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6m-Ok-4k6">
-                                                    <rect key="frame" x="10" y="204" width="142" height="47"/>
+                                                    <rect key="frame" x="10" y="194" width="147" height="57"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="47" id="XYF-rx-D6r"/>
-                                                        <constraint firstAttribute="width" constant="142" id="Zr4-Xd-G7a"/>
+                                                        <constraint firstAttribute="height" constant="57" id="XYF-rx-D6r"/>
+                                                        <constraint firstAttribute="width" constant="147" id="Zr4-Xd-G7a"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14h ago" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4h-9E-hE7">
-                                                    <rect key="frame" x="10" y="247" width="136" height="15"/>
+                                                    <rect key="frame" x="10" y="249" width="136" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="136" id="mXf-j3-4ls"/>
                                                         <constraint firstAttribute="height" constant="15" id="p4u-Zd-BCA"/>
@@ -142,8 +142,8 @@
                                             <constraint firstAttribute="trailing" secondItem="DVG-7P-1Fc" secondAttribute="trailing" id="dlA-3a-6se"/>
                                             <constraint firstAttribute="trailing" secondItem="7Gy-lU-AAC" secondAttribute="trailing" constant="1" id="haK-jn-fp9"/>
                                             <constraint firstAttribute="trailing" secondItem="TOR-RH-sqb" secondAttribute="trailing" constant="9" id="mw8-dr-svt"/>
-                                            <constraint firstItem="TOR-RH-sqb" firstAttribute="centerY" secondItem="d4h-9E-hE7" secondAttribute="centerY" id="oE4-ZG-Ry0"/>
-                                            <constraint firstAttribute="bottom" secondItem="d4h-9E-hE7" secondAttribute="bottom" constant="9" id="qEl-dY-Xoe"/>
+                                            <constraint firstItem="TOR-RH-sqb" firstAttribute="centerY" secondItem="d4h-9E-hE7" secondAttribute="centerY" constant="-2" id="oE4-ZG-Ry0"/>
+                                            <constraint firstAttribute="bottom" secondItem="d4h-9E-hE7" secondAttribute="bottom" constant="7" id="qEl-dY-Xoe"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="darkness" destination="DVG-7P-1Fc" id="Snj-ol-2MV"/>
@@ -251,16 +251,6 @@
                                                         <constraint firstAttribute="width" constant="166" id="mp2-hs-mTG"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kayla Itsines" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhI-Ba-aay">
-                                                    <rect key="frame" x="10" y="204" width="142" height="47"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="142" id="V81-ud-hcR"/>
-                                                        <constraint firstAttribute="height" constant="47" id="uqf-pQ-pes"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14h ago" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0a-Ln-f45">
                                                     <rect key="frame" x="10" y="247" width="151" height="15"/>
                                                     <constraints>
@@ -269,6 +259,16 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kayla Itsines" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhI-Ba-aay">
+                                                    <rect key="frame" x="12" y="204" width="142" height="47"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="142" id="V81-ud-hcR"/>
+                                                        <constraint firstAttribute="height" constant="47" id="uqf-pQ-pes"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1542,7 +1542,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hQ-Id-C0U">
-                                <rect key="frame" x="311" y="19.5" width="50" height="50"/>
+                                <rect key="frame" x="311" y="19" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Iz3-Da-giy"/>
                                     <constraint firstAttribute="width" constant="50" id="fgY-Pg-XTu"/>
@@ -3879,7 +3879,7 @@
         <segue reference="FNQ-2Z-Lgo"/>
         <segue reference="6LR-m8-1a6"/>
         <segue reference="zF5-ec-aup"/>
-        <segue reference="hE5-9B-jLW"/>
+        <segue reference="gwA-QQ-3Vd"/>
         <segue reference="7Es-kF-ufi"/>
         <segue reference="MUN-A5-iHb"/>
     </inferredMetricsTieBreakers>
