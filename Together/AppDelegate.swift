@@ -283,44 +283,104 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        if let incomingURL = userActivity.webpageURL {
+            
+            let linkhandled =  DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (dynamiclink, error) in
+                
+                if let dynamiclink = dynamiclink, let _ = dynamiclink.url {
+                    
+                    self.handleIncomingDynamicLink(dynamicLink: dynamiclink)
+                }
+                
+
+            }
+            return linkhandled
+
+        }
+        
+        return false
+    }
+    
+    func handleIncomingDynamicLink(dynamicLink: DynamicLink) {
+        
+        print("Shit \(dynamicLink.url)")
+        
+        let fileName = dynamicLink.url?.absoluteString
+        let fileArray = fileName?.components(separatedBy: "/")
+        let finalFileName = fileArray?.last
+        
+
+        
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Profiles") as UIViewController
+        
+        print(finalFileName)
+        print(selectedid)
+        
+        selectedid = finalFileName!.replacingOccurrences(of: "/", with: "", options: NSString.CompareOptions.literal, range: nil)
+        
+        print(finalFileName)
+        print(selectedid)
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialViewControlleripad
+        self.window?.makeKeyAndVisible()
+        
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        
+        return application(app, open: url,
+                           sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                           annotation: "")
+    }
+    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-        print ("\(url)")
-        print ("\(url.host!)")
-        print ("\(url.path)")
         
-        let urlPath : String = url.path as String!
-        
-        let urlHost : String = url.host as String!
-        
-        if urlHost == "Profiles" {
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            // Handle the deep link. For example, show the deep-linked content or
+            // apply a promotional offer to the user's account.
+            // ...
+            
+            print ("\(url)")
+            print ("\(url.host!)")
+            print ("\(url.path)")
+            
+            
+            let urlPath : String = url.path as String!
+            
+            let urlHost : String = url.host as String!
             
             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Profiles") as UIViewController
+                let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Profiles") as UIViewController
+                
+                print(urlPath)
+                print(selectedid)
+                
+                selectedid = urlPath.replacingOccurrences(of: "/", with: "", options: NSString.CompareOptions.literal, range: nil)
+                
+                print(urlPath)
+                print(selectedid)
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = initialViewControlleripad
+                self.window?.makeKeyAndVisible()
+                
+                return true
+                
+            }
             
-            print(urlPath)
-            print(selectedid)
-            
-            selectedid = urlPath.replacingOccurrences(of: "/", with: "", options: NSString.CompareOptions.literal, range: nil)
-
-            print(urlPath)
-            print(selectedid)
-            
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = initialViewControlleripad
-            self.window?.makeKeyAndVisible()
-            
-            return true
-            
-        } else {
-            
-            return true
-            
+                return true
         }
+        
+
     }
+    
+ 
 
 
-}
 
 extension AppDelegate: RCPurchasesDelegate {
     func purchases(_ purchases: RCPurchases, completedTransaction transaction: SKPaymentTransaction, withUpdatedInfo purchaserInfo: RCPurchaserInfo) {
