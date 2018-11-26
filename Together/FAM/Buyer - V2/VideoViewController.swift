@@ -38,13 +38,16 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lowercasename = selectedname
+
         if selectedname == "" {
             
             queryforname()
             
             linkedin = true
             
-            
+            tapback.alpha = 0
+
         } else {
             
             linkedin = false
@@ -53,9 +56,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
 
         }
         
-        lowercasename = selectedname
         
-        selectedshareurl = "jointhefam://Profiles/\(selectedid)"
 
         activityIndicator.color = mypink
 
@@ -182,6 +183,13 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
             }
             
+
+            if var author2 = value?["Domain"] as? String {
+                
+                selectedshareurl = author2
+                
+            }
+            
         })
         
     }
@@ -235,7 +243,11 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
                 print(functioncounter)
                 
-                
+                if var author2 = value?["Domain"] as? String {
+                    
+                    selectedshareurl = author2
+                    
+                }
                 
                 if functioncounter == videoids.count {
                     

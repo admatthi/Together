@@ -482,8 +482,7 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         thumbnailview.layer.cornerRadius = 5.0
         thumbnailview.layer.masksToBounds = true
         
-        shareurl.text = "jointhefam://Profiles/\(uid)"
-        selectedshareurl = "jointhefam://Profiles/\(uid)"
+
         requestlabel.addCharacterSpacing()
         ref = Database.database().reference()
         
@@ -577,6 +576,11 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
                 selectedsubs = author2
             }
             
+            if var author2 = value?["Domain"] as? String {
+                
+                selectedshareurl = author2
+                self.shareurl.text = selectedshareurl
+            }
             
             
             if var author2 = value?["Price"] as? String {

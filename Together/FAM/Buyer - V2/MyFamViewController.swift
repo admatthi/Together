@@ -239,18 +239,9 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
             cell.textlabel.text = mynames[myprojectids[indexPath.row]]
             
             cell.thumbnail.image = myimages[myprojectids[indexPath.row]]
-//            cell.subscribers.text = "\(mysubscribers[myprojectids[indexPath.row]]!) subscribers"
+            cell.subscribers.text = "\(mysubscribers[myprojectids[indexPath.row]]!) subscribers"
             
-            if uid == "YLFsqzCdigQfciZmPmgfqxHpEN13" {
-                
-                cell.subscribers.text = "Approved"
-
-                
-            } else {
-                
-                cell.subscribers.text = "Requested"
-
-            }
+       
 
             
         } else {

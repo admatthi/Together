@@ -13,6 +13,7 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
+import FirebaseDynamicLinks
 
 class CreateAPlanViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
@@ -183,13 +184,62 @@ class CreateAPlanViewController: UIViewController, UITextFieldDelegate, UITextVi
                 let thirtyDaysAfterToday = Calendar.current.date(byAdding: .day, value: +30, to: date)!
                 let thirty = dateFormatter.string(from: thirtyDaysAfterToday)
                 
-                //                self.addstaticbooks()
-                ref?.child("Influencers").child(uid).updateChildValues(["Subscribers" : "0", "Approved" : "True", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : "24", "Purchase" : "-", "Price" : "20"])
+                guard let link = URL(string: "https://www.joinmyfam.com/\(uid)") else { return }
+                let dynamicLinksDomain = "joinmyfam.page.link"
+                let linkBuilder = DynamicLinkComponents(link: link, domain: dynamicLinksDomain)
+                linkBuilder.iOSParameters = DynamicLinkIOSParameters(bundleID: "com.aatech.Fam")
+                linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "com.example.android")
                 
-                ref?.child("Users").child(uid).updateChildValues(["Approved" : "True"])
+                
+                    ref?.child("Users").child(uid).updateChildValues(["Approved" : "True"])
+                
+                
+                
+                
+                linkBuilder.iOSParameters?.fallbackURL = URL(string: "https://www.joinmyfam.com/\(uid)")
+                
+                var myurl = String()
+                
+                guard let longDynamicLink = linkBuilder.url else { return }
                 
 
-                self.performSegue(withIdentifier: "CreateToYourChannel", sender: self)
+                
+                linkBuilder.shorten { (shortURL, warnings, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    print("The short URL is: \(shortURL)")
+                    
+                    ref?.child("Influencers").child(uid).updateChildValues(["Subscribers" : "0", "Approved" : "True", "Name" : self.inputname, "ProPic" : "https://firebasestorage.googleapis.com/v0/b/deploy-141ca.appspot.com/o/Placeholder.png?alt=media&token=d8e17ae6-6b59-4865-9f2b-bab8c08db233", "Email" : self.email, "Password" : self.password, "Domain" : shortURL!.absoluteString, "Purchase" : "-", "Price" : "20"])
+
+                    selectedshareurl = (shortURL?.absoluteString)!
+                    self.performSegue(withIdentifier: "CreateToYourChannel", sender: self)
+
+                    // TODO: Handle shortURL.
+                }
+                
+
+//                print("The long URL is: \(longDynamicLink)")
+//                myurl = url.absoluteString
+//
+//                linkBuilder.shorten() { url, warnings, error in
+//                    guard let url = url, error != nil else {
+//
+//                        print(error)
+//
+//
+//
+////
+//                        return
+//
+//                    }
+//
+//
+//                }
+                //                self.addstaticbooks()
+                
+        
                 
 
                 

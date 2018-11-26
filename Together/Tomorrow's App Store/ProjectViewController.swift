@@ -27,7 +27,7 @@ var selectedprojectid = String()
 
 class ProjectViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource  {
 
-    var purchases = RCPurchases(apiKey: "CtGggTihmnxBAjLMnrzaYrSdGVjXtYHo")
+    var purchases = RCPurchases(apiKey: "FGJnVYVvOyPbLGjantsVNfffhvDwnyGz")
 
     
     @IBOutlet weak var titlelabel: UILabel!

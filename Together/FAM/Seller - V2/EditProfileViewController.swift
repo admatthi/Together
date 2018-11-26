@@ -40,7 +40,6 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         dateFormatter.dateFormat = "MMM dd"
         
-        selectedshareurl = "jointhefam://Profiles/\(uid)"
 
         thisdate = dateFormatter.string(from: date)
         
@@ -229,6 +228,12 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                     self.programname.text = author2
                     selectedprogramname = author2
                     self.programname.addCharacterSpacing()
+                }
+                
+                if var author2 = value?["Domain"] as? String {
+                    
+                    selectedshareurl = author2
+                    
                 }
                 
                 if var author2 = value?["Times"] as? String {

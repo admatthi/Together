@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKAppEvents.activateApp()
         
         UXCam.start(withKey: "8921dd89a4b98a3")
-        purchases = RCPurchases(apiKey: "CtGggTihmnxBAjLMnrzaYrSdGVjXtYHo")
+        purchases = RCPurchases(apiKey: "FGJnVYVvOyPbLGjantsVNfffhvDwnyGz")
         
         purchases!.delegate = self
         
@@ -101,25 +101,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func letsgo() {
         
-    
-        
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Login") as UIViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewControlleripad
-        self.window?.makeKeyAndVisible()
-        
         if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
             
-
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "BuyerLogin") as UIViewController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewControlleripad
+            self.window?.makeKeyAndVisible()
+            
         } else {
             
-            let currentUser = Auth.auth().currentUser
+            ref?.child("Users").child(uid).child("Requested").child(selectedid).updateChildValues(["Title" : "x"])
             
-            uid = (currentUser?.uid)!
-        ref?.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title" : "x"])
-
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "MyFam") as UIViewController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewControlleripad
+            self.window?.makeKeyAndVisible()
         }
 
     }
@@ -329,52 +327,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+
         
-        return application(app, open: url,
-                           sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                           annotation: "")
-    }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-        
-        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
-            // Handle the deep link. For example, show the deep-linked content or
-            // apply a promotional offer to the user's account.
-            // ...
-            
-            print ("\(url)")
-            print ("\(url.host!)")
-            print ("\(url.path)")
-            
-            
-            let urlPath : String = url.path as String!
-            
-            let urlHost : String = url.host as String!
-            
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Profiles") as UIViewController
-                
-                print(urlPath)
-                print(selectedid)
-                
-                selectedid = urlPath.replacingOccurrences(of: "/", with: "", options: NSString.CompareOptions.literal, range: nil)
-                
-                print(urlPath)
-                print(selectedid)
-                
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                self.window?.rootViewController = initialViewControlleripad
-                self.window?.makeKeyAndVisible()
-                
-                return true
-                
-            }
-            
-                return true
-        }
-        
+//        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+//            // Handle the deep link. For example, show the deep-linked content or
+//            // apply a promotional offer to the user's account.
+//            // ...
+//
+//            print ("\(url)")
+//            print ("\(url.host!)")
+//            print ("\(url.path)")
+//
+//
+//            let urlPath : String = url.path as String!
+//
+//            let urlHost : String = url.host as String!
+//
+//            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Profiles") as UIViewController
+//
+//                print(urlPath)
+//                print(selectedid)
+//
+//                selectedid = urlPath.replacingOccurrences(of: "/", with: "", options: NSString.CompareOptions.literal, range: nil)
+//
+//                print(urlPath)
+//                print(selectedid)
+//
+//                self.window = UIWindow(frame: UIScreen.main.bounds)
+//                self.window?.rootViewController = initialViewControlleripad
+//                self.window?.makeKeyAndVisible()
+//
+//                return true
+//
+//            }
+//
+//                return true
+//        }
+//
 
     }
     

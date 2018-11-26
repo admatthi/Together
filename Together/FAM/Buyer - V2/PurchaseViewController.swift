@@ -32,7 +32,7 @@ class PurchaseViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var purchases = RCPurchases(apiKey: "CtGggTihmnxBAjLMnrzaYrSdGVjXtYHo")
+    var purchases = RCPurchases(apiKey: "FGJnVYVvOyPbLGjantsVNfffhvDwnyGz")
     
     @IBAction func tapLogin(_ sender: Any) {
         
@@ -41,26 +41,14 @@ class PurchaseViewController: UIViewController {
         
         FBSDKAppEvents.logEvent("Trial Pressed")
 
-//        purchases.entitlements { entitlements in
-//            guard let pro = entitlements?["Subscriptions"] else { return }
-//            guard let monthly = pro.offerings["\(selectedprice)price"] else { return }
-//            guard let product = monthly.activeProduct else { return }
-//            self.purchases.makePurchase(product)
-//
-//
-//        }
+        purchases.entitlements { entitlements in
+            guard let pro = entitlements?["Subscriptions"] else { return }
+            guard let monthly = pro.offerings["Monthly"] else { return }
+            guard let product = monthly.activeProduct else { return }
+            self.purchases.makePurchase(product)
 
-        if Auth.auth().currentUser == nil {
 
-            self.performSegue(withIdentifier: "PurchaseToCreate", sender: self)
-
-            
-        } else {
-            ref?.child("Users").child(uid).child("Requested").child(selectedid).updateChildValues(["Title" : "x"])
-
-                self.performSegue(withIdentifier: "PurchaseToHome2", sender: self)
         }
-
         
     }
     
@@ -101,7 +89,7 @@ class PurchaseViewController: UIViewController {
                  if var author2 = value?["Price"] as? String {
                     
                     selectedprice = author2
-                    self.pricelabel.text = "$\(selectedprice)/mo"
+                    self.requestlabel.text = "Subscribe for $\(selectedprice)/mo"
                     
                     self.termsbs.text = "Account will be charged for renewal within 24-hours prior to the end of the current period for $\(selectedprice). Payment will be charged to iTunes Account at confirmation of purchase. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where applicable To learn more, check out our terms of use."
                 }
