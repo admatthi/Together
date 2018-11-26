@@ -67,15 +67,18 @@ class WatchViewController: UIViewController {
     }
     @IBOutlet weak var tapdelete: UIButton!
     var counter = 0
-    var vids = [URL]()
+    var vids = [String:URL]()
     
+    @IBOutlet weak var progressView: UIProgressView!
     @IBAction func tapRight(_ sender: Any) {
         
+ 
         tapnext()
         
     }
     @IBAction func tapLeft(_ sender: Any) {
         
+    
          tapleft()
     }
     
@@ -83,12 +86,29 @@ class WatchViewController: UIViewController {
         
         if counter < vids.count-1 {
             
+            playerView.player!.replaceCurrentItem(with: nil)
+
             print(counter)
             
             counter += 1
             
+            let progress = (Float(counter)/Float(vids.count-1))
+            self.progressView.setProgress(Float(progress), animated:true)
+            
+            
+            self.tv3.text = textviewdics[vidids[counter]]
+            
+            if textviewdics[vidids[counter]] != " " {
+                
+                tv3.alpha = 1
+                
+            } else {
+                
+                tv3.alpha = 0
+            }
+            
             let playerVC = AVPlayerViewController()
-            self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[counter]))
+            self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[vidids[counter]]!))
             
             
             self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
@@ -109,10 +129,22 @@ class WatchViewController: UIViewController {
             
             counter -= 1
             
+            if textviewdics[vidids[counter]] != " " {
+                
+                tv3.alpha = 1
+                
+            } else {
+                
+                tv3.alpha = 0
+            }
+            
+            playerView.player!.replaceCurrentItem(with: nil)
+
             let playerVC = AVPlayerViewController()
-            self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[counter]))
+            self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[vidids[counter]]!))
             
-            
+            let progress = (Float(counter)/Float(vids.count-1))
+            self.progressView.setProgress(Float(progress), animated:true)
             self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
             
             self.playerView.playerLayer.player = self.avPlayer
@@ -176,6 +208,8 @@ class WatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textviewdics.removeAll()
+        
         vids.removeAll()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(WatchViewController.playerItemDidReachEnd),
@@ -185,13 +219,15 @@ class WatchViewController: UIViewController {
         
         ref = Database.database().reference()
 
-        influencername.text = lowercasename
-        videotitle.text = selectedtitle
+        influencername.text = selectedtitle
+        videotitle.text = "\(selecteddaytitle)"
         profileimage.image = myselectedimage
         
         profileimage.layer.masksToBounds = true
         profileimage.layer.cornerRadius = 5.0
+        tv3.textColor = UIColor.white
         
+        tv3.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
         
         queryforids { () -> () in
         
@@ -214,6 +250,9 @@ class WatchViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    var textviewdics = [String:String]()
+    
+    @IBOutlet weak var tv3: UILabel!
     var vidids = [String]()
     func queryforids(completed: @escaping (() -> ()) ) {
         
@@ -231,7 +270,7 @@ class WatchViewController: UIViewController {
                     
                     let ids = each.key
                     
-                    if ids != "Date" && ids != "Thumbnail" && ids != "Title" {
+                    if ids != "Date" && ids != "Thumbnail" && ids != "Title" && ids != "DayTitle" {
                         
                         self.vidids.append(ids)
                     
@@ -269,23 +308,34 @@ class WatchViewController: UIViewController {
                 print(each)
                 var value = snapshot.value as? NSDictionary
                 
+                if var author2 = value?["Title"] as? String {
+                    
+                    self.textviewdics[each] = author2
+                    self.tv3.alpha = 1
+                    self.tv3.text = self.textviewdics[self.vidids[0]]
+
+                } else {
+                    
+                    self.textviewdics[each] = " "
+                    self.tv3.alpha = 0
+
+                }
                 if var author2 = value?["URL"] as? String {
                     
                     let videourl = URL(string: author2)
 
-                    self.vids.append(videourl!)
+                    self.vids[each] = videourl!
 
                 
                     if self.vids.count == 1 {
 
 
                     
-                    self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[0]))
+                        self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[self.vidids[0]]!))
                         print(each)
                         print(videourl)
                         print(self.vids)
                     self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                    
                     self.playerView.playerLayer.player = self.avPlayer
                     
                     self.playerView.player?.play()

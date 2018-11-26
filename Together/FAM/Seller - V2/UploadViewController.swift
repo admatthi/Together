@@ -32,22 +32,37 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     var vids = [URL]()
 
     var uploadcounter = 1234
-    
+    var subtitletext = String()
+    var textview3 = String()
     @IBAction func tapShare(_ sender: Any) {
         
+        counter = 0
         tapcancel.alpha = 0
         tapshare.alpha = 0
         tv2.alpha = 0
+        tapshowtv.alpha = 0
+        tv3.alpha = 0
+        subtitle.alpha = 0
         var snaplabel = String()
         
+        if subtitle.text != "" {
+            
+            subtitletext = subtitle.text!
+            
+            } else {
+            
+            subtitletext = " "
+        }
         if tv2.text != "" {
             
             snaplabel = tv2.text!
+            
             
         } else {
             
             snaplabel = " "
         }
+        
         headerlabel.text = "Uploading...This May Take A Moment."
         headerlabel.alpha = 1
 //        headerlabel.addCharacterSpacing()
@@ -135,20 +150,22 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 
 //                self.strDate = dateFormatter.string(from: date)
-                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).child("\(self.uploadcounter)").updateChildValues(["URL" : mystring2, ])
+                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).child("\(self.uploadcounter)").updateChildValues(["URL" : mystring2, "Title" : self.textviewdics[self.counter]])
 
-            ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Title" : snaplabel, "Date" : thisdate])
+                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Title" : snaplabel, "Date" : thisdate, "DayTitle" : self.subtitletext])
 
                 if self.uploadcounter == 1234 {
                     
                     self.loadthumbnail()
                     
                     self.uploadcounter += 1
+                    self.counter += 1
 
                 } else {
                     
                     self.uploadcounter += 1
-
+                    self.counter += 1
+                    
                     if self.uploadcounter == (1234 + self.vids.count) {
                         
                         self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
@@ -288,7 +305,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             
 //            getThumbnailFrom(path: videoURL as! URL)
             tv2.alpha = 0
-
+            subtitle.alpha = 0
+            tv3.alpha = 0
+            tapshowtv.alpha = 0
             playerView.player?.play()
 
 //            let item = AVPlayerItem(asset: asset)
@@ -326,8 +345,10 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBAction func tapCancel(_ sender: Any) {
         
         self.tabBarController?.tabBar.isHidden = false
-
+        tv3.alpha = 0
+        tapshowtv.alpha = 0
         tv2.alpha = 0
+        subtitle.alpha = 0
         tapcancel.alpha = 0
         tapshare.alpha = 0
 //        tapnew.alpha = 1
@@ -345,6 +366,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     var selectedItems = [YPMediaItem]()
 
+    @IBOutlet weak var subtitle: UITextView!
     @IBOutlet weak var programname: UILabel!
     @IBAction func tapBack(_ sender: Any) {
     
@@ -369,9 +391,24 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
         
     }
+    
+    var textviewdics = [Int:String]()
+    
     func tapnext() {
         
+        
         if counter < vids.count-1 {
+            
+            if tv3.text != "" {
+                
+                textviewdics[counter] = tv3.text!
+                
+            } else {
+                
+                textviewdics[counter] = " "
+                
+            }
+            
             
             counter += 1
             
@@ -385,6 +422,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             self.playerView.player?.play()
             
+            tv3.text = textviewdics[counter]
+            
             
         }
     
@@ -394,6 +433,18 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     func tapleft() {
         
         if counter > 0 && vids.count > 0 {
+            
+            
+            if tv3.text != "" {
+                
+                textviewdics[counter] = tv3.text!
+                
+            } else {
+                
+                textviewdics[counter] = " "
+                
+            }
+            
             
             counter -= 1
             
@@ -406,6 +457,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.playerView.playerLayer.player = self.avPlayer
             
             self.playerView.player?.play()
+            
+            tv3.text = textviewdics[counter]
+
         }
         
         
@@ -464,7 +518,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     let playerVC = AVPlayerViewController()
                     self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[0]))
                     
-                    
+                self.textviewdics.removeAll()
+                
+                
     self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
                     
             self.playerView.playerLayer.player = self.avPlayer
@@ -475,9 +531,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.tapnew.alpha = 0
                 self.tapcancel.alpha = 0.5
                     self.tv2.alpha = 1
+                self.subtitle.alpha = 1
+                self.tv3.alpha = 1
+                self.tapshowtv.alpha = 0
                 self.tabBarController?.tabBar.isHidden = true
                     
-                    self.counter += 1
+                self.counter += 1
 
                 }
             }
@@ -554,6 +613,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
 
+    @IBOutlet weak var tv3: UITextView!
     
     override func viewDidLoad() {
         
@@ -579,12 +639,15 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
         self.activityIndicator.alpha = 0
         self.loadinglabel.alpha = 0
-        tv2.text = "Title your post..."
+        subtitle.text = "Subtitle..."
+        subtitle.textColor = .white
+        tv2.text = "Title..."
         tv2.textColor = .white
-//        tv2.textColor = UIColor.white
+        tv3.textColor = UIColor.white
         
-//        tv2.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
-
+        tv3.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
+        tv3.alpha = 0
+        tapshowtv.alpha = 0
 
 //        tapplay.alpha = 1
         queryforinfo()
@@ -603,7 +666,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.dateFormat = "y-MM-dd H:m:ss.SSSS" //Specify your format that you want
         strDate = dateFormatter.string(from: date)
         tv2.alpha = 0
-
+        subtitle.alpha = 0
+        tapshowtv.alpha = 0
+        tv3.alpha = 0
         dateFormatter.dateFormat = "MMM dd"
 
         thisdate = dateFormatter.string(from: date)
@@ -632,24 +697,25 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
 
     @IBOutlet weak var tapshowtv: UIButton!
-//    @IBAction func tapShowTV(_ sender: Any) {
-//
-//        if tv2.alpha == 1 {
-//
-//            tv2.alpha = 0
-//            self.view.endEditing(true)
-//
-//        } else {
-//
-//            tv2.alpha = 1
-//
-//
-//            tv2.becomeFirstResponder()
-//
-//        }
-//
-//
-//    }
+    @IBAction func tapShowTV(_ sender: Any) {
+
+        if tv3.alpha == 1 {
+
+            tv3.alpha = 0
+            
+            self.view.endEditing(true)
+
+        } else {
+
+            tv3.alpha = 1
+
+
+//            tv3.becomeFirstResponder()
+
+        }
+
+
+    }
     
     @objc func playerItemDidReachEnd(notification: Notification) {
         
@@ -827,7 +893,23 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-//        textView.textAlignment = .center
+        
+        if textView.tag == 1 {
+            
+            textView.textAlignment = .center
+
+            if tv3.text != "" {
+                
+                textviewdics[counter] = tv3.text!
+
+            } else {
+                
+                textviewdics[counter] = " "
+
+            }
+        
+
+        }
 
     }
 

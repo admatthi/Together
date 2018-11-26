@@ -16,6 +16,7 @@ import FBSDKCoreKit
 import AVFoundation
 
 var selectedvideoid = String()
+var selecteddaytitle = String()
 
 class VideoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -41,16 +42,14 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         lowercasename = selectedname
 
-        if selectedname == "" {
+        if linkedin  {
             
             queryforname()
-            
-            linkedin = true
-            
+            tapback.alpha = 0
+
 
         } else {
             
-            linkedin = false
             tapback.alpha = 1
             selectedname = selectedname.uppercased()
 
@@ -136,6 +135,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         videotitles.removeAll()
         thumbnails.removeAll()
         videodates.removeAll()
+        videodaytitles.removeAll()
         ref?.child("Influencers").child(selectedid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -195,7 +195,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     var videotitles = [String:String]()
-    
+    var videodaytitles = [String:String]()
     func queryforinfo() {
         
         var functioncounter = 0
@@ -221,6 +221,11 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
                 if var author2 = value?["Title"] as? String {
                     self.videotitles[each] = author2
+                    
+                }
+                
+                if var author2 = value?["DayTitle"] as? String {
+                    self.videodaytitles[each] = author2
                     
                 }
                 
@@ -306,6 +311,8 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
 //            selectedvideo = videolinks[videoids[indexPath.row]]!
             selectedvideoid = videoids[indexPath.row]
             selectedtitle = videotitles[videoids[indexPath.row]]!
+            selecteddaytitle = videodaytitles[videoids[indexPath.row]]!
+            
             self.performSegue(withIdentifier: "VideoToWatch", sender: self)
         }
         
@@ -373,8 +380,9 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
                     
             cell.titlelabel.text = videotitles[videoids[indexPath.row]]
-            cell.timeago.text = videodates[videoids[indexPath.row]]
-            
+//            cell.timeago.text = videodates[videoids[indexPath.row]]
+            cell.timeago.text = "\(videodaytitles[videoids[indexPath.row]]!)"
+
             cell.isUserInteractionEnabled = true
             
             

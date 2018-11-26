@@ -315,7 +315,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print(finalFileName)
         print(selectedid)
-        
+        linkedin = true
         selectedid = finalFileName!.replacingOccurrences(of: "/", with: "", options: NSString.CompareOptions.literal, range: nil)
         
         print(finalFileName)

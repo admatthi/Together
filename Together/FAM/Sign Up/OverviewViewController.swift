@@ -28,8 +28,8 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
         images.append(UIImage(named: "CC2 Copy-1")!)
 
 
-        images.append(UIImage(named: "CC4 Copy-1")!)
         images.append(UIImage(named: "CC3 Copy-1")!)
+        images.append(UIImage(named: "CC4 Copy-1")!)
 
         mainimage.image = images[counter]
         

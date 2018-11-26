@@ -95,7 +95,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         videotitles.removeAll()
                 thumbnails.removeAll()
                 thumbnailurls.removeAll()
-        
+        videodaytitles.removeAll()
         collectionView.alpha = 0
         activityIndicator.alpha = 1
         activityIndicator.color = mypink
@@ -161,6 +161,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         videodescriptions.removeAll()
         videotitles.removeAll()
         thumbnails.removeAll()
+        videodaytitles.removeAll()
         
         ref?.child("Influencers").child(uid).child("Plans").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -236,6 +237,10 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                     
                 }
                 
+                if var author2 = value?["DayTitle"] as? String {
+                    self.videodaytitles[each] = author2
+                    
+                }
                 if var author2 = value?["Times"] as? String {
                     videotimes[each] = author2
                     
@@ -356,7 +361,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 //            selectedvideo = videolinks[videoids[indexPath.row]]!
             selectedvideoid = videoids[indexPath.row]
             selectedtitle = videotitles[videoids[indexPath.row]]!
-            
+            selecteddaytitle = videodaytitles[videoids[indexPath.row]]!
+
             self.performSegue(withIdentifier: "EditToWatch", sender: self)
 //        }
         
@@ -377,6 +383,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     
+    var videodaytitles = [String:String]()
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -408,8 +415,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
 
                 cell.titlelabel.text = videotitles[videoids[indexPath.row]]
-                cell.timeago.text = videodates[videoids[indexPath.row]]
-            
+            //            cell.timeago.text = videodates[videoids[indexPath.row]]
+            cell.timeago.text = "\(videodaytitles[videoids[indexPath.row]]!)"
                 
         } else {
             
