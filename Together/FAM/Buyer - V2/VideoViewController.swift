@@ -26,6 +26,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             self.performSegue(withIdentifier: "VideoToExplore", sender: self)
             
         } else {
+            
                 self.dismiss(animated: true, completion: {
         
                 })
@@ -46,7 +47,6 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             
             linkedin = true
             
-            tapback.alpha = 0
 
         } else {
             
@@ -344,7 +344,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
             
         }
         let myWebsite = NSURL(string: selectedshareurl)
-        let shareAll : Array = [text , image , myWebsite] as [Any]
+        let shareAll : Array = [myWebsite] as [Any]
         
         
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
