@@ -330,7 +330,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 
         }
         let myWebsite = NSURL(string: selectedshareurl)
-        let shareAll : Array = [text , image , myWebsite] as [Any]
+        let shareAll : Array = [myWebsite] as [Any]
         
         
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
