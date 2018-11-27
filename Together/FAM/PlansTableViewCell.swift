@@ -27,6 +27,8 @@ class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var minipic: UIImageView!
     @IBOutlet weak var playerView: PlayerViewClass!
 
+    @IBOutlet weak var timeago: UILabel!
+    @IBOutlet weak var titlelabel: UILabel!
     @IBOutlet weak var tapaddstory: UIButton!
     @IBOutlet weak var tapcircle: UIButton!
     @IBOutlet weak var lockimage: UIImageView!
@@ -36,20 +38,20 @@ class PlansTableViewCell: UITableViewCell {
     @IBOutlet weak var daylabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        tapjoin.layer.cornerRadius = 15.0
-        tapjoin.layer.masksToBounds = true
-        
-                profilepic.layer.masksToBounds = false
-                profilepic.layer.cornerRadius = profilepic.frame.height/2
-                profilepic.clipsToBounds = true
-        
-        minipic.layer.masksToBounds = false
-        minipic.layer.cornerRadius = minipic.frame.height/2
-        minipic.clipsToBounds = true
-        tapaddstory.layer.masksToBounds = false
-        tapaddstory.layer.cornerRadius = tapaddstory.frame.height/2
-        tapaddstory.clipsToBounds = true
+//        
+//        tapjoin.layer.cornerRadius = 15.0
+//        tapjoin.layer.masksToBounds = true
+//        
+//                profilepic.layer.masksToBounds = false
+//                profilepic.layer.cornerRadius = profilepic.frame.height/2
+//                profilepic.clipsToBounds = true
+//        
+//        minipic.layer.masksToBounds = false
+//        minipic.layer.cornerRadius = minipic.frame.height/2
+//        minipic.clipsToBounds = true
+//        tapaddstory.layer.masksToBounds = false
+//        tapaddstory.layer.cornerRadius = tapaddstory.frame.height/2
+//        tapaddstory.clipsToBounds = true
         
         // Initialization code
     }

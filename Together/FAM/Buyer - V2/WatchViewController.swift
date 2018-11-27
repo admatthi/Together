@@ -98,16 +98,16 @@ class WatchViewController: UIViewController {
             self.progressView.setProgress(Float(progress), animated:true)
             
             
-            self.tv3.text = textviewdics[vidids[counter]]
-            
-            if textviewdics[vidids[counter]] != " " {
-                
-                tv3.alpha = 1
-                
-            } else {
-                
-                tv3.alpha = 0
-            }
+//            self.tv3.text = textviewdics[vidids[counter]]
+//
+//            if textviewdics[vidids[counter]] != " " {
+//
+//                tv3.alpha = 1
+//
+//            } else {
+//
+//                tv3.alpha = 0
+//            }
             
             let playerVC = AVPlayerViewController()
             self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:vids[vidids[counter]]!))
@@ -133,16 +133,16 @@ class WatchViewController: UIViewController {
             
             counter -= 1
             
-            self.tv3.text = textviewdics[vidids[counter]]
-
-            if textviewdics[vidids[counter]] != " " {
-                
-                tv3.alpha = 1
-                
-            } else {
-                
-                tv3.alpha = 0
-            }
+//            self.tv3.text = textviewdics[vidids[counter]]
+//
+//            if textviewdics[vidids[counter]] != " " {
+//
+//                tv3.alpha = 1
+//
+//            } else {
+//
+//                tv3.alpha = 0
+//            }
             
             playerView.player!.replaceCurrentItem(with: nil)
 
@@ -212,10 +212,15 @@ class WatchViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var datelabel: UILabel!
+    @IBOutlet weak var titlelabel: UILabel!
     var avPlayer = AVPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titlelabel.sizeToFit()
+        titlelabel.text = selectedtitle
+        datelabel.text = selecteddate
         textviewdics.removeAll()
         
         vids.removeAll()
@@ -224,26 +229,27 @@ class WatchViewController: UIViewController {
                                                name: Notification.Name.AVPlayerItemDidPlayToEndTime,
                                                object: avPlayer.currentItem)
         
-        tv3.textAlignment = .center
+//        tv3.textAlignment = .center
 
         
         ref = Database.database().reference()
-
-        influencername.text = selectedtitle
-        videotitle.text = "\(selecteddaytitle)"
-        profileimage.image = myselectedimage
-        
-        profileimage.layer.masksToBounds = true
-        profileimage.layer.cornerRadius = 5.0
-        tv3.textColor = UIColor.white
-        
-        tv3.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
+//
+//        influencername.text = selectedtitle
+//        videotitle.text = "\(selecteddaytitle)"
+//        profileimage.image = myselectedimage
+//
+//        profileimage.layer.masksToBounds = true
+//        profileimage.layer.cornerRadius = 5.0
+//        tv3.textColor = UIColor.white
+//
+//        tv3.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
         
         queryforids { () -> () in
         
             self.queryforinfo()
         
         }
+        
         
 
         if uid == selectedid {
@@ -253,11 +259,41 @@ class WatchViewController: UIViewController {
         } else {
             
             tapdelete.alpha = 0
-            tapwelcome.alpha = 0
+//            tapwelcome.alpha = 0
         }
         
-
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(WatchViewController.handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(WatchViewController.handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(WatchViewController.handleGesture))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(WatchViewController.handleGesture))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            
+            tapleft()
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            tapnext()
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.up {
+            print("Swipe Up")
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.down {
+            print("Swipe Down")
+        }
     }
     
     var textviewdics = [String:String]()
@@ -320,14 +356,14 @@ class WatchViewController: UIViewController {
                 
                 if var author2 = value?["Title"] as? String {
                     
-                    self.textviewdics[each] = author2
-                    self.tv3.alpha = 1
-                    self.tv3.text = self.textviewdics[self.vidids[0]]
+//                    self.textviewdics[each] = author2
+//                    self.tv3.alpha = 1
+//                    self.tv3.text = self.textviewdics[self.vidids[0]]
 
                 } else {
                     
-                    self.textviewdics[each] = " "
-                    self.tv3.alpha = 0
+//                    self.textviewdics[each] = " "
+//                    self.tv3.alpha = 0
 
                 }
                 if var author2 = value?["URL"] as? String {
