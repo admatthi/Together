@@ -133,6 +133,8 @@ class WatchViewController: UIViewController {
             
             counter -= 1
             
+            self.tv3.text = textviewdics[vidids[counter]]
+
             if textviewdics[vidids[counter]] != " " {
                 
                 tv3.alpha = 1
@@ -160,11 +162,13 @@ class WatchViewController: UIViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         
+        playerView.player!.replaceCurrentItem(with: nil)
+
         if playerView.player?.isPlaying == true {
             
             playerView.player?.pause()
             
-        NotificationCenter.default.removeObserver(Notification.Name.AVPlayerItemDidPlayToEndTime)
+            NotificationCenter.default.removeObserver(Notification.Name.AVPlayerItemDidPlayToEndTime)
         }
     }
     
