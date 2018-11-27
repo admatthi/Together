@@ -37,7 +37,8 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
-        
+        queryforhighlevelinfo()
+
         dateFormatter.dateFormat = "MMM dd"
         
 
@@ -101,7 +102,6 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         activityIndicator.color = mypink
         activityIndicator.startAnimating()
         
-//        queryforhighlevelinfo()
         
         queryforids { () -> () in
             
@@ -144,6 +144,23 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 //        }
         
       
+        
+    }
+    
+    func queryforhighlevelinfo() {
+        
+        ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if var author2 = value?["Domain"] as? String {
+                
+                selectedshareurl = author2
+                
+            }
+            
+        })
+        
         
     }
     @IBOutlet weak var errorlabel: UILabel!
@@ -231,11 +248,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                     self.programname.addCharacterSpacing()
                 }
                 
-                if var author2 = value?["Domain"] as? String {
-                    
-                    selectedshareurl = author2
-                    
-                }
+              
                 
                 if var author2 = value?["DayTitle"] as? String {
                     self.videodaytitles[each] = author2
@@ -334,6 +347,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             image = UIImage(named: "FamLogo")!
 
         }
+        
         let myWebsite = NSURL(string: selectedshareurl)
         let shareAll : Array = [myWebsite] as [Any]
         
