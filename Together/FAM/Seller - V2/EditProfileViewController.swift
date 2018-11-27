@@ -24,6 +24,7 @@ var selectedshareurl = String()
 
 class EditProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate   {
 
+    @IBOutlet weak var lilthumbnail: UIImageView!
     @IBOutlet weak var programname: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         programname.text = selectedname.uppercased()
         programname.addCharacterSpacing()
-        
+        programname.sizeToFit()
         
         //        tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -134,6 +135,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             activityIndicator.color = mypink
             activityIndicator.startAnimating()
 //
+        lilthumbnail.layer.masksToBounds = false
+        lilthumbnail.layer.cornerRadius = lilthumbnail.frame.height/2
+        lilthumbnail.clipsToBounds = true
         
             queryforids { () -> () in
                 
@@ -158,6 +162,39 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
                 selectedshareurl = author2
                 
             }
+            
+            if var author2 = value?["Name"] as? String {
+                
+                selectedname = author2
+                self.programname.text = selectedname.uppercased()
+                self.programname.addCharacterSpacing()
+                self.programname.sizeToFit()
+
+            }
+            
+            if var profileUrl2 = value?["ProPic"] as? String {
+                // Create a storage reference from the URL
+                
+                
+                if profileUrl2 == "" {
+                    
+                    self.lilthumbnail.alpha = 0
+                    
+                } else {
+                    
+                    self.lilthumbnail.alpha = 1
+
+                    let url = URL(string: profileUrl2)
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    selectedimage = UIImage(data: data!)!
+                    
+                    self.lilthumbnail.image = selectedimage
+                    
+                }
+                
+                
+            }
+            
             
         })
         
@@ -412,16 +449,7 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
             collectionView.alpha = 1
             
             cell.darkness.alpha = 0
-//            if indexPath.row == 0 {
-//
-//                cell.thumbnail.image = thumbnails["0"]
-//                cell.titlelabel.text = "Welcome!"
-////                cell.timeago.text = "\(selectedsubs)"
-//                cell.whitelabel.alpha = 0
-//                cell.isUserInteractionEnabled = true
-//
-//            } else {
-//
+
                 self.collectionView.alpha = 1
                 activityIndicator.alpha = 0
                 activityIndicator.stopAnimating()

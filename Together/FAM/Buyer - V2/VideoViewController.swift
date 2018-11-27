@@ -65,6 +65,13 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         errorlabel.alpha = 0
         programname.text = selectedname
         programname.addCharacterSpacing()
+        programname.sizeToFit()
+        
+        lilthumbnail.layer.masksToBounds = false
+        lilthumbnail.layer.cornerRadius = lilthumbnail.frame.height/2
+        lilthumbnail.clipsToBounds = true
+        
+        lilthumbnail.image = myselectedimage
         //        tableView.rowHeight = UITableViewAutomaticDimension
         
         //        cta.text = "Join \(firstname)'s FAM"
@@ -168,6 +175,7 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
         })
     }
     
+    @IBOutlet weak var lilthumbnail: UIImageView!
     func queryforname() {
         
         ref?.child("Influencers").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -183,7 +191,30 @@ class VideoViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
             }
             
-
+            
+            if var profileUrl2 = value?["ProPic"] as? String {
+                // Create a storage reference from the URL
+                
+                
+                if profileUrl2 == "" {
+                    
+                    self.lilthumbnail.alpha = 0
+                    
+                } else {
+                    
+                    self.lilthumbnail.alpha = 1
+                    
+                    let url = URL(string: profileUrl2)
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    selectedimage = UIImage(data: data!)!
+                    
+                    self.lilthumbnail.image = selectedimage
+                    
+                }
+                
+                
+            }
+            
             if var author2 = value?["Domain"] as? String {
                 
                 selectedshareurl = author2
