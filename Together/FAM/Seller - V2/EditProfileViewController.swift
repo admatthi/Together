@@ -416,8 +416,9 @@ class EditProfileViewController: UIViewController, UICollectionViewDataSource, U
 
                 cell.titlelabel.text = videotitles[videoids[indexPath.row]]
             //            cell.timeago.text = videodates[videoids[indexPath.row]]
-            cell.timeago.text = "\(videodaytitles[videoids[indexPath.row]]!)"
-                
+                cell.timeago.text = videodaytitles[videoids[indexPath.row]]
+            
+            
         } else {
             
             collectionView.alpha = 0

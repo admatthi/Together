@@ -34,6 +34,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     var uploadcounter = 1234
     var subtitletext = String()
     var textview3 = String()
+    var snaplabel = String()
+
     @IBAction func tapShare(_ sender: Any) {
         
         counter = 0
@@ -43,7 +45,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         tapshowtv.alpha = 0
         tv3.alpha = 0
         subtitle.alpha = 0
-        var snaplabel = String()
         
         if subtitle.text != "" {
             
@@ -80,27 +81,22 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         activityIndicator.startAnimating()
         loadinglabel.alpha = 1
         
-        for each in vids {
+        self.loadthumbnail()
         
-        if vids.count > 0 {
+        for each in vids {
+            
+//        videoURL = vids[counter] as NSURL
             
         videoURL = each as NSURL
+
             
         let data = Data()
-        
-        // Create a reference to the file you want to upload
-        
-//        let localFile  = URL(string: )!
 
 
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let currentUser = Auth.auth().currentUser
-        
-//        let metaData = StorageMetadata()
-//
-//        metaData.contentType = "image/jpg"
-        
+
         uid = (currentUser?.uid)!
         
         let date = Date()
@@ -146,43 +142,30 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                
                 print(downloadURL)
                 
-                let mystring2 = downloadURL.absoluteString
+                let mystring4 = downloadURL.absoluteString
 
+                var selectedindex = self.vids.firstIndex(of: each)
+                var storedvalue = String(selectedindex!+1234)
+                print(storedvalue)
+                print(selectedindex)
 
 //                self.strDate = dateFormatter.string(from: date)
-                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).child("\(self.uploadcounter)").updateChildValues(["URL" : mystring2, "Title" : self.textviewdics[self.counter]])
-
-                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Title" : snaplabel, "Date" : thisdate, "DayTitle" : self.subtitletext])
-
-                if self.uploadcounter == 1234 {
-                    
-                    self.loadthumbnail()
-                    
-                    self.uploadcounter += 1
-                    self.counter += 1
-
-                } else {
-                    
-                    self.uploadcounter += 1
+                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).child(storedvalue).updateChildValues(["URL" : mystring4, "Title" : self.textviewdics[self.counter]])
+                
                     self.counter += 1
                     
-                    if self.uploadcounter == (1234 + self.vids.count) {
+                    if self.counter == self.vids.count {
                         
                         self.performSegue(withIdentifier: "SegueTo2nd", sender: self)
                         
                     }
-                    
-                }
                 
+            }
                 
-           
-                
-                }
             }
         }
-            
-        }
     }
+    
     var strDate = String()
     func loadthumbnail() {
         
@@ -206,6 +189,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         metaData.contentType = "image/jpg"
         
+        ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Title" : snaplabel, "Date" : thisdate, "DayTitle" : self.subtitletext])
+
         // Create a reference to the file you want to upload
         let randomString = UUID().uuidString
         // Create a reference to the file you want to upload
@@ -286,50 +271,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     var avPlayer = AVPlayer()
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        videoURL = info[UIImagePickerControllerMediaURL]as? NSURL
-        print(videoURL!)
-        do {
-            let asset = AVURLAsset(url: videoURL as! URL , options: nil)
-            let imgGenerator = AVAssetImageGenerator(asset: asset)
-            imgGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
-            let thumbnail = UIImage(cgImage: cgImage)
-//            imgView.image = thumbnail
-            
-            avPlayer = AVPlayer(url: videoURL! as URL)
-            
-            playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-            
-            playerView.playerLayer.player = avPlayer
-            
-//            getThumbnailFrom(path: videoURL as! URL)
-            tv2.alpha = 0
-            subtitle.alpha = 0
-            tv3.alpha = 0
-            tapshowtv.alpha = 0
-            playerView.player?.play()
 
-//            let item = AVPlayerItem(asset: asset)
-//            let player = AVQueuePlayer(playerItem: item)
-//            let videoLooper = AVPlayerLooper(player: player, templateItem: item)
-//
-//            videoLooper.
-            headerlabel.alpha = 0
-            tapshare.alpha = 1
-            tapnew.alpha = 0
-            tapcancel.alpha = 0.5
-            self.tabBarController?.tabBar.isHidden = true
-
-        } catch let error {
-            
-            
-            print("*** Error generating thumbnail: \(error.localizedDescription)")
-        }
-        
-        
-        self.dismiss(animated: true, completion: nil)
-    }
     /*
      @IBAction func tapCancel(_ sender: Any) {
      }
@@ -396,7 +338,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func tapnext() {
         
-        
+        playerView.player?.pause()
+
         if counter < vids.count-1 {
             
             if tv3.text != "" {
@@ -432,6 +375,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func tapleft() {
         
+        playerView.player?.pause()
+
         if counter > 0 && vids.count > 0 {
             
             
@@ -515,20 +460,20 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     
                     let videoURL = video.url
                     self.vids.append(videoURL)
-    let playerVC = AVPlayerViewController()
+                    let playerVC = AVPlayerViewController()
                     self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[0]))
                     
                 self.textviewdics.removeAll()
                 
                 
-    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
+                self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
                     
-            self.playerView.playerLayer.player = self.avPlayer
+                self.playerView.playerLayer.player = self.avPlayer
                     
-        self.playerView.player?.play()
-        self.headerlabel.alpha = 0
-        self.tapshare.alpha = 1
-        self.tapnew.alpha = 0
+                self.playerView.player?.play()
+                self.headerlabel.alpha = 0
+                self.tapshare.alpha = 1
+                self.tapnew.alpha = 0
                 self.tapcancel.alpha = 0.5
                     self.tv2.alpha = 1
                 self.subtitle.alpha = 1

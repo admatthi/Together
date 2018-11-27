@@ -84,6 +84,8 @@ class WatchViewController: UIViewController {
     
     func tapnext() {
         
+        playerView.player?.pause()
+
         if counter < vids.count-1 {
             
             playerView.player!.replaceCurrentItem(with: nil)
@@ -125,6 +127,8 @@ class WatchViewController: UIViewController {
     
     func tapleft() {
         
+        playerView.player?.pause()
+
         if counter > 0 && vids.count > 0 {
             
             counter -= 1
@@ -216,6 +220,8 @@ class WatchViewController: UIViewController {
                                                name: Notification.Name.AVPlayerItemDidPlayToEndTime,
                                                object: avPlayer.currentItem)
         
+        tv3.textAlignment = .center
+
         
         ref = Database.database().reference()
 

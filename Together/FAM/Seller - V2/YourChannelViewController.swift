@@ -216,8 +216,14 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
         //        domaintf.text = " "
         //
         channelname = "24"
-        paypalname = "Whatever"
-        channelprice = "25"
+        
+        if paypaltf.text != "" {
+            
+            paypalname = paypaltf.text!
+
+        }
+        
+        channelprice = "20"
         
 //        if channelname != "" {
              if channelname != "" && paypalname != "" && channelprice != "" && videoURL != nil {

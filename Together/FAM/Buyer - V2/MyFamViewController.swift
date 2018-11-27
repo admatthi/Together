@@ -32,6 +32,32 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
     @IBOutlet weak var errorlabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if Auth.auth().currentUser == nil {
+            // Do smth if user is not logged in
+            
+            
+            collectionView.alpha = 0
+            errorlabel.alpha = 1
+            activityIndicator.alpha = 0
+            
+        } else {
+            
+            activityIndicator.alpha = 1
+            activityIndicator.startAnimating()
+            errorlabel.alpha = 0
+            
+            queryforids { () -> () in
+                
+                self.queryforinfo()
+                
+            }
+            
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
