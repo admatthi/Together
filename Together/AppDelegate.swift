@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
@@ -16,9 +17,10 @@ import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
 import UXCam
+import YPImagePicker
 import AVFoundation
 import Purchases
-import IQKeyboardManager
+
 
 var uid = String()
 var ref: DatabaseReference?

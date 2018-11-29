@@ -42,23 +42,24 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         activityIndicator.alpha = 1
         activityIndicator.startAnimating()
         collectionView.alpha = 0
-        
+        //            tapBack.alpha = 0
+                    tapBack.alpha = 0
+
         queryforids { () -> () in
             
             self.queryforinfo()
             
         }
-        
-        if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
-            self.tabBarController?.tabBar.isHidden = true
-            tapBack.alpha = 1
+        self.tabBarController?.tabBar.isHidden = false
 
-        } else {
-            
-            self.tabBarController?.tabBar.isHidden = false
-            tapBack.alpha = 0
-        }
+//        if Auth.auth().currentUser == nil {
+//            // Do smth if user is not logged in
+//
+//        } else {
+//
+//            self.tabBarController?.tabBar.isHidden = false
+//            tapBack.alpha = 0
+//        }
       
         // Do any additional setup after loading the view.
     }
@@ -77,6 +78,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         prices.removeAll()
         toppics.removeAll()
         images.removeAll()
+        creatornames.removeAll()
         
         ref?.child("Influencers").queryOrdered(byChild: "Approved").queryEqual(toValue: "True").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -107,6 +109,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     var subscribers = [String:String]()
+    var creatornames = [String:String]()
     
     func queryforinfo() {
         
@@ -126,6 +129,11 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     descriptions[each] = author2
                     
                 }
+            
+            if var author2 = value?["Creator Name"] as? String {
+                self.creatornames[each] = author2
+                
+            }
                 if var name = value?["Name"] as? String {
                     names[each] = name
                     
@@ -235,8 +243,10 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             cell.thumbnail.layer.cornerRadius = 10.0
             cell.thumbnail.layer.masksToBounds = true
             cell.textlabel.text = names[projectids[indexPath.row]]
-     
+            cell.creatorname.text = creatornames[projectids[indexPath.row]]?.uppercased()
+            cell.creatorname.addCharacterSpacing()
             cell.thumbnail.image = images[projectids[indexPath.row]]
+            
 //            cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
                         cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
 

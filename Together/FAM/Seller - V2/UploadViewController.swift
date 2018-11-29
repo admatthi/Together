@@ -14,10 +14,10 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 import MobileCoreServices
-import YPImagePicker
 import AVFoundation
 import AVKit
 import Photos
+import YPImagePicker
 
 var videoURL : NSURL?
 var thisdate = String()
@@ -32,36 +32,34 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     var vids = [URL]()
 
     var uploadcounter = 1234
-    var subtitletext = String()
+    var daynumber = String()
     var textview3 = String()
-    var snaplabel = String()
+    var daytitle = String()
 
     @IBAction func tapShare(_ sender: Any) {
         
         counter = 0
-        tapcancel.alpha = 0
         tapshare.alpha = 0
         tv2.alpha = 0
-        tapshowtv.alpha = 0
         tv3.alpha = 0
         subtitle.alpha = 0
         
         if subtitle.text != "" {
             
-            subtitletext = subtitle.text!
+            daynumber = subtitle.text!
             
             } else {
             
-            subtitletext = " "
+            daynumber = " "
         }
         if tv2.text != "" {
             
-            snaplabel = tv2.text!
+            daytitle = tv2.text!
             
             
         } else {
             
-            snaplabel = " "
+            daytitle = " "
         }
         
         headerlabel.text = "Uploading...This May Take A Moment."
@@ -79,7 +77,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         activityIndicator.alpha = 1
         activityIndicator.color = mypink
         activityIndicator.startAnimating()
-        loadinglabel.alpha = 1
         
         self.loadthumbnail()
         
@@ -150,7 +147,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(selectedindex)
 
 //                self.strDate = dateFormatter.string(from: date)
-                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).child(storedvalue).updateChildValues(["URL" : mystring4, "Title" : self.textviewdics[self.counter]])
+                ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).child(storedvalue).updateChildValues(["URL" : mystring4])
                 
                     self.counter += 1
                     
@@ -189,7 +186,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         metaData.contentType = "image/jpg"
         
-        ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["Title" : snaplabel, "Date" : thisdate, "DayTitle" : self.subtitletext])
+    ref!.child("Influencers").child(uid).child("Plans").child(self.strDate).updateChildValues(["DayTitle" : daytitle, "Date" : thisdate, "DayNumber" : self.daynumber, "Description" : tv3.text! ])
 
         // Create a reference to the file you want to upload
         let randomString = UUID().uuidString
@@ -286,16 +283,15 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     */
     @IBAction func tapCancel(_ sender: Any) {
         
-        self.tabBarController?.tabBar.isHidden = false
-        tv3.alpha = 0
-        tapshowtv.alpha = 0
-        tv2.alpha = 0
-        subtitle.alpha = 0
-        tapcancel.alpha = 0
-        tapshare.alpha = 0
-//        tapnew.alpha = 1
-        headerlabel.alpha = 1
-        playerView.player?.replaceCurrentItem(with: nil)
+//        self.tabBarController?.tabBar.isHidden = false
+//        tv3.alpha = 0
+//        tapshowtv.alpha = 0
+//        subtitle.alpha = 0
+//        tapcancel.alpha = 0
+//        tapshare.alpha = 0
+////        tapnew.alpha = 1
+//        headerlabel.alpha = 1
+//        playerView.player?.replaceCurrentItem(with: nil)
         
     }
     
@@ -342,16 +338,16 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
         if counter < vids.count-1 {
             
-            if tv3.text != "" {
-                
-                textviewdics[counter] = tv3.text!
-                
-            } else {
-                
-                textviewdics[counter] = " "
-                
-            }
-            
+//            if tv3.text != "" {
+//
+//                textviewdics[counter] = tv3.text!
+//
+//            } else {
+//
+//                textviewdics[counter] = " "
+//
+//            }
+//
             
             counter += 1
             
@@ -471,16 +467,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self.playerView.playerLayer.player = self.avPlayer
                     
                 self.playerView.player?.play()
-                self.headerlabel.alpha = 0
                 self.tapshare.alpha = 1
-                self.tapnew.alpha = 0
-                self.tapcancel.alpha = 0.5
                     self.tv2.alpha = 1
                 self.subtitle.alpha = 1
                 self.tv3.alpha = 1
-                self.tapshowtv.alpha = 0
-                self.tabBarController?.tabBar.isHidden = true
-                    
+//                self.tabBarController?.tabBar.isHidden = true
+                
                 self.counter += 1
 
                 }
@@ -495,6 +487,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     }
     
+    @IBAction func tapNewMedia(_ sender: Any) {
+        
+        showPicker()
+        
+    }
     func showResults() {
         if selectedItems.count > 0 {
             let gallery = YPSelectionsGalleryVC(items: selectedItems) { g, _ in
@@ -578,12 +575,10 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
 //        tapnew.alpha = 1
         tapshare.alpha = 0
-        tapcancel.alpha = 0
         
         ref = Database.database().reference()
     
         self.activityIndicator.alpha = 0
-        self.loadinglabel.alpha = 0
         subtitle.text = "Subtitle..."
         subtitle.textColor = .white
         tv2.text = "Title..."
@@ -591,8 +586,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         tv3.textColor = UIColor.white
         
         tv3.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
-        tv3.alpha = 0
-        tapshowtv.alpha = 0
 
 //        tapplay.alpha = 1
         queryforinfo()
@@ -610,10 +603,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "y-MM-dd H:m:ss.SSSS" //Specify your format that you want
         strDate = dateFormatter.string(from: date)
-        tv2.alpha = 0
-        subtitle.alpha = 0
-        tapshowtv.alpha = 0
-        tv3.alpha = 0
         dateFormatter.dateFormat = "MMM dd"
 
         thisdate = dateFormatter.string(from: date)

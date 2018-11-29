@@ -19,7 +19,7 @@ var selecteddate = String()
 var selectedvideoid = String()
 var selecteddaytitle = String()
 
-class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class VideoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBAction func tapBack(_ sender: Any) {
         
@@ -75,9 +75,9 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        tapsubscribe.layer.masksToBounds = true
 //        tapsubscribe.layer.cornerRadius = 5.0
         
-        monthlabel.addCharacterSpacing()
-        subscriblabel.addCharacterSpacing()
-        postlabel.addCharacterSpacing()
+//        monthlabel.addCharacterSpacing()
+//        subscriblabel.addCharacterSpacing()
+//        postlabel.addCharacterSpacing()
         lowercasename = selectedname
 
         queryforname()
@@ -94,15 +94,15 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         }
         
-        tableView.layer.cornerRadius = 5.0
-        tableView.layer.masksToBounds = true
+        collectionView.layer.cornerRadius = 5.0
+        collectionView.layer.masksToBounds = true
         tapsubscribe.addTextSpacing(2.0)
         
         activityIndicator.color = mypink
 
         activityIndicator.startAnimating()
         activityIndicator.alpha = 1
-        tableView.alpha = 0
+        collectionView.alpha = 0
         errorlabel.alpha = 0
         programname.text = selectedname
         programname.addCharacterSpacing()
@@ -111,9 +111,9 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
         lilthumbnail.layer.masksToBounds = false
         lilthumbnail.layer.cornerRadius = lilthumbnail.frame.height/2
         lilthumbnail.clipsToBounds = true
-        
+
         lilthumbnail.image = myselectedimage
-        //        tableView.rowHeight = UITableViewAutomaticDimension
+        //        collectionView.rowHeight = UIcollectionViewAutomaticDimension
         
         //        cta.text = "Join \(firstname)'s FAM"
         
@@ -122,16 +122,21 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         ref = Database.database().reference()
         
+        queryforids { () -> () in
+            
+            self.queryforinfo()
+            
+        }
  
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
             
             locked = true
             tapsubscribe.alpha = 1
-            tapcircle.alpha = 1
-            tableView.alpha = 0
-            lockimage.alpha = 1
-            activityIndicator.alpha = 0
+//            tapcircle.alpha = 1
+//            collectionView.alpha = 0
+//            lockimage.alpha = 1
+//            activityIndicator.alpha = 0
             
         } else {
          
@@ -140,15 +145,10 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 locked = false
                 tapsubscribe.alpha = 0
-                tapcircle.alpha = 0
-                tableView.alpha = 1
-                lockimage.alpha = 0
-                
-                queryforids { () -> () in
-                    
-                    self.queryforinfo()
-                    
-                }
+//                tapcircle.alpha = 0
+//                collectionView.alpha = 1
+//                lockimage.alpha = 0
+//
             }
             
 //            queryforpurchased()
@@ -156,7 +156,7 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         
-        tableView.reloadData()
+        collectionView.reloadData()
         
         // Do any additional setup after loading the view.
     }
@@ -165,7 +165,7 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func queryforids(completed: @escaping (() -> ()) ) {
         
-        tableView.alpha = 0
+        collectionView.alpha = 0
         errorlabel.alpha = 1
         activityIndicator.alpha = 0
         
@@ -198,7 +198,7 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     if functioncounter == snapDict.count {
                         
                         videoids = videoids.sorted()
-                        self.posts.text = "\(videoids.count)"
+//                        self.posts.text = "\(videoids.count)"
                         completed()
                         
                     }
@@ -230,25 +230,25 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if var profileUrl2 = value?["ProPic"] as? String {
                 // Create a storage reference from the URL
-                
-                
+
+
                 if profileUrl2 == "" {
-                    
+
                     self.lilthumbnail.alpha = 0
-                    
+
                 } else {
-                    
+
                     self.lilthumbnail.alpha = 1
-                    
+
                     let url = URL(string: profileUrl2)
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     selectedimage = UIImage(data: data!)!
-                    
+
                     self.lilthumbnail.image = selectedimage
-                    
+
                 }
-                
-                
+
+
             }
             
             if var author2 = value?["Domain"] as? String {
@@ -259,13 +259,13 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if var author2 = value?["Price"] as? String {
                 
-                self.price.text = "$\(author2)"
+//                self.price.text = "$\(author2)"
                 
             }
             
             if var author2 = value?["Subscribers"] as? String {
                 
-                self.subscribers.text = "\(author2)"
+//                self.subscribers.text = "\(author2)"
                 
             }
             
@@ -298,12 +298,12 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                 }
                 
-                if var author2 = value?["Title"] as? String {
+                if var author2 = value?["DayTitle"] as? String {
                     self.videotitles[each] = author2
                     
                 }
                 
-                if var author2 = value?["DayTitle"] as? String {
+                if var author2 = value?["DayNumber"] as? String {
                     self.videodaytitles[each] = author2
                     
                 }
@@ -335,7 +335,7 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if functioncounter == videoids.count {
                     
-                    self.tableView.reloadData()
+                    self.collectionView.reloadData()
                     
                 }
                 
@@ -344,9 +344,10 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         }
     }
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     /*
-     @IBOutlet weak var tableView: UItableView!
+     @IBOutlet weak var collectionView: UIcollectionView!
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -378,10 +379,11 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if locked {
             
+            self.performSegue(withIdentifier: "VideoToPurchase", sender: self)
 
         } else {
             
@@ -390,7 +392,7 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
             selecteddate = videodates[videoids[indexPath.row]]!
             selectedtitle = videotitles[videoids[indexPath.row]]!
             selecteddaytitle = videodaytitles[videoids[indexPath.row]]!
-            
+            selecteddescription = videodescriptions[videoids[indexPath.row]]!
             self.performSegue(withIdentifier: "VideoToWatch", sender: self)
         }
         
@@ -398,7 +400,8 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
  
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
     if thumbnails.count > 0 {
             
         return thumbnails.count
@@ -440,39 +443,38 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Plans", for: indexPath) as! PlansTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Videos", for: indexPath) as! VideosCollectionViewCell
         
         //        cell.subscriber.tag = indexPath.row
 
-//        cell.layer.cornerRadius = 10.0
-//        cell.layer.masksToBounds = true
-//        cell.thumbnail.layer.cornerRadius = 10.0
-//        cell.thumbnail.layer.masksToBounds = true
+        cell.layer.cornerRadius = 10.0
+        cell.layer.masksToBounds = true
+        cell.thumbnail.layer.cornerRadius = 10.0
+        cell.thumbnail.layer.masksToBounds = true
 //
-        cell.selectionStyle = .none
         if thumbnails.count > indexPath.row{
             
-            tableView.alpha = 1
+            collectionView.alpha = 1
             errorlabel.alpha = 0
             activityIndicator.alpha = 0
             cell.thumbnail.image = thumbnails[videoids[indexPath.row]]
                     
             cell.titlelabel.text = videotitles[videoids[indexPath.row]]
-            cell.timeago.text = videodates[videoids[indexPath.row]]
-            cell.timeago.text = videodates[videoids[indexPath.row]]?.uppercased()
-            cell.timeago.addCharacterSpacing()
+//            cell.timeago.text = videodates[videoids[indexPath.row]]
+//            cell.timeago.text = videodates[videoids[indexPath.row]]?.uppercased()
             
 //            cell.titlelabel.sizeToFit()
-//            cell.timeago.text = "\(videodaytitles[videoids[indexPath.row]]!)"
+            cell.timeago.text = videodaytitles[videoids[indexPath.row]]?.uppercased()
+                cell.timeago.addCharacterSpacing()
 
             cell.isUserInteractionEnabled = true
             
             
         } else {
             
-            tableView.alpha = 0
+            collectionView.alpha = 0
             
         }
                 
@@ -502,7 +504,7 @@ class VideoViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let buttonTag = sender.tag
         
         
-        //            tableView.reloadData()
+        //            collectionView.reloadData()
     }
     
 }

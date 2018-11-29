@@ -106,6 +106,7 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
         mytoppics.removeAll()
         myimages.removeAll()
         mysubscribers.removeAll()
+        mycreatornames.removeAll()
         
         collectionView.alpha = 0
         errorlabel.alpha = 1
@@ -140,7 +141,7 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var subscribers = [String:String]()
-    
+    var mycreatornames = [String:String]()
     func queryforinfo() {
         
         var functioncounter = 0
@@ -168,7 +169,10 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
                     
                 }
                 
-                
+                if var author2 = value?["Creator Name"] as? String {
+                    self.mycreatornames[each] = author2
+                    
+                }
                 
                 
                 if var profileUrl = value?["ProPic"] as? String {
@@ -267,7 +271,9 @@ class MyFamViewController: UIViewController, UICollectionViewDataSource, UIColle
             cell.thumbnail.image = myimages[myprojectids[indexPath.row]]
             cell.subscribers.text = "\(mysubscribers[myprojectids[indexPath.row]]!) subscribers"
             
-       
+            cell.creatorname.text = mycreatornames[myprojectids[indexPath.row]]?.uppercased()
+            cell.creatorname.addCharacterSpacing()
+            collectionView.alpha = 1
 
             
         } else {

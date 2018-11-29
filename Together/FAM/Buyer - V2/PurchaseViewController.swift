@@ -80,8 +80,6 @@ class PurchaseViewController: UIViewController {
     func queryforinfo() {
 
         var functioncounter = 0
-
-
             ref?.child("Influencers").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
 
                 var value = snapshot.value as? NSDictionary

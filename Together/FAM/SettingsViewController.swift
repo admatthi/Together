@@ -39,6 +39,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    @IBAction func applytopublish(_ sender: Any) {
+    }
     @IBAction func tapLogout(_ sender: Any) {
         
         try! Auth.auth().signOut()
@@ -144,6 +146,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     @IBOutlet weak var tapcontact: UIButton!
     @IBOutlet weak var tapseerevenue: UIButton!
+    @IBOutlet weak var tappublish: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -161,6 +164,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         tapbilling.layer.masksToBounds = true
         tapcontact.layer.cornerRadius = 25.0
         tapcontact.layer.masksToBounds = true
+        tappublish.layer.cornerRadius = 25.0
+        tappublish.layer.masksToBounds = true
         
         if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
