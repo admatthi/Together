@@ -31,6 +31,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref = Database.database().reference()
 queryforinfo()
         
+        selectedindex == 0
         // Do any additional setup after loading the view.
     }
     
@@ -119,10 +120,24 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 }
     
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    let generator = UIImpactFeedbackGenerator(style: .heavy)
+    generator.impactOccurred()
+    
+            if Auth.auth().currentUser == nil {
+                
+    // Do smth if user is not logged in
+        self.performSegue(withIdentifier: "ProductToRegister", sender: self)
+        
+    } else {
         
         selectedprice = prices2[indexPath.row]
+        
+        self.performSegue(withIdentifier: "ProductToSale", sender: self)
+        
+    }
     
-        self.performSegue(withIdentifier: "<#T##String#>", sender: <#T##Any?#>)
+    
     }
 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -162,7 +177,19 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
     }
     
 }
-
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//
+////
+////        selectedindex = indexPath.row
+////        collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+////
+////        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Prices", for: indexPath) as! PricesCollectionViewCell
+////     
+////        collectionView.reloadData()
+//    }
+//
+var selectedindex = Int()
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     
@@ -170,6 +197,33 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     
     cell.titlelabel.text = pricetitles[indexPath.row]
     cell.priceslabel.text = prices2[indexPath.row]
+    
+//    if selectedindex == 0 {
+//
+//        if indexPath.row == 0 {
+//
+//
+//
+//        } else {
+//
+//            cell.titlelabel.alpha = 0.25
+//            cell.priceslabel.alpha = 0.25
+//        }
+//
+//
+//    } else {
+//
+//        if indexPath.row == 0 {
+//
+//            cell.titlelabel.alpha = 0.25
+//            cell.priceslabel.alpha = 0.25
+//
+//        } else {
+//
+//            cell.titlelabel.alpha = 1
+//            cell.priceslabel.alpha = 1
+//        }
+//
     
     return cell
 

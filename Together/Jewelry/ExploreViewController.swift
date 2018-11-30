@@ -30,7 +30,10 @@ var toppics = [String:UIImage]()
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
    
     
-
+    var screenSize: CGRect!
+    var screenWidth: CGFloat!
+    var screenHeight: CGFloat!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +55,16 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         self.tabBarController?.tabBar.isHidden = false
 
+        screenSize = UIScreen.main.bounds
+        screenWidth = screenSize.width
+        screenHeight = screenSize.height
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.itemSize = CGSize(width: screenWidth/2, height: screenWidth)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView!.collectionViewLayout = layout
 //        if Auth.auth().currentUser == nil {
 //            // Do smth if user is not logged in
 //
@@ -232,8 +245,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //        cell.subscriber.tag = indexPath.row
         
 //        cell.pricelabel.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
-//        cell.layer.borderColor = UIColor.black.cgColor
-//        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderWidth = 0.5
 //
 //        cell.pricelabel.layer.cornerRadius = 5.0
 //        cell.pricelabel.layer.masksToBounds = true
