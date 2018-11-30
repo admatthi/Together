@@ -27,11 +27,13 @@ var selectedcondition = String()
 class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var header: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ref = Database.database().reference()
 
+        header.addCharacterSpacing()
         
         if Auth.auth().currentUser == nil {
             

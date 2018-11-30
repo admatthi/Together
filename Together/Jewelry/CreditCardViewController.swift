@@ -17,6 +17,8 @@ import FBSDKCoreKit
 class CreditCardViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var city: UITextField!
     
+    @IBOutlet weak var billinglabel: UILabel!
+    @IBOutlet weak var cardlabel: UILabel!
     @IBOutlet weak var apt: UITextField!
     @IBOutlet weak var streetaddress: UITextField!
     @IBOutlet weak var zip: UITextField!
@@ -60,13 +62,17 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
     }
     @IBOutlet weak var errorlabel: UILabel!
     
+    @IBOutlet weak var tapadd: UIButton!
     @IBAction func tapAddShipping(_ sender: Any) {
         
         if pressed {
             
+            tapadd.setTitleColor(UIColor.black, for: .normal)
             pressed = false
         } else {
             
+            tapadd.setTitleColor(UIColor.blue, for: .normal)
+
             pressed = true
         }
     }
@@ -82,6 +88,8 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
         fullnametf.becomeFirstResponder()
         header.addCharacterSpacing()
         queryforuser()
+        cardlabel.addCharacterSpacing()
+        billinglabel.addCharacterSpacing()
         // Do any additional setup after loading the view.
     }
     

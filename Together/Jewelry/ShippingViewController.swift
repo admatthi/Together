@@ -17,6 +17,7 @@ import FBSDKCoreKit
 class ShippingViewController: UIViewController, UITextFieldDelegate {
 
     
+    @IBOutlet weak var billinglabel: UILabel!
     
     @IBOutlet weak var billingname: UITextField!
     @IBOutlet weak var phonenumber: UITextField!
@@ -29,7 +30,7 @@ class ShippingViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        billinglabel.addCharacterSpacing()
         header.addCharacterSpacing()
         billingname.becomeFirstResponder()
         

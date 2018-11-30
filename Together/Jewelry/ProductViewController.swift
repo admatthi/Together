@@ -18,6 +18,7 @@ var b2 = String()
 var b3 = String()
 var b4 = String()
 var b5 = String()
+var b6 = String()
 
 var selectedpackaging = String()
 
@@ -75,27 +76,34 @@ queryforinfo()
                 
             }
             
-            if var author2 = value?["Bullet2"] as? String {
+            if var author2 = value?["Stone"] as? String {
                 
                 b2 = author2
                 
             }
             
-            if var author2 = value?["Bullet3"] as? String {
+            if var author2 = value?["Main Color"] as? String {
                 
                 b3 = author2
                 
             }
-            if var author2 = value?["Bullet4"] as? String {
+            if var author2 = value?["Brand"] as? String {
                 
                 b4 = author2
                 
             }
-            if var author2 = value?["Bullet5"] as? String {
+            if var author2 = value?["Size"] as? String {
                 
                 b5 = author2
                 
             }
+            
+            if var author2 = value?["Designer"] as? String {
+                
+                b6 = author2
+                
+            }
+            
             
             if var author2 = value?["Packaging"] as? String {
                 
@@ -159,7 +167,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                     
                     selectedcondition = "New"
                     
-                    selecteddetails = "\(selectedcondition) / \(selectedpackaging)"
+                    selecteddetails = "\(selectedcondition) / Original Packaging"
 
                     self.performSegue(withIdentifier: "ProductToSale", sender: self)
 
@@ -189,7 +197,8 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     cell.b3.text = b3
     cell.b4.text = b4
     cell.b5.text = b5
-    
+    cell.b6.text = b6
+
     cell.title.sizeToFit()
     cell.descriptionlabel.sizeToFit()
     cell.b1.sizeToFit()
@@ -197,6 +206,12 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     cell.b3.sizeToFit()
     cell.b4.sizeToFit()
     cell.b5.sizeToFit()
+    cell.b6.sizeToFit()
+    cell.h1.addCharacterSpacing()
+    cell.h2.addCharacterSpacing()
+    cell.h3.addCharacterSpacing()
+    cell.h4.addCharacterSpacing()
+    cell.h5.addCharacterSpacing()
     
     return cell
 }
@@ -233,7 +248,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     
     cell.titlelabel.text = pricetitles[indexPath.row]
     cell.priceslabel.text = prices2[indexPath.row]
-    
+    cell.titlelabel.addCharacterSpacing()
 //    if selectedindex == 0 {
 //
 //        if indexPath.row == 0 {

@@ -15,13 +15,16 @@ import FBSDKCoreKit
 
 class OverviewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate    {
 
+    @IBOutlet weak var taps: UIButton!
+    @IBOutlet weak var tapr: UIButton!
     @IBOutlet weak var TAPJOIN: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        tapr.addTextSpacing(2.0)
+        taps.addTextSpacing(2.0)
         TAPJOIN.addTextSpacing(2.0)
         
         images.append(UIImage(named: "CC1 Copy-1")!)

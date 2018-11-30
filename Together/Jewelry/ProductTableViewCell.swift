@@ -11,6 +11,16 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var b3: UILabel!
     @IBOutlet weak var b2: UILabel!
     
+    @IBOutlet weak var h1: UILabel!
+    @IBOutlet weak var h2: UILabel!
+
+    @IBOutlet weak var h3: UILabel!
+
+    @IBOutlet weak var h4: UILabel!
+
+    @IBOutlet weak var h5: UILabel!
+
+    @IBOutlet weak var b6: UILabel!
     @IBOutlet weak var b5: UILabel!
     @IBOutlet weak var b4: UILabel!
     @IBOutlet weak var b1: UILabel!
