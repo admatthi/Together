@@ -46,11 +46,11 @@ class CheckoutViewController: UIViewController {
 
         header.addCharacterSpacing()
         price.text = selectedprice
-        selectedprice.removeFirst()
+        
         mainimage.image = selectedimage
         detailslabel.text = selecteddetails
         productname.text = selectedname
-        totalprice.setTitle("$\(String(Int(selectedprice)!+10))", for: .normal)
+        totalprice.setTitle("$\(String(Int(selectedprice.dropFirst())!+10))", for: .normal)
         tapadd.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
            tapcc.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
            tapshipping.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
@@ -96,13 +96,15 @@ class CheckoutViewController: UIViewController {
     
     func queryforuser() {
         
-            ref?.child("Influencers").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("Jewelery").child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
                 if var author2 = value?["Credit Card Number"] as? String {
                
-                    self.tapcc.setTitle(author2, for: .normal)
+                    author2 = String(author2.suffix(4))
+
+                    self.tapcc.setTitle("**** \(author2)", for: .normal)
                     
                 }
                 

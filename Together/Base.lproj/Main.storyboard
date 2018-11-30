@@ -806,10 +806,10 @@
             </objects>
             <point key="canvasLocation" x="2480.8000000000002" y="1020.5397301349326"/>
         </scene>
-        <!--View Controller-->
+        <!--Shipping View Controller-->
         <scene sceneID="pnp-W2-9oP">
             <objects>
-                <viewController id="NoY-MG-peG" sceneMemberID="viewController">
+                <viewController id="NoY-MG-peG" customClass="ShippingViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pkg-Aj-Rhq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -862,9 +862,10 @@
                                 </state>
                                 <connections>
                                     <action selector="tapBack:" destination="ezu-Il-3kv" eventType="touchUpInside" id="e9w-HQ-Jox"/>
+                                    <action selector="tapSave:" destination="NoY-MG-peG" eventType="touchUpInside" id="hlZ-us-TXp"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Billing Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Vt-Ia-59T">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Vt-Ia-59T">
                                 <rect key="frame" x="16" y="196" width="291" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="0Dh-Lx-KqF"/>
@@ -872,7 +873,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="avU-yU-C4e"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -886,7 +887,7 @@
                                     <constraint firstAttribute="height" constant="36" id="TgL-G8-TKB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -894,12 +895,12 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xN8-c4-Znc">
-                                <rect key="frame" x="16" y="152" width="59" height="36"/>
+                                <rect key="frame" x="16" y="152" width="151" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="d7L-JZ-iT4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -907,14 +908,12 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Postal Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5DX-Qj-okr">
-                                <rect key="frame" x="190" y="152" width="117" height="36"/>
+                                <rect key="frame" x="190" y="152" width="169" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="EFF-KU-nCQ"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="117" id="mQH-no-u2Y"/>
-                                    <constraint firstAttribute="width" constant="117" id="xHy-NM-2ze"/>
+                                    <constraint firstAttribute="height" constant="36" id="XEo-ym-NCQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -928,7 +927,7 @@
                                     <constraint firstAttribute="width" constant="62.5" id="yaR-WL-dTi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -943,7 +942,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="117" id="De4-mX-i6i"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -958,49 +957,77 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="bzU-Oa-jz8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill out all fields" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axd-M6-7T7">
+                                <rect key="frame" x="16" y="284" width="262" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="262" id="8jq-3D-hIu"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="EoM-9s-wLm"/>
+                                    <constraint firstAttribute="height" constant="22" id="hiJ-fa-hdy"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="262" id="q7F-so-Vho"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                <color key="textColor" red="0.98823529409999999" green="0.16078431369999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="sh4-eD-9LY" firstAttribute="top" secondItem="mL3-Z9-LfL" secondAttribute="bottom" constant="8" id="0Ed-jD-hGC"/>
                             <constraint firstItem="35T-45-yuQ" firstAttribute="centerY" secondItem="FxU-Y0-TLd" secondAttribute="centerY" id="0Vb-5i-Nh2"/>
                             <constraint firstItem="3HV-Sr-lbA" firstAttribute="top" secondItem="mL3-Z9-LfL" secondAttribute="bottom" constant="8" id="0hF-hQ-85S"/>
+                            <constraint firstItem="5DX-Qj-okr" firstAttribute="top" secondItem="sh4-eD-9LY" secondAttribute="bottom" constant="8" id="35u-cx-asc"/>
                             <constraint firstItem="xN8-c4-Znc" firstAttribute="top" secondItem="3HV-Sr-lbA" secondAttribute="bottom" constant="8" id="3L4-6a-47G"/>
+                            <constraint firstItem="5DX-Qj-okr" firstAttribute="leading" secondItem="3HV-Sr-lbA" secondAttribute="trailing" constant="23" id="3ac-cS-ErM"/>
                             <constraint firstItem="T4z-iJ-P90" firstAttribute="top" secondItem="9Vt-Ia-59T" secondAttribute="bottom" constant="8" id="4yu-Hn-dXg"/>
+                            <constraint firstItem="Ndh-MY-hZR" firstAttribute="trailing" secondItem="5DX-Qj-okr" secondAttribute="trailing" constant="16" id="6Kt-5y-G69"/>
                             <constraint firstItem="mL3-Z9-LfL" firstAttribute="top" secondItem="dBw-gL-RNf" secondAttribute="bottom" constant="8" id="9lI-3H-PuO"/>
                             <constraint firstItem="9Vt-Ia-59T" firstAttribute="top" secondItem="xN8-c4-Znc" secondAttribute="bottom" constant="8" id="A4I-qE-Jpf"/>
                             <constraint firstItem="T4z-iJ-P90" firstAttribute="top" secondItem="9Vt-Ia-59T" secondAttribute="bottom" constant="8" id="Bwa-Vb-Uyi"/>
                             <constraint firstItem="T4z-iJ-P90" firstAttribute="leading" secondItem="Ndh-MY-hZR" secondAttribute="leading" constant="16" id="CEb-m4-N8h"/>
+                            <constraint firstItem="axd-M6-7T7" firstAttribute="top" secondItem="T4z-iJ-P90" secondAttribute="bottom" constant="8" id="E4q-ex-tPB"/>
                             <constraint firstItem="sh4-eD-9LY" firstAttribute="leading" secondItem="3HV-Sr-lbA" secondAttribute="trailing" constant="23" id="PrC-Pt-LTZ"/>
                             <constraint firstItem="9Vt-Ia-59T" firstAttribute="leading" secondItem="Ndh-MY-hZR" secondAttribute="leading" constant="16" id="VZm-we-Mhh"/>
                             <constraint firstItem="cfR-px-Rir" firstAttribute="leading" secondItem="T4z-iJ-P90" secondAttribute="trailing" constant="111.5" id="WM6-Bq-GsA"/>
-                            <constraint firstItem="5DX-Qj-okr" firstAttribute="leading" secondItem="xN8-c4-Znc" secondAttribute="trailing" constant="115" id="XB7-Zz-oNk"/>
                             <constraint firstItem="FxU-Y0-TLd" firstAttribute="top" secondItem="Ndh-MY-hZR" secondAttribute="top" constant="14" id="aAZ-hh-zqS"/>
+                            <constraint firstItem="axd-M6-7T7" firstAttribute="leading" secondItem="Ndh-MY-hZR" secondAttribute="leading" constant="16" id="ckq-IQ-DxP"/>
                             <constraint firstItem="mL3-Z9-LfL" firstAttribute="leading" secondItem="Ndh-MY-hZR" secondAttribute="leading" constant="16" id="cs8-tQ-vkM"/>
+                            <constraint firstItem="cfR-px-Rir" firstAttribute="top" secondItem="5DX-Qj-okr" secondAttribute="bottom" constant="52" id="dyx-Rv-t1N"/>
                             <constraint firstItem="3HV-Sr-lbA" firstAttribute="leading" secondItem="Ndh-MY-hZR" secondAttribute="leading" constant="16" id="eDL-1y-W5V"/>
-                            <constraint firstItem="cfR-px-Rir" firstAttribute="top" secondItem="5DX-Qj-okr" secondAttribute="bottom" constant="52" id="fJZ-Ul-LbD"/>
                             <constraint firstItem="dBw-gL-RNf" firstAttribute="centerY" secondItem="FxU-Y0-TLd" secondAttribute="centerY" id="gLn-Bw-HIH"/>
                             <constraint firstItem="9Vt-Ia-59T" firstAttribute="top" secondItem="xN8-c4-Znc" secondAttribute="bottom" constant="8" id="gw7-PT-h2q"/>
-                            <constraint firstItem="5DX-Qj-okr" firstAttribute="top" secondItem="sh4-eD-9LY" secondAttribute="bottom" constant="8" id="kBP-UI-w61"/>
                             <constraint firstItem="xN8-c4-Znc" firstAttribute="leading" secondItem="Ndh-MY-hZR" secondAttribute="leading" constant="16" id="kQO-Lj-IUK"/>
+                            <constraint firstItem="5DX-Qj-okr" firstAttribute="leading" secondItem="xN8-c4-Znc" secondAttribute="trailing" constant="23" id="qvW-X0-evM"/>
                             <constraint firstItem="FxU-Y0-TLd" firstAttribute="centerX" secondItem="pkg-Aj-Rhq" secondAttribute="centerX" id="qvk-9X-91G"/>
                             <constraint firstItem="mL3-Z9-LfL" firstAttribute="top" secondItem="dBw-gL-RNf" secondAttribute="bottom" constant="8" id="t1n-vU-cJA"/>
                             <constraint firstItem="3HV-Sr-lbA" firstAttribute="top" secondItem="mL3-Z9-LfL" secondAttribute="bottom" constant="8" id="t7U-Hs-wIT"/>
-                            <constraint firstItem="9Vt-Ia-59T" firstAttribute="top" secondItem="5DX-Qj-okr" secondAttribute="bottom" constant="8" id="vC7-DN-hj2"/>
                             <constraint firstItem="Ndh-MY-hZR" firstAttribute="trailing" secondItem="35T-45-yuQ" secondAttribute="trailing" constant="16" id="wK6-B7-Gi6"/>
                             <constraint firstItem="dBw-gL-RNf" firstAttribute="leading" secondItem="Ndh-MY-hZR" secondAttribute="leading" constant="16" id="yAO-mv-a5t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ndh-MY-hZR"/>
                     </view>
+                    <connections>
+                        <outlet property="apt" destination="T4z-iJ-P90" id="snZ-fO-FnR"/>
+                        <outlet property="billingname" destination="3HV-Sr-lbA" id="0xp-Zf-ef5"/>
+                        <outlet property="city" destination="cfR-px-Rir" id="7X4-tr-JoI"/>
+                        <outlet property="country" destination="xN8-c4-Znc" id="T8h-TL-7nj"/>
+                        <outlet property="errorlabel" destination="axd-M6-7T7" id="UoA-b4-2S6"/>
+                        <outlet property="header" destination="FxU-Y0-TLd" id="y0o-pt-2a9"/>
+                        <outlet property="phonenumber" destination="sh4-eD-9LY" id="Pdh-ct-d7a"/>
+                        <outlet property="streetaddress" destination="9Vt-Ia-59T" id="tlt-ba-XBE"/>
+                        <outlet property="zip" destination="5DX-Qj-okr" id="Xil-HV-6N7"/>
+                        <segue destination="1lY-2L-B39" kind="show" identifier="ShippingToCheckout" id="6Ey-4d-Lbo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l42-fe-2kF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3449" y="1013"/>
+            <point key="canvasLocation" x="3448.8000000000002" y="1012.4437781109445"/>
         </scene>
         <!--Credit Card View Controller-->
         <scene sceneID="Gxm-1T-RaP">
@@ -1017,7 +1044,7 @@
                                     <constraint firstAttribute="width" constant="343" id="pSK-Nw-hDp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1030,7 +1057,7 @@
                                     <constraint firstAttribute="height" constant="36" id="MMq-2r-pMy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1048,7 +1075,7 @@
                                     <constraint firstAttribute="width" constant="291" id="jPu-Dh-yUt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1062,7 +1089,7 @@
                                     <constraint firstAttribute="height" constant="36" id="z9g-6q-c2X"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1070,13 +1097,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exp Date MM/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DzW-K4-vc8">
-                                <rect key="frame" x="190" y="210" width="117" height="36"/>
+                                <rect key="frame" x="190" y="210" width="155" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="oYz-P4-w3b"/>
-                                    <constraint firstAttribute="width" constant="117" id="yxq-4X-PIO"/>
+                                    <constraint firstAttribute="width" constant="155" id="yxq-4X-PIO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1090,7 +1117,7 @@
                                     <constraint firstAttribute="height" constant="36" id="yf3-8g-ClK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1103,7 +1130,7 @@
                                     <constraint firstAttribute="height" constant="36" id="i6I-Dy-UwU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1118,7 +1145,7 @@
                                     <constraint firstAttribute="width" constant="117" id="sv8-HN-i19"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1132,7 +1159,7 @@
                                     <constraint firstAttribute="width" constant="62.5" id="elP-Cp-r8W"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1147,7 +1174,7 @@
                                     <constraint firstAttribute="height" constant="36" id="fUW-Dx-1aZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1162,7 +1189,7 @@
                                     <constraint firstAttribute="height" constant="36" id="ifi-ZG-oNl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.48627450979999998" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1234,7 +1261,7 @@
                                     <constraint firstAttribute="height" constant="22" id="Cpg-eL-mXZ"/>
                                     <constraint firstAttribute="width" constant="262" id="mtt-Ha-VKL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="8"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                                 <color key="textColor" red="0.9882352941176471" green="0.16078431372549021" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1245,21 +1272,20 @@
                                     <constraint firstAttribute="width" constant="240" id="KSY-Qt-zCE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                <state key="normal" title="Add As Shipping Address">
+                                <state key="normal" title="Mark As Shipping Address">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="tapAddShipping:" destination="f2W-u5-5xf" eventType="touchUpInside" id="lRz-0W-kte"/>
-                                    <action selector="tapaddshipping:" destination="f2W-u5-5xf" eventType="touchUpInside" id="PGJ-yk-kgs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FULL NAME (ON CARD)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPn-v2-KGx">
-                                <rect key="frame" x="16" y="102" width="262" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FULL NAME (ON CARD)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPn-v2-KGx">
+                                <rect key="frame" x="17" y="102" width="262" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="9WQ-sy-Boy"/>
                                     <constraint firstAttribute="width" constant="262" id="oBe-mv-kyV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="9"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="8"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1305,7 +1331,7 @@
                             <constraint firstItem="UPn-v2-KGx" firstAttribute="leading" secondItem="4dl-RV-KF2" secondAttribute="leading" constant="16" id="uFM-Qu-cgu"/>
                             <constraint firstItem="RGO-WG-xft" firstAttribute="centerX" secondItem="qCa-po-vID" secondAttribute="centerX" id="v9O-Wp-7jr"/>
                             <constraint firstItem="6WV-sS-JbY" firstAttribute="top" secondItem="HDg-yE-4N0" secondAttribute="bottom" constant="8" id="xV6-R4-uvQ"/>
-                            <constraint firstItem="4dl-RV-KF2" firstAttribute="trailing" secondItem="DzW-K4-vc8" secondAttribute="trailing" constant="68" id="yy9-8o-8Ht"/>
+                            <constraint firstItem="4dl-RV-KF2" firstAttribute="trailing" secondItem="DzW-K4-vc8" secondAttribute="trailing" constant="30" id="yy9-8o-8Ht"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4dl-RV-KF2"/>
                     </view>
@@ -1319,9 +1345,11 @@
                         <outlet property="errorlabel" destination="vE6-xD-ODg" id="59J-xh-Aob"/>
                         <outlet property="expdate" destination="DzW-K4-vc8" id="Mii-4g-LZC"/>
                         <outlet property="fullnametf" destination="U2C-hZ-E6x" id="ryn-Yk-9sl"/>
+                        <outlet property="header" destination="RGO-WG-xft" id="1uH-gL-cot"/>
                         <outlet property="phonenumber" destination="Thx-Rk-pWm" id="eAf-5f-TKy"/>
                         <outlet property="streetaddress" destination="HDg-yE-4N0" id="8jg-7K-b1T"/>
                         <outlet property="zip" destination="B54-Qk-L8Y" id="3Vo-Kr-5ss"/>
+                        <segue destination="1lY-2L-B39" kind="show" identifier="CardToCheckout" id="r5K-ef-F3J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHA-sw-S3e" userLabel="First Responder" sceneMemberID="firstResponder"/>

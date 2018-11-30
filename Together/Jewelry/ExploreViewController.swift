@@ -65,6 +65,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         collectionView!.collectionViewLayout = layout
+        
+        
 //        if Auth.auth().currentUser == nil {
 //            // Do smth if user is not logged in
 //

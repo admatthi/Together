@@ -70,7 +70,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //
 
-//        if Auth.auth().currentUser == nil {
+        if Auth.auth().currentUser == nil {
+            
+        } else {
+            
+            let currentUser = Auth.auth().currentUser
+            //
+            uid = (currentUser?.uid)!
+        }
             // Do smth if user is not logged in
 
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -84,9 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        } else {
 //
-//            let currentUser = Auth.auth().currentUser
-//
-//            uid = (currentUser?.uid)!
+        
 //
 //            queryforinfo()
 //

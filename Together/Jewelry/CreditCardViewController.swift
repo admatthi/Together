@@ -37,16 +37,21 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
         if fullnametf.text != "" && ccnumber.text != "" &&  cvv.text != "" &&  fullnametf.text != "" &&  expdate.text != "" &&  billingname.text != "" &&  phonenumber.text != "" &&  country.text != "" &&  zip.text != "" &&  streetaddress.text != "" &&  apt.text != "" &&  city.text != ""  {
         ref!.child("Jewelery").child("Users").child(uid).updateChildValues(["Credit Card Number" : ccnumber.text!])
         
-        ref!.child("Jewelery").child("Users").child(uid).child("Payment").childByAutoId().updateChildValues(["Credit Card Number" : ccnumber.text!, "Full Name" : fullnametf.text!, "CVV" : cvv.text!, "Exp" : expdate.text!, "Billing Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apt.text!])
+            ref!.child("Jewelery").child("Users").child(uid).child("Payment").child("MainPayment").updateChildValues(["Credit Card Number" : ccnumber.text!, "Full Name" : fullnametf.text!, "CVV" : cvv.text!, "Exp" : expdate.text!, "Billing Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apt.text!, "City" : city.text!])
         
         
         if pressed {
             
             ref!.child("Jewelery").child("Users").child(uid).updateChildValues(["Street" : streetaddress.text!])
-            ref!.child("Jewelery").child("Users").child(uid).child("Shipping").childByAutoId().updateChildValues(["Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apt.text!])
+            ref!.child("Jewelery").child("Users").child(uid).child("Shipping").child("ShippingMain").updateChildValues(["Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apt.text!, "City" : city.text!])
 
+            self.performSegue(withIdentifier: "CardToCheckout", sender: self)
+
+        } else {
             
-        }
+            self.performSegue(withIdentifier: "CardToCheckout", sender: self)
+
+            }
             
         } else {
             
@@ -67,14 +72,85 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
     }
    
     
+    @IBOutlet weak var header: UILabel!
     var pressed = Bool()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        pressed = false
+        
+        fullnametf.becomeFirstResponder()
+        header.addCharacterSpacing()
+        queryforuser()
         // Do any additional setup after loading the view.
     }
     
-
+    func queryforuser() {
+        
+        ref?.child("Jewelery").child("Users").child(uid).child("Payment").child("MainPayment").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if var author2 = value?["Credit Card Number"] as? String {
+                
+                self.ccnumber.text! = author2
+                
+            }
+            
+            if var author2 = value?["Full Name"] as? String {
+                
+                self.fullnametf.text = author2
+            }
+            
+            if var author2 = value?["CVV"] as? String {
+                
+                self.cvv.text = author2
+            }
+            
+            if var author2 = value?["Exp"] as? String {
+                
+                self.expdate.text = author2
+            }
+            
+            if var author2 = value?["Billing Name"] as? String {
+                
+                self.billingname.text = author2
+            }
+            
+            if var author2 = value?["Phone"] as? String {
+                
+                self.phonenumber.text = author2
+            }
+            
+            if var author2 = value?["City"] as? String {
+                
+                self.city.text = author2
+            }
+            
+            if var author2 = value?["Country"] as? String {
+                
+                self.country.text = author2
+            }
+            
+            if var author2 = value?["Zip"] as? String {
+                
+                self.zip.text = author2
+            }
+            
+            if var author2 = value?["Street Address"] as? String {
+                
+                self.streetaddress.text = author2
+            }
+            
+            if var author2 = value?["Apt"] as? String {
+                
+                self.apt.text = author2
+            }
+            
+            
+        })
+        
+    }
     /*
     // MARK: - Navigation
 
