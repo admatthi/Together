@@ -461,7 +461,7 @@
                                     <constraint firstAttribute="height" constant="122" id="Dxl-t1-YcQ"/>
                                     <constraint firstAttribute="width" constant="313" id="J8W-nk-Ixm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKK-A6-7DW">
@@ -821,7 +821,7 @@
                                     <segue destination="fDi-vE-IAf" kind="show" id="4fi-sO-46f"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill out all fields" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwm-be-WTe">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add a credit card and a shipping address." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwm-be-WTe">
                                 <rect key="frame" x="53" y="523" width="262" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="262" id="LCK-ds-YnU"/>
@@ -4103,7 +4103,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3R6-nr-DUN"/>
-        <segue reference="MUN-A5-iHb"/>
+        <segue reference="NBs-wt-gXg"/>
         <segue reference="69d-3Z-lQE"/>
         <segue reference="raE-3f-wg2"/>
         <segue reference="T5q-Kc-1EU"/>
