@@ -19,6 +19,8 @@ var b3 = String()
 var b4 = String()
 var b5 = String()
 
+var selectedpackaging = String()
+
 class ProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
     
@@ -48,11 +50,21 @@ queryforinfo()
                 
                 if var author2 = value?["New Price"] as? String {
 
+                    
+                    var intviews = Double(Int(author2.dropFirst())!)
+                    intviews = intviews * 1.1
+                    author2 = "$\(String(Int(intviews)))"
+                    
                     self.prices2.append(author2)
                     
                 }
             
             if var author2 = value?["Used Price"] as? String {
+                
+                var intviews = Double(Int(author2.dropFirst())!)
+                intviews = intviews * 1.1
+                author2 = "$\(String(Int(intviews)))"
+
                 self.prices2.append(author2)
 
             }
@@ -83,6 +95,16 @@ queryforinfo()
                 
                 b5 = author2
                 
+            }
+            
+            if var author2 = value?["Packaging"] as? String {
+                
+                selectedpackaging = author2
+                
+            } else {
+                
+                selectedpackaging = "None"
+
             }
         
             self.tableView.reloadData()
@@ -133,7 +155,21 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
         
         selectedprice = prices2[indexPath.row]
         
-        self.performSegue(withIdentifier: "ProductToSale", sender: self)
+                if indexPath.row == 0 {
+                    
+                    selectedcondition = "New"
+                    
+                    selecteddetails = "\(selectedcondition) / \(selectedpackaging)"
+
+                    self.performSegue(withIdentifier: "ProductToSale", sender: self)
+
+                } else {
+                    
+                    selectedcondition = "Used"
+                    selecteddetails = "\(selectedcondition) / \(selectedpackaging)"
+                    self.performSegue(withIdentifier: "ProductToSale", sender: self)
+
+                }
         
     }
     

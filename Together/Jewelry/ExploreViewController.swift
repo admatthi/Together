@@ -138,8 +138,10 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 var value = snapshot.value as? NSDictionary
                 
                 if var author2 = value?["Used Price"] as? String {
+                    var intviews = Double(Int(author2.dropFirst())!)
+                    intviews = intviews * 1.1
+                    author2 = "$\(String(Int(intviews)))"
                     self.usedprices[each] = author2
-                    
                 }
                 
                 if var author2 = value?["Description"] as? String {
@@ -161,10 +163,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     
                 }
                 
-                if var views = value?["Price"] as? String {
-                    prices[each] = views
-
-                }
+           
                 
                 if var views = value?["ProgramName"] as? String {
                     programnames[each] = views

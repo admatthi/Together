@@ -22,6 +22,8 @@ import YPImagePicker
 import AVFoundation
 import Purchases
 
+var selectedcondition = String()
+
 class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
     @IBOutlet weak var tableView: UITableView!
