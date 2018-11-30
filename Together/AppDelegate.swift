@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //
 
-        if Auth.auth().currentUser == nil {
+//        if Auth.auth().currentUser == nil {
             // Do smth if user is not logged in
 
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -82,22 +82,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()//
 
 
-        } else {
-
-            let currentUser = Auth.auth().currentUser
-
-            uid = (currentUser?.uid)!
-
-            queryforinfo()
-
-            queryforids { () -> () in
-
-
-            }
-
-
-        }
+//        } else {
 //
+//            let currentUser = Auth.auth().currentUser
+//
+//            uid = (currentUser?.uid)!
+//
+//            queryforinfo()
+//
+//            queryforids { () -> () in
+//
+//
+//            }
+//
+//
+//        }
+////
         return true
     }
     

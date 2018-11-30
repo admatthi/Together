@@ -78,9 +78,9 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         prices.removeAll()
         toppics.removeAll()
         images.removeAll()
-        creatornames.removeAll()
+        brandnames.removeAll()
         
-        ref?.child("Influencers").queryOrdered(byChild: "Approved").queryEqual(toValue: "True").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -108,20 +108,20 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         })
     }
     
-    var subscribers = [String:String]()
-    var creatornames = [String:String]()
+    var usedprices = [String:String]()
+    var brandnames = [String:String]()
     
     func queryforinfo() {
         
         var functioncounter = 0
         
         for each in projectids {
-        ref?.child("Influencers").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
-                if var author2 = value?["Subscribers"] as? String {
-                    self.subscribers[each] = author2
+                if var author2 = value?["Used Price"] as? String {
+                    self.usedprices[each] = author2
                     
                 }
                 
@@ -130,9 +130,14 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     
                 }
             
-            if var author2 = value?["Creator Name"] as? String {
-                self.creatornames[each] = author2
+            if var author2 = value?["Brand"] as? String {
                 
+                self.brandnames[each] = author2
+                
+            } else {
+                
+                self.brandnames[each] = " "
+
             }
                 if var name = value?["Name"] as? String {
                     names[each] = name
@@ -149,7 +154,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     
                 }
                 
-                if var profileUrl = value?["ProPic"] as? String {
+                if var profileUrl = value?["Image"] as? String {
                     // Create a storage reference from the URL
                     
                     let url = URL(string: profileUrl)
@@ -191,13 +196,13 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         selectedid = projectids[indexPath.row]
         unlockedid = "0"
-        myselectedimage = images[projectids[indexPath.row]]!
+        selectedimage = images[projectids[indexPath.row]]!
         selectedname = names[projectids[indexPath.row]]!
         
 //        selectedpitch = descriptions[projectids[indexPath.row]]!
 //        selectedprice = prices[projectids[indexPath.row]]!
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedsubs = subscribers[projectids[indexPath.row]]!
+        selectedsubs = usedprices[projectids[indexPath.row]]!
 //        selectedprogramname = programnames[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "ExploreToVideos", sender: self)
@@ -226,29 +231,35 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
 //        cell.subscriber.tag = indexPath.row
         
-        cell.pricelabel.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
-        cell.pricelabel.layer.cornerRadius = 5.0
-        cell.pricelabel.layer.masksToBounds = true
-        cell.layer.cornerRadius = 10.0
-        cell.layer.masksToBounds = true
+//        cell.pricelabel.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
+//        cell.layer.borderColor = UIColor.black.cgColor
+//        cell.layer.borderWidth = 0.5
+//
+//        cell.pricelabel.layer.cornerRadius = 5.0
+//        cell.pricelabel.layer.masksToBounds = true
+//        cell.layer.cornerRadius = 10.0
+//        cell.layer.masksToBounds = true
         
-        if images.count > indexPath.row && names.count > indexPath.row {
+        if images.count > indexPath.row  {
             
-            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)/mo"
+//            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)/mo"
 
             //            cell.layer.borderWidth = 1.0
             //            cell.layer.borderColor = UIColor.lightGray.cgColor
 //            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
-            
-            cell.thumbnail.layer.cornerRadius = 10.0
-            cell.thumbnail.layer.masksToBounds = true
-            cell.textlabel.text = names[projectids[indexPath.row]]
-            cell.creatorname.text = creatornames[projectids[indexPath.row]]?.uppercased()
-            cell.creatorname.addCharacterSpacing()
+//
+//            cell.thumbnail.layer.cornerRadius = 10.0
+//            cell.thumbnail.layer.masksToBounds = true
+//            cell.textlabel.text = names[projectids[indexPath.row]]
+//            cell.creatorname.text = brandnames[projectids[indexPath.row]]?.uppercased()
+//            cell.creatorname.addCharacterSpacing()
             cell.thumbnail.image = images[projectids[indexPath.row]]
-            
-//            cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
-                        cell.subscribers.text = "\(subscribers[projectids[indexPath.row]]!) subscribers"
+            cell.pricelabel.text = usedprices[projectids[indexPath.row]]?.uppercased()
+            cell.pricelabel.addCharacterSpacing()
+            cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!.uppercased())"
+            cell.textlabel.addCharacterSpacing()
+//            cell.usedprices.text = "\(usedprices[projectids[indexPath.row]]!) usedprices"
+//                        cell.usedprices.text = "\(usedprices[projectids[indexPath.row]]!) usedprices"
 
         } else {
             
@@ -271,7 +282,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         selectedpitch = descriptions[projectids[buttonTag]]!
         selectedprice = prices[projectids[buttonTag]]!
         //        selectedprogramnames = programnames[projectids[buttonTag]]!
-        selectedsubs = subscribers[projectids[buttonTag]]!
+        selectedsubs = usedprices[projectids[buttonTag]]!
         selectedprogramname = programnames[projectids[buttonTag]]!
         
         self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
