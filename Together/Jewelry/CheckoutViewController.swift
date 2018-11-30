@@ -13,9 +13,10 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
+import Stripe
 
 var selecteddetails = String()
-
+var selectedimageurl = String()
 class CheckoutViewController: UIViewController {
     @IBAction func tapShipping(_ sender: Any) {
     }
@@ -29,7 +30,10 @@ class CheckoutViewController: UIViewController {
     @IBAction func tapCreditCard(_ sender: Any) {
     }
     @IBAction func tapPolicy2(_ sender: Any) {
+        
+        
     }
+    @IBOutlet weak var errorlabel: UILabel!
     @IBOutlet weak var tappolicy2: UIButton!
     @IBOutlet weak var tappolicy1: UIButton!
     @IBOutlet weak var price: UILabel!
@@ -39,7 +43,26 @@ class CheckoutViewController: UIViewController {
     @IBAction func tapPolicy(_ sender: Any) {
     }
     @IBAction func tapBuy(_ sender: Any) {
+        
+        if streetaddress != "" && finalcreditcard != "" {
+            
+        ref!.child("Jewelery").child("Purchases").childByAutoId().child(uid).updateChildValues(["Product ID" : selectedid, "Credit Card" : finalcreditcard, "Shipping" : streetaddress])
+            
+            ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "On Time", "Image" : selectedimageurl])
+
+            
+            self.performSegue(withIdentifier: "Thank You", sender: self)
+
+        } else {
+            
+            errorlabel.alpha = 1
+        }
+        
+        
     }
+    
+    var finalprice = String()
+    
     @IBOutlet weak var header: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +73,8 @@ class CheckoutViewController: UIViewController {
         mainimage.image = selectedimage
         detailslabel.text = selecteddetails
         productname.text = selectedname
+        finalprice = "$\(String(Int(selectedprice.dropFirst())!+10))"
+        
         totalprice.setTitle("$\(String(Int(selectedprice.dropFirst())!+10))", for: .normal)
         tapadd.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
            tapcc.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
@@ -94,6 +119,8 @@ class CheckoutViewController: UIViewController {
     }
     */
     
+    var finalcreditcard = String()
+
     func queryforuser() {
         
             ref?.child("Jewelery").child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -102,19 +129,33 @@ class CheckoutViewController: UIViewController {
                 
                 if var author2 = value?["Credit Card Number"] as? String {
                
+                    self.finalcreditcard = author2
+
                     author2 = String(author2.suffix(4))
 
                     self.tapcc.setTitle("**** \(author2)", for: .normal)
+                } else {
                     
+                    self.finalcreditcard = ""
                 }
                 
                 if var author2 = value?["Street"] as? String {
                     
+                    self.streetaddress = author2
                     self.tapadd.setTitle(author2, for: .normal)
                     
+                } else {
+                    
+                    self.streetaddress = ""
                 }
                 
             })
     }
+    
+    var streetaddress = String()
+  
+    // Note: this delegate method is optional. If you do not need to collect a
+    // shipping method from your user, you should not implement this method
+
 
 }

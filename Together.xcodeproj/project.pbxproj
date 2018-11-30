@@ -49,6 +49,15 @@
 		9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */; };
 		9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934CA2174113F001AEF8E /* PromptViewController.swift */; };
 		9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9019C7216FA81A00668852 /* RespondViewController.swift */; };
+		9D94017021B1AF6000E32912 /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94016F21B1AF5F00E32912 /* ThanksViewController.swift */; };
+		9D94017121B1AF6000E32912 /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94016F21B1AF5F00E32912 /* ThanksViewController.swift */; };
+		9D94017221B1AF6000E32912 /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94016F21B1AF5F00E32912 /* ThanksViewController.swift */; };
+		9D94017421B1B1BE00E32912 /* MyOwnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */; };
+		9D94017521B1B1BE00E32912 /* MyOwnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */; };
+		9D94017621B1B1BE00E32912 /* MyOwnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */; };
+		9D94017821B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */; };
+		9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */; };
+		9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */; };
 		9D9C665921A321B800309443 /* YourChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9C665821A321B800309443 /* YourChannelViewController.swift */; };
 		9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */; };
 		9D9E4A4721862B1700B3C74C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9E4A4621862B1700B3C74C /* StoreKit.framework */; };
@@ -150,6 +159,9 @@
 		9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		9D8934CA2174113F001AEF8E /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
 		9D9019C7216FA81A00668852 /* RespondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViewController.swift; sourceTree = "<group>"; };
+		9D94016F21B1AF5F00E32912 /* ThanksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
+		9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOwnViewController.swift; sourceTree = "<group>"; };
+		9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		9D9C665821A321B800309443 /* YourChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChannelViewController.swift; sourceTree = "<group>"; };
 		9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover2ViewController.swift; sourceTree = "<group>"; };
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -306,6 +318,7 @@
 		9D69746D21B074D600F8E748 /* Jewelry */ = {
 			isa = PBXGroup;
 			children = (
+				9D94016F21B1AF5F00E32912 /* ThanksViewController.swift */,
 				9D50E1A121B0CFEF00065C81 /* CreditCardViewController.swift */,
 				9D4A494021B0F9C30004A2B2 /* ShippingViewController.swift */,
 				9D50E19521B0BC4800065C81 /* RegisterViewController.swift */,
@@ -316,6 +329,9 @@
 				9D50E19B21B0C8A200065C81 /* CheckoutViewController.swift */,
 				9D50E19921B0C69100065C81 /* BrandViewController.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
+				9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */,
+				9DEA5F1721A0B820000137A3 /* ContacViewController.swift */,
+				9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */,
 				9D46D84C219B29C0006CE94C /* OverviewViewController.swift */,
 				9D46D84E219B2A02006CE94C /* OverviewCollectionViewCell.swift */,
 			);
@@ -424,7 +440,6 @@
 				9DC0B290219360EC00F56A1A /* PlansViewController.swift */,
 				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
 				9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */,
-				9DEA5F1721A0B820000137A3 /* ContacViewController.swift */,
 				9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */,
 				9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */,
 			);
@@ -635,6 +650,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Together/Pods-Together-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -644,12 +660,14 @@
 				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Purchases/Purchases.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -659,6 +677,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Purchases.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -703,6 +722,7 @@
 				9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */,
 				9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */,
 				9DB8AE00219DDB0300D7D707 /* PeopleCollectionViewCell.swift in Sources */,
+				9D94017821B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9D50E19C21B0C8A200065C81 /* CheckoutViewController.swift in Sources */,
 				9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */,
 				9D0F86A221710A6400AE5F18 /* Constants.swift in Sources */,
@@ -720,6 +740,7 @@
 				9DC0B291219360EC00F56A1A /* PlansViewController.swift in Sources */,
 				9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */,
 				9D50E19621B0BC4800065C81 /* RegisterViewController.swift in Sources */,
+				9D94017421B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
 				9D50E1A221B0CFEF00065C81 /* CreditCardViewController.swift in Sources */,
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,
@@ -737,6 +758,7 @@
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,
 				9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */,
 				9DEA5F1821A0B820000137A3 /* ContacViewController.swift in Sources */,
+				9D94017021B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +767,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DB795DB21656B5700211327 /* TogetherTests.swift in Sources */,
+				9D94017121B1AF6000E32912 /* ThanksViewController.swift in Sources */,
+				9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
+				9D94017521B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +778,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */,
+				9D94017221B1AF6000E32912 /* ThanksViewController.swift in Sources */,
+				9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
+				9D94017621B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

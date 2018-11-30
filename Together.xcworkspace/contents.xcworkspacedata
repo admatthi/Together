@@ -2,18 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/Jewelry/ProductTableViewCell.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/Jewelry/PricesCollectionViewCell.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/Jewelry/ProductViewController.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/alekmatthiessen/Desktop/DesktopNov2018/Together/Together/Jewelry/CreditCardViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:Together.xcodeproj">
    </FileRef>
    <FileRef

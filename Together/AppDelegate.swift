@@ -20,7 +20,8 @@ import UXCam
 import YPImagePicker
 import AVFoundation
 import Purchases
-
+import Stripe
+import Alamofire
 
 var uid = String()
 var ref: DatabaseReference?
@@ -231,6 +232,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         })
         
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let stripeHandled = Stripe.handleURLCallback(with: url)
+        
+        if (stripeHandled) {
+            return true
+        }
+        else {
+            // This was not a stripe url, do whatever url handling your app
+            // normally does, if any.
+        }
+        
+        return false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

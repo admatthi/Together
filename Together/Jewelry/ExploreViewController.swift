@@ -26,6 +26,7 @@ var programnames = [String:String]()
 var projectids = [String]()
 var selectedimage = UIImage()
 var toppics = [String:UIImage]()
+var imageurls = [String:String]()
 
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
    
@@ -94,6 +95,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         toppics.removeAll()
         images.removeAll()
         brandnames.removeAll()
+        imageurls.removeAll()
         
         ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -171,6 +173,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 
                 if var profileUrl = value?["Image"] as? String {
                     // Create a storage reference from the URL
+                    imageurls[each] = profileUrl
                     
                     let url = URL(string: profileUrl)
                     let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -213,7 +216,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         unlockedid = "0"
         selectedimage = images[projectids[indexPath.row]]!
         selectedname = names[projectids[indexPath.row]]!
-        
+        selectedimageurl = imageurls[projectids[indexPath.row]]!
 //        selectedpitch = descriptions[projectids[indexPath.row]]!
 //        selectedprice = prices[projectids[indexPath.row]]!
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
