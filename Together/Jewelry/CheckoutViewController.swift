@@ -85,6 +85,25 @@ class CheckoutViewController: UIViewController {
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "MMM dd"
         
+        if selectedcondition == "New" {
+            
+            finalprice = "$\(String(Int(selectedprice.dropFirst())!))"
+
+            tappolicy2.setTitle("All shipping and returns are complimentary on this order.", for: .normal)
+            tappolicy2.isUserInteractionEnabled = false
+            
+            tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+            tapshipping.setTitle("Complimentary ($0)", for: .normal)
+            
+        } else {
+            
+            finalprice = "$\(String(Int(selectedprice.dropFirst())!+10))"
+
+            let buttonTitleStr2 = NSMutableAttributedString(string:"This gift is final sale. View Purchases & Return Policy.", attributes:attrs2)
+            attributedString2.append(buttonTitleStr2)
+            tappolicy2.setAttributedTitle(attributedString2, for: .normal)
+            tappolicy2.setTitleColor(.black, for: .normal)
+        }
         thisdate = dateFormatter.string(from: date)
         
         header.addCharacterSpacing()
@@ -93,7 +112,6 @@ class CheckoutViewController: UIViewController {
         mainimage.image = selectedimage
         detailslabel.text = selecteddetails
         productname.text = selectedname
-        finalprice = "$\(String(Int(selectedprice.dropFirst())!+10))"
         
         totalprice.setTitle("$\(String(Int(selectedprice.dropFirst())!+10))", for: .normal)
         tapadd.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
@@ -111,10 +129,7 @@ class CheckoutViewController: UIViewController {
         tappolicy1.setTitleColor(.black, for: .normal)
         
         
-        let buttonTitleStr2 = NSMutableAttributedString(string:"This gift is final sale. View Purchases & Return Policy.", attributes:attrs2)
-        attributedString2.append(buttonTitleStr2)
-        tappolicy2.setAttributedTitle(attributedString2, for: .normal)
-        tappolicy2.setTitleColor(.black, for: .normal)
+   
         
         
         // Do any additional setup after loading the view.

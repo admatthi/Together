@@ -60,14 +60,27 @@ queryforinfo()
                     
                 }
             
-            if var author2 = value?["Used Price"] as? String {
+            if var author2 = value?["Used Inventory"] as? String {
                 
-                var intviews = Double(Int(author2.dropFirst())!)
-                intviews = intviews * 1.1
-                author2 = "$\(String(Int(intviews)))"
+                if Int(author2)! > 0 {
+            
+                        if var author2 = value?["Used Price"] as? String {
+                            
+                            var intviews = Double(Int(author2.dropFirst())!)
+                            intviews = intviews * 1.1
+                            author2 = "$\(String(Int(intviews)))"
 
-                self.prices2.append(author2)
+                            self.prices2.append(author2)
 
+                        }
+                    
+                } else {
+                    
+                    self.prices2.append("SOLD OUT")
+
+                    
+                }
+                
             }
             
             if var author2 = value?["Bullet1"] as? String {
@@ -169,7 +182,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                     
                     selecteddetails = "\(selectedcondition) / Original Packaging"
 
-                    self.performSegue(withIdentifier: "ProductToSale", sender: self)
+                    self.performSegue(withIdentifier: "ProductToCheckout", sender: self)
 
                 } else {
                     
@@ -249,6 +262,17 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     cell.titlelabel.text = pricetitles[indexPath.row]
     cell.priceslabel.text = prices2[indexPath.row]
     cell.titlelabel.addCharacterSpacing()
+    
+    if prices2[indexPath.row] == "SOLD OUT" {
+        
+        cell.priceslabel.textColor = .gray
+        cell.isUserInteractionEnabled = false
+        
+    } else {
+        
+        cell.isUserInteractionEnabled = true
+
+    }
 //    if selectedindex == 0 {
 //
 //        if indexPath.row == 0 {
