@@ -22,7 +22,7 @@ class ContacViewController: UIViewController, UITextViewDelegate {
     @IBAction func tapback(_ sender: Any) {
         
                 self.dismiss(animated: true, completion: {
-        
+
                 })
         
     }
@@ -31,7 +31,7 @@ class ContacViewController: UIViewController, UITextViewDelegate {
         
         if textView.textColor == mygray {
             textView.text = ""
-            textView.textColor = UIColor.white
+            textView.textColor = UIColor.black
         }
     }
     
@@ -46,7 +46,6 @@ class ContacViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        requestlabel.addCharacterSpacing()
         ref = Database.database().reference()
         
         tv.text = "Your message here..."
@@ -56,11 +55,13 @@ class ContacViewController: UIViewController, UITextViewDelegate {
         tv.layer.borderWidth = 0.5
         
         tv.delegate = self
-
-        
+        taps.addTextSpacing(2.0)
+        header.addCharacterSpacing()
         // Do any additional setup after loading the view.
     }
     
+    @IBOutlet weak var header: UILabel!
+    @IBOutlet weak var taps: UIButton!
     @IBAction func tapSubmit(_ sender: Any) {
         
         if tv.text != "" {
@@ -69,21 +70,24 @@ class ContacViewController: UIViewController, UITextViewDelegate {
                 
                 ref?.child("Feedback").child(uid).childByAutoId().updateChildValues(["Text" : "\(tv.text!)"])
 
+                self.dismiss(animated: true, completion: {
+                    
+                })
                 
             } else {
                 
                 ref?.child("Feedback").childByAutoId().updateChildValues(["Text" : "\(tv.text!)"])
 
-                
+                self.dismiss(animated: true, completion: {
+                    
+                })
             }
             
         }
         
        
 
-        self.dismiss(animated: true, completion: {
-            
-        })
+     
 
         
     }

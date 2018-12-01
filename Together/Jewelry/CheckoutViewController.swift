@@ -17,6 +17,8 @@ import Stripe
 
 var selecteddetails = String()
 var selectedimageurl = String()
+
+
 class CheckoutViewController: UIViewController {
     @IBAction func tapShipping(_ sender: Any) {
     }
@@ -56,9 +58,9 @@ class CheckoutViewController: UIViewController {
         
         if streetaddress != "" && finalcreditcard != "" {
             
-        ref!.child("Jewelery").child("Purchases").childByAutoId().child(uid).updateChildValues(["Product ID" : selectedid, "Credit Card" : finalcreditcard, "Shipping" : streetaddress])
+        ref!.child("Jewelery").child("Purchases").childByAutoId().child(uid).updateChildValues(["Product ID" : selectedid, "Credit Card" : finalcreditcard, "Shipping" : streetaddress, "Date" : thisdate])
             
-            ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "On Time", "Image" : selectedimageurl])
+            ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "On Time", "Image" : selectedimageurl, "Date" : thisdate])
 
             
             self.performSegue(withIdentifier: "Thank You", sender: self)
@@ -77,6 +79,14 @@ class CheckoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MMM dd"
+        
+        thisdate = dateFormatter.string(from: date)
+        
         header.addCharacterSpacing()
         price.text = selectedprice
         
@@ -95,7 +105,7 @@ class CheckoutViewController: UIViewController {
         
         queryforuser()
         
-        let buttonTitleStr = NSMutableAttributedString(string:"By proceeding, I confirm I have read and agree to the Purchases & Return Poilcy and my shipping address is correct.", attributes:attrs)
+        let buttonTitleStr = NSMutableAttributedString(string:"By proceeding, I confirm I have read and agree to the Purchases & Return Policy and my shipping address is correct.", attributes:attrs)
         attributedString.append(buttonTitleStr)
         tappolicy1.setAttributedTitle(attributedString, for: .normal)
         tappolicy1.setTitleColor(.black, for: .normal)
@@ -132,7 +142,6 @@ class CheckoutViewController: UIViewController {
     var finalcreditcard = String()
 
     func queryforuser() {
-        
             ref?.child("Jewelery").child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary

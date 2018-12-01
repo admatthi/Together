@@ -140,9 +140,9 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @IBAction func tapback(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: {
-            
-        })
+//        self.dismiss(animated: true, completion: {
+//            
+//        })
         
     }
     @IBOutlet weak var tapcontact: UIButton!
