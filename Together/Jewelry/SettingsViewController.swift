@@ -16,6 +16,7 @@ import FBSDKCoreKit
 import UserNotifications
 
 var loggedin = Bool()
+var myblue = UIColor(red:0.47, green:0.75, blue:0.90, alpha:1.0)
 
 class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var tapsubscriptions: UIButton!
@@ -45,7 +46,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
         try! Auth.auth().signOut()
         
-        self.performSegue(withIdentifier: "SettingsToLogin", sender: self)
+        self.performSegue(withIdentifier: "SettingsToSignIn2", sender: self)
     }
     @IBAction func tapSubscription(_ sender: Any) {
         

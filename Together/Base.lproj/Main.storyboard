@@ -215,7 +215,7 @@
                                 <rect key="frame" x="0.0" y="591" width="375" height="76"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="ZAy-tx-zwK"/>
+                                    <constraint firstAttribute="height" constant="76" id="LwR-52-jdz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -260,15 +260,15 @@
                             <constraint firstItem="0kp-zg-iac" firstAttribute="leading" secondItem="Inh-ad-R5a" secondAttribute="leading" constant="16" id="9hY-bs-nQH"/>
                             <constraint firstItem="s5x-Yh-flb" firstAttribute="centerY" secondItem="eEB-jV-0u5" secondAttribute="centerY" constant="-5" id="EKF-cQ-2Cj"/>
                             <constraint firstItem="Inh-ad-R5a" firstAttribute="trailing" secondItem="0kp-zg-iac" secondAttribute="trailing" constant="16" id="FCP-oa-VTZ"/>
+                            <constraint firstItem="lsw-FY-bET" firstAttribute="trailing" secondItem="Inh-ad-R5a" secondAttribute="trailing" id="HC6-p1-L01"/>
                             <constraint firstItem="Inh-ad-R5a" firstAttribute="trailing" secondItem="s5x-Yh-flb" secondAttribute="trailing" constant="14" id="IWk-an-sr1"/>
                             <constraint firstItem="9iN-64-uEr" firstAttribute="leading" secondItem="Inh-ad-R5a" secondAttribute="leading" constant="16" id="LV3-TD-2YV"/>
                             <constraint firstItem="9iN-64-uEr" firstAttribute="top" secondItem="0kp-zg-iac" secondAttribute="bottom" constant="4" id="Nxn-Xv-8Oy"/>
                             <constraint firstItem="Inh-ad-R5a" firstAttribute="trailing" secondItem="9iN-64-uEr" secondAttribute="trailing" constant="16" id="Och-f1-DD2"/>
                             <constraint firstItem="eEB-jV-0u5" firstAttribute="centerX" secondItem="isO-DR-6Kc" secondAttribute="centerX" id="SqQ-4y-jYK"/>
-                            <constraint firstItem="lsw-FY-bET" firstAttribute="bottom" secondItem="Inh-ad-R5a" secondAttribute="bottom" id="Ypn-7a-ukp"/>
-                            <constraint firstItem="lsw-FY-bET" firstAttribute="trailing" secondItem="Inh-ad-R5a" secondAttribute="trailing" id="ZO5-tY-fcm"/>
+                            <constraint firstAttribute="bottom" secondItem="lsw-FY-bET" secondAttribute="bottom" id="Vcm-ff-LS0"/>
                             <constraint firstItem="HaU-v1-dXq" firstAttribute="leading" secondItem="Inh-ad-R5a" secondAttribute="leading" constant="20" id="a6n-bv-Jcn"/>
-                            <constraint firstItem="lsw-FY-bET" firstAttribute="leading" secondItem="Inh-ad-R5a" secondAttribute="leading" id="fAV-EW-asi"/>
+                            <constraint firstItem="lsw-FY-bET" firstAttribute="leading" secondItem="Inh-ad-R5a" secondAttribute="leading" id="btf-D1-1Au"/>
                             <constraint firstItem="9iN-64-uEr" firstAttribute="top" secondItem="0kp-zg-iac" secondAttribute="bottom" constant="4" id="iQe-z9-NUE"/>
                             <constraint firstItem="y7k-Uc-HgL" firstAttribute="centerY" secondItem="eEB-jV-0u5" secondAttribute="centerY" constant="-5" id="ixa-VC-XmS"/>
                             <constraint firstItem="HaU-v1-dXq" firstAttribute="top" secondItem="9iN-64-uEr" secondAttribute="bottom" constant="8" id="nMY-fG-xm0"/>
@@ -324,14 +324,14 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="10"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gL0-x0-lNX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check" translatesAutoresizingMaskIntoConstraints="NO" id="gL0-x0-lNX">
                                 <rect key="frame" x="51" y="519" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="0ER-pW-OKg"/>
                                     <constraint firstAttribute="height" constant="40" id="u79-fX-95Z"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ICE AUTHENTICATION" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-j3-WWA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ICY AUTHENTICATION" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-j3-WWA">
                                 <rect key="frame" x="108" y="507" width="251" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="XhA-uX-gQo"/>
@@ -340,7 +340,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your purchase will be sent to ICE for verification before shipping to you." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9O-sm-phV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your purchase will be sent to Icy for verification before shipping to you." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9O-sm-phV">
                                 <rect key="frame" x="109" y="536" width="230" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="0uZ-5O-cl4"/>
@@ -365,7 +365,7 @@
                                     <segue destination="1lY-2L-B39" kind="show" id="2N9-g5-pzJ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VmL-QS-WM7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Glass" translatesAutoresizingMaskIntoConstraints="NO" id="VmL-QS-WM7">
                                 <rect key="frame" x="51" y="436" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="bon-c7-cOd"/>
@@ -2074,21 +2074,21 @@
                                     <constraint firstAttribute="height" constant="86" id="gy7-up-dIO"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PBp-At-1nR">
-                                    <size key="itemSize" width="196" height="82"/>
+                                    <size key="itemSize" width="180" height="82"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Prices" id="dzb-zH-qB2" customClass="PricesCollectionViewCell" customModule="Together" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2" width="196" height="82"/>
+                                        <rect key="frame" x="0.0" y="2" width="180" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="196" height="82"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY NEW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAk-1L-4DR">
-                                                    <rect key="frame" x="12" y="20" width="172" height="26"/>
+                                                    <rect key="frame" x="12" y="20" width="156" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="MxU-Cg-dSP"/>
                                                     </constraints>
@@ -2097,7 +2097,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$230" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6en-Nc-QJH">
-                                                    <rect key="frame" x="27" y="45" width="140" height="30"/>
+                                                    <rect key="frame" x="27" y="45" width="124" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="l7X-SF-yKi"/>
                                                     </constraints>
@@ -3195,6 +3195,7 @@
                         <outlet property="tapterms" destination="Tow-se-iLY" id="fo5-S3-Fw5"/>
                         <segue destination="ezu-Il-3kv" kind="show" identifier="SettingsToLogin" id="FNQ-2Z-Lgo"/>
                         <segue destination="8Ci-9S-R86" kind="show" identifier="AccountToUpload" id="raE-3f-wg2"/>
+                        <segue destination="rpf-dc-WBe" kind="show" identifier="SettingsToSignIn2" id="dQ5-zt-jVa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dkh-kg-5aD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4091,28 +4092,31 @@
         <image name="Back" width="40" height="40"/>
         <image name="Back Copy" width="40" height="40"/>
         <image name="CC1 Copy-1" width="343" height="475"/>
+        <image name="Check" width="50" height="50"/>
         <image name="Delete" width="50" height="50"/>
         <image name="Explore" width="40" height="40"/>
+        <image name="Glass" width="50" height="50"/>
         <image name="Placeholder" width="40" height="40"/>
         <image name="Sales" width="40" height="40"/>
         <image name="Setup1" width="75" height="17"/>
         <image name="Submit" width="50" height="50"/>
         <image name="Upload" width="200" height="200"/>
         <image name="WhiteX" width="50" height="50"/>
-        <image name="X" width="40" height="40"/>
+        <image name="X" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3R6-nr-DUN"/>
-        <segue reference="NBs-wt-gXg"/>
+        <segue reference="pY2-Pf-WJ7"/>
+        <segue reference="c6F-Ot-FMg"/>
         <segue reference="69d-3Z-lQE"/>
         <segue reference="raE-3f-wg2"/>
         <segue reference="T5q-Kc-1EU"/>
         <segue reference="FNQ-2Z-Lgo"/>
-        <segue reference="ZVz-VR-6yo"/>
-        <segue reference="4fi-sO-46f"/>
+        <segue reference="KWx-Me-c8V"/>
+        <segue reference="V3j-Jc-ZDj"/>
         <segue reference="azY-Oa-xbv"/>
         <segue reference="n3C-qN-T8y"/>
-        <segue reference="SDt-c1-QCd"/>
+        <segue reference="2N9-g5-pzJ"/>
         <segue reference="K4Z-T6-lvq"/>
+        <segue reference="dQ5-zt-jVa"/>
     </inferredMetricsTieBreakers>
 </document>

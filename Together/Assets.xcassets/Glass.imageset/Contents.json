@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "BlackX.png",
+      "filename" : "Glass.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "BlackX@2x.png",
+      "filename" : "Glass@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "BlackX@3x.png",
+      "filename" : "Glass@3x.png",
       "scale" : "3x"
     }
   ],

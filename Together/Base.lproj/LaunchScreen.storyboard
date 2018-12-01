@@ -25,7 +25,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FAMLOGO2" translatesAutoresizingMaskIntoConstraints="NO" id="7FE-iV-uNg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HumbleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7FE-iV-uNg">
                                 <rect key="frame" x="109" y="292" width="157" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="83" id="YAR-Df-sE8"/>
@@ -52,6 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FAMLOGO2" width="502" height="142"/>
+        <image name="HumbleIcon" width="1024" height="1024"/>
     </resources>
 </document>

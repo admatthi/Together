@@ -38,7 +38,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        activityIndicator.color = mypink
+        activityIndicator.color = myblue
         headerlabel.addCharacterSpacing()
         
         ref = Database.database().reference()
