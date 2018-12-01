@@ -31,7 +31,12 @@ class CheckoutViewController: UIViewController {
     }
     @IBAction func tapPolicy2(_ sender: Any) {
         
+       
         
+        if let url = NSURL(string: "http://www.joinmyfam.com/purchases"
+            ) {
+            UIApplication.shared.openURL(url as URL)
+        }
     }
     @IBOutlet weak var errorlabel: UILabel!
     @IBOutlet weak var tappolicy2: UIButton!
@@ -41,6 +46,11 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var productname: UILabel!
     @IBOutlet weak var mainimage: UIImageView!
     @IBAction func tapPolicy(_ sender: Any) {
+        
+        if let url = NSURL(string: "http://www.joinmyfam.com/purchases"
+            ) {
+            UIApplication.shared.openURL(url as URL)
+        }
     }
     @IBAction func tapBuy(_ sender: Any) {
         
