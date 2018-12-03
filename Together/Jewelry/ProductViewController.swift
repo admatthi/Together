@@ -83,35 +83,35 @@ queryforinfo()
                 
             }
             
-            if var author2 = value?["Bullet1"] as? String {
+            if var author2 = value?["Description"] as? String {
                 
                 selecteddescription = author2
                 
             }
             
-            if var author2 = value?["Stone"] as? String {
+            if var author2 = value?["Brand"] as? String {
                 
                 b2 = author2
                 
             }
             
-            if var author2 = value?["Main Color"] as? String {
+            if var author2 = value?["Model"] as? String {
                 
                 b3 = author2
                 
             }
-            if var author2 = value?["Brand"] as? String {
+            if var author2 = value?["Movement"] as? String {
                 
                 b4 = author2
                 
             }
-            if var author2 = value?["Size"] as? String {
+            if var author2 = value?["Diameter"] as? String {
                 
                 b5 = author2
                 
             }
             
-            if var author2 = value?["Designer"] as? String {
+            if var author2 = value?["Bracelet"] as? String {
                 
                 b6 = author2
                 
