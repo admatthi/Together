@@ -133,6 +133,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         var functioncounter = 0
         
         for each in projectids {
+            
         ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary

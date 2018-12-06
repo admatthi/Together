@@ -69,9 +69,10 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
             
             tapadd.setTitleColor(UIColor.black, for: .normal)
             pressed = false
+            
         } else {
             
-            tapadd.setTitleColor(UIColor.blue, for: .normal)
+            tapadd.setTitleColor(myblue, for: .normal)
 
             pressed = true
         }

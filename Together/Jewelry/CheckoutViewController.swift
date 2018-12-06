@@ -68,6 +68,7 @@ class CheckoutViewController: UIViewController {
         } else {
             
             errorlabel.alpha = 1
+            
         }
         
         
@@ -75,6 +76,7 @@ class CheckoutViewController: UIViewController {
     
     var finalprice = String()
     
+    @IBOutlet weak var tapbuy: UIButton!
     @IBOutlet weak var header: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +86,7 @@ class CheckoutViewController: UIViewController {
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "MMM dd"
-        
+        tapbuy.addTextSpacing(2.0)
         if selectedcondition == "New" {
             
             finalprice = "$\(String(Int(selectedprice.dropFirst())!))"
@@ -99,10 +101,12 @@ class CheckoutViewController: UIViewController {
             
             finalprice = "$\(String(Int(selectedprice.dropFirst())!+10))"
 
-            let buttonTitleStr2 = NSMutableAttributedString(string:"This gift is final sale. View Purchases & Return Policy.", attributes:attrs2)
+            let buttonTitleStr2 = NSMutableAttributedString(string:"View Purchases & Return Policy.", attributes:attrs2)
             attributedString2.append(buttonTitleStr2)
             tappolicy2.setAttributedTitle(attributedString2, for: .normal)
             tappolicy2.setTitleColor(.black, for: .normal)
+            tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+
         }
         thisdate = dateFormatter.string(from: date)
         
@@ -110,8 +114,10 @@ class CheckoutViewController: UIViewController {
         price.text = selectedprice
         
         mainimage.image = selectedimage
-        detailslabel.text = selecteddetails
-        productname.text = selectedname
+        detailslabel.text = "\(selecteddetails.uppercased()) / \(selectedprice)"
+        productname.text = selectedname.uppercased()
+        detailslabel.addCharacterSpacing()
+        productname.addCharacterSpacing()
         
         totalprice.setTitle("$\(String(Int(selectedprice.dropFirst())!+10))", for: .normal)
         tapadd.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
@@ -128,9 +134,16 @@ class CheckoutViewController: UIViewController {
         tappolicy1.setAttributedTitle(attributedString, for: .normal)
         tappolicy1.setTitleColor(.black, for: .normal)
         
-        
+        detailslabel.addCharacterSpacing()
+        productname.addCharacterSpacing()
    
-        
+        tapadd.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+        tapcc.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+        tapshipping.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+        totalprice.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+        tappolicy1.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+        tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+
         
         // Do any additional setup after loading the view.
     }
@@ -187,6 +200,33 @@ class CheckoutViewController: UIViewController {
     }
     
     var streetaddress = String()
+    
+    enum LINE_POSITION {
+        case LINE_POSITION_TOP
+        case LINE_POSITION_BOTTOM
+    }
+    
+    func addLineToView(view : UIView, position : LINE_POSITION, color: UIColor, width: Double) {
+        let lineView = UIView()
+        lineView.backgroundColor = color
+        lineView.translatesAutoresizingMaskIntoConstraints = false // This is important!
+        view.addSubview(lineView)
+        
+        let metrics = ["width" : NSNumber(value: width)]
+        let views = ["lineView" : lineView]
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[lineView]|", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+        
+        switch position {
+        case .LINE_POSITION_TOP:
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[lineView(width)]", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+            break
+        case .LINE_POSITION_BOTTOM:
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[lineView(width)]|", options:NSLayoutFormatOptions(rawValue: 0), metrics:metrics, views:views))
+            break
+        default:
+            break
+        }
+    }
   
     // Note: this delegate method is optional. If you do not need to collect a
     // shipping method from your user, you should not implement this method
