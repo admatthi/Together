@@ -89,29 +89,29 @@ queryforinfo()
                 
             }
             
-            if var author2 = value?["Brand"] as? String {
+            if var author2 = value?["Gemstone"] as? String {
                 
                 b2 = author2
                 
             }
             
-            if var author2 = value?["Model"] as? String {
+            if var author2 = value?["Weight"] as? String {
                 
                 b3 = author2
                 
             }
-            if var author2 = value?["Movement"] as? String {
+            if var author2 = value?["Color"] as? String {
                 
                 b4 = author2
                 
             }
-            if var author2 = value?["Diameter"] as? String {
+            if var author2 = value?["Size"] as? String {
                 
                 b5 = author2
                 
             }
             
-            if var author2 = value?["Bracelet"] as? String {
+            if var author2 = value?["Designer"] as? String {
                 
                 b6 = author2
                 
@@ -187,7 +187,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                 } else {
                     
                     selectedcondition = "Used"
-                    selecteddetails = "\(selectedcondition) / \(selectedpackaging)"
+                    selecteddetails = "\(selectedcondition) / Pouch: \(selectedpackaging)"
                     self.performSegue(withIdentifier: "ProductToSale", sender: self)
 
                 }

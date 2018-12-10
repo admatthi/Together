@@ -13,7 +13,6 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
-import Stripe
 
 var selecteddetails = String()
 var selectedimageurl = String()

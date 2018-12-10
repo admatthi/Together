@@ -17,11 +17,9 @@ import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
 import UXCam
-import YPImagePicker
 import AVFoundation
 import Purchases
-import Stripe
-import Alamofire
+import FirebaseDynamicLinks
 
 var uid = String()
 var ref: DatabaseReference?
@@ -73,21 +71,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if Auth.auth().currentUser == nil {
             
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewControlleripad
+            self.window?.makeKeyAndVisible()//
+
+            
         } else {
             
             let currentUser = Auth.auth().currentUser
             //
             uid = (currentUser?.uid)!
+            
+            
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = tabBarBuyer
+            
+            self.window?.makeKeyAndVisible()
+            
         }
             // Do smth if user is not logged in
 
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-
-
-        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = initialViewControlleripad
-        self.window?.makeKeyAndVisible()//
 
 
 //        } else {
@@ -234,19 +244,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let stripeHandled = Stripe.handleURLCallback(with: url)
-        
-        if (stripeHandled) {
-            return true
-        }
-        else {
-            // This was not a stripe url, do whatever url handling your app
-            // normally does, if any.
-        }
-        
-        return false
-    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

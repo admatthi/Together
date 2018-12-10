@@ -13,17 +13,17 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
-import YPImagePicker
 import AVFoundation
 import AVKit
 import Photos
 
 class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
-    @IBOutlet weak var tapchoosevideo: UIButton!
     
+    
+    @IBOutlet weak var tapchoosevideo: UIButton!
+
     @IBAction func tapChooseVideo(_ sender: Any) {
         
-        showPicker()
     }
     var imagePickerController = UIImagePickerController()
     var avPlayer = AVPlayer()
@@ -327,81 +327,6 @@ class YourChannelViewController: UIViewController, UITextFieldDelegate, UITextVi
             
             errorlabel.alpha = 1
         }
-    }
-    
-    var selectedItems = [YPMediaItem]()
-
-    func showPicker() {
-        var config = YPImagePickerConfiguration()
-        
-        config.library.mediaType = .video
-        
-        config.shouldSaveNewPicturesToAlbum = false
-        
-        config.video.compression = AVAssetExportPresetMediumQuality
-        
-        config.startOnScreen = .library
-        
-        config.screens = [.library, .video]
-        
-        config.video.libraryTimeLimit = 500.0
-        
-        config.showsCrop = .rectangle(ratio: (9/16))
-        
-        config.wordings.libraryTitle = "Choose Video"
-        
-        config.hidesBottomBar = false
-        config.hidesStatusBar = false
-        config.library.maxNumberOfItems = 1
-        let picker = YPImagePicker(configuration: config)
-        picker.didFinishPicking { [unowned picker] items, cancelled in
-            
-            if cancelled {
-                print("Picker was canceled")
-                picker.dismiss(animated: true, completion: nil)
-                return
-            }
-            _ = items.map { print("🧀 \($0)") }
-            
-            self.selectedItems = items
-            for item in items {
-                switch item {
-                case .photo(let photo):
-                    
-                    print(photo)
-                    
-                case .video(let video):
-                    
-                    
-                        mythumbnail = video.thumbnail
-                        self.thumbnailview.image = mythumbnail
-                        self.loadthumbnail()
-                    //
-                    
-                    videoURL = video.url as NSURL
-                    let playerVC = AVPlayerViewController()
-                        self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:videoURL as! URL))
-                    
-                    
-                    self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                    
-                    self.playerView.playerLayer.player = self.avPlayer
-                    
-                    self.playerView.player?.pause()
-         
-                    self.tabBarController?.tabBar.isHidden = true
-                    
-                    
-                }
-            }
-            picker.dismiss(animated: true, completion: nil)
-            
-        }
-        
-        
-        
-        present(picker, animated: true, completion: nil)
-        
     }
     
     @IBAction func tapBack(_ sender: Any) {

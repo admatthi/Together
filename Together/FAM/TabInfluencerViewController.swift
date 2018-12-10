@@ -34,7 +34,7 @@ class TabInfluencerViewController: UITabBarController, UITabBarControllerDelegat
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
         if let firstVC = viewController as? UploadViewController {
-            firstVC.showPicker()
+//            firstVC.showPicker()
         }
     }
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

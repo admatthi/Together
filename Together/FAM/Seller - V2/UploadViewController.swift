@@ -17,7 +17,6 @@ import MobileCoreServices
 import AVFoundation
 import AVKit
 import Photos
-import YPImagePicker
 
 var videoURL : NSURL?
 var thisdate = String()
@@ -302,13 +301,11 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
-    var selectedItems = [YPMediaItem]()
 
     @IBOutlet weak var subtitle: UITextView!
     @IBOutlet weak var programname: UILabel!
     @IBAction func tapBack(_ sender: Any) {
     
-        showPicker()
         
     }
     var selectedImageV = UIImage()
@@ -405,104 +402,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         
     }
-    func showPicker() {
-        var config = YPImagePickerConfiguration()
-
-        config.library.mediaType = .video
-
-        config.shouldSaveNewPicturesToAlbum = false
-
-        config.video.compression = AVAssetExportPresetMediumQuality
-
-        config.startOnScreen = .library
-
-        config.screens = [.library, .video]
-
-        config.video.libraryTimeLimit = 500.0
-        
-        config.showsCrop = .rectangle(ratio: (9/16))
-        
-        config.wordings.libraryTitle = "Choose Video"
-
-        config.hidesBottomBar = false
-        config.hidesStatusBar = false
-        config.library.maxNumberOfItems = 8
-        let picker = YPImagePicker(configuration: config)
-        vids.removeAll()
-        picker.didFinishPicking { [unowned picker] items, cancelled in
-            
-            if cancelled {
-                print("Picker was canceled")
-                picker.dismiss(animated: true, completion: nil)
-                return
-            }
-            _ = items.map { print("🧀 \($0)") }
-            
-            self.selectedItems = items
-            for item in items {
-                switch item {
-                case .photo(let photo):
-                    
-                    print(photo)
-                    
-                case .video(let video):
-                    
-                if self.counter == 0 {
-                        
-                        mythumbnail = video.thumbnail
-
-                }
-                    //
-                    
-                    let videoURL = video.url
-                    self.vids.append(videoURL)
-                    let playerVC = AVPlayerViewController()
-                    self.avPlayer = AVPlayer(playerItem: AVPlayerItem(url:self.vids[0]))
-                    
-                self.textviewdics.removeAll()
-                
-                
-                self.playerView.playerLayer.videoGravity  = AVLayerVideoGravity.resizeAspectFill
-                    
-                self.playerView.playerLayer.player = self.avPlayer
-                    
-                self.playerView.player?.play()
-                self.tapshare.alpha = 1
-                    self.tv2.alpha = 1
-                self.subtitle.alpha = 1
-                self.tv3.alpha = 1
-//                self.tabBarController?.tabBar.isHidden = true
-                
-                self.counter += 1
-
-                }
-            }
-        picker.dismiss(animated: true, completion: nil)
-            
-    }
-            
-        
     
-        present(picker, animated: true, completion: nil)
-
-    }
     
     @IBAction func tapNewMedia(_ sender: Any) {
         
-        showPicker()
-        
     }
-    func showResults() {
-        if selectedItems.count > 0 {
-            let gallery = YPSelectionsGalleryVC(items: selectedItems) { g, _ in
-                g.dismiss(animated: true, completion: nil)
-            }
-            let navC = UINavigationController(rootViewController: gallery)
-            self.present(navC, animated: true, completion: nil)
-        } else {
-            print("No items selected yet.")
-        }
-    }
+
     @IBOutlet weak var propic: UIImageView!
 
     @IBOutlet weak var tapnew: UIButton!
