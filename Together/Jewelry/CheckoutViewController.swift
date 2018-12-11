@@ -53,13 +53,15 @@ class CheckoutViewController: UIViewController {
             UIApplication.shared.openURL(url as URL)
         }
     }
+    var earlydate = String()
+    var latedate = String()
     @IBAction func tapBuy(_ sender: Any) {
         
         if streetaddress != "" && finalcreditcard != "" {
             
         ref!.child("Jewelery").child("Purchases").childByAutoId().child(uid).updateChildValues(["Product ID" : selectedid, "Credit Card" : finalcreditcard, "Shipping" : streetaddress, "Date" : thisdate])
             
-            ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "On Time", "Image" : selectedimageurl, "Date" : thisdate])
+        ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate])
 
             
             self.performSegue(withIdentifier: "Thank You", sender: self)
@@ -73,18 +75,33 @@ class CheckoutViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var taptochangecc: UILabel!
     var finalprice = String()
     
+    @IBOutlet weak var taptochangeshipping: UILabel!
     @IBOutlet weak var tapbuy: UIButton!
     @IBOutlet weak var header: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tlabel.addCharacterSpacing()
+        slabel.addCharacterSpacing()
+        shlabel.addCharacterSpacing()
+        plabel.addCharacterSpacing()
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "MMM dd"
+        thisdate = dateFormatter.string(from: date)
+        let calendar = Calendar.current
+
+        let earlyD = calendar.date(byAdding: .weekday, value: 7, to: date)
+        let lateD = calendar.date(byAdding: .weekday, value: 9, to: date)
+
+        earlydate = dateFormatter.string(from: earlyD!)
+        latedate = dateFormatter.string(from: lateD!)
+        
         tapbuy.addTextSpacing(2.0)
         
         if selectedcondition == "New" {
@@ -96,23 +113,23 @@ class CheckoutViewController: UIViewController {
             
         tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
             tapshipping.setTitle("Complimentary ($0)", for: .normal)
-            tappolicy1.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
-            tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+            tappolicy1.titleLabel?.textAlignment = NSTextAlignment.center
+            tappolicy2.titleLabel?.textAlignment = NSTextAlignment.center
 
         } else {
             
             finalprice = "$\(String(Int(selectedprice.dropFirst())!+10))"
 
-            let buttonTitleStr2 = NSMutableAttributedString(string:"View Purchases & Return Policy.", attributes:attrs2)
+            let buttonTitleStr2 = NSMutableAttributedString(string:"View Purchases & Return Policy", attributes:attrs2)
             attributedString2.append(buttonTitleStr2)
             tappolicy2.setAttributedTitle(attributedString2, for: .normal)
             tappolicy2.setTitleColor(.black, for: .normal)
-            tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
-            tappolicy1.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+            tappolicy2.titleLabel?.textAlignment = NSTextAlignment.center
+            tappolicy1.titleLabel?.textAlignment = NSTextAlignment.center
 
 
         }
-        thisdate = dateFormatter.string(from: date)
+        
         
         header.addCharacterSpacing()
         price.text = selectedprice
@@ -128,7 +145,7 @@ class CheckoutViewController: UIViewController {
            tapcc.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
            tapshipping.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
            totalprice.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
-        tappolicy1.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+        tappolicy1.titleLabel?.textAlignment = NSTextAlignment.center
 
         
         queryforuser()
@@ -172,7 +189,11 @@ class CheckoutViewController: UIViewController {
     */
     
     var finalcreditcard = String()
-
+    @IBOutlet weak var plabel: UILabel!
+    
+    @IBOutlet weak var shlabel: UILabel!
+    @IBOutlet weak var slabel: UILabel!
+    @IBOutlet weak var tlabel: UILabel!
     func queryforuser() {
             ref?.child("Jewelery").child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -185,19 +206,22 @@ class CheckoutViewController: UIViewController {
                     author2 = String(author2.suffix(4))
 
                     self.tapcc.setTitle("**** \(author2)", for: .normal)
+                    self.taptochangecc.alpha = 1
                 } else {
                     
                     self.finalcreditcard = ""
+                    self.taptochangecc.alpha = 0
                 }
                 
                 if var author2 = value?["Street"] as? String {
                     
                     self.streetaddress = author2
                     self.tapadd.setTitle(author2, for: .normal)
-                    
+                    self.taptochangeshipping.alpha = 1
                 } else {
                     
                     self.streetaddress = ""
+                    self.taptochangeshipping.alpha = 0
                 }
                 
             })

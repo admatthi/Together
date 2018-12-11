@@ -74,7 +74,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         deliverydate.removeAll()
         orderdeets.removeAll()
         ordertitles.removeAll()
-
+        purchasedids.removeAll()
         ref?.child("Jewelery").child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -103,6 +103,8 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         })
     }
     
+    var purchasedids = [String:String]()
+    
     func queryforinfo() {
         
         var functioncounter = 0
@@ -129,6 +131,11 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
                 if var name = value?["Delivery"] as? String {
                     self.deliverydate[each] = name
+                    
+                }
+                
+                if var name = value?["Product ID"] as? String {
+                    self.purchasedids[each] = name
                     
                 }
 
@@ -173,6 +180,11 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var orderimages = [String:UIImage]()
 
     @IBOutlet weak var errorlabel: UILabel!
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+       
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
         if orderimages.count > 0 {
@@ -196,10 +208,26 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    @objc func tapProduct(sender: UIButton){
+        
+                let buttonTag = sender.tag
+        
+        
+        selectedid = purchasedids[orderids[buttonTag]]!
+        selectedimage = orderimages[orderids[buttonTag]]!
+        selectedname = ordertitles[orderids[buttonTag]]!
+
+        self.performSegue(withIdentifier: "MyOrdersToCheckout", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Orders", for: indexPath) as! OrdersTableViewCell
         
+        cell.tapproduct.addTarget(self, action: #selector(MyOwnViewController.tapProduct(sender:)), for: .allTouchEvents)
+        
+        cell.tapproduct.tag = indexPath.row
+
         if orderimages.count > 0 {
         cell.mainimage.image = orderimages[orderids[indexPath.row]]
         cell.title.text = ordertitles[orderids[indexPath.row]]?.uppercased()

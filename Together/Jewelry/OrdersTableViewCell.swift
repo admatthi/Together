@@ -10,6 +10,7 @@ import UIKit
 
 class OrdersTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var tapproduct: UIButton!
     @IBOutlet weak var mainimage: UIImageView!
     @IBOutlet weak var delivery: UILabel!
     @IBOutlet weak var price: UILabel!

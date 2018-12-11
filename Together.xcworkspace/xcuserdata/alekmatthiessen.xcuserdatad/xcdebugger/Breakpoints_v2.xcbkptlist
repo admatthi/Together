@@ -291,53 +291,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ExploreViewController.swift"
-            timestampString = "566250413.23247"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "changeTabBar(hidden:animated:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Together.ExploreViewController.changeTabBar(hidden: Swift.Bool, animated: Swift.Bool) -&gt; ()"
-                  moduleName = "Together"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Bling/Together/Jewelry/ExploreViewController.swift"
-                  timestampString = "566250413.788566"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "785">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Together.ExploreViewController.changeTabBar(hidden: Swift.Bool, animated: Swift.Bool) -&gt; ()"
-                  moduleName = "Together"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Bling/Together/Jewelry/ExploreViewController.swift"
-                  timestampString = "566250413.792189"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "280"
-                  endingLineNumber = "280"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -32,7 +32,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         ref = Database.database().reference()
-queryforinfo()
+        queryforinfo()
         
         selectedindex == 0
         // Do any additional setup after loading the view.
@@ -167,6 +167,13 @@ var selectedmetal = String()
         
     }
     
+    @objc func tapGo(sender: UIButton) {
+        
+        selectedimage = images[selectedid]!
+
+        self.performSegue(withIdentifier: "Enlarge", sender: self)
+        
+    }
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     return 1
@@ -214,6 +221,8 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
     cell.mainimage.image = selectedimage
     cell.title.text = selectedname
+    cell.tapenlarge.addTarget(self, action: #selector(ProductViewController.tapGo(sender:)), for: .allTouchEvents)
+
     let attributedString = NSMutableAttributedString(string: selecteddescription)
     
     // *** Create instance of `NSMutableParagraphStyle`

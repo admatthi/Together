@@ -16,6 +16,14 @@ import FBSDKCoreKit
 
 class RegisterViewController: UIViewController, UITextFieldDelegate     {
 
+    @IBAction func tapTerms(_ sender: Any) {
+        
+        if let url = NSURL(string: "http://www.joinmyfam.com/terms"
+            ) {
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    @IBOutlet weak var tapterms: UIButton!
     @IBAction func tapSignUp(_ sender: Any) {
         
         signup()
@@ -81,7 +89,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate     {
 
         header.addCharacterSpacing()
         // Do any additional setup after loading the view.
-        
+        tapterms.titleLabel?.textAlignment = NSTextAlignment.center
         self.addLineToView(view: emailtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
         self.addLineToView(view: passwordtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)

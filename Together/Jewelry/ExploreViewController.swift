@@ -262,8 +262,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         else{
         
         tabBar?.isHidden = false
-        
-        //            changeTabBar(hidden: false, animated: true)
+//        self.view.addSubview(tabBar!)
+//                    changeTabBar(hidden: false, animated: true)
         
         }
     }
