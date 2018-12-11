@@ -1,32 +1,22 @@
 //
-//  ThanksViewController.swift
+//  BuyerTabBarViewController.swift
 //  Together
 //
-//  Created by Alek Matthiessen on 11/30/18.
+//  Created by Alek Matthiessen on 12/10/18.
 //  Copyright © 2018 AA Tech. All rights reserved.
 //
 
 import UIKit
 
-class ThanksViewController: UIViewController {
-    @IBOutlet weak var header: UILabel!
-    
-    @IBOutlet weak var tapView: UIButton!
-    @IBOutlet weak var tapContinue: UIButton!
-    @IBAction func tapcontinue(_ sender: Any) {
-        
-    }
-    @IBAction func tapview(_ sender: Any) {
-        
-        
-    }
+class BuyerTabBarViewController: UITabBarController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        header.addCharacterSpacing()
-        
-        tapContinue.addTextSpacing(2.0)
-        tapView.addTextSpacing(2.0)
+//        self.tabBar.translucent = true
+//        self.tabBar.alpha = 0.0
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
         // Do any additional setup after loading the view.
     }
     

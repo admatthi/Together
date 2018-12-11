@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6BDE49D236B4D45BD8980441 /* Pods_TogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0565EF7528CB7F17F4D99A00 /* Pods_TogetherTests.framework */; };
 		9D0F86A221710A6400AE5F18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F86A121710A6400AE5F18 /* Constants.swift */; };
+		9D14813521BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */; };
+		9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */; };
+		9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */; };
 		9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1EBF0321750F91004A566A /* MapViewController.swift */; };
 		9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1EBF07217605AD004A566A /* FeedTableViewCell.swift */; };
 		9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F7C216B948A009708D4 /* AnswersViewController.swift */; };
@@ -129,6 +132,7 @@
 		8BFCA9B94C66A654D51E53CF /* Pods_Together.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Together.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		946746B00455D23BCECD7726 /* Pods-Together.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.release.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.release.xcconfig"; sourceTree = "<group>"; };
 		9D0F86A121710A6400AE5F18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerTabBarViewController.swift; sourceTree = "<group>"; };
 		9D1EBF0321750F91004A566A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9D1EBF07217605AD004A566A /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		9D451F7C216B948A009708D4 /* AnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 				9DD9800D21BEF2A900A02433 /* PricesCollectionViewCell.swift */,
 				9DD9801121BEF2B500A02433 /* ProductTableViewCell.swift */,
 				9DD9801521BEF2BC00A02433 /* ProductViewController.swift */,
+				9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */,
 				9D50E19B21B0C8A200065C81 /* CheckoutViewController.swift */,
 				9D50E19921B0C69100065C81 /* BrandViewController.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
@@ -746,6 +751,7 @@
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
 				9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */,
 				9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */,
+				9D14813521BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9D5DBE3E219A31D5000C46FC /* EditProfileViewController.swift in Sources */,
 				9DC0B291219360EC00F56A1A /* PlansViewController.swift in Sources */,
 				9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */,
@@ -780,6 +786,7 @@
 				9DD9801721BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9DD9801B21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
+				9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9DD9801F21BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
 				9D94017521B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
 				9DD9801321BEF2B500A02433 /* ProductTableViewCell.swift in Sources */,
@@ -796,6 +803,7 @@
 				9DD9801821BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9DD9801C21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
+				9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9DD9802021BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
 				9D94017621B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
 				9DD9801421BEF2B500A02433 /* ProductTableViewCell.swift in Sources */,

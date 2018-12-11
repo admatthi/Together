@@ -651,7 +651,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tapPolicy2:" destination="1lY-2L-B39" eventType="touchUpInside" id="jvj-XB-Uwz"/>
-                                    <segue destination="ZeL-Ed-Vnd" kind="show" id="2cX-hS-rVe"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAYMENT" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxC-hW-akm">
@@ -2065,9 +2064,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$230" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6en-Nc-QJH">
-                                                    <rect key="frame" x="27" y="45" width="132" height="30"/>
+                                                    <rect key="frame" x="28" y="45" width="132" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="l7X-SF-yKi"/>
+                                                        <constraint firstAttribute="height" constant="30" id="MGA-6m-2Eb"/>
+                                                        <constraint firstAttribute="width" constant="132" id="dQY-f0-DdQ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
                                                     <color key="textColor" red="0.47843137254901963" green="0.75294117647058822" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2076,12 +2076,12 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="6en-Nc-QJH" firstAttribute="top" secondItem="gAk-1L-4DR" secondAttribute="bottom" constant="-1" id="3nm-Yy-t2T"/>
-                                            <constraint firstAttribute="trailing" secondItem="6en-Nc-QJH" secondAttribute="trailing" constant="29" id="6Rw-B2-jXB"/>
+                                            <constraint firstItem="gAk-1L-4DR" firstAttribute="centerX" secondItem="dzb-zH-qB2" secondAttribute="centerX" id="Gj1-uY-v4O"/>
                                             <constraint firstItem="gAk-1L-4DR" firstAttribute="leading" secondItem="dzb-zH-qB2" secondAttribute="leadingMargin" constant="4" id="W5R-2g-ocA"/>
                                             <constraint firstItem="gAk-1L-4DR" firstAttribute="top" secondItem="dzb-zH-qB2" secondAttribute="top" constant="20" id="ahh-4L-zc6"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="gAk-1L-4DR" secondAttribute="trailing" constant="4" id="cND-6I-tV4"/>
-                                            <constraint firstItem="6en-Nc-QJH" firstAttribute="leading" secondItem="dzb-zH-qB2" secondAttribute="leading" constant="27" id="xTf-dS-Fc0"/>
+                                            <constraint firstItem="6en-Nc-QJH" firstAttribute="top" secondItem="dzb-zH-qB2" secondAttribute="top" constant="45" id="taa-cM-iku"/>
+                                            <constraint firstItem="6en-Nc-QJH" firstAttribute="centerX" secondItem="gAk-1L-4DR" secondAttribute="centerX" id="vv8-3u-M1q"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="priceslabel" destination="6en-Nc-QJH" id="pBm-DB-9kA"/>
@@ -3056,6 +3056,9 @@
                                 <state key="normal" image="Back">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="RXw-ci-tPN" kind="show" id="sky-dQ-FR6"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write your title..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JX6-Ih-Y26">
                                 <rect key="frame" x="16" y="121" width="343" height="174"/>
@@ -3974,13 +3977,13 @@
         <!--Buyer-->
         <scene sceneID="swu-pA-7nh">
             <objects>
-                <tabBarController storyboardIdentifier="Buyer" title="Buyer" automaticallyAdjustsScrollViewInsets="NO" id="cq9-y8-7aj" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Buyer" title="Buyer" automaticallyAdjustsScrollViewInsets="NO" id="cq9-y8-7aj" customClass="BuyerTabBarViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="bj1-uc-iPf"/>
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VKG-5z-1f1">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
@@ -4018,9 +4021,9 @@
         <segue reference="MUN-A5-iHb"/>
         <segue reference="rM7-pq-RM4"/>
         <segue reference="raE-3f-wg2"/>
-        <segue reference="T5q-Kc-1EU"/>
+        <segue reference="sky-dQ-FR6"/>
         <segue reference="zF5-ec-aup"/>
-        <segue reference="7Es-kF-ufi"/>
+        <segue reference="4fi-sO-46f"/>
         <segue reference="Myi-B8-I19"/>
         <segue reference="XTh-ZI-gbV"/>
         <segue reference="K4Z-T6-lvq"/>
