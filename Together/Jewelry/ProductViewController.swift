@@ -117,6 +117,16 @@ queryforinfo()
                 
             }
             
+            if var author2 = value?["Metal"] as? String {
+                
+                self.selectedmetal = author2
+                
+            } else {
+                
+                self.selectedmetal = "Sterling Silver"
+
+            }
+            
             
             if var author2 = value?["Packaging"] as? String {
                 
@@ -150,7 +160,7 @@ queryforinfo()
     
     var pricetitles = [String]()
     var prices2 = [String]()
-
+var selectedmetal = String()
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return UITableViewAutomaticDimension
@@ -162,7 +172,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
     return 1
 }
     
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
     let generator = UIImpactFeedbackGenerator(style: .heavy)
     generator.impactOccurred()
@@ -204,13 +214,27 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
     cell.mainimage.image = selectedimage
     cell.title.text = selectedname
-    cell.descriptionlabel.text = selecteddescription
+    let attributedString = NSMutableAttributedString(string: selecteddescription)
+    
+    // *** Create instance of `NSMutableParagraphStyle`
+    let paragraphStyle = NSMutableParagraphStyle()
+    
+    // *** set LineSpacing property in points ***
+    paragraphStyle.lineSpacing = 10 // Whatever line spacing you want in points
+    
+    // *** Apply attribute to string ***
+    attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+    
+    // *** Set Attributed String to your label ***
+    cell.descriptionlabel.attributedText = attributedString
+    cell.descriptionlabel.textAlignment = .center
     cell.b1.text = b1
     cell.b2.text = b2
     cell.b3.text = b3
     cell.b4.text = b4
     cell.b5.text = b5
     cell.b6.text = b6
+    cell.b7.text = selectedmetal
 
     cell.title.sizeToFit()
     cell.descriptionlabel.sizeToFit()
@@ -220,12 +244,15 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     cell.b4.sizeToFit()
     cell.b5.sizeToFit()
     cell.b6.sizeToFit()
+    cell.b7.sizeToFit()
+
     cell.h1.addCharacterSpacing()
     cell.h2.addCharacterSpacing()
     cell.h3.addCharacterSpacing()
     cell.h4.addCharacterSpacing()
     cell.h5.addCharacterSpacing()
-    
+    cell.h7.addCharacterSpacing()
+
     return cell
 }
 

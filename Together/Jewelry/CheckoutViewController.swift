@@ -86,6 +86,7 @@ class CheckoutViewController: UIViewController {
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "MMM dd"
         tapbuy.addTextSpacing(2.0)
+        
         if selectedcondition == "New" {
             
             finalprice = "$\(String(Int(selectedprice.dropFirst())!))"
@@ -93,9 +94,11 @@ class CheckoutViewController: UIViewController {
             tappolicy2.setTitle("All shipping and returns are complimentary on this order.", for: .normal)
             tappolicy2.isUserInteractionEnabled = false
             
-            tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+        tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
             tapshipping.setTitle("Complimentary ($0)", for: .normal)
-            
+            tappolicy1.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+            tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+
         } else {
             
             finalprice = "$\(String(Int(selectedprice.dropFirst())!+10))"
@@ -105,6 +108,8 @@ class CheckoutViewController: UIViewController {
             tappolicy2.setAttributedTitle(attributedString2, for: .normal)
             tappolicy2.setTitleColor(.black, for: .normal)
             tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+            tappolicy1.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+
 
         }
         thisdate = dateFormatter.string(from: date)
@@ -130,8 +135,8 @@ class CheckoutViewController: UIViewController {
         
         let buttonTitleStr = NSMutableAttributedString(string:"By proceeding, I confirm I have read and agree to the Purchases & Return Policy and my shipping address is correct.", attributes:attrs)
         attributedString.append(buttonTitleStr)
-        tappolicy1.setAttributedTitle(attributedString, for: .normal)
-        tappolicy1.setTitleColor(.black, for: .normal)
+//        tappolicy1.setAttributedTitle(attributedString, for: .normal)
+//        tappolicy1.setTitleColor(.black, for: .normal)
         
         detailslabel.addCharacterSpacing()
         productname.addCharacterSpacing()

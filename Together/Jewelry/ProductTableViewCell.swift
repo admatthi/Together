@@ -20,6 +20,8 @@ class ProductTableViewCell: UITableViewCell {
 
     @IBOutlet weak var h5: UILabel!
 
+    @IBOutlet weak var h7: UILabel!
+    @IBOutlet weak var b7: UILabel!
     @IBOutlet weak var b6: UILabel!
     @IBOutlet weak var b5: UILabel!
     @IBOutlet weak var b4: UILabel!

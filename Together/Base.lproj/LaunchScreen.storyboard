@@ -25,23 +25,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LuxIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7FE-iV-uNg">
-                                <rect key="frame" x="-18" y="225" width="411" height="217"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlingLogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="7FE-iV-uNg">
+                                <rect key="frame" x="115" y="295.5" width="145" height="76"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="217" id="YAR-Df-sE8"/>
-                                    <constraint firstAttribute="width" constant="411" id="pbN-xT-kV3"/>
+                                    <constraint firstAttribute="height" constant="76" id="aGi-L5-Sco"/>
+                                    <constraint firstAttribute="width" constant="145" id="eyo-2Q-HLK"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7FE-iV-uNg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="19F-ns-dQK"/>
                             <constraint firstAttribute="bottom" secondItem="fhi-L3-9i8" secondAttribute="bottom" id="6gk-uG-mz6"/>
                             <constraint firstItem="fhi-L3-9i8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ECr-Nb-L6W"/>
+                            <constraint firstItem="7FE-iV-uNg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="e0n-XO-3SX"/>
                             <constraint firstItem="fhi-L3-9i8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fAR-D4-K6p"/>
                             <constraint firstItem="fhi-L3-9i8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="o56-FF-fst"/>
-                            <constraint firstItem="7FE-iV-uNg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oI4-Qw-C5R"/>
                             <constraint firstItem="fhi-L3-9i8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="oOt-nS-yx5"/>
-                            <constraint firstItem="7FE-iV-uNg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ovo-it-r7U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -52,6 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LuxIcon" width="1024" height="1024"/>
+        <image name="BlingLogoWhite" width="135" height="27"/>
     </resources>
 </document>

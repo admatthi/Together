@@ -15,8 +15,8 @@ class BuyerTabBarViewController: UITabBarController {
 
 //        self.tabBar.translucent = true
 //        self.tabBar.alpha = 0.0
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().backgroundImage = UIImage()
+//        UITabBar.appearance().shadowImage = UIImage()
+//        UITabBar.appearance().backgroundImage = UIImage()
         // Do any additional setup after loading the view.
     }
     
