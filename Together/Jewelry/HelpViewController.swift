@@ -42,6 +42,10 @@ class HelpViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData()
         // Do any additional setup after loading the view.
     }
+    @IBAction func tapCancel(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

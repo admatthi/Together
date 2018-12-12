@@ -34,7 +34,20 @@ class Help2ViewController: UIViewController {
             
             if var author2 = value?["Text"] as? String {
                 
-                self.answer.text = author2
+                let attributedString = NSMutableAttributedString(string: author2)
+                
+                // *** Create instance of `NSMutableParagraphStyle`
+                let paragraphStyle = NSMutableParagraphStyle()
+                
+                // *** set LineSpacing property in points ***
+                paragraphStyle.lineSpacing = 10 // Whatever line spacing you want in points
+                
+                // *** Apply attribute to string ***
+            attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+                
+                self.answer.attributedText = attributedString
+                self.answer.sizeToFit()
+
             }
             
         })

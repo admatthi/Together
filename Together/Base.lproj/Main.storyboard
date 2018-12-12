@@ -1289,8 +1289,8 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="tapCancel:" destination="ZRA-kX-qjB" eventType="touchUpInside" id="qOp-Ej-Wb9"/>
                                     <action selector="tapHelp:" destination="1lY-2L-B39" eventType="touchUpInside" id="Hri-md-p62"/>
-                                    <segue destination="1lY-2L-B39" kind="show" id="gEl-56-Zf4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvM-gs-ndZ">
@@ -1384,19 +1384,19 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELP" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adr-PO-FF0">
                                 <rect key="frame" x="21" y="93" width="338" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="WPN-iO-I98"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLs-Pf-I5r">
                                 <rect key="frame" x="21" y="121.5" width="338" height="526"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="526" id="6Zs-D9-Oqn"/>
-                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="HELP">
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" size="13" name="Baskerville"/>
+                                            <font key="NSFont" size="15" name="Baskerville"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -1407,20 +1407,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8VK-mH-2ji" firstAttribute="top" secondItem="Gqs-af-gav" secondAttribute="top" constant="16" id="1Bk-4Q-Qyv"/>
+                            <constraint firstItem="adr-PO-FF0" firstAttribute="leading" secondItem="Gqs-af-gav" secondAttribute="leading" constant="21" id="5Ki-qn-oi8"/>
                             <constraint firstItem="Gqs-af-gav" firstAttribute="trailing" secondItem="adr-PO-FF0" secondAttribute="trailing" constant="16" id="6vk-Ww-FSM"/>
+                            <constraint firstItem="Gqs-af-gav" firstAttribute="trailing" secondItem="mLs-Pf-I5r" secondAttribute="trailing" constant="16" id="7Qu-Eq-Jdb"/>
                             <constraint firstItem="adr-PO-FF0" firstAttribute="leading" secondItem="Gqs-af-gav" secondAttribute="leading" constant="21" id="BE1-ZB-1WK"/>
                             <constraint firstAttribute="trailing" secondItem="eUu-Fy-fst" secondAttribute="trailing" id="Cud-87-Or5"/>
+                            <constraint firstItem="mLs-Pf-I5r" firstAttribute="top" secondItem="adr-PO-FF0" secondAttribute="bottom" constant="8" id="FEv-IU-ZBG"/>
+                            <constraint firstItem="mLs-Pf-I5r" firstAttribute="leading" secondItem="Gqs-af-gav" secondAttribute="leading" constant="21" id="LOS-Lp-Blv"/>
+                            <constraint firstItem="Gqs-af-gav" firstAttribute="bottom" secondItem="mLs-Pf-I5r" secondAttribute="bottom" constant="19.5" id="NYU-4C-cnQ"/>
                             <constraint firstItem="8VK-mH-2ji" firstAttribute="centerX" secondItem="0si-Xc-Wfb" secondAttribute="centerX" id="QTx-dq-CNm"/>
                             <constraint firstItem="eUu-Fy-fst" firstAttribute="top" secondItem="kz0-01-app" secondAttribute="bottom" constant="6" id="TIN-lP-qZ9"/>
                             <constraint firstItem="kz0-01-app" firstAttribute="leading" secondItem="Gqs-af-gav" secondAttribute="leading" constant="21" id="WCG-Tu-Dn7"/>
                             <constraint firstItem="kz0-01-app" firstAttribute="centerY" secondItem="8VK-mH-2ji" secondAttribute="centerY" id="XAA-xN-ZbS"/>
                             <constraint firstItem="eUu-Fy-fst" firstAttribute="leading" secondItem="0si-Xc-Wfb" secondAttribute="leading" id="Znu-EQ-cYK"/>
-                            <constraint firstItem="mLs-Pf-I5r" firstAttribute="leading" secondItem="Gqs-af-gav" secondAttribute="leading" constant="21" id="hmN-Im-qQN"/>
                             <constraint firstItem="eUu-Fy-fst" firstAttribute="top" secondItem="8VK-mH-2ji" secondAttribute="bottom" constant="10" id="j8v-ip-bz7"/>
                             <constraint firstItem="adr-PO-FF0" firstAttribute="top" secondItem="eUu-Fy-fst" secondAttribute="bottom" constant="24" id="k1a-Sn-EqQ"/>
                             <constraint firstItem="eUu-Fy-fst" firstAttribute="top" secondItem="kz0-01-app" secondAttribute="bottom" constant="6" id="lq9-0n-wXa"/>
-                            <constraint firstItem="Gqs-af-gav" firstAttribute="trailing" secondItem="mLs-Pf-I5r" secondAttribute="trailing" constant="16" id="pa9-vO-UVb"/>
-                            <constraint firstItem="mLs-Pf-I5r" firstAttribute="top" secondItem="adr-PO-FF0" secondAttribute="bottom" constant="8" id="vmM-Z0-VIw"/>
+                            <constraint firstItem="Gqs-af-gav" firstAttribute="trailing" secondItem="adr-PO-FF0" secondAttribute="trailing" constant="16" id="nci-Zo-Ue8"/>
+                            <constraint firstItem="adr-PO-FF0" firstAttribute="top" secondItem="eUu-Fy-fst" secondAttribute="bottom" constant="24" id="zx1-Pl-JV9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gqs-af-gav"/>
                     </view>
@@ -2127,6 +2131,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tapHelp:" destination="1lY-2L-B39" eventType="touchUpInside" id="pmv-QG-kio"/>
+                                    <segue destination="ZRA-kX-qjB" kind="show" id="law-kC-Cnc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -4624,7 +4629,7 @@
         <segue reference="zF5-ec-aup"/>
         <segue reference="C4M-VG-zLA"/>
         <segue reference="n3C-qN-T8y"/>
-        <segue reference="o0Z-eX-0Ox"/>
+        <segue reference="KwL-S3-BB8"/>
         <segue reference="XTh-ZI-gbV"/>
         <segue reference="K4Z-T6-lvq"/>
         <segue reference="fWc-Tc-Ma8"/>

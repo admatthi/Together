@@ -244,7 +244,8 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "Orders", for: indexPath) as! OrdersTableViewCell
         
         cell.tapproduct.addTarget(self, action: #selector(MyOwnViewController.tapProduct(sender:)), for: .allTouchEvents)
-        
+        cell.selectionStyle = .none
+
         cell.tapproduct.tag = indexPath.row
         cell.isUserInteractionEnabled = true
         if orderimages.count > 0 {

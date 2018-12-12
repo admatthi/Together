@@ -233,7 +233,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     paragraphStyle.lineSpacing = 10 // Whatever line spacing you want in points
     
     // *** Apply attribute to string ***
-    attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
     
     // *** Set Attributed String to your label ***
     cell.descriptionlabel.attributedText = attributedString
