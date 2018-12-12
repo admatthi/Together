@@ -1378,8 +1378,8 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="tapCancel:" destination="fb9-iv-so5" eventType="touchUpInside" id="0Ot-Z0-40e"/>
                                     <action selector="tapHelp:" destination="1lY-2L-B39" eventType="touchUpInside" id="32k-pj-XhQ"/>
-                                    <segue destination="ZRA-kX-qjB" kind="show" id="KwL-S3-BB8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HELP" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adr-PO-FF0">
@@ -4629,7 +4629,7 @@
         <segue reference="zF5-ec-aup"/>
         <segue reference="C4M-VG-zLA"/>
         <segue reference="n3C-qN-T8y"/>
-        <segue reference="KwL-S3-BB8"/>
+        <segue reference="law-kC-Cnc"/>
         <segue reference="XTh-ZI-gbV"/>
         <segue reference="K4Z-T6-lvq"/>
         <segue reference="fWc-Tc-Ma8"/>

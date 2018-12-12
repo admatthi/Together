@@ -26,6 +26,10 @@ class Help2ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func tapCancel(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     func queryforanswer() {
         
         ref?.child("Help").child(squestion).observeSingleEvent(of: .value, with: { (snapshot) in
