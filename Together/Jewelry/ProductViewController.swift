@@ -22,7 +22,8 @@ var b6 = String()
 
 var selectedpackaging = String()
 
-class ProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+ {
 
     
 
@@ -220,7 +221,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     let cell = tableView.dequeueReusableCell(withIdentifier: "Product", for: indexPath) as! ProductTableViewCell
     
     cell.mainimage.image = selectedimage
-    cell.title.text = selectedname
+    cell.title.text = "\(selectedbrand) \(selectedname)"
     cell.tapenlarge.addTarget(self, action: #selector(ProductViewController.tapGo(sender:)), for: .allTouchEvents)
 
     let attributedString = NSMutableAttributedString(string: selecteddescription)
@@ -342,6 +343,11 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
 
 
 
-
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let kWhateverHeightYouWant = 83
+        return CGSize(width: collectionView.bounds.size.width/2, height: CGFloat(kWhateverHeightYouWant))
+    }
 
 }

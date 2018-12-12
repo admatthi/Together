@@ -124,6 +124,7 @@ class CheckoutViewController: UIViewController {
             tapshipping.setTitle("Complimentary ($0)", for: .normal)
             tappolicy1.titleLabel?.textAlignment = NSTextAlignment.center
             tappolicy2.titleLabel?.textAlignment = NSTextAlignment.center
+            totalprice.setTitle(finalprice, for: .normal)
 
         } else {
             
@@ -135,6 +136,7 @@ class CheckoutViewController: UIViewController {
             tappolicy2.setTitleColor(.black, for: .normal)
             tappolicy2.titleLabel?.textAlignment = NSTextAlignment.center
             tappolicy1.titleLabel?.textAlignment = NSTextAlignment.center
+            totalprice.setTitle(finalprice, for: .normal)
 
 
         }
@@ -145,11 +147,10 @@ class CheckoutViewController: UIViewController {
         
         mainimage.image = selectedimage
         detailslabel.text = "\(selecteddetails.uppercased()) / \(selectedprice)"
-        productname.text = selectedname.uppercased()
+        productname.text = "\(selectedbrand.uppercased()) \(selectedname.uppercased())"
         detailslabel.addCharacterSpacing()
         productname.addCharacterSpacing()
         
-        totalprice.setTitle("$\(String(Int(selectedprice.dropFirst())!+10))", for: .normal)
         tapadd.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
            tapcc.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
            tapshipping.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right

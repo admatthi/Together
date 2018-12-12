@@ -37,8 +37,6 @@ class HelpViewController: UIViewController, UITableViewDelegate, UITableViewData
         questions.append("HOW MUCH DOES SHIPPING COST?")
         questions.append("WHEN WILL I RECEIVE MY ORDER?")
         questions.append("I PLACED AN ORDER, BUT DIDN’T RECEIVE A CONFIRMATION EMAIL.")
-        
-  
 
 
         tableView.reloadData()

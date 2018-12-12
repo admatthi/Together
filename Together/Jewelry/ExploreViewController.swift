@@ -27,6 +27,7 @@ var projectids = [String]()
 var selectedimage = UIImage()
 var toppics = [String:UIImage]()
 var imageurls = [String:String]()
+var selectedbrand = String()
 
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
    
@@ -219,6 +220,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        selectedbrand = brandnames[projectids[indexPath.row]]!
         selectedid = projectids[indexPath.row]
         unlockedid = "0"
         selectedimage = images[projectids[indexPath.row]]!
