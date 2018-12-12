@@ -79,11 +79,20 @@ class CheckoutViewController: UIViewController {
     var finalprice = String()
     
     @IBOutlet weak var taptochangeshipping: UILabel!
+    @IBAction func tapHelp(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "CheckoutToHelp", sender: self)
+        
+    }
+    @IBOutlet weak var taphelp: UIButton!
     @IBOutlet weak var tapbuy: UIButton!
     @IBOutlet weak var header: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        taphelp.layer.borderColor = UIColor.black.cgColor
+        taphelp.addTextSpacing(2.0)
+        taphelp.layer.borderWidth = 0.5
         tlabel.addCharacterSpacing()
         slabel.addCharacterSpacing()
         shlabel.addCharacterSpacing()

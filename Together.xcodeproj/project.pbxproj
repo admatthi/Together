@@ -82,6 +82,15 @@
 		9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B28E219360C100F56A1A /* PlansTableViewCell.swift */; };
 		9DC0B291219360EC00F56A1A /* PlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B290219360EC00F56A1A /* PlansViewController.swift */; };
 		9DC75F8121C06A020074CA45 /* LargeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8021C06A020074CA45 /* LargeImageViewController.swift */; };
+		9DC75F8321C0976F0074CA45 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8221C0976F0074CA45 /* HelpViewController.swift */; };
+		9DC75F8421C0976F0074CA45 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8221C0976F0074CA45 /* HelpViewController.swift */; };
+		9DC75F8521C0976F0074CA45 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8221C0976F0074CA45 /* HelpViewController.swift */; };
+		9DC75F8721C0982A0074CA45 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */; };
+		9DC75F8821C0982A0074CA45 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */; };
+		9DC75F8921C0982A0074CA45 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */; };
+		9DC75F8B21C09D250074CA45 /* Help2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */; };
+		9DC75F8C21C09D250074CA45 /* Help2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */; };
+		9DC75F8D21C09D250074CA45 /* Help2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */; };
 		9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */; };
 		9DD6A56D21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6A56C21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift */; };
 		9DD9800E21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9800D21BEF2A900A02433 /* PricesCollectionViewCell.swift */; };
@@ -205,6 +214,9 @@
 		9DC0B28E219360C100F56A1A /* PlansTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansTableViewCell.swift; sourceTree = "<group>"; };
 		9DC0B290219360EC00F56A1A /* PlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansViewController.swift; sourceTree = "<group>"; };
 		9DC75F8021C06A020074CA45 /* LargeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeImageViewController.swift; sourceTree = "<group>"; };
+		9DC75F8221C0976F0074CA45 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
+		9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help2ViewController.swift; sourceTree = "<group>"; };
 		9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToReportViewController.swift; sourceTree = "<group>"; };
 		9DD6A56C21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingDeetsViewController.swift; sourceTree = "<group>"; };
 		9DD9800D21BEF2A900A02433 /* PricesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -347,6 +359,9 @@
 				9DD9801521BEF2BC00A02433 /* ProductViewController.swift */,
 				9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */,
 				9D50E19B21B0C8A200065C81 /* CheckoutViewController.swift */,
+				9DC75F8221C0976F0074CA45 /* HelpViewController.swift */,
+				9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */,
+				9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */,
 				9D50E19921B0C69100065C81 /* BrandViewController.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
 				9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */,
@@ -746,6 +761,7 @@
 				9D50E19C21B0C8A200065C81 /* CheckoutViewController.swift in Sources */,
 				9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */,
 				9DD9800E21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
+				9DC75F8B21C09D250074CA45 /* Help2ViewController.swift in Sources */,
 				9D0F86A221710A6400AE5F18 /* Constants.swift in Sources */,
 				9DC0B2852193553300F56A1A /* ExploreTableViewCell.swift in Sources */,
 				9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */,
@@ -753,6 +769,7 @@
 				9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */,
 				9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
+				9DC75F8721C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */,
 				9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */,
 				9D14813521BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
@@ -776,6 +793,7 @@
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,
 				9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */,
 				9DEA5F1821A0B820000137A3 /* ContacViewController.swift in Sources */,
+				9DC75F8321C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9D94017021B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,11 +802,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC75F8421C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795DB21656B5700211327 /* TogetherTests.swift in Sources */,
 				9DD9800F21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9D94017121B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801721BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
+				9DC75F8C21C09D250074CA45 /* Help2ViewController.swift in Sources */,
+				9DC75F8821C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9DD9801B21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9DD9801F21BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
@@ -801,11 +822,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC75F8521C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */,
 				9DD9801021BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9D94017221B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801821BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
+				9DC75F8D21C09D250074CA45 /* Help2ViewController.swift in Sources */,
+				9DC75F8921C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9DD9801C21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9DD9802021BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
