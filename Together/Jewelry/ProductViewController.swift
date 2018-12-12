@@ -342,7 +342,12 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     }
 
 
-
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -32,7 +32,15 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         ref = Database.database().reference()
 
+        taphelp.layer.borderColor = UIColor.black.cgColor
+        taphelp.addTextSpacing(2.0)
+        taphelp.layer.borderWidth = 0.5
+        
         header.addCharacterSpacing()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         
         if Auth.auth().currentUser == nil {
             
@@ -75,6 +83,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         orderdeets.removeAll()
         ordertitles.removeAll()
         purchasedids.removeAll()
+        purchaseddates.removeAll()
         ref?.child("Jewelery").child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -104,7 +113,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     var purchasedids = [String:String]()
-    
+    var purchaseddates = [String:String]()
     func queryforinfo() {
         
         var functioncounter = 0
@@ -136,6 +145,11 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if var name = value?["Product ID"] as? String {
                     self.purchasedids[each] = name
+                    
+                }
+                
+                if var name = value?["Date"] as? String {
+                    self.purchaseddates[each] = name
                     
                 }
 
@@ -183,8 +197,12 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       
+        selectedid = orderids[indexPath.row]
+        
+        
+        self.performSegue(withIdentifier: "OrdersToCompleted", sender: self)
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
         if orderimages.count > 0 {
@@ -208,9 +226,10 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    @IBOutlet weak var taphelp: UIButton!
     @objc func tapProduct(sender: UIButton){
         
-                let buttonTag = sender.tag
+        let buttonTag = sender.tag
         
         
         selectedid = purchasedids[orderids[buttonTag]]!
@@ -227,13 +246,13 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.tapproduct.addTarget(self, action: #selector(MyOwnViewController.tapProduct(sender:)), for: .allTouchEvents)
         
         cell.tapproduct.tag = indexPath.row
-
+        cell.isUserInteractionEnabled = true
         if orderimages.count > 0 {
         cell.mainimage.image = orderimages[orderids[indexPath.row]]
         cell.title.text = ordertitles[orderids[indexPath.row]]?.uppercased()
         cell.title.addCharacterSpacing()
         cell.price.text = orderpices[orderids[indexPath.row]]
-        cell.details.text = orderdeets[orderids[indexPath.row]]?.uppercased()
+        cell.details.text = "\(purchaseddates[orderids[indexPath.row]]!.uppercased()) / \(orderdeets[orderids[indexPath.row]]!.uppercased())"
         cell.details.addCharacterSpacing()
         cell.delivery.text = deliverydate[orderids[indexPath.row]]?.uppercased()
         cell.delivery.addCharacterSpacing()

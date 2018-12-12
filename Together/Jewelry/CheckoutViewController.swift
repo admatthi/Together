@@ -61,7 +61,7 @@ class CheckoutViewController: UIViewController {
             
         ref!.child("Jewelery").child("Purchases").childByAutoId().child(uid).updateChildValues(["Product ID" : selectedid, "Credit Card" : finalcreditcard, "Shipping" : streetaddress, "Date" : thisdate])
             
-        ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate])
+ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
 
             
             self.performSegue(withIdentifier: "Thank You", sender: self)

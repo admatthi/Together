@@ -42,6 +42,12 @@
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
 		9D7A6A68219C7BE400FBEC22 /* TabInfluencerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */; };
 		9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */; };
+		9D86EDD421C1719C00A8385B /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86EDD321C1719C00A8385B /* CompletedTableViewCell.swift */; };
+		9D86EDD521C1719C00A8385B /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86EDD321C1719C00A8385B /* CompletedTableViewCell.swift */; };
+		9D86EDD621C1719C00A8385B /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86EDD321C1719C00A8385B /* CompletedTableViewCell.swift */; };
+		9D86EDD821C1727500A8385B /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86EDD721C1727500A8385B /* CompletedViewController.swift */; };
+		9D86EDD921C1727500A8385B /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86EDD721C1727500A8385B /* CompletedViewController.swift */; };
+		9D86EDDA21C1727500A8385B /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86EDD721C1727500A8385B /* CompletedViewController.swift */; };
 		9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C221728D1D001AEF8E /* HomeViewController.swift */; };
 		9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C621740ABE001AEF8E /* QuestionsTableViewCell.swift */; };
 		9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */; };
@@ -174,6 +180,8 @@
 		9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfluencerViewController.swift; sourceTree = "<group>"; };
 		9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCreateViewController.swift; sourceTree = "<group>"; };
 		9D8311802197DDA2003CC76C /* Together.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Together.entitlements; sourceTree = "<group>"; };
+		9D86EDD321C1719C00A8385B /* CompletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTableViewCell.swift; sourceTree = "<group>"; };
+		9D86EDD721C1727500A8385B /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		9D8934C221728D1D001AEF8E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9D8934C621740ABE001AEF8E /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
 		9D8934C821740ACC001AEF8E /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
@@ -349,6 +357,8 @@
 			isa = PBXGroup;
 			children = (
 				9D94016F21B1AF5F00E32912 /* ThanksViewController.swift */,
+				9D86EDD321C1719C00A8385B /* CompletedTableViewCell.swift */,
+				9D86EDD721C1727500A8385B /* CompletedViewController.swift */,
 				9DD9801921BEF2C400A02433 /* CreditCardViewController.swift */,
 				9D4A494021B0F9C30004A2B2 /* ShippingViewController.swift */,
 				9DD6A56C21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift */,
@@ -779,6 +789,7 @@
 				9D50E19621B0BC4800065C81 /* RegisterViewController.swift in Sources */,
 				9D94017421B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
+				9D86EDD421C1719C00A8385B /* CompletedTableViewCell.swift in Sources */,
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
 				9D9C665921A321B800309443 /* YourChannelViewController.swift in Sources */,
@@ -788,6 +799,7 @@
 				9DB8AE03219DE6C000D7D707 /* VideosCollectionViewCell.swift in Sources */,
 				9D4A494121B0F9C30004A2B2 /* ShippingViewController.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
+				9D86EDD821C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9DB7BCF021A31ED3009B63B4 /* CreateAPlanViewController.swift in Sources */,
 				9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */,
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,
@@ -805,10 +817,12 @@
 				9DC75F8421C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795DB21656B5700211327 /* TogetherTests.swift in Sources */,
 				9DD9800F21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
+				9D86EDD921C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9D94017121B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801721BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9DC75F8C21C09D250074CA45 /* Help2ViewController.swift in Sources */,
+				9D86EDD521C1719C00A8385B /* CompletedTableViewCell.swift in Sources */,
 				9DC75F8821C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9DD9801B21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
@@ -825,10 +839,12 @@
 				9DC75F8521C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */,
 				9DD9801021BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
+				9D86EDDA21C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9D94017221B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801821BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9DC75F8D21C09D250074CA45 /* Help2ViewController.swift in Sources */,
+				9D86EDD621C1719C00A8385B /* CompletedTableViewCell.swift in Sources */,
 				9DC75F8921C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9DD9801C21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,

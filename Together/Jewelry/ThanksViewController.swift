@@ -18,6 +18,12 @@ class ThanksViewController: UIViewController {
     }
     @IBAction func tapview(_ sender: Any) {
         
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+        
+        tabBarBuyer.selectedIndex = 1
+    UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
+
         
     }
     override func viewDidLoad() {
