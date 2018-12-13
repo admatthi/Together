@@ -10,7 +10,10 @@ import UIKit
 
 class ShippingDeetsViewController: UIViewController {
     @IBOutlet weak var price: UIButton!
-    
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

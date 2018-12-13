@@ -16,6 +16,10 @@ import FBSDKCoreKit
 
 class ShippingViewController: UIViewController, UITextFieldDelegate {
 
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBOutlet weak var billinglabel: UILabel!
     

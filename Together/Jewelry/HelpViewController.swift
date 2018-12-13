@@ -64,6 +64,8 @@ class HelpViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Help", for: indexPath) as! HelpTableViewCell
+        cell.selectionStyle = .none
+        
         cell.question.text = questions[indexPath.row].lowercased()
         cell.question.text = cell.question.text?.capitalized
         return cell

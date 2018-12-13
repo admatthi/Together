@@ -46,7 +46,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
         try! Auth.auth().signOut()
         
-        self.performSegue(withIdentifier: "SettingsToSignIn2", sender: self)
+        self.performSegue(withIdentifier: "LogOut4", sender: self)
     }
     @IBAction func tapSubscription(_ sender: Any) {
         

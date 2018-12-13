@@ -14,7 +14,8 @@ import FirebaseAuth
 import FBSDKCoreKit
 
 class OverviewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate    {
-
+    @IBOutlet weak var tapexplore: UIButton!
+    
     @IBOutlet weak var taps: UIButton!
     @IBOutlet weak var tapr: UIButton!
     @IBOutlet weak var TAPJOIN: UIButton!
@@ -26,7 +27,11 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
         tapr.addTextSpacing(2.0)
         taps.addTextSpacing(2.0)
         TAPJOIN.addTextSpacing(2.0)
-        
+        tapexplore.addTextSpacing(2.0)
+ 
+//        TAPJOIN.frame = CGRect(x: 0, y: TAPJOIN.frame.minY, width: self.view.frame.width/2, height: 76)
+//        self.view.addSubview(TAPJOIN)
+
         images.append(UIImage(named: "CC1 Copy-1")!)
         images.append(UIImage(named: "CC2 Copy-1")!)
 

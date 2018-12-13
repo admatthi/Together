@@ -17,6 +17,11 @@ import FBSDKCoreKit
 class CreditCardViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var city: UITextField!
     
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var billinglabel: UILabel!
     @IBOutlet weak var cardlabel: UILabel!
     @IBOutlet weak var apt: UITextField!
@@ -77,6 +82,15 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
             pressed = true
         }
     }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+
+        
+//            var newstring = customStringFormatting(of: ccnumber.text!)
+//            
+//            ccnumber.text = newstring
+        
+    }
    
     
     @IBOutlet weak var header: UILabel!
@@ -85,7 +99,8 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         pressed = false
-        
+        ccnumber.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+
         fullnametf.becomeFirstResponder()
         header.addCharacterSpacing()
         queryforuser()
@@ -169,5 +184,23 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func customStringFormatting(of str: String) -> String {
+        return str.characters.chunk(n: 4)
+            .map{ String($0) }.joined(separator: " ")
+    }
 
+}
+extension Collection {
+    public func chunk(n: IndexDistance) -> [SubSequence] {
+        var res: [SubSequence] = []
+        var i = startIndex
+        var j: Index
+        while i != endIndex {
+            j = index(i, offsetBy: n, limitedBy: endIndex) ?? endIndex
+            res.append(self[i..<j])
+            i = j
+        }
+        return res
+    }
 }

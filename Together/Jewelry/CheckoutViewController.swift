@@ -201,6 +201,10 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
     var finalcreditcard = String()
     @IBOutlet weak var plabel: UILabel!
     
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var shlabel: UILabel!
     @IBOutlet weak var slabel: UILabel!
     @IBOutlet weak var tlabel: UILabel!

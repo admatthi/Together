@@ -10,6 +10,10 @@ import UIKit
 
 class BrandViewController: UIViewController {
 
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var saleslabel2: UILabel!
     @IBOutlet weak var sales3: UILabel!
     @IBOutlet weak var mainimage: UIImageView!
