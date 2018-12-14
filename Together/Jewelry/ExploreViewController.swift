@@ -49,17 +49,19 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
     }
     
+    @IBOutlet weak var tapfilter: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         activityIndicator.color = myblue
         headerlabel.addCharacterSpacing()
-        
+        tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
         
         activityIndicator.alpha = 1
         activityIndicator.startAnimating()
         collectionView.alpha = 0
+        tapfilter.alpha = 0
         //            tapBack.alpha = 0
                     tapBack.alpha = 0
 
@@ -113,6 +115,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         brandnames.removeAll()
         imageurls.removeAll()
         
+        if selectedfilter == "" {
+            
         ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
@@ -139,6 +143,36 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
             
         })
+            
+        } else {
+            
+            ref?.child("Products").queryOrdered(byChild: "Category").queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                if let snapDict = snapshot.value as? [String:AnyObject] {
+                    
+                    for each in snapDict {
+                        
+                        let ids = each.key
+                        
+                        projectids.append(ids)
+                        
+                        functioncounter += 1
+                        
+                        if functioncounter == snapDict.count {
+                            
+                            completed()
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            })
+        }
     }
     
     var usedprices = [String:String]()
@@ -229,6 +263,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     self.activityIndicator.stopAnimating()
                     self.collectionView.reloadData()
                     self.collectionView.alpha = 1
+                    self.tapfilter.alpha = 1
                 }
                 
                 

@@ -87,6 +87,7 @@
 		9DC0B2872193556300F56A1A /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B2862193556300F56A1A /* ExploreViewController.swift */; };
 		9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B28E219360C100F56A1A /* PlansTableViewCell.swift */; };
 		9DC0B291219360EC00F56A1A /* PlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0B290219360EC00F56A1A /* PlansViewController.swift */; };
+		9DC27B9421C44B8B0005759C /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC27B9321C44B8B0005759C /* FilterViewController.swift */; };
 		9DC75F8121C06A020074CA45 /* LargeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8021C06A020074CA45 /* LargeImageViewController.swift */; };
 		9DC75F8321C0976F0074CA45 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8221C0976F0074CA45 /* HelpViewController.swift */; };
 		9DC75F8421C0976F0074CA45 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8221C0976F0074CA45 /* HelpViewController.swift */; };
@@ -221,6 +222,7 @@
 		9DC0B2862193556300F56A1A /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		9DC0B28E219360C100F56A1A /* PlansTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansTableViewCell.swift; sourceTree = "<group>"; };
 		9DC0B290219360EC00F56A1A /* PlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansViewController.swift; sourceTree = "<group>"; };
+		9DC27B9321C44B8B0005759C /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		9DC75F8021C06A020074CA45 /* LargeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeImageViewController.swift; sourceTree = "<group>"; };
 		9DC75F8221C0976F0074CA45 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				9D46D84C219B29C0006CE94C /* OverviewViewController.swift */,
 				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
 				9DD9801D21BEF31E00A02433 /* OverviewCollectionViewCell.swift */,
+				9DC27B9321C44B8B0005759C /* FilterViewController.swift */,
 			);
 			path = Jewelry;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */,
 				9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */,
 				9DB8ADFE219DD14D00D7D707 /* WatchViewController.swift in Sources */,
+				9DC27B9421C44B8B0005759C /* FilterViewController.swift in Sources */,
 				9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */,
 				9DD9801A21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D50E19821B0BD0F00065C81 /* SignInViewController.swift in Sources */,
