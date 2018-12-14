@@ -36,6 +36,19 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     
+    func load100products() {
+        
+        var i = 0
+        
+        while i < 75 {
+            
+            ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Category" : "-","Color" : "-","Description" : "-","Designer" : "-","Gemstone" : "-","Image" : "-","Name" : "-","New Link" : "-","New Price" : "-","Packaging" : "-","Purity" : "-","Size" : "-","Stone" : "-","Used Inventory" : "0","Used Link" : "-","Used Price" : "-", "Metal" : "-"])
+            
+            i += 1
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -79,6 +92,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //        }
       
         // Do any additional setup after loading the view.
+        
+//        load100products()
     }
     @IBOutlet weak var tapBack: UIButton!
     @IBAction func tapback(_ sender: Any) {
@@ -140,10 +155,24 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 var value = snapshot.value as? NSDictionary
                 
                 if var author2 = value?["Used Price"] as? String {
+                    
+                    if author2 != "-" {
                     var intviews = Double(Int(author2.dropFirst())!)
                     intviews = intviews * 1.1
                     author2 = "$\(String(Int(intviews)))"
                     self.usedprices[each] = author2
+                        
+                    } else {
+                        
+                        if var author2 = value?["New Price"] as? String {
+
+                            var intviews = Double(Int(author2.dropFirst())!)
+                            intviews = intviews * 1.1
+                            author2 = "$\(String(Int(intviews)))"
+                            self.usedprices[each] = author2
+
+                        }
+                    }
                 }
                 
                 if var author2 = value?["Description"] as? String {

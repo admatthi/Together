@@ -29,6 +29,8 @@ class BrandViewController: UIViewController {
     }
     
 
+    
+
     /*
     // MARK: - Navigation
 

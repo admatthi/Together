@@ -61,28 +61,24 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                 }
             
-            if var author2 = value?["Used Inventory"] as? String {
+            if var author2 = value?["Used Price"] as? String {
                 
-                if Int(author2)! > 0 {
-            
-                        if var author2 = value?["Used Price"] as? String {
-                            
-                            var intviews = Double(Int(author2.dropFirst())!)
-                            intviews = intviews * 1.1
-                            author2 = "$\(String(Int(intviews)))"
-
-                            self.prices2.append(author2)
-
-                        }
+                if author2 != "-" {
+                var intviews = Double(Int(author2.dropFirst())!)
+                intviews = intviews * 1.1
+                author2 = "$\(String(Int(intviews)))"
+                
+                self.prices2.append(author2)
                     
                 } else {
                     
                     self.prices2.append("SOLD OUT")
 
-                    
                 }
                 
+                
             }
+          
             
             if var author2 = value?["Description"] as? String {
                 
@@ -131,7 +127,15 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if var author2 = value?["Packaging"] as? String {
                 
-                selectedpackaging = author2
+                if author2 != "-" {
+                    
+                    selectedpackaging = author2
+
+                } else {
+                    
+                    selectedpackaging = "Original Packaging"
+
+                }
                 
             } else {
                 
