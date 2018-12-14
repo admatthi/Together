@@ -59,8 +59,8 @@ class CheckoutViewController: UIViewController {
         
         if streetaddress != "" && finalcreditcard != "" {
             
-        ref!.child("Jewelery").child("Purchases").childByAutoId().child(uid).updateChildValues(["Product ID" : selectedid, "Credit Card" : finalcreditcard, "Shipping" : streetaddress, "Date" : thisdate])
-            
+ref!.child("Jewelery").child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
+
 ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
 
             
@@ -121,7 +121,7 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
             tappolicy2.isUserInteractionEnabled = false
             
         tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
-            tapshipping.setTitle("Complimentary ($0)", for: .normal)
+            tapshipping.setTitle("Complimentary $0", for: .normal)
             tappolicy1.titleLabel?.textAlignment = NSTextAlignment.center
             tappolicy2.titleLabel?.textAlignment = NSTextAlignment.center
             totalprice.setTitle(finalprice, for: .normal)
