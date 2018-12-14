@@ -51,7 +51,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         
         var functioncounter = 0
         answers["ORDER NUMBER"] = selectedid
-        answers["TRACKING"] = "Currently Unavailable"
+        answers["TRACKING"] = "Please Contact Us"
     ref?.child("Jewelery").child("Users").child(uid).child("Purchased").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary

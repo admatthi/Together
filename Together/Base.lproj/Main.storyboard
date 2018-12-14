@@ -1272,7 +1272,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCx-Fj-SQ2">
                                                     <rect key="frame" x="15" y="24" width="345" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1466,6 +1466,7 @@
                     </view>
                     <connections>
                         <outlet property="answer" destination="mLs-Pf-I5r" id="Dea-pK-DCp"/>
+                        <outlet property="header" destination="8VK-mH-2ji" id="v6o-ZK-1ER"/>
                         <outlet property="question" destination="adr-PO-FF0" id="WrS-7f-RKZ"/>
                     </connections>
                 </viewController>

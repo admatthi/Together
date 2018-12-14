@@ -13,11 +13,13 @@ import FirebaseAuth
 
 class Help2ViewController: UIViewController {
 
+    @IBOutlet weak var header: UILabel!
     @IBOutlet weak var answer: UILabel!
     @IBOutlet weak var question: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        header.addCharacterSpacing()
         question.text = squestion
         question.addCharacterSpacing()
         ref = Database.database().reference()
