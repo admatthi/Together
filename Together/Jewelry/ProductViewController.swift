@@ -96,6 +96,10 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 b3 = author2
                 
+            } else {
+                
+                b3 = "-"
+
             }
             if var author2 = value?["Color"] as? String {
                 
@@ -163,6 +167,10 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     */
     
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     var pricetitles = [String]()
     var prices2 = [String]()
 var selectedmetal = String()
@@ -343,13 +351,6 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     
     return cell
 
-    }
-
-
-    @IBAction func tapBack(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView,

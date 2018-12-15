@@ -58,18 +58,24 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
         
-        activityIndicator.alpha = 1
-        activityIndicator.startAnimating()
-        collectionView.alpha = 0
-        tapfilter.alpha = 0
+  
         //            tapBack.alpha = 0
                     tapBack.alpha = 0
 
+//        if projectids.count == 0 && selectedfilter != "" {
+        
+            activityIndicator.alpha = 1
+            activityIndicator.startAnimating()
+            collectionView.alpha = 0
+            tapfilter.alpha = 0
+            
         queryforids { () -> () in
             
             self.queryforinfo()
             
         }
+            
+
         self.tabBarController?.tabBar.isHidden = false
 
         screenSize = UIScreen.main.bounds
@@ -366,7 +372,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //        cell.layer.cornerRadius = 10.0
 //        cell.layer.masksToBounds = true
         
-        if images.count > indexPath.row  {
+        if images.count > indexPath.row  && brandnames.count > indexPath.row && names.count > indexPath.row {
             
 //            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)/mo"
 

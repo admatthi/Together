@@ -82,10 +82,10 @@ class FilterViewController: UIViewController {
 
         tapapply.addTextSpacing(2.0)
         HEADER.addCharacterSpacing()
-        tapbracelets.addTextSpacing(2.0)
-        tapearrings.addTextSpacing(2.0)
+//        tapbracelets.addTextSpacing(2.0)
+//        tapearrings.addTextSpacing(2.0)
 
-        tapnecklaces.addTextSpacing(2.0)
+//        tapnecklaces.addTextSpacing(2.0)
 
         if selectedfilter == "Earrings" {
             
