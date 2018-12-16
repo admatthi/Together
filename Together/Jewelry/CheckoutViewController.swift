@@ -77,7 +77,31 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
     
     @IBOutlet weak var taptochangecc: UILabel!
     var finalprice = String()
-    
+    @IBAction func tapSlider(_ sender: UISlider) {
+        
+        var currentValue = Int(sender.value)
+        
+        if currentValue >= Int(0.95) {
+            
+            if streetaddress != "" && finalcreditcard != "" {
+                
+                ref!.child("Jewelery").child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
+                
+                ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
+                
+                
+                self.performSegue(withIdentifier: "Thank You", sender: self)
+                
+            } else {
+                
+                errorlabel.alpha = 1
+                
+            }
+            
+        }
+    }
+
+    @IBOutlet weak var tapslider: UISlider!
     @IBOutlet weak var taptochangeshipping: UILabel!
     @IBAction func tapHelp(_ sender: Any) {
         
@@ -90,6 +114,12 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tapslider.setThumbImage(UIImage(), for: .normal)
+        tapslider.layer.cornerRadius = 0.0
+        tapslider.layer.borderWidth = 1.0
+        tapslider.layer.borderColor = UIColor.black.cgColor
+        tapslider.setValue(0.05, animated: false)
+        
         taphelp.layer.borderColor = UIColor.black.cgColor
         taphelp.addTextSpacing(2.0)
         taphelp.layer.borderWidth = 0.5
@@ -274,4 +304,17 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
     // shipping method from your user, you should not implement this method
 
 
+}
+
+class CustomUISlider : UISlider {
+    
+ 
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        // Use properly calculated rect
+        var newRect = super.trackRect(forBounds: bounds)
+        newRect.size.height = 30
+        
+        return newRect
+    }
+    
 }

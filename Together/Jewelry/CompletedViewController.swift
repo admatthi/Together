@@ -103,7 +103,11 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func tapBack(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: nil)
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+        
+        tabBarBuyer.selectedIndex = 1
+        UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

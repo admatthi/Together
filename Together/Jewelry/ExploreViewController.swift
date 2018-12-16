@@ -68,7 +68,17 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             activityIndicator.startAnimating()
             collectionView.alpha = 0
             tapfilter.alpha = 0
-            
+        
+        projectids.removeAll()
+        descriptions.removeAll()
+        names.removeAll()
+        programnames.removeAll()
+        prices.removeAll()
+        toppics.removeAll()
+        images.removeAll()
+        brandnames.removeAll()
+        imageurls.removeAll()
+        
         queryforids { () -> () in
             
             self.queryforinfo()
@@ -123,7 +133,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         if selectedfilter == "" {
             
-        ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Products").queryLimited(toFirst: 10).observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -178,6 +188,70 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 }
                 
             })
+        }
+    }
+    
+    func queryformoreids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+        
+        if selectedfilter == "" {
+            
+            ref?.child("Products").queryOrderedByKey().queryEnding(atValue: "\(projectids.last)").queryLimited(toLast: 10).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                if let snapDict = snapshot.value as? [String:AnyObject] {
+                    
+                    for each in snapDict {
+                        
+                        let ids = each.key
+                        
+                        projectids.append(ids)
+                        
+                        functioncounter += 1
+                        
+                        if functioncounter == snapDict.count {
+                            
+                            completed()
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            })
+            
+        } else {
+            
+//            ref?.child("Products").queryOrdered(byChild: "Category").queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//                var value = snapshot.value as? NSDictionary
+//
+//                if let snapDict = snapshot.value as? [String:AnyObject] {
+//
+//                    for each in snapDict {
+//
+//                        let ids = each.key
+//
+//                        projectids.append(ids)
+//
+//                        functioncounter += 1
+//
+//                        if functioncounter == snapDict.count {
+//
+//                            completed()
+//
+//                        }
+//
+//
+//                    }
+//
+//                }
+//
+//            })
         }
     }
     
@@ -275,6 +349,20 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 
             })
             
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+
+        if indexPath.row == projectids.count-1 {
+            
+//
+            queryformoreids { () -> () in
+
+
+                self.queryforinfo()
+
+            }
         }
     }
     

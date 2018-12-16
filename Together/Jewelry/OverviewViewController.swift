@@ -88,6 +88,14 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
             
         }
         
+        if counter == 0 {
+            
+            tapexplore.alpha = 1
+        } else {
+            
+            tapexplore.alpha = 0
+        }
+        
     }
     
     @IBAction func tapPrevious(_ sender: AnyObject?) {
@@ -102,6 +110,14 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
         mainimage.image = images[counter]
         mainimage.slideInFromLeft()
             
+        }
+        
+        if counter == 0 {
+            
+            tapexplore.alpha = 1
+        } else {
+            
+            tapexplore.alpha = 0
         }
     }
     
