@@ -69,6 +69,9 @@
 		9DA5C2BE21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DA5C2BF21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DA5C2C021C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
+		9DA5C2CA21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */; };
+		9DA5C2CB21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */; };
+		9DA5C2CC21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */; };
 		9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4D29321965344008A57FD /* VideoPlayerView.swift */; };
 		9DB795C621656B5300211327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C521656B5300211327 /* AppDelegate.swift */; };
 		9DB795C821656B5300211327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C721656B5300211327 /* ViewController.swift */; };
@@ -199,6 +202,7 @@
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundedViewController.swift; sourceTree = "<group>"; };
 		9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
+		9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB4D29321965344008A57FD /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		9DB795C221656B5300211327 /* Together.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Together.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB795C521656B5300211327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -379,6 +383,7 @@
 				9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */,
 				9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */,
 				9D50E19921B0C69100065C81 /* BrandViewController.swift */,
+				9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
 				9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */,
 				9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */,
@@ -760,6 +765,7 @@
 				9DC0B28221920DC500F56A1A /* PlayerViewClass.swift in Sources */,
 				9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */,
 				9D60C09921A34E24002BBF0C /* Test2ViewController.swift in Sources */,
+				9DA5C2CA21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */,
 				9DD9801621BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9DC75F8121C06A020074CA45 /* LargeImageViewController.swift in Sources */,
 				9DB795F421656CDF00211327 /* LogViewController.swift in Sources */,
@@ -826,6 +832,7 @@
 			files = (
 				9DC75F8421C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795DB21656B5700211327 /* TogetherTests.swift in Sources */,
+				9DA5C2CB21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */,
 				9DD9800F21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9D86EDD921C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9D94017121B1AF6000E32912 /* ThanksViewController.swift in Sources */,
@@ -849,6 +856,7 @@
 			files = (
 				9DC75F8521C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */,
+				9DA5C2CC21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */,
 				9DD9801021BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9D86EDDA21C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9D94017221B1AF6000E32912 /* ThanksViewController.swift in Sources */,

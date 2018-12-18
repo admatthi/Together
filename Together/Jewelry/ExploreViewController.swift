@@ -49,16 +49,23 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
     }
     
+    var genres = [String]()
+    var viewableids = [String]()
+    
     @IBOutlet weak var tapfilter: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        allids.removeAll()
         activityIndicator.color = myblue
-        headerlabel.addCharacterSpacing()
         tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
-        
-  
+        genres.removeAll()
+        genres.append("Buy Now")
+        genres.append("Under Retail")
+        genres.append("Trending")
+        genres.append("Best Sellers")
+        collectionView2.alpha = 0
         //            tapBack.alpha = 0
                     tapBack.alpha = 0
 
@@ -78,7 +85,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         images.removeAll()
         brandnames.removeAll()
         imageurls.removeAll()
-        
+        queryformoreids()
         queryforids { () -> () in
             
             self.queryforinfo()
@@ -117,6 +124,51 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBAction func tapback(_ sender: Any) {
     }
     
+  
+    func queryfornumberedids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+        
+
+        ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+            
+                if let snapDict = snapshot.value as? [String:AnyObject] {
+                    
+                    for each in snapDict {
+                        
+                        let ids = each.key
+                        
+                        if projectids.contains(ids) {
+                            
+                            functioncounter += 1
+
+                        } else {
+                            
+                            projectids.append(ids)
+                            functioncounter += 1
+
+                        }
+                        
+                        
+                        if functioncounter == snapDict.count {
+                            
+                            completed()
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            })
+        
+    }
+    
+    var allids = [String]()
+    
     func queryforids(completed: @escaping (() -> ()) ) {
         
         var functioncounter = 0
@@ -133,7 +185,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         if selectedfilter == "" {
             
-        ref?.child("Products").queryLimited(toFirst: 20).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Products").queryLimited(toFirst: 10).observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -162,6 +214,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             
         } else {
             
+            allids.removeAll()
             ref?.child("Products").queryOrdered(byChild: "Category").queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
@@ -191,13 +244,14 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
-    func queryformoreids(completed: @escaping (() -> ()) ) {
+    func queryformoreids() {
+        
         
         var functioncounter = 0
         
         if selectedfilter == "" {
             
-            ref?.child("Products").queryOrderedByKey().queryEnding(atValue: "\(projectids.last)").queryLimited(toLast: 10).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -207,16 +261,11 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                         
                         let ids = each.key
                         
-                        projectids.append(ids)
+                        self.allids.append(ids)
                         
                         functioncounter += 1
                         
-                        if functioncounter == snapDict.count {
-                            
-                            completed()
-                            
-                        }
-                        
+                      
                         
                     }
                     
@@ -255,11 +304,12 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    @IBOutlet weak var collectionView2: UICollectionView!
     var usedprices = [String:String]()
     var brandnames = [String:String]()
     
     func queryforinfo() {
-        
+        self.collectionView.alpha = 0
         var functioncounter = 0
         
         for each in projectids {
@@ -372,12 +422,147 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView.tag == 2 {
+
+            let kWhateverHeightYouWant = 66
+            return CGSize(width: 141, height: CGFloat(kWhateverHeightYouWant))
+            
+        } else {
         let kWhateverHeightYouWant = 82
         return CGSize(width: view.frame.width/2, height: CGFloat(kWhateverHeightYouWant))
+            
+        }
     }
+    
+    var selectedindex = Int()
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        if collectionView.tag == 2 {
+            
+        selectedindex = indexPath.row
+            
+        collectionView2.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+        collectionView.alpha = 0
+        collectionView2.reloadData()
+            
+            if indexPath.row == 0 {
+                
+                projectids.removeAll()
+                projectids.append(allids[0])
+                projectids.append(allids[1])
+                projectids.append(allids[2])
+                projectids.append(allids[3])
+                projectids.append(allids[4])
+                projectids.append(allids[5])
+                projectids.append(allids[6])
+                projectids.append(allids[7])
+                projectids.append(allids[8])
+                projectids.append(allids[9])
+                descriptions.removeAll()
+                names.removeAll()
+                programnames.removeAll()
+                prices.removeAll()
+                toppics.removeAll()
+                images.removeAll()
+                brandnames.removeAll()
+                imageurls.removeAll()
+                activityIndicator.alpha = 1
+                activityIndicator.startAnimating()
+                collectionView.alpha = 0
+                tapfilter.alpha = 0
+                queryforinfo()
+            }
+            
+            if indexPath.row == 1 {
+                
+                projectids.removeAll()
+                projectids.append(allids[10])
+                projectids.append(allids[11])
+                projectids.append(allids[12])
+                projectids.append(allids[13])
+                projectids.append(allids[14])
+                projectids.append(allids[15])
+                projectids.append(allids[16])
+                projectids.append(allids[17])
+                projectids.append(allids[18])
+                projectids.append(allids[19])
+                descriptions.removeAll()
+                names.removeAll()
+                programnames.removeAll()
+                prices.removeAll()
+                toppics.removeAll()
+                images.removeAll()
+                brandnames.removeAll()
+                imageurls.removeAll()
+                activityIndicator.alpha = 1
+                activityIndicator.startAnimating()
+                collectionView.alpha = 0
+                tapfilter.alpha = 0
+                queryforinfo()
+
+            }
+            
+            if indexPath.row == 2 {
+                
+                projectids.removeAll()
+                projectids.append(allids[20])
+                projectids.append(allids[21])
+                projectids.append(allids[22])
+                projectids.append(allids[23])
+                projectids.append(allids[24])
+                projectids.append(allids[25])
+                projectids.append(allids[26])
+                projectids.append(allids[27])
+                projectids.append(allids[28])
+                projectids.append(allids[29])
+                descriptions.removeAll()
+                names.removeAll()
+                programnames.removeAll()
+                prices.removeAll()
+                toppics.removeAll()
+                images.removeAll()
+                brandnames.removeAll()
+                imageurls.removeAll()
+                activityIndicator.alpha = 1
+                activityIndicator.startAnimating()
+                collectionView.alpha = 0
+                tapfilter.alpha = 0
+                queryforinfo()
+
+            }
+            
+            if indexPath.row == 3 {
+                
+                projectids.removeAll()
+                projectids.append(allids[30])
+                projectids.append(allids[31])
+                projectids.append(allids[32])
+                projectids.append(allids[33])
+                projectids.append(allids[34])
+                projectids.append(allids[35])
+                projectids.append(allids[36])
+                projectids.append(allids[37])
+                projectids.append(allids[38])
+                projectids.append(allids[19])
+                descriptions.removeAll()
+                names.removeAll()
+                programnames.removeAll()
+                prices.removeAll()
+                toppics.removeAll()
+                images.removeAll()
+                brandnames.removeAll()
+                imageurls.removeAll()
+                activityIndicator.alpha = 1
+                activityIndicator.startAnimating()
+                collectionView.alpha = 0
+                tapfilter.alpha = 0
+                queryforinfo()
+
+            }
+            
+        } else {
+            
         selectedbrand = brandnames[projectids[indexPath.row]]!
         selectedid = projectids[indexPath.row]
         unlockedid = "0"
@@ -391,11 +576,18 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //        selectedprogramname = programnames[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "ExploreToVideos", sender: self)
-        
+        }
     }
  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        if collectionView.tag == 2 {
+            
+            
+            return genres.count
+            
+        } else {
+            
         if images.count > 0 {
             
             return images.count
@@ -405,6 +597,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             return 0
         }
      
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -447,8 +640,169 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        if collectionView.tag == 2 {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Categories", for: indexPath) as! CategoriesCollectionViewCell
+            
+            cell.titlelabel.text = genres[indexPath.row].uppercased()
+            cell.titlelabel.addCharacterSpacing()
+            
+            
+            cell.selectedimage.layer.cornerRadius = 5.0
+            cell.selectedimage.layer.masksToBounds = true
+            collectionView2.alpha = 1
+            
+            if selectedindex == 0 {
+                
+      
+                
+                
+                if indexPath.row == 0 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            } else {
+                
+                tapfilter.alpha = 0
+
+            }
+            
+            if selectedindex == 1 {
+                
+    
+                
+                if indexPath.row == 1 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            }
+            
+            if selectedindex == 2 {
+                
+                if indexPath.row == 2 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            }
+            
+            if selectedindex == 3 {
+                
+                if indexPath.row == 3 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            }
+            
+            if selectedindex == 4 {
+                
+                if indexPath.row == 4 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            }
+            
+            if selectedindex == 5 {
+                
+                if indexPath.row == 5 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            }
+            
+            if selectedindex == 6 {
+                
+                if indexPath.row == 6 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            }
+            
+            if selectedindex == 7 {
+                
+                if indexPath.row == 7 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            }
+            
+            return cell
+
+        } else {
+            
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "People", for: indexPath) as! PeopleCollectionViewCell
         
+            if selectedindex > 0 {
+                
+                tapfilter.alpha = 0
+            } else {
+                
+                tapfilter.alpha = 1
+
+            }
 //        cell.subscriber.tag = indexPath.row
         
 //        cell.pricelabel.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.5)
@@ -461,33 +815,21 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //        cell.layer.masksToBounds = true
         
         if images.count > indexPath.row  && brandnames.count > indexPath.row && names.count > indexPath.row {
-            
-//            cell.pricelabel.text = "$\(prices[projectids[indexPath.row]]!)/mo"
 
-            //            cell.layer.borderWidth = 1.0
-            //            cell.layer.borderColor = UIColor.lightGray.cgColor
-//            cell.subscriber.addTarget(self, action: #selector(tapJoin(sender:)), for: .touchUpInside)
-//
-//            cell.thumbnail.layer.cornerRadius = 10.0
-//            cell.thumbnail.layer.masksToBounds = true
-//            cell.textlabel.text = names[projectids[indexPath.row]]
-//            cell.creatorname.text = brandnames[projectids[indexPath.row]]?.uppercased()
-//            cell.creatorname.addCharacterSpacing()
+            collectionView2.alpha = 1
+
             cell.thumbnail.image = images[projectids[indexPath.row]]
             cell.pricelabel.text = usedprices[projectids[indexPath.row]]?.uppercased()
             cell.pricelabel.addCharacterSpacing()
             cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!.uppercased())"
             cell.textlabel.addCharacterSpacing()
-//            cell.usedprices.text = "\(usedprices[projectids[indexPath.row]]!) usedprices"
-//                        cell.usedprices.text = "\(usedprices[projectids[indexPath.row]]!) usedprices"
 
-        } else {
-            
-            
+            }
+            return cell
+
         }
         
         
-        return cell
     }
     
   
