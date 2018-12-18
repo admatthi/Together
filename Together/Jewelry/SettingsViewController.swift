@@ -27,7 +27,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func tapBilling(_ sender: Any) {
         
-        if let url = NSURL(string: "https://938152110718650409.weebly.com/billing-terms.html"
+        if let url = NSURL(string: "http://www.joinmyfam.com/purchases.html"
             ) {
             UIApplication.shared.openURL(url as URL)
         }

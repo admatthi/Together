@@ -18,6 +18,7 @@ import FBSDKCoreKit
 class ContacViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var tapBack: UIButton!
     
+    @IBOutlet weak var thankyoulabel: UILabel!
     @IBOutlet weak var tv: UITextView!
     @IBAction func tapback(_ sender: Any) {
         
@@ -50,7 +51,7 @@ class ContacViewController: UIViewController, UITextViewDelegate {
         
         tv.text = "Your message here..."
         tv.textColor = mygray
-        
+        thankyoulabel.alpha = 0
         tv.layer.borderColor = mygray.cgColor
         tv.layer.borderWidth = 0.5
         
@@ -68,19 +69,27 @@ class ContacViewController: UIViewController, UITextViewDelegate {
    
             if uid != "" {
                 
+               thankyoulabel.alpha = 1
                 ref?.child("Feedback").child(uid).childByAutoId().updateChildValues(["Text" : "\(tv.text!)"])
+                tv.alpha = 0
+                taps.alpha = 0
+                self.view.endEditing(true)
 
-                self.dismiss(animated: true, completion: {
-                    
-                })
+//                self.dismiss(animated: true, completion: {
+//
+//                })
                 
             } else {
                 
+               thankyoulabel.alpha = 1
                 ref?.child("Feedback").childByAutoId().updateChildValues(["Text" : "\(tv.text!)"])
+                tv.alpha = 0
+                taps.alpha = 0
+                self.view.endEditing(true)
 
-                self.dismiss(animated: true, completion: {
-                    
-                })
+//                self.dismiss(animated: true, completion: {
+//
+//                })
             }
             
         }

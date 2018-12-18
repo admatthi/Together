@@ -16,6 +16,7 @@ import FBSDKCoreKit
 
 var selecteddetails = String()
 var selectedimageurl = String()
+var finalprice = String()
 
 
 class CheckoutViewController: UIViewController {
@@ -76,7 +77,6 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
     }
     
     @IBOutlet weak var taptochangecc: UILabel!
-    var finalprice = String()
     @IBAction func tapSlider(_ sender: UISlider) {
         
         var currentValue = Int(sender.value)
@@ -108,17 +108,31 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
         self.performSegue(withIdentifier: "CheckoutToHelp", sender: self)
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+        if selectedcondition == "New" {
+            
+
+            totalprice.setTitle(finalprice, for: .normal)
+            
+        } else {
+                        
+      
+            totalprice.setTitle(finalprice, for: .normal)
+            
+            
+        }
+        
+    }
     @IBOutlet weak var taphelp: UIButton!
     @IBOutlet weak var tapbuy: UIButton!
     @IBOutlet weak var header: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tapslider.setThumbImage(UIImage(), for: .normal)
-        tapslider.layer.cornerRadius = 0.0
-        tapslider.layer.borderWidth = 1.0
-        tapslider.layer.borderColor = UIColor.black.cgColor
-        tapslider.setValue(0.05, animated: false)
+    
         
         taphelp.layer.borderColor = UIColor.black.cgColor
         taphelp.addTextSpacing(2.0)

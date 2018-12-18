@@ -133,7 +133,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         if selectedfilter == "" {
             
-        ref?.child("Products").queryLimited(toFirst: 10).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Products").queryLimited(toFirst: 20).observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -353,17 +353,17 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
-        if indexPath.row == projectids.count-1 {
-            
 //
-            queryformoreids { () -> () in
-
-
-                self.queryforinfo()
-
-            }
-        }
+//        if indexPath.row == projectids.count-1 {
+//
+////
+//            queryformoreids { () -> () in
+//
+//
+//                self.queryforinfo()
+//
+//            }
+//        }
     }
     
     @IBOutlet weak var collectionView: UICollectionView!

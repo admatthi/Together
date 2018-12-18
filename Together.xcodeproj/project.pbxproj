@@ -66,6 +66,9 @@
 		9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */; };
 		9D9E4A4721862B1700B3C74C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9E4A4621862B1700B3C74C /* StoreKit.framework */; };
 		9D9E4A4B21864CC000B3C74C /* FundedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */; };
+		9DA5C2BE21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
+		9DA5C2BF21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
+		9DA5C2C021C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4D29321965344008A57FD /* VideoPlayerView.swift */; };
 		9DB795C621656B5300211327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C521656B5300211327 /* AppDelegate.swift */; };
 		9DB795C821656B5300211327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C721656B5300211327 /* ViewController.swift */; };
@@ -195,6 +198,7 @@
 		9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover2ViewController.swift; sourceTree = "<group>"; };
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundedViewController.swift; sourceTree = "<group>"; };
+		9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		9DB4D29321965344008A57FD /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		9DB795C221656B5300211327 /* Together.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Together.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB795C521656B5300211327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -376,6 +380,7 @@
 				9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */,
 				9D50E19921B0C69100065C81 /* BrandViewController.swift */,
 				9DC0B2862193556300F56A1A /* ExploreViewController.swift */,
+				9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */,
 				9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */,
 				9DC75F8021C06A020074CA45 /* LargeImageViewController.swift */,
 				9DEA5F1721A0B820000137A3 /* ContacViewController.swift */,
@@ -770,6 +775,7 @@
 				9DD6A56D21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift in Sources */,
 				9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */,
 				9DB8AE00219DDB0300D7D707 /* PeopleCollectionViewCell.swift in Sources */,
+				9DA5C2BE21C70A6F00456DEE /* CodeViewController.swift in Sources */,
 				9DD9801E21BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
 				9D94017821B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9D50E19C21B0C8A200065C81 /* CheckoutViewController.swift in Sources */,
@@ -831,6 +837,7 @@
 				9DD9801B21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9DD9801F21BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
+				9DA5C2BF21C70A6F00456DEE /* CodeViewController.swift in Sources */,
 				9D94017521B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
 				9DD9801321BEF2B500A02433 /* ProductTableViewCell.swift in Sources */,
 			);
@@ -853,6 +860,7 @@
 				9DD9801C21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9DD9802021BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
+				9DA5C2C021C70A6F00456DEE /* CodeViewController.swift in Sources */,
 				9D94017621B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
 				9DD9801421BEF2B500A02433 /* ProductTableViewCell.swift in Sources */,
 			);
@@ -1011,7 +1019,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-12";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-13";
 				CODE_SIGN_ENTITLEMENTS = Together/Together.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
@@ -1032,7 +1040,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 946746B00455D23BCECD7726 /* Pods-Together.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-12";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-13";
 				CODE_SIGN_ENTITLEMENTS = Together/Together.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;

@@ -88,39 +88,97 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if var author2 = value?["Gemstone"] as? String {
                 
-                b2 = author2
-                
-            }
-            
-            if var author2 = value?["Weight"] as? String {
-                
-                b3 = author2
+                if author2 == "-" {
+
+                    b2 = author2
+                    b3 = author2
+
+                } else {
+                    
+                    b2 = author2
+                    
+                    if var author2 = value?["Gemstone Weight"] as? String {
+                        
+                        if author2 == "-" {
+                            
+                            b3 = "4mm"
+                            
+                        } else {
+                            
+                            b3 = author2
+                        }
+                        
+                        
+                    }
+                }
                 
             } else {
                 
-                b3 = "-"
+                b2 = "-"
 
             }
-            if var author2 = value?["Color"] as? String {
+//
+//            if var author2 = value?["Gemstone Weight"] as? String {
+//
+//                if author2 == "-" {
+//
+//                    b3 = "4mm"
+//
+//                } else {
+//                    b3 = author2
+//                }
+//
+//
+//            } else {
+//
+//                b3 = "-"
+//
+//            }
+            if var author2 = value?["Main Color"] as? String {
                 
                 b4 = author2
                 
+            } else {
+                
+                b4 = "-"
+
             }
             if var author2 = value?["Size"] as? String {
                 
+                if author2 == "-" {
+
+                    b5 = "4mm"
+
+                } else {
                 b5 = author2
-                
+                }
             }
             
             if var author2 = value?["Designer"] as? String {
                 
+                if author2 == "-" {
+                    
+                    b6 = "\(selectedbrand)"
+
+                } else {
+                    
                 b6 = author2
+                    
+                }
                 
             }
             
             if var author2 = value?["Metal"] as? String {
                 
-                self.selectedmetal = author2
+                if author2 == "-" {
+
+                    self.selectedmetal = "Sterling Silver"
+
+                } else {
+                    
+                    self.selectedmetal = author2
+
+                }
                 
             } else {
                 
