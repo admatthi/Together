@@ -28,7 +28,7 @@ var selectedimage = UIImage()
 var toppics = [String:UIImage]()
 var imageurls = [String:String]()
 var selectedbrand = String()
-
+var selectedkey = String()
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
    
     
@@ -57,6 +57,12 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
 
         allids.removeAll()
+        
+        if allids.count == 0 {
+            
+            queryformoreids()
+
+        }
         activityIndicator.color = myblue
         tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
@@ -65,9 +71,9 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         genres.append("Under Retail")
         genres.append("Trending")
         genres.append("Best Sellers")
-        collectionView2.alpha = 0
+        collectionView2.alpha = 1
+        selectedindex = 0
         //            tapBack.alpha = 0
-                    tapBack.alpha = 0
 
 //        if projectids.count == 0 && selectedfilter != "" {
         
@@ -214,8 +220,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             
         } else {
             
-            allids.removeAll()
-            ref?.child("Products").queryOrdered(byChild: "Category").queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("Products").queryOrdered(byChild: selectedkey).queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -249,8 +254,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         var functioncounter = 0
         
-        if selectedfilter == "" {
-            
             ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
@@ -273,8 +276,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 
             })
             
-        } else {
-            
+        
 //            ref?.child("Products").queryOrdered(byChild: "Category").queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
 //
 //                var value = snapshot.value as? NSDictionary
@@ -301,7 +303,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //                }
 //
 //            })
-        }
     }
     
     @IBOutlet weak var collectionView2: UICollectionView!
@@ -443,11 +444,13 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         selectedindex = indexPath.row
             
         collectionView2.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-        collectionView.alpha = 0
-        collectionView2.reloadData()
+
+            
+            collectionView2.reloadData()
             
             if indexPath.row == 0 {
-                
+                selectedfilter = ""
+                selectedkey = ""
                 projectids.removeAll()
                 projectids.append(allids[0])
                 projectids.append(allids[1])
@@ -501,8 +504,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 tapfilter.alpha = 0
                 queryforinfo()
 
-            }
-            
+                }
             if indexPath.row == 2 {
                 
                 projectids.removeAll()
@@ -816,8 +818,6 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         if images.count > indexPath.row  && brandnames.count > indexPath.row && names.count > indexPath.row {
 
-            collectionView2.alpha = 1
-
             cell.thumbnail.image = images[projectids[indexPath.row]]
             cell.pricelabel.text = usedprices[projectids[indexPath.row]]?.uppercased()
             cell.pricelabel.addCharacterSpacing()
@@ -838,7 +838,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let buttonTag = sender.tag
         
-        selectedid = projectids[buttonTag]
+        selectedindex = buttonTag
         selectedimage = images[projectids[buttonTag]]!
         selectedname = names[projectids[buttonTag]]!
         selectedpitch = descriptions[projectids[buttonTag]]!

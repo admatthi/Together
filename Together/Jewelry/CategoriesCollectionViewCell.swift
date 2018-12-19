@@ -9,6 +9,7 @@
 import UIKit
 
 class CategoriesCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var tapselected: UIButton!
     
     @IBOutlet weak var selectedimage: UIImageView!
     @IBOutlet weak var titlelabel: UILabel!
