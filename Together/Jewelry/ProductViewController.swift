@@ -32,6 +32,10 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tapsell.layer.borderColor = UIColor.black.cgColor
+        tapsell.addTextSpacing(2.0)
+        tapsell.layer.borderWidth = 0.5
+        
         ref = Database.database().reference()
         queryforinfo()
         
@@ -39,6 +43,15 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func tapSell(_ sender: Any) {
+        
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+        
+        tabBarBuyer.selectedIndex = 2
+        UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
+    }
+    @IBOutlet weak var tapsell: UIButton!
     
     func queryforinfo() {
         
