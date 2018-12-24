@@ -67,10 +67,10 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
         genres.removeAll()
-        genres.append("Buy Now")
-        genres.append("Under $250")
-        genres.append("For Her")
-        genres.append("For Him")
+        genres.append("Best Sellers")
+        genres.append("Trending")
+        genres.append("Under Retail")
+        genres.append("Latest")
         collectionView2.alpha = 1
         selectedindex = 0
         //            tapBack.alpha = 0
@@ -615,52 +615,54 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
     if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0{
             
-            changeTabBar(hidden: true, animated: true)
-        
-//        tabBar?.isHidden = true
+        setTabBarVisible(visible: false, animated: true)
+
         
         }
         
         else{
         
-//        tabBar?.isHidden = false
-//        self.view.addSubview(tabBar!)
-        
-//            changeTabBar(hidden: false, animated: true)
-        let tabBar = self.tabBarController?.tabBar
-        
-//        if tabBar!.isHidden == true {
-        
-        let frame = tabBar!.frame
-        let offset = -frame.size.height
-        let duration:TimeInterval = 0.5
-        tabBar!.isHidden = false
-        
-        UIView.animate(withDuration: duration, animations: {
-            tabBar!.frame = frame.offsetBy(dx: 0, dy: offset)
-        }, completion: { (true) in
-//            tabBar!.isHidden = hidden
-        })
+        setTabBarVisible(visible: true, animated: true)
+
             
 //        }
         
         }
     }
     
-    func changeTabBar(hidden:Bool, animated: Bool){
-        guard let tabBar = self.tabBarController?.tabBar else { return; }
-        if tabBar.isHidden == hidden{ return }
-        let frame = tabBar.frame
-        let offset = hidden ? frame.size.height : -frame.size.height
-        let duration:TimeInterval = (animated ? 0.5 : 0.0)
-        tabBar.isHidden = false
+    func setTabBarVisible(visible:Bool, animated:Bool) {
         
-        UIView.animate(withDuration: duration, animations: {
-            tabBar.frame = frame.offsetBy(dx: 0, dy: offset)
-        }, completion: { (true) in
-            tabBar.isHidden = hidden
-        })
+        var isTabBarVisible: Bool {
+            return (self.tabBarController?.tabBar.frame.origin.y ?? 0) < self.view.frame.maxY
+        }
+        
+        //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
+        
+        // bail if the current state matches the desired state
+        if (isTabBarVisible == visible) { return }
+
+        // get a frame calculation ready
+        let frame = self.tabBarController?.tabBar.frame
+
+        let height = frame?.size.height
+        let offsetY = (visible ? -height! : height)
+        
+        // zero duration means no animation
+        let duration:TimeInterval = (animated ? 0.3 : 0.0)
+        
+        //  animate the tabBar
+        if frame != nil {
+            UIView.animate(withDuration: duration) {
+                self.tabBarController?.tabBar.frame = frame!.offsetBy(dx: 0, dy: offsetY!)
+                return
+            }
+        }
+        
+      
     }
+    
+
+
   
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     

@@ -20,10 +20,24 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var tapr: UIButton!
     @IBOutlet weak var TAPJOIN: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    var attrs = [
+        NSAttributedStringKey.foregroundColor : UIColor.black,
+        NSAttributedStringKey.underlineStyle : 1 ] as [NSAttributedStringKey : Any]
+    var attributedString = NSMutableAttributedString(string:"")
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+      
+        let buttonTitleStr = NSMutableAttributedString(string:"START EXPLORING", attributes:attrs)
+        attributedString.append(buttonTitleStr)
+        
+        
+    tapexplore.setAttributedTitle(attributedString, for: .normal)
+        tapexplore.setTitleColor(.black, for: .normal)
+
         tapr.addTextSpacing(2.0)
         taps.addTextSpacing(2.0)
         TAPJOIN.addTextSpacing(2.0)
@@ -90,7 +104,10 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
         
         if counter == 0 {
             
+            tapexplore.slideInFromLeft()
+
             tapexplore.alpha = 1
+            
         } else {
             
             tapexplore.alpha = 0
@@ -114,7 +131,10 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
         
         if counter == 0 {
             
+            tapexplore.slideInFromLeft()
+
             tapexplore.alpha = 1
+
         } else {
             
             tapexplore.alpha = 0
