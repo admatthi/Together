@@ -32,12 +32,12 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
 //        TAPJOIN.frame = CGRect(x: 0, y: TAPJOIN.frame.minY, width: self.view.frame.width/2, height: 76)
 //        self.view.addSubview(TAPJOIN)
 
-        images.append(UIImage(named: "CC1 Copy-1")!)
-        images.append(UIImage(named: "CC2 Copy-1")!)
+        images.append(UIImage(named: "CC1 Copy 2")!)
+        images.append(UIImage(named: "CC2 Copy 2")!)
 
 
-        images.append(UIImage(named: "CC3 Copy-1")!)
-        images.append(UIImage(named: "CC4 Copy-1")!)
+        images.append(UIImage(named: "CC3 Copy 2")!)
+        images.append(UIImage(named: "CC4 Copy 2")!)
 
         mainimage.image = images[counter]
         

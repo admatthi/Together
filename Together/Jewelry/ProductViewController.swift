@@ -40,6 +40,8 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         queryforinfo()
         
         selectedindex == 0
+        collectionView.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.85)
+
         // Do any additional setup after loading the view.
     }
     

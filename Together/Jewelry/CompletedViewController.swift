@@ -110,6 +110,8 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
         
     }
+    
+ 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
        

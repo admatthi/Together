@@ -56,7 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FBSDKAppEvents.activateApp()
         
-        UXCam.start(withKey: "8921dd89a4b98a3")
+        UXCam.start(withKey: "cwtyu6vzrspkohu")
+        
         purchases = RCPurchases(apiKey: "FGJnVYVvOyPbLGjantsVNfffhvDwnyGz")
         
         purchases!.delegate = self

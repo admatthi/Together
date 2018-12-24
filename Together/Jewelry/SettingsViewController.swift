@@ -47,6 +47,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         try! Auth.auth().signOut()
         
         self.performSegue(withIdentifier: "LogOut4", sender: self)
+        
+        
     }
     @IBAction func tapSubscription(_ sender: Any) {
         
@@ -188,11 +190,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func taplog(_ sender: Any) {
-        
-       
-    }
-    
+ 
     
     
     @IBOutlet weak var taplog: UIButton!

@@ -68,7 +68,17 @@ class ShippingViewController: UIViewController, UITextFieldDelegate {
        
         if billingname.text != "" && phonenumber.text != "" &&  country.text != "" &&  zip.text != "" &&  streetaddress.text != "" &&  city.text != ""  {
             ref!.child("Jewelery").child("Users").child(uid).updateChildValues(["Street" : streetaddress.text!])
-        ref!.child("Jewelery").child("Users").child(uid).child("Shipping").child("ShippingMain").updateChildValues(["Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apt.text!, "City" : city.text!])
+       
+            var apttext = String()
+            if apt.text == "" {
+                
+                apttext = " "
+            } else {
+                
+                apttext = apt.text!
+            }
+            
+            ref!.child("Jewelery").child("Users").child(uid).child("Shipping").child("ShippingMain").updateChildValues(["Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apttext, "City" : city.text!])
             
             self.performSegue(withIdentifier: "ShippingToCheckout", sender: self)
             

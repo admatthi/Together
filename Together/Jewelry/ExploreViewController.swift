@@ -68,9 +68,9 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         ref = Database.database().reference()
         genres.removeAll()
         genres.append("Buy Now")
-        genres.append("Under Retail")
-        genres.append("Trending")
-        genres.append("Best Sellers")
+        genres.append("Under $250")
+        genres.append("For Her")
+        genres.append("For Him")
         collectionView2.alpha = 1
         selectedindex = 0
         //            tapBack.alpha = 0
@@ -92,6 +92,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         brandnames.removeAll()
         imageurls.removeAll()
         queryformoreids()
+        
         queryforids { () -> () in
             
             self.queryforinfo()
@@ -315,7 +316,11 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         for each in projectids {
             
-        ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+       
+//        ref?.child("Products").child(each).updateChildValues(["Gender" : "Women"])
+
+                
+            ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -426,9 +431,10 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         if collectionView.tag == 2 {
 
             let kWhateverHeightYouWant = 66
-            return CGSize(width: 141, height: CGFloat(kWhateverHeightYouWant))
+            return CGSize(width: 35, height: CGFloat(kWhateverHeightYouWant))
             
         } else {
+            
         let kWhateverHeightYouWant = 82
         return CGSize(width: view.frame.width/2, height: CGFloat(kWhateverHeightYouWant))
             
@@ -506,6 +512,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 
                 }
             if indexPath.row == 2 {
+                
                 
                 projectids.removeAll()
                 projectids.append(allids[20])
@@ -608,17 +615,34 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
     if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0{
             
-//            changeTabBar(hidden: true, animated: true)
+            changeTabBar(hidden: true, animated: true)
         
-        tabBar?.isHidden = true
+//        tabBar?.isHidden = true
         
         }
         
         else{
         
-        tabBar?.isHidden = false
+//        tabBar?.isHidden = false
 //        self.view.addSubview(tabBar!)
-//                    changeTabBar(hidden: false, animated: true)
+        
+//            changeTabBar(hidden: false, animated: true)
+        let tabBar = self.tabBarController?.tabBar
+        
+//        if tabBar!.isHidden == true {
+        
+        let frame = tabBar!.frame
+        let offset = -frame.size.height
+        let duration:TimeInterval = 0.5
+        tabBar!.isHidden = false
+        
+        UIView.animate(withDuration: duration, animations: {
+            tabBar!.frame = frame.offsetBy(dx: 0, dy: offset)
+        }, completion: { (true) in
+//            tabBar!.isHidden = hidden
+        })
+            
+//        }
         
         }
     }
@@ -816,7 +840,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 //        cell.layer.cornerRadius = 10.0
 //        cell.layer.masksToBounds = true
         
-        if images.count > indexPath.row  && brandnames.count > indexPath.row && names.count > indexPath.row {
+        if images.count > indexPath.row  && brandnames.count > indexPath.row && names.count > indexPath.row && projectids.count > indexPath.row {
 
             cell.thumbnail.image = images[projectids[indexPath.row]]
             cell.pricelabel.text = usedprices[projectids[indexPath.row]]?.uppercased()

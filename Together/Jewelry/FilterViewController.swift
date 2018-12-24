@@ -126,6 +126,32 @@ class FilterViewController: UIViewController {
         selectedkey = "Gender"
         
     }
+    @IBOutlet weak var tapp1: UIButton!
+    @IBOutlet weak var tapp2: UIButton!
+
+    @IBOutlet weak var tapp3: UIButton!
+
+    @IBAction func tapP1(_ sender: Any) {
+        selectedkey = "Price"
+        selectedfilter = "1500"
+        tapp1.alpha = 1
+        tapp2.alpha = 0.5
+        tapp3.alpha = 0.5
+    }
+    @IBAction func tapP2(_ sender: Any) {
+        selectedkey = "Price"
+        selectedfilter = "250"
+        tapp2.alpha = 1
+        tapp1.alpha = 0.5
+        tapp3.alpha = 0.5
+    }
+    @IBAction func tapP3(_ sender: Any) {
+        selectedkey = "Price"
+        selectedfilter = "150"
+        tapp3.alpha = 1
+        tapp2.alpha = 0.5
+        tapp1.alpha = 0.5
+    }
     @IBOutlet weak var tapapply: UIButton!
     @IBOutlet weak var tapb2: UIButton!
     @IBOutlet weak var tapb1: UIButton!
@@ -141,6 +167,13 @@ class FilterViewController: UIViewController {
         tapearrings.alpha = 0.5
         tapnecklaces.alpha = 0.5
         tapbracelets.alpha = 0.5
+        tapmen.alpha = 0.5
+        tapwomen.alpha = 0.5
+        tapb1.alpha = 0.5
+        tapb2.alpha = 0.5
+        tapb3.alpha = 0.5
+        
+        selectedkey = ""
         selectedfilter = ""
     }
     @IBAction func tapcancel(_ sender: Any) {
@@ -155,7 +188,9 @@ class FilterViewController: UIViewController {
         tapapply.addTextSpacing(2.0)
         tapmen.addTextSpacing(2.0)
         tapwomen.addTextSpacing(2.0)
-        
+        tapp1.addTextSpacing(2.0)
+        tapp2.addTextSpacing(2.0)
+        tapp3.addTextSpacing(2.0)
         HEADER.addCharacterSpacing()
 //        tapbracelets.addTextSpacing(2.0)
 //        tapearrings.addTextSpacing(2.0)
@@ -199,13 +234,13 @@ class FilterViewController: UIViewController {
         
         if selectedfilter == "David Yurman" {
             
-            tapb2.alpha = 1
+            tapb1.alpha = 1
             
         }
         
         if selectedfilter == "Tiffany & Co." {
             
-            tapb1.alpha = 1
+            tapb2.alpha = 1
             
         }
         // Do any additional setup after loading the view.

@@ -41,10 +41,18 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func tapSave(_ sender: Any) {
         
-        if fullnametf.text != "" && ccnumber.text != "" &&  cvv.text != "" &&  fullnametf.text != "" &&  expdate.text != "" &&  billingname.text != "" &&  phonenumber.text != "" &&  country.text != "" &&  zip.text != "" &&  streetaddress.text != "" &&  apt.text != "" &&  city.text != ""  {
+        if fullnametf.text != "" && ccnumber.text != "" &&  cvv.text != "" &&  fullnametf.text != "" &&  expdate.text != "" &&  billingname.text != "" &&  phonenumber.text != "" &&  country.text != "" &&  zip.text != "" &&  streetaddress.text != "" &&  city.text != ""  {
         ref!.child("Jewelery").child("Users").child(uid).updateChildValues(["Credit Card Number" : ccnumber.text!])
         
-            ref!.child("Jewelery").child("Users").child(uid).child("Payment").child("MainPayment").updateChildValues(["Credit Card Number" : ccnumber.text!, "Full Name" : fullnametf.text!, "CVV" : cvv.text!, "Exp" : expdate.text!, "Billing Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apt.text!, "City" : city.text!])
+            var apttext = String()
+            if apt.text == "" {
+                
+                apttext = " "
+            } else {
+                
+                apttext = apt.text!
+            }
+            ref!.child("Jewelery").child("Users").child(uid).child("Payment").child("MainPayment").updateChildValues(["Credit Card Number" : ccnumber.text!, "Full Name" : fullnametf.text!, "CVV" : cvv.text!, "Exp" : expdate.text!, "Billing Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apttext, "City" : city.text!])
         
         
         if pressed {

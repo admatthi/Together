@@ -239,6 +239,17 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.performSegue(withIdentifier: "MyOrdersToCheckout", sender: self)
     }
     
+    @objc func tapSell(sender: UIButton){
+        
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+        
+        tabBarBuyer.selectedIndex = 2
+        UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
+        
+        
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Orders", for: indexPath) as! OrdersTableViewCell
@@ -247,6 +258,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.selectionStyle = .none
 
         cell.tapproduct.tag = indexPath.row
+        cell.tapsell.addTarget(self, action: #selector(MyOwnViewController.tapSell(sender:)), for: .allTouchEvents)
         cell.isUserInteractionEnabled = true
         if orderimages.count > 0 {
         cell.mainimage.image = orderimages[orderids[indexPath.row]]
