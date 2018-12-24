@@ -67,6 +67,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
         genres.removeAll()
+        genres.append("Buy Now")
         genres.append("Best Sellers")
         genres.append("Trending")
         genres.append("Under Retail")

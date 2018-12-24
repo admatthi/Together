@@ -90,9 +90,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate     {
         header.addCharacterSpacing()
         // Do any additional setup after loading the view.
         tapterms.titleLabel?.textAlignment = NSTextAlignment.center
-        self.addLineToView(view: emailtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
-        self.addLineToView(view: passwordtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+        emailtf.layer.borderColor = UIColor.gray.cgColor
+        emailtf.layer.borderWidth = 0.5
+        passwordtf.layer.borderColor = UIColor.gray.cgColor
+        passwordtf.layer.borderWidth = 0.5
+        
+//        self.addLineToView(view: emailtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//
+//        self.addLineToView(view: passwordtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         
         
         ref = Database.database().reference()
