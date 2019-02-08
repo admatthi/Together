@@ -32,8 +32,8 @@
                                     <constraint firstAttribute="width" constant="145" id="eyo-2Q-HLK"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BLING" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-M4-HPG">
-                                <rect key="frame" x="121" y="322" width="134" height="24"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="I C E" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-M4-HPG">
+                                <rect key="frame" x="120.5" y="322" width="134" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Zcq-Jr-qpI"/>
                                     <constraint firstAttribute="width" constant="134" id="ruA-Lb-I4Y"/>
@@ -61,7 +61,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BLING" width="768" height="150"/>
         <image name="BlingCircles" width="412" height="255"/>
+        <image name="I C E" width="648" height="242"/>
     </resources>
 </document>

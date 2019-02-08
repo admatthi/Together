@@ -65,7 +65,7 @@ class RequestViewController: UIViewController, UITextViewDelegate {
             nametf.alpha = 0
             tapsubmit.alpha = 1
             completelabel.alpha = 1
-            completelabel.text = "Only approved sellers can list on Bling. Please register or sign in to apply to sell."
+            completelabel.text = "Only approved sellers can list on Ice. Please register or sign in to apply to sell."
             headline2.alpha = 0
             tapsubmit.setTitle("CONTINUE", for: .normal)
             tapsubmit.addTextSpacing(2.0)

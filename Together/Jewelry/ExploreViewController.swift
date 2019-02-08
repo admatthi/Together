@@ -42,7 +42,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         while i < 75 {
             
-            ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Category" : "-","Color" : "-","Description" : "-","Designer" : "-","Gemstone" : "-","Image" : "-","Name" : "-","New Link" : "-","New Price" : "-","Packaging" : "-","Purity" : "-","Size" : "-","Stone" : "-","Used Inventory" : "0","Used Link" : "-","Used Price" : "-", "Metal" : "-"])
+            ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Category" : "-","Color" : "-","Description" : "-","Designer" : "-","Gemstone" : "-","Image" : "-","Name" : "-","New Link" : "-","New Price" : "-","Packaging" : "-","Purity" : "-","Size" : "-","Stone" : "-","Used Inventory" : "0","Used Link" : "-","Used Price" : 0, "Metal" : "-"])
             
             i += 1
         }
@@ -74,6 +74,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         genres.append("Latest")
         collectionView2.alpha = 1
         selectedindex = 0
+        
+        
         //            tapBack.alpha = 0
 
 //        if projectids.count == 0 && selectedfilter != "" {
@@ -222,6 +224,38 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             
         } else {
             
+            
+            if selectedkey == "Used Price" {
+                
+                var intselectedfilter = Int(selectedfilter)
+                
+                ref?.child("Products").queryOrdered(byChild: selectedkey).queryEnding(atValue: intselectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    var value = snapshot.value as? NSDictionary
+                    
+                    if let snapDict = snapshot.value as? [String:AnyObject] {
+                        
+                        for each in snapDict {
+                            
+                            let ids = each.key
+                            
+                            projectids.append(ids)
+                            
+                            functioncounter += 1
+                            
+                            if functioncounter == snapDict.count {
+                                
+                                completed()
+                                
+                            }
+                            
+                            
+                        }
+                        
+                    }
+                    
+                })
+            } else {
             ref?.child("Products").queryOrdered(byChild: selectedkey).queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
@@ -248,6 +282,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 }
                 
             })
+        }
+            
         }
     }
     
@@ -325,20 +361,20 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 
                 var value = snapshot.value as? NSDictionary
                 
-                if var author2 = value?["Used Price"] as? String {
+                if var author2 = value?["Used Price"] as? Int {
                     
-                    if author2 != "-" {
-                    var intviews = Double(Int(author2.dropFirst())!)
-                    intviews = intviews * 1.1
-                    author2 = "$\(String(Int(intviews)))"
-                    self.usedprices[each] = author2
+                    if author2 != 0 {
+                    var intviews = Double(author2)
+                    intviews = intviews * 1.3
+                    var author3 = "$\(String(Int(intviews)))"
+                    self.usedprices[each] = author3
                         
                     } else {
                         
                         if var author2 = value?["New Price"] as? String {
 
                             var intviews = Double(Int(author2.dropFirst())!)
-                            intviews = intviews * 1.1
+                            intviews = intviews * 1.15
                             author2 = "$\(String(Int(intviews)))"
                             self.usedprices[each] = author2
 
@@ -452,8 +488,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             
         collectionView2.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
 
-            
-            collectionView2.reloadData()
+        collectionView2.reloadData()
             
             if indexPath.row == 0 {
                 selectedfilter = ""

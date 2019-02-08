@@ -20,47 +20,54 @@ class FilterViewController: UIViewController {
     }
     @IBAction func tapB3(_ sender: Any) {
         tapb3.alpha = 1
-        tapnecklaces.alpha = 0.5
-        tapbracelets.alpha = 0.5
+        tapp1.alpha = 0.5
+        tapp2.alpha = 0.5
+        tapp3.alpha = 0.5
         tapb2.alpha = 0.5
-        tapearrings.alpha = 0.5
+       
         tapb1.alpha = 0.5
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
         selectedkey = "Brand"
-        selectedfilter = "Gucci"
+        selectedfilter = "MVMT"
     }
     @IBAction func tapB2(_ sender: Any) {
         tapb2.alpha = 1
-        tapnecklaces.alpha = 0.5
-        tapbracelets.alpha = 0.5
+        tapnecklaces.alpha = 0
+        tapbracelets.alpha = 0
         tapb1.alpha = 0.5
-        tapearrings.alpha = 0.5
+        tapearrings.alpha = 0
         tapb3.alpha = 0.5
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
         selectedkey = "Brand"
-        selectedfilter = "Tiffany & Co."
+        selectedfilter = "Omega"
+        tapp1.alpha = 0.5
+        tapp2.alpha = 0.5
+        tapp3.alpha = 0.5
     }
     @IBAction func tapB1(_ sender: Any) {
         
         tapb1.alpha = 1
-        tapnecklaces.alpha = 0.5
-        tapbracelets.alpha = 0.5
+        tapnecklaces.alpha = 0
+        tapbracelets.alpha = 0
         tapb2.alpha = 0.5
-        tapearrings.alpha = 0.5
+        tapearrings.alpha = 0
         tapb3.alpha = 0.5
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
         selectedkey = "Brand"
-        selectedfilter = "David Yurman"
+        selectedfilter = "Rolex"
+        tapp1.alpha = 0.5
+        tapp2.alpha = 0.5
+        tapp3.alpha = 0.5
     }
 
     @IBAction func tapEarr(_ sender: Any) {
         
         tapearrings.alpha = 1
-        tapnecklaces.alpha = 0.5
-        tapbracelets.alpha = 0.5
+        tapnecklaces.alpha = 0
+        tapbracelets.alpha = 0
         tapb2.alpha = 0.5
         tapb1.alpha = 0.5
         tapb3.alpha = 0.5
@@ -72,8 +79,8 @@ class FilterViewController: UIViewController {
     @IBAction func tapNeck(_ sender: Any) {
         
         tapnecklaces.alpha = 1
-        tapearrings.alpha = 0.5
-        tapbracelets.alpha = 0.5
+        tapearrings.alpha = 0
+        tapbracelets.alpha = 0
         tapb2.alpha = 0.5
         tapb1.alpha = 0.5
         tapb3.alpha = 0.5
@@ -86,8 +93,8 @@ class FilterViewController: UIViewController {
     @IBAction func tapBrac(_ sender: Any) {
         
         tapbracelets.alpha = 1
-        tapnecklaces.alpha = 0.5
-        tapearrings.alpha = 0.5
+        tapnecklaces.alpha = 0
+        tapearrings.alpha = 0
         tapb2.alpha = 0.5
         tapb1.alpha = 0.5
         tapb3.alpha = 0.5
@@ -100,28 +107,32 @@ class FilterViewController: UIViewController {
     @IBAction func tapWomen(_ sender: Any) {
         
         tapwomen.alpha = 1
-        tapnecklaces.alpha = 0.5
-        tapearrings.alpha = 0.5
+        tapnecklaces.alpha = 0
+        tapearrings.alpha = 0
         tapb2.alpha = 0.5
         tapb1.alpha = 0.5
         tapb3.alpha = 0.5
-        tapbracelets.alpha = 0.5
+        tapbracelets.alpha = 0
         tapmen.alpha = 0.5
-        
+        tapp1.alpha = 0.5
+        tapp2.alpha = 0.5
+        tapp3.alpha = 0.5
         selectedfilter = "Women"
         selectedkey = "Gender"
     }
     @IBAction func tapMen(_ sender: Any) {
         
         tapmen.alpha = 1
-        tapnecklaces.alpha = 0.5
-        tapearrings.alpha = 0.5
+        tapnecklaces.alpha = 0
+        tapearrings.alpha = 0
         tapb2.alpha = 0.5
         tapb1.alpha = 0.5
         tapb3.alpha = 0.5
-        tapbracelets.alpha = 0.5
+        tapbracelets.alpha = 0
         tapwomen.alpha = 0.5
-        
+        tapp1.alpha = 0.5
+        tapp2.alpha = 0.5
+        tapp3.alpha = 0.5
         selectedfilter = "Men"
         selectedkey = "Gender"
         
@@ -132,25 +143,49 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var tapp3: UIButton!
 
     @IBAction func tapP1(_ sender: Any) {
-        selectedkey = "Price"
-        selectedfilter = "1500"
+        selectedkey = "Used Price"
+        selectedfilter = "5000"
         tapp1.alpha = 1
         tapp2.alpha = 0.5
         tapp3.alpha = 0.5
+        tapmen.alpha = 0.5
+        tapnecklaces.alpha = 0
+        tapearrings.alpha = 0
+        tapb2.alpha = 0.5
+        tapb1.alpha = 0.5
+        tapb3.alpha = 0.5
+        tapbracelets.alpha = 0
+        tapwomen.alpha = 0.5
     }
     @IBAction func tapP2(_ sender: Any) {
-        selectedkey = "Price"
-        selectedfilter = "250"
+        selectedkey = "Used Price"
+        selectedfilter = "1500"
         tapp2.alpha = 1
         tapp1.alpha = 0.5
         tapp3.alpha = 0.5
+        tapmen.alpha =  0.5
+        tapnecklaces.alpha = 0
+        tapearrings.alpha = 0
+        tapb2.alpha = 0.5
+        tapb1.alpha = 0.5
+        tapb3.alpha = 0.5
+        tapbracelets.alpha = 0
+        tapwomen.alpha = 0.5
     }
     @IBAction func tapP3(_ sender: Any) {
-        selectedkey = "Price"
-        selectedfilter = "150"
+        selectedkey = "Used Price"
+        selectedfilter = "500"
         tapp3.alpha = 1
         tapp2.alpha = 0.5
         tapp1.alpha = 0.5
+        tapmen.alpha =  0.5
+        tapnecklaces.alpha = 0
+        tapearrings.alpha = 0
+        tapb2.alpha = 0.5
+        tapb1.alpha = 0.5
+        tapb3.alpha = 0.5
+        tapbracelets.alpha = 0
+        tapwomen.alpha = 0.5
     }
     @IBOutlet weak var tapapply: UIButton!
     @IBOutlet weak var tapb2: UIButton!
@@ -164,9 +199,9 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var tapmen: UIButton!
     @IBAction func tapClear(_ sender: Any) {
         
-        tapearrings.alpha = 0.5
-        tapnecklaces.alpha = 0.5
-        tapbracelets.alpha = 0.5
+        tapearrings.alpha = 0
+        tapnecklaces.alpha = 0
+        tapbracelets.alpha = 0
         tapmen.alpha = 0.5
         tapwomen.alpha = 0.5
         tapb1.alpha = 0.5
@@ -226,19 +261,19 @@ class FilterViewController: UIViewController {
             
         }
         
-        if selectedfilter == "Gucci" {
+        if selectedfilter == "MVMT" {
             
             tapb3.alpha = 1
             
         }
         
-        if selectedfilter == "David Yurman" {
+        if selectedfilter == "Rolex" {
             
             tapb1.alpha = 1
             
         }
         
-        if selectedfilter == "Tiffany & Co." {
+        if selectedfilter == "Omega" {
             
             tapb2.alpha = 1
             

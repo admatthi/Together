@@ -411,7 +411,7 @@
                                     <constraint firstAttribute="height" constant="40" id="u79-fX-95Z"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLING AUTHENTICATION" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-j3-WWA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ICE AUTHENTICATION" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-j3-WWA">
                                 <rect key="frame" x="108" y="476" width="251" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="XhA-uX-gQo"/>
@@ -420,7 +420,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your purchase will be sent to Bling for verification before shipping to you." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9O-sm-phV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your purchase will be sent to ICE for verification before shipping to you." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9O-sm-phV">
                                 <rect key="frame" x="109" y="505" width="230" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="0uZ-5O-cl4"/>
@@ -2497,22 +2497,6 @@
                                     <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="r5H-Py-PPN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEj-vf-Noa">
-                                <rect key="frame" x="194" y="369" width="125" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="0jp-AQ-lf8"/>
-                                    <constraint firstAttribute="width" constant="125" id="0oD-qm-tkr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="NEW">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="P6h-U2-dMb"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGT-DC-yGL">
                                 <rect key="frame" x="56.5" y="24" width="262" height="22"/>
                                 <constraints>
@@ -2546,7 +2530,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="10"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="$1500 &amp; UNDER">
+                                <state key="normal" title="$500 &amp; UNDER">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2562,7 +2546,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="10"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="$250 &amp; UNDER">
+                                <state key="normal" title="$1500 &amp; UNDER">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -2581,7 +2565,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-ya-Lre">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEf-ya-Lre">
                                 <rect key="frame" x="56.5" y="300" width="262" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="IRx-Fu-hRl"/>
@@ -2608,7 +2592,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKx-9I-8pT">
-                                <rect key="frame" x="56.5" y="450" width="262" height="22"/>
+                                <rect key="frame" x="56.5" y="296" width="262" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="262" id="Ag9-bP-Uiq"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="fEU-TS-1wZ"/>
@@ -2650,7 +2634,7 @@
                                     <action selector="tapcancel:" destination="CoB-zB-ydv" eventType="touchUpInside" id="FN6-Ei-8J9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK3-OX-MNb">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK3-OX-MNb">
                                 <rect key="frame" x="137.5" y="336" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2666,7 +2650,7 @@
                                     <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="yyB-R5-dRd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3d-zX-Nch">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3d-zX-Nch">
                                 <rect key="frame" x="259" y="336" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2684,7 +2668,79 @@
                                     <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="YC3-2B-qio"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkd-y6-A8k">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4da-qZ-7s3">
+                                <rect key="frame" x="137.5" y="335" width="100" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="T4s-Ir-R1A"/>
+                                    <constraint firstAttribute="width" constant="100" id="vUe-rE-sLw"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Omega">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapB2:" destination="CoB-zB-ydv" eventType="touchUpInside" id="Tut-If-uer"/>
+                                    <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="k0F-Sd-NUG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGG-pR-QeW">
+                                <rect key="frame" x="259" y="335" width="100" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="Xvc-qV-jSl"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="bLp-3Z-Rnw"/>
+                                    <constraint firstAttribute="height" constant="42" id="baL-MZ-Nfl"/>
+                                    <constraint firstAttribute="width" constant="100" id="eXn-60-Hof"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="rEz-1e-lAc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="wG7-uk-HRk"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="MVMT">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapB3:" destination="CoB-zB-ydv" eventType="touchUpInside" id="Qyd-SH-NcQ"/>
+                                    <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="ljY-kE-Zer"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxw-xt-dMN">
+                                <rect key="frame" x="17" y="335" width="100" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="9MX-1u-eFj"/>
+                                    <constraint firstAttribute="height" constant="42" id="QIc-D3-rSu"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="RgM-Ew-m6O"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="apY-D6-HMX"/>
+                                    <constraint firstAttribute="width" constant="100" id="cby-wX-zSo"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="m2T-HG-th9"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Rolex">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapB1:" destination="CoB-zB-ydv" eventType="touchUpInside" id="z3i-I0-TFu"/>
+                                    <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="0WI-aM-c5u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4Y-O2-wGb">
+                                <rect key="frame" x="258" y="225" width="110" height="42"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="6J1-7i-0yE"/>
+                                    <constraint firstAttribute="height" constant="42" id="MCo-Gn-Cf1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="10"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="$5000 &amp; UNDER">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapP3:" destination="CoB-zB-ydv" eventType="touchUpInside" id="NDN-8a-RqM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkd-y6-A8k">
                                 <rect key="frame" x="17" y="336" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2702,76 +2758,20 @@
                                     <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="HI9-2r-Ny5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4da-qZ-7s3">
-                                <rect key="frame" x="137.5" y="489" width="100" height="42"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="T4s-Ir-R1A"/>
-                                    <constraint firstAttribute="width" constant="100" id="vUe-rE-sLw"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Tiffany">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapB2:" destination="CoB-zB-ydv" eventType="touchUpInside" id="Tut-If-uer"/>
-                                    <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="k0F-Sd-NUG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGG-pR-QeW">
-                                <rect key="frame" x="259" y="489" width="100" height="42"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="Xvc-qV-jSl"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="bLp-3Z-Rnw"/>
-                                    <constraint firstAttribute="height" constant="42" id="baL-MZ-Nfl"/>
-                                    <constraint firstAttribute="width" constant="100" id="eXn-60-Hof"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="rEz-1e-lAc"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="wG7-uk-HRk"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Gucci">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapB3:" destination="CoB-zB-ydv" eventType="touchUpInside" id="Qyd-SH-NcQ"/>
-                                    <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="ljY-kE-Zer"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxw-xt-dMN">
-                                <rect key="frame" x="17" y="489" width="100" height="42"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="9MX-1u-eFj"/>
-                                    <constraint firstAttribute="height" constant="42" id="QIc-D3-rSu"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="RgM-Ew-m6O"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="apY-D6-HMX"/>
-                                    <constraint firstAttribute="width" constant="100" id="cby-wX-zSo"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="m2T-HG-th9"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="David">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapB1:" destination="CoB-zB-ydv" eventType="touchUpInside" id="z3i-I0-TFu"/>
-                                    <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="0WI-aM-c5u"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4Y-O2-wGb">
-                                <rect key="frame" x="258" y="225" width="110" height="42"/>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEj-vf-Noa">
+                                <rect key="frame" x="193" y="369" width="125" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="6J1-7i-0yE"/>
-                                    <constraint firstAttribute="height" constant="42" id="MCo-Gn-Cf1"/>
+                                    <constraint firstAttribute="height" constant="42" id="0jp-AQ-lf8"/>
+                                    <constraint firstAttribute="width" constant="125" id="0oD-qm-tkr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="$150 &amp; UNDER">
+                                <state key="normal" title="NEW">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapP3:" destination="CoB-zB-ydv" eventType="touchUpInside" id="NDN-8a-RqM"/>
+                                    <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="P6h-U2-dMb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2782,7 +2782,7 @@
                             <constraint firstItem="OeA-EB-CpC" firstAttribute="top" secondItem="iH8-sj-F5c" secondAttribute="bottom" constant="22" id="1yU-an-3wE"/>
                             <constraint firstItem="PIJ-Hm-Qk4" firstAttribute="top" secondItem="bnE-X1-y77" secondAttribute="top" id="2pP-oX-RCk"/>
                             <constraint firstItem="heo-87-Nod" firstAttribute="centerY" secondItem="OeA-EB-CpC" secondAttribute="centerY" id="2zn-4X-G5o"/>
-                            <constraint firstItem="XKx-9I-8pT" firstAttribute="top" secondItem="59X-2w-9F4" secondAttribute="bottom" constant="39" id="3AB-57-4f2"/>
+                            <constraint firstItem="XKx-9I-8pT" firstAttribute="top" secondItem="59X-2w-9F4" secondAttribute="bottom" constant="-115" id="3AB-57-4f2"/>
                             <constraint firstAttribute="bottom" secondItem="PIJ-Hm-Qk4" secondAttribute="bottom" id="3p9-IQ-l8A"/>
                             <constraint firstItem="XKx-9I-8pT" firstAttribute="centerX" secondItem="bnE-X1-y77" secondAttribute="centerX" id="5vG-65-Ai0"/>
                             <constraint firstItem="p1q-tt-N8I" firstAttribute="centerX" secondItem="bnE-X1-y77" secondAttribute="centerX" id="8cW-xV-ls8"/>
@@ -3486,7 +3486,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GEMSTONE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXT-qR-RLu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CASE SIZE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXT-qR-RLu">
                                                     <rect key="frame" x="14" y="465" width="134" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="134" id="6dr-3d-3BC"/>
@@ -3515,7 +3515,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GEMSTONE WEIGHT" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnY-qV-Td4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CASE " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnY-qV-Td4">
                                                     <rect key="frame" x="14" y="531" width="134" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="7FH-Ud-hcN"/>
@@ -3544,7 +3544,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAIN COLOR" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAj-kM-DpD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STRAP" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAj-kM-DpD">
                                                     <rect key="frame" x="14" y="596" width="134" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="134" id="eKG-e5-2tp"/>
@@ -3574,7 +3574,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIZE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx1-y2-gci">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RELEASE DATE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx1-y2-gci">
                                                     <rect key="frame" x="14" y="661" width="134" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="134" id="9Pm-pn-s6C"/>
@@ -3603,7 +3603,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESIGNER" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5em-Jf-jFV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOVEMENT" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5em-Jf-jFV">
                                                     <rect key="frame" x="14" y="726" width="134" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="134" id="PJt-rQ-HCk"/>
@@ -3632,7 +3632,7 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METAL" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fD-6M-rZD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WATER RESISTANCE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fD-6M-rZD">
                                                     <rect key="frame" x="14" y="791" width="134" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="134" id="707-EN-ND7"/>
@@ -3675,10 +3675,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9A-bo-YOQ">
-                                                    <rect key="frame" x="66" y="17" width="242" height="207"/>
+                                                    <rect key="frame" x="66.5" y="17" width="242" height="207"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="242" id="Vmc-T4-P7C"/>
                                                         <constraint firstAttribute="height" constant="207" id="crX-gP-edg"/>
+                                                    </constraints>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qN9-60-dnL">
+                                                    <rect key="frame" x="183" y="0.0" width="179" height="260"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="179" id="Wsy-c5-HiQ"/>
+                                                    </constraints>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgB-hH-R3o">
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="260"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="175" id="twv-Dk-38T"/>
                                                     </constraints>
                                                 </button>
                                             </subviews>
@@ -3702,10 +3714,13 @@
                                                 <constraint firstItem="8QL-Q6-C3U" firstAttribute="centerY" secondItem="KAj-kM-DpD" secondAttribute="centerY" id="BW7-sy-VHp"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Yj-SD-N6c" secondAttribute="trailing" constant="13" id="CMQ-fO-xB8"/>
                                                 <constraint firstItem="foI-VZ-ACs" firstAttribute="top" secondItem="8QL-Q6-C3U" secondAttribute="bottom" constant="-174" id="Cf0-rH-jpI"/>
+                                                <constraint firstItem="zom-ds-1c4" firstAttribute="top" secondItem="qN9-60-dnL" secondAttribute="bottom" constant="8" id="EYX-6l-hl7"/>
                                                 <constraint firstItem="hwZ-c7-o19" firstAttribute="top" secondItem="YpK-oR-QIZ" secondAttribute="bottom" constant="51" id="EsW-qi-o0v"/>
+                                                <constraint firstItem="qN9-60-dnL" firstAttribute="top" secondItem="5C3-sW-tph" secondAttribute="top" id="F4p-GA-hdk"/>
                                                 <constraint firstItem="8QL-Q6-C3U" firstAttribute="leading" secondItem="EPM-yz-ZlM" secondAttribute="trailing" constant="-130" id="FMO-qi-NmR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="YpK-oR-QIZ" secondAttribute="trailing" constant="4" id="FfM-7J-TW6"/>
                                                 <constraint firstItem="cXT-qR-RLu" firstAttribute="top" secondItem="YpK-oR-QIZ" secondAttribute="bottom" constant="51" id="Grc-XW-SJD"/>
+                                                <constraint firstItem="HgB-hH-R3o" firstAttribute="leading" secondItem="5C3-sW-tph" secondAttribute="leading" id="IHF-tG-0YV"/>
                                                 <constraint firstItem="mx1-y2-gci" firstAttribute="top" secondItem="KAj-kM-DpD" secondAttribute="bottom" constant="48" id="IPl-s4-cqj"/>
                                                 <constraint firstItem="JaU-Ry-stt" firstAttribute="leading" secondItem="5C3-sW-tph" secondAttribute="leadingMargin" constant="-1" id="JHu-Zg-UpE"/>
                                                 <constraint firstItem="cVH-uo-Dsv" firstAttribute="centerY" secondItem="5em-Jf-jFV" secondAttribute="centerY" id="JxR-a3-zaf"/>
@@ -3726,9 +3741,11 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="mN6-iZ-C9L" secondAttribute="trailing" constant="1" id="YHm-Ml-b2T"/>
                                                 <constraint firstItem="YpK-oR-QIZ" firstAttribute="leading" secondItem="5C3-sW-tph" secondAttribute="leadingMargin" id="YXk-BU-0yB"/>
                                                 <constraint firstItem="fnY-qV-Td4" firstAttribute="top" secondItem="cXT-qR-RLu" secondAttribute="bottom" constant="49" id="ZAg-If-gQa"/>
+                                                <constraint firstItem="HgB-hH-R3o" firstAttribute="top" secondItem="5C3-sW-tph" secondAttribute="top" id="ZpF-Lr-bEs"/>
                                                 <constraint firstItem="Q9A-bo-YOQ" firstAttribute="top" secondItem="5C3-sW-tph" secondAttribute="top" constant="17" id="aeK-FC-m0A"/>
                                                 <constraint firstItem="EPM-yz-ZlM" firstAttribute="centerY" secondItem="fnY-qV-Td4" secondAttribute="centerY" id="bix-WD-AuJ"/>
                                                 <constraint firstItem="foI-VZ-ACs" firstAttribute="leading" secondItem="5C3-sW-tph" secondAttribute="leadingMargin" constant="-1" id="bvJ-cU-inh"/>
+                                                <constraint firstItem="zom-ds-1c4" firstAttribute="top" secondItem="HgB-hH-R3o" secondAttribute="bottom" constant="8" id="cKt-jG-PYG"/>
                                                 <constraint firstItem="hgT-6z-4Dz" firstAttribute="centerY" secondItem="1fD-6M-rZD" secondAttribute="centerY" id="cQL-ah-xRl"/>
                                                 <constraint firstItem="zom-ds-1c4" firstAttribute="top" secondItem="KIi-Pa-KX7" secondAttribute="bottom" constant="8" id="cRi-WM-at0"/>
                                                 <constraint firstItem="1Yj-SD-N6c" firstAttribute="leading" secondItem="5C3-sW-tph" secondAttribute="leading" constant="17" id="cTI-ov-r7r"/>
@@ -3748,6 +3765,7 @@
                                                 <constraint firstItem="JaU-Ry-stt" firstAttribute="top" secondItem="fQV-eL-JVO" secondAttribute="bottom" constant="-44" id="q2t-GY-sfC"/>
                                                 <constraint firstItem="8QL-Q6-C3U" firstAttribute="leading" secondItem="fQV-eL-JVO" secondAttribute="trailing" constant="-130" id="r2T-yN-dND"/>
                                                 <constraint firstItem="oVz-80-VtL" firstAttribute="trailing" secondItem="5C3-sW-tph" secondAttribute="trailingMargin" constant="-1" id="sGy-vD-re3"/>
+                                                <constraint firstAttribute="trailing" secondItem="qN9-60-dnL" secondAttribute="trailing" constant="13" id="tCC-gW-q2a"/>
                                                 <constraint firstItem="KAj-kM-DpD" firstAttribute="leading" secondItem="5C3-sW-tph" secondAttribute="leadingMargin" constant="-1" id="tpO-bF-zjo"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="zom-ds-1c4" secondAttribute="trailing" id="tqF-Wa-egQ"/>
                                                 <constraint firstItem="1fD-6M-rZD" firstAttribute="top" secondItem="YpK-oR-QIZ" secondAttribute="bottom" constant="377" id="wkF-Iw-jrj"/>
@@ -3773,6 +3791,8 @@
                                             <outlet property="h7" destination="1fD-6M-rZD" id="dmI-hu-pnm"/>
                                             <outlet property="mainimage" destination="KIi-Pa-KX7" id="fKx-fm-26l"/>
                                             <outlet property="tapenlarge" destination="Q9A-bo-YOQ" id="Q1w-BY-6mo"/>
+                                            <outlet property="tapleft" destination="HgB-hH-R3o" id="zzx-t3-k6q"/>
+                                            <outlet property="tapright" destination="qN9-60-dnL" id="g5F-uF-PDa"/>
                                             <outlet property="title" destination="zom-ds-1c4" id="lib-z5-sV6"/>
                                         </connections>
                                     </tableViewCell>
@@ -6119,35 +6139,35 @@
         <image name="CC1 Copy 2" width="343" height="475"/>
         <image name="CCICons" width="112" height="23"/>
         <image name="Check" width="50" height="50"/>
-        <image name="David" width="100" height="40"/>
         <image name="Delete" width="50" height="50"/>
         <image name="DiamodnOUtline" width="50" height="50"/>
         <image name="EARRINGS" width="100" height="100"/>
         <image name="Glass" width="50" height="50"/>
-        <image name="Gucci" width="100" height="40"/>
+        <image name="MVMT" width="100" height="40"/>
         <image name="NECKLACES" width="100" height="100"/>
+        <image name="Omega" width="100" height="40"/>
         <image name="Placeholder" width="40" height="40"/>
         <image name="Profile" width="50" height="50"/>
+        <image name="Rolex" width="100" height="40"/>
         <image name="Sales" width="40" height="40"/>
         <image name="Sales-1" width="50" height="50"/>
         <image name="Setup1" width="75" height="17"/>
         <image name="Submit" width="50" height="50"/>
-        <image name="Tiffany" width="100" height="40"/>
         <image name="Upload" width="200" height="200"/>
         <image name="WhiteX" width="50" height="50"/>
         <image name="X" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c6F-Ot-FMg"/>
+        <segue reference="MUN-A5-iHb"/>
         <segue reference="rM7-pq-RM4"/>
         <segue reference="raE-3f-wg2"/>
         <segue reference="j5a-y3-JR9"/>
         <segue reference="T5q-Kc-1EU"/>
-        <segue reference="KWx-Me-c8V"/>
-        <segue reference="C4M-VG-zLA"/>
+        <segue reference="dMp-LH-a5A"/>
+        <segue reference="7Es-kF-ufi"/>
         <segue reference="Myi-B8-I19"/>
         <segue reference="law-kC-Cnc"/>
-        <segue reference="2N9-g5-pzJ"/>
+        <segue reference="XTh-ZI-gbV"/>
         <segue reference="K4Z-T6-lvq"/>
         <segue reference="fWc-Tc-Ma8"/>
     </inferredMetricsTieBreakers>

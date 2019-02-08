@@ -22,6 +22,8 @@ var b6 = String()
 
 var selectedpackaging = String()
 
+var productimages = [UIImage]()
+
 class ProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
  {
 
@@ -39,6 +41,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref = Database.database().reference()
         queryforinfo()
         
+        counter = 0
         selectedindex == 0
         collectionView.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.85)
 
@@ -59,6 +62,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         pricetitles.append("BUY NEW")
         pricetitles.append("BUY USED")
+        productimages.removeAll()
         
         var functioncounter = 0
         ref?.child("Products").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -67,23 +71,31 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if var author2 = value?["New Price"] as? String {
 
+                    if author2 != "null" {
                     
+                        
                     var intviews = Double(Int(author2.dropFirst())!)
-                    intviews = intviews * 1.1
+                    intviews = intviews * 1.15
                     author2 = "$\(String(Int(intviews)))"
                     
                     self.prices2.append(author2)
+                        
+                    } else {
+                        
+                        self.prices2.append("Not Available")
+
+                    }
                     
                 }
             
-            if var author2 = value?["Used Price"] as? String {
+            if var author2 = value?["Used Price"] as? Int {
                 
-                if author2 != "-" {
-                var intviews = Double(Int(author2.dropFirst())!)
-                intviews = intviews * 1.1
-                author2 = "$\(String(Int(intviews)))"
+                if author2 != 0 {
+                var intviews = Double(author2)
+                intviews = intviews * 1.3
+                var author3 = "$\(String(Int(intviews)))"
                 
-                self.prices2.append(author2)
+                self.prices2.append(author3)
                     
                 } else {
                     
@@ -101,35 +113,68 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
             
-            if var author2 = value?["Gemstone"] as? String {
+            if var author2 = value?["Case"] as? String {
                 
-                if author2 == "-" {
-
-                    b2 = author2
-                    b3 = author2
-
-                } else {
-                    
-                    b2 = author2
-                    
-                    if var author2 = value?["Gemstone Weight"] as? String {
-                        
-                        if author2 == "-" {
-                            
-                            b3 = "4mm"
-                            
-                        } else {
-                            
-                            b3 = author2
-                        }
-                        
-                        
-                    }
-                }
+                b3 = author2
                 
             } else {
                 
-                b2 = "-"
+                if var author2 = value?["Case"] as? Int {
+                    
+                    b3 = "\(author2)"
+                } else {
+                    
+                    if var author2 = value?["Case"] as? Double {
+                        
+                        b3 = "\(author2)"
+                    }
+                }
+                
+            }
+          
+            
+            if var author2 = value?["Case Size"] as? String {
+                
+                b2 = author2
+//                if author2 == "-" {
+//
+//                    b2 = author2
+//                    b3 = author2
+//
+//                } else {
+//
+//                    b2 = author2
+//
+//                    if var author2 = value?["Gemstone Weight"] as? String {
+//
+//                        if author2 == "-" {
+//
+//                            b3 = "4mm"
+//
+//                        } else {
+//
+//                            b3 = author2
+//                        }
+//
+//
+//                    }
+//                }
+                
+            } else {
+                
+                if var author2 = value?["Case Size"] as? Int {
+                    
+                    b2 = String(author2)
+                    
+                } else {
+                    
+                    if var author2 = value?["Case Size"] as? Double {
+                        
+                        b2 = "\(String(author2)) mm"
+                        
+                    }
+                    
+                }
 
             }
 //
@@ -149,7 +194,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
 //                b3 = "-"
 //
 //            }
-            if var author2 = value?["Main Color"] as? String {
+            if var author2 = value?["Strap"] as? String {
                 
                 b4 = author2
                 
@@ -158,18 +203,64 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 b4 = "-"
 
             }
-            if var author2 = value?["Size"] as? String {
+            if var author2 = value?["Release"] as? Int {
                 
-                if author2 == "-" {
-
-                    b5 = "4mm"
-
-                } else {
-                b5 = author2
+              
+                    b5 = String(author2)
+                
+            } else {
+                
+                if var author2 = value?["Release"] as? String {
+                    
+                    if author2 == "-" {
+                        
+                        b5 = "-"
+                    } else {
+                        
+                        b5 = author2
+                    }
                 }
+                
             }
             
-            if var author2 = value?["Designer"] as? String {
+            if var profileUrl = value?["Image2"] as? String {
+                // Create a storage reference from the URL
+                let url = URL(string: profileUrl)
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                var image4 = UIImage(data: data!)!
+                
+                productimages.append(image4)
+                
+            }
+            
+            if var profileUrl = value?["Image3"] as? String {
+                // Create a storage reference from the URL
+                let url = URL(string: profileUrl)
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                var image4 = UIImage(data: data!)!
+                
+                productimages.append(image4)
+            }
+            
+            if var profileUrl = value?["Image4"] as? String {
+                // Create a storage reference from the URL
+                let url = URL(string: profileUrl)
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                var image4 = UIImage(data: data!)!
+                
+                productimages.append(image4)
+            }
+            
+            if var profileUrl = value?["Image5"] as? String {
+                // Create a storage reference from the URL
+                let url = URL(string: profileUrl)
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                var image4 = UIImage(data: data!)!
+                
+                productimages.append(image4)
+            }
+            
+            if var author2 = value?["Movement"] as? String {
                 
                 if author2 == "-" {
                     
@@ -183,7 +274,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
             
-            if var author2 = value?["Metal"] as? String {
+            if var author2 = value?["Water Resistance"] as? String {
                 
                 if author2 == "-" {
 
@@ -260,10 +351,38 @@ var selectedmetal = String()
         self.performSegue(withIdentifier: "Enlarge", sender: self)
         
     }
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    @objc func tapNext(sender: UIButton) {
+        
+        counter += 1
+
+        print(counter)
+        
+        if counter < productimages.count {
+            
+        
+            tableView.reloadData()
+            
+        }
+    }
+    
+    var counter = Int()
+    
+    @objc func tapBack(sender: UIButton) {
+        
+        counter -= 1
+
+        if counter > productimages.count {
+        
+            tableView.reloadData()
+        
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     return 1
-}
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
@@ -305,10 +424,30 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Product", for: indexPath) as! ProductTableViewCell
     
-    cell.mainimage.image = selectedimage
+    print(counter)
+    
+    if counter > 0 {
+        
+        if counter < productimages.count {
+        
+            cell.mainimage.image = productimages[counter]
+        
+    }
+        
+    } else {
+        
+        cell.mainimage.image = selectedimage
+        
+    }
+    
+    
     cell.title.text = "\(selectedbrand) \(selectedname)"
     cell.tapenlarge.addTarget(self, action: #selector(ProductViewController.tapGo(sender:)), for: .allTouchEvents)
 
+    cell.tapright.addTarget(self, action: #selector(ProductViewController.tapNext(sender:)), for: .allTouchEvents)
+    
+    cell.tapleft.addTarget(self, action: #selector(ProductViewController.tapBack(sender:)), for: .allTouchEvents)
+    
     let attributedString = NSMutableAttributedString(string: selecteddescription)
     
     // *** Create instance of `NSMutableParagraphStyle`

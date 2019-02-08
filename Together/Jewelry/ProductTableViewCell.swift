@@ -11,6 +11,8 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var b3: UILabel!
     @IBOutlet weak var b2: UILabel!
     
+    @IBOutlet weak var tapright: UIButton!
+    @IBOutlet weak var tapleft: UIButton!
     @IBOutlet weak var tapenlarge: UIButton!
     @IBOutlet weak var h1: UILabel!
     @IBOutlet weak var h2: UILabel!
