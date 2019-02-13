@@ -41,7 +41,7 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func tapSave(_ sender: Any) {
         
-        if fullnametf.text != "" && ccnumber.text != "" &&  cvv.text != "" &&  fullnametf.text != "" &&  expdate.text != "" &&  billingname.text != "" &&  phonenumber.text != "" &&  country.text != "" &&  zip.text != "" &&  streetaddress.text != "" &&  city.text != ""  {
+        if fullnametf.text != "" && ccnumber.text != "" && cvv.text != "" &&  expdate.text != ""   {
         ref!.child("Jewelery").child("Users").child(uid).updateChildValues(["Credit Card Number" : ccnumber.text!])
         
             var apttext = String()
@@ -52,7 +52,10 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
                 
                 apttext = apt.text!
             }
-            ref!.child("Jewelery").child("Users").child(uid).child("Payment").child("MainPayment").updateChildValues(["Credit Card Number" : ccnumber.text!, "Full Name" : fullnametf.text!, "CVV" : cvv.text!, "Exp" : expdate.text!, "Billing Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apttext, "City" : city.text!])
+           
+            ref!.child("Jewelery").child("Users").child(uid).child("Payment").child("MainPayment").updateChildValues(["Credit Card Number" : ccnumber.text!, "Full Name" : fullnametf.text!, "CVV" : cvv.text!, "Exp" : expdate.text!])
+
+//            ref!.child("Jewelery").child("Users").child(uid).child("Payment").child("MainPayment").updateChildValues(["Credit Card Number" : ccnumber.text!, "Full Name" : fullnametf.text!, "CVV" : cvv.text!, "Exp" : expdate.text!, "Billing Name" : billingname.text!, "Phone" : phonenumber.text!, "Country" : country.text!, "Zip" : zip.text!, "Street Address" : streetaddress.text!, "Apt" : apttext, "City" : city.text!])
         
         
         if pressed {
@@ -117,19 +120,19 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
         
           self.addLineToView(view: fullnametf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         self.addLineToView(view: ccnumber, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-        self.addLineToView(view: streetaddress, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//        self.addLineToView(view: streetaddress, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         self.addLineToView(view: cvv, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
         self.addLineToView(view: expdate, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-        self.addLineToView(view: billingname, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-
-        self.addLineToView(view: country, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-
-        self.addLineToView(view: zip, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-
-        self.addLineToView(view: apt, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-
-        self.addLineToView(view: city, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
-        self.addLineToView(view: phonenumber, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//        self.addLineToView(view: billingname, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//
+//        self.addLineToView(view: country, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//
+//        self.addLineToView(view: zip, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//
+//        self.addLineToView(view: apt, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//
+//        self.addLineToView(view: city, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
+//        self.addLineToView(view: phonenumber, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
 
 
 

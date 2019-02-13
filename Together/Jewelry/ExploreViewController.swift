@@ -18,6 +18,8 @@ var mygray = UIColor(red:0.45, green:0.43, blue:0.43, alpha:1.0)
 
 var selectedid = String()
 
+var usedprices = [String:String]()
+var brandnames = [String:String]()
 var images = [String:UIImage]()
 var names = [String:String]()
 var prices = [String:String]()
@@ -60,7 +62,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         if allids.count == 0 {
             
-            queryformoreids()
+            queryforalltheids()
 
         }
         activityIndicator.color = myblue
@@ -80,27 +82,65 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
 
 //        if projectids.count == 0 && selectedfilter != "" {
         
+        
+        
+        if projectids.count > 0 {
+            
+            activityIndicator.alpha = 0
+            collectionView.reloadData()
+            
+            if selectedkey != "" {
+                
+                activityIndicator.alpha = 1
+                activityIndicator.startAnimating()
+                collectionView.alpha = 0
+                tapfilter.alpha = 0
+                
+                projectids.removeAll()
+                descriptions.removeAll()
+                names.removeAll()
+                programnames.removeAll()
+                prices.removeAll()
+                toppics.removeAll()
+                images.removeAll()
+                brandnames.removeAll()
+                imageurls.removeAll()
+                
+                queryforids { () -> () in
+                    
+                    self.queryforinfo()
+                    
+                }
+                
+            }
+            
+            
+        } else {
+            
             activityIndicator.alpha = 1
             activityIndicator.startAnimating()
             collectionView.alpha = 0
             tapfilter.alpha = 0
-        
-        projectids.removeAll()
-        descriptions.removeAll()
-        names.removeAll()
-        programnames.removeAll()
-        prices.removeAll()
-        toppics.removeAll()
-        images.removeAll()
-        brandnames.removeAll()
-        imageurls.removeAll()
-        queryformoreids()
-        
-        queryforids { () -> () in
             
-            self.queryforinfo()
+            projectids.removeAll()
+            descriptions.removeAll()
+            names.removeAll()
+            programnames.removeAll()
+            prices.removeAll()
+            toppics.removeAll()
+            images.removeAll()
+            brandnames.removeAll()
+            imageurls.removeAll()
+//            queryforalltheids()
+            
+            queryforids { () -> () in
+                
+                self.queryforinfo()
+                
+            }
             
         }
+        
             
 
         self.tabBarController?.tabBar.isHidden = false
@@ -116,20 +156,9 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         layout.minimumLineSpacing = 0
         collectionView!.collectionViewLayout = layout
         
-        
-//        if Auth.auth().currentUser == nil {
-//            // Do smth if user is not logged in
-//
-//        } else {
-//
-//            self.tabBarController?.tabBar.isHidden = false
-//            tapBack.alpha = 0
-//        }
-      
-        // Do any additional setup after loading the view.
-        
-//        load100products()
+
     }
+    
     @IBOutlet weak var tapBack: UIButton!
     @IBAction func tapback(_ sender: Any) {
     }
@@ -193,6 +222,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         brandnames.removeAll()
         imageurls.removeAll()
         
+        collectionView.reloadData()
+        
         if selectedfilter == "" {
             
         ref?.child("Products").queryLimited(toFirst: 10).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -229,7 +260,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 
                 var intselectedfilter = Int(selectedfilter)
                 
-                ref?.child("Products").queryOrdered(byChild: selectedkey).queryEnding(atValue: intselectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
+                ref?.child("Products").queryOrdered(byChild: selectedkey).queryEnding(atValue: intselectedfilter).queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     var value = snapshot.value as? NSDictionary
                     
@@ -255,8 +286,10 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     }
                     
                 })
+                
             } else {
-            ref?.child("Products").queryOrdered(byChild: selectedkey).queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+            ref?.child("Products").queryOrdered(byChild: selectedkey).queryEqual(toValue: selectedfilter).queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -287,7 +320,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
-    func queryformoreids() {
+    func queryforalltheids() {
         
         
         var functioncounter = 0
@@ -344,8 +377,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBOutlet weak var collectionView2: UICollectionView!
-    var usedprices = [String:String]()
-    var brandnames = [String:String]()
+
     
     func queryforinfo() {
         self.collectionView.alpha = 0
@@ -367,7 +399,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     var intviews = Double(author2)
                     intviews = intviews * 1.3
                     var author3 = "$\(String(Int(intviews)))"
-                    self.usedprices[each] = author3
+                    usedprices[each] = author3
                         
                     } else {
                         
@@ -376,7 +408,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                             var intviews = Double(Int(author2.dropFirst())!)
                             intviews = intviews * 1.15
                             author2 = "$\(String(Int(intviews)))"
-                            self.usedprices[each] = author2
+                            usedprices[each] = author2
 
                         }
                     }
@@ -389,16 +421,22 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             
             if var author2 = value?["Brand"] as? String {
                 
-                self.brandnames[each] = author2
+                brandnames[each] = author2
                 
             } else {
                 
-                self.brandnames[each] = " "
+                brandnames[each] = " "
 
             }
-                if var name = value?["Name"] as? String {
+                if var name = value?["Model"] as? String {
+                    
+                  
                     names[each] = name
                     
+                } else {
+                    
+                    names[each] = " "
+
                 }
                 
            
@@ -615,7 +653,8 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         selectedname = names[projectids[indexPath.row]]!
         selectedimageurl = imageurls[projectids[indexPath.row]]!
 //        selectedpitch = descriptions[projectids[indexPath.row]]!
-//        selectedprice = prices[projectids[indexPath.row]]!
+//        selectedprice = usedprices[projectids[indexPath.row]]!
+        
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
         selectedsubs = usedprices[projectids[indexPath.row]]!
 //        selectedprogramname = programnames[projectids[indexPath.row]]!

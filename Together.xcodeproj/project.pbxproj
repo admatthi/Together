@@ -126,6 +126,7 @@
 		9DD9802021BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9801D21BEF31E00A02433 /* OverviewCollectionViewCell.swift */; };
 		9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */; };
 		9DEA5F1821A0B820000137A3 /* ContacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA5F1721A0B820000137A3 /* ContacViewController.swift */; };
+		9DF2E9DE2214783600FE9275 /* FilterBrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */; };
 		CDA65A340E0251A467ABD40B /* Pods_TogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AED522BDB9F8FBB8DE7FE7 /* Pods_TogetherUITests.framework */; };
 		F730C0F4CFD34EE9240B5A7C /* Pods_Together.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFCA9B94C66A654D51E53CF /* Pods_Together.framework */; };
 /* End PBXBuildFile section */
@@ -248,6 +249,7 @@
 		9DD9801D21BEF31E00A02433 /* OverviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		9DEA5F1721A0B820000137A3 /* ContacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacViewController.swift; sourceTree = "<group>"; };
+		9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBrandCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5A42F47C5E03279E65B93BA /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
 		D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
 		F2942B7D3049A32B2E924492 /* Pods-TogetherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TogetherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TogetherUITests/Pods-TogetherUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				9D46D84C219B29C0006CE94C /* OverviewViewController.swift */,
 				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
 				9DD9801D21BEF31E00A02433 /* OverviewCollectionViewCell.swift */,
+				9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */,
 				9DC27B9321C44B8B0005759C /* FilterViewController.swift */,
 			);
 			path = Jewelry;
@@ -822,6 +825,7 @@
 				9D4A494121B0F9C30004A2B2 /* ShippingViewController.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
 				9D86EDD821C1727500A8385B /* CompletedViewController.swift in Sources */,
+				9DF2E9DE2214783600FE9275 /* FilterBrandCollectionViewCell.swift in Sources */,
 				9DB7BCF021A31ED3009B63B4 /* CreateAPlanViewController.swift in Sources */,
 				9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */,
 				9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */,
@@ -1035,7 +1039,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-14";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-18";
 				CODE_SIGN_ENTITLEMENTS = Together/Together.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
@@ -1056,7 +1060,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 946746B00455D23BCECD7726 /* Pods-Together.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-14";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-18";
 				CODE_SIGN_ENTITLEMENTS = Together/Together.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;

@@ -68,32 +68,37 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref?.child("Products").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
+            
+            if var author4 = value?["New Price"] as? String {
                 
-                if var author2 = value?["New Price"] as? String {
-
-                    if author2 != "null" {
+                self.prices2.append(author4)
+                
+            } else {
+                
+                if var author4 = value?["New Price"] as? Int {
                     
-                        
-                    var intviews = Double(Int(author2.dropFirst())!)
-                    intviews = intviews * 1.15
-                    author2 = "$\(String(Int(intviews)))"
+                    self.prices2.append("$\(author4)")
                     
-                    self.prices2.append(author2)
+                } else {
+                    
+                    if var author4 = value?["New Price"] as? Double {
                         
-                    } else {
-                        
-                        self.prices2.append("Not Available")
+                        self.prices2.append("$\(author4)")
 
                     }
-                    
                 }
+            }
             
-            if var author2 = value?["Used Price"] as? Int {
+            
+            if var author1 = value?["Used Price"] as? Int {
                 
-                if author2 != 0 {
-                var intviews = Double(author2)
+                if author1 != 0 {
+                var intviews = Double(author1)
                 intviews = intviews * 1.3
+                    self.myusedint = Int(Double(intviews))
+
                 var author3 = "$\(String(Int(intviews)))"
+                
                 
                 self.prices2.append(author3)
                     
@@ -106,11 +111,16 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
           
-            
+          
+           
             if var author2 = value?["Description"] as? String {
                 
                 selecteddescription = author2
                 
+            } else {
+                
+                selecteddescription = " "
+
             }
             
             if var author2 = value?["Case"] as? String {
@@ -135,7 +145,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if var author2 = value?["Case Size"] as? String {
                 
-                b2 = author2
+                b2 = "\(author2) mm"
 //                if author2 == "-" {
 //
 //                    b2 = author2
@@ -164,8 +174,8 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if var author2 = value?["Case Size"] as? Int {
                     
-                    b2 = String(author2)
-                    
+                    b2 = "\(String(author2)) mm"
+
                 } else {
                     
                     if var author2 = value?["Case Size"] as? Double {
@@ -223,7 +233,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
             
-            if var profileUrl = value?["Image2"] as? String {
+            if var profileUrl = value?["Image 2"] as? String {
                 // Create a storage reference from the URL
                 let url = URL(string: profileUrl)
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -233,7 +243,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
             
-            if var profileUrl = value?["Image3"] as? String {
+            if var profileUrl = value?["Image 3"] as? String {
                 // Create a storage reference from the URL
                 let url = URL(string: profileUrl)
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -242,7 +252,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 productimages.append(image4)
             }
             
-            if var profileUrl = value?["Image4"] as? String {
+            if var profileUrl = value?["Image 4"] as? String {
                 // Create a storage reference from the URL
                 let url = URL(string: profileUrl)
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -251,7 +261,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 productimages.append(image4)
             }
             
-            if var profileUrl = value?["Image5"] as? String {
+            if var profileUrl = value?["Image 5"] as? String {
                 // Create a storage reference from the URL
                 let url = URL(string: profileUrl)
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -274,11 +284,11 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
             
-            if var author2 = value?["Water Resistance"] as? String {
+            if var author2 = value?["Model Number"] as? String {
                 
-                if author2 == "-" {
+                if author2 == "null" {
 
-                    self.selectedmetal = "Sterling Silver"
+                    self.selectedmetal = "-"
 
                 } else {
                     
@@ -288,8 +298,26 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             } else {
                 
-                self.selectedmetal = "Sterling Silver"
-
+                if var author2 = value?["Model Number"] as? Int {
+                    
+                 
+                        self.selectedmetal = String(author2)
+                        
+                    
+                } else {
+               
+                    if var author2 = value?["Model Number"] as? Double {
+                        
+                        
+                        self.selectedmetal = String(author2)
+                        
+                        
+                    } else {
+                        
+                        self.selectedmetal = "-"
+                        
+                    }
+                }
             }
             
             
@@ -311,9 +339,9 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             }
         
+//            self.prices2.rev
             self.tableView.reloadData()
             self.collectionView.reloadData()
-                
             }
             
             )
@@ -354,26 +382,36 @@ var selectedmetal = String()
     
     @objc func tapNext(sender: UIButton) {
         
-        counter += 1
-
+       
+    }
+    
+    @objc func connected(sender: UIButton){
+        
+        
         print(counter)
         
         if counter < productimages.count {
+            counter += 1
+
             
-        
             tableView.reloadData()
             
         }
+        
+        
+        
     }
     
     var counter = Int()
     
-    @objc func tapBack(sender: UIButton) {
-        
-        counter -= 1
+    @objc func tapLeft(sender: UIButton) {
+        print(counter)
 
-        if counter > productimages.count {
+
+        if counter > 0 {
         
+            counter -= 1
+
             tableView.reloadData()
         
         }
@@ -409,7 +447,7 @@ var selectedmetal = String()
                 } else {
                     
                     selectedcondition = "Used"
-                    selecteddetails = "\(selectedcondition) / Pouch: \(selectedpackaging)"
+                    selecteddetails = "\(selectedcondition) / Original Case: \(selectedpackaging)"
                     self.performSegue(withIdentifier: "ProductToSale", sender: self)
 
                 }
@@ -427,12 +465,9 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     print(counter)
     
     if counter > 0 {
+
         
-        if counter < productimages.count {
-        
-            cell.mainimage.image = productimages[counter]
-        
-    }
+        cell.mainimage.image = productimages[counter-1]
         
     } else {
         
@@ -442,11 +477,13 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
     
     cell.title.text = "\(selectedbrand) \(selectedname)"
-    cell.tapenlarge.addTarget(self, action: #selector(ProductViewController.tapGo(sender:)), for: .allTouchEvents)
+//    cell.tapenlarge.addTarget(self, action: #selector(ProductViewController.tapGo(sender:)), for: .allTouchEvents)
 
-    cell.tapright.addTarget(self, action: #selector(ProductViewController.tapNext(sender:)), for: .allTouchEvents)
+//    cell.tapright.addTarget(self, action: #selector(ProductViewController.tapNext(sender:)), for: .allTouchEvents)
     
-    cell.tapleft.addTarget(self, action: #selector(ProductViewController.tapBack(sender:)), for: .allTouchEvents)
+    cell.tapright.addTarget(self, action: #selector(ProductViewController.connected(sender:)), for: .touchUpInside)
+    
+    cell.tapleft.addTarget(self, action: #selector(ProductViewController.tapLeft(sender:)), for: .allTouchEvents)
     
     let attributedString = NSMutableAttributedString(string: selecteddescription)
     
@@ -502,18 +539,8 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
     }
     
 }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//
-////
-////        selectedindex = indexPath.row
-////        collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-////
-////        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Prices", for: indexPath) as! PricesCollectionViewCell
-////     
-////        collectionView.reloadData()
-//    }
-//
+
+    var myusedint = Int()
 var selectedindex = Int()
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
@@ -521,46 +548,28 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Prices", for: indexPath) as! PricesCollectionViewCell
     
     cell.titlelabel.text = pricetitles[indexPath.row]
-    cell.priceslabel.text = prices2[indexPath.row]
     cell.titlelabel.addCharacterSpacing()
     
-    if prices2[indexPath.row] == "SOLD OUT" {
+   
+    if prices2[indexPath.row] == "null" {
         
-        cell.priceslabel.textColor = .gray
-        cell.isUserInteractionEnabled = false
+        
+        var int4 = Double(myusedint) * 1.83
+        
+        prices2[0] = "$\(String(Int(int4)))"
+        cell.priceslabel.text = prices2[indexPath.row]
+
+//        cell.priceslabel.textColor = .gray
+//        cell.isUserInteractionEnabled = false
         
     } else {
         
         cell.isUserInteractionEnabled = true
+        cell.priceslabel.text = prices2[indexPath.row]
 
     }
-//    if selectedindex == 0 {
-//
-//        if indexPath.row == 0 {
-//
-//
-//
-//        } else {
-//
-//            cell.titlelabel.alpha = 0.25
-//            cell.priceslabel.alpha = 0.25
-//        }
-//
-//
-//    } else {
-//
-//        if indexPath.row == 0 {
-//
-//            cell.titlelabel.alpha = 0.25
-//            cell.priceslabel.alpha = 0.25
-//
-//        } else {
-//
-//            cell.titlelabel.alpha = 1
-//            cell.priceslabel.alpha = 1
-//        }
-//
-    
+
+
     return cell
 
     }

@@ -60,9 +60,9 @@ class CheckoutViewController: UIViewController {
         
         if streetaddress != "" && finalcreditcard != "" {
             
-ref!.child("Jewelery").child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
+ref!.child("Jewelery").child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Case" : selectedpackaging, "Address" : streetaddress])
 
-ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
+ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Case" : selectedpackaging, "Address" : streetaddress])
 
             
             self.performSegue(withIdentifier: "Thank You", sender: self)
@@ -85,9 +85,9 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
             
             if streetaddress != "" && finalcreditcard != "" {
                 
-                ref!.child("Jewelery").child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
+                ref!.child("Jewelery").child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Case" : selectedpackaging, "Address" : streetaddress])
                 
-                ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Pouch" : selectedpackaging, "Address" : streetaddress])
+                ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoId().updateChildValues(["Product ID" : selectedid, "Price" : finalprice, "Title" : selectedname, "Details" : selecteddetails, "Delivery" : "Arriving \(earlydate) - \(latedate)", "Image" : selectedimageurl, "Date" : thisdate, "Condition" : selectedcondition, "Case" : selectedpackaging, "Address" : streetaddress])
                 
                 
                 self.performSegue(withIdentifier: "Thank You", sender: self)
@@ -174,7 +174,7 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
             
             finalprice = "$\(String(Int(selectedprice.dropFirst())!+10))"
 
-            let buttonTitleStr2 = NSMutableAttributedString(string:"View Purchases & Return Policy", attributes:attrs2)
+            let buttonTitleStr2 = NSMutableAttributedString(string:"Your credit card isn't charged until your order is confirmed by the seller. View purchases & return policy.", attributes:attrs2)
             attributedString2.append(buttonTitleStr2)
             tappolicy2.setAttributedTitle(attributedString2, for: .normal)
             tappolicy2.setTitleColor(.black, for: .normal)

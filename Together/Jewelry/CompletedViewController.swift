@@ -21,7 +21,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         topics.append("PRICE")
         topics.append("NAME")
         topics.append("CONDITION")
-        topics.append("POUCH")
+        topics.append("CASE")
         topics.append("TRACKING")
         topics.append("ORDERED ON")
         topics.append("SHIP TO")
@@ -71,12 +71,12 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                 }
                 
-                if var author2 = value?["Pouch"] as? String {
-                    self.answers["POUCH"] = author2
+                if var author2 = value?["Case"] as? String {
+                    self.answers["CASE"] = author2
                     
                 } else {
                     
-                    self.answers["POUCH"] = "None"
+                    self.answers["CASE"] = "None"
 
                     }
                 

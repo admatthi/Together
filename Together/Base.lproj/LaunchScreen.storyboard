@@ -18,39 +18,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhi-L3-9i8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb2-vj-gbm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlingCircles" translatesAutoresizingMaskIntoConstraints="NO" id="7FE-iV-uNg">
-                                <rect key="frame" x="115" y="203.5" width="145" height="76"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I  C  E" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I6-S7-Ctc">
+                                <rect key="frame" x="105" y="282.5" width="165" height="102"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="aGi-L5-Sco"/>
-                                    <constraint firstAttribute="width" constant="145" id="eyo-2Q-HLK"/>
+                                    <constraint firstAttribute="width" constant="165" id="Kfv-vh-Bs5"/>
+                                    <constraint firstAttribute="height" constant="102" id="gYy-92-4qS"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="I C E" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-M4-HPG">
-                                <rect key="frame" x="120.5" y="322" width="134" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="Zcq-Jr-qpI"/>
-                                    <constraint firstAttribute="width" constant="134" id="ruA-Lb-I4Y"/>
-                                </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="49"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7FE-iV-uNg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="19F-ns-dQK"/>
-                            <constraint firstAttribute="bottom" secondItem="fhi-L3-9i8" secondAttribute="bottom" id="6gk-uG-mz6"/>
-                            <constraint firstItem="fhi-L3-9i8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ECr-Nb-L6W"/>
-                            <constraint firstItem="sFv-M4-HPG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="T8A-8y-vEW"/>
-                            <constraint firstItem="7FE-iV-uNg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-92" id="e0n-XO-3SX"/>
-                            <constraint firstItem="fhi-L3-9i8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fAR-D4-K6p"/>
-                            <constraint firstItem="sFv-M4-HPG" firstAttribute="top" secondItem="7FE-iV-uNg" secondAttribute="bottom" constant="42.5" id="gaw-p3-mt2"/>
-                            <constraint firstItem="fhi-L3-9i8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="o56-FF-fst"/>
-                            <constraint firstItem="fhi-L3-9i8" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="oOt-nS-yx5"/>
+                            <constraint firstItem="vb2-vj-gbm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="90k-P8-T4t"/>
+                            <constraint firstItem="9I6-S7-Ctc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9oC-eY-APF"/>
+                            <constraint firstAttribute="bottom" secondItem="vb2-vj-gbm" secondAttribute="bottom" id="NQm-ZN-BOo"/>
+                            <constraint firstItem="vb2-vj-gbm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wdp-JB-xYA"/>
+                            <constraint firstItem="9I6-S7-Ctc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dMC-Ry-M39"/>
+                            <constraint firstItem="vb2-vj-gbm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="xeU-La-JaQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -60,8 +53,4 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="BlingCircles" width="412" height="255"/>
-        <image name="I C E" width="648" height="242"/>
-    </resources>
 </document>

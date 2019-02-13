@@ -20,29 +20,22 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var tapr: UIButton!
     @IBOutlet weak var TAPJOIN: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    var attrs = [
-        NSAttributedStringKey.foregroundColor : UIColor.black,
-        NSAttributedStringKey.underlineStyle : 1 ] as [NSAttributedStringKey : Any]
-    var attributedString = NSMutableAttributedString(string:"")
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
-      
-        let buttonTitleStr = NSMutableAttributedString(string:"START EXPLORING", attributes:attrs)
-        attributedString.append(buttonTitleStr)
         
         
-    tapexplore.setAttributedTitle(attributedString, for: .normal)
-        tapexplore.setTitleColor(.black, for: .normal)
 
         tapr.addTextSpacing(2.0)
         taps.addTextSpacing(2.0)
         TAPJOIN.addTextSpacing(2.0)
         tapexplore.addTextSpacing(2.0)
- 
+        tapexplore.underline()
+
 //        TAPJOIN.frame = CGRect(x: 0, y: TAPJOIN.frame.minY, width: self.view.frame.width/2, height: 76)
 //        self.view.addSubview(TAPJOIN)
 
@@ -98,13 +91,14 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
              setupimage.image = UIImage(named: "Setup\(counter)")
             print(counter)
             mainimage.image = images[counter]
+            
             mainimage.slideInFromRight()
             
         }
         
         if counter == 0 {
             
-            tapexplore.slideInFromLeft()
+//            tapexplore.slideInFromLeft()
 
             tapexplore.alpha = 1
             
@@ -131,7 +125,7 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
         
         if counter == 0 {
             
-            tapexplore.slideInFromLeft()
+//            tapexplore.slideInFromLeft()
 
             tapexplore.alpha = 1
 
@@ -238,4 +232,15 @@ extension UIButton{
         self.setAttributedTitle(attributedString, for: .normal)
     }
     
+}
+
+extension UIButton {
+    func underline() {
+        guard let text = self.titleLabel?.text else { return }
+        
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: text.count))
+        
+        self.setAttributedTitle(attributedString, for: .normal)
+    }
 }

@@ -17,7 +17,6 @@ import StoreKit
 import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
-import UXCam
 import AVFoundation
 import Purchases
 

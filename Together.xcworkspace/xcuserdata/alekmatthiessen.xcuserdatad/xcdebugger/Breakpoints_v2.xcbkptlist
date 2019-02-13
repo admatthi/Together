@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/Jewelry/ExploreViewController.swift"
-            timestampString = "571290811.217976"
+            timestampString = "571641063.7409329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "queryfornumberedids(completed:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/Jewelry/ExploreViewController.swift"
-            timestampString = "571290811.218065"
+            timestampString = "571641063.741721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "queryfornumberedids(completed:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -329,13 +329,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.218125"
+            filePath = "Together/Jewelry/FilterViewController.swift"
+            timestampString = "571517783.368716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
-            landmarkName = "tapNext(sender:)"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "tapP1(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,12 +346,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.21857"
+            timestampString = "571624012.387018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "tapNext(sender:)"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
+            landmarkName = "tapLeft(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -361,13 +361,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.2188669"
+            filePath = "Together/Jewelry/ExploreViewController.swift"
+            timestampString = "571641063.74245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
-            landmarkName = "tapBack(sender:)"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -377,13 +377,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.219173"
+            filePath = "Together/Jewelry/ExploreViewController.swift"
+            timestampString = "571641063.743049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "tapBack(sender:)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -393,13 +393,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.219465"
+            filePath = "Together/Jewelry/ExploreViewController.swift"
+            timestampString = "571641063.743713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "queryforinfo()"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -409,13 +409,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.219758"
+            filePath = "Together/Jewelry/ExploreViewController.swift"
+            timestampString = "571641063.744297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "queryforinfo()"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "queryforids(completed:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Together.ExploreViewController.queryforids(completed: () -&gt; ()) -&gt; ()"
+                  moduleName = "Together"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Bling/Together/Jewelry/ExploreViewController.swift"
+                  timestampString = "571641009.715547"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "1984">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.FIRDataSnapshot) -&gt; () in Together.ExploreViewController.queryforids(completed: () -&gt; ()) -&gt; ()"
+                  moduleName = "Together"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekmatthiessen/Desktop/DesktopNov2018/Bling/Together/Jewelry/ExploreViewController.swift"
+                  timestampString = "571641009.718662"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Together/Jewelry/ExploreViewController.swift"
+            timestampString = "571641063.74488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "queryforids(completed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -425,76 +473,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.2200429"
+            filePath = "Together/AppDelegate.swift"
+            timestampString = "571641063.7455781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "queryforinfo()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.220454"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "queryforinfo()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.22077"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "queryforinfo()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.221067"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "queryforinfo()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Together/Jewelry/ProductViewController.swift"
-            timestampString = "571290811.221348"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "queryforinfo()"
             landmarkType = "7">
          </BreakpointContent>

@@ -16,7 +16,6 @@ import StoreKit
 import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
-import UXCam
 import AVFoundation
 import Purchases
 import FirebaseDynamicLinks
@@ -56,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FBSDKAppEvents.activateApp()
         
-        UXCam.start(withKey: "cwtyu6vzrspkohu")
         
         purchases = RCPurchases(apiKey: "FGJnVYVvOyPbLGjantsVNfffhvDwnyGz")
         
@@ -66,8 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         ref = Database.database().reference()
 
-
-
+      
 //
 
         if Auth.auth().currentUser == nil {
@@ -79,7 +76,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             self.window?.rootViewController = initialViewControlleripad
             self.window?.makeKeyAndVisible()//
-
+            
+            if projectids.count == 0 {
+                
+                queryforids { () -> () in
+                    
+                    self.queryforinfo()
+                }
+                
+            }
             
         } else {
             
@@ -141,108 +146,139 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
+    func queryforids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+        
+        projectids.removeAll()
+        descriptions.removeAll()
+        names.removeAll()
+        programnames.removeAll()
+        prices.removeAll()
+        toppics.removeAll()
+        images.removeAll()
+        brandnames.removeAll()
+        imageurls.removeAll()
+        
+            ref?.child("Products").queryLimited(toFirst: 25).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                if let snapDict = snapshot.value as? [String:AnyObject] {
+                    
+                    for each in snapDict {
+                        
+                        let ids = each.key
+                        
+                        projectids.append(ids)
+                        
+                        functioncounter += 1
+                        
+                        if functioncounter == snapDict.count {
+                            
+                            completed()
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            })
+            
+   
+        }
+    
     func queryforinfo() {
         
         var functioncounter = 0
         
-        ref?.child("Influencers").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            var value = snapshot.value as? NSDictionary
-            
-            if var profileUrl = value?["ProPic"] as? String {
-                // Create a storage reference from the URL
+        for each in projectids {
+    ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                let url = URL(string: profileUrl)
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                myselectedimage = UIImage(data: data!)!
+                var value = snapshot.value as? NSDictionary
                 
-                
-                thumbnailurls["0"] = profileUrl
-                thumbnails["0"] = UIImage(data: data!)
-                
-            }
-            
-            if var profileUrl2 = value?["Purchase"] as? String {
-                // Create a storage reference from the URL
-                
-                
-                if profileUrl2 == "-" {
+                if var author2 = value?["Used Price"] as? Int {
                     
-                    noothervids = true
-                    
-                } else {
-                    
-                    videolinks["0"] = profileUrl2
+                    if author2 != 0 {
+                        var intviews = Double(author2)
+                        intviews = intviews * 1.3
+                        var author3 = "$\(String(Int(intviews)))"
+                        usedprices[each] = author3
                         
-                    myintrovideo = profileUrl2
-                    
-                    noothervids = false
+                    } else {
+                        
+                        if var author2 = value?["New Price"] as? String {
+                            
+                            var intviews = Double(Int(author2.dropFirst())!)
+                            intviews = intviews * 1.15
+                            author2 = "$\(String(Int(intviews)))"
+                            usedprices[each] = author2
+                            
+                        }
+                    }
                 }
-            }
-            
-            
-            
-            if var author2 = value?["Subscribers"] as? String {
                 
-                selectedsubs = author2
-            }
-            
-
-            if var author2 = value?["Price"] as? String {
-                
-                mychannelprice = author2
-            }
-            
-            if var author2 = value?["PayPal"] as? String {
-                
-                mypaypal = author2
-            }
-            
-            if var author2 = value?["Channel Name"] as? String {
-                
-                mychannelname = author2
-            }
-            
-            if var author2 = value?["Approved"] as? String {
-                
-                if author2 == "False" {
+                if var author2 = value?["Description"] as? String {
+                    descriptions[each] = author2
                     
-                    let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+                }
+                
+                if var author2 = value?["Brand"] as? String {
                     
-                    self.window = UIWindow(frame: UIScreen.main.bounds)
-                    self.window?.rootViewController = tabBarBuyer
-                    
-                    self.window?.makeKeyAndVisible()
+                    brandnames[each] = author2
                     
                 } else {
                     
-                    isInfluencer = true
+                    brandnames[each] = " "
                     
-                    let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-           
+                }
+                if var name = value?["Model"] as? String {
                     
-                    let tabBarInfluencer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Influencer") as! UITabBarController
-                    self.window = UIWindow(frame: UIScreen.main.bounds)
-                    self.window?.rootViewController = tabBarInfluencer
-                    self.window?.makeKeyAndVisible()
+                    
+                    names[each] = name
+                    
                 }
                 
                 
-            } else {
                 
-                let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+                if var views = value?["ProgramName"] as? String {
+                    programnames[each] = views
+                    
+                }
                 
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                self.window?.rootViewController = tabBarBuyer
+                if var profileUrl = value?["Image"] as? String {
+                    // Create a storage reference from the URL
+                    imageurls[each] = profileUrl
+                    
+                    let url = URL(string: profileUrl)
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    selectedimage = UIImage(data: data!)!
+                    
+                    images[each] = selectedimage
+                    
+                    functioncounter += 1
+                    
+                }
                 
-                self.window?.makeKeyAndVisible()
-            }
-      
+                
+                //                toppics[each] = UIImage(named: "\(each)pic")
+                
+                
+                print(functioncounter)
+                
+                
+                
+                if functioncounter == projectids.count {
+                    
+             
+                }
+                
+                
+            })
             
-        })
-        
+        }
     }
     
 
@@ -264,37 +300,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
-    func queryforids(completed: @escaping (() -> ()) ) {
-        
-        var functioncounter = 0
     
-        ref?.child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            var value = snapshot.value as? NSDictionary
-            
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-                for each in snapDict {
-                    
-                    let ids = each.key
-                    
-                    myprojectids.append(ids)
-         
-                    functioncounter += 1
-                    
-                    if functioncounter == snapDict.count {
-                        
-                        completed()
-                        
-                    }
-                    
-                    
-                }
-                
-            }
-            
-        })
-    }
     
 
     func applicationWillTerminate(_ application: UIApplication) {
