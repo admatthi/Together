@@ -28,7 +28,6 @@ var myintrovideo = String()
 var mypaypal = String()
 var tryingtopurchase = Bool()
 var isInfluencer = Bool()
-var myselectedimage = UIImage()
 
 var linkedin = Bool()
 
@@ -201,9 +200,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if var author2 = value?["Used Price"] as? Int {
                     
+                    
+                    
                     if author2 != 0 {
+                        
                         var intviews = Double(author2)
-                        intviews = intviews * 1.3
+                        intviews = intviews * 1.15
                         var author3 = "$\(String(Int(intviews)))"
                         usedprices[each] = author3
                         
@@ -234,12 +236,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     brandnames[each] = " "
                     
                 }
-                if var name = value?["Model"] as? String {
-                    
-                    
-                    names[each] = name
-                    
-                }
+        if var name = value?["Model"] as? String {
+            
+            
+            names[each] = name
+            
+        } else {
+            
+            if var name = value?["Model"] as? Int {
+                
+                
+                names[each] = String(name)
+                
+            } else {
+                
+                names[each] = "-"
+                
+            }
+        }
                 
                 
                 
@@ -253,12 +267,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     imageurls[each] = profileUrl
                     
                     let url = URL(string: profileUrl)
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    selectedimage = UIImage(data: data!)!
-                    
-                    images[each] = selectedimage
-                    
-                    functioncounter += 1
+                    if let data = try? Data(contentsOf: url!)
+                        
+                    {
+                        let image: UIImage = (UIImage(data: data))!
+                        images[each] = image
+                        
+                        functioncounter += 1
+                        
+                        
+                    } else {
+                        
+                        images[each] = UIImage(named: "Watch-3")
+                        
+                        functioncounter += 1
+                        
+                    }
                     
                 }
                 
@@ -267,7 +291,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 
                 print(functioncounter)
-                
                 
                 
                 if functioncounter == projectids.count {

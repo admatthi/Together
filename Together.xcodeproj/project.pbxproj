@@ -32,6 +32,7 @@
 		9D5DBE3C219A26B8000C46FC /* RevenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */; };
 		9D5DBE3E219A31D5000C46FC /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */; };
 		9D5DBE40219A35CA000C46FC /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */; };
+		9D5DCDE6221882EC00AE1A72 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DCDE5221882EC00AE1A72 /* SearchViewController.swift */; };
 		9D5DD6BE2198A2FF0085F58A /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */; };
 		9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */; };
 		9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FD08A21949795001B40E1 /* AboutViewController.swift */; };
@@ -178,6 +179,7 @@
 		9D5DBE3B219A26B8000C46FC /* RevenueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueViewController.swift; sourceTree = "<group>"; };
 		9D5DBE3D219A31D5000C46FC /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		9D5DBE3F219A35CA000C46FC /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		9D5DCDE5221882EC00AE1A72 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9D5DD6BD2198A2FF0085F58A /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		9D5FD088219496CB001B40E1 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		9D5FD08A21949795001B40E1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				9DD9801D21BEF31E00A02433 /* OverviewCollectionViewCell.swift */,
 				9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */,
 				9DC27B9321C44B8B0005759C /* FilterViewController.swift */,
+				9D5DCDE5221882EC00AE1A72 /* SearchViewController.swift */,
 			);
 			path = Jewelry;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D5DBE40219A35CA000C46FC /* UpdateProfileViewController.swift in Sources */,
+				9D5DCDE6221882EC00AE1A72 /* SearchViewController.swift in Sources */,
 				9D7A6A68219C7BE400FBEC22 /* TabInfluencerViewController.swift in Sources */,
 				9D46D84D219B29C0006CE94C /* OverviewViewController.swift in Sources */,
 				9D9E4A4B21864CC000B3C74C /* FundedViewController.swift in Sources */,

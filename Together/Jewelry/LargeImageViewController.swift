@@ -18,9 +18,9 @@ class LargeImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if selectedimage != nil {
+        if myselectedimage != nil {
             
-        bigimage2.image = selectedimage
+        bigimage2.image = myselectedimage
             
         }
         // Do any additional setup after loading the view.

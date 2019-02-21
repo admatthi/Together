@@ -104,7 +104,7 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
             
         } else {
             
-            tapexplore.alpha = 0
+            tapexplore.alpha = 1
         }
         
     }
@@ -131,7 +131,7 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
 
         } else {
             
-            tapexplore.alpha = 0
+            tapexplore.alpha = 1
         }
     }
     

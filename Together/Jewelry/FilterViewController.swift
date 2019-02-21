@@ -9,13 +9,20 @@
 import UIKit
 
 var selectedfilter = String()
+var selectedindex = Int()
 
 var brandimages = [UIImage]()
 var brandtitles = [String]()
 class FilterViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var selectedindex = Int()
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        tapmen.alpha = 0.5
+        
+        tapwomen.alpha = 0.5
+        tapp1.alpha = 0.5
+        tapp2.alpha = 0.5
+        tapp3.alpha = 0.5
         
         selectedindex = indexPath.row
         
@@ -39,32 +46,208 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.brandtitle.addCharacterSpacing()
         
         cell.brandimage.image = brandimages[indexPath.row]
-        cell.brandimage.alpha = 0.25
-        cell.brandtitle.alpha = 0.25
+   
         
         if selectedindex == 0 {
             
             if indexPath.row == 0 {
                 
                 cell.brandimage.alpha = 1
-                cell.brandtitle.alpha = 1
-                return cell
+//                cell.brandtitle.alpha = 1
 
             } else {
                 
                 cell.brandimage.alpha = 0.25
-                cell.brandtitle.alpha = 0.25
-                return cell
-
+//                cell.brandtitle.alpha = 0.25
             }
             
-            return cell
 
-        } else {
+        }
+        
+        if selectedindex == 1 {
             
-            return cell
+            if indexPath.row == 1 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
         }
     
+        if selectedindex == 2 {
+            
+            if indexPath.row == 2 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 3 {
+            
+            if indexPath.row == 3 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 4 {
+            
+            if indexPath.row == 4 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 5 {
+            
+            if indexPath.row == 5 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 6 {
+            
+            if indexPath.row == 6 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 7 {
+            
+            if indexPath.row == 7 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 8 {
+            
+            if indexPath.row == 8 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 9 {
+            
+            if indexPath.row == 9 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 10 {
+            
+            if indexPath.row == 10 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 11 {
+            
+            if indexPath.row == 11 {
+                
+                cell.brandimage.alpha = 1
+//                cell.brandtitle.alpha = 1
+                
+            } else {
+                
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            }
+            
+            
+        }
+        
+        if selectedindex == 1000 {
+            
+       
+                cell.brandimage.alpha = 0.25
+//                cell.brandtitle.alpha = 0.25
+            
+        }
+        
         return cell
 
     }
@@ -78,7 +261,8 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     @IBAction func tapB3(_ sender: Any) {
      
-       
+       selectedindex = 1000
+        collectionView.reloadData()
         tapb1.alpha = 0.5
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
@@ -151,9 +335,13 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         tapb4.alpha = 0.5
         tapb5.alpha = 0.5
         tapb6.alpha = 0.5
+        selectedindex = 1000
+        collectionView.reloadData()
     }
     @IBAction func tapWomen(_ sender: Any) {
         
+        selectedindex = 1000
+        collectionView.reloadData()
         tapwomen.alpha = 1
       
         tapmen.alpha = 0.5
@@ -174,7 +362,8 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         tapp3.alpha = 0.5
         selectedfilter = "Men"
         selectedkey = "Gender"
-    
+        selectedindex = 1000
+        collectionView.reloadData()
     }
     
     
@@ -234,9 +423,12 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     @IBAction func tapP1(_ sender: Any) {
        
+        selectedindex = 1000
+        collectionView.reloadData()
+        
         selectedkey = "Used Price"
-        selectedfilter = "350"
-
+        selectedfilter = "275"
+        minprice = 0
         tapp1.alpha = 1
         tapp2.alpha = 0.5
         tapp3.alpha = 0.5
@@ -246,26 +438,34 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
   
     }
     @IBAction func tapP2(_ sender: Any) {
+        selectedindex = 1000
+
         selectedkey = "Used Price"
-        selectedfilter = "1050"
+        selectedfilter = "2900"
+        minprice = 275
         tapp2.alpha = 1
         tapp1.alpha = 0.5
         tapp3.alpha = 0.5
         tapmen.alpha =  0.5
       
         tapwomen.alpha = 0.5
-      
+        selectedindex = 1000
+        collectionView.reloadData()
     }
     @IBAction func tapP3(_ sender: Any) {
+        selectedindex = 1000
+
         selectedkey = "Used Price"
-        selectedfilter = "3500"
+        selectedfilter = "100000"
+        minprice = 2900
         tapp3.alpha = 1
         tapp2.alpha = 0.5
         tapp1.alpha = 0.5
         tapmen.alpha =  0.5
    
         tapwomen.alpha = 0.5
-     
+        selectedindex = 1000
+        collectionView.reloadData()
     }
     @IBOutlet weak var tapapply: UIButton!
     @IBOutlet weak var tapb2: UIButton!
@@ -298,10 +498,14 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.dismiss(animated: true, completion: nil)
         
     }
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tapCancel: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        brandimages.removeAll()
+        brandtitles.removeAll()
+        
         brandimages.append(UIImage(named: "Omega")!)
         brandimages.append(UIImage(named: "Rolex")!)
         brandimages.append(UIImage(named: "Tudor")!)
@@ -311,7 +515,35 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         brandtitles.append("Tudor")
         brandtitles.append("Panerai")
 
-        selectedindex == 1000
+        brandimages.append(UIImage(named: "Tag")!)
+        brandtitles.append("TAG Heur")
+
+        brandimages.append(UIImage(named: "Seiko")!)
+        brandtitles.append("Seiko")
+        
+        brandimages.append(UIImage(named: "Michael Kors")!)
+        brandtitles.append("Michael Kors")
+        
+        brandimages.append(UIImage(named: "Bulgari")!)
+        brandtitles.append("Bulgari")
+        
+        brandimages.append(UIImage(named: "Raymond Weil")!)
+        brandtitles.append("Raymond Weil")
+        
+        brandimages.append(UIImage(named: "Gucci")!)
+        brandtitles.append("Gucci")
+        
+        if selectedindex == 0 {
+            
+            selectedindex = 1000
+            collectionView.reloadData()
+
+        } else {
+            
+            collectionView.reloadData()
+
+        }
+        
         tapapply.addTextSpacing(2.0)
         tapmen.addTextSpacing(2.0)
         tapwomen.addTextSpacing(2.0)
@@ -319,57 +551,83 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         tapp2.addTextSpacing(2.0)
         tapp3.addTextSpacing(2.0)
         HEADER.addCharacterSpacing()
+
 //        tapbracelets.addTextSpacing(2.0)
 //        tapearrings.addTextSpacing(2.0)
 
 //        tapnecklaces.addTextSpacing(2.0)
 
-        if selectedfilter == "Earrings" {
+//        if selectedfilter == "Earrings" {
+//
+//            tapearrings.alpha = 1
+//
+//        }
+//
+//        if selectedfilter == "Necklaces" {
+//
+//            tapnecklaces.alpha = 1
+//
+//        }
+//
+//        if selectedfilter == "Bracelets" {
+//
+//            tapbracelets.alpha = 1
+//
+//        }
+//
+        if selectedfilter == "275" {
             
-            tapearrings.alpha = 1
- 
+            tapp1.alpha = 1
+            selectedindex = 1000
+            collectionView.reloadData()
+            
         }
         
-        if selectedfilter == "Necklaces" {
+        if selectedfilter == "2900" {
             
-            tapnecklaces.alpha = 1
-        
+            tapp2.alpha = 1
+            selectedindex = 1000
+            collectionView.reloadData()
+            
         }
         
-        if selectedfilter == "Bracelets" {
+        if selectedfilter == "100000" {
             
-            tapbracelets.alpha = 1
-   
+            tapp3.alpha = 1
+            selectedindex = 1000
+            collectionView.reloadData()
+            
         }
-        
         if selectedfilter == "Men" {
-            
+
             tapmen.alpha = 1
-            
+            selectedindex = 1000
+            collectionView.reloadData()
         }
         if selectedfilter == "Women" {
-            
+
             tapwomen.alpha = 1
-            
+            selectedindex = 1000
+            collectionView.reloadData()
         }
-        
-        if selectedfilter == "MVMT" {
-            
-            tapb3.alpha = 1
-            
-        }
-        
-        if selectedfilter == "Rolex" {
-            
-            tapb1.alpha = 1
-            
-        }
-        
-        if selectedfilter == "Omega" {
-            
-            tapb2.alpha = 1
-            
-        }
+//
+//        if selectedfilter == "MVMT" {
+//
+//            tapb3.alpha = 1
+//
+//        }
+//
+//        if selectedfilter == "Rolex" {
+//
+//            tapb1.alpha = 1
+//
+//        }
+//
+//        if selectedfilter == "Omega" {
+//
+//            tapb2.alpha = 1
+//
+//        }
         // Do any additional setup after loading the view.
     }
     

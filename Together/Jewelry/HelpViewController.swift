@@ -28,15 +28,14 @@ class HelpViewController: UIViewController, UITableViewDelegate, UITableViewData
         questions.append("HOW DO I CONTACT YOU?")
         questions.append("HOW DO I PLACE AN ORDER?")
         questions.append("WHAT PAYMENT OPTIONS DO YOU ACCEPT?")
-        questions.append("WILL I RECEIVE MY ORDER BEFORE DECEMBER 24, 2018?")
         questions.append("CAN I CANCEL MY ORDER?")
-        questions.append("HOW DO I KNOW IF THE JEWLERY IS AUTHENTIC?")
+        questions.append("HOW DO I KNOW IF THE WATCHES ARE AUTHENTIC?")
         questions.append("HOW DOES THE AUTHENTICITY GUARANTEE WORK?")
         questions.append("HOW MUCH DOES THE AUTHENTICITY GUARANTEE COST?")
         questions.append("DO YOU ACCEPT RETURNS?")
         questions.append("HOW MUCH DOES SHIPPING COST?")
         questions.append("WHEN WILL I RECEIVE MY ORDER?")
-        questions.append("I PLACED AN ORDER, BUT DIDN’T RECEIVE A CONFIRMATION EMAIL.")
+        questions.append("I PLACED AN ORDER, BUT DIDN’T RECEIVE A CONFIRMATION EMAIL")
 
 
         tableView.reloadData()

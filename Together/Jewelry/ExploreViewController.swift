@@ -31,6 +31,8 @@ var toppics = [String:UIImage]()
 var imageurls = [String:String]()
 var selectedbrand = String()
 var selectedkey = String()
+
+var minprice = Int()
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
    
     
@@ -44,7 +46,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         while i < 75 {
             
-            ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Category" : "-","Color" : "-","Description" : "-","Designer" : "-","Gemstone" : "-","Image" : "-","Name" : "-","New Link" : "-","New Price" : "-","Packaging" : "-","Purity" : "-","Size" : "-","Stone" : "-","Used Inventory" : "0","Used Link" : "-","Used Price" : 0, "Metal" : "-"])
+ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Category" : "-","Color" : "-","Description" : "-","Designer" : "-","Gemstone" : "-","Image" : "-","Name" : "-","New Link" : "-","New Price" : "-","Packaging" : "-","Purity" : "-","Size" : "-","Stone" : "-","Used Inventory" : "0","Used Link" : "-","Used Price" : 0, "Metal" : "-"])
             
             i += 1
         }
@@ -260,7 +262,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                 
                 var intselectedfilter = Int(selectedfilter)
                 
-                ref?.child("Products").queryOrdered(byChild: selectedkey).queryEnding(atValue: intselectedfilter).queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
+                ref?.child("Products").queryOrdered(byChild: selectedkey).queryStarting(atValue: minprice).queryEnding(atValue: intselectedfilter).queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     var value = snapshot.value as? NSDictionary
                     
@@ -397,7 +399,7 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     
                     if author2 != 0 {
                     var intviews = Double(author2)
-                    intviews = intviews * 1.3
+                    intviews = intviews * 1.15
                     var author3 = "$\(String(Int(intviews)))"
                     usedprices[each] = author3
                         
@@ -435,8 +437,16 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     
                 } else {
                     
-                    names[each] = " "
-
+                    if var name = value?["Model"] as? Int {
+                        
+                        
+                        names[each] = String(name)
+                        
+                    } else {
+                        
+                        names[each] = " "
+                        
+                    }
                 }
                 
            
@@ -451,12 +461,23 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
                     imageurls[each] = profileUrl
                     
                     let url = URL(string: profileUrl)
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    selectedimage = UIImage(data: data!)!
-                    
-                    images[each] = selectedimage
+                    if let data = try? Data(contentsOf: url!)
+                        
+                    {
+                        let image: UIImage = (UIImage(data: data))!
+                        images[each] = image
+                        
+                        functioncounter += 1
 
-                    functioncounter += 1
+
+                    } else {
+                        images[each] = UIImage(named: "Watch-3")
+                        
+                        functioncounter += 1
+                        
+                    }
+
+                   
 
                 }
                 
@@ -922,7 +943,19 @@ class ExploreViewController: UIViewController, UICollectionViewDelegate, UIColle
             cell.thumbnail.image = images[projectids[indexPath.row]]
             cell.pricelabel.text = usedprices[projectids[indexPath.row]]?.uppercased()
             cell.pricelabel.addCharacterSpacing()
-            cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!.uppercased())"
+        
+            print(projectids[indexPath.row])
+            
+            if let string2 = names[projectids[indexPath.row]]?.uppercased() {
+                
+                  cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!.uppercased())"
+            } else {
+                
+                  cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!)"
+            }
+          
+            
+            
             cell.textlabel.addCharacterSpacing()
 
             }

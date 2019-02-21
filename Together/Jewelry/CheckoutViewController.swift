@@ -66,6 +66,8 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
 
             
             self.performSegue(withIdentifier: "Thank You", sender: self)
+            
+            FBSDKAppEvents.logEvent("TapPurchase")
 
         } else {
             
@@ -158,23 +160,25 @@ ref!.child("Jewelery").child("Users").child(uid).child("Purchased").childByAutoI
         tapbuy.addTextSpacing(2.0)
         
         if selectedcondition == "New" {
+        
+                
+                finalprice = "$\(String(Int(selectedprice.dropFirst())!))"
+                
+                tappolicy2.setTitle("All shipping and returns are complimentary on this order.", for: .normal)
+                tappolicy2.isUserInteractionEnabled = false
+                
+                tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
+                tapshipping.setTitle("Complimentary $0", for: .normal)
+                tappolicy1.titleLabel?.textAlignment = NSTextAlignment.center
+                tappolicy2.titleLabel?.textAlignment = NSTextAlignment.center
+                totalprice.setTitle(finalprice, for: .normal)
+                
             
-            finalprice = "$\(String(Int(selectedprice.dropFirst())!))"
-
-            tappolicy2.setTitle("All shipping and returns are complimentary on this order.", for: .normal)
-            tappolicy2.isUserInteractionEnabled = false
-            
-        tappolicy2.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
-            tapshipping.setTitle("Complimentary $0", for: .normal)
-            tappolicy1.titleLabel?.textAlignment = NSTextAlignment.center
-            tappolicy2.titleLabel?.textAlignment = NSTextAlignment.center
-            totalprice.setTitle(finalprice, for: .normal)
-
         } else {
             
             finalprice = "$\(String(Int(selectedprice.dropFirst())!+10))"
 
-            let buttonTitleStr2 = NSMutableAttributedString(string:"Your credit card isn't charged until your order is confirmed by the seller. View purchases & return policy.", attributes:attrs2)
+            let buttonTitleStr2 = NSMutableAttributedString(string:"Your credit card isn't charged until your order is confirmed by the seller.", attributes:attrs2)
             attributedString2.append(buttonTitleStr2)
             tappolicy2.setAttributedTitle(attributedString2, for: .normal)
             tappolicy2.setTitleColor(.black, for: .normal)

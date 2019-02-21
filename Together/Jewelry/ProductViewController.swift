@@ -19,10 +19,21 @@ var b3 = String()
 var b4 = String()
 var b5 = String()
 var b6 = String()
+var b7 = String()
+
+var k1 = String()
+var k2 = String()
+var k3 = String()
+var k4 = String()
+var k5 = String()
+var k6 = String()
+var k7 = String()
 
 var selectedpackaging = String()
 
 var productimages = [UIImage]()
+
+var myselectedimage = UIImage()
 
 class ProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
  {
@@ -33,7 +44,8 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        activityIndicator.startAnimating()
+        activityIndicator.alpha = 1
         tapsell.layer.borderColor = UIColor.black.cgColor
         tapsell.addTextSpacing(2.0)
         tapsell.layer.borderWidth = 0.5
@@ -43,8 +55,22 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         counter = 0
         selectedindex == 0
+    
+        activityIndicator.color = myblue
+        tableView.alpha = 0
+        collectionView.alpha = 0
         collectionView.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.85)
 
+        var swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ProductViewController.respondToSwipeGesture(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ProductViewController.respondToSwipeGesture(gesture:)))
+        
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+  
+        
         // Do any additional setup after loading the view.
     }
     
@@ -69,9 +95,14 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 var value = snapshot.value as? NSDictionary
             
+         
+            
             if var author4 = value?["New Price"] as? String {
                 
-                self.prices2.append(author4)
+                if author4 == "null" {
+                    
+                    self.prices2.append("OUT OF STOCK")
+                }
                 
             } else {
                 
@@ -94,7 +125,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if author1 != 0 {
                 var intviews = Double(author1)
-                intviews = intviews * 1.3
+                intviews = intviews * 1.15
                     self.myusedint = Int(Double(intviews))
 
                 var author3 = "$\(String(Int(intviews)))"
@@ -123,111 +154,186 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             }
             
-            if var author2 = value?["Case"] as? String {
+            
+            if var author2 = value?["Key 3"] as? String {
+                
+                k1 = author2
+                
+            }
+            
+            if var author2 = value?["Value 3"] as? String {
+                
+                b1 = author2
+                
+            } else {
+                
+                if var author2 = value?["Value 3"] as? Int {
+                    
+                    b1 = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 3"] as? Double {
+                        
+                        b1 = "\(author2)"
+                    }
+                }
+                
+            }
+            
+      
+            if var author2 = value?["Key 10"] as? String {
+                
+                k2 = author2
+                
+            }
+            
+            if var author2 = value?["Value 10"] as? String {
+                
+                b2 = author2
+                
+            } else {
+                
+                if var author2 = value?["value 10"] as? Int {
+                    
+                    b2 = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 10"] as? Double {
+                        
+                        b2 = "\(author2)"
+                    }
+                }
+                
+            }
+            
+            if var author2 = value?["Key 9"] as? String {
+                
+                k3 = author2
+                
+            }
+            
+            if var author2 = value?["Value 9"] as? String {
                 
                 b3 = author2
                 
             } else {
                 
-                if var author2 = value?["Case"] as? Int {
+                if var author2 = value?["Value 9"] as? Int {
                     
                     b3 = "\(author2)"
+                    
                 } else {
                     
-                    if var author2 = value?["Case"] as? Double {
+                    if var author2 = value?["Value 9"] as? Double {
                         
                         b3 = "\(author2)"
                     }
                 }
                 
             }
-          
             
-            if var author2 = value?["Case Size"] as? String {
+            if var author2 = value?["Key 6"] as? String {
                 
-                b2 = "\(author2) mm"
-//                if author2 == "-" {
-//
-//                    b2 = author2
-//                    b3 = author2
-//
-//                } else {
-//
-//                    b2 = author2
-//
-//                    if var author2 = value?["Gemstone Weight"] as? String {
-//
-//                        if author2 == "-" {
-//
-//                            b3 = "4mm"
-//
-//                        } else {
-//
-//                            b3 = author2
-//                        }
-//
-//
-//                    }
-//                }
+                k4 = author2
                 
-            } else {
-                
-                if var author2 = value?["Case Size"] as? Int {
-                    
-                    b2 = "\(String(author2)) mm"
-
-                } else {
-                    
-                    if var author2 = value?["Case Size"] as? Double {
-                        
-                        b2 = "\(String(author2)) mm"
-                        
-                    }
-                    
-                }
-
             }
-//
-//            if var author2 = value?["Gemstone Weight"] as? String {
-//
-//                if author2 == "-" {
-//
-//                    b3 = "4mm"
-//
-//                } else {
-//                    b3 = author2
-//                }
-//
-//
-//            } else {
-//
-//                b3 = "-"
-//
-//            }
-            if var author2 = value?["Strap"] as? String {
+            
+            if var author2 = value?["Value 6"] as? String {
                 
                 b4 = author2
                 
             } else {
                 
-                b4 = "-"
-
-            }
-            if var author2 = value?["Release"] as? Int {
+                if var author2 = value?["Value 6"] as? Int {
+                    
+                    b4 = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 6"] as? Double {
+                        
+                        b4 = "\(author2)"
+                    }
+                }
                 
-              
-                    b5 = String(author2)
+            }
+            
+            if var author2 = value?["Key 7"] as? String {
+                
+                k5 = author2
+                
+            }
+            
+            if var author2 = value?["Value 7"] as? String {
+                
+                b5 = author2
+                selectedpackaging = author2
                 
             } else {
                 
-                if var author2 = value?["Release"] as? String {
+                if var author2 = value?["Value 7"] as? Int {
                     
-                    if author2 == "-" {
+                    b5 = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 7"] as? Double {
                         
-                        b5 = "-"
-                    } else {
+                        b5 = "\(author2)"
+                    }
+                }
+                
+            }
+            
+            if var author2 = value?["Key 8"] as? String {
+                
+                k6 = author2
+                
+            }
+            
+            if var author2 = value?["Value 8"] as? String {
+                
+                b6 = author2
+                
+            } else {
+                
+                if var author2 = value?["Value 8"] as? Int {
+                    
+                    b6 = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 8"] as? Double {
                         
-                        b5 = author2
+                        b6 = "\(author2)"
+                    }
+                }
+                
+            }
+            
+            if var author2 = value?["Key 11"] as? String {
+                
+                k7 = author2
+                
+            }
+            
+            if var author2 = value?["Value 11"] as? String {
+                
+                b7 = author2
+                
+            } else {
+                
+                if var author2 = value?["Value 11"] as? Int {
+                    
+                    b7 = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 11"] as? Double {
+                        
+                        b7 = "\(author2)"
                     }
                 }
                 
@@ -235,113 +341,96 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if var profileUrl = value?["Image 2"] as? String {
                 // Create a storage reference from the URL
+                
+                if profileUrl == "null" {
+                    
+                } else {
+                    
                 let url = URL(string: profileUrl)
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 var image4 = UIImage(data: data!)!
                 
                 productimages.append(image4)
                 
+                }
             }
             
             if var profileUrl = value?["Image 3"] as? String {
                 // Create a storage reference from the URL
+                
+                if profileUrl == "null" {
+                    
+                } else {
+                    
                 let url = URL(string: profileUrl)
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 var image4 = UIImage(data: data!)!
                 
                 productimages.append(image4)
+                    
+                }
             }
             
             if var profileUrl = value?["Image 4"] as? String {
                 // Create a storage reference from the URL
+                
+                if profileUrl == "null" {
+                    
+                } else {
+                    
                 let url = URL(string: profileUrl)
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 var image4 = UIImage(data: data!)!
                 
                 productimages.append(image4)
+                    
+                }
             }
             
             if var profileUrl = value?["Image 5"] as? String {
                 // Create a storage reference from the URL
+                
+                if profileUrl == "null" {
+                    
+                } else {
+                    
                 let url = URL(string: profileUrl)
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 var image4 = UIImage(data: data!)!
                 
                 productimages.append(image4)
-            }
-            
-            if var author2 = value?["Movement"] as? String {
-                
-                if author2 == "-" {
                     
-                    b6 = "\(selectedbrand)"
-
-                } else {
-                    
-                b6 = author2
-                    
-                }
-                
-            }
-            
-            if var author2 = value?["Model Number"] as? String {
-                
-                if author2 == "null" {
-
-                    self.selectedmetal = "-"
-
-                } else {
-                    
-                    self.selectedmetal = author2
-
-                }
-                
-            } else {
-                
-                if var author2 = value?["Model Number"] as? Int {
-                    
-                 
-                        self.selectedmetal = String(author2)
-                        
-                    
-                } else {
-               
-                    if var author2 = value?["Model Number"] as? Double {
-                        
-                        
-                        self.selectedmetal = String(author2)
-                        
-                        
-                    } else {
-                        
-                        self.selectedmetal = "-"
-                        
-                    }
                 }
             }
             
+     
             
-            if var author2 = value?["Packaging"] as? String {
-                
-                if author2 != "-" {
-                    
-                    selectedpackaging = author2
-
-                } else {
-                    
-                    selectedpackaging = "Original Packaging"
-
-                }
-                
-            } else {
-                
-                selectedpackaging = "None"
-
-            }
+//        
+//            
+//            if var author2 = value?["Packaging"] as? String {
+//                
+//                if author2 != "-" {
+//                    
+//                    selectedpackaging = author2
+//
+//                } else {
+//                    
+//                    selectedpackaging = "Original Packaging"
+//
+//                }
+//                
+//            } else {
+//                
+//                selectedpackaging = "None"
+//
+//            }
         
 //            self.prices2.rev
             self.tableView.reloadData()
             self.collectionView.reloadData()
+            self.tableView.alpha = 1
+            self.collectionView.alpha = 1
+            self.activityIndicator.alpha = 0
             }
             
             )
@@ -374,9 +463,20 @@ var selectedmetal = String()
     
     @objc func tapGo(sender: UIButton) {
         
-        selectedimage = images[selectedid]!
+        if counter > 0 {
+            
+            
+            myselectedimage = productimages[counter-1]
+            self.performSegue(withIdentifier: "Enlarge", sender: self)
 
-        self.performSegue(withIdentifier: "Enlarge", sender: self)
+        } else {
+            
+            myselectedimage = selectedimage
+            self.performSegue(withIdentifier: "Enlarge", sender: self)
+
+        }
+        
+
         
     }
     
@@ -385,7 +485,7 @@ var selectedmetal = String()
        
     }
     
-    @objc func connected(sender: UIButton){
+    func connected() {
         
         
         print(counter)
@@ -404,7 +504,7 @@ var selectedmetal = String()
     
     var counter = Int()
     
-    @objc func tapLeft(sender: UIButton) {
+     func tapLeft() {
         print(counter)
 
 
@@ -438,17 +538,24 @@ var selectedmetal = String()
         
                 if indexPath.row == 0 {
                     
+                    if prices2.contains("OUT OF STOCK") {
+                        
+                        
+                    } else {
+                        
                     selectedcondition = "New"
                     
-                    selecteddetails = "\(selectedcondition) / Original Packaging"
+                    selecteddetails = "\(selectedcondition) / \(selectedpackaging)"
 
                     self.performSegue(withIdentifier: "ProductToCheckout", sender: self)
+                        
+                    }
 
                 } else {
                     
                     selectedcondition = "Used"
-                    selecteddetails = "\(selectedcondition) / Original Case: \(selectedpackaging)"
-                    self.performSegue(withIdentifier: "ProductToSale", sender: self)
+                    selecteddetails = "\(selectedcondition) / \(selectedpackaging)"
+                    self.performSegue(withIdentifier: "ProductToCheckout", sender: self)
 
                 }
         
@@ -456,13 +563,39 @@ var selectedmetal = String()
     
     
     }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                print("Swiped right")
+                tapLeft()
+            case UISwipeGestureRecognizerDirection.down:
+                print("Swiped down")
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swiped left")
+                connected()
+            case UISwipeGestureRecognizerDirection.up:
+                print("Swiped up")
+            default:
+                break
+            }
+        }
+    }
 
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Product", for: indexPath) as! ProductTableViewCell
     
     print(counter)
+    
+  
+        
     
     if counter > 0 {
 
@@ -476,15 +609,40 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     }
     
     
+    
     cell.title.text = "\(selectedbrand) \(selectedname)"
 //    cell.tapenlarge.addTarget(self, action: #selector(ProductViewController.tapGo(sender:)), for: .allTouchEvents)
 
 //    cell.tapright.addTarget(self, action: #selector(ProductViewController.tapNext(sender:)), for: .allTouchEvents)
     
-    cell.tapright.addTarget(self, action: #selector(ProductViewController.connected(sender:)), for: .touchUpInside)
+    cell.tapright.addTarget(self, action: #selector(ProductViewController.tapGo(sender:)), for: .touchUpInside)
+//
+//    cell.tapleft.addTarget(self, action: #selector(ProductViewController.tapLeft(sender:)), for: .allTouchEvents)
     
-    cell.tapleft.addTarget(self, action: #selector(ProductViewController.tapLeft(sender:)), for: .allTouchEvents)
     
+    if productimages.count > 0 && counter == 0  {
+        
+        cell.progressView.setProgress(0.1, animated: true)
+
+    } else {
+    
+        if counter == 0 {
+            
+            cell.progressView.setProgress(0.0, animated: false)
+
+        } else {
+            
+        let fractionalProgress = Float(counter) / Float(productimages.count)
+    
+        cell.progressView.setProgress(fractionalProgress, animated: true)
+        
+        }
+    }
+    
+        if selecteddescription == "null" {
+            
+            cell.descriptionlabel.text = " "
+        } else {
     let attributedString = NSMutableAttributedString(string: selecteddescription)
     
     // *** Create instance of `NSMutableParagraphStyle`
@@ -497,32 +655,49 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
     
     // *** Set Attributed String to your label ***
+        
     cell.descriptionlabel.attributedText = attributedString
     cell.descriptionlabel.textAlignment = .center
+        
+        }
+     
+      
+            
     cell.b1.text = b1
     cell.b2.text = b2
+
     cell.b3.text = b3
     cell.b4.text = b4
     cell.b5.text = b5
     cell.b6.text = b6
-    cell.b7.text = selectedmetal
+
+        cell.h1.text = k1.uppercased()
+        cell.h2.text = k2.uppercased()
+        cell.h3.text = k3.uppercased()
+        cell.h4.text = k4.uppercased()
+        cell.h5.text = k5.uppercased()
+        cell.h6.text = k6.uppercased()
 
     cell.title.sizeToFit()
     cell.descriptionlabel.sizeToFit()
     cell.b1.sizeToFit()
-    cell.b2.sizeToFit()
     cell.b3.sizeToFit()
     cell.b4.sizeToFit()
     cell.b5.sizeToFit()
     cell.b6.sizeToFit()
-    cell.b7.sizeToFit()
 
+        cell.h1.addCharacterSpacing()
+        cell.h2.addCharacterSpacing()
+        cell.h3.addCharacterSpacing()
+        cell.h4.addCharacterSpacing()
+        cell.h5.addCharacterSpacing()
+        cell.h6.addCharacterSpacing()
     cell.h1.addCharacterSpacing()
     cell.h2.addCharacterSpacing()
     cell.h3.addCharacterSpacing()
     cell.h4.addCharacterSpacing()
     cell.h5.addCharacterSpacing()
-    cell.h7.addCharacterSpacing()
+    cell.h6.addCharacterSpacing()
 
     return cell
 }
@@ -540,7 +715,7 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
     
 }
 
-    var myusedint = Int()
+var myusedint = Int()
 var selectedindex = Int()
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
@@ -551,13 +726,17 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     cell.titlelabel.addCharacterSpacing()
     
    
-    if prices2[indexPath.row] == "null" {
+    
+    if prices2[indexPath.row] == "OUT OF STOCK" {
         
         
-        var int4 = Double(myusedint) * 1.83
+      
+        cell.priceslabel.textColor = UIColor.lightGray
         
-        prices2[0] = "$\(String(Int(int4)))"
-        cell.priceslabel.text = prices2[indexPath.row]
+//        var int4 = Double(myusedint) * 1.83
+//
+//        prices2[0] = "$\(String(Int(int4)))"
+//        cell.priceslabel.text = prices2[indexPath.row]
 
 //        cell.priceslabel.textColor = .gray
 //        cell.isUserInteractionEnabled = false
@@ -566,7 +745,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         
         cell.isUserInteractionEnabled = true
         cell.priceslabel.text = prices2[indexPath.row]
-
+        cell.priceslabel.textColor = myblue
     }
 
 
@@ -581,4 +760,14 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         return CGSize(width: collectionView.bounds.size.width/2, height: CGFloat(kWhateverHeightYouWant))
     }
 
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }

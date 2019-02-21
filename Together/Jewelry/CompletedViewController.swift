@@ -103,12 +103,13 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func tapBack(_ sender: Any) {
         
-        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+//
+//        tabBarBuyer.selectedIndex = 1
+//        UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
         
-        tabBarBuyer.selectedIndex = 1
-        UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
  

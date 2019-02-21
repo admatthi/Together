@@ -140,6 +140,10 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
+    let maxNumberOfCharacters = 16
+
+ 
+    
     func queryforuser() {
         
         ref?.child("Jewelery").child("Users").child(uid).child("Payment").child("MainPayment").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -147,8 +151,9 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
             var value = snapshot.value as? NSDictionary
             
             if var author2 = value?["Credit Card Number"] as? String {
-                
-                self.ccnumber.text! = author2
+                let str = author2
+                let final = str.inserting(separator: " ", every: 4)
+                self.ccnumber.text! = final
                 
             }
             
@@ -164,7 +169,9 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
             
             if var author2 = value?["Exp"] as? String {
                 
-                self.expdate.text = author2
+                let str = author2
+                let final = str.inserting(separator: "/", every: 2)
+                self.expdate.text! = final
             }
             
             if var author2 = value?["Billing Name"] as? String {
@@ -206,6 +213,7 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
         })
         
     }
+    
     
     enum LINE_POSITION {
         case LINE_POSITION_TOP
@@ -260,5 +268,20 @@ extension Collection {
             i = j
         }
         return res
+    }
+}
+
+
+extension String {
+    func inserting(separator: String, every n: Int) -> String {
+        var result: String = ""
+        let characters = Array(self.characters)
+        stride(from: 0, to: characters.count, by: n).forEach {
+            result += String(characters[$0..<min($0+n, characters.count)])
+            if $0+n < characters.count {
+                result += separator
+            }
+        }
+        return result
     }
 }

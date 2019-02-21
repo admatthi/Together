@@ -11,6 +11,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var b3: UILabel!
     @IBOutlet weak var b2: UILabel!
     
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var tapright: UIButton!
     @IBOutlet weak var tapleft: UIButton!
     @IBOutlet weak var tapenlarge: UIButton!
@@ -22,7 +23,8 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var h4: UILabel!
 
     @IBOutlet weak var h5: UILabel!
-
+    @IBOutlet weak var h6: UILabel!
+    
     @IBOutlet weak var h7: UILabel!
     @IBOutlet weak var b7: UILabel!
     @IBOutlet weak var b6: UILabel!

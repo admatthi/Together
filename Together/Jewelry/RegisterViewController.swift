@@ -64,7 +64,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate     {
                 ref?.child("Jewelery").child("Users").child(uid).updateChildValues(["Email" : email, "Password" : password])
                 
                 
-                
+                FBSDKAppEvents.logEvent("Registered")
+
                 
                 DispatchQueue.main.async {
                     
