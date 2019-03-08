@@ -481,17 +481,14 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         tapmen.alpha = 0.5
         tapwomen.alpha = 0.5
-        tapb1.alpha = 0.5
-        tapb2.alpha = 0.5
-        tapb3.alpha = 0.5
-        tapb4.alpha = 0.5
-        tapb5.alpha = 0.5
-        tapb6.alpha = 0.5
         tapp1.alpha = 0.5
         tapp2.alpha = 0.5
         tapp3.alpha = 0.5
         selectedkey = ""
         selectedfilter = ""
+        selectedindex = 1000
+        collectionView.reloadData()
+        
     }
     @IBAction func tapcancel(_ sender: Any) {
         
@@ -521,17 +518,17 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         brandimages.append(UIImage(named: "Seiko")!)
         brandtitles.append("Seiko")
         
-        brandimages.append(UIImage(named: "Michael Kors")!)
-        brandtitles.append("Michael Kors")
+        brandimages.append(UIImage(named: "Zenith")!)
+        brandtitles.append("Zenith")
         
-        brandimages.append(UIImage(named: "Bulgari")!)
-        brandtitles.append("Bulgari")
+        brandimages.append(UIImage(named: "Citizen")!)
+        brandtitles.append("Citizen")
         
         brandimages.append(UIImage(named: "Raymond Weil")!)
         brandtitles.append("Raymond Weil")
         
-        brandimages.append(UIImage(named: "Gucci")!)
-        brandtitles.append("Gucci")
+        brandimages.append(UIImage(named: "Breitling-1")!)
+        brandtitles.append("Breitling")
         
         if selectedindex == 0 {
             

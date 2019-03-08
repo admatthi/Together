@@ -102,6 +102,8 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if author4 == "null" {
                     
                     self.prices2.append("OUT OF STOCK")
+                } else {
+                    
                 }
                 
             } else {
@@ -125,7 +127,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 if author1 != 0 {
                 var intviews = Double(author1)
-                intviews = intviews * 1.15
+                intviews = intviews * 1.3
                     self.myusedint = Int(Double(intviews))
 
                 var author3 = "$\(String(Int(intviews)))"
@@ -347,11 +349,28 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 } else {
                     
                 let url = URL(string: profileUrl)
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                var image4 = UIImage(data: data!)!
-                
-                productimages.append(image4)
-                
+                    
+                    do {
+                        
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        
+                        if data != nil {
+
+                        if let selectedimage2 = UIImage(data: data!) {
+                            
+                            productimages.append(selectedimage2)
+
+                        }
+                            
+                        } else {
+                            
+                            
+                        }
+                        
+                    } catch let error {
+                        
+                        
+                    }
                 }
             }
             
@@ -363,10 +382,25 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 } else {
                     
                 let url = URL(string: profileUrl)
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                var image4 = UIImage(data: data!)!
-                
-                productimages.append(image4)
+                    do {
+                        
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        
+                        if data != nil {
+
+                        if let selectedimage2 = UIImage(data: data!) {
+                            
+                            productimages.append(selectedimage2)
+                            
+                        }
+                            
+                        }
+                        
+                    } catch let error {
+                        
+                        
+                    
+                }
                     
                 }
             }
@@ -379,11 +413,27 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 } else {
                     
                 let url = URL(string: profileUrl)
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                var image4 = UIImage(data: data!)!
-                
-                productimages.append(image4)
                     
+                    do {
+                        
+                        
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        
+                        if data != nil {
+ 
+                        if let selectedimage2 = UIImage(data: data!) {
+                            
+                            productimages.append(selectedimage2)
+                            
+                        }
+                            
+                        }
+                        
+                    } catch let error {
+                        
+                        
+                        
+                    }
                 }
             }
             
@@ -395,10 +445,21 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
                 } else {
                     
                 let url = URL(string: profileUrl)
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                var image4 = UIImage(data: data!)!
-                
-                productimages.append(image4)
+                    do {
+                        
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        
+                        if let selectedimage2 = UIImage(data: data!) {
+                            
+                            productimages.append(selectedimage2)
+                            
+                        }
+                        
+                    } catch let error {
+                        
+                        
+                        
+                    }
                     
                 }
             }
@@ -431,6 +492,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.tableView.alpha = 1
             self.collectionView.alpha = 1
             self.activityIndicator.alpha = 0
+            
             }
             
             )

@@ -25,11 +25,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I  C  E" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I6-S7-Ctc">
-                                <rect key="frame" x="105" y="282.5" width="165" height="102"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B A L L R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I6-S7-Ctc">
+                                <rect key="frame" x="40" y="282.5" width="295" height="102"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="165" id="Kfv-vh-Bs5"/>
-                                    <constraint firstAttribute="height" constant="102" id="gYy-92-4qS"/>
+                                    <constraint firstAttribute="width" constant="295" id="ID6-9R-tV2"/>
+                                    <constraint firstAttribute="height" constant="102" id="lyB-3H-5nr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="49"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -39,10 +39,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vb2-vj-gbm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="90k-P8-T4t"/>
-                            <constraint firstItem="9I6-S7-Ctc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9oC-eY-APF"/>
+                            <constraint firstItem="9I6-S7-Ctc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FUU-rS-329"/>
                             <constraint firstAttribute="bottom" secondItem="vb2-vj-gbm" secondAttribute="bottom" id="NQm-ZN-BOo"/>
+                            <constraint firstItem="9I6-S7-Ctc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="PU1-sw-4Tl"/>
                             <constraint firstItem="vb2-vj-gbm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wdp-JB-xYA"/>
-                            <constraint firstItem="9I6-S7-Ctc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dMC-Ry-M39"/>
                             <constraint firstItem="vb2-vj-gbm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="xeU-La-JaQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

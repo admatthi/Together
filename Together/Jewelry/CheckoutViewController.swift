@@ -35,7 +35,7 @@ class CheckoutViewController: UIViewController {
         
        
         
-        if let url = NSURL(string: "http://www.joinmyfam.com/purchases"
+        if let url = NSURL(string: "https://theballrshop.com/pages/purchases-returns"
             ) {
             UIApplication.shared.openURL(url as URL)
         }
@@ -49,7 +49,7 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var mainimage: UIImageView!
     @IBAction func tapPolicy(_ sender: Any) {
         
-        if let url = NSURL(string: "http://www.joinmyfam.com/purchases"
+        if let url = NSURL(string: "https://theballrshop.com/pages/purchases-returns"
             ) {
             UIApplication.shared.openURL(url as URL)
         }

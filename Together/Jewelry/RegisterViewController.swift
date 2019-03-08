@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate     {
 
     @IBAction func tapTerms(_ sender: Any) {
         
-        if let url = NSURL(string: "http://www.joinmyfam.com/terms"
+        if let url = NSURL(string: "https://theballrshop.com/pages/terms"
             ) {
             UIApplication.shared.openURL(url as URL)
         }

@@ -15,6 +15,16 @@ import FirebaseAuth
 import FBSDKCoreKit
 
 var searched = Bool()
+var searchids = [String]()
+
+var searchdescriptions = [String:String]()
+var searchnames = [String:String]()
+var programsearchnames = [String:String]()
+var searchusedprices = [String:String]()
+var searchimages = [String:UIImage]()
+var brandsearchnames = [String:String]()
+var searchimageurls = [String:String]()
+var searchtoppics = [String:String]()
 
 class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
@@ -24,12 +34,14 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidAppear(_ animated: Bool) {
         
+        setTabBarVisible(visible: true, animated: true)
+
         if searched {
             
             
         } else {
             
-            projectids.shuffle()
+            searchids.shuffle()
             collectionView.reloadData()
             collectionView.alpha = 1
         }
@@ -108,20 +120,21 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var errorlabel: UILabel!
     var querytext = String()
-    
+ 
+
     func queryforids(completed: @escaping (() -> ()) ) {
 
         var functioncounter = 0
         
-        projectids.removeAll()
-        descriptions.removeAll()
-        names.removeAll()
-        programnames.removeAll()
-        prices.removeAll()
-        toppics.removeAll()
-        images.removeAll()
-        brandnames.removeAll()
-        imageurls.removeAll()
+        searchids.removeAll()
+        searchdescriptions.removeAll()
+        searchnames.removeAll()
+        programsearchnames.removeAll()
+        searchusedprices.removeAll()
+        searchtoppics.removeAll()
+        searchimages.removeAll()
+        brandsearchnames.removeAll()
+        searchimageurls.removeAll()
         
         ref?.child("Products").queryOrdered(byChild: "Brand").queryStarting(atValue: querytext).queryEnding(atValue: querytext+"\u{f8ff}").queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
 
@@ -140,15 +153,33 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     
                     let ids = each.key
                     
-                    projectids.append(ids)
+                    searchids.append(ids)
                     
                     functioncounter += 1
                     
-                    if functioncounter == snapDict.count {
+                    if snapDict.count > 14 {
                         
-                        completed()
+                        if functioncounter == 14 {
+                            
+                            self.beginnumber = 0
+                            completed()
+                            
+                        }
+                        
+                    } else {
+                        
+                        if functioncounter == snapDict.count {
+                            
+                            self.beginnumber = 0
+                            
+                            completed()
+                            
+                        }
                         
                     }
+                    
+                    
+                    
                     
                     
                 }
@@ -187,15 +218,33 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     
                     let ids = each.key
                     
-                    projectids.append(ids)
+                    searchids.append(ids)
                     
                     functioncounter += 1
                     
-                    if functioncounter == snapDict.count {
+                    if snapDict.count > 14 {
                         
-                        completed()
+                        if functioncounter == 14 {
+                            
+                            self.beginnumber = 0
+                            completed()
+                            
+                        }
+                        
+                    } else {
+                        
+                        if functioncounter == snapDict.count {
+                            
+                            self.beginnumber = 0
+                            
+                            completed()
+                            
+                        }
                         
                     }
+                    
+                    
+                    
                     
                     
                 }
@@ -216,11 +265,31 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
+    var beginnumber = Int()
+    var querying = Bool()
+    
+    var slicedids : ArraySlice<String> = []
+    
     func queryforinfo() {
-        self.collectionView.alpha = 0
+        
+        searchids = Array(Set(searchids))
+        slicedids = searchids.dropFirst(beginnumber)
+        
+        if slicedids.count == 0 {
+            
+            activityIndicator.alpha = 0
+
+        }
+        //        var slicedids = searchids
+        
+        //        slicedids.removeAll()
+        
+        //        self.collectionView.alpha = 0
         var functioncounter = 0
         
-        for each in projectids {
+        querying = true
+        
+        for each in slicedids.prefix(14) {
             
             
             //        ref?.child("Products").child(each).updateChildValues(["Gender" : "Women"])
@@ -234,52 +303,52 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     
                     if author2 != 0 {
                         var intviews = Double(author2)
-                        intviews = intviews * 1.15
+                        intviews = intviews * 1.3
                         var author3 = "$\(String(Int(intviews)))"
-                        usedprices[each] = author3
+                        searchusedprices[each] = author3
                         
                     } else {
                         
                         if var author2 = value?["New Price"] as? String {
                             
                             var intviews = Double(Int(author2.dropFirst())!)
-                            intviews = intviews * 1.15
+                            intviews = intviews * 1.3
                             author2 = "$\(String(Int(intviews)))"
-                            usedprices[each] = author2
+                            searchusedprices[each] = author2
                             
                         }
                     }
                 }
                 
                 if var author2 = value?["Description"] as? String {
-                    descriptions[each] = author2
+                    searchdescriptions[each] = author2
                     
                 }
                 
                 if var author2 = value?["Brand"] as? String {
                     
-                    brandnames[each] = author2
+                    brandsearchnames[each] = author2
                     
                 } else {
                     
-                    brandnames[each] = " "
+                    brandsearchnames[each] = " "
                     
                 }
                 if var name = value?["Model"] as? String {
                     
                     
-                    names[each] = name
+                    searchnames[each] = name
                     
                 } else {
                     
                     if var name = value?["Model"] as? Int {
                         
                         
-                        names[each] = String(name)
+                        searchnames[each] = String(name)
                         
                     } else {
                         
-                        names[each] = " "
+                        searchnames[each] = " "
                         
                     }
                 }
@@ -287,44 +356,59 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 
                 if var views = value?["ProgramName"] as? String {
-                    programnames[each] = views
+                    programsearchnames[each] = views
                     
                 }
                 
                 if var profileUrl = value?["Image"] as? String {
                     // Create a storage reference from the URL
-                    imageurls[each] = profileUrl
+                    searchimageurls[each] = profileUrl
                     
                     let url = URL(string: profileUrl)
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    if let selectedimage2 = UIImage(data: data!) {
                     
-                        images[each] = selectedimage2
+                    do {
                         
-                    } else {
-                        
-                        images[each] = UIImage(named: "Search-1")
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
 
+                        if data != nil {
+                            if let selectedimage2 = UIImage(data: data!) {
+                                
+                                searchimages[each] = selectedimage2
+                                
+                            }
+                            
+                        } else {
+                            
+                            selectedimage = UIImage(named: "Watch-3")!
+                            
+                        }
+                        
+                    } catch let error {
+                        
+                        searchimages[each] = UIImage(named: "Watch-3")
                     }
+                    
+                 
                     
                     functioncounter += 1
                     
                 }
                 
                 
-                //                toppics[each] = UIImage(named: "\(each)pic")
+                //                searchtoppics[each] = UIImage(named: "\(each)pic")
                 
                 
                 print(functioncounter)
                 
                 
                 
-                if functioncounter == projectids.count {
-                    
+                if functioncounter == searchids.count || functioncounter == 14 || functioncounter == self.slicedids.count {
+            
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
                     self.collectionView.reloadData()
                     self.collectionView.alpha = 1
+                    self.querying = false
                 }
                 
                 
@@ -335,18 +419,18 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
 
        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        selectedbrand = brandnames[projectids[indexPath.row]]!
-        selectedid = projectids[indexPath.row]
+        selectedbrand = brandsearchnames[searchids[indexPath.row]]!
+        selectedid = searchids[indexPath.row]
         unlockedid = "0"
-        selectedimage = images[projectids[indexPath.row]]!
-        selectedname = names[projectids[indexPath.row]]!
-        selectedimageurl = imageurls[projectids[indexPath.row]]!
-        //        selectedpitch = descriptions[projectids[indexPath.row]]!
-        //        selectedprice = usedprices[projectids[indexPath.row]]!
+        selectedimage = searchimages[searchids[indexPath.row]]!
+        selectedname = searchnames[searchids[indexPath.row]]!
+        selectedimageurl = searchimageurls[searchids[indexPath.row]]!
+        //        selectedpitch = searchdescriptions[searchids[indexPath.row]]!
+        //        selectedprice = searchusedprices[searchids[indexPath.row]]!
         
-        //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedsubs = usedprices[projectids[indexPath.row]]!
-        //        selectedprogramname = programnames[projectids[indexPath.row]]!
+        //        selectedprogramsearchnames = programsearchnames[searchids[indexPath.row]]!
+        selectedsubs = searchusedprices[searchids[indexPath.row]]!
+        //        selectedprogramname = programsearchnames[searchids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "SearchToProduct", sender: self)
         }
@@ -355,37 +439,133 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
   
+    if slicedids.count > 0 {
         
-        if images.count > 0 {
+        if searchimages.count > 0 {
             
-            return images.count
+            return searchimages.count
             
         } else {
             
             return 0
+            
             }
-        }
+    } else {
+        
+        return 0
 
-func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-    let tabBar = self.tabBarController?.tabBar
-    
-    if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0{
-        
-        setTabBarVisible(visible: false, animated: true)
-        
-        
     }
-        
-    else{
-        
-        setTabBarVisible(visible: true, animated: true)
-        
-        
-        //        }
-        
+    
     }
-}
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let tabBar = self.tabBarController?.tabBar
+        
+        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0{
+            
+//            setTabBarVisible(visible: false, animated: true)
+            
+            
+        }
+            
+        else{
+            
+            setTabBarVisible(visible: true, animated: true)
+            
+            
+            //        }
+            
+        }
+        
+        
+                let height = scrollView.frame.size.height
+                let contentYoffset = scrollView.contentOffset.y
+                let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+                if distanceFromBottom < height {
+                    
+                    if querying {
+                        
+                        
+                        
+                    } else {
+                        
+                        if searchids.count > beginnumber && searchids.count > 14 {
+
+                        
+                        if beginnumber == 0 {
+                            
+                            activityIndicator.alpha = 1
+                            activityIndicator.startAnimating()
+                            beginnumber = 14
+                            queryforinfo()
+                            querying = true
+                            
+                        } else {
+                            
+                            if beginnumber == 14 {
+                                
+                                activityIndicator.alpha = 1
+                                activityIndicator.startAnimating()
+                                beginnumber = 28
+                                queryforinfo()
+                                querying = true
+                                
+                            } else {
+                                
+                                if beginnumber == 28 {
+                                    
+                                    activityIndicator.alpha = 1
+                                    activityIndicator.startAnimating()
+                                    beginnumber = 42
+                                    queryforinfo()
+                                    querying = true
+                                    
+                                } else {
+                                    
+                                    if beginnumber == 42 {
+                                        activityIndicator.alpha = 1
+                                        activityIndicator.startAnimating()
+                                        beginnumber = 56
+                                        queryforinfo()
+                                        querying = true
+                                        
+                                    } else {
+                                        
+                                        
+                                        if beginnumber == 56 {
+                                            activityIndicator.alpha = 1
+                                            activityIndicator.startAnimating()
+                                            beginnumber = 72
+                                            queryforinfo()
+                                            querying = true
+                                        } else {
+                                            
+                                            if beginnumber == 72 {
+                                                activityIndicator.alpha = 1
+                                                activityIndicator.startAnimating()
+                                                beginnumber = 42
+                                                queryforinfo()
+                                            }
+                                        }
+                                    }
+                                
+                                }
+                            }
+                            
+                            }
+ 
+                            
+                        } else {
+                            
+                            activityIndicator.alpha = 0
+                        }
+                        
+                    }
+                    
+            }
+            
+    }
 
 func setTabBarVisible(visible:Bool, animated:Bool) {
     
@@ -434,25 +614,29 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     //        cell.layer.cornerRadius = 10.0
     //        cell.layer.masksToBounds = true
     
-    if images.count > indexPath.row  && brandnames.count > indexPath.row && names.count > indexPath.row && projectids.count > indexPath.row {
+   
+    if searchimages.count > indexPath.row  && brandsearchnames.count > indexPath.row && searchnames.count > indexPath.row && searchids.count > indexPath.row && slicedids.count > indexPath.row {
         
-        cell.thumbnail.image = images[projectids[indexPath.row]]
-        cell.pricelabel.text = usedprices[projectids[indexPath.row]]?.uppercased()
+        cell.thumbnail.image = searchimages[searchids[indexPath.row]]
+        cell.pricelabel.text = searchusedprices[searchids[indexPath.row]]?.uppercased()
         cell.pricelabel.addCharacterSpacing()
         
-        print(projectids[indexPath.row])
+        print(searchids[indexPath.row])
         
-        if let string2 = names[projectids[indexPath.row]]?.uppercased() {
+        if let string2 = searchnames[searchids[indexPath.row]]?.uppercased() {
             
-            cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!.uppercased())"
+            cell.textlabel.text = "\(brandsearchnames[searchids[indexPath.row]]!.uppercased()) \(searchnames[searchids[indexPath.row]]!.uppercased())"
         } else {
             
-            cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!)"
+            cell.textlabel.text = "\(brandsearchnames[searchids[indexPath.row]]!.uppercased()) \(searchnames[searchids[indexPath.row]]!)"
         }
         
         
         
         cell.textlabel.addCharacterSpacing()
+        
+    } else {
+        
         
     }
     

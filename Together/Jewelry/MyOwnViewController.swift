@@ -157,8 +157,27 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     // Create a storage reference from the URL
                     
                     let url = URL(string: profileUrl)
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    selectedimage = UIImage(data: data!)!
+                    do {
+                        
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        
+                        if data != nil {
+                        if let selectedimage2 = UIImage(data: data!) {
+                            
+                            selectedimage = selectedimage2
+                            
+                        }
+                            
+                        } else {
+                            
+                            selectedimage = UIImage(named: "Watch-3")!
+
+                        }
+                        
+                    } catch let error {
+                        
+                        selectedimage = UIImage(named: "Watch-3")!
+                    }
                     
                     self.orderimages[each] = selectedimage
                     

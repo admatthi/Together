@@ -78,10 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if projectids.count == 0 {
                 
-                queryforids { () -> () in
-                    
-                    self.queryforinfo()
-                }
+//                queryforids { () -> () in
+//                    
+//                    self.queryforinfo()
+//                }
                 
             }
             
@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         brandnames.removeAll()
         imageurls.removeAll()
         
-            ref?.child("Products").queryLimited(toFirst: 25).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -173,11 +173,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         functioncounter += 1
                         
-                        if functioncounter == snapDict.count {
+                        if snapDict.count > 14 {
                             
-                            completed()
+                            if functioncounter == 14 {
+                                
+                                completed()
+                                
+                            }
+                            
+                        } else {
+                            
+                            if functioncounter == snapDict.count {
+                                
+                                completed()
+                                
+                            }
                             
                         }
+                        
+                        
+                        
                         
                         
                     }
@@ -205,7 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if author2 != 0 {
                         
                         var intviews = Double(author2)
-                        intviews = intviews * 1.15
+                        intviews = intviews * 1.3
                         var author3 = "$\(String(Int(intviews)))"
                         usedprices[each] = author3
                         
@@ -214,7 +229,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if var author2 = value?["New Price"] as? String {
                             
                             var intviews = Double(Int(author2.dropFirst())!)
-                            intviews = intviews * 1.15
+                            intviews = intviews * 1.3
                             author2 = "$\(String(Int(intviews)))"
                             usedprices[each] = author2
                             

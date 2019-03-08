@@ -100,11 +100,11 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
             
 //            tapexplore.slideInFromLeft()
 
-            tapexplore.alpha = 1
+//            tapexplore.alpha = 1
             
         } else {
             
-            tapexplore.alpha = 1
+//            tapexplore.alpha = 1
         }
         
     }
@@ -127,11 +127,11 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
             
 //            tapexplore.slideInFromLeft()
 
-            tapexplore.alpha = 1
+//            tapexplore.alpha = 1
 
         } else {
             
-            tapexplore.alpha = 1
+//            tapexplore.alpha = 1
         }
     }
     

@@ -60,13 +60,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        allids.removeAll()
-        
-        if allids.count == 0 {
-            
-            queryforalltheids()
-
-        }
+     
         activityIndicator.color = myblue
         tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
@@ -228,7 +222,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         
         if selectedfilter == "" {
             
-        ref?.child("Products").queryLimited(toFirst: 10).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -242,11 +236,29 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                     
                     functioncounter += 1
                     
-                    if functioncounter == snapDict.count {
+                    if snapDict.count > 14 {
                         
-                        completed()
+                        if functioncounter == 14 {
+                            
+                            self.beginnumber = 0
+                            completed()
+                            
+                        }
+                        
+                    } else {
+                        
+                        if functioncounter == snapDict.count {
+                            
+                            self.returnednumber = snapDict.count
+                            
+                            completed()
+                            
+                        }
                         
                     }
+                    
+                    
+                    
                     
                     
                 }
@@ -262,7 +274,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
                 var intselectedfilter = Int(selectedfilter)
                 
-                ref?.child("Products").queryOrdered(byChild: selectedkey).queryStarting(atValue: minprice).queryEnding(atValue: intselectedfilter).queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
+                ref?.child("Products").queryOrdered(byChild: selectedkey).queryStarting(atValue: minprice).queryEnding(atValue: intselectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     var value = snapshot.value as? NSDictionary
                     
@@ -276,11 +288,29 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                             
                             functioncounter += 1
                             
-                            if functioncounter == snapDict.count {
-                                
-                                completed()
+                            if snapDict.count > 14 {
+
+                                if functioncounter == 14 {
+
+                                    self.beginnumber = 0
+                                    completed()
+
+                                }
+
+                            } else {
+                            
+                                if functioncounter == snapDict.count {
+                                    
+                                    self.returnednumber = snapDict.count
+                                    
+                                    completed()
+                                    
+                                }
                                 
                             }
+                           
+                            
+                           
                             
                             
                         }
@@ -291,7 +321,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
             } else {
                 
-            ref?.child("Products").queryOrdered(byChild: selectedkey).queryEqual(toValue: selectedfilter).queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("Products").queryOrdered(byChild: selectedkey).queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
@@ -305,13 +335,31 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                         
                         functioncounter += 1
                         
-                        if functioncounter == snapDict.count {
+                        if snapDict.count > 14 {
                             
-                            completed()
+                            if functioncounter == 14 {
+                                
+                                self.beginnumber = 0
+                                completed()
+                                
+                            }
+                            
+                        } else {
+                            
+                            if functioncounter == snapDict.count {
+                                
+                                self.beginnumber = 0
+
+                                completed()
+                                
+                            }
                             
                         }
                         
                         
+                        
+                        
+                        
                     }
                     
                 }
@@ -322,71 +370,37 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         }
     }
     
-    func queryforalltheids() {
-        
-        
-        var functioncounter = 0
-        
-            ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                if let snapDict = snapshot.value as? [String:AnyObject] {
-                    
-                    for each in snapDict {
-                        
-                        let ids = each.key
-                        
-                        self.allids.append(ids)
-                        
-                        functioncounter += 1
-                        
-                      
-                        
-                    }
-                    
-                }
-                
-            })
-            
-        
-//            ref?.child("Products").queryOrdered(byChild: "Category").queryEqual(toValue: selectedfilter).observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//                var value = snapshot.value as? NSDictionary
-//
-//                if let snapDict = snapshot.value as? [String:AnyObject] {
-//
-//                    for each in snapDict {
-//
-//                        let ids = each.key
-//
-//                        projectids.append(ids)
-//
-//                        functioncounter += 1
-//
-//                        if functioncounter == snapDict.count {
-//
-//                            completed()
-//
-//                        }
-//
-//
-//                    }
-//
-//                }
-//
-//            })
-    }
+
     
     @IBOutlet weak var collectionView2: UICollectionView!
 
+//    var slicedids = [String]()
+    var beginnumber = Int()
     
+    var slicedids : ArraySlice<String> = []
+
     func queryforinfo() {
-        self.collectionView.alpha = 0
+        
+
+        slicedids = projectids.dropFirst(beginnumber)
+        
+        if slicedids.count == 0 {
+            
+            activityIndicator.alpha = 0
+            
+        }
+        //        var slicedids = projectids
+        
+        //        slicedids.removeAll()
+        
+        //        self.collectionView.alpha = 0
         var functioncounter = 0
         
-        for each in projectids {
-            
+        querying = true
+        
+        for each in slicedids.prefix(14) {
+//        for each in slicedids {
+
        
 //        ref?.child("Products").child(each).updateChildValues(["Gender" : "Women"])
 
@@ -399,21 +413,31 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                     
                     if author2 != 0 {
                     var intviews = Double(author2)
-                    intviews = intviews * 1.15
+                    intviews = intviews * 1.3
                     var author3 = "$\(String(Int(intviews)))"
                     usedprices[each] = author3
                         
                     } else {
                         
+                      
+                            
                         if var author2 = value?["New Price"] as? String {
 
                             var intviews = Double(Int(author2.dropFirst())!)
-                            intviews = intviews * 1.15
+                            intviews = intviews * 1.3
                             author2 = "$\(String(Int(intviews)))"
                             usedprices[each] = author2
 
                         }
                     }
+                }
+                
+                if var author2 = value?["Used Price"] as? Double {
+                    
+                    ref!.child("Products").child(each).updateChildValues(["Used Price" : Int(author2)])
+                    
+                    
+                    
                 }
                 
                 if var author2 = value?["Description"] as? String {
@@ -464,10 +488,23 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                     if let data = try? Data(contentsOf: url!)
                         
                     {
-                        let image: UIImage = (UIImage(data: data))!
-                        images[each] = image
-                        
-                        functioncounter += 1
+                        if data != nil {
+                            if let selectedimage2 = UIImage(data: data) {
+                                
+                                images[each] = selectedimage2
+                                functioncounter += 1
+
+                            }
+                            
+                        } else {
+                            
+                            images[each] = UIImage(named: "Watch-3")!
+                                    functioncounter += 1
+                            
+                        }
+
+                            
+
 
 
                     } else {
@@ -488,14 +525,16 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 print(functioncounter)
                 
                 
+//                if functioncounter == projectids.count {
+
+                if functioncounter == projectids.count || functioncounter == 14 {
                 
-                if functioncounter == projectids.count {
-                    
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
                     self.collectionView.reloadData()
                     self.collectionView.alpha = 1
                     self.tapfilter.alpha = 1
+                    self.querying = false
                 }
                 
                 
@@ -503,6 +542,8 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
             
         }
     }
+    
+    var returnednumber = Int()
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 //
@@ -543,130 +584,63 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         
         if collectionView.tag == 2 {
             
+            descriptions.removeAll()
+            names.removeAll()
+            programnames.removeAll()
+            prices.removeAll()
+            toppics.removeAll()
+            images.removeAll()
+            brandnames.removeAll()
+            imageurls.removeAll()
+            beginnumber = 0
+            collectionView.alpha = 0
+            activityIndicator.alpha = 1
+            activityIndicator.startAnimating()
         selectedindex = indexPath.row
             
         collectionView2.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+            
+        collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.top, animated: true)
+
 
         collectionView2.reloadData()
+        
+            collectionView.alpha = 0
             
             if indexPath.row == 0 {
-                selectedfilter = ""
-                selectedkey = ""
-                projectids.removeAll()
-                projectids.append(allids[0])
-                projectids.append(allids[1])
-                projectids.append(allids[2])
-                projectids.append(allids[3])
-                projectids.append(allids[4])
-                projectids.append(allids[5])
-                projectids.append(allids[6])
-                projectids.append(allids[7])
-                projectids.append(allids[8])
-                projectids.append(allids[9])
-                descriptions.removeAll()
-                names.removeAll()
-                programnames.removeAll()
-                prices.removeAll()
-                toppics.removeAll()
-                images.removeAll()
-                brandnames.removeAll()
-                imageurls.removeAll()
-                activityIndicator.alpha = 1
-                activityIndicator.startAnimating()
-                collectionView.alpha = 0
-                tapfilter.alpha = 0
+      
                 queryforinfo()
             }
             
             if indexPath.row == 1 {
                 
-                projectids.removeAll()
-                projectids.append(allids[10])
-                projectids.append(allids[11])
-                projectids.append(allids[12])
-                projectids.append(allids[13])
-                projectids.append(allids[14])
-                projectids.append(allids[15])
-                projectids.append(allids[16])
-                projectids.append(allids[17])
-                projectids.append(allids[18])
-                projectids.append(allids[19])
-                descriptions.removeAll()
-                names.removeAll()
-                programnames.removeAll()
-                prices.removeAll()
-                toppics.removeAll()
-                images.removeAll()
-                brandnames.removeAll()
-                imageurls.removeAll()
-                activityIndicator.alpha = 1
-                activityIndicator.startAnimating()
-                collectionView.alpha = 0
-                tapfilter.alpha = 0
+                projectids.shuffle()
+                
                 queryforinfo()
 
                 }
             if indexPath.row == 2 {
                 
                 
-                projectids.removeAll()
-                projectids.append(allids[20])
-                projectids.append(allids[21])
-                projectids.append(allids[22])
-                projectids.append(allids[23])
-                projectids.append(allids[24])
-                projectids.append(allids[25])
-                projectids.append(allids[26])
-                projectids.append(allids[27])
-                projectids.append(allids[28])
-                projectids.append(allids[29])
+                projectids.shuffle()
+        
                 descriptions.removeAll()
-                names.removeAll()
-                programnames.removeAll()
-                prices.removeAll()
-                toppics.removeAll()
-                images.removeAll()
-                brandnames.removeAll()
-                imageurls.removeAll()
-                activityIndicator.alpha = 1
-                activityIndicator.startAnimating()
-                collectionView.alpha = 0
-                tapfilter.alpha = 0
+       
                 queryforinfo()
 
             }
             
             if indexPath.row == 3 {
                 
-                projectids.removeAll()
-                projectids.append(allids[30])
-                projectids.append(allids[31])
-                projectids.append(allids[32])
-                projectids.append(allids[33])
-                projectids.append(allids[34])
-                projectids.append(allids[35])
-                projectids.append(allids[36])
-                projectids.append(allids[37])
-                projectids.append(allids[38])
-                projectids.append(allids[19])
-                descriptions.removeAll()
-                names.removeAll()
-                programnames.removeAll()
-                prices.removeAll()
-                toppics.removeAll()
-                images.removeAll()
-                brandnames.removeAll()
-                imageurls.removeAll()
-                activityIndicator.alpha = 1
-                activityIndicator.startAnimating()
-                collectionView.alpha = 0
-                tapfilter.alpha = 0
+                projectids.shuffle()
+    
                 queryforinfo()
 
             }
             
         } else {
             
+        print(projectids[indexPath.row])
         selectedbrand = brandnames[projectids[indexPath.row]]!
         selectedid = projectids[indexPath.row]
         unlockedid = "0"
@@ -705,25 +679,115 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         }
     }
     
+    var querying = Bool()
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-    let tabBar = self.tabBarController?.tabBar
+        let tabBar = self.tabBarController?.tabBar
         
-    if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0{
+        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
             
-        setTabBarVisible(visible: false, animated: true)
-
-        
+//            setTabBarVisible(visible: false, animated: true)
+            
+            
         }
-        
+            
         else{
-        
-        setTabBarVisible(visible: true, animated: true)
-
             
-//        }
-        
+            setTabBarVisible(visible: true, animated: true)
+            
+            
+            //        }
+            
         }
+        
+        
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        
+        if distanceFromBottom < height {
+            
+            if querying {
+                
+                
+                
+            } else {
+                
+                if projectids.count > beginnumber && projectids.count > 14 {
+                    
+                    
+                    if beginnumber == 0 {
+                        
+                        activityIndicator.alpha = 1
+                        activityIndicator.startAnimating()
+                        beginnumber = 14
+                        queryforinfo()
+                        querying = true
+                        
+                    } else {
+                        
+                        if beginnumber == 14 {
+                            
+                            activityIndicator.alpha = 1
+                            activityIndicator.startAnimating()
+                            beginnumber = 28
+                            queryforinfo()
+                            querying = true
+                            
+                        } else {
+                            
+                            if beginnumber == 28 {
+                                activityIndicator.alpha = 1
+                                activityIndicator.startAnimating()
+                                beginnumber = 42
+                                queryforinfo()
+                                querying = true
+                                
+                            } else {
+                                
+                                if beginnumber == 42 {
+                                    activityIndicator.alpha = 1
+                                    activityIndicator.startAnimating()
+                                    beginnumber = 56
+                                    queryforinfo()
+                                    querying = true
+                                    
+                                } else {
+                                    
+                                    
+                                    if beginnumber == 56 {
+                                        activityIndicator.alpha = 1
+                                        activityIndicator.startAnimating()
+                                        beginnumber = 72
+                                        queryforinfo()
+                                        querying = true
+                                    } else {
+                                        
+                                        if beginnumber == 72 {
+                                            activityIndicator.alpha = 1
+                                            activityIndicator.startAnimating()
+                                            beginnumber = 42
+                                            queryforinfo()
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                        
+                    }e
+                    
+                    
+                } else {
+                    
+                    activityIndicator.alpha = 0
+                }
+                
+            }
+            
+        }
+        
     }
     
     func setTabBarVisible(visible:Bool, animated:Bool) {
@@ -951,7 +1015,11 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                   cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!.uppercased())"
             } else {
                 
+                if let string3 = brandnames[projectids[indexPath.row]]?.uppercased() {
+                    
                   cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!)"
+                    
+                }
             }
           
             
@@ -997,3 +1065,5 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
 }
 
 var selectedprogramname = String()
+
+
