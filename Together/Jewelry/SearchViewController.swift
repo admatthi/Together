@@ -54,34 +54,10 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
 
         collectionView.alpha = 0
         
-      
-        //            queryforalltheids()
-        
-//        queryforids { () -> () in
-//
-//            self.queryforinfo()
-//
-//        }
-        
-        
-        // Do any additional setup after loading the view.
     }
-    
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//        if searchBar.text == nil || searchBar.text == "" {
-//
-//
-//        } else {
-//
-//
-//
-//        }
-//    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        searched = true
         self.view.endEditing(true)
         FBSDKAppEvents.logEvent("Searched")
 
@@ -94,7 +70,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             collectionView.alpha = 0
             
             querytext = searchBar.text!.lowercased()
-            querytext = querytext.capitalizingFirstLetter()
+            querytext = querytext.capitalized
             queryforids { () -> () in
                 
                 self.queryforinfo()
@@ -124,7 +100,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchnewprices.removeAll()
         
         
-        ref?.child("Products").queryOrdered(byChild: "Name").queryStarting(atValue: querytext).queryEnding(atValue: querytext+"\u{f8ff}").queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Products").queryOrdered(byChild: "Name").queryStarting(atValue: querytext).queryEnding(atValue: querytext+"\u{f8ff}").queryLimited(toFirst: 25).observeSingleEvent(of: .value, with: { (snapshot) in
 
             var value = snapshot.value as? NSDictionary
             
@@ -171,7 +147,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         var functioncounter = 0
         
-        ref?.child("Products").queryOrdered(byChild: "Model").queryStarting(atValue: querytext).queryEnding(atValue: querytext+"\u{f8ff}").queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("Products").queryOrdered(byChild: "Model").queryStarting(atValue: querytext).queryEnding(atValue: querytext+"\u{f8ff}").queryLimited(toFirst: 25).observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -228,30 +204,12 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func queryforinfo() {
         
-        
-        //        slicedids = projectids
-        //
-        //        if slicedids.count == 0 {
-        //
-        //            activityIndicator.alpha = 0
-        //
-        //        }
-        //        var slicedids = projectids
-        
-        //        slicedids.removeAll()
-        
-        //        self.collectionView.alpha = 0
         var functioncounter = 0
         
         querying = true
         
-        for each in projectids {
-            //        for each in slicedids {
-            
-            
-            //        ref?.child("Products").child(each).updateChildValues(["Gender" : "Women"])
-            
-            
+        for each in searchids {
+ 
             ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
@@ -517,7 +475,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 //                if functioncounter == projectids.count {
                 
-                if functioncounter == projectids.count {
+                if functioncounter == searchids.count {
                     
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
@@ -548,7 +506,8 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         //        selectedprogramname = programsearchnames[searchids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "SearchToProduct", sender: self)
-        }
+        
+    }
     
 
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -587,14 +546,15 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     //        cell.layer.cornerRadius = 10.0
     //        cell.layer.masksToBounds = true
     
-    cell.textlabel.text = "\(searchnames[searchids[indexPath.row]]?.uppercased())"
-
-    if searchimages.count > indexPath.row {
+  
+    
+    if searchimages.count > indexPath.row && searchnames.count > indexPath.row{
         
+  
+        cell.textlabel.text = searchnames[searchids[indexPath.row]]?.uppercased()
         cell.thumbnail.image = searchimages[searchids[indexPath.row]]
         cell.pricelabel.text = searchusedprices[searchids[indexPath.row]]?.uppercased()
         cell.pricelabel.addCharacterSpacing()
-        
         print(searchids[indexPath.row])
         
         

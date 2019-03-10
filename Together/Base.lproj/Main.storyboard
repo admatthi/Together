@@ -224,8 +224,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="JOL-Km-cex" id="aEG-M6-cn2"/>
-                                    <outlet property="delegate" destination="JOL-Km-cex" id="kqh-9X-WtA"/>
+                                    <outlet property="dataSource" destination="JOL-Km-cex" id="eo3-mf-CBn"/>
+                                    <outlet property="delegate" destination="JOL-Km-cex" id="Sfo-Ln-YF9"/>
                                 </connections>
                             </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Qz2-dh-1fW">
