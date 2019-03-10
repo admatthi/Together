@@ -16,8 +16,10 @@ import FBSDKCoreKit
 
 var mygray = UIColor(red:0.45, green:0.43, blue:0.43, alpha:1.0)
 
+var selectedusedprice = String()
+var selectednewprice = String()
 var selectedid = String()
-
+var newprices = [String:String]()
 var usedprices = [String:String]()
 var brandnames = [String:String]()
 var images = [String:UIImage]()
@@ -31,6 +33,21 @@ var toppics = [String:UIImage]()
 var imageurls = [String:String]()
 var selectedbrand = String()
 var selectedkey = String()
+
+var k1 = [String:String]()
+var v1 = [String:String]()
+var k2 = [String:String]()
+var v2 = [String:String]()
+var k3 = [String:String]()
+var v3 = [String:String]()
+var k4 = [String:String]()
+var v4 = [String:String]()
+var k5 = [String:String]()
+var v5 = [String:String]()
+var k6 = [String:String]()
+var v6 = [String:String]()
+var k7 = [String:String]()
+var v7 = [String:String]()
 
 var minprice = Int()
 class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -64,29 +81,30 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         activityIndicator.color = myblue
         tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
+        collectionView2.alpha = 1
+        selectedindex = 0
+        activityIndicator.startAnimating()
+        collectionView.alpha = 1
+        
         genres.removeAll()
         genres.append("Buy Now")
         genres.append("Best Sellers")
         genres.append("Trending")
         genres.append("Under Retail")
         genres.append("Latest")
-        collectionView2.alpha = 1
-        selectedindex = 0
         
+            
         
         //            tapBack.alpha = 0
 
 //        if projectids.count == 0 && selectedfilter != "" {
         
         
+        collectionView.reloadData()
+
+        if projectids.count == 0 {
         
-        if projectids.count > 0 {
-            
-            activityIndicator.alpha = 0
-            collectionView.reloadData()
-            
-            if selectedkey != "" {
-                
+        
                 activityIndicator.alpha = 1
                 activityIndicator.startAnimating()
                 collectionView.alpha = 0
@@ -101,6 +119,20 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 images.removeAll()
                 brandnames.removeAll()
                 imageurls.removeAll()
+            
+            if selectedkey == "" {
+             
+                selectedfilter  = "Buy Now"
+                selectedkey = "Tag1"
+                
+                queryforids { () -> () in
+                    
+                    self.queryforinfo()
+                    
+                }
+                
+            } else {
+             
                 
                 queryforids { () -> () in
                     
@@ -110,33 +142,15 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
             }
             
-            
+                
         } else {
-            
-            activityIndicator.alpha = 1
-            activityIndicator.startAnimating()
-            collectionView.alpha = 0
-            tapfilter.alpha = 0
-            
-            projectids.removeAll()
-            descriptions.removeAll()
-            names.removeAll()
-            programnames.removeAll()
-            prices.removeAll()
-            toppics.removeAll()
-            images.removeAll()
-            brandnames.removeAll()
-            imageurls.removeAll()
-//            queryforalltheids()
             
             queryforids { () -> () in
                 
                 self.queryforinfo()
                 
             }
-            
-        }
-        
+        }        
             
 
         self.tabBarController?.tabBar.isHidden = false
@@ -159,51 +173,6 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
     @IBAction func tapback(_ sender: Any) {
     }
     
-  
-    func queryfornumberedids(completed: @escaping (() -> ()) ) {
-        
-        var functioncounter = 0
-        
-
-        ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-            
-                if let snapDict = snapshot.value as? [String:AnyObject] {
-                    
-                    for each in snapDict {
-                        
-                        let ids = each.key
-                        
-                        if projectids.contains(ids) {
-                            
-                            functioncounter += 1
-
-                        } else {
-                            
-                            projectids.append(ids)
-                            functioncounter += 1
-
-                        }
-                        
-                        
-                        if functioncounter == snapDict.count {
-                            
-                            completed()
-                            
-                        }
-                        
-                        
-                    }
-                    
-                }
-                
-            })
-        
-    }
-    
-    var allids = [String]()
-    
     func queryforids(completed: @escaping (() -> ()) ) {
         
         var functioncounter = 0
@@ -217,57 +186,22 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         images.removeAll()
         brandnames.removeAll()
         imageurls.removeAll()
+         k1.removeAll()
+         v1.removeAll()
+         k2.removeAll()
+         v2.removeAll()
+         k3.removeAll()
+         v3.removeAll()
+         k4.removeAll()
+         v4.removeAll()
+         k5.removeAll()
+         v5.removeAll()
+         k6.removeAll()
+         v6.removeAll()
+         k7.removeAll()
+         v7.removeAll()
         
         collectionView.reloadData()
-        
-        if selectedfilter == "" {
-            
-        ref?.child("Products").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            var value = snapshot.value as? NSDictionary
-            
-            if let snapDict = snapshot.value as? [String:AnyObject] {
-                
-                for each in snapDict {
-                    
-                    let ids = each.key
-                    
-                    projectids.append(ids)
-                    
-                    functioncounter += 1
-                    
-                    if snapDict.count > 14 {
-                        
-                        if functioncounter == 14 {
-                            
-                            self.beginnumber = 0
-                            completed()
-                            
-                        }
-                        
-                    } else {
-                        
-                        if functioncounter == snapDict.count {
-                            
-                            self.returnednumber = snapDict.count
-                            
-                            completed()
-                            
-                        }
-                        
-                    }
-                    
-                    
-                    
-                    
-                    
-                }
-                
-            }
-            
-        })
-            
-        } else {
             
             
             if selectedkey == "Used Price" {
@@ -338,8 +272,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                         if snapDict.count > 14 {
                             
                             if functioncounter == 14 {
-                                
-                                self.beginnumber = 0
+                            
                                 completed()
                                 
                             }
@@ -348,8 +281,6 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                             
                             if functioncounter == snapDict.count {
                                 
-                                self.beginnumber = 0
-
                                 completed()
                                 
                             }
@@ -367,7 +298,6 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
             })
         }
             
-        }
     }
     
 
@@ -382,13 +312,13 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
     func queryforinfo() {
         
 
-        slicedids = projectids.dropFirst(beginnumber)
-        
-        if slicedids.count == 0 {
-            
-            activityIndicator.alpha = 0
-            
-        }
+//        slicedids = projectids
+//
+//        if slicedids.count == 0 {
+//
+//            activityIndicator.alpha = 0
+//
+//        }
         //        var slicedids = projectids
         
         //        slicedids.removeAll()
@@ -398,7 +328,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         
         querying = true
         
-        for each in slicedids.prefix(14) {
+        for each in projectids {
 //        for each in slicedids {
 
        
@@ -411,84 +341,49 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
                 if var author2 = value?["Used Price"] as? Int {
                     
-                    if author2 != 0 {
+
                     var intviews = Double(author2)
-                    intviews = intviews * 1.3
                     var author3 = "$\(String(Int(intviews)))"
                     usedprices[each] = author3
                         
-                    } else {
-                        
-                      
-                            
-                        if var author2 = value?["New Price"] as? String {
-
-                            var intviews = Double(Int(author2.dropFirst())!)
-                            intviews = intviews * 1.3
-                            author2 = "$\(String(Int(intviews)))"
-                            usedprices[each] = author2
-
-                        }
-                    }
                 }
                 
-                if var author2 = value?["Used Price"] as? Double {
-                    
-                    ref!.child("Products").child(each).updateChildValues(["Used Price" : Int(author2)])
+                if var author2 = value?["New Price"] as? Int {
                     
                     
+                    var intviews = Double(author2)
+                    var author3 = "$\(String(Int(intviews)))"
+                    newprices[each] = author3
                     
                 }
                 
                 if var author2 = value?["Description"] as? String {
-                    descriptions[each] = author2
+                    
+                        descriptions[each] = author2
                     
                 }
-            
-            if var author2 = value?["Brand"] as? String {
                 
-                brandnames[each] = author2
-                
-            } else {
-                
-                brandnames[each] = " "
-
-            }
-                if var name = value?["Model"] as? String {
+                if var author2 = value?["Name"] as? String {
                     
-                  
-                    names[each] = name
-                    
-                } else {
-                    
-                    if var name = value?["Model"] as? Int {
-                        
-                        
-                        names[each] = String(name)
-                        
-                    } else {
-                        
-                        names[each] = " "
-                        
-                    }
-                }
-                
-           
-                
-                if var views = value?["ProgramName"] as? String {
-                    programnames[each] = views
+                    names[each] = author2
                     
                 }
+                
+              
                 
                 if var profileUrl = value?["Image"] as? String {
                     // Create a storage reference from the URL
                     imageurls[each] = profileUrl
                     
                     let url = URL(string: profileUrl)
+                    
+                    if url != nil {
+                        
                     if let data = try? Data(contentsOf: url!)
                         
                     {
                         if data != nil {
+                            
                             if let selectedimage2 = UIImage(data: data) {
                                 
                                 images[each] = selectedimage2
@@ -503,22 +398,200 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                             
                         }
 
-                            
-
-
 
                     } else {
+                        
                         images[each] = UIImage(named: "Watch-3")
                         
                         functioncounter += 1
                         
-                    }
+                        }
 
-                   
+                    }
 
                 }
                 
+                if var author2 = value?["Key 1"] as? String {
+                    
+                    k1[each] = author2
+
+                }
                 
+                if var author2 = value?["Value 1"] as? String {
+                    
+                    v1[each] = "\(author2)"
+                } else {
+                    
+                    if var author2 = value?["Value 1"] as? Int {
+                        
+                        v1[each] = "\(author2)"
+
+                    } else {
+                        
+                        if var author2 = value?["Value 1"] as? Double {
+                            
+                            v1[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                
+                if var author2 = value?["Key 2"] as? String {
+                    
+                    k2[each] = author2
+
+                }
+                
+                if var author2 = value?["Value 2"] as? String {
+                    
+                    v2[each] = "\(author2)"
+
+                } else {
+                    
+                    if var author2 = value?["Value 2"] as? Int {
+                        
+                        v2[each] = "\(author2)"
+                    } else {
+                        
+                        if var author2 = value?["Value 2"] as? Double {
+                            
+                            v2[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 3"] as? String {
+                    
+                    k3[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 3"] as? String {
+                    
+                    v3[each] = "\(author2)"
+
+                } else {
+                    
+                    if var author2 = value?["Value 3"] as? Int {
+                        
+                        v3[each] = "\(author2)"
+
+                    } else {
+                        
+                        if var author2 = value?["Value 3"] as? Double {
+                            
+                            v3[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 4"] as? String {
+                    
+                    k4[each] = author2
+
+                }
+                
+                if var author2 = value?["Value 4"] as? String {
+                    
+                    v4[each] = "\(author2)"
+
+                } else {
+                    
+                    if var author2 = value?["Value 4"] as? Int {
+                        
+                        v4[each] = "\(author2)"
+
+                    } else {
+                        
+                        if var author2 = value?["Value 4"] as? Double {
+                            
+                            v4[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 5"] as? String {
+                    
+                    k5[each] = author2
+
+                }
+                
+                if var author2 = value?["Value 5"] as? String {
+                    
+                    v5[each] = "\(author2)"
+
+                } else {
+                    
+                    if var author2 = value?["Value 5"] as? Int {
+                        
+                        v5[each] = "\(author2)"
+
+                    } else {
+                        
+                        if var author2 = value?["Value 5"] as? Double {
+                            
+                            v5[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 6"] as? String {
+                    
+                    k6[each] = author2
+
+                }
+                
+                if var author2 = value?["Value 6"] as? String {
+                    
+                    v6[each] = "\(author2)"
+
+                } else {
+                    
+                    if var author2 = value?["Value 6"] as? Int {
+                        
+                        v6[each] = "\(author2)"
+
+                    } else {
+                        
+                        if var author2 = value?["Value 6"] as? Double {
+                            
+                            v6[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 7"] as? String {
+                    
+                    k7[each] = author2
+
+                }
+                
+                if var author2 = value?["Value 7"] as? String {
+                    
+                    v7[each] = "\(author2)"
+
+                } else {
+                    
+                    if var author2 = value?["Value 7"] as? Int {
+                        
+                        v7[each] = "\(author2)"
+
+                    } else {
+                        
+                        if var author2 = value?["Value 7"] as? Double {
+                            
+                            v7[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+
 //                toppics[each] = UIImage(named: "\(each)pic")
                 
                 
@@ -584,19 +657,11 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         
         if collectionView.tag == 2 {
             
-            descriptions.removeAll()
-            names.removeAll()
-            programnames.removeAll()
-            prices.removeAll()
-            toppics.removeAll()
-            images.removeAll()
-            brandnames.removeAll()
-            imageurls.removeAll()
             beginnumber = 0
             collectionView.alpha = 0
             activityIndicator.alpha = 1
             activityIndicator.startAnimating()
-        selectedindex = indexPath.row
+            selectedindex = indexPath.row
             
         collectionView2.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
             
@@ -609,39 +674,77 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
             
             if indexPath.row == 0 {
       
-                queryforinfo()
+                if selectedkey == "" {
+                    
+                    selectedfilter = "Buy Now"
+                    selectedkey = "Tag1"
+                    
+                    queryforids { () -> () in
+                        
+                        self.queryforinfo()
+                        
+                    }
+                } else {
+                    
+                    queryforids { () -> () in
+                        
+                        self.queryforinfo()
+                        
+                    }
+                    
+                }
+                
             }
             
             if indexPath.row == 1 {
                 
-                projectids.shuffle()
+                selectedfilter = "Best Sellers"
+                selectedkey = "Tag1"
                 
-                queryforinfo()
-
+                queryforids { () -> () in
+                    
+                    self.queryforinfo()
+                    
+                }
                 }
             if indexPath.row == 2 {
                 
                 
-                projectids.shuffle()
-        
-                descriptions.removeAll()
-       
-                queryforinfo()
-
+                selectedfilter = "Trending"
+                selectedkey = "Tag1"
+                queryforids { () -> () in
+                    
+                    self.queryforinfo()
+                    
+                }
             }
             
             if indexPath.row == 3 {
                 
-                projectids.shuffle()
-    
-                queryforinfo()
-
+                selectedfilter = "Under Retail"
+                selectedkey = "Tag1"
+                queryforids { () -> () in
+                    
+                    self.queryforinfo()
+                    
+                }
+            }
+            
+            if indexPath.row == 4 {
+                
+                selectedfilter = "Latest"
+                selectedkey = "Tag1"
+                queryforids { () -> () in
+                    
+                    self.queryforinfo()
+                    
+                }
+                
             }
             
         } else {
             
         print(projectids[indexPath.row])
-        selectedbrand = brandnames[projectids[indexPath.row]]!
         selectedid = projectids[indexPath.row]
         unlockedid = "0"
         selectedimage = images[projectids[indexPath.row]]!
@@ -651,7 +754,8 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
 //        selectedprice = usedprices[projectids[indexPath.row]]!
         
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedsubs = usedprices[projectids[indexPath.row]]!
+        selectedusedprice = usedprices[projectids[indexPath.row]]!
+        selectednewprice = newprices[projectids[indexPath.row]]!
 //        selectedprogramname = programnames[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "ExploreToVideos", sender: self)
@@ -661,7 +765,6 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView.tag == 2 {
-            
             
             return genres.count
             
@@ -706,87 +809,87 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
         
-        if distanceFromBottom < height {
-            
-            if querying {
-                
-                
-                
-            } else {
-                
-                if projectids.count > beginnumber && projectids.count > 14 {
-                    
-                    
-                    if beginnumber == 0 {
-                        
-                        activityIndicator.alpha = 1
-                        activityIndicator.startAnimating()
-                        beginnumber = 14
-                        queryforinfo()
-                        querying = true
-                        
-                    } else {
-                        
-                        if beginnumber == 14 {
-                            
-                            activityIndicator.alpha = 1
-                            activityIndicator.startAnimating()
-                            beginnumber = 28
-                            queryforinfo()
-                            querying = true
-                            
-                        } else {
-                            
-                            if beginnumber == 28 {
-                                activityIndicator.alpha = 1
-                                activityIndicator.startAnimating()
-                                beginnumber = 42
-                                queryforinfo()
-                                querying = true
-                                
-                            } else {
-                                
-                                if beginnumber == 42 {
-                                    activityIndicator.alpha = 1
-                                    activityIndicator.startAnimating()
-                                    beginnumber = 56
-                                    queryforinfo()
-                                    querying = true
-                                    
-                                } else {
-                                    
-                                    
-                                    if beginnumber == 56 {
-                                        activityIndicator.alpha = 1
-                                        activityIndicator.startAnimating()
-                                        beginnumber = 72
-                                        queryforinfo()
-                                        querying = true
-                                    } else {
-                                        
-                                        if beginnumber == 72 {
-                                            activityIndicator.alpha = 1
-                                            activityIndicator.startAnimating()
-                                            beginnumber = 42
-                                            queryforinfo()
-                                        }
-                                    }
-                                }
-                                
-                            }
-                        }
-                        
-                    }e
-                    
-                    
-                } else {
-                    
-                    activityIndicator.alpha = 0
-                }
-                
-            }
-            
-        }
+//        if distanceFromBottom < height {
+//
+//            if querying {
+//
+//
+//
+//            } else {
+//
+//                if projectids.count > beginnumber && projectids.count > 14 {
+//
+//
+//                    if beginnumber == 0 {
+//
+//                        activityIndicator.alpha = 1
+//                        activityIndicator.startAnimating()
+//                        beginnumber = 14
+//                        queryforinfo()
+//                        querying = true
+//
+//                    } else {
+//
+//                        if beginnumber == 14 {
+//
+//                            activityIndicator.alpha = 1
+//                            activityIndicator.startAnimating()
+//                            beginnumber = 28
+//                            queryforinfo()
+//                            querying = true
+//
+//                        } else {
+//
+//                            if beginnumber == 28 {
+//                                activityIndicator.alpha = 1
+//                                activityIndicator.startAnimating()
+//                                beginnumber = 42
+//                                queryforinfo()
+//                                querying = true
+//
+//                            } else {
+//
+//                                if beginnumber == 42 {
+//                                    activityIndicator.alpha = 1
+//                                    activityIndicator.startAnimating()
+//                                    beginnumber = 56
+//                                    queryforinfo()
+//                                    querying = true
+//
+//                                } else {
+//
+//
+//                                    if beginnumber == 56 {
+//                                        activityIndicator.alpha = 1
+//                                        activityIndicator.startAnimating()
+//                                        beginnumber = 72
+//                                        queryforinfo()
+//                                        querying = true
+//                                    } else {
+//
+//                                        if beginnumber == 72 {
+//                                            activityIndicator.alpha = 1
+//                                            activityIndicator.startAnimating()
+//                                            beginnumber = 42
+//                                            queryforinfo()
+//                                        }
+//                                    }
+//                                }
+//
+//                            }
+//                        }
+//
+//                    }e
+//
+//
+//                } else {
+//
+//                    activityIndicator.alpha = 0
+//                }
+//
+//            }
+//
+//        }
         
     }
     
@@ -831,6 +934,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         if collectionView.tag == 2 {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Categories", for: indexPath) as! CategoriesCollectionViewCell
+            
             
             cell.titlelabel.text = genres[indexPath.row].uppercased()
             cell.titlelabel.addCharacterSpacing()
@@ -1002,7 +1106,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
 //        cell.layer.cornerRadius = 10.0
 //        cell.layer.masksToBounds = true
         
-        if images.count > indexPath.row  && brandnames.count > indexPath.row && names.count > indexPath.row && projectids.count > indexPath.row {
+        if images.count > indexPath.row && names.count > indexPath.row && projectids.count > indexPath.row {
 
             cell.thumbnail.image = images[projectids[indexPath.row]]
             cell.pricelabel.text = usedprices[projectids[indexPath.row]]?.uppercased()
@@ -1010,17 +1114,8 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         
             print(projectids[indexPath.row])
             
-            if let string2 = names[projectids[indexPath.row]]?.uppercased() {
-                
-                  cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!.uppercased())"
-            } else {
-                
-                if let string3 = brandnames[projectids[indexPath.row]]?.uppercased() {
-                    
-                  cell.textlabel.text = "\(brandnames[projectids[indexPath.row]]!.uppercased()) \(names[projectids[indexPath.row]]!)"
-                    
-                }
-            }
+            cell.textlabel.text = "\(names[projectids[indexPath.row]]!.uppercased())"
+
           
             
             
@@ -1044,7 +1139,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         selectedimage = images[projectids[buttonTag]]!
         selectedname = names[projectids[buttonTag]]!
         selectedpitch = descriptions[projectids[buttonTag]]!
-        selectedprice = prices[projectids[buttonTag]]!
+        selectedprice = newprices[projectids[buttonTag]]!
         //        selectedprogramnames = programnames[projectids[buttonTag]]!
         selectedsubs = usedprices[projectids[buttonTag]]!
         selectedprogramname = programnames[projectids[buttonTag]]!

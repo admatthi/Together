@@ -13,21 +13,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
 
-var b1 = String()
-var b2 = String()
-var b3 = String()
-var b4 = String()
-var b5 = String()
-var b6 = String()
-var b7 = String()
 
-var k1 = String()
-var k2 = String()
-var k3 = String()
-var k4 = String()
-var k5 = String()
-var k6 = String()
-var k7 = String()
 
 var selectedpackaging = String()
 
@@ -44,8 +30,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.startAnimating()
-        activityIndicator.alpha = 1
+        activityIndicator.alpha = 0
         tapsell.layer.borderColor = UIColor.black.cgColor
         tapsell.addTextSpacing(2.0)
         tapsell.layer.borderWidth = 0.5
@@ -55,10 +40,15 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         counter = 0
         selectedindex == 0
-    
+        
+        pricetitles.append("BUY NEW")
+        pricetitles.append("BUY USED")
+        prices2.append(selectednewprice)
+        prices2.append(selectedusedprice)
+        
         activityIndicator.color = myblue
-        tableView.alpha = 0
-        collectionView.alpha = 0
+        tableView.alpha = 1
+        collectionView.alpha = 1
         collectionView.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.85)
 
         var swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ProductViewController.respondToSwipeGesture(gesture:)))
@@ -86,260 +76,21 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func queryforinfo() {
         
-        pricetitles.append("BUY NEW")
-        pricetitles.append("BUY USED")
+  
         productimages.removeAll()
         
         var functioncounter = 0
+        
         ref?.child("Products").child(selectedid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
             
          
             
-            if var author4 = value?["New Price"] as? String {
-                
-                if author4 == "null" {
-                    
-                    self.prices2.append("OUT OF STOCK")
-                } else {
-                    
-                }
-                
-            } else {
-                
-                if var author4 = value?["New Price"] as? Int {
-                    
-                    self.prices2.append("$\(author4)")
-                    
-                } else {
-                    
-                    if var author4 = value?["New Price"] as? Double {
-                        
-                        self.prices2.append("$\(author4)")
 
-                    }
-                }
-            }
-            
-            
-            if var author1 = value?["Used Price"] as? Int {
-                
-                if author1 != 0 {
-                var intviews = Double(author1)
-                intviews = intviews * 1.3
-                    self.myusedint = Int(Double(intviews))
-
-                var author3 = "$\(String(Int(intviews)))"
-                
-                
-                self.prices2.append(author3)
-                    
-                } else {
-                    
-                    self.prices2.append("SOLD OUT")
-
-                }
-                
-                
-            }
           
-          
-           
-            if var author2 = value?["Description"] as? String {
-                
-                selecteddescription = author2
-                
-            } else {
-                
-                selecteddescription = " "
-
-            }
-            
-            
-            if var author2 = value?["Key 3"] as? String {
-                
-                k1 = author2
-                
-            }
-            
-            if var author2 = value?["Value 3"] as? String {
-                
-                b1 = author2
-                
-            } else {
-                
-                if var author2 = value?["Value 3"] as? Int {
-                    
-                    b1 = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 3"] as? Double {
-                        
-                        b1 = "\(author2)"
-                    }
-                }
-                
-            }
-            
       
-            if var author2 = value?["Key 10"] as? String {
-                
-                k2 = author2
-                
-            }
-            
-            if var author2 = value?["Value 10"] as? String {
-                
-                b2 = author2
-                
-            } else {
-                
-                if var author2 = value?["value 10"] as? Int {
-                    
-                    b2 = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 10"] as? Double {
-                        
-                        b2 = "\(author2)"
-                    }
-                }
-                
-            }
-            
-            if var author2 = value?["Key 9"] as? String {
-                
-                k3 = author2
-                
-            }
-            
-            if var author2 = value?["Value 9"] as? String {
-                
-                b3 = author2
-                
-            } else {
-                
-                if var author2 = value?["Value 9"] as? Int {
-                    
-                    b3 = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 9"] as? Double {
-                        
-                        b3 = "\(author2)"
-                    }
-                }
-                
-            }
-            
-            if var author2 = value?["Key 6"] as? String {
-                
-                k4 = author2
-                
-            }
-            
-            if var author2 = value?["Value 6"] as? String {
-                
-                b4 = author2
-                
-            } else {
-                
-                if var author2 = value?["Value 6"] as? Int {
-                    
-                    b4 = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 6"] as? Double {
-                        
-                        b4 = "\(author2)"
-                    }
-                }
-                
-            }
-            
-            if var author2 = value?["Key 7"] as? String {
-                
-                k5 = author2
-                
-            }
-            
-            if var author2 = value?["Value 7"] as? String {
-                
-                b5 = author2
-                selectedpackaging = author2
-                
-            } else {
-                
-                if var author2 = value?["Value 7"] as? Int {
-                    
-                    b5 = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 7"] as? Double {
-                        
-                        b5 = "\(author2)"
-                    }
-                }
-                
-            }
-            
-            if var author2 = value?["Key 8"] as? String {
-                
-                k6 = author2
-                
-            }
-            
-            if var author2 = value?["Value 8"] as? String {
-                
-                b6 = author2
-                
-            } else {
-                
-                if var author2 = value?["Value 8"] as? Int {
-                    
-                    b6 = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 8"] as? Double {
-                        
-                        b6 = "\(author2)"
-                    }
-                }
-                
-            }
-            
-            if var author2 = value?["Key 11"] as? String {
-                
-                k7 = author2
-                
-            }
-            
-            if var author2 = value?["Value 11"] as? String {
-                
-                b7 = author2
-                
-            } else {
-                
-                if var author2 = value?["Value 11"] as? Int {
-                    
-                    b7 = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 11"] as? Double {
-                        
-                        b7 = "\(author2)"
-                    }
-                }
-                
-            }
+           
             
             if var profileUrl = value?["Image 2"] as? String {
                 // Create a storage reference from the URL
@@ -705,6 +456,7 @@ var selectedmetal = String()
             
             cell.descriptionlabel.text = " "
         } else {
+            
     let attributedString = NSMutableAttributedString(string: selecteddescription)
     
     // *** Create instance of `NSMutableParagraphStyle`
@@ -725,20 +477,20 @@ attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragr
      
       
             
-    cell.b1.text = b1
-    cell.b2.text = b2
+    cell.b1.text = v1[selectedid]
+    cell.b2.text = v2[selectedid]
 
-    cell.b3.text = b3
-    cell.b4.text = b4
-    cell.b5.text = b5
-    cell.b6.text = b6
+    cell.b3.text = v3[selectedid]
+    cell.b4.text = v4[selectedid]
+    cell.b5.text = v5[selectedid]
+    cell.b6.text = v6[selectedid]
 
-        cell.h1.text = k1.uppercased()
-        cell.h2.text = k2.uppercased()
-        cell.h3.text = k3.uppercased()
-        cell.h4.text = k4.uppercased()
-        cell.h5.text = k5.uppercased()
-        cell.h6.text = k6.uppercased()
+        cell.h1.text = k1[selectedid]!.uppercased()
+        cell.h2.text = k2[selectedid]!.uppercased()
+        cell.h3.text = k3[selectedid]!.uppercased()
+        cell.h4.text = k4[selectedid]!.uppercased()
+        cell.h5.text = k5[selectedid]!.uppercased()
+        cell.h6.text = k6[selectedid]!.uppercased()
 
     cell.title.sizeToFit()
     cell.descriptionlabel.sizeToFit()

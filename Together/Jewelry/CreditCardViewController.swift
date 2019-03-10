@@ -96,7 +96,9 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
 
+  
         
+
 //            var newstring = customStringFormatting(of: ccnumber.text!)
 //            
 //            ccnumber.text = newstring
@@ -251,23 +253,18 @@ class CreditCardViewController: UIViewController, UITextFieldDelegate {
     }
     */
     
-    func customStringFormatting(of str: String) -> String {
-        return str.characters.chunk(n: 4)
-            .map{ String($0) }.joined(separator: " ")
-    }
 
 }
 extension Collection {
-    public func chunk(n: IndexDistance) -> [SubSequence] {
-        var res: [SubSequence] = []
-        var i = startIndex
-        var j: Index
-        while i != endIndex {
-            j = index(i, offsetBy: n, limitedBy: endIndex) ?? endIndex
-            res.append(self[i..<j])
-            i = j
+    var pairs: [SubSequence] {
+        var startIndex = self.startIndex
+        let count = self.count
+        let n = count/2 + (count % 2 == 0 ? 0 : 1)
+        return (0..<n).map { _ in
+            let endIndex = index(startIndex, offsetBy: 2, limitedBy: self.endIndex) ?? self.endIndex
+            defer { startIndex = endIndex }
+            return self[startIndex..<endIndex]
         }
-        return res
     }
 }
 

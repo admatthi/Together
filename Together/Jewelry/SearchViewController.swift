@@ -25,29 +25,14 @@ var searchimages = [String:UIImage]()
 var brandsearchnames = [String:String]()
 var searchimageurls = [String:String]()
 var searchtoppics = [String:String]()
+var searchnewprices = [String:String]()
 
 class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        setTabBarVisible(visible: true, animated: true)
 
-        if searched {
-            
-            
-        } else {
-            
-            searchids.shuffle()
-            collectionView.reloadData()
-            collectionView.alpha = 1
-        }
-            
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -108,7 +93,8 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             collectionView.alpha = 0
             
-            querytext = searchBar.text!
+            querytext = searchBar.text!.lowercased()
+            querytext = querytext.capitalizingFirstLetter()
             queryforids { () -> () in
                 
                 self.queryforinfo()
@@ -135,8 +121,10 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchimages.removeAll()
         brandsearchnames.removeAll()
         searchimageurls.removeAll()
+        searchnewprices.removeAll()
         
-        ref?.child("Products").queryOrdered(byChild: "Brand").queryStarting(atValue: querytext).queryEnding(atValue: querytext+"\u{f8ff}").queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        ref?.child("Products").queryOrdered(byChild: "Name").queryStarting(atValue: querytext).queryEnding(atValue: querytext+"\u{f8ff}").queryLimited(toFirst: 50).observeSingleEvent(of: .value, with: { (snapshot) in
 
             var value = snapshot.value as? NSDictionary
             
@@ -157,32 +145,14 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     
                     functioncounter += 1
                     
-                    if snapDict.count > 14 {
-                        
-                        if functioncounter == 14 {
-                            
-                            self.beginnumber = 0
-                            completed()
-                            
-                        }
-                        
-                    } else {
                         
                         if functioncounter == snapDict.count {
-                            
-                            self.beginnumber = 0
                             
                             completed()
                             
                         }
                         
                     }
-                    
-                    
-                    
-                    
-                    
-                }
                 
             } else {
                 
@@ -221,27 +191,13 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     searchids.append(ids)
                     
                     functioncounter += 1
-                    
-                    if snapDict.count > 14 {
-                        
-                        if functioncounter == 14 {
+       
+                    if functioncounter == snapDict.count {
                             
-                            self.beginnumber = 0
+                        
                             completed()
                             
                         }
-                        
-                    } else {
-                        
-                        if functioncounter == snapDict.count {
-                            
-                            self.beginnumber = 0
-                            
-                            completed()
-                            
-                        }
-                        
-                    }
                     
                     
                     
@@ -272,15 +228,15 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func queryforinfo() {
         
-        searchids = Array(Set(searchids))
-        slicedids = searchids.dropFirst(beginnumber)
         
-        if slicedids.count == 0 {
-            
-            activityIndicator.alpha = 0
-
-        }
-        //        var slicedids = searchids
+        //        slicedids = projectids
+        //
+        //        if slicedids.count == 0 {
+        //
+        //            activityIndicator.alpha = 0
+        //
+        //        }
+        //        var slicedids = projectids
         
         //        slicedids.removeAll()
         
@@ -289,7 +245,8 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         querying = true
         
-        for each in slicedids.prefix(14) {
+        for each in projectids {
+            //        for each in slicedids {
             
             
             //        ref?.child("Products").child(each).updateChildValues(["Gender" : "Women"])
@@ -301,64 +258,35 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 if var author2 = value?["Used Price"] as? Int {
                     
-                    if author2 != 0 {
-                        var intviews = Double(author2)
-                        intviews = intviews * 1.3
-                        var author3 = "$\(String(Int(intviews)))"
-                        searchusedprices[each] = author3
-                        
-                    } else {
-                        
-                        if var author2 = value?["New Price"] as? String {
-                            
-                            var intviews = Double(Int(author2.dropFirst())!)
-                            intviews = intviews * 1.3
-                            author2 = "$\(String(Int(intviews)))"
-                            searchusedprices[each] = author2
-                            
-                        }
-                    }
+                    
+                    var intviews = Double(author2)
+                    var author3 = "$\(String(Int(intviews)))"
+                    searchusedprices[each] = author3
+                    
+                }
+                
+                if var author2 = value?["New Price"] as? Int {
+                    
+                    
+                    var intviews = Double(author2)
+                    var author3 = "$\(String(Int(intviews)))"
+                    searchnewprices[each] = author3
+                    
                 }
                 
                 if var author2 = value?["Description"] as? String {
+                    
                     searchdescriptions[each] = author2
                     
                 }
                 
-                if var author2 = value?["Brand"] as? String {
+                if var author2 = value?["Name"] as? String {
                     
-                    brandsearchnames[each] = author2
+                    searchnames[each] = author2
                     
-                } else {
-                    
-                    brandsearchnames[each] = " "
-                    
-                }
-                if var name = value?["Model"] as? String {
-                    
-                    
-                    searchnames[each] = name
-                    
-                } else {
-                    
-                    if var name = value?["Model"] as? Int {
-                        
-                        
-                        searchnames[each] = String(name)
-                        
-                    } else {
-                        
-                        searchnames[each] = " "
-                        
-                    }
                 }
                 
                 
-                
-                if var views = value?["ProgramName"] as? String {
-                    programsearchnames[each] = views
-                    
-                }
                 
                 if var profileUrl = value?["Image"] as? String {
                     // Create a storage reference from the URL
@@ -366,44 +294,231 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     
                     let url = URL(string: profileUrl)
                     
-                    do {
+                    if url != nil {
                         
-                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-
-                        if data != nil {
-                            if let selectedimage2 = UIImage(data: data!) {
+                        if let data = try? Data(contentsOf: url!)
+                            
+                        {
+                            if data != nil {
                                 
-                                searchimages[each] = selectedimage2
+                                if let selectedimage2 = UIImage(data: data) {
+                                    
+                                    searchimages[each] = selectedimage2
+                                    functioncounter += 1
+                                    
+                                }
+                                
+                            } else {
+                                
+                                searchimages[each] = UIImage(named: "Watch-3")!
+                                functioncounter += 1
                                 
                             }
                             
+                            
                         } else {
                             
-                            selectedimage = UIImage(named: "Watch-3")!
+                            searchimages[each] = UIImage(named: "Watch-3")
+                            
+                            functioncounter += 1
                             
                         }
                         
-                    } catch let error {
-                        
-                        searchimages[each] = UIImage(named: "Watch-3")
                     }
                     
-                 
+                }
+                
+                if var author2 = value?["Key 1"] as? String {
                     
-                    functioncounter += 1
+                    k1[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 1"] as? String {
+                    
+                    v1[each] = "\(author2)"
+                } else {
+                    
+                    if var author2 = value?["Value 1"] as? Int {
+                        
+                        v1[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 1"] as? Double {
+                            
+                            v1[each] = "\(author2)"
+                        }
+                    }
                     
                 }
                 
                 
-                //                searchtoppics[each] = UIImage(named: "\(each)pic")
+                if var author2 = value?["Key 2"] as? String {
+                    
+                    k2[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 2"] as? String {
+                    
+                    v2[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 2"] as? Int {
+                        
+                        v2[each] = "\(author2)"
+                    } else {
+                        
+                        if var author2 = value?["Value 2"] as? Double {
+                            
+                            v2[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 3"] as? String {
+                    
+                    k3[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 3"] as? String {
+                    
+                    v3[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 3"] as? Int {
+                        
+                        v3[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 3"] as? Double {
+                            
+                            v3[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 4"] as? String {
+                    
+                    k4[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 4"] as? String {
+                    
+                    v4[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 4"] as? Int {
+                        
+                        v4[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 4"] as? Double {
+                            
+                            v4[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 5"] as? String {
+                    
+                    k5[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 5"] as? String {
+                    
+                    v5[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 5"] as? Int {
+                        
+                        v5[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 5"] as? Double {
+                            
+                            v5[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 6"] as? String {
+                    
+                    k6[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 6"] as? String {
+                    
+                    v6[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 6"] as? Int {
+                        
+                        v6[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 6"] as? Double {
+                            
+                            v6[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 7"] as? String {
+                    
+                    k7[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 7"] as? String {
+                    
+                    v7[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 7"] as? Int {
+                        
+                        v7[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 7"] as? Double {
+                            
+                            v7[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                //                toppics[each] = UIImage(named: "\(each)pic")
                 
                 
                 print(functioncounter)
                 
                 
+                //                if functioncounter == projectids.count {
                 
-                if functioncounter == searchids.count || functioncounter == 14 || functioncounter == self.slicedids.count {
-            
+                if functioncounter == projectids.count {
+                    
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
                     self.collectionView.reloadData()
@@ -419,17 +534,17 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
 
        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        selectedbrand = brandsearchnames[searchids[indexPath.row]]!
         selectedid = searchids[indexPath.row]
         unlockedid = "0"
         selectedimage = searchimages[searchids[indexPath.row]]!
         selectedname = searchnames[searchids[indexPath.row]]!
         selectedimageurl = searchimageurls[searchids[indexPath.row]]!
-        //        selectedpitch = searchdescriptions[searchids[indexPath.row]]!
-        //        selectedprice = searchusedprices[searchids[indexPath.row]]!
+        //        selectedpitch = descriptions[projectids[indexPath.row]]!
+        //        selectedprice = usedprices[projectids[indexPath.row]]!
         
-        //        selectedprogramsearchnames = programsearchnames[searchids[indexPath.row]]!
-        selectedsubs = searchusedprices[searchids[indexPath.row]]!
+        //        selectedprogramnames = programnames[projectids[indexPath.row]]!
+        selectedusedprice = searchusedprices[searchids[indexPath.row]]!
+        selectednewprice = searchnewprices[searchids[indexPath.row]]!
         //        selectedprogramname = programsearchnames[searchids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "SearchToProduct", sender: self)
@@ -439,8 +554,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
   
-    if slicedids.count > 0 {
-        
+    
         if searchimages.count > 0 {
             
             return searchimages.count
@@ -449,154 +563,13 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
             
             return 0
             
-            }
-    } else {
-        
-        return 0
-
     }
-    
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let tabBar = self.tabBarController?.tabBar
-        
-        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0{
-            
-//            setTabBarVisible(visible: false, animated: true)
-            
-            
-        }
-            
-        else{
-            
-            setTabBarVisible(visible: true, animated: true)
-            
-            
-            //        }
-            
-        }
-        
-        
-                let height = scrollView.frame.size.height
-                let contentYoffset = scrollView.contentOffset.y
-                let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-                if distanceFromBottom < height {
-                    
-                    if querying {
-                        
-                        
-                        
-                    } else {
-                        
-                        if searchids.count > beginnumber && searchids.count > 14 {
-
-                        
-                        if beginnumber == 0 {
-                            
-                            activityIndicator.alpha = 1
-                            activityIndicator.startAnimating()
-                            beginnumber = 14
-                            queryforinfo()
-                            querying = true
-                            
-                        } else {
-                            
-                            if beginnumber == 14 {
-                                
-                                activityIndicator.alpha = 1
-                                activityIndicator.startAnimating()
-                                beginnumber = 28
-                                queryforinfo()
-                                querying = true
-                                
-                            } else {
-                                
-                                if beginnumber == 28 {
-                                    
-                                    activityIndicator.alpha = 1
-                                    activityIndicator.startAnimating()
-                                    beginnumber = 42
-                                    queryforinfo()
-                                    querying = true
-                                    
-                                } else {
-                                    
-                                    if beginnumber == 42 {
-                                        activityIndicator.alpha = 1
-                                        activityIndicator.startAnimating()
-                                        beginnumber = 56
-                                        queryforinfo()
-                                        querying = true
-                                        
-                                    } else {
-                                        
-                                        
-                                        if beginnumber == 56 {
-                                            activityIndicator.alpha = 1
-                                            activityIndicator.startAnimating()
-                                            beginnumber = 72
-                                            queryforinfo()
-                                            querying = true
-                                        } else {
-                                            
-                                            if beginnumber == 72 {
-                                                activityIndicator.alpha = 1
-                                                activityIndicator.startAnimating()
-                                                beginnumber = 42
-                                                queryforinfo()
-                                            }
-                                        }
-                                    }
-                                
-                                }
-                            }
-                            
-                            }
  
-                            
-                        } else {
-                            
-                            activityIndicator.alpha = 0
-                        }
-                        
-                    }
-                    
-            }
-            
+    
     }
 
-func setTabBarVisible(visible:Bool, animated:Bool) {
-    
-    var isTabBarVisible: Bool {
-        return (self.tabBarController?.tabBar.frame.origin.y ?? 0) < self.view.frame.maxY
-    }
-    
-    //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
-    
-    // bail if the current state matches the desired state
-    if (isTabBarVisible == visible) { return }
-    
-    // get a frame calculation ready
-    let frame = self.tabBarController?.tabBar.frame
-    
-    let height = frame?.size.height
-    let offsetY = (visible ? -height! : height)
-    
-    // zero duration means no animation
-    let duration:TimeInterval = (animated ? 0.3 : 0.0)
-    
-    //  animate the tabBar
-    if frame != nil {
-        UIView.animate(withDuration: duration) {
-            self.tabBarController?.tabBar.frame = frame!.offsetBy(dx: 0, dy: offsetY!)
-            return
-        }
-    }
-    
-    
-}
+ 
+
 
 func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
@@ -614,8 +587,9 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     //        cell.layer.cornerRadius = 10.0
     //        cell.layer.masksToBounds = true
     
-   
-    if searchimages.count > indexPath.row  && brandsearchnames.count > indexPath.row && searchnames.count > indexPath.row && searchids.count > indexPath.row && slicedids.count > indexPath.row {
+    cell.textlabel.text = "\(searchnames[searchids[indexPath.row]]?.uppercased())"
+
+    if searchimages.count > indexPath.row {
         
         cell.thumbnail.image = searchimages[searchids[indexPath.row]]
         cell.pricelabel.text = searchusedprices[searchids[indexPath.row]]?.uppercased()
@@ -623,24 +597,17 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
         
         print(searchids[indexPath.row])
         
-        if let string2 = searchnames[searchids[indexPath.row]]?.uppercased() {
-            
-            cell.textlabel.text = "\(brandsearchnames[searchids[indexPath.row]]!.uppercased()) \(searchnames[searchids[indexPath.row]]!.uppercased())"
-        } else {
-            
-            cell.textlabel.text = "\(brandsearchnames[searchids[indexPath.row]]!.uppercased()) \(searchnames[searchids[indexPath.row]]!)"
-        }
-        
-        
         
         cell.textlabel.addCharacterSpacing()
         
+        return cell
+
     } else {
         
-        
+        return cell
+
     }
     
-    return cell
     
 }
     /*
