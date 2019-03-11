@@ -122,17 +122,10 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
             
             if selectedkey == "" {
              
+                limit = 15
+                
                 selectedfilter  = "Buy Now"
                 selectedkey = "Tag1"
-                
-                queryforids { () -> () in
-                    
-                    self.queryforinfo()
-                    
-                }
-                
-            } else {
-             
                 
                 queryforids { () -> () in
                     
@@ -145,11 +138,21 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
         } else {
             
+            if selectedkey != nil {
+                
+            limit = 25
+                
             queryforids { () -> () in
                 
                 self.queryforinfo()
                 
+                }
+                
+            } else {
+                
+                
             }
+            
         }        
             
 
@@ -161,7 +164,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        layout.itemSize = CGSize(width: screenWidth/2, height: screenWidth)
+        layout.itemSize = CGSize(width: screenWidth/2, height: screenWidth/1.2)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         collectionView!.collectionViewLayout = layout
@@ -169,6 +172,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
 
     }
     
+    var limit = Int()
     @IBOutlet weak var tapBack: UIButton!
     @IBAction func tapback(_ sender: Any) {
     }
@@ -222,9 +226,9 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                             
                             functioncounter += 1
                             
-                            if snapDict.count > 14 {
+                            if snapDict.count > self.limit {
 
-                                if functioncounter == 14 {
+                                if functioncounter == self.limit {
 
                                     self.beginnumber = 0
                                     completed()
@@ -269,9 +273,9 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                         
                         functioncounter += 1
                         
-                        if snapDict.count > 14 {
+                        if snapDict.count > self.limit {
                             
-                            if functioncounter == 14 {
+                            if functioncounter == self.limit {
                             
                                 completed()
                                 
@@ -310,29 +314,12 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
     var slicedids : ArraySlice<String> = []
 
     func queryforinfo() {
-        
 
-//        slicedids = projectids
-//
-//        if slicedids.count == 0 {
-//
-//            activityIndicator.alpha = 0
-//
-//        }
-        //        var slicedids = projectids
-        
-        //        slicedids.removeAll()
-        
-        //        self.collectionView.alpha = 0
         var functioncounter = 0
         
         querying = true
         
         for each in projectids {
-//        for each in slicedids {
-
-       
-//        ref?.child("Products").child(each).updateChildValues(["Gender" : "Women"])
 
                 
             ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -488,25 +475,25 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                     
                 }
                 
-                if var author2 = value?["Key 4"] as? String {
+                if var author2 = value?["Key 8"] as? String {
                     
                     k4[each] = author2
 
                 }
                 
-                if var author2 = value?["Value 4"] as? String {
+                if var author2 = value?["Value 8"] as? String {
                     
                     v4[each] = "\(author2)"
 
                 } else {
                     
-                    if var author2 = value?["Value 4"] as? Int {
+                    if var author2 = value?["Value 8"] as? Int {
                         
                         v4[each] = "\(author2)"
 
                     } else {
                         
-                        if var author2 = value?["Value 4"] as? Double {
+                        if var author2 = value?["Value 8"] as? Double {
                             
                             v4[each] = "\(author2)"
                         }
@@ -750,6 +737,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         selectedimage = images[projectids[indexPath.row]]!
         selectedname = names[projectids[indexPath.row]]!
         selectedimageurl = imageurls[projectids[indexPath.row]]!
+        selecteddescription = descriptions[projectids[indexPath.row]]!
 //        selectedpitch = descriptions[projectids[indexPath.row]]!
 //        selectedprice = usedprices[projectids[indexPath.row]]!
         

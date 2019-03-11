@@ -86,7 +86,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     func queryforids(completed: @escaping (() -> ()) ) {
 
-        var functioncounter = 0
+                                                           var functioncounter = 0
         
         searchids.removeAll()
         searchdescriptions.removeAll()
@@ -363,25 +363,25 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                     
                 }
                 
-                if var author2 = value?["Key 4"] as? String {
+                if var author2 = value?["Key 8"] as? String {
                     
                     k4[each] = author2
                     
                 }
                 
-                if var author2 = value?["Value 4"] as? String {
+                if var author2 = value?["Value 8"] as? String {
                     
                     v4[each] = "\(author2)"
                     
                 } else {
                     
-                    if var author2 = value?["Value 4"] as? Int {
+                    if var author2 = value?["Value 8"] as? Int {
                         
                         v4[each] = "\(author2)"
                         
                     } else {
                         
-                        if var author2 = value?["Value 4"] as? Double {
+                        if var author2 = value?["Value 8"] as? Double {
                             
                             v4[each] = "\(author2)"
                         }
@@ -497,6 +497,8 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         selectedimage = searchimages[searchids[indexPath.row]]!
         selectedname = searchnames[searchids[indexPath.row]]!
         selectedimageurl = searchimageurls[searchids[indexPath.row]]!
+        selecteddescription = searchdescriptions[searchids[indexPath.row]]!
+
         //        selectedpitch = descriptions[projectids[indexPath.row]]!
         //        selectedprice = usedprices[projectids[indexPath.row]]!
         

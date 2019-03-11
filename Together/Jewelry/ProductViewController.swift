@@ -30,6 +30,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         activityIndicator.alpha = 0
         tapsell.layer.borderColor = UIColor.black.cgColor
         tapsell.addTextSpacing(2.0)
@@ -50,7 +51,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.alpha = 1
         collectionView.alpha = 1
         collectionView.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.85)
-
+        
         var swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ProductViewController.respondToSwipeGesture(gesture:)))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)

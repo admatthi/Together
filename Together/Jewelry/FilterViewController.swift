@@ -28,7 +28,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         selectedfilter = brandtitles[indexPath.row]
         
-        selectedkey = "Brand"
+        selectedkey = "Value 1"
         collectionView.reloadData()
         
         return 
@@ -266,7 +266,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         tapb1.alpha = 0.5
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
-        selectedkey = "Brand"
+        selectedkey = "Key 1"
         selectedfilter = "Tudor"
     
     }
@@ -274,7 +274,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
       
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
-        selectedkey = "Brand"
+        selectedkey = "Key 1"
         selectedfilter = "Omega"
         tapp1.alpha = 0.5
         tapp2.alpha = 0.5
@@ -286,7 +286,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
       
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
-        selectedkey = "Brand"
+        selectedkey = "Key 1"
         selectedfilter = "Rolex"
         tapp1.alpha = 0.5
         tapp2.alpha = 0.5
@@ -349,7 +349,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         tapp2.alpha = 0.5
         tapp3.alpha = 0.5
         selectedfilter = "Women"
-        selectedkey = "Gender"
+        selectedkey = "Value 9"
    
     }
     @IBAction func tapMen(_ sender: Any) {
@@ -361,7 +361,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         tapp2.alpha = 0.5
         tapp3.alpha = 0.5
         selectedfilter = "Men"
-        selectedkey = "Gender"
+        selectedkey = "Value 9"
         selectedindex = 1000
         collectionView.reloadData()
     }
@@ -381,7 +381,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         tapb1.alpha = 0.5
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
-        selectedkey = "Brand"
+        selectedkey = "Key 1"
         selectedfilter = "TAG Heuer"
         tapb4.alpha = 1
         tapb5.alpha = 0.5
@@ -398,7 +398,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         tapb1.alpha = 0.5
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
-        selectedkey = "Brand"
+        selectedkey = "Key 1"
         selectedfilter = "Breitling"
         tapb4.alpha = 0.5
         tapb5.alpha = 1
@@ -412,7 +412,7 @@ class FilterViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         tapwomen.alpha = 0.5
         tapmen.alpha = 0.5
-        selectedkey = "Brand"
+        selectedkey = "Key 1"
         selectedfilter = "Panerai"
   
     }

@@ -2430,17 +2430,17 @@
                                 <rect key="frame" x="0.0" y="84" width="375" height="586"/>
                                 <color key="backgroundColor" red="0.12549019610000001" green="0.16078431369999999" blue="0.20784313730000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aZZ-CX-d2J">
-                                    <size key="itemSize" width="184" height="284"/>
+                                    <size key="itemSize" width="184" height="255"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="People" id="F8Q-kL-Eu9" customClass="PeopleCollectionViewCell" customModule="Together" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="184" height="284"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="184" height="255"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="184" height="284"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="184" height="255"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-RH-sqb">
@@ -2454,15 +2454,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTJ-Cy-eIA">
-                                                    <rect key="frame" x="20" y="222" width="144" height="70"/>
+                                                    <rect key="frame" x="20" y="209" width="144" height="42"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="10"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Gy-lU-AAC">
-                                                    <rect key="frame" x="12" y="53" width="160" height="179"/>
+                                                    <rect key="frame" x="40" y="84" width="104" height="117"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="7Gy-lU-AAC" secondAttribute="height" multiplier="165:293" constant="59.081911262798627" id="eb0-ES-rdN"/>
+                                                        <constraint firstAttribute="width" secondItem="7Gy-lU-AAC" secondAttribute="height" multiplier="165:293" constant="38.112627986348116" id="eb0-ES-rdN"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -2470,13 +2470,13 @@
                                         <color key="backgroundColor" red="0.12549019610000001" green="0.16078431369999999" blue="0.20784313730000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="pTJ-Cy-eIA" secondAttribute="trailing" constant="20" id="1Df-IF-nV1"/>
-                                            <constraint firstItem="7Gy-lU-AAC" firstAttribute="leading" secondItem="F8Q-kL-Eu9" secondAttribute="leading" constant="12" id="4ni-tZ-mzQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="pTJ-Cy-eIA" secondAttribute="bottom" constant="-8" id="DxE-ML-Zl2"/>
-                                            <constraint firstItem="7Gy-lU-AAC" firstAttribute="top" secondItem="F8Q-kL-Eu9" secondAttribute="top" constant="53" id="Y4Z-lY-lBW"/>
+                                            <constraint firstItem="7Gy-lU-AAC" firstAttribute="leading" secondItem="F8Q-kL-Eu9" secondAttribute="leading" constant="40" id="4ni-tZ-mzQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="pTJ-Cy-eIA" secondAttribute="bottom" constant="4" id="DxE-ML-Zl2"/>
+                                            <constraint firstItem="7Gy-lU-AAC" firstAttribute="top" secondItem="F8Q-kL-Eu9" secondAttribute="top" constant="84" id="Y4Z-lY-lBW"/>
                                             <constraint firstItem="pTJ-Cy-eIA" firstAttribute="leading" secondItem="F8Q-kL-Eu9" secondAttribute="leading" constant="20" id="evo-Z5-XKs"/>
-                                            <constraint firstAttribute="trailing" secondItem="7Gy-lU-AAC" secondAttribute="trailing" constant="12" id="haK-jn-fp9"/>
+                                            <constraint firstAttribute="trailing" secondItem="7Gy-lU-AAC" secondAttribute="trailing" constant="40" id="haK-jn-fp9"/>
                                             <constraint firstAttribute="trailing" secondItem="TOR-RH-sqb" secondAttribute="trailing" constant="20" id="mJt-Hc-koo"/>
-                                            <constraint firstItem="pTJ-Cy-eIA" firstAttribute="top" secondItem="7Gy-lU-AAC" secondAttribute="bottom" constant="-10" id="p8d-qW-jx7"/>
+                                            <constraint firstItem="pTJ-Cy-eIA" firstAttribute="top" secondItem="7Gy-lU-AAC" secondAttribute="bottom" constant="8" id="p8d-qW-jx7"/>
                                             <constraint firstItem="TOR-RH-sqb" firstAttribute="top" secondItem="F8Q-kL-Eu9" secondAttribute="top" constant="20" id="we7-n0-yoa"/>
                                         </constraints>
                                         <connections>
@@ -2545,7 +2545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLi-gk-bDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="310" y="1788"/>
+            <point key="canvasLocation" x="309.60000000000002" y="1787.8560719640182"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="fjj-ej-AB7">
@@ -3673,10 +3673,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gently Used" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQV-eL-JVO">
-                                                    <rect key="frame" x="220" y="673" width="134" height="17"/>
+                                                    <rect key="frame" x="70" y="673" width="284" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="djn-aG-Y1K"/>
-                                                        <constraint firstAttribute="width" constant="134" id="onq-CI-p6U"/>
+                                                        <constraint firstAttribute="width" constant="284" id="onq-CI-p6U"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
@@ -3702,10 +3702,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gently Used" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVH-uo-Dsv">
-                                                    <rect key="frame" x="224" y="738" width="134" height="17"/>
+                                                    <rect key="frame" x="114" y="738" width="244" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="3K2-Rg-Jas"/>
-                                                        <constraint firstAttribute="width" constant="134" id="vDT-6U-WVg"/>
+                                                        <constraint firstAttribute="width" constant="244" id="vDT-6U-WVg"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
@@ -6276,16 +6276,16 @@
         <image name="X" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Eim-Cs-LqR"/>
+        <segue reference="MUN-A5-iHb"/>
         <segue reference="yNW-xH-ca5"/>
         <segue reference="IYV-ip-BkV"/>
         <segue reference="Dj5-hK-1eH"/>
         <segue reference="T5q-Kc-1EU"/>
         <segue reference="KWx-Me-c8V"/>
-        <segue reference="IIH-hy-cBr"/>
+        <segue reference="7Es-kF-ufi"/>
         <segue reference="o0Z-eX-0Ox"/>
-        <segue reference="r5K-ef-F3J"/>
-        <segue reference="h02-zS-yOz"/>
+        <segue reference="XTh-ZI-gbV"/>
+        <segue reference="K4Z-T6-lvq"/>
         <segue reference="fWc-Tc-Ma8"/>
     </inferredMetricsTieBreakers>
 </document>
