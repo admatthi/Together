@@ -481,7 +481,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 //                if functioncounter == projectids.count {
                 
-                if functioncounter == projectids.count || functioncounter == 14 {
+                if functioncounter == projectids.count || functioncounter == 15 {
                     
            
                 }

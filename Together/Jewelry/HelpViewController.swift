@@ -22,7 +22,7 @@ class HelpViewController: UIViewController, UITableViewDelegate, UITableViewData
         header.addCharacterSpacing()
 
         questions.removeAll()
-        questions.append("WHAT IS DMND?")
+        questions.append("WHAT IS BALLR?")
         questions.append("HOW DOES IT WORK?")
         questions.append("HOW DO I DELETE MY ACCOUNT?")
         questions.append("HOW DO I CONTACT YOU?")

@@ -17,6 +17,7 @@
 		9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */; };
 		9D1EBF0421750F91004A566A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1EBF0321750F91004A566A /* MapViewController.swift */; };
 		9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1EBF07217605AD004A566A /* FeedTableViewCell.swift */; };
+		9D21151D223EE44600CB7BE5 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D21151C223EE44600CB7BE5 /* FeedbackViewController.swift */; };
 		9D34E4BA2207B57400299292 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D34E4B92207B57300299292 /* GoogleService-Info.plist */; };
 		9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F7C216B948A009708D4 /* AnswersViewController.swift */; };
 		9D451F7F216B949A009708D4 /* AnswersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */; };
@@ -164,6 +165,7 @@
 		9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerTabBarViewController.swift; sourceTree = "<group>"; };
 		9D1EBF0321750F91004A566A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9D1EBF07217605AD004A566A /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		9D21151C223EE44600CB7BE5 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		9D34E4B92207B57300299292 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D451F7C216B948A009708D4 /* AnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersViewController.swift; sourceTree = "<group>"; };
 		9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersTableViewCell.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */,
 				9DC27B9321C44B8B0005759C /* FilterViewController.swift */,
 				9D5DCDE5221882EC00AE1A72 /* SearchViewController.swift */,
+				9D21151C223EE44600CB7BE5 /* FeedbackViewController.swift */,
 			);
 			path = Jewelry;
 			sourceTree = "<group>";
@@ -801,6 +804,7 @@
 				9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */,
 				9DD9800E21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9DC75F8B21C09D250074CA45 /* Help2ViewController.swift in Sources */,
+				9D21151D223EE44600CB7BE5 /* FeedbackViewController.swift in Sources */,
 				9D0F86A221710A6400AE5F18 /* Constants.swift in Sources */,
 				9DC0B2852193553300F56A1A /* ExploreTableViewCell.swift in Sources */,
 				9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */,

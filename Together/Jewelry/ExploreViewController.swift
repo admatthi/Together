@@ -122,7 +122,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
             
             if selectedkey == "" {
              
-                limit = 15
+                limit = 25
                 
                 selectedfilter  = "Buy Now"
                 selectedkey = "Tag1"
@@ -190,6 +190,8 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         images.removeAll()
         brandnames.removeAll()
         imageurls.removeAll()
+        usedprices.removeAll()
+        newprices.removeAll()
          k1.removeAll()
          v1.removeAll()
          k2.removeAll()
@@ -369,42 +371,60 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
                 if var profileUrl = value?["Image"] as? String {
                     // Create a storage reference from the URL
-                    imageurls[each] = profileUrl
                     
-                    let url = URL(string: profileUrl)
-                    
-                    if url != nil {
+                    if selectedkey == "Key 1" || selectedkey == "Value 9" || selectedkey == "Used Price" {
                         
-                    if let data = try? Data(contentsOf: url!)
+                        imageurls[each] = profileUrl
                         
-                    {
-                        if data != nil {
+                        let url = URL(string: profileUrl)
+                        
+                        if url != nil {
                             
-                            if let selectedimage2 = UIImage(data: data) {
+                            if let data = try? Data(contentsOf: url!)
                                 
-                                images[each] = selectedimage2
+                            {
+                                if data != nil {
+                                    
+                                    if let selectedimage2 = UIImage(data: data) {
+                                        
+                                        images[each] = selectedimage2
+                                        functioncounter += 1
+                                        
+                                    }
+                                    
+                                } else {
+                                    
+                                    images[each] = UIImage(named: "Watch-3")!
+                                    functioncounter += 1
+                                    
+                                }
+                                
+                                
+                            } else {
+                                
+                                images[each] = UIImage(named: "Watch-3")
+                                
                                 functioncounter += 1
-
+                                
                             }
                             
-                        } else {
-                            
-                            images[each] = UIImage(named: "Watch-3")!
-                                    functioncounter += 1
-                            
                         }
-
-
+                        
                     } else {
                         
-                        images[each] = UIImage(named: "Watch-3")
-                        
-                        functioncounter += 1
-                        
-                        }
+                    profileUrl = profileUrl.replacingOccurrences(of: "https://s3.us-east-2.amazonaws.com/ballr/", with: "")
+                    profileUrl = profileUrl.replacingOccurrences(of: ".jpg", with: "")
 
+                    images[each] = UIImage(named: profileUrl)
+
+                    imageurls[each] = profileUrl
+                    
+                    functioncounter += 1
+
+                    print(functioncounter)
+                    print(images.count)
+                        
                     }
-
                 }
                 
                 if var author2 = value?["Key 1"] as? String {
@@ -596,7 +616,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
 //                if functioncounter == projectids.count {
 
-                if functioncounter == projectids.count || functioncounter == 14 {
+                if functioncounter == projectids.count || functioncounter == self.limit {
                 
                     self.activityIndicator.alpha = 0
                     self.activityIndicator.stopAnimating()
@@ -680,7 +700,11 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                         self.queryforinfo()
                         
                     }
+                    
                 } else {
+                    
+                    selectedfilter = "Buy Now"
+                    selectedkey = "Tag1"
                     
                     queryforids { () -> () in
                         
@@ -1142,6 +1166,67 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            
+            takeScreenshot(true)
+            showalert()
+            
+        }
+    }
+    
+    
+    func showalert() {
+        
+        let alert = UIAlertController(title: "Shake To Report", message: "Please report any issues you found! Feedback is greatly appreciated :)", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Send Feedback", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("default")
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "Feedback") as! FeedbackViewController
+                self.present(vc, animated: true, completion: nil)
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+                
+            }}))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
+        subview.layer.cornerRadius = 5
+        subview.backgroundColor = .white
+        
+    }
+    
+    open func takeScreenshot(_ shouldSave: Bool = true) -> UIImage? {
+        var screenshotImage :UIImage?
+        let layer = UIApplication.shared.keyWindow!.layer
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+        guard let context = UIGraphicsGetCurrentContext() else {return nil}
+        layer.render(in:context)
+        screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        if let image = screenshotImage, shouldSave {
+            
+            screenshot = image
+            
+        }
+        return screenshotImage
+    }
+
 
 }
 

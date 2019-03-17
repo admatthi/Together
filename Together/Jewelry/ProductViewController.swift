@@ -61,7 +61,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
   
-        
+        tableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
