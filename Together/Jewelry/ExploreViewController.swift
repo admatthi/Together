@@ -326,6 +326,15 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
                 var value = snapshot.value as? NSDictionary
                 
+                
+                if var author2 = value?["New Price"] as? Double {
+                    
+                    
+                    ref!.child("Products").child(each).updateChildValues(["New Price" : Int(author2)])
+                    
+                  
+                }
+                
                 if var author2 = value?["Used Price"] as? Int {
                     
 
@@ -1121,18 +1130,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
     
     @objc func tapJoin(sender: UIButton){
         
-        let buttonTag = sender.tag
-        
-        selectedindex = buttonTag
-        selectedimage = images[projectids[buttonTag]]!
-        selectedname = names[projectids[buttonTag]]!
-        selectedpitch = descriptions[projectids[buttonTag]]!
-        selectedprice = newprices[projectids[buttonTag]]!
-        //        selectedprogramnames = programnames[projectids[buttonTag]]!
-        selectedsubs = usedprices[projectids[buttonTag]]!
-        selectedprogramname = programnames[projectids[buttonTag]]!
-        
-        self.performSegue(withIdentifier: "DiscoverToContent", sender: self)
+
     }
     
     /*

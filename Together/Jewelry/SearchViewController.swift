@@ -214,6 +214,14 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 var value = snapshot.value as? NSDictionary
                 
+                if var author2 = value?["New Price"] as? Double {
+                    
+                    
+                    ref!.child("Products").child(each).updateChildValues(["New Price" : Int(author2)])
+                    
+                    
+                }
+                
                 if var author2 = value?["Used Price"] as? Int {
                     
                     
