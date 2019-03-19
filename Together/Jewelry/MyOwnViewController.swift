@@ -22,13 +22,21 @@ import Purchases
 
 var selectedcondition = String()
 
-class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
- 
+class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return genres.count
+    }
+    
+ var genres = [String]()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        genres.removeAll()
+        genres.append("ORDERS")
+        genres.append("WANT")
         ref = Database.database().reference()
 
         taphelp.layer.borderColor = UIColor.black.cgColor
@@ -40,7 +48,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        
+        orderspressed = true
         if Auth.auth().currentUser == nil {
             
             tableView.alpha = 0
@@ -83,7 +91,51 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         ordertitles.removeAll()
         purchasedids.removeAll()
         purchaseddates.removeAll()
-        ref?.child("Jewelery").child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
+        tableView.reloadData()
+ ref?.child("Jewelery").child("Users").child(uid).child("Purchased").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            var value = snapshot.value as? NSDictionary
+            
+            if let snapDict = snapshot.value as? [String:AnyObject] {
+                
+                for each in snapDict {
+                    
+                    let ids = each.key
+                    
+                    self.orderids.append(ids)
+                    
+                    functioncounter += 1
+                    
+                    if functioncounter == snapDict.count {
+                        
+                        completed()
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+        })
+    }
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    func querywantforids(completed: @escaping (() -> ()) ) {
+        
+        var functioncounter = 0
+        
+        tableView.reloadData()
+        ordertitles.removeAll()
+        orderids.removeAll()
+        orderimages.removeAll()
+        deliverydate.removeAll()
+        orderdeets.removeAll()
+        ordertitles.removeAll()
+        purchasedids.removeAll()
+        purchaseddates.removeAll()
+        tableView.reloadData()
+ ref?.child("Jewelery").child("Users").child(uid).child("Want").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
@@ -204,6 +256,299 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func queryforwantinfo() {
+        
+        var functioncounter = 0
+        
+        
+        for each in orderids {
+            
+            
+            ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                var value = snapshot.value as? NSDictionary
+                
+                
+           
+                
+                if var author2 = value?["Used Price"] as? Int {
+                    
+                    
+                    var intviews = Double(author2)
+                    var author3 = "$\(String(Int(intviews)))"
+                    self.orderpices[each] = author3
+                    
+                }
+                
+                if var author2 = value?["New Price"] as? Int {
+                    
+                    
+                    var intviews = Double(author2)
+                    var author3 = "$\(String(Int(intviews)))"
+                    
+                }
+                
+                if var author2 = value?["Description"] as? String {
+                    
+                    descriptions[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Name"] as? String {
+                    
+                    self.ordertitles[each] = author2
+                    names[each] = author2
+
+                }
+                
+                
+                
+                if var profileUrl = value?["Image"] as? String {
+                    // Create a storage reference from the URL
+                    
+                    
+                        imageurls[each] = profileUrl
+                        
+                        let url = URL(string: profileUrl)
+                        
+                        if url != nil {
+                            
+                            if let data = try? Data(contentsOf: url!)
+                                
+                            {
+                                if data != nil {
+                                    
+                                    if let selectedimage2 = UIImage(data: data) {
+                                        
+                                        images[each] = selectedimage2
+                                        self.orderimages[each] = selectedimage2
+
+                                        functioncounter += 1
+                                        
+                                    }
+                                    
+                                } else {
+                                    
+                                    images[each] = UIImage(named: "Watch-3")!
+                                    functioncounter += 1
+                                    
+                                }
+                                
+                                
+                            } else {
+                                
+                                images[each] = UIImage(named: "Watch-3")
+                                
+                                functioncounter += 1
+                                
+                            }
+                            
+                        }
+                        
+              
+                }
+                
+                if var author2 = value?["Key 1"] as? String {
+                    
+                    k1[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 1"] as? String {
+                    
+                    self.orderdeets[each] = author2
+                    v1[each] = "\(author2)"
+                } else {
+                    
+                    if var author2 = value?["Value 1"] as? Int {
+                        
+                        v1[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 1"] as? Double {
+                            
+                            v1[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                
+                if var author2 = value?["Key 2"] as? String {
+                    
+                    k2[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 2"] as? String {
+                    
+                    v2[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 2"] as? Int {
+                        
+                        v2[each] = "\(author2)"
+                    } else {
+                        
+                        if var author2 = value?["Value 2"] as? Double {
+                            
+                            v2[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 3"] as? String {
+                    
+                    k3[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 3"] as? String {
+                    
+                    v3[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 3"] as? Int {
+                        
+                        v3[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 3"] as? Double {
+                            
+                            v3[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 8"] as? String {
+                    
+                    k4[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 8"] as? String {
+                    
+                    v4[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 8"] as? Int {
+                        
+                        v4[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 8"] as? Double {
+                            
+                            v4[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 5"] as? String {
+                    
+                    k5[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 5"] as? String {
+                    
+                    v5[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 5"] as? Int {
+                        
+                        v5[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 5"] as? Double {
+                            
+                            v5[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 6"] as? String {
+                    
+                    k6[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 6"] as? String {
+                    
+                    v6[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 6"] as? Int {
+                        
+                        v6[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 6"] as? Double {
+                            
+                            v6[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                if var author2 = value?["Key 7"] as? String {
+                    
+                    k7[each] = author2
+                    
+                }
+                
+                if var author2 = value?["Value 7"] as? String {
+                    
+                    v7[each] = "\(author2)"
+                    
+                } else {
+                    
+                    if var author2 = value?["Value 7"] as? Int {
+                        
+                        v7[each] = "\(author2)"
+                        
+                    } else {
+                        
+                        if var author2 = value?["Value 7"] as? Double {
+                            
+                            v7[each] = "\(author2)"
+                        }
+                    }
+                    
+                }
+                
+                //                toppics[each] = UIImage(named: "\(each)pic")
+                
+                
+                print(functioncounter)
+                
+                
+                //                if functioncounter == projectids.count {
+                
+                if functioncounter == self.orderids.count  {
+                    
+                    self.tableView.reloadData()
+                }
+                
+                
+            })
+            
+        }
+    }
+    
     var ordertitles = [String:String]()
     var orderids = [String]()
     var orderdeets = [String:String]()
@@ -212,6 +557,81 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var orderimages = [String:UIImage]()
 
     @IBOutlet weak var errorlabel: UILabel!
+    
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Categories", for: indexPath) as! CategoriesCollectionViewCell
+            
+            
+            cell.titlelabel.text = genres[indexPath.row].uppercased()
+            cell.titlelabel.addCharacterSpacing()
+            
+            
+            cell.selectedimage.layer.cornerRadius = 5.0
+            cell.selectedimage.layer.masksToBounds = true
+            
+            if selectedindex == 0 {
+                
+                if indexPath.row == 0 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+                
+            } else {
+                
+                if indexPath.row == 1 {
+                    
+                    cell.titlelabel.alpha = 1
+                    cell.selectedimage.alpha = 1
+                    
+                } else {
+                    
+                    cell.titlelabel.alpha = 0.25
+                    cell.selectedimage.alpha = 0
+                    
+                }
+            }
+            
+            return cell
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+            selectedindex = indexPath.row
+            
+            collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+            
+        
+            collectionView.reloadData()
+
+        if indexPath.row == 0 {
+            
+            orderspressed = true
+            queryforids { () -> () in
+                
+                self.queryforinfo()
+            }
+            
+        
+        } else {
+            
+            orderspressed = false
+            querywantforids { () -> () in
+                
+                self.queryforwantinfo()
+            }
+        }
+    }
+    
+    var orderspressed = Bool()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -235,7 +655,15 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
             tableView.alpha = 0
             errorlabel.alpha = 1
 
-            errorlabel.text = "You haven't placed any orders yet."
+            if orderspressed {
+                
+                errorlabel.text = "You haven't placed any orders yet."
+
+            } else {
+                
+                errorlabel.text = "You haven't liked any watches yet."
+
+            }
             errorlabel.addCharacterSpacing()
             
             return 0
@@ -254,6 +682,19 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         selectedimage = orderimages[orderids[buttonTag]]!
         selectedname = ordertitles[orderids[buttonTag]]!
 
+        selectedid = projectids[buttonTag]
+        unlockedid = "0"
+        selectedimage = images[projectids[buttonTag]]!
+        selectedname = names[projectids[buttonTag]]!
+        selectedimageurl = imageurls[projectids[buttonTag]]!
+        selecteddescription = descriptions[projectids[buttonTag]]!
+        //        selectedpitch = descriptions[projectids[indexPath.row]]!
+        //        selectedprice = usedprices[projectids[indexPath.row]]!
+        
+        //        selectedprogramnames = programnames[projectids[indexPath.row]]!
+        selectedusedprice = usedprices[projectids[buttonTag]]!
+        selectednewprice = newprices[projectids[buttonTag]]!
+        
         self.performSegue(withIdentifier: "MyOrdersToCheckout", sender: self)
     }
     
@@ -278,16 +719,41 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.tapproduct.tag = indexPath.row
         cell.tapsell.addTarget(self, action: #selector(MyOwnViewController.tapSell(sender:)), for: .allTouchEvents)
         cell.isUserInteractionEnabled = true
-        if orderimages.count > 0 {
-        cell.mainimage.image = orderimages[orderids[indexPath.row]]
-        cell.title.text = ordertitles[orderids[indexPath.row]]?.uppercased()
-        cell.title.addCharacterSpacing()
-        cell.price.text = orderpices[orderids[indexPath.row]]
-        cell.details.text = "\(purchaseddates[orderids[indexPath.row]]!.uppercased()) / \(orderdeets[orderids[indexPath.row]]!.uppercased())"
-        cell.details.addCharacterSpacing()
-        cell.delivery.text = deliverydate[orderids[indexPath.row]]?.uppercased()
-        cell.delivery.addCharacterSpacing()
+       
         
+        if orderspressed {
+            
+            cell.tapsell.alpha = 1
+            
+            if orderimages.count > 0 {
+                cell.mainimage.image = orderimages[orderids[indexPath.row]]
+                cell.title.text = ordertitles[orderids[indexPath.row]]?.uppercased()
+                cell.title.addCharacterSpacing()
+                cell.price.text = orderpices[orderids[indexPath.row]]
+                cell.details.text = "\(purchaseddates[orderids[indexPath.row]]!.uppercased()) / \(orderdeets[orderids[indexPath.row]]!.uppercased())"
+                cell.details.addCharacterSpacing()
+                cell.delivery.text = deliverydate[orderids[indexPath.row]]?.uppercased()
+                cell.delivery.addCharacterSpacing()
+                
+                
+            }
+            
+        } else {
+            
+            cell.tapsell.alpha = 0
+            
+            if orderimages.count > 0 {
+                
+                cell.mainimage.image = orderimages[orderids[indexPath.row]]
+                cell.title.text = ordertitles[orderids[indexPath.row]]?.uppercased()
+                cell.title.addCharacterSpacing()
+                cell.price.text = orderpices[orderids[indexPath.row]]
+                cell.details.text = "\(orderdeets[orderids[indexPath.row]]!.uppercased())"
+                cell.details.addCharacterSpacing()
+                cell.delivery.text = "L A S T   S A L E  \([orderpices[orderids[indexPath.row]]!.uppercased())"
+
+                
+            }
         }
         
         return cell

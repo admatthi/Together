@@ -19,6 +19,7 @@ import FirebaseMessaging
 import AVFoundation
 import Purchases
 import FirebaseDynamicLinks
+import UserNotifications
 
 var uid = String()
 var ref: DatabaseReference?
@@ -38,7 +39,7 @@ protocol SnippetsPurchasesDelegate: AnyObject {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
@@ -136,6 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
     }
+
     
     func queryforids(completed: @escaping (() -> ()) ) {
         
@@ -564,7 +566,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-
+    
         
 //        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
 //            // Handle the deep link. For example, show the deep-linked content or
@@ -650,6 +652,7 @@ extension AppDelegate: RCPurchasesDelegate {
         
     }
     
+    
     func purchases(_ purchases: RCPurchases, failedToRestoreTransactionsWithError error: Error) {
         print(error)
     }
@@ -676,6 +679,8 @@ class SegueFromLeft: UIStoryboardSegue
         }
         )
     }
+    
+    
 }
 
 class SegueFromRight: UIStoryboardSegue

@@ -12,7 +12,7 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import FBSDKCoreKit
-
+import UserNotifications
 
 
 var selectedpackaging = String()
@@ -32,9 +32,12 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         activityIndicator.alpha = 0
-        tapsell.layer.borderColor = UIColor.black.cgColor
-        tapsell.addTextSpacing(2.0)
-        tapsell.layer.borderWidth = 0.5
+        tapwant.layer.borderColor = UIColor.black.cgColor
+        tapwant.addTextSpacing(2.0)
+        tapwant.layer.borderWidth = 0.5
+        tapown.layer.borderColor = UIColor.black.cgColor
+        tapown.addTextSpacing(2.0)
+        tapown.layer.borderWidth = 0.5
         
         ref = Database.database().reference()
         queryforinfo()
@@ -65,7 +68,128 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func tapSell(_ sender: Any) {
+    @IBAction func tapWant(_ sender: Any) {
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            print("Checking notification status")
+            
+            switch settings.authorizationStatus {
+                
+            case .authorized:
+                print("authorized")
+                
+                self.showauthorizedalert()
+                
+            case .denied:
+                print("denied")
+                
+                self.showauthorizedalert()
+
+            case .notDetermined:
+
+                print("Shit")
+                self.showalert()
+                
+            case .provisional:
+                
+                print("no")
+            }
+        }
+    }
+    
+    func showauthorizedalert() {
+        
+        let alert = UIAlertController(title: "Want Added", message: "We'll notify you when the price drops or there is a new listing added.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("default")
+                
+            ref?.child("Products").child(selectedid).child("To Notify").child(uid).updateChildValues(["Marion" : "Wellington"])
+                
+        ref?.child("Jewelery").child("Users").child(uid).child("Want").child(selectedid).updateChildValues(["Text" : "yeah"])
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+                
+            }}))
+        
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func showalert() {
+        
+        let alert = UIAlertController(title: "Want Added", message: "We'll notify you when the price drops or there is a new listing added.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Enable Notifications", style: .default, handler: { action in
+            switch action.style{
+                
+            case .default:
+                print("default")
+                
+                
+                UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                    print("Checking notification status")
+                    
+                    switch settings.authorizationStatus {
+                        
+                    case .authorized:
+                        print("authorized")
+                        ref?.child("Products").child(selectedid).child("To Notify").child(uid).updateChildValues(["Marion" : "Wellington"])
+                        
+                        ref?.child("Jewelery").child("Users").child(uid).child("Want").child(selectedid).updateChildValues(["Text" : "yeah"])
+
+                        
+                    case .denied:
+                        print("denied")
+                        
+                    case .notDetermined:
+                        
+                        UNUserNotificationCenter.current() // 1
+                            .requestAuthorization(options: [.alert, .sound, .badge]) { // 2
+                                granted, error in
+                                
+                                ref?.child("Products").child(selectedid).child("To Notify").child(uid).updateChildValues(["Marion" : "Wellington"])
+
+                     
+                                
+                                
+                        }
+                        
+                    case .provisional:
+                        
+                        print("no")
+                    }
+                }
+                
+                
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+                
+            }}))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
+    
+    @IBAction func tapOwn(_ sender: Any) {
         
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
@@ -73,7 +197,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         tabBarBuyer.selectedIndex = 2
         UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
     }
-    @IBOutlet weak var tapsell: UIButton!
+    @IBOutlet weak var tapwant: UIButton!
     
     func queryforinfo() {
         
@@ -262,6 +386,8 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     */
     
+    @IBOutlet weak var tapown: UIButton!
+  
     @IBAction func tapBack(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
@@ -331,6 +457,8 @@ var selectedmetal = String()
         }
     }
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     return 1
@@ -359,7 +487,7 @@ var selectedmetal = String()
                         
                     selectedcondition = "New"
                     
-                    selecteddetails = "\(selectedcondition) / \(selectedpackaging)"
+                    selecteddetails = "\(selectedcondition)"
 
                     self.performSegue(withIdentifier: "ProductToCheckout", sender: self)
                         
@@ -368,7 +496,7 @@ var selectedmetal = String()
                 } else {
                     
                     selectedcondition = "Used"
-                    selecteddetails = "\(selectedcondition) / \(selectedpackaging)"
+                    selecteddetails = "\(selectedcondition)"
                     self.performSegue(withIdentifier: "ProductToCheckout", sender: self)
 
                 }

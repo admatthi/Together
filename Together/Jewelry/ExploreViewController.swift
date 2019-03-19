@@ -122,7 +122,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
             
             if selectedkey == "" {
              
-                limit = 25
+                limit = 50
                 
                 selectedfilter  = "Buy Now"
                 selectedkey = "Tag1"
@@ -140,7 +140,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
             
             if selectedkey != nil {
                 
-            limit = 25
+            limit = 50
                 
             queryforids { () -> () in
                 
@@ -372,7 +372,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 if var profileUrl = value?["Image"] as? String {
                     // Create a storage reference from the URL
                     
-                    if selectedkey == "Key 1" || selectedkey == "Value 9" || selectedkey == "Used Price" {
+                    if selectedkey == "Key 1" || selectedkey == "Value 9" || selectedkey == "Used Price" || selectedkey == "Value 1" {
                         
                         imageurls[each] = profileUrl
                         
@@ -965,6 +965,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
             cell.selectedimage.layer.masksToBounds = true
             collectionView2.alpha = 1
             
+            
             if selectedindex == 0 {
                 
       
@@ -984,7 +985,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                 
             } else {
                 
-                tapfilter.alpha = 0
+                tapfilter.alpha = 1
 
             }
             
@@ -1110,7 +1111,8 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         
             if selectedindex > 0 {
                 
-                tapfilter.alpha = 0
+                tapfilter.alpha = 1
+                
             } else {
                 
                 tapfilter.alpha = 1
