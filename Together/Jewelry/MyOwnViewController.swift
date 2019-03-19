@@ -22,6 +22,7 @@ import Purchases
 
 var selectedcondition = String()
 
+var fucked = true
 class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -34,6 +35,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fucked = false
         genres.removeAll()
         genres.append("ORDERS")
         genres.append("WANT")
@@ -44,11 +46,13 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         taphelp.layer.borderWidth = 0.5
         
         header.addCharacterSpacing()
+        selectedindex = 0
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         orderspressed = true
+        
         if Auth.auth().currentUser == nil {
             
             tableView.alpha = 0
@@ -635,10 +639,13 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if orderspressed {
         selectedid = orderids[indexPath.row]
         
         
         self.performSegue(withIdentifier: "OrdersToCompleted", sender: self)
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -678,24 +685,24 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let buttonTag = sender.tag
         
         
-        selectedid = purchasedids[orderids[buttonTag]]!
+        selectedid = orderids[buttonTag]
         selectedimage = orderimages[orderids[buttonTag]]!
         selectedname = ordertitles[orderids[buttonTag]]!
 
-        selectedid = projectids[buttonTag]
-        unlockedid = "0"
-        selectedimage = images[projectids[buttonTag]]!
-        selectedname = names[projectids[buttonTag]]!
-        selectedimageurl = imageurls[projectids[buttonTag]]!
-        selecteddescription = descriptions[projectids[buttonTag]]!
+        selectedimage = images[orderids[buttonTag]]!
+        selectedname = names[orderids[buttonTag]]!
+        selectedimageurl = imageurls[orderids[buttonTag]]!
+        selecteddescription = descriptions[orderids[buttonTag]]!
         //        selectedpitch = descriptions[projectids[indexPath.row]]!
         //        selectedprice = usedprices[projectids[indexPath.row]]!
         
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedusedprice = usedprices[projectids[buttonTag]]!
-        selectednewprice = newprices[projectids[buttonTag]]!
+        selectedusedprice = usedprices[orderids[buttonTag]]!
+        selectednewprice = newprices[orderids[buttonTag]]!
+        fucked = true
+        self.performSegue(withIdentifier: "WantToProduct", sender: self)
         
-        self.performSegue(withIdentifier: "MyOrdersToCheckout", sender: self)
+        fucked = true
     }
     
     @objc func tapSell(sender: UIButton){

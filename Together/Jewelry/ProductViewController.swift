@@ -390,7 +390,20 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
   
     @IBAction func tapBack(_ sender: Any) {
         
+        if fucked {
+            
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+            
+            tabBarBuyer.selectedIndex = 3
+            UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
+            
+        } else {
+            
         self.dismiss(animated: true, completion: nil)
+            
+        }
+        
     }
     var pricetitles = [String]()
     var prices2 = [String]()
