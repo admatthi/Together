@@ -128,7 +128,30 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func querywantforids(completed: @escaping (() -> ()) ) {
         
         var functioncounter = 0
-        
+        descriptions.removeAll()
+        names.removeAll()
+        programnames.removeAll()
+        prices.removeAll()
+        toppics.removeAll()
+        images.removeAll()
+        brandnames.removeAll()
+        imageurls.removeAll()
+        usedprices.removeAll()
+        newprices.removeAll()
+        k1.removeAll()
+        v1.removeAll()
+        k2.removeAll()
+        v2.removeAll()
+        k3.removeAll()
+        v3.removeAll()
+        k4.removeAll()
+        v4.removeAll()
+        k5.removeAll()
+        v5.removeAll()
+        k6.removeAll()
+        v6.removeAll()
+        k7.removeAll()
+        v7.removeAll()
         tableView.reloadData()
         ordertitles.removeAll()
         orderids.removeAll()
@@ -281,7 +304,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     var intviews = Double(author2)
                     var author3 = "$\(String(Int(intviews)))"
                     self.orderpices[each] = author3
-                    
+                    usedprices[each] = author3
                 }
                 
                 if var author2 = value?["New Price"] as? Int {
@@ -289,7 +312,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     var intviews = Double(author2)
                     var author3 = "$\(String(Int(intviews)))"
-                    
+                    newprices[each] = author3
                 }
                 
                 if var author2 = value?["Description"] as? String {
