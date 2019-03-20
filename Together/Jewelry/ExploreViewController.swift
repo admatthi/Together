@@ -33,6 +33,7 @@ var toppics = [String:UIImage]()
 var imageurls = [String:String]()
 var selectedbrand = String()
 var selectedkey = String()
+var inventoryremain = [String:String]()
 
 var k1 = [String:String]()
 var v1 = [String:String]()
@@ -181,6 +182,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         
         var functioncounter = 0
         
+        inventoryremain.removeAll()
         projectids.removeAll()
         descriptions.removeAll()
         names.removeAll()
@@ -353,6 +355,19 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
                     var author3 = "$\(String(Int(intviews)))"
                     newprices[each] = author3
                     
+                }
+                
+                if var author2 = value?["Inventory"] as? Int {
+                    
+                    
+                    var intviews = Double(author2)
+                    var author3 = "\(String(Int(intviews)))"
+                    inventoryremain[each] = author3
+                    
+                } else {
+                    
+                    inventoryremain[each] = "-"
+
                 }
                 
                 if var author2 = value?["Description"] as? String {
@@ -777,6 +792,7 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
         selectedusedprice = usedprices[projectids[indexPath.row]]!
         selectednewprice = newprices[projectids[indexPath.row]]!
+        leftlabel = inventoryremain[projectids[indexPath.row]]!
 //        selectedprogramname = programnames[projectids[indexPath.row]]!
         
         self.performSegue(withIdentifier: "ExploreToVideos", sender: self)

@@ -10,5 +10,7 @@ import UIKit
 class PricesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titlelabel: UILabel!
     
+    @IBOutlet weak var left: UILabel!
+    @IBOutlet weak var arrow: UIImageView!
     @IBOutlet weak var priceslabel: UILabel!
 }

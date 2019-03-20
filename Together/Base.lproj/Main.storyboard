@@ -4117,17 +4117,40 @@
                                                     <color key="textColor" red="0.47843137254901963" green="0.75294117647058822" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2  L E F T" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWb-aF-BoQ">
+                                                    <rect key="frame" x="91" y="4" width="48" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="Wx1-mZ-Lls"/>
+                                                        <constraint firstAttribute="height" constant="22" id="yTQ-oa-9aQ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="7.5"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="ny9-Nm-ORH">
+                                                    <rect key="frame" x="71" y="8" width="20" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13" id="6qn-Mt-62p"/>
+                                                        <constraint firstAttribute="width" constant="20" id="Rjm-6A-6pA"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="gAk-1L-4DR" firstAttribute="centerX" secondItem="dzb-zH-qB2" secondAttribute="centerX" id="Gj1-uY-v4O"/>
+                                            <constraint firstItem="gAk-1L-4DR" firstAttribute="leading" secondItem="ny9-Nm-ORH" secondAttribute="trailing" constant="-79" id="JkQ-G3-pce"/>
                                             <constraint firstItem="gAk-1L-4DR" firstAttribute="leading" secondItem="dzb-zH-qB2" secondAttribute="leadingMargin" constant="4" id="W5R-2g-ocA"/>
                                             <constraint firstItem="gAk-1L-4DR" firstAttribute="top" secondItem="dzb-zH-qB2" secondAttribute="top" constant="20" id="ahh-4L-zc6"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="gAk-1L-4DR" secondAttribute="trailing" constant="4" id="cND-6I-tV4"/>
+                                            <constraint firstItem="mWb-aF-BoQ" firstAttribute="leading" secondItem="ny9-Nm-ORH" secondAttribute="trailing" id="iao-Eo-Bv1"/>
+                                            <constraint firstItem="gAk-1L-4DR" firstAttribute="top" secondItem="ny9-Nm-ORH" secondAttribute="bottom" constant="-1" id="icO-xV-4MI"/>
                                             <constraint firstItem="6en-Nc-QJH" firstAttribute="top" secondItem="dzb-zH-qB2" secondAttribute="top" constant="45" id="taa-cM-iku"/>
                                             <constraint firstItem="6en-Nc-QJH" firstAttribute="centerX" secondItem="gAk-1L-4DR" secondAttribute="centerX" id="vv8-3u-M1q"/>
+                                            <constraint firstItem="gAk-1L-4DR" firstAttribute="top" secondItem="mWb-aF-BoQ" secondAttribute="bottom" constant="-6" id="xNW-AI-R3B"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="arrow" destination="ny9-Nm-ORH" id="3SU-72-i7l"/>
+                                            <outlet property="left" destination="mWb-aF-BoQ" id="SOj-rz-10y"/>
                                             <outlet property="priceslabel" destination="6en-Nc-QJH" id="pBm-DB-9kA"/>
                                             <outlet property="titlelabel" destination="gAk-1L-4DR" id="nwa-j2-SK5"/>
                                         </connections>
@@ -4139,7 +4162,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KxX-yz-9hH">
-                                <rect key="frame" x="300" y="47" width="59" height="22"/>
+                                <rect key="frame" x="300" y="54" width="59" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="59" id="8y4-TV-zFm"/>
                                     <constraint firstAttribute="height" constant="22" id="Ksg-2v-Ufj"/>
@@ -4177,7 +4200,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qk-3v-Iua">
-                                <rect key="frame" x="227" y="47" width="59" height="22"/>
+                                <rect key="frame" x="227" y="54" width="59" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="2KS-US-nOV"/>
                                     <constraint firstAttribute="width" constant="59" id="afG-Z2-Xk5"/>
@@ -4198,7 +4221,7 @@
                             <constraint firstItem="wYe-Aw-B4L" firstAttribute="trailing" secondItem="gc4-Cq-zIf" secondAttribute="trailing" id="0N1-7i-0nD"/>
                             <constraint firstItem="yn5-pD-p1G" firstAttribute="top" secondItem="Yzb-Cl-t4t" secondAttribute="top" constant="33" id="1vN-oW-SVw"/>
                             <constraint firstItem="wYe-Aw-B4L" firstAttribute="top" secondItem="E40-1W-lfO" secondAttribute="bottom" constant="-104" id="6B7-hy-EPw"/>
-                            <constraint firstItem="KxX-yz-9hH" firstAttribute="centerY" secondItem="yn5-pD-p1G" secondAttribute="centerY" constant="-8" id="8Tv-fQ-7H3"/>
+                            <constraint firstItem="KxX-yz-9hH" firstAttribute="centerY" secondItem="yn5-pD-p1G" secondAttribute="centerY" constant="-1" id="8Tv-fQ-7H3"/>
                             <constraint firstItem="pp8-MC-RLr" firstAttribute="centerX" secondItem="Yzb-Cl-t4t" secondAttribute="centerX" id="AeU-L2-1pE"/>
                             <constraint firstItem="4SU-kr-uGm" firstAttribute="leading" secondItem="Yzb-Cl-t4t" secondAttribute="leading" id="Gun-za-B83"/>
                             <constraint firstAttribute="bottom" secondItem="wYe-Aw-B4L" secondAttribute="bottom" id="Htk-nB-OLq"/>
@@ -6556,6 +6579,7 @@
         <image name="1" width="16" height="16"/>
         <image name="Account-1" width="40" height="40"/>
         <image name="Add" width="30" height="30"/>
+        <image name="ArrowUp" width="195" height="195"/>
         <image name="Back" width="40" height="40"/>
         <image name="BlueArrow" width="195" height="195"/>
         <image name="CC1 Copy 2" width="343" height="475"/>

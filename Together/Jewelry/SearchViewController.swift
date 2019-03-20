@@ -26,6 +26,7 @@ var brandsearchnames = [String:String]()
 var searchimageurls = [String:String]()
 var searchtoppics = [String:String]()
 var searchnewprices = [String:String]()
+var searchinventory = [String:String]()
 
 class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
 
@@ -99,7 +100,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchimageurls.removeAll()
         searchnewprices.removeAll()
         
-        
+        searchinventory.removeAll()
         ref?.child("Products").queryOrdered(byChild: "Name").queryStarting(atValue: querytext).queryEnding(atValue: querytext+"\u{f8ff}").queryLimited(toFirst: 25).observeSingleEvent(of: .value, with: { (snapshot) in
 
             var value = snapshot.value as? NSDictionary
@@ -249,6 +250,20 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
                 if var author2 = value?["Name"] as? String {
                     
                     searchnames[each] = author2
+                    
+                }
+                
+                
+                if var author2 = value?["Inventory"] as? Int {
+                    
+                    
+                    var intviews = Double(author2)
+                    var author3 = "\(String(Int(intviews)))"
+                    searchinventory[each] = author3
+                    
+                } else {
+                    
+                    searchinventory[each] = "-"
                     
                 }
                 
@@ -515,6 +530,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         selectednewprice = searchnewprices[searchids[indexPath.row]]!
         //        selectedprogramname = programsearchnames[searchids[indexPath.row]]!
         
+        leftlabel = searchinventory[searchids[indexPath.row]]!
         self.performSegue(withIdentifier: "SearchToProduct", sender: self)
         
     }

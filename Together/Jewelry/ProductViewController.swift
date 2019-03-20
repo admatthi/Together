@@ -21,6 +21,7 @@ var productimages = [UIImage]()
 
 var myselectedimage = UIImage()
 
+var leftlabel = String()
 class ProductViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
  {
 
@@ -501,6 +502,8 @@ var selectedmetal = String()
                     selectedcondition = "New"
                     
                     selecteddetails = "\(selectedcondition)"
+                        
+                   
 
                     self.performSegue(withIdentifier: "ProductToCheckout", sender: self)
                         
@@ -509,7 +512,15 @@ var selectedmetal = String()
                 } else {
                     
                     selectedcondition = "Used"
+                    
+                    
                     selecteddetails = "\(selectedcondition)"
+                    
+                    if leftlabel != "-" {
+                        
+                        selecteddetails = "\(selectedcondition) / \(leftlabel) left"
+                        
+                    }
                     self.performSegue(withIdentifier: "ProductToCheckout", sender: self)
 
                 }
@@ -681,6 +692,25 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     cell.titlelabel.text = pricetitles[indexPath.row]
     cell.titlelabel.addCharacterSpacing()
     
+    if indexPath.row == 0 {
+        
+        cell.arrow.alpha = 0
+        cell.left.alpha = 0
+        
+    } else {
+        
+        if leftlabel != "-" {
+            
+            cell.arrow.alpha = 1
+            cell.left.alpha = 1
+            cell.left.text = "\(leftlabel)  L E F T"
+            
+        } else {
+            cell.arrow.alpha = 0
+            cell.left.alpha = 0
+            
+        }
+    }
    
     
     if prices2[indexPath.row] == "OUT OF STOCK" {
