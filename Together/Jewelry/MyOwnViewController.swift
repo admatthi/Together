@@ -727,7 +727,9 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.tapsell.addTarget(self, action: #selector(MyOwnViewController.tapSell(sender:)), for: .allTouchEvents)
         cell.isUserInteractionEnabled = true
        
-        
+//        cell.price.layer.borderWidth = 0.5
+//        
+//        cell.price.layer.borderColor = UIColor.lightGray.cgColor
         if orderspressed {
             
             cell.tapsell.alpha = 1
@@ -736,7 +738,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.mainimage.image = orderimages[orderids[indexPath.row]]
                 cell.title.text = ordertitles[orderids[indexPath.row]]?.uppercased()
                 cell.title.addCharacterSpacing()
-                cell.price.text = orderpices[orderids[indexPath.row]]
+                cell.price.text = "$\(orderpices[orderids[indexPath.row]]!)"
                 cell.details.text = "\(purchaseddates[orderids[indexPath.row]]!.uppercased()) / \(orderdeets[orderids[indexPath.row]]!.uppercased())"
                 cell.details.addCharacterSpacing()
                 cell.delivery.text = deliverydate[orderids[indexPath.row]]?.uppercased()
@@ -757,8 +759,8 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.price.text = orderpices[orderids[indexPath.row]]
                 cell.details.text = "\(orderdeets[orderids[indexPath.row]]!.uppercased())"
                 cell.details.addCharacterSpacing()
-                cell.delivery.text = "L A S T   S A L E  \([orderpices[orderids[indexPath.row]]!.uppercased())"
-
+                cell.delivery.text = "LAST SALE  \([orderpices[orderids[indexPath.row]]!.uppercased())"
+                cell.delivery.addCharacterSpacing()
                 
             }
         }

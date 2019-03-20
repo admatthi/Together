@@ -78,6 +78,7 @@
 		9DA5C2CB21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */; };
 		9DA5C2CC21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */; };
 		9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB4D29321965344008A57FD /* VideoPlayerView.swift */; };
+		9DB52ACD2241A98300B57D98 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB52ACC2241A98300B57D98 /* PasscodeViewController.swift */; };
 		9DB795C621656B5300211327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C521656B5300211327 /* AppDelegate.swift */; };
 		9DB795C821656B5300211327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB795C721656B5300211327 /* ViewController.swift */; };
 		9DB795CB21656B5300211327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB795C921656B5300211327 /* Main.storyboard */; };
@@ -213,6 +214,7 @@
 		9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB4D29321965344008A57FD /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		9DB52ACC2241A98300B57D98 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		9DB795C221656B5300211327 /* Together.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Together.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB795C521656B5300211327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DB795C721656B5300211327 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				9DC27B9321C44B8B0005759C /* FilterViewController.swift */,
 				9D5DCDE5221882EC00AE1A72 /* SearchViewController.swift */,
 				9D21151C223EE44600CB7BE5 /* FeedbackViewController.swift */,
+				9DB52ACC2241A98300B57D98 /* PasscodeViewController.swift */,
 			);
 			path = Jewelry;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				9DD9801E21BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
 				9D94017821B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9D50E19C21B0C8A200065C81 /* CheckoutViewController.swift in Sources */,
+				9DB52ACD2241A98300B57D98 /* PasscodeViewController.swift in Sources */,
 				9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */,
 				9DD9800E21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9DC75F8B21C09D250074CA45 /* Help2ViewController.swift in Sources */,

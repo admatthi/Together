@@ -68,13 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         if Auth.auth().currentUser == nil {
             
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = initialViewControlleripad
-            self.window?.makeKeyAndVisible()//
+            queryforinfo()
             
       
             
@@ -139,360 +133,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     
-    func queryforids(completed: @escaping (() -> ()) ) {
-        
-        var functioncounter = 0
-        
-        projectids.removeAll()
-        descriptions.removeAll()
-        names.removeAll()
-        programnames.removeAll()
-        prices.removeAll()
-        toppics.removeAll()
-        images.removeAll()
-        brandnames.removeAll()
-        imageurls.removeAll()
-        k1.removeAll()
-        v1.removeAll()
-        k2.removeAll()
-        v2.removeAll()
-        k3.removeAll()
-        v3.removeAll()
-        k4.removeAll()
-        v4.removeAll()
-        k5.removeAll()
-        v5.removeAll()
-        k6.removeAll()
-        v6.removeAll()
-        k7.removeAll()
-        v7.removeAll()
-
-            ref?.child("Products").queryOrdered(byChild: "Tag1").queryEqual(toValue: "Buy Now").observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                var value = snapshot.value as? NSDictionary
-                
-                if let snapDict = snapshot.value as? [String:AnyObject] {
-                    
-                    for each in snapDict {
-                        
-                        let ids = each.key
-                        
-                        projectids.append(ids)
-                        
-                        functioncounter += 1
-                        
-                        if snapDict.count > 15 {
-                            
-                            if functioncounter == 15 {
-                                
-                                completed()
-                                
-                            }
-                            
-                        } else {
-                            
-                            if functioncounter == snapDict.count {
-                                
-                                completed()
-                                
-                            }
-                            
-                        }
-                        
-                        
-                        
-                        
-                        
-                    }
-                    
-                }
-                
-            })
-        
-    }
-    
     func queryforinfo() {
         
         var functioncounter = 0
         
-        for each in projectids {
             
-            
-            ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("Variable").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 var value = snapshot.value as? NSDictionary
                 
-                if var author2 = value?["Used Price"] as? Int {
-                    
-                    
-                    var intviews = Double(author2)
-                    var author3 = "$\(String(Int(intviews)))"
-                    usedprices[each] = author3
-                    
-                }
                 
-                if var author2 = value?["New Price"] as? Int {
+                if var author2 = value?["Passcode Viewed"] as? String {
                     
-                    
-                    var intviews = Double(author2)
-                    var author3 = "$\(String(Int(intviews)))"
-                    newprices[each] = author3
-                    
-                }
-                
-                if var author2 = value?["Description"] as? String {
-                    
-                    descriptions[each] = author2
-                    
-                }
-                
-                if var author2 = value?["Name"] as? String {
-                    
-                    names[each] = author2
-                    
-                }
-                
-                
-                
-                if var profileUrl = value?["Image"] as? String {
-                    // Create a storage reference from the URL
-                    imageurls[each] = profileUrl
-                    
-                    let url = URL(string: profileUrl)
-                    
-                    if url != nil {
+                    if author2 == "True" {
                         
-                        if let data = try? Data(contentsOf: url!)
-                            
-                        {
-                            if data != nil {
-                                
-                                if let selectedimage2 = UIImage(data: data) {
-                                    
-                                    images[each] = selectedimage2
-                                    functioncounter += 1
-                                    
-                                }
-                                
-                            } else {
-                                
-                                images[each] = UIImage(named: "Watch-3")!
-                                functioncounter += 1
-                                
-                            }
-                            
-                            
-                        } else {
-                            
-                            images[each] = UIImage(named: "Watch-3")
-                            
-                            functioncounter += 1
-                            
-                        }
+                        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         
-                    }
-                    
-                }
-                
-                if var author2 = value?["Key 1"] as? String {
-                    
-                    k1[each] = author2
-                    
-                }
-                
-                if var author2 = value?["Value 1"] as? String {
-                    
-                    v1[each] = "\(author2)"
-                } else {
-                    
-                    if var author2 = value?["Value 1"] as? Int {
                         
-                        v1[each] = "\(author2)"
+                        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Passcode") as UIViewController
+                        self.window = UIWindow(frame: UIScreen.main.bounds)
+                        self.window?.rootViewController = initialViewControlleripad
+                        self.window?.makeKeyAndVisible()
                         
                     } else {
                         
-                        if var author2 = value?["Value 1"] as? Double {
-                            
-                            v1[each] = "\(author2)"
-                        }
+                        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        
+                        let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview") as UIViewController
+                        self.window = UIWindow(frame: UIScreen.main.bounds)
+                        self.window?.rootViewController = initialViewControlleripad
+                        self.window?.makeKeyAndVisible()
                     }
                     
-                }
-                
-                
-                if var author2 = value?["Key 2"] as? String {
-                    
-                    k2[each] = author2
                     
                 }
-                
-                if var author2 = value?["Value 2"] as? String {
-                    
-                    v2[each] = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 2"] as? Int {
-                        
-                        v2[each] = "\(author2)"
-                    } else {
-                        
-                        if var author2 = value?["Value 2"] as? Double {
-                            
-                            v2[each] = "\(author2)"
-                        }
-                    }
-                    
-                }
-                
-                if var author2 = value?["Key 3"] as? String {
-                    
-                    k3[each] = author2
-                    
-                }
-                
-                if var author2 = value?["Value 3"] as? String {
-                    
-                    v3[each] = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 3"] as? Int {
-                        
-                        v3[each] = "\(author2)"
-                        
-                    } else {
-                        
-                        if var author2 = value?["Value 3"] as? Double {
-                            
-                            v3[each] = "\(author2)"
-                        }
-                    }
-                    
-                }
-                
-                if var author2 = value?["Key 8"] as? String {
-                    
-                    k4[each] = author2
-                    
-                }
-                
-                if var author2 = value?["Value 8"] as? String {
-                    
-                    v4[each] = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 8"] as? Int {
-                        
-                        v4[each] = "\(author2)"
-                        
-                    } else {
-                        
-                        if var author2 = value?["Value 8"] as? Double {
-                            
-                            v4[each] = "\(author2)"
-                        }
-                    }
-                    
-                }
-                
-                if var author2 = value?["Key 5"] as? String {
-                    
-                    k5[each] = author2
-                    
-                }
-                
-                if var author2 = value?["Value 5"] as? String {
-                    
-                    v5[each] = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 5"] as? Int {
-                        
-                        v5[each] = "\(author2)"
-                        
-                    } else {
-                        
-                        if var author2 = value?["Value 5"] as? Double {
-                            
-                            v5[each] = "\(author2)"
-                        }
-                    }
-                    
-                }
-                
-                if var author2 = value?["Key 6"] as? String {
-                    
-                    k6[each] = author2
-                    
-                }
-                
-                if var author2 = value?["Value 6"] as? String {
-                    
-                    v6[each] = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 6"] as? Int {
-                        
-                        v6[each] = "\(author2)"
-                        
-                    } else {
-                        
-                        if var author2 = value?["Value 6"] as? Double {
-                            
-                            v6[each] = "\(author2)"
-                        }
-                    }
-                    
-                }
-                
-                if var author2 = value?["Key 7"] as? String {
-                    
-                    k7[each] = author2
-                    
-                }
-                
-                if var author2 = value?["Value 7"] as? String {
-                    
-                    v7[each] = "\(author2)"
-                    
-                } else {
-                    
-                    if var author2 = value?["Value 7"] as? Int {
-                        
-                        v7[each] = "\(author2)"
-                        
-                    } else {
-                        
-                        if var author2 = value?["Value 7"] as? Double {
-                            
-                            v7[each] = "\(author2)"
-                        }
-                    }
-                    
-                }
-                
-                //                toppics[each] = UIImage(named: "\(each)pic")
-                
-                
-                print(functioncounter)
-                
-                
-                //                if functioncounter == projectids.count {
-                
-                if functioncounter == projectids.count || functioncounter == 15 {
-                    
-           
-                }
-                
                 
             })
             
         }
-    }
+    
+    
     
 
     func applicationWillResignActive(_ application: UIApplication) {
