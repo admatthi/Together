@@ -50,7 +50,7 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         pricetitles.append("BUY USED")
         prices2.append(selectednewprice)
         prices2.append(selectedusedprice)
-        
+     
         activityIndicator.color = myblue
         tableView.alpha = 1
         collectionView.alpha = 1
@@ -65,7 +65,6 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
   
-        tableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
@@ -391,19 +390,19 @@ class ProductViewController: UIViewController, UITableViewDelegate, UITableViewD
   
     @IBAction func tapBack(_ sender: Any) {
         
-        if fucked {
-            
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
-            
-            tabBarBuyer.selectedIndex = 3
-            UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
-            
-        } else {
-            
+//        if fucked {
+//
+//            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+//
+//            tabBarBuyer.selectedIndex = 3
+//            UIApplication.shared.keyWindow?.rootViewController = tabBarBuyer
+//
+//        } else {
+        
         self.dismiss(animated: true, completion: nil)
             
-        }
+//        }
         
     }
     var pricetitles = [String]()

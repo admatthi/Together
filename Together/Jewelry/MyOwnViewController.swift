@@ -21,20 +21,53 @@ import AVFoundation
 import Purchases
 
 var selectedcondition = String()
+var wantdescriptions = [String:String]()
+var wantusedprices = [String:String]()
+var wantnewprices = [String:String]()
+var wantbrandnames = [String:String]()
+
+var wantk1 = [String:String]()
+var wantv1 = [String:String]()
+var wantk2 = [String:String]()
+var wantv2 = [String:String]()
+var wantk3 = [String:String]()
+var wantv3 = [String:String]()
+var wantk4 = [String:String]()
+var wantv4 = [String:String]()
+var wantk5 = [String:String]()
+var wantv5 = [String:String]()
+var wantk6 = [String:String]()
+var wantv6 = [String:String]()
+var wantk7 = [String:String]()
+var wantv7 = [String:String]()
 
 var fucked = true
+
+
+
+
 class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return genres.count
     }
-    
- var genres = [String]()
+    var orderids = [String]()
+
+    var ordertitles = [String:String]()
+    var orderimages = [String:UIImage]()
+    var orderdeets = [String:String]()
+
+    var genres = [String]()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var header: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        activityIndicator.startAnimating()
+        activityIndicator.color = myblue
+        errorlabel.alpha = 0
+        tableView.alpha = 0
+        
         fucked = false
         genres.removeAll()
         genres.append("ORDERS")
@@ -51,22 +84,13 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        orderspressed = true
+        wantspressed = false
         
-        if Auth.auth().currentUser == nil {
-            
-            tableView.alpha = 0
-            errorlabel.alpha = 1
-            errorlabel.text = "Please sign in or register to view your orders."
-            errorlabel.addCharacterSpacing()
-            
-        } else {
-            
+     
             queryforids { () -> () in
                 
                 self.queryforinfo()
             }
-        }
         // Do any additional setup after loading the view.
     }
     
@@ -91,6 +115,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         orderids.removeAll()
         orderimages.removeAll()
         deliverydate.removeAll()
+        orderprices.removeAll()
         orderdeets.removeAll()
         ordertitles.removeAll()
         purchasedids.removeAll()
@@ -102,6 +127,8 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if let snapDict = snapshot.value as? [String:AnyObject] {
                 
+                self.errorlabel.alpha = 0
+                self.activityIndicator.alpha = 1
                 for each in snapDict {
                     
                     let ids = each.key
@@ -119,60 +146,61 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                 }
                 
-            }
+            } else {
+                
+                self.errorlabel.alpha = 1
+                self.activityIndicator.alpha = 0
+        }
             
         })
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     func querywantforids(completed: @escaping (() -> ()) ) {
         
         var functioncounter = 0
-        descriptions.removeAll()
-        names.removeAll()
+        wantdescriptions.removeAll()
         programnames.removeAll()
-        prices.removeAll()
-        toppics.removeAll()
-        images.removeAll()
-        brandnames.removeAll()
-        imageurls.removeAll()
-        usedprices.removeAll()
-        newprices.removeAll()
-        k1.removeAll()
-        v1.removeAll()
-        k2.removeAll()
-        v2.removeAll()
-        k3.removeAll()
-        v3.removeAll()
-        k4.removeAll()
-        v4.removeAll()
-        k5.removeAll()
-        v5.removeAll()
-        k6.removeAll()
-        v6.removeAll()
-        k7.removeAll()
-        v7.removeAll()
+        wantbrandnames.removeAll()
+        wantusedprices.removeAll()
+        wantnewprices.removeAll()
+        wantk1.removeAll()
+        wantv1.removeAll()
+        wantk2.removeAll()
+        wantv2.removeAll()
+        wantk3.removeAll()
+        wantv3.removeAll()
+        wantk4.removeAll()
+        wantv4.removeAll()
+        wantk5.removeAll()
+        wantv5.removeAll()
+        wantk6.removeAll()
+        wantv6.removeAll()
+        wantk7.removeAll()
+        wantv7.removeAll()
         tableView.reloadData()
-        ordertitles.removeAll()
-        orderids.removeAll()
-        orderimages.removeAll()
-        deliverydate.removeAll()
-        orderdeets.removeAll()
-        ordertitles.removeAll()
-        purchasedids.removeAll()
-        purchaseddates.removeAll()
+        wanttitles.removeAll()
+        wantids.removeAll()
+        wantimages.removeAll()
+        wantdeets.removeAll()
+        wanttitles.removeAll()
         tableView.reloadData()
+        
  ref?.child("Jewelery").child("Users").child(uid).child("Want").observeSingleEvent(of: .value, with: { (snapshot) in
             
             var value = snapshot.value as? NSDictionary
             
             if let snapDict = snapshot.value as? [String:AnyObject] {
                 
+                self.errorlabel.alpha = 0
+                self.activityIndicator.alpha = 1
                 for each in snapDict {
                     
                     let ids = each.key
                     
-                    self.orderids.append(ids)
+                    self.wantids.append(ids)
                     
                     functioncounter += 1
                     
@@ -185,13 +213,18 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                 }
                 
-            }
+            } else {
+                
+                self.errorlabel.alpha = 1
+                self.activityIndicator.alpha = 0
+    }
             
         })
     }
     
     var purchasedids = [String:String]()
     var purchaseddates = [String:String]()
+    var orderprices = [String:String]()
     func queryforinfo() {
         
         var functioncounter = 0
@@ -202,7 +235,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 var value = snapshot.value as? NSDictionary
                 
                 if var author2 = value?["Price"] as? String {
-                    self.orderpices[each] = author2
+                    self.orderprices[each] = author2
                     
                 }
                 
@@ -274,6 +307,10 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if functioncounter == self.orderids.count {
                     
+                    self.activityIndicator.startAnimating()
+                    self.activityIndicator.color = myblue
+                    self.activityIndicator.alpha = 0
+                    self.tableView.alpha = 1
                     self.tableView.reloadData()
                 }
                 
@@ -288,7 +325,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var functioncounter = 0
         
         
-        for each in orderids {
+        for each in wantids {
             
             
             ref?.child("Products").child(each).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -303,8 +340,8 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     var intviews = Double(author2)
                     var author3 = "$\(String(Int(intviews)))"
-                    self.orderpices[each] = author3
-                    usedprices[each] = author3
+                    self.wantprices[each] = author3
+                    wantusedprices[each] = author3
                 }
                 
                 if var author2 = value?["New Price"] as? Int {
@@ -312,19 +349,18 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     
                     var intviews = Double(author2)
                     var author3 = "$\(String(Int(intviews)))"
-                    newprices[each] = author3
+                    wantnewprices[each] = author3
                 }
                 
                 if var author2 = value?["Description"] as? String {
                     
-                    descriptions[each] = author2
+                    wantdescriptions[each] = author2
                     
                 }
                 
                 if var author2 = value?["Name"] as? String {
                     
-                    self.ordertitles[each] = author2
-                    names[each] = author2
+                    self.wanttitles[each] = author2
 
                 }
                 
@@ -334,8 +370,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     // Create a storage reference from the URL
                     
                     
-                        imageurls[each] = profileUrl
-                        
+                    
                         let url = URL(string: profileUrl)
                         
                         if url != nil {
@@ -347,8 +382,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                     
                                     if let selectedimage2 = UIImage(data: data) {
                                         
-                                        images[each] = selectedimage2
-                                        self.orderimages[each] = selectedimage2
+                                        self.wantimages[each] = selectedimage2
 
                                         functioncounter += 1
                                         
@@ -356,7 +390,8 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                     
                                 } else {
                                     
-                                    images[each] = UIImage(named: "Watch-3")!
+                                    self.wantimages[each] = UIImage(named: "Watch-3")!
+
                                     functioncounter += 1
                                     
                                 }
@@ -364,8 +399,8 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                 
                             } else {
                                 
-                                images[each] = UIImage(named: "Watch-3")
-                                
+                                self.wantimages[each] = UIImage(named: "Watch-3")
+
                                 functioncounter += 1
                                 
                             }
@@ -377,25 +412,25 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if var author2 = value?["Key 1"] as? String {
                     
-                    k1[each] = author2
+                    wantk1[each] = author2
                     
                 }
                 
                 if var author2 = value?["Value 1"] as? String {
                     
-                    self.orderdeets[each] = author2
-                    v1[each] = "\(author2)"
+                    self.wantdeets[each] = author2
+                    wantv1[each] = "\(author2)"
                 } else {
                     
                     if var author2 = value?["Value 1"] as? Int {
                         
-                        v1[each] = "\(author2)"
+                        wantv1[each] = "\(author2)"
                         
                     } else {
                         
                         if var author2 = value?["Value 1"] as? Double {
                             
-                            v1[each] = "\(author2)"
+                            wantv1[each] = "\(author2)"
                         }
                     }
                     
@@ -404,24 +439,24 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if var author2 = value?["Key 2"] as? String {
                     
-                    k2[each] = author2
+                    wantk2[each] = author2
                     
                 }
                 
                 if var author2 = value?["Value 2"] as? String {
                     
-                    v2[each] = "\(author2)"
+                    wantv2[each] = "\(author2)"
                     
                 } else {
                     
                     if var author2 = value?["Value 2"] as? Int {
                         
-                        v2[each] = "\(author2)"
+                        wantv2[each] = "\(author2)"
                     } else {
                         
                         if var author2 = value?["Value 2"] as? Double {
                             
-                            v2[each] = "\(author2)"
+                            wantv2[each] = "\(author2)"
                         }
                     }
                     
@@ -429,25 +464,25 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if var author2 = value?["Key 3"] as? String {
                     
-                    k3[each] = author2
+                    wantk3[each] = author2
                     
                 }
                 
                 if var author2 = value?["Value 3"] as? String {
                     
-                    v3[each] = "\(author2)"
+                    wantv3[each] = "\(author2)"
                     
                 } else {
                     
                     if var author2 = value?["Value 3"] as? Int {
                         
-                        v3[each] = "\(author2)"
+                        wantv3[each] = "\(author2)"
                         
                     } else {
                         
                         if var author2 = value?["Value 3"] as? Double {
                             
-                            v3[each] = "\(author2)"
+                            wantv3[each] = "\(author2)"
                         }
                     }
                     
@@ -455,13 +490,13 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if var author2 = value?["Key 8"] as? String {
                     
-                    k4[each] = author2
+                    wantk4[each] = author2
                     
                 }
                 
                 if var author2 = value?["Value 8"] as? String {
                     
-                    v4[each] = "\(author2)"
+                    wantv4[each] = "\(author2)"
                     
                 } else {
                     
@@ -473,7 +508,7 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                         if var author2 = value?["Value 8"] as? Double {
                             
-                            v4[each] = "\(author2)"
+                            wantv4[each] = "\(author2)"
                         }
                     }
                     
@@ -481,19 +516,19 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if var author2 = value?["Key 5"] as? String {
                     
-                    k5[each] = author2
+                    wantk5[each] = author2
                     
                 }
                 
                 if var author2 = value?["Value 5"] as? String {
                     
-                    v5[each] = "\(author2)"
+                    wantv5[each] = "\(author2)"
                     
                 } else {
                     
                     if var author2 = value?["Value 5"] as? Int {
                         
-                        v5[each] = "\(author2)"
+                        wantv5[each] = "\(author2)"
                         
                     } else {
                         
@@ -507,25 +542,25 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if var author2 = value?["Key 6"] as? String {
                     
-                    k6[each] = author2
+                    wantk6[each] = author2
                     
                 }
                 
                 if var author2 = value?["Value 6"] as? String {
                     
-                    v6[each] = "\(author2)"
+                    wantv6[each] = "\(author2)"
                     
                 } else {
                     
                     if var author2 = value?["Value 6"] as? Int {
                         
-                        v6[each] = "\(author2)"
+                        wantv6[each] = "\(author2)"
                         
                     } else {
                         
                         if var author2 = value?["Value 6"] as? Double {
                             
-                            v6[each] = "\(author2)"
+                            wantv6[each] = "\(author2)"
                         }
                     }
                     
@@ -533,25 +568,25 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if var author2 = value?["Key 7"] as? String {
                     
-                    k7[each] = author2
+                    wantk7[each] = author2
                     
                 }
                 
                 if var author2 = value?["Value 7"] as? String {
                     
-                    v7[each] = "\(author2)"
+                    wantv7[each] = "\(author2)"
                     
                 } else {
                     
                     if var author2 = value?["Value 7"] as? Int {
                         
-                        v7[each] = "\(author2)"
+                        wantv7[each] = "\(author2)"
                         
                     } else {
                         
                         if var author2 = value?["Value 7"] as? Double {
                             
-                            v7[each] = "\(author2)"
+                            wantv7[each] = "\(author2)"
                         }
                     }
                     
@@ -565,8 +600,12 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 //                if functioncounter == projectids.count {
                 
-                if functioncounter == self.orderids.count  {
+                if functioncounter == self.wantids.count  {
                     
+                    self.activityIndicator.startAnimating()
+                    self.activityIndicator.color = myblue
+                    self.activityIndicator.alpha = 0
+                    self.tableView.alpha = 1
                     self.tableView.reloadData()
                 }
                 
@@ -576,12 +615,12 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    var ordertitles = [String:String]()
-    var orderids = [String]()
-    var orderdeets = [String:String]()
-    var orderpices = [String:String]()
+    var wanttitles = [String:String]()
+    var wantids = [String]()
+    var wantdeets = [String:String]()
+    var wantprices = [String:String]()
     var deliverydate = [String:String]()
-    var orderimages = [String:UIImage]()
+    var wantimages = [String:UIImage]()
 
     @IBOutlet weak var errorlabel: UILabel!
     
@@ -636,71 +675,106 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
             
+        self.activityIndicator.startAnimating()
+        self.activityIndicator.alpha = 1
+        self.tableView.alpha = 0
         
             collectionView.reloadData()
 
         if indexPath.row == 0 {
             
-            orderspressed = true
+            wantspressed = false
+            
+            if orderimages.count > 0 {
+                
+                tableView.alpha = 1
+                activityIndicator.alpha = 0
+                tableView.reloadData()
+                
+            } else {
+                
             queryforids { () -> () in
                 
                 self.queryforinfo()
             }
             
+            }
         
         } else {
             
-            orderspressed = false
+            wantspressed = true
+            
+            if wantimages.count > 0 {
+                tableView.alpha = 1
+                activityIndicator.alpha = 0
+                tableView.reloadData()
+            } else {
             querywantforids { () -> () in
                 
                 self.queryforwantinfo()
             }
+                
+            }
         }
     }
     
-    var orderspressed = Bool()
+    var wantspressed = Bool()
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if orderspressed {
+        if wantspressed == false {
+            
         selectedid = orderids[indexPath.row]
         
         
-        self.performSegue(withIdentifier: "OrdersToCompleted", sender: self)
+        self.performSegue(withIdentifier: "wantsToCompleted", sender: self)
             
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        if orderimages.count > 0 {
+        
+        if wantspressed {
             
-            tableView.alpha = 1
-            errorlabel.alpha = 0 
-            return orderimages.count
-            
-        } else {
-            
-            
-            tableView.alpha = 0
-            errorlabel.alpha = 1
-
-            if orderspressed {
+            if wantimages.count > 0 {
                 
-                errorlabel.text = "You haven't placed any orders yet."
-
+                tableView.alpha = 1
+                errorlabel.alpha = 0
+                return wantimages.count
+                
             } else {
-                
+                tableView.alpha = 0
+                errorlabel.alpha = 1
                 errorlabel.text = "You haven't liked any watches yet."
 
             }
+            
+        } else {
+            
+            if orderimages.count > 0 {
+                
+                tableView.alpha = 1
+                errorlabel.alpha = 0
+                return orderimages.count
+                
+            } else {
+                tableView.alpha = 0
+                errorlabel.alpha = 1
+                errorlabel.text = "You haven't placed any orders yet."
+
+            }
+        }
+      
+            
+        
             errorlabel.addCharacterSpacing()
             
             return 0
 
         }
         
-    }
+    
     
     @IBOutlet weak var taphelp: UIButton!
     @objc func tapProduct(sender: UIButton){
@@ -708,20 +782,17 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let buttonTag = sender.tag
         
         
-        selectedid = orderids[buttonTag]
-        selectedimage = orderimages[orderids[buttonTag]]!
-        selectedname = ordertitles[orderids[buttonTag]]!
+        selectedid = wantids[buttonTag]
+        selectedimage = wantimages[wantids[buttonTag]]!
+        selectedname = wanttitles[wantids[buttonTag]]!
 
-        selectedimage = images[orderids[buttonTag]]!
-        selectedname = names[orderids[buttonTag]]!
-        selectedimageurl = imageurls[orderids[buttonTag]]!
-        selecteddescription = descriptions[orderids[buttonTag]]!
-        //        selectedpitch = descriptions[projectids[indexPath.row]]!
-        //        selectedprice = usedprices[projectids[indexPath.row]]!
+        selecteddescription = wantdescriptions[wantids[buttonTag]]!
+        //        selectedpitch = wantdescriptions[projectids[indexPath.row]]!
+        //        selectedprice = wantusedprices[projectids[indexPath.row]]!
         
         //        selectedprogramnames = programnames[projectids[indexPath.row]]!
-        selectedusedprice = usedprices[orderids[buttonTag]]!
-        selectednewprice = newprices[orderids[buttonTag]]!
+        selectedusedprice = wantusedprices[wantids[buttonTag]]!
+        selectednewprice = wantnewprices[wantids[buttonTag]]!
         fucked = true
         self.performSegue(withIdentifier: "WantToProduct", sender: self)
         
@@ -750,39 +821,43 @@ class MyOwnViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.tapsell.addTarget(self, action: #selector(MyOwnViewController.tapSell(sender:)), for: .allTouchEvents)
         cell.isUserInteractionEnabled = true
        
-//        cell.price.layer.borderWidth = 0.5
+//        cell.price.layer.bwantWidth = 0.5
 //        
-//        cell.price.layer.borderColor = UIColor.lightGray.cgColor
-        if orderspressed {
+//        cell.price.layer.bwantColor = UIColor.lightGray.cgColor
+        if wantspressed {
             
-            cell.tapsell.alpha = 1
+            cell.tapsell.alpha = 0
+
             
-            if orderimages.count > 0 {
-                cell.mainimage.image = orderimages[orderids[indexPath.row]]
-                cell.title.text = ordertitles[orderids[indexPath.row]]?.uppercased()
+            if wantimages.count > 0 {
+                
+                cell.mainimage.image = wantimages[wantids[indexPath.row]]
+                cell.title.text = wanttitles[wantids[indexPath.row]]?.uppercased()
                 cell.title.addCharacterSpacing()
-                cell.price.text = "$\(orderpices[orderids[indexPath.row]]!)"
-                cell.details.text = "\(purchaseddates[orderids[indexPath.row]]!.uppercased()) / \(orderdeets[orderids[indexPath.row]]!.uppercased())"
+                cell.price.text = wantprices[wantids[indexPath.row]]
+                cell.details.text = "\(wantdeets[wantids[indexPath.row]]!.uppercased())"
                 cell.details.addCharacterSpacing()
-                cell.delivery.text = deliverydate[orderids[indexPath.row]]?.uppercased()
+                cell.delivery.text = "LAST SALE  \([wantprices[wantids[indexPath.row]]!.uppercased())"
                 cell.delivery.addCharacterSpacing()
+                
                 
                 
             }
             
         } else {
             
-            cell.tapsell.alpha = 0
-            
+            cell.tapsell.alpha = 1
+
             if orderimages.count > 0 {
                 
+             
                 cell.mainimage.image = orderimages[orderids[indexPath.row]]
                 cell.title.text = ordertitles[orderids[indexPath.row]]?.uppercased()
                 cell.title.addCharacterSpacing()
-                cell.price.text = orderpices[orderids[indexPath.row]]
-                cell.details.text = "\(orderdeets[orderids[indexPath.row]]!.uppercased())"
+                cell.price.text = "$\(orderprices[orderids[indexPath.row]]!)"
+                cell.details.text = "\(purchaseddates[orderids[indexPath.row]]!.uppercased()) / \(orderdeets[orderids[indexPath.row]]!.uppercased())"
                 cell.details.addCharacterSpacing()
-                cell.delivery.text = "LAST SALE  \([orderpices[orderids[indexPath.row]]!.uppercased())"
+                cell.delivery.text = deliverydate[orderids[indexPath.row]]?.uppercased()
                 cell.delivery.addCharacterSpacing()
                 
             }

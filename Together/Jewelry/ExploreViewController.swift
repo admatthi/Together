@@ -79,12 +79,13 @@ ref!.child("Products2").childByAutoId().updateChildValues(["Brand" : "-","Catego
         super.viewDidLoad()
 
      
-        activityIndicator.color = myblue
         tapfilter.addTextSpacing(2.0)
         ref = Database.database().reference()
         collectionView2.alpha = 1
         selectedindex = 0
         activityIndicator.startAnimating()
+        activityIndicator.color = myblue
+
         collectionView.alpha = 1
         
         genres.removeAll()

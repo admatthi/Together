@@ -3527,6 +3527,13 @@
                                     <outlet property="delegate" destination="m6x-O6-cFk" id="eL1-8f-B2L"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="F5w-4G-yLF">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="4Ki-87-Pby"/>
+                                    <constraint firstAttribute="width" constant="20" id="OV9-PB-Lf6"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -3540,6 +3547,8 @@
                             <constraint firstItem="q13-j1-c5O" firstAttribute="centerY" secondItem="bJY-om-Np7" secondAttribute="centerY" id="Lc6-Ej-kZt"/>
                             <constraint firstItem="FDD-bD-Oam" firstAttribute="leading" secondItem="8vv-nF-U7p" secondAttribute="leading" id="PdQ-yD-ydG"/>
                             <constraint firstItem="lKB-EY-gXX" firstAttribute="top" secondItem="9uD-mA-3fg" secondAttribute="bottom" constant="10" id="Rno-ue-uVn"/>
+                            <constraint firstItem="F5w-4G-yLF" firstAttribute="centerY" secondItem="bJY-om-Np7" secondAttribute="centerY" id="SX8-cE-8Ym"/>
+                            <constraint firstItem="F5w-4G-yLF" firstAttribute="centerX" secondItem="bJY-om-Np7" secondAttribute="centerX" id="WoQ-im-zeG"/>
                             <constraint firstItem="IoZ-Ru-FKU" firstAttribute="top" secondItem="bJY-om-Np7" secondAttribute="top" id="ZFe-os-Q58"/>
                             <constraint firstAttribute="trailing" secondItem="lKB-EY-gXX" secondAttribute="trailing" id="glT-jk-TOl"/>
                             <constraint firstItem="qaD-aj-dA1" firstAttribute="top" secondItem="8vv-nF-U7p" secondAttribute="top" constant="32" id="jee-FV-Amu"/>
@@ -3559,6 +3568,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Profile-2" id="w9f-2a-Z9e"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="F5w-4G-yLF" id="ON3-SA-8B7"/>
                         <outlet property="collectionView" destination="qaD-aj-dA1" id="RbF-7f-hXi"/>
                         <outlet property="errorlabel" destination="q13-j1-c5O" id="B81-c1-nGA"/>
                         <outlet property="header" destination="9uD-mA-3fg" id="qvp-Ia-qEu"/>
