@@ -86,6 +86,7 @@
 		9D9EB5FB225CF3CB00E8BE97 /* Overview3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */; };
 		9D9EB5FD225CF40600E8BE97 /* Overview4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */; };
 		9D9EB5FF225CF47B00E8BE97 /* Overview5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */; };
+		9D9EB601225CF5D800E8BE97 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB600225CF5D800E8BE97 /* PurchaseViewController.swift */; };
 		9DA5C2BE21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DA5C2BF21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DA5C2C021C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
@@ -236,6 +237,7 @@
 		9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview3ViewController.swift; sourceTree = "<group>"; };
 		9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview4ViewController.swift; sourceTree = "<group>"; };
 		9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview5ViewController.swift; sourceTree = "<group>"; };
+		9D9EB600225CF5D800E8BE97 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB4D29321965344008A57FD /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */,
 				9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */,
 				9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */,
+				9D9EB600225CF5D800E8BE97 /* PurchaseViewController.swift */,
 			);
 			path = Coach;
 			sourceTree = "<group>";
@@ -880,6 +883,7 @@
 				9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */,
 				9DEBAED4225CE502007926E9 /* AddWeightViewController.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
+				9D9EB601225CF5D800E8BE97 /* PurchaseViewController.swift in Sources */,
 				9DC75F8721C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */,
 				9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */,
