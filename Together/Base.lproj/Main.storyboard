@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EEA-I6-ejB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -149,6 +149,7 @@
                         <outlet property="header" destination="TSS-mL-bQJ" id="lnV-gY-NO9"/>
                         <outlet property="passwordtf" destination="8zF-Oc-BkX" id="m5J-9j-N0m"/>
                         <outlet property="tapcreate" destination="UmS-84-N79" id="358-Yx-uvG"/>
+                        <segue destination="EEA-I6-ejB" kind="show" identifier="SignInToHomeCoach" id="yVJ-YS-4Ae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0z1-3B-ym3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="-4242.3999999999996" y="-394.45277361319341"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--HomeTab-->
         <scene sceneID="K7J-db-PGH">
             <objects>
-                <tabBarController id="EEA-I6-ejB" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTab" title="HomeTab" id="EEA-I6-ejB" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qvp-P4-fuR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -215,8 +216,8 @@
                         <color key="selectedImageTintColor" red="0.99215686270000003" green="0.46274509800000002" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2Pb-xA-qKv" kind="relationship" relationship="viewControllers" id="Ght-EK-JXL"/>
                         <segue destination="KPC-k0-5eY" kind="relationship" relationship="viewControllers" id="le1-sE-VVL"/>
+                        <segue destination="2Pb-xA-qKv" kind="relationship" relationship="viewControllers" id="Ght-EK-JXL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="556-vO-wMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -345,10 +346,10 @@
             </objects>
             <point key="canvasLocation" x="-4236" y="335.98200899550227"/>
         </scene>
-        <!--InputWL View Controller-->
+        <!--Add Weight View Controller-->
         <scene sceneID="6ZE-rT-aPc">
             <objects>
-                <viewController id="KPC-k0-5eY" customClass="InputWLViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KPC-k0-5eY" customClass="AddWeightViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xrA-wb-IpV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,7 +376,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lbs" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irb-ha-PGp">
-                                <rect key="frame" x="197" y="265" width="153" height="44"/>
+                                <rect key="frame" x="185" y="265" width="153" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="UAc-zZ-bx2"/>
                                     <constraint firstAttribute="width" constant="153" id="YMT-M5-4au"/>
@@ -408,6 +409,9 @@
                                 <state key="normal" title="&gt;">
                                     <color key="titleColor" red="0.35686274509999999" green="0.36078431370000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapForward:" destination="KPC-k0-5eY" eventType="touchUpInside" id="0BV-sl-TdQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSs-HO-nQD">
                                 <rect key="frame" x="101" y="33.5" width="29" height="29"/>
@@ -419,11 +423,14 @@
                                 <state key="normal" title="&lt;">
                                     <color key="titleColor" red="0.35686274509999999" green="0.36078431370000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapBack:" destination="KPC-k0-5eY" eventType="touchUpInside" id="BA3-CM-C08"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Irb-ha-PGp" firstAttribute="leading" secondItem="pLo-ZF-4sV" secondAttribute="trailing" constant="20" id="3r1-tP-vwp"/>
+                            <constraint firstItem="Irb-ha-PGp" firstAttribute="leading" secondItem="pLo-ZF-4sV" secondAttribute="trailing" constant="8" id="3r1-tP-vwp"/>
                             <constraint firstItem="ZDW-Mf-KRq" firstAttribute="top" secondItem="Wkq-9F-08y" secondAttribute="top" constant="17" id="746-vW-SCl"/>
                             <constraint firstItem="Wkq-9F-08y" firstAttribute="trailing" secondItem="RTF-1W-gFk" secondAttribute="trailing" constant="22" id="B7a-7o-tUw"/>
                             <constraint firstItem="pLo-ZF-4sV" firstAttribute="top" secondItem="ZDW-Mf-KRq" secondAttribute="bottom" constant="213" id="GWd-Kc-EI9"/>
@@ -431,7 +438,7 @@
                             <constraint firstItem="Irb-ha-PGp" firstAttribute="centerY" secondItem="pLo-ZF-4sV" secondAttribute="centerY" id="Qeq-pe-VHI"/>
                             <constraint firstItem="gSs-HO-nQD" firstAttribute="centerY" secondItem="ZDW-Mf-KRq" secondAttribute="centerY" id="cHE-wE-TV9"/>
                             <constraint firstItem="8Po-NE-oXn" firstAttribute="leading" secondItem="ZDW-Mf-KRq" secondAttribute="trailing" constant="-6" id="cmE-mU-hJp"/>
-                            <constraint firstItem="Irb-ha-PGp" firstAttribute="leading" secondItem="ZDW-Mf-KRq" secondAttribute="trailing" constant="-54" id="cwS-Pm-Kw4"/>
+                            <constraint firstItem="Irb-ha-PGp" firstAttribute="leading" secondItem="ZDW-Mf-KRq" secondAttribute="trailing" constant="-66" id="cwS-Pm-Kw4"/>
                             <constraint firstItem="RTF-1W-gFk" firstAttribute="top" secondItem="Wkq-9F-08y" secondAttribute="top" constant="14" id="hVZ-bl-osB"/>
                             <constraint firstItem="ZDW-Mf-KRq" firstAttribute="leading" secondItem="gSs-HO-nQD" secondAttribute="trailing" constant="-6" id="pB2-1w-k1x"/>
                             <constraint firstItem="ZDW-Mf-KRq" firstAttribute="centerX" secondItem="xrA-wb-IpV" secondAttribute="centerX" id="woy-qV-fg2"/>
@@ -439,6 +446,11 @@
                         <viewLayoutGuide key="safeArea" id="Wkq-9F-08y"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Weight" id="mny-vX-VCe"/>
+                    <connections>
+                        <outlet property="datelabel" destination="ZDW-Mf-KRq" id="JLM-H1-IR0"/>
+                        <outlet property="tapforward" destination="8Po-NE-oXn" id="CuW-Ls-jq5"/>
+                        <outlet property="tf" destination="pLo-ZF-4sV" id="xFM-RA-YRc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zav-FC-Hcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -999,14 +1011,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsw-FY-bET">
                                 <rect key="frame" x="0.0" y="567" width="375" height="100"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.019607843137254902" green="0.23921568627450981" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="LwR-52-jdz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="23"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Continue">
-                                    <color key="titleColor" red="0.99215686270000003" green="0.46274509800000002" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="tapSignUp:" destination="6SQ-T7-auk" eventType="touchUpInside" id="wq1-Pu-0R9"/>
@@ -1615,10 +1627,10 @@
             </objects>
             <point key="canvasLocation" x="-3543" y="2366"/>
         </scene>
-        <!--View Controller-->
+        <!--Overview1-->
         <scene sceneID="fNm-gC-uH9">
             <objects>
-                <viewController id="86B-4c-bm3" customClass="AViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Overview1" title="Overview1" id="86B-4c-bm3" customClass="AViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4vJ-Lh-yST">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1640,6 +1652,9 @@
                                 <state key="normal" title="Sign in">
                                     <color key="titleColor" red="0.3018064499" green="0.30584585669999997" blue="0.30996811390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="rpf-dc-WBe" kind="show" id="wig-bA-CyT"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="NVq-Kk-z60">
                                 <rect key="frame" x="132" y="64" width="111" height="198"/>
@@ -1667,7 +1682,7 @@
                                     <constraint firstAttribute="width" constant="343" id="9qP-Kh-rUY"/>
                                     <constraint firstAttribute="height" constant="29" id="RFx-7Z-R9G"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1677,7 +1692,7 @@
                                     <constraint firstAttribute="width" constant="343" id="ok7-bA-cbZ"/>
                                     <constraint firstAttribute="height" constant="63" id="uNZ-rk-Yv6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="23"/>
                                 <color key="tintColor" red="0.75511482750000003" green="0.76259121190000001" blue="0.76259121190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Get Started Now" backgroundImage="BlueR">
                                     <color key="titleColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2324,8 +2339,8 @@
                                     <constraint firstAttribute="width" constant="343" id="uez-hO-bEk"/>
                                     <constraint firstAttribute="height" constant="66" id="xVH-lP-hio"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="NEXT STEP" backgroundImage="BlueR">
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="23"/>
+                                <state key="normal" title="Next Step" backgroundImage="BlueR">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -2553,8 +2568,8 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="dfD-1c-9Pw"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="ymK-ow-Ox6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="NEXT STEP" backgroundImage="BlueR">
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="23"/>
+                                <state key="normal" title="Next Step" backgroundImage="BlueR">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -2701,8 +2716,8 @@
                                     <constraint firstAttribute="height" constant="66" id="Zlh-8L-cA2"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="pBl-gn-DiV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="NEXT STEP" backgroundImage="BlueR">
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="23"/>
+                                <state key="normal" title="Next Step" backgroundImage="BlueR">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>

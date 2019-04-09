@@ -66,46 +66,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
       
 //
-//        if Auth.auth().currentUser == nil {
-//            
-//            queryforinfo()
-//            
-//      
-//            
-//        } else {
-//            
-//            let currentUser = Auth.auth().currentUser
-//            //
-//            uid = (currentUser?.uid)!
-//            
-//            
-//            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
-//            
-//            self.window = UIWindow(frame: UIScreen.main.bounds)
-//            self.window?.rootViewController = tabBarBuyer
-//            
-//            self.window?.makeKeyAndVisible()
-//            
-//        }
-            // Do smth if user is not logged in
+        if Auth.auth().currentUser == nil {
+            
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview1") as UIViewController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewControlleripad
+            self.window?.makeKeyAndVisible()
+            
+        } else {
+            
+            let currentUser = Auth.auth().currentUser
+            //
+            uid = (currentUser?.uid)!
+            
+            
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "HomeTab") as! UITabBarController
+            
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = tabBarBuyer
+            
+            self.window?.makeKeyAndVisible()
+            
+        }
 
-
-
-//        } else {
-//
-        
-//
-//            queryforinfo()
-//
-//            queryforids { () -> () in
-//
-//
-//            }
-//
-//
-//        }
-////
         return true
     }
     

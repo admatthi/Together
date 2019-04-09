@@ -48,7 +48,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 dateFormatter.dateFormat = "MM-dd-yy"
                 var todaysdate =  dateFormatter.string(from: date)
                 
-            self.performSegue(withIdentifier: "LoginToExplore", sender: self)
+            self.performSegue(withIdentifier: "SignInToHomeCoach", sender: self)
 
                 //
                 //                ref!.child("Users").child(uid).child("Purchased").child(selectedid).updateChildValues(["Title": "x"])

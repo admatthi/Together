@@ -141,6 +141,7 @@
 		9DD9802021BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9801D21BEF31E00A02433 /* OverviewCollectionViewCell.swift */; };
 		9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */; };
 		9DEA5F1821A0B820000137A3 /* ContacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA5F1721A0B820000137A3 /* ContacViewController.swift */; };
+		9DEBAED4225CE502007926E9 /* AddWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBAED3225CE502007926E9 /* AddWeightViewController.swift */; };
 		9DF2E9DE2214783600FE9275 /* FilterBrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */; };
 		CDA65A340E0251A467ABD40B /* Pods_TogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AED522BDB9F8FBB8DE7FE7 /* Pods_TogetherUITests.framework */; };
 		F730C0F4CFD34EE9240B5A7C /* Pods_Together.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFCA9B94C66A654D51E53CF /* Pods_Together.framework */; };
@@ -271,6 +272,7 @@
 		9DD9801D21BEF31E00A02433 /* OverviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		9DEA5F1721A0B820000137A3 /* ContacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacViewController.swift; sourceTree = "<group>"; };
+		9DEBAED3225CE502007926E9 /* AddWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeightViewController.swift; sourceTree = "<group>"; };
 		9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBrandCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5A42F47C5E03279E65B93BA /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
 		D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
@@ -404,8 +406,6 @@
 				9DD9801921BEF2C400A02433 /* CreditCardViewController.swift */,
 				9D4A494021B0F9C30004A2B2 /* ShippingViewController.swift */,
 				9DD6A56C21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift */,
-				9D50E19521B0BC4800065C81 /* RegisterViewController.swift */,
-				9D50E19721B0BD0F00065C81 /* SignInViewController.swift */,
 				9DD9800D21BEF2A900A02433 /* PricesCollectionViewCell.swift */,
 				9DD9801121BEF2B500A02433 /* ProductTableViewCell.swift */,
 				9DD9801521BEF2BC00A02433 /* ProductViewController.swift */,
@@ -473,9 +473,10 @@
 		9DB795C421656B5300211327 /* Together */ = {
 			isa = PBXGroup;
 			children = (
+				9DB795C521656B5300211327 /* AppDelegate.swift */,
+				9DEBAED2225CE4EC007926E9 /* Coach */,
 				9D69746D21B074D600F8E748 /* Jewelry */,
 				9D8311802197DDA2003CC76C /* Together.entitlements */,
-				9DB795C521656B5300211327 /* AppDelegate.swift */,
 				5514E4B9AC3B4FC850CE2F9A /* Pods */,
 				9DB795C921656B5300211327 /* Main.storyboard */,
 				9D451F80216B96B6009708D4 /* AskViewController.swift */,
@@ -540,6 +541,16 @@
 				9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */,
 			);
 			path = FAM;
+			sourceTree = "<group>";
+		};
+		9DEBAED2225CE4EC007926E9 /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				9DEBAED3225CE502007926E9 /* AddWeightViewController.swift */,
+				9D50E19721B0BD0F00065C81 /* SignInViewController.swift */,
+				9D50E19521B0BC4800065C81 /* RegisterViewController.swift */,
+			);
+			path = Coach;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -848,6 +859,7 @@
 				9D451F7F216B949A009708D4 /* AnswersTableViewCell.swift in Sources */,
 				9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */,
 				9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */,
+				9DEBAED4225CE502007926E9 /* AddWeightViewController.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
 				9DC75F8721C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */,
