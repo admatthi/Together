@@ -88,7 +88,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate     {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        header.addCharacterSpacing()
+//        header.addCharacterSpacing()
         // Do any additional setup after loading the view.
         tapterms.titleLabel?.textAlignment = NSTextAlignment.center
         
@@ -96,6 +96,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate     {
         emailtf.layer.borderWidth = 0.5
         passwordtf.layer.borderColor = UIColor.gray.cgColor
         passwordtf.layer.borderWidth = 0.5
+        passwordtf.layer.cornerRadius = 2.0
+        emailtf.layer.cornerRadius = 2.0
         
 //        self.addLineToView(view: emailtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)
 //

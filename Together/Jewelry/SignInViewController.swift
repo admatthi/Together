@@ -73,7 +73,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        header.addCharacterSpacing()
+        passwordtf.layer.cornerRadius = 2.0
+        emailtf.layer.cornerRadius = 2.0
+        
+//        header.addCharacterSpacing()
         // Do any additional setup after loading the view.
         
 //        self.addLineToView(view: emailtf, position:.LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 0.5)

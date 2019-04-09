@@ -23,6 +23,9 @@
 		9D451F7F216B949A009708D4 /* AnswersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */; };
 		9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D451F80216B96B6009708D4 /* AskViewController.swift */; };
 		9D46D84D219B29C0006CE94C /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D46D84C219B29C0006CE94C /* OverviewViewController.swift */; };
+		9D4954642247FC630029F840 /* InputWLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4954632247FC630029F840 /* InputWLViewController.swift */; };
+		9D4954652247FC630029F840 /* InputWLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4954632247FC630029F840 /* InputWLViewController.swift */; };
+		9D4954662247FC630029F840 /* InputWLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4954632247FC630029F840 /* InputWLViewController.swift */; };
 		9D4A494121B0F9C30004A2B2 /* ShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A494021B0F9C30004A2B2 /* ShippingViewController.swift */; };
 		9D50E19621B0BC4800065C81 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50E19521B0BC4800065C81 /* RegisterViewController.swift */; };
 		9D50E19821B0BD0F00065C81 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50E19721B0BD0F00065C81 /* SignInViewController.swift */; };
@@ -45,6 +48,15 @@
 		9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */; };
 		9D6E91CE21A0F0BD0013BED6 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */; };
 		9D714B8121834D9500A033EB /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */; };
+		9D77C3C0225AD79500CB02CB /* BasisGrotesquePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BD225AD79400CB02CB /* BasisGrotesquePro-Bold.ttf */; };
+		9D77C3C1225AD79500CB02CB /* BasisGrotesquePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BD225AD79400CB02CB /* BasisGrotesquePro-Bold.ttf */; };
+		9D77C3C2225AD79500CB02CB /* BasisGrotesquePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BD225AD79400CB02CB /* BasisGrotesquePro-Bold.ttf */; };
+		9D77C3C3225AD79500CB02CB /* BasisGrotesquePro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BE225AD79400CB02CB /* BasisGrotesquePro-Light.ttf */; };
+		9D77C3C4225AD79500CB02CB /* BasisGrotesquePro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BE225AD79400CB02CB /* BasisGrotesquePro-Light.ttf */; };
+		9D77C3C5225AD79500CB02CB /* BasisGrotesquePro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BE225AD79400CB02CB /* BasisGrotesquePro-Light.ttf */; };
+		9D77C3C6225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BF225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf */; };
+		9D77C3C7225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BF225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf */; };
+		9D77C3C8225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C3BF225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf */; };
 		9D7A6A68219C7BE400FBEC22 /* TabInfluencerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */; };
 		9D7D45112199F4D300FEBC1A /* InfluencerCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */; };
 		9D86EDD421C1719C00A8385B /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86EDD321C1719C00A8385B /* CompletedTableViewCell.swift */; };
@@ -172,6 +184,7 @@
 		9D451F7E216B949A009708D4 /* AnswersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersTableViewCell.swift; sourceTree = "<group>"; };
 		9D451F80216B96B6009708D4 /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		9D46D84C219B29C0006CE94C /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
+		9D4954632247FC630029F840 /* InputWLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWLViewController.swift; sourceTree = "<group>"; };
 		9D4A494021B0F9C30004A2B2 /* ShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingViewController.swift; sourceTree = "<group>"; };
 		9D50E19521B0BC4800065C81 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D50E19721B0BD0F00065C81 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +207,9 @@
 		9D6E91CB21A0CE410013BED6 /* 2LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2LoginViewController.swift; sourceTree = "<group>"; };
 		9D6E91CD21A0F0BD0013BED6 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9D714B8021834D9500A033EB /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
+		9D77C3BD225AD79400CB02CB /* BasisGrotesquePro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BasisGrotesquePro-Bold.ttf"; sourceTree = "<group>"; };
+		9D77C3BE225AD79400CB02CB /* BasisGrotesquePro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BasisGrotesquePro-Light.ttf"; sourceTree = "<group>"; };
+		9D77C3BF225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BasisGrotesquePro-Regular.ttf"; sourceTree = "<group>"; };
 		9D7A6A67219C7BE400FBEC22 /* TabInfluencerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfluencerViewController.swift; sourceTree = "<group>"; };
 		9D7D45102199F4D300FEBC1A /* InfluencerCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCreateViewController.swift; sourceTree = "<group>"; };
 		9D8311802197DDA2003CC76C /* Together.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Together.entitlements; sourceTree = "<group>"; };
@@ -378,6 +394,9 @@
 		9D69746D21B074D600F8E748 /* Jewelry */ = {
 			isa = PBXGroup;
 			children = (
+				9D77C3BD225AD79400CB02CB /* BasisGrotesquePro-Bold.ttf */,
+				9D77C3BE225AD79400CB02CB /* BasisGrotesquePro-Light.ttf */,
+				9D77C3BF225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf */,
 				9D09C32A21CE8FFA0075B4EC /* RequestViewController.swift */,
 				9D94016F21B1AF5F00E32912 /* ThanksViewController.swift */,
 				9D86EDD321C1719C00A8385B /* CompletedTableViewCell.swift */,
@@ -430,6 +449,7 @@
 		9DB795B921656B5300211327 = {
 			isa = PBXGroup;
 			children = (
+				9D4954632247FC630029F840 /* InputWLViewController.swift */,
 				9D60C09821A34E24002BBF0C /* Test2ViewController.swift */,
 				9DB795C421656B5300211327 /* Together */,
 				9DB795D921656B5700211327 /* TogetherTests */,
@@ -646,7 +666,10 @@
 			files = (
 				9DB795D021656B5600211327 /* LaunchScreen.storyboard in Resources */,
 				9DB795CD21656B5600211327 /* Assets.xcassets in Resources */,
+				9D77C3C6225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf in Resources */,
 				9D34E4BA2207B57400299292 /* GoogleService-Info.plist in Resources */,
+				9D77C3C0225AD79500CB02CB /* BasisGrotesquePro-Bold.ttf in Resources */,
+				9D77C3C3225AD79500CB02CB /* BasisGrotesquePro-Light.ttf in Resources */,
 				9DB795CB21656B5300211327 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,6 +678,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D77C3C4225AD79500CB02CB /* BasisGrotesquePro-Light.ttf in Resources */,
+				9D77C3C1225AD79500CB02CB /* BasisGrotesquePro-Bold.ttf in Resources */,
+				9D77C3C7225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +688,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D77C3C5225AD79500CB02CB /* BasisGrotesquePro-Light.ttf in Resources */,
+				9D77C3C2225AD79500CB02CB /* BasisGrotesquePro-Bold.ttf in Resources */,
+				9D77C3C8225AD79500CB02CB /* BasisGrotesquePro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +822,7 @@
 				9D6E91CE21A0F0BD0013BED6 /* TestViewController.swift in Sources */,
 				9D8934C721740ABE001AEF8E /* QuestionsTableViewCell.swift in Sources */,
 				9D60C09D21A46275002BBF0C /* BuyerLoginViewController.swift in Sources */,
+				9D4954642247FC630029F840 /* InputWLViewController.swift in Sources */,
 				9DC0B2872193556300F56A1A /* ExploreViewController.swift in Sources */,
 				9D8934CB21741140001AEF8E /* PromptViewController.swift in Sources */,
 				9DB795C821656B5300211327 /* ViewController.swift in Sources */,
@@ -869,6 +899,7 @@
 				9DD9801B21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9DD9801F21BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
+				9D4954652247FC630029F840 /* InputWLViewController.swift in Sources */,
 				9D09C32C21CE8FFA0075B4EC /* RequestViewController.swift in Sources */,
 				9DA5C2BF21C70A6F00456DEE /* CodeViewController.swift in Sources */,
 				9D94017521B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
@@ -894,6 +925,7 @@
 				9DD9801C21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9DD9802021BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
+				9D4954662247FC630029F840 /* InputWLViewController.swift in Sources */,
 				9D09C32D21CE8FFA0075B4EC /* RequestViewController.swift in Sources */,
 				9DA5C2C021C70A6F00456DEE /* CodeViewController.swift in Sources */,
 				9D94017621B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
@@ -1054,7 +1086,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-18";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-23";
 				CODE_SIGN_ENTITLEMENTS = Together/Together.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;
@@ -1075,7 +1107,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 946746B00455D23BCECD7726 /* Pods-Together.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-18";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-23";
 				CODE_SIGN_ENTITLEMENTS = Together/Together.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 797Q3HJ5U5;

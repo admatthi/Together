@@ -39,29 +39,29 @@ class OverviewViewController: UIViewController, UICollectionViewDataSource, UICo
 //        TAPJOIN.frame = CGRect(x: 0, y: TAPJOIN.frame.minY, width: self.view.frame.width/2, height: 76)
 //        self.view.addSubview(TAPJOIN)
 
-        images.append(UIImage(named: "CC1 Copy 2")!)
-        images.append(UIImage(named: "CC2 Copy 2")!)
-
-
-        images.append(UIImage(named: "CC3 Copy 2")!)
-        images.append(UIImage(named: "CC4 Copy 2")!)
-
-        mainimage.image = images[counter]
-        
-        setupimage.image = UIImage(named: "Setup\(counter)")
-        let swipeRightRec = UISwipeGestureRecognizer()
-        let swipeLeftRec = UISwipeGestureRecognizer()
-        let swipeUpRec = UISwipeGestureRecognizer()
-        let swipeDownRec = UISwipeGestureRecognizer()
-        
-        swipeRightRec.addTarget(self, action: #selector(self.swipeR) )
-        swipeRightRec.direction = .right
-        self.view!.addGestureRecognizer(swipeRightRec)
-        
-        
-        swipeLeftRec.addTarget(self, action: #selector(self.swipeL) )
-        swipeLeftRec.direction = .left
-        self.view!.addGestureRecognizer(swipeLeftRec)
+        images.append(UIImage(named: "CC1 Copy 8-1")!)
+//        images.append(UIImage(named: "CC2 Copy 2")!)
+//
+//
+//        images.append(UIImage(named: "CC3 Copy 2")!)
+//        images.append(UIImage(named: "CC4 Copy 2")!)
+//
+//        mainimage.image = images[counter]
+//        
+//        setupimage.image = UIImage(named: "Setup\(counter)")
+//        let swipeRightRec = UISwipeGestureRecognizer()
+//        let swipeLeftRec = UISwipeGestureRecognizer()
+//        let swipeUpRec = UISwipeGestureRecognizer()
+//        let swipeDownRec = UISwipeGestureRecognizer()
+//        
+//        swipeRightRec.addTarget(self, action: #selector(self.swipeR) )
+//        swipeRightRec.direction = .right
+//        self.view!.addGestureRecognizer(swipeRightRec)
+//        
+//        
+//        swipeLeftRec.addTarget(self, action: #selector(self.swipeL) )
+//        swipeLeftRec.direction = .left
+//        self.view!.addGestureRecognizer(swipeLeftRec)
 
     }
     

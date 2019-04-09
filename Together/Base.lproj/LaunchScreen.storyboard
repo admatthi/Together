@@ -20,28 +20,25 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb2-vj-gbm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B A L L R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I6-S7-Ctc">
-                                <rect key="frame" x="40" y="282.5" width="295" height="102"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-Zk-rd0">
+                                <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="295" id="ID6-9R-tV2"/>
-                                    <constraint firstAttribute="height" constant="102" id="lyB-3H-5nr"/>
+                                    <constraint firstAttribute="height" constant="128" id="3gD-jh-ouS"/>
+                                    <constraint firstAttribute="width" constant="240" id="MfS-d5-Eva"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vb2-vj-gbm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="90k-P8-T4t"/>
-                            <constraint firstItem="9I6-S7-Ctc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FUU-rS-329"/>
+                            <constraint firstItem="aFo-Zk-rd0" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DWn-vc-lwD"/>
+                            <constraint firstItem="aFo-Zk-rd0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IEv-fG-ykc"/>
                             <constraint firstAttribute="bottom" secondItem="vb2-vj-gbm" secondAttribute="bottom" id="NQm-ZN-BOo"/>
-                            <constraint firstItem="9I6-S7-Ctc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="PU1-sw-4Tl"/>
                             <constraint firstItem="vb2-vj-gbm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wdp-JB-xYA"/>
                             <constraint firstItem="vb2-vj-gbm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="xeU-La-JaQ"/>
                         </constraints>
@@ -53,4 +50,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon" width="1024" height="1024"/>
+    </resources>
 </document>

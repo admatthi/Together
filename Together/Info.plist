@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>BALLR</string>
+	<string>Coach</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -51,6 +51,12 @@
 	<string>Record video sound!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Access your photo library</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BasisGrotesquePro-Bold.ttf</string>
+		<string>BasisGrotesquePro-Light.ttf</string>
+		<string>BasisGrotesquePro-Pro.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

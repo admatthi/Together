@@ -65,29 +65,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         ref = Database.database().reference()
 
       
-
-        if Auth.auth().currentUser == nil {
-            
-            queryforinfo()
-            
-      
-            
-        } else {
-            
-            let currentUser = Auth.auth().currentUser
-            //
-            uid = (currentUser?.uid)!
-            
-            
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
-            
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = tabBarBuyer
-            
-            self.window?.makeKeyAndVisible()
-            
-        }
+//
+//        if Auth.auth().currentUser == nil {
+//            
+//            queryforinfo()
+//            
+//      
+//            
+//        } else {
+//            
+//            let currentUser = Auth.auth().currentUser
+//            //
+//            uid = (currentUser?.uid)!
+//            
+//            
+//            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Buyer") as! UITabBarController
+//            
+//            self.window = UIWindow(frame: UIScreen.main.bounds)
+//            self.window?.rootViewController = tabBarBuyer
+//            
+//            self.window?.makeKeyAndVisible()
+//            
+//        }
             // Do smth if user is not logged in
 
 
