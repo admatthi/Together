@@ -66,7 +66,7 @@
                                     <constraint firstAttribute="width" constant="262" id="70k-MP-YmY"/>
                                     <constraint firstAttribute="height" constant="22" id="LM5-rh-7fG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="17"/>
                                 <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -82,14 +82,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UmS-84-N79">
                                 <rect key="frame" x="0.0" y="568" width="375" height="100"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.019607843140000001" green="0.23921568630000001" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="K2O-W2-Uxp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="23"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Continue">
-                                    <color key="titleColor" red="0.99215686270000003" green="0.46274509800000002" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="tapSignIn:" destination="rpf-dc-WBe" eventType="touchUpInside" id="sQY-nk-Zsa"/>
@@ -116,6 +116,9 @@
                                 <state key="normal" image="X">
                                     <color key="titleColor" red="0.1176470588" green="0.1176470588" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="86B-4c-bm3" kind="show" id="gIV-T9-m29"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -154,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0z1-3B-ym3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10815" y="750"/>
+            <point key="canvasLocation" x="-12639" y="750"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="DlC-Qu-PMp">
@@ -224,10 +227,10 @@
             </objects>
             <point key="canvasLocation" x="-5222" y="750"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="JPO-dd-wwr">
             <objects>
-                <viewController id="zhO-nx-pM6" sceneMemberID="viewController">
+                <viewController id="zhO-nx-pM6" customClass="SettingsViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yk7-fp-cyJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -293,6 +296,10 @@
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.60784313729999995" green="0.61960784310000006" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapLogout:" destination="zhO-nx-pM6" eventType="touchUpInside" id="j3T-BH-5DJ"/>
+                                    <segue destination="rpf-dc-WBe" kind="show" identifier="LogOut5" id="V7C-Uj-ljl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vs6-ZP-ifp">
                                 <rect key="frame" x="13" y="315" width="349" height="54"/>
@@ -1630,7 +1637,7 @@
         <!--Overview1-->
         <scene sceneID="fNm-gC-uH9">
             <objects>
-                <viewController storyboardIdentifier="Overview1" title="Overview1" id="86B-4c-bm3" customClass="AViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Overview1" title="Overview1" id="86B-4c-bm3" customClass="Overview1ViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4vJ-Lh-yST">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1698,11 +1705,12 @@
                                     <color key="titleColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapGetStarted:" destination="86B-4c-bm3" eventType="touchUpInside" id="SSv-eP-JZM"/>
+                                    <action selector="tapGetStarted:" destination="86B-4c-bm3" eventType="touchUpInside" id="qR9-Ht-jGP"/>
+                                    <segue destination="dBj-HJ-xJ5" kind="show" customClass="SegueFromRight" customModule="Together" customModuleProvider="target" id="wIx-lc-4em"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start working with a personal weight loss coach" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsZ-WR-dPi">
-                                <rect key="frame" x="16" y="305" width="343" height="57"/>
+                                <rect key="frame" x="55" y="305" width="273" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="3JL-gO-V3E"/>
                                 </constraints>
@@ -1716,18 +1724,18 @@
                             <constraint firstItem="NVq-Kk-z60" firstAttribute="top" secondItem="0bU-UJ-bQU" secondAttribute="top" constant="44" id="5Uw-vs-jgr"/>
                             <constraint firstItem="Ej1-eb-Vcs" firstAttribute="centerX" secondItem="4vJ-Lh-yST" secondAttribute="centerX" id="5Zm-61-ayB"/>
                             <constraint firstItem="0bU-UJ-bQU" firstAttribute="trailing" secondItem="Ej1-eb-Vcs" secondAttribute="trailing" constant="16" id="7iR-Bq-NiO"/>
-                            <constraint firstItem="0bU-UJ-bQU" firstAttribute="trailing" secondItem="CsZ-WR-dPi" secondAttribute="trailing" constant="16" id="8DG-By-mgv"/>
+                            <constraint firstItem="0bU-UJ-bQU" firstAttribute="trailing" secondItem="CsZ-WR-dPi" secondAttribute="trailing" constant="47" id="8DG-By-mgv"/>
                             <constraint firstItem="CsZ-WR-dPi" firstAttribute="top" secondItem="NVq-Kk-z60" secondAttribute="bottom" constant="43" id="95u-a5-zWT"/>
                             <constraint firstItem="NFt-rF-80J" firstAttribute="centerX" secondItem="4vJ-Lh-yST" secondAttribute="centerX" id="9eR-pD-18e"/>
                             <constraint firstItem="t7W-et-tYQ" firstAttribute="top" secondItem="0bU-UJ-bQU" secondAttribute="top" constant="13" id="BUZ-ma-70d"/>
                             <constraint firstItem="SDn-c6-LDH" firstAttribute="leading" secondItem="0bU-UJ-bQU" secondAttribute="leading" id="Fqv-fH-dLF"/>
                             <constraint firstItem="NVq-Kk-z60" firstAttribute="centerX" secondItem="4vJ-Lh-yST" secondAttribute="centerX" id="GSm-xq-xBX"/>
-                            <constraint firstItem="CsZ-WR-dPi" firstAttribute="centerX" secondItem="4vJ-Lh-yST" secondAttribute="centerX" id="Gt4-3j-jo7"/>
+                            <constraint firstItem="CsZ-WR-dPi" firstAttribute="centerX" secondItem="4vJ-Lh-yST" secondAttribute="centerX" constant="4" id="Gt4-3j-jo7"/>
                             <constraint firstItem="0bU-UJ-bQU" firstAttribute="trailing" secondItem="t7W-et-tYQ" secondAttribute="trailing" constant="16" id="JcQ-dr-zPq"/>
                             <constraint firstItem="SDn-c6-LDH" firstAttribute="bottom" secondItem="0bU-UJ-bQU" secondAttribute="bottom" id="LyV-ZA-hPF"/>
                             <constraint firstItem="ibI-PI-ysT" firstAttribute="trailing" secondItem="0bU-UJ-bQU" secondAttribute="trailing" id="MEF-LL-Dsl"/>
                             <constraint firstItem="ibI-PI-ysT" firstAttribute="leading" secondItem="0bU-UJ-bQU" secondAttribute="leading" id="SyW-Cw-gXj"/>
-                            <constraint firstItem="CsZ-WR-dPi" firstAttribute="leading" secondItem="0bU-UJ-bQU" secondAttribute="leading" constant="16" id="TkC-iK-NSi"/>
+                            <constraint firstItem="CsZ-WR-dPi" firstAttribute="leading" secondItem="0bU-UJ-bQU" secondAttribute="leading" constant="55" id="TkC-iK-NSi"/>
                             <constraint firstItem="SDn-c6-LDH" firstAttribute="top" secondItem="4vJ-Lh-yST" secondAttribute="top" id="VB8-wN-hSH"/>
                             <constraint firstItem="Ej1-eb-Vcs" firstAttribute="leading" secondItem="0bU-UJ-bQU" secondAttribute="leading" constant="16" id="Wn4-aq-pyQ"/>
                             <constraint firstItem="ibI-PI-ysT" firstAttribute="bottom" secondItem="0bU-UJ-bQU" secondAttribute="bottom" id="ZgN-IL-4t3"/>
@@ -1738,19 +1746,19 @@
                         <viewLayoutGuide key="safeArea" id="0bU-UJ-bQU"/>
                     </view>
                     <connections>
-                        <outlet property="agelabel" destination="NFt-rF-80J" id="hxr-1p-onx"/>
-                        <outlet property="button1" destination="Ej1-eb-Vcs" id="mwm-76-m8E"/>
-                        <outlet property="pickerView" destination="ibI-PI-ysT" id="LvH-Vl-lzs"/>
+                        <outlet property="agelabel" destination="NFt-rF-80J" id="HIG-7h-hak"/>
+                        <outlet property="button1" destination="Ej1-eb-Vcs" id="5r7-Zg-Z4F"/>
+                        <outlet property="pickerView" destination="ibI-PI-ysT" id="K1e-k2-CIc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ob8-Oq-lgO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12639" y="1433"/>
+            <point key="canvasLocation" x="-12639.200000000001" y="1432.5337331334333"/>
         </scene>
-        <!--View Controller-->
+        <!--Overview2 View Controller-->
         <scene sceneID="u5c-4c-Chi">
             <objects>
-                <viewController id="dBj-HJ-xJ5" customClass="BViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dBj-HJ-xJ5" customClass="Overview2ViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AQ5-mI-eHz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1781,6 +1789,9 @@
                                 <state key="normal" backgroundImage="Back-1">
                                     <color key="titleColor" red="0.29408180709999998" green="0.29413825269999999" blue="0.29407823090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="86B-4c-bm3" kind="show" customClass="SegueFromLeft" customModule="Together" customModuleProvider="target" id="ggU-xi-G4Y"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your gender" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm0-9G-hX9">
                                 <rect key="frame" x="69" y="84" width="237" height="77"/>
@@ -1834,7 +1845,8 @@
                                     <color key="titleColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapContinue:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="ErB-YO-Td2"/>
+                                    <action selector="tapContinue:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="BHv-t4-X5T"/>
+                                    <segue destination="cEd-23-Ld9" kind="show" customClass="SegueFromRight" customModule="Together" customModuleProvider="target" id="ShY-uL-fjN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLo-1T-zCe">
@@ -1849,6 +1861,7 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.36078431370000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="tapB1:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="gu9-d4-obF"/>
                                     <action selector="tapContinue:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="Jti-TU-sov"/>
                                 </connections>
                             </button>
@@ -1864,6 +1877,7 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.36078431370000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="tapB2:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="bkr-Ge-y4B"/>
                                     <action selector="tapContinue:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="etE-Fv-lyB"/>
                                 </connections>
                             </button>
@@ -1893,6 +1907,7 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.36078431370000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="tapB3:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="vcm-3o-tK9"/>
                                     <action selector="tapContinue:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="Cmx-gX-O4J"/>
                                 </connections>
                             </button>
@@ -1940,15 +1955,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7qr-CU-bMw"/>
                     </view>
+                    <connections>
+                        <outlet property="tapb1" destination="zLo-1T-zCe" id="iAk-y6-Pnx"/>
+                        <outlet property="tapb2" destination="BQg-xk-ETd" id="r5Q-Ki-3gj"/>
+                        <outlet property="tapb3" destination="lX6-fV-dS5" id="EDf-dT-D3h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFv-ow-mXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-11839.200000000001" y="1432.5337331334333"/>
         </scene>
-        <!--View Controller-->
+        <!--Overview3 View Controller-->
         <scene sceneID="Dg4-7e-kr6">
             <objects>
-                <viewController id="cEd-23-Ld9" customClass="CViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cEd-23-Ld9" customClass="Overview3ViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9l-LB-cei">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1965,6 +1985,9 @@
                                 <state key="normal" backgroundImage="Back-1">
                                     <color key="titleColor" red="0.29408180709999998" green="0.29413825269999999" blue="0.29407823090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="dBj-HJ-xJ5" kind="show" customClass="SegueFromLeft" customModule="Together" customModuleProvider="target" id="ntj-4F-KC8"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which best describes you?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39k-lI-m2N">
                                 <rect key="frame" x="25.5" y="84" width="324" height="77"/>
@@ -2026,7 +2049,8 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapNext:" destination="cEd-23-Ld9" eventType="touchUpInside" id="Xeh-XG-tgb"/>
+                                    <action selector="tapContinue:" destination="cEd-23-Ld9" eventType="touchUpInside" id="WKP-62-CTr"/>
+                                    <segue destination="P3Q-H6-Xzz" kind="show" customClass="SegueFromRight" customModule="Together" customModuleProvider="target" id="bgc-l0-YAt"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GreenBlueButton" translatesAutoresizingMaskIntoConstraints="NO" id="2qV-63-Nk9">
@@ -2048,6 +2072,7 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.36078431370000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="tapB1:" destination="cEd-23-Ld9" eventType="touchUpInside" id="y2j-HE-fjt"/>
                                     <action selector="tapContinue:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="LDu-Rx-wTN"/>
                                 </connections>
                             </button>
@@ -2063,6 +2088,7 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.36078431370000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="tapB2:" destination="cEd-23-Ld9" eventType="touchUpInside" id="Jkl-1V-vAS"/>
                                     <action selector="tapContinue:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="Mal-GR-xTN"/>
                                 </connections>
                             </button>
@@ -2078,6 +2104,7 @@
                                     <color key="titleColor" red="0.35686274509999999" green="0.36078431370000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="tapB3:" destination="cEd-23-Ld9" eventType="touchUpInside" id="EAi-cO-2cC"/>
                                     <action selector="tapContinue:" destination="dBj-HJ-xJ5" eventType="touchUpInside" id="j7m-1Q-pT6"/>
                                 </connections>
                             </button>
@@ -2114,15 +2141,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p8H-dp-KE0"/>
                     </view>
+                    <connections>
+                        <outlet property="tapb1" destination="Qen-cj-E9l" id="iyD-PL-Tpe"/>
+                        <outlet property="tapb2" destination="Tqk-aP-dGv" id="0gg-FQ-AIV"/>
+                        <outlet property="tapb3" destination="aGn-rF-KTu" id="mbT-nz-NJA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6LH-uQ-6HF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-11010" y="1433"/>
         </scene>
-        <!--View Controller-->
+        <!--Overview4 View Controller-->
         <scene sceneID="ife-q1-cjT">
             <objects>
-                <viewController id="P3Q-H6-Xzz" customClass="DViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="P3Q-H6-Xzz" customClass="Overview4ViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wQ1-Qv-wtR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2139,6 +2171,9 @@
                                 <state key="normal" backgroundImage="Back-1">
                                     <color key="titleColor" red="0.29408180709999998" green="0.29413825269999999" blue="0.29407823090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="cEd-23-Ld9" kind="show" customClass="SegueFromLeft" customModule="Together" customModuleProvider="target" id="hae-qd-suV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your ideal weight that you want to reach?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeE-ux-x1c">
                                 <rect key="frame" x="40.5" y="84" width="294" height="77"/>
@@ -2165,7 +2200,8 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapContinue:" destination="P3Q-H6-Xzz" eventType="touchUpInside" id="8N8-sC-SVD"/>
+                                    <action selector="tapContinue:" destination="P3Q-H6-Xzz" eventType="touchUpInside" id="BeX-Qz-F0Q"/>
+                                    <segue destination="uot-LY-b5F" kind="show" customClass="SegueFromRight" customModule="Together" customModuleProvider="target" id="Wjg-Sh-AxE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="vGl-yQ-pLU">
@@ -2178,9 +2214,6 @@
                                 <state key="normal" backgroundImage="BLUEOUTLINERECETANGLE">
                                     <color key="titleColor" red="0.13358581850000001" green="0.13358581850000001" blue="0.13358581850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="tapB4:" destination="P3Q-H6-Xzz" eventType="touchUpInside" id="mUg-d4-dFg"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PORK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdI-fJ-3G8">
                                 <rect key="frame" x="87.5" y="528" width="201" height="23"/>
@@ -2253,6 +2286,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="BasisGrotesquePro-Regular" family="Basis Grotesque Pro" pointSize="32"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="P3Q-H6-Xzz" id="DwV-hi-r4n"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2290,18 +2326,17 @@
                         <viewLayoutGuide key="safeArea" id="hjA-J4-9dJ"/>
                     </view>
                     <connections>
-                        <outlet property="tapbutton4" destination="vGl-yQ-pLU" id="stG-YL-ak5"/>
-                        <outlet property="title4" destination="xdI-fJ-3G8" id="xyg-GS-Wqc"/>
+                        <outlet property="tf" destination="u1C-9Z-F47" id="jnd-bh-3l1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KqZ-kF-ryL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-10146.4" y="1432.5337331334333"/>
         </scene>
-        <!--View Controller-->
+        <!--Overview5 View Controller-->
         <scene sceneID="89x-V3-XKd">
             <objects>
-                <viewController id="uot-LY-b5F" customClass="EViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uot-LY-b5F" customClass="Overview5ViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gDZ-24-bTo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2318,6 +2353,9 @@
                                 <state key="normal" backgroundImage="Back-1">
                                     <color key="titleColor" red="0.29408180709999998" green="0.29413825269999999" blue="0.29407823090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="P3Q-H6-Xzz" kind="show" customClass="SegueFromLeft" customModule="Together" customModuleProvider="target" id="9jq-ge-2cP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your height and weight?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLl-g7-WGy">
                                 <rect key="frame" x="62.5" y="84" width="250" height="77"/>
@@ -2344,7 +2382,8 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapContinue:" destination="uot-LY-b5F" eventType="touchUpInside" id="Kv2-QX-Jdb"/>
+                                    <action selector="tapContinue:" destination="uot-LY-b5F" eventType="touchUpInside" id="k0b-Ch-wbH"/>
+                                    <segue destination="w6y-lf-a6i" kind="show" id="4n8-75-x95"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ehc-em-EJc">
@@ -2357,9 +2396,6 @@
                                 <state key="normal" backgroundImage="BLUEOUTLINERECETANGLE">
                                     <color key="titleColor" red="0.13358581850000001" green="0.13358581850000001" blue="0.13358581850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="tapB4:" destination="uot-LY-b5F" eventType="touchUpInside" id="sKg-mo-KCU"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="POTATO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTf-xb-Bcv">
                                 <rect key="frame" x="87" y="503" width="201" height="23"/>
@@ -2517,8 +2553,9 @@
                         <viewLayoutGuide key="safeArea" id="9G8-xR-xs7"/>
                     </view>
                     <connections>
-                        <outlet property="tapbutton4" destination="Ehc-em-EJc" id="jvd-q5-sc1"/>
-                        <outlet property="title4" destination="zTf-xb-Bcv" id="4ee-N8-mkZ"/>
+                        <outlet property="tf1" destination="hfO-xL-ANC" id="2Gm-HA-fMv"/>
+                        <outlet property="tf2" destination="bkE-x2-6x5" id="umt-E8-gWq"/>
+                        <outlet property="tf3" destination="Vio-n2-V9C" id="iIJ-sg-MtS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEp-Zk-r0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2543,9 +2580,6 @@
                                 <state key="normal" backgroundImage="BLUEOUTLINERECETANGLE">
                                     <color key="titleColor" red="0.13358581850000001" green="0.13358581850000001" blue="0.13358581850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="tapB4:" destination="w6y-lf-a6i" eventType="touchUpInside" id="OJr-W8-sFd"/>
-                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7O-Qa-jgl">
                                 <rect key="frame" x="16" y="46" width="34" height="30"/>
@@ -2559,6 +2593,9 @@
                                 <state key="normal" backgroundImage="Back-1">
                                     <color key="titleColor" red="0.29408180709999998" green="0.29413825269999999" blue="0.29407823090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="uot-LY-b5F" kind="show" customClass="SegueFromLeft" customModule="Together" customModuleProvider="target" id="M7x-m4-c53"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS2-ee-AEJ">
                                 <rect key="frame" x="16" y="586" width="343" height="66"/>
@@ -2573,7 +2610,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapContinue:" destination="w6y-lf-a6i" eventType="touchUpInside" id="NL6-ah-tV2"/>
+                                    <segue destination="Ehc-fa-a9J" kind="show" id="Vx7-oT-gnh"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Orange1" translatesAutoresizingMaskIntoConstraints="NO" id="huh-kV-YHx">
@@ -2678,10 +2715,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QC7-mH-fu0"/>
                     </view>
-                    <connections>
-                        <outlet property="tapbutton4" destination="ESK-Ms-1Il" id="Ml9-hL-p8G"/>
-                        <outlet property="title4" destination="LcL-40-03J" id="HW8-fz-77x"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uju-uc-tWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2721,8 +2754,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapContinue:" destination="Ehc-fa-a9J" eventType="touchUpInside" id="5X1-Un-VaJ"/>
-                                    <action selector="tapNext:" destination="Ehc-fa-a9J" eventType="touchUpInside" id="dec-ox-nR2"/>
+                                    <segue destination="4DI-kc-d52" kind="show" id="MKd-WZ-cxf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rep-3b-Ea2">
@@ -2737,6 +2769,9 @@
                                 <state key="normal" backgroundImage="Back-1">
                                     <color key="titleColor" red="0.48621892929999999" green="0.48630648850000002" blue="0.48621344570000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="w6y-lf-a6i" kind="show" customClass="SegueFromLeft" customModule="Together" customModuleProvider="target" id="v2Y-hS-nNt"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We've found the perfect coach for you to lose weight." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Rz-7P-Nfd">
                                 <rect key="frame" x="75" y="82" width="235" height="92"/>
@@ -2921,12 +2956,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVR-xQ-sWS"/>
                     </view>
-                    <connections>
-                        <outlet property="currentweighttf" destination="Bg3-sD-Yy0" id="B7W-r6-FJl"/>
-                        <outlet property="feettf" destination="Hda-8b-9wS" id="MRX-Gi-vsR"/>
-                        <outlet property="intf" destination="sHf-bx-UVb" id="Ehv-Ds-fWQ"/>
-                        <outlet property="targetweighttf" destination="xzM-FQ-8s4" id="nX1-GT-g8P"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pM7-6l-ug6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2955,6 +2984,13 @@
         <image name="iTunesArtwork" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="le1-sE-VVL"/>
+        <segue reference="v2Y-hS-nNt"/>
+        <segue reference="M7x-m4-c53"/>
+        <segue reference="9jq-ge-2cP"/>
+        <segue reference="ShY-uL-fjN"/>
+        <segue reference="wIx-lc-4em"/>
+        <segue reference="ggU-xi-G4Y"/>
+        <segue reference="V8p-bL-QxQ"/>
+        <segue reference="wig-bA-CyT"/>
     </inferredMetricsTieBreakers>
 </document>

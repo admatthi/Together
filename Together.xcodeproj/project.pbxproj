@@ -83,6 +83,9 @@
 		9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */; };
 		9D9E4A4721862B1700B3C74C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9E4A4621862B1700B3C74C /* StoreKit.framework */; };
 		9D9E4A4B21864CC000B3C74C /* FundedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */; };
+		9D9EB5FB225CF3CB00E8BE97 /* Overview3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */; };
+		9D9EB5FD225CF40600E8BE97 /* Overview4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */; };
+		9D9EB5FF225CF47B00E8BE97 /* Overview5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */; };
 		9DA5C2BE21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DA5C2BF21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DA5C2C021C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
@@ -124,6 +127,7 @@
 		9DC75F8D21C09D250074CA45 /* Help2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */; };
 		9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */; };
 		9DD6A56D21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6A56C21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift */; };
+		9DD8032F225CF0C500E5D761 /* Overview2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8032E225CF0C500E5D761 /* Overview2ViewController.swift */; };
 		9DD9800E21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9800D21BEF2A900A02433 /* PricesCollectionViewCell.swift */; };
 		9DD9800F21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9800D21BEF2A900A02433 /* PricesCollectionViewCell.swift */; };
 		9DD9801021BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9800D21BEF2A900A02433 /* PricesCollectionViewCell.swift */; };
@@ -142,6 +146,7 @@
 		9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */; };
 		9DEA5F1821A0B820000137A3 /* ContacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEA5F1721A0B820000137A3 /* ContacViewController.swift */; };
 		9DEBAED4225CE502007926E9 /* AddWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBAED3225CE502007926E9 /* AddWeightViewController.swift */; };
+		9DEBAED6225CEE84007926E9 /* Overview1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEBAED5225CEE84007926E9 /* Overview1ViewController.swift */; };
 		9DF2E9DE2214783600FE9275 /* FilterBrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */; };
 		CDA65A340E0251A467ABD40B /* Pods_TogetherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AED522BDB9F8FBB8DE7FE7 /* Pods_TogetherUITests.framework */; };
 		F730C0F4CFD34EE9240B5A7C /* Pods_Together.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFCA9B94C66A654D51E53CF /* Pods_Together.framework */; };
@@ -228,6 +233,9 @@
 		9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover2ViewController.swift; sourceTree = "<group>"; };
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9D9E4A4A21864CC000B3C74C /* FundedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundedViewController.swift; sourceTree = "<group>"; };
+		9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview3ViewController.swift; sourceTree = "<group>"; };
+		9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview4ViewController.swift; sourceTree = "<group>"; };
+		9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview5ViewController.swift; sourceTree = "<group>"; };
 		9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB4D29321965344008A57FD /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
@@ -265,6 +273,7 @@
 		9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help2ViewController.swift; sourceTree = "<group>"; };
 		9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToReportViewController.swift; sourceTree = "<group>"; };
 		9DD6A56C21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingDeetsViewController.swift; sourceTree = "<group>"; };
+		9DD8032E225CF0C500E5D761 /* Overview2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview2ViewController.swift; sourceTree = "<group>"; };
 		9DD9800D21BEF2A900A02433 /* PricesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DD9801121BEF2B500A02433 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		9DD9801521BEF2BC00A02433 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +282,7 @@
 		9DE270FB2195ED6100F119D6 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		9DEA5F1721A0B820000137A3 /* ContacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacViewController.swift; sourceTree = "<group>"; };
 		9DEBAED3225CE502007926E9 /* AddWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeightViewController.swift; sourceTree = "<group>"; };
+		9DEBAED5225CEE84007926E9 /* Overview1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview1ViewController.swift; sourceTree = "<group>"; };
 		9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBrandCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5A42F47C5E03279E65B93BA /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
 		D10CC21E67078F943D0D7487 /* Pods-Together.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.debug.xcconfig"; sourceTree = "<group>"; };
@@ -423,7 +433,6 @@
 				9DEA5F1721A0B820000137A3 /* ContacViewController.swift */,
 				9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */,
 				9D46D84C219B29C0006CE94C /* OverviewViewController.swift */,
-				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
 				9DD9801D21BEF31E00A02433 /* OverviewCollectionViewCell.swift */,
 				9DF2E9DD2214783600FE9275 /* FilterBrandCollectionViewCell.swift */,
 				9DC27B9321C44B8B0005759C /* FilterViewController.swift */,
@@ -549,6 +558,12 @@
 				9DEBAED3225CE502007926E9 /* AddWeightViewController.swift */,
 				9D50E19721B0BD0F00065C81 /* SignInViewController.swift */,
 				9D50E19521B0BC4800065C81 /* RegisterViewController.swift */,
+				9D5FD08C2194E14B001B40E1 /* SettingsViewController.swift */,
+				9DEBAED5225CEE84007926E9 /* Overview1ViewController.swift */,
+				9DD8032E225CF0C500E5D761 /* Overview2ViewController.swift */,
+				9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */,
+				9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */,
+				9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */,
 			);
 			path = Coach;
 			sourceTree = "<group>";
@@ -812,8 +827,10 @@
 				9D7A6A68219C7BE400FBEC22 /* TabInfluencerViewController.swift in Sources */,
 				9D46D84D219B29C0006CE94C /* OverviewViewController.swift in Sources */,
 				9D9E4A4B21864CC000B3C74C /* FundedViewController.swift in Sources */,
+				9D9EB5FB225CF3CB00E8BE97 /* Overview3ViewController.swift in Sources */,
 				9D5DD6BE2198A2FF0085F58A /* UploadViewController.swift in Sources */,
 				9DD9801221BEF2B500A02433 /* ProductTableViewCell.swift in Sources */,
+				9DD8032F225CF0C500E5D761 /* Overview2ViewController.swift in Sources */,
 				9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */,
 				9D9019C8216FA81A00668852 /* RespondViewController.swift in Sources */,
 				9DE270FC2195ED6100F119D6 /* PurchaseViewController.swift in Sources */,
@@ -840,6 +857,8 @@
 				9DB8AE05219DE79200D7D707 /* VideoViewController.swift in Sources */,
 				9D5FD08F2194E794001B40E1 /* MyFamViewController.swift in Sources */,
 				9D09C32B21CE8FFA0075B4EC /* RequestViewController.swift in Sources */,
+				9D9EB5FF225CF47B00E8BE97 /* Overview5ViewController.swift in Sources */,
+				9D9EB5FD225CF40600E8BE97 /* Overview4ViewController.swift in Sources */,
 				9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */,
 				9DD6A56D21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift in Sources */,
 				9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */,
@@ -870,6 +889,7 @@
 				9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */,
 				9D50E19621B0BC4800065C81 /* RegisterViewController.swift in Sources */,
 				9D94017421B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
+				9DEBAED6225CEE84007926E9 /* Overview1ViewController.swift in Sources */,
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
 				9D86EDD421C1719C00A8385B /* CompletedTableViewCell.swift in Sources */,
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,

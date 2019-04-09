@@ -46,7 +46,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
         try! Auth.auth().signOut()
         
-        self.performSegue(withIdentifier: "LogOut4", sender: self)
+        self.performSegue(withIdentifier: "LogOut5", sender: self)
         
         
     }
@@ -122,19 +122,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        HEADERLABEL.addCharacterSpacing()
-        if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
-            
-            loggedin = false
-            taplog.setTitle("Log In", for: .normal)
-            
-        } else {
-            
-            loggedin = true
-            taplog.setTitle("Log Out", for: .normal)
-            
-        }
+    
     }
    
     @IBOutlet weak var tapeditprofile: UIButton!
@@ -155,33 +143,33 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         
   
        
-        tapsubscriptions.layer.cornerRadius = 25.0
-        tapsubscriptions.layer.masksToBounds = true
-        tapprivacy.layer.cornerRadius = 25.0
-        tapprivacy.layer.masksToBounds = true
-        tapterms.layer.cornerRadius = 25.0
-        tapterms.layer.masksToBounds = true
-        tapabout.layer.cornerRadius = 25.0
-        tapabout.layer.masksToBounds = true
-        tapbilling.layer.cornerRadius = 25.0
-        tapbilling.layer.masksToBounds = true
-        tapcontact.layer.cornerRadius = 25.0
-        tapcontact.layer.masksToBounds = true
-        tappublish.layer.cornerRadius = 25.0
-        tappublish.layer.masksToBounds = true
-        
-        if Auth.auth().currentUser == nil {
-            // Do smth if user is not logged in
-            
-            loggedin = false
-            taplog.setTitle("Log In", for: .normal)
-            
-        } else {
-            
-            loggedin = true
-            taplog.setTitle("Log Out", for: .normal)
-
-        }
+//        tapsubscriptions.layer.cornerRadius = 25.0
+//        tapsubscriptions.layer.masksToBounds = true
+//        tapprivacy.layer.cornerRadius = 25.0
+//        tapprivacy.layer.masksToBounds = true
+//        tapterms.layer.cornerRadius = 25.0
+//        tapterms.layer.masksToBounds = true
+//        tapabout.layer.cornerRadius = 25.0
+//        tapabout.layer.masksToBounds = true
+//        tapbilling.layer.cornerRadius = 25.0
+//        tapbilling.layer.masksToBounds = true
+//        tapcontact.layer.cornerRadius = 25.0
+//        tapcontact.layer.masksToBounds = true
+//        tappublish.layer.cornerRadius = 25.0
+//        tappublish.layer.masksToBounds = true
+//
+//        if Auth.auth().currentUser == nil {
+//            // Do smth if user is not logged in
+//
+//            loggedin = false
+//            taplog.setTitle("Log In", for: .normal)
+//
+//        } else {
+//
+//            loggedin = true
+//            taplog.setTitle("Log Out", for: .normal)
+//
+//        }
         // Do any additional setup after loading the view.
     }
     
