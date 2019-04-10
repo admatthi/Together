@@ -86,7 +86,7 @@
 		9D9EB5FB225CF3CB00E8BE97 /* Overview3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */; };
 		9D9EB5FD225CF40600E8BE97 /* Overview4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */; };
 		9D9EB5FF225CF47B00E8BE97 /* Overview5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */; };
-		9D9EB601225CF5D800E8BE97 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB600225CF5D800E8BE97 /* PurchaseViewController.swift */; };
+		9D9EB603225D6B4700E8BE97 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9EB602225D6B4700E8BE97 /* ChatViewController.swift */; };
 		9DA5C2BE21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DA5C2BF21C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
 		9DA5C2C021C70A6F00456DEE /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */; };
@@ -126,6 +126,10 @@
 		9DC75F8B21C09D250074CA45 /* Help2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */; };
 		9DC75F8C21C09D250074CA45 /* Help2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */; };
 		9DC75F8D21C09D250074CA45 /* Help2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */; };
+		9DCC55D2225D6F4D00CF9C84 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC55D1225D6F4D00CF9C84 /* HomeTabViewController.swift */; };
+		9DCC55D6225D707800CF9C84 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC55D5225D707700CF9C84 /* File.swift */; };
+		9DCC55D7225D707800CF9C84 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC55D5225D707700CF9C84 /* File.swift */; };
+		9DCC55D8225D707800CF9C84 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC55D5225D707700CF9C84 /* File.swift */; };
 		9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */; };
 		9DD6A56D21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6A56C21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift */; };
 		9DD8032F225CF0C500E5D761 /* Overview2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8032E225CF0C500E5D761 /* Overview2ViewController.swift */; };
@@ -237,7 +241,7 @@
 		9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview3ViewController.swift; sourceTree = "<group>"; };
 		9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview4ViewController.swift; sourceTree = "<group>"; };
 		9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview5ViewController.swift; sourceTree = "<group>"; };
-		9D9EB600225CF5D800E8BE97 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		9D9EB602225D6B4700E8BE97 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		9DA5C2BD21C70A6F00456DEE /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		9DA5C2C921C9720600456DEE /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DB4D29321965344008A57FD /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
@@ -273,6 +277,9 @@
 		9DC75F8221C0976F0074CA45 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		9DC75F8621C0982A0074CA45 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
 		9DC75F8A21C09D250074CA45 /* Help2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help2ViewController.swift; sourceTree = "<group>"; };
+		9DCC55D0225D6EA500CF9C84 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		9DCC55D1225D6F4D00CF9C84 /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
+		9DCC55D5225D707700CF9C84 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		9DD354D3217231BC003F828A /* ShakeToReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToReportViewController.swift; sourceTree = "<group>"; };
 		9DD6A56C21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingDeetsViewController.swift; sourceTree = "<group>"; };
 		9DD8032E225CF0C500E5D761 /* Overview2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview2ViewController.swift; sourceTree = "<group>"; };
@@ -460,6 +467,8 @@
 		9DB795B921656B5300211327 = {
 			isa = PBXGroup;
 			children = (
+				9DCC55D0225D6EA500CF9C84 /* Bridging-Header.h */,
+				9DCC55D5225D707700CF9C84 /* File.swift */,
 				9D4954632247FC630029F840 /* InputWLViewController.swift */,
 				9D60C09821A34E24002BBF0C /* Test2ViewController.swift */,
 				9DB795C421656B5300211327 /* Together */,
@@ -557,6 +566,7 @@
 		9DEBAED2225CE4EC007926E9 /* Coach */ = {
 			isa = PBXGroup;
 			children = (
+				9DCC55D1225D6F4D00CF9C84 /* HomeTabViewController.swift */,
 				9DEBAED3225CE502007926E9 /* AddWeightViewController.swift */,
 				9D50E19721B0BD0F00065C81 /* SignInViewController.swift */,
 				9D50E19521B0BC4800065C81 /* RegisterViewController.swift */,
@@ -566,7 +576,7 @@
 				9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */,
 				9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */,
 				9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */,
-				9D9EB600225CF5D800E8BE97 /* PurchaseViewController.swift */,
+				9D9EB602225D6B4700E8BE97 /* ChatViewController.swift */,
 			);
 			path = Coach;
 			sourceTree = "<group>";
@@ -793,6 +803,8 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Purchases/Purchases.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
@@ -807,6 +819,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Purchases.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
@@ -883,8 +897,8 @@
 				9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */,
 				9DEBAED4225CE502007926E9 /* AddWeightViewController.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
-				9D9EB601225CF5D800E8BE97 /* PurchaseViewController.swift in Sources */,
 				9DC75F8721C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
+				9DCC55D2225D6F4D00CF9C84 /* HomeTabViewController.swift in Sources */,
 				9D6E91CC21A0CE410013BED6 /* 2LoginViewController.swift in Sources */,
 				9DC0B28F219360C200F56A1A /* PlansTableViewCell.swift in Sources */,
 				9D14813521BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
@@ -904,6 +918,7 @@
 				9D50E19A21B0C69100065C81 /* BrandViewController.swift in Sources */,
 				9DB8AE03219DE6C000D7D707 /* VideosCollectionViewCell.swift in Sources */,
 				9D4A494121B0F9C30004A2B2 /* ShippingViewController.swift in Sources */,
+				9DCC55D6225D707800CF9C84 /* File.swift in Sources */,
 				9D8934C321728D1D001AEF8E /* HomeViewController.swift in Sources */,
 				9D86EDD821C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9DF2E9DE2214783600FE9275 /* FilterBrandCollectionViewCell.swift in Sources */,
@@ -913,6 +928,7 @@
 				9DB4D29421965344008A57FD /* VideoPlayerView.swift in Sources */,
 				9DEA5F1821A0B820000137A3 /* ContacViewController.swift in Sources */,
 				9DC75F8321C0976F0074CA45 /* HelpViewController.swift in Sources */,
+				9D9EB603225D6B4700E8BE97 /* ChatViewController.swift in Sources */,
 				9D94017021B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -930,6 +946,7 @@
 				9DD9801721BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9DC75F8C21C09D250074CA45 /* Help2ViewController.swift in Sources */,
+				9DCC55D7225D707800CF9C84 /* File.swift in Sources */,
 				9D86EDD521C1719C00A8385B /* CompletedTableViewCell.swift in Sources */,
 				9DC75F8821C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9DD9801B21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
@@ -956,6 +973,7 @@
 				9DD9801821BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
 				9DC75F8D21C09D250074CA45 /* Help2ViewController.swift in Sources */,
+				9DCC55D8225D707800CF9C84 /* File.swift in Sources */,
 				9D86EDD621C1719C00A8385B /* CompletedTableViewCell.swift in Sources */,
 				9DC75F8921C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9DD9801C21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
@@ -1134,6 +1152,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.Bling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1155,6 +1174,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.aatech.Bling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

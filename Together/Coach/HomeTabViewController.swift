@@ -1,5 +1,5 @@
 //
-//  PurchaseViewController.swift
+//  HomeTabViewController.swift
 //  Together
 //
 //  Created by Alek Matthiessen on 4/9/19.
@@ -8,12 +8,21 @@
 
 import UIKit
 
-class PurchaseViewController: UIViewController {
+class HomeTabViewController: UITabBarController {
 
+    override func viewDidLayoutSubviews() {
+        
+ 
+        self.tabBar.frame = CGRect(origin: CGPoint(x: 0,y :64), size: CGSize(width: 400, height: 50))
+
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+
     }
     
 

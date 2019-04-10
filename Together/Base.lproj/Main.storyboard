@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="-12639" y="750"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="DlC-Qu-PMp">
             <objects>
-                <viewController id="2Pb-xA-qKv" sceneMemberID="viewController">
+                <viewController id="2Pb-xA-qKv" customClass="ChatViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L0K-AS-cNe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -209,7 +209,7 @@
         <!--HomeTab-->
         <scene sceneID="K7J-db-PGH">
             <objects>
-                <tabBarController storyboardIdentifier="HomeTab" title="HomeTab" id="EEA-I6-ejB" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTab" title="HomeTab" id="EEA-I6-ejB" customClass="HomeTabViewController" customModule="Together" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qvp-P4-fuR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -815,14 +815,13 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1X2-ps-3U1">
                                 <rect key="frame" x="32" y="503" width="311" height="66"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="311" id="2zB-se-XvN"/>
                                     <constraint firstAttribute="height" constant="66" id="RzK-J3-dcn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="BasisGrotesquePro-Bold" family="Basis Grotesque Pro" pointSize="23"/>
+                                <state key="normal" title="Continue" backgroundImage="OR">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.46274509800000002" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bitmap-1" translatesAutoresizingMaskIntoConstraints="NO" id="hpc-Yz-6oC">
@@ -2383,7 +2382,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tapContinue:" destination="uot-LY-b5F" eventType="touchUpInside" id="k0b-Ch-wbH"/>
-                                    <segue destination="w6y-lf-a6i" kind="show" id="4n8-75-x95"/>
+                                    <segue destination="w6y-lf-a6i" kind="show" customClass="SegueFromRight" customModule="Together" customModuleProvider="target" id="4n8-75-x95"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ehc-em-EJc">
@@ -2610,7 +2609,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ehc-fa-a9J" kind="show" id="Vx7-oT-gnh"/>
+                                    <segue destination="Ehc-fa-a9J" kind="show" customClass="SegueFromRight" customModule="Together" customModuleProvider="target" id="Vx7-oT-gnh"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Orange1" translatesAutoresizingMaskIntoConstraints="NO" id="huh-kV-YHx">
@@ -2754,7 +2753,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4DI-kc-d52" kind="show" id="MKd-WZ-cxf"/>
+                                    <segue destination="4DI-kc-d52" kind="show" customClass="SegueFromRight" customModule="Together" customModuleProvider="target" id="MKd-WZ-cxf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rep-3b-Ea2">
@@ -2975,6 +2974,7 @@
         <image name="GreenBlueButton" width="16" height="16"/>
         <image name="Images" width="16" height="16"/>
         <image name="Message-1" width="50" height="50"/>
+        <image name="OR" width="327" height="73"/>
         <image name="Orange1" width="49" height="7"/>
         <image name="Rectangle" width="320" height="75"/>
         <image name="Weight" width="50" height="50"/>
@@ -2984,13 +2984,13 @@
         <image name="iTunesArtwork" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v2Y-hS-nNt"/>
+        <segue reference="4n8-75-x95"/>
         <segue reference="M7x-m4-c53"/>
         <segue reference="9jq-ge-2cP"/>
         <segue reference="ShY-uL-fjN"/>
         <segue reference="wIx-lc-4em"/>
         <segue reference="ggU-xi-G4Y"/>
-        <segue reference="V8p-bL-QxQ"/>
+        <segue reference="le1-sE-VVL"/>
         <segue reference="wig-bA-CyT"/>
     </inferredMetricsTieBreakers>
 </document>
