@@ -94,6 +94,21 @@
 		9D95596F225EEA1900C1559B /* BuyNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95596E225EEA1900C1559B /* BuyNowViewController.swift */; };
 		9D955970225EEA1900C1559B /* BuyNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95596E225EEA1900C1559B /* BuyNowViewController.swift */; };
 		9D955971225EEA1900C1559B /* BuyNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95596E225EEA1900C1559B /* BuyNowViewController.swift */; };
+		9D955973225F8AE300C1559B /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955972225F8AE300C1559B /* SampleData.swift */; };
+		9D955974225F8AE300C1559B /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955972225F8AE300C1559B /* SampleData.swift */; };
+		9D955975225F8AE300C1559B /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955972225F8AE300C1559B /* SampleData.swift */; };
+		9D955978225F8B1100C1559B /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955976225F8B1000C1559B /* MockSocket.swift */; };
+		9D955979225F8B1200C1559B /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955976225F8B1000C1559B /* MockSocket.swift */; };
+		9D95597A225F8B1200C1559B /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955976225F8B1000C1559B /* MockSocket.swift */; };
+		9D95597B225F8B1200C1559B /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955977225F8B1100C1559B /* MockMessage.swift */; };
+		9D95597C225F8B1200C1559B /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955977225F8B1100C1559B /* MockMessage.swift */; };
+		9D95597D225F8B1200C1559B /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955977225F8B1100C1559B /* MockMessage.swift */; };
+		9D95597F225F8B7F00C1559B /* Settings+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95597E225F8B7F00C1559B /* Settings+UserDefaults.swift */; };
+		9D955980225F8B7F00C1559B /* Settings+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95597E225F8B7F00C1559B /* Settings+UserDefaults.swift */; };
+		9D955981225F8B7F00C1559B /* Settings+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95597E225F8B7F00C1559B /* Settings+UserDefaults.swift */; };
+		9D955983225F90CE00C1559B /* CustomMessageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955982225F90CD00C1559B /* CustomMessageFlowLayout.swift */; };
+		9D955984225F90CE00C1559B /* CustomMessageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955982225F90CD00C1559B /* CustomMessageFlowLayout.swift */; };
+		9D955985225F90CE00C1559B /* CustomMessageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955982225F90CD00C1559B /* CustomMessageFlowLayout.swift */; };
 		9D9C665921A321B800309443 /* YourChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9C665821A321B800309443 /* YourChannelViewController.swift */; };
 		9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */; };
 		9D9E4A4721862B1700B3C74C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9E4A4621862B1700B3C74C /* StoreKit.framework */; };
@@ -251,6 +266,11 @@
 		9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOwnViewController.swift; sourceTree = "<group>"; };
 		9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		9D95596E225EEA1900C1559B /* BuyNowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyNowViewController.swift; sourceTree = "<group>"; };
+		9D955972225F8AE300C1559B /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		9D955976225F8B1000C1559B /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
+		9D955977225F8B1100C1559B /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		9D95597E225F8B7F00C1559B /* Settings+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings+UserDefaults.swift"; sourceTree = "<group>"; };
+		9D955982225F90CD00C1559B /* CustomMessageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageFlowLayout.swift; sourceTree = "<group>"; };
 		9D9C665821A321B800309443 /* YourChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChannelViewController.swift; sourceTree = "<group>"; };
 		9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover2ViewController.swift; sourceTree = "<group>"; };
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -589,7 +609,12 @@
 				9D9EB5FA225CF3CB00E8BE97 /* Overview3ViewController.swift */,
 				9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */,
 				9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */,
+				9D955972225F8AE300C1559B /* SampleData.swift */,
+				9D955982225F90CD00C1559B /* CustomMessageFlowLayout.swift */,
 				9D9EB602225D6B4700E8BE97 /* ChatViewController.swift */,
+				9D955977225F8B1100C1559B /* MockMessage.swift */,
+				9D955976225F8B1000C1559B /* MockSocket.swift */,
+				9D95597E225F8B7F00C1559B /* Settings+UserDefaults.swift */,
 				9D0E8F45225EE08100F9FF5F /* AccountOverviewViewController.swift */,
 				9D0E8F4D225EE1A600F9FF5F /* AccountTableViewCell.swift */,
 				9D0E8F51225EE1B300F9FF5F /* CoachTableViewCell.swift */,
@@ -892,6 +917,7 @@
 				9D9EB5FF225CF47B00E8BE97 /* Overview5ViewController.swift in Sources */,
 				9D9EB5FD225CF40600E8BE97 /* Overview4ViewController.swift in Sources */,
 				9DB795F621656CEB00211327 /* LogTableViewCell.swift in Sources */,
+				9D955973225F8AE300C1559B /* SampleData.swift in Sources */,
 				9DD6A56D21B2FB9D0036CDA5 /* ShippingDeetsViewController.swift in Sources */,
 				9D519C8621835E5D0079F9CB /* ProjectViewController.swift in Sources */,
 				9DB8AE00219DDB0300D7D707 /* PeopleCollectionViewCell.swift in Sources */,
@@ -901,6 +927,7 @@
 				9D50E19C21B0C8A200065C81 /* CheckoutViewController.swift in Sources */,
 				9DB52ACD2241A98300B57D98 /* PasscodeViewController.swift in Sources */,
 				9D519C8821835E8F0079F9CB /* ProjectCollectionViewCell.swift in Sources */,
+				9D95597B225F8B1200C1559B /* MockMessage.swift in Sources */,
 				9DD9800E21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9DC75F8B21C09D250074CA45 /* Help2ViewController.swift in Sources */,
 				9D21151D223EE44600CB7BE5 /* FeedbackViewController.swift in Sources */,
@@ -909,6 +936,7 @@
 				9D5FD08B21949795001B40E1 /* AboutViewController.swift in Sources */,
 				9D451F7F216B949A009708D4 /* AnswersTableViewCell.swift in Sources */,
 				9D5FD09121952BD5001B40E1 /* LoginViewController.swift in Sources */,
+				9D955978225F8B1100C1559B /* MockSocket.swift in Sources */,
 				9D5FD08D2194E14B001B40E1 /* SettingsViewController.swift in Sources */,
 				9DEBAED4225CE502007926E9 /* AddWeightViewController.swift in Sources */,
 				9DB795C621656B5300211327 /* AppDelegate.swift in Sources */,
@@ -926,7 +954,9 @@
 				9DEBAED6225CEE84007926E9 /* Overview1ViewController.swift in Sources */,
 				9D0E8F4A225EE0D700F9FF5F /* CoachViewController.swift in Sources */,
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
+				9D95597F225F8B7F00C1559B /* Settings+UserDefaults.swift in Sources */,
 				9D86EDD421C1719C00A8385B /* CompletedTableViewCell.swift in Sources */,
+				9D955983225F90CE00C1559B /* CustomMessageFlowLayout.swift in Sources */,
 				9D0E8F4E225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */,
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
@@ -956,14 +986,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D0E8F53225EE1B300F9FF5F /* CoachTableViewCell.swift in Sources */,
+				9D955984225F90CE00C1559B /* CustomMessageFlowLayout.swift in Sources */,
 				9DC75F8421C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795DB21656B5700211327 /* TogetherTests.swift in Sources */,
 				9DA5C2CB21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */,
 				9DD9800F21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9D86EDD921C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9D0E8F4F225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */,
+				9D955974225F8AE300C1559B /* SampleData.swift in Sources */,
 				9D0E8F47225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */,
 				9D955970225EEA1900C1559B /* BuyNowViewController.swift in Sources */,
+				9D955980225F8B7F00C1559B /* Settings+UserDefaults.swift in Sources */,
+				9D955979225F8B1200C1559B /* MockSocket.swift in Sources */,
 				9D94017121B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801721BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
@@ -973,6 +1007,7 @@
 				9DD9801B21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9D0E8F4B225EE0D700F9FF5F /* CoachViewController.swift in Sources */,
+				9D95597C225F8B1200C1559B /* MockMessage.swift in Sources */,
 				9DD9801F21BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
 				9D4954652247FC630029F840 /* InputWLViewController.swift in Sources */,
 				9D09C32C21CE8FFA0075B4EC /* RequestViewController.swift in Sources */,
@@ -987,14 +1022,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D0E8F54225EE1B300F9FF5F /* CoachTableViewCell.swift in Sources */,
+				9D955985225F90CE00C1559B /* CustomMessageFlowLayout.swift in Sources */,
 				9DC75F8521C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */,
 				9DA5C2CC21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */,
 				9DD9801021BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9D86EDDA21C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9D0E8F50225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */,
+				9D955975225F8AE300C1559B /* SampleData.swift in Sources */,
 				9D0E8F48225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */,
 				9D955971225EEA1900C1559B /* BuyNowViewController.swift in Sources */,
+				9D955981225F8B7F00C1559B /* Settings+UserDefaults.swift in Sources */,
+				9D95597A225F8B1200C1559B /* MockSocket.swift in Sources */,
 				9D94017221B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801821BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
@@ -1004,6 +1043,7 @@
 				9DD9801C21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
 				9D0E8F4C225EE0D700F9FF5F /* CoachViewController.swift in Sources */,
+				9D95597D225F8B1200C1559B /* MockMessage.swift in Sources */,
 				9DD9802021BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
 				9D4954662247FC630029F840 /* InputWLViewController.swift in Sources */,
 				9D09C32D21CE8FFA0075B4EC /* RequestViewController.swift in Sources */,
