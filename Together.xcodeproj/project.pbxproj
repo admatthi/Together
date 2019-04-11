@@ -11,6 +11,18 @@
 		9D09C32B21CE8FFA0075B4EC /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09C32A21CE8FFA0075B4EC /* RequestViewController.swift */; };
 		9D09C32C21CE8FFA0075B4EC /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09C32A21CE8FFA0075B4EC /* RequestViewController.swift */; };
 		9D09C32D21CE8FFA0075B4EC /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09C32A21CE8FFA0075B4EC /* RequestViewController.swift */; };
+		9D0E8F46225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F45225EE08100F9FF5F /* AccountOverviewViewController.swift */; };
+		9D0E8F47225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F45225EE08100F9FF5F /* AccountOverviewViewController.swift */; };
+		9D0E8F48225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F45225EE08100F9FF5F /* AccountOverviewViewController.swift */; };
+		9D0E8F4A225EE0D700F9FF5F /* CoachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F49225EE0D700F9FF5F /* CoachViewController.swift */; };
+		9D0E8F4B225EE0D700F9FF5F /* CoachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F49225EE0D700F9FF5F /* CoachViewController.swift */; };
+		9D0E8F4C225EE0D700F9FF5F /* CoachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F49225EE0D700F9FF5F /* CoachViewController.swift */; };
+		9D0E8F4E225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F4D225EE1A600F9FF5F /* AccountTableViewCell.swift */; };
+		9D0E8F4F225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F4D225EE1A600F9FF5F /* AccountTableViewCell.swift */; };
+		9D0E8F50225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F4D225EE1A600F9FF5F /* AccountTableViewCell.swift */; };
+		9D0E8F52225EE1B300F9FF5F /* CoachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F51225EE1B300F9FF5F /* CoachTableViewCell.swift */; };
+		9D0E8F53225EE1B300F9FF5F /* CoachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F51225EE1B300F9FF5F /* CoachTableViewCell.swift */; };
+		9D0E8F54225EE1B300F9FF5F /* CoachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E8F51225EE1B300F9FF5F /* CoachTableViewCell.swift */; };
 		9D0F86A221710A6400AE5F18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F86A121710A6400AE5F18 /* Constants.swift */; };
 		9D14813521BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */; };
 		9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */; };
@@ -182,6 +194,10 @@
 		8BFCA9B94C66A654D51E53CF /* Pods_Together.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Together.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		946746B00455D23BCECD7726 /* Pods-Together.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Together.release.xcconfig"; path = "Pods/Target Support Files/Pods-Together/Pods-Together.release.xcconfig"; sourceTree = "<group>"; };
 		9D09C32A21CE8FFA0075B4EC /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestViewController.swift; path = Together/RequestViewController.swift; sourceTree = SOURCE_ROOT; };
+		9D0E8F45225EE08100F9FF5F /* AccountOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOverviewViewController.swift; sourceTree = "<group>"; };
+		9D0E8F49225EE0D700F9FF5F /* CoachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachViewController.swift; sourceTree = "<group>"; };
+		9D0E8F4D225EE1A600F9FF5F /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		9D0E8F51225EE1B300F9FF5F /* CoachTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachTableViewCell.swift; sourceTree = "<group>"; };
 		9D0F86A121710A6400AE5F18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9D14813421BF3D7A00339C96 /* BuyerTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerTabBarViewController.swift; sourceTree = "<group>"; };
 		9D1EBF0321750F91004A566A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -570,6 +586,10 @@
 				9D9EB5FC225CF40600E8BE97 /* Overview4ViewController.swift */,
 				9D9EB5FE225CF47B00E8BE97 /* Overview5ViewController.swift */,
 				9D9EB602225D6B4700E8BE97 /* ChatViewController.swift */,
+				9D0E8F45225EE08100F9FF5F /* AccountOverviewViewController.swift */,
+				9D0E8F4D225EE1A600F9FF5F /* AccountTableViewCell.swift */,
+				9D0E8F51225EE1B300F9FF5F /* CoachTableViewCell.swift */,
+				9D0E8F49225EE0D700F9FF5F /* CoachViewController.swift */,
 			);
 			path = Coach;
 			sourceTree = "<group>";
@@ -896,14 +916,18 @@
 				9D5FD089219496CB001B40E1 /* AboutTableViewCell.swift in Sources */,
 				9D50E19621B0BC4800065C81 /* RegisterViewController.swift in Sources */,
 				9D94017421B1B1BE00E32912 /* MyOwnViewController.swift in Sources */,
+				9D0E8F52225EE1B300F9FF5F /* CoachTableViewCell.swift in Sources */,
 				9DEBAED6225CEE84007926E9 /* Overview1ViewController.swift in Sources */,
+				9D0E8F4A225EE0D700F9FF5F /* CoachViewController.swift in Sources */,
 				9D8934C921740ACC001AEF8E /* QuestionsViewController.swift in Sources */,
 				9D86EDD421C1719C00A8385B /* CompletedTableViewCell.swift in Sources */,
+				9D0E8F4E225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */,
 				9D451F7D216B948A009708D4 /* AnswersViewController.swift in Sources */,
 				9D451F81216B96B6009708D4 /* AskViewController.swift in Sources */,
 				9D9C665921A321B800309443 /* YourChannelViewController.swift in Sources */,
 				9D5DBE3C219A26B8000C46FC /* RevenueViewController.swift in Sources */,
 				9DC0B28021910AB900F56A1A /* ProjectTableViewCell.swift in Sources */,
+				9D0E8F46225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */,
 				9D50E19A21B0C69100065C81 /* BrandViewController.swift in Sources */,
 				9DB8AE03219DE6C000D7D707 /* VideosCollectionViewCell.swift in Sources */,
 				9D4A494121B0F9C30004A2B2 /* ShippingViewController.swift in Sources */,
@@ -925,11 +949,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0E8F53225EE1B300F9FF5F /* CoachTableViewCell.swift in Sources */,
 				9DC75F8421C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795DB21656B5700211327 /* TogetherTests.swift in Sources */,
 				9DA5C2CB21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */,
 				9DD9800F21BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9D86EDD921C1727500A8385B /* CompletedViewController.swift in Sources */,
+				9D0E8F4F225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */,
+				9D0E8F47225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */,
 				9D94017121B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801721BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
@@ -938,6 +965,7 @@
 				9DC75F8821C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9DD9801B21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813621BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
+				9D0E8F4B225EE0D700F9FF5F /* CoachViewController.swift in Sources */,
 				9DD9801F21BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
 				9D4954652247FC630029F840 /* InputWLViewController.swift in Sources */,
 				9D09C32C21CE8FFA0075B4EC /* RequestViewController.swift in Sources */,
@@ -951,11 +979,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0E8F54225EE1B300F9FF5F /* CoachTableViewCell.swift in Sources */,
 				9DC75F8521C0976F0074CA45 /* HelpViewController.swift in Sources */,
 				9DB795E621656B5700211327 /* TogetherUITests.swift in Sources */,
 				9DA5C2CC21C9720700456DEE /* CategoriesCollectionViewCell.swift in Sources */,
 				9DD9801021BEF2A900A02433 /* PricesCollectionViewCell.swift in Sources */,
 				9D86EDDA21C1727500A8385B /* CompletedViewController.swift in Sources */,
+				9D0E8F50225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */,
+				9D0E8F48225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */,
 				9D94017221B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801821BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
@@ -964,6 +995,7 @@
 				9DC75F8921C0982A0074CA45 /* HelpTableViewCell.swift in Sources */,
 				9DD9801C21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D14813721BF3D7A00339C96 /* BuyerTabBarViewController.swift in Sources */,
+				9D0E8F4C225EE0D700F9FF5F /* CoachViewController.swift in Sources */,
 				9DD9802021BEF31F00A02433 /* OverviewCollectionViewCell.swift in Sources */,
 				9D4954662247FC630029F840 /* InputWLViewController.swift in Sources */,
 				9D09C32D21CE8FFA0075B4EC /* RequestViewController.swift in Sources */,
