@@ -9,7 +9,6 @@
 import UIKit
 import IQKeyboardManager
 import Firebase
-import MessageKit
 
 var myorange = UIColor(red:0.99, green:0.51, blue:0.30, alpha:1.0)
 
