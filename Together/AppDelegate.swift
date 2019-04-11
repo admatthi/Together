@@ -84,6 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "HomeTab") as! UITabBarController
             
+            tabBarBuyer.selectedIndex = 1
+
             self.window = UIWindow(frame: UIScreen.main.bounds)
             self.window?.rootViewController = tabBarBuyer
             

@@ -1,37 +1,19 @@
 //
-//  HomeTabViewController.swift
+//  BuyNowViewController.swift
 //  Together
 //
-//  Created by Alek Matthiessen on 4/9/19.
+//  Created by Alek Matthiessen on 4/10/19.
 //  Copyright © 2019 AA Tech. All rights reserved.
 //
 
 import UIKit
 
-class HomeTabViewController: UITabBarController {
+class BuyNowViewController: UIViewController {
 
-    override func viewDidLayoutSubviews() {
-        
- 
-        self.tabBar.frame = CGRect(origin: CGPoint(x: 0,y :64), size: CGSize(width: 400, height: 50))
-
-        self.tabBar.layer.borderWidth = 0.0
-        self.tabBar.layer.borderColor = UIColor.clear.cgColor
-        self.tabBar.clipsToBounds = true
-        self.tabBar.itemSpacing = 1000
-    
-        
-        
-
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
-
-
     }
     
 

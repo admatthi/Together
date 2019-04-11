@@ -91,6 +91,9 @@
 		9D94017821B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */; };
 		9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */; };
 		9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */; };
+		9D95596F225EEA1900C1559B /* BuyNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95596E225EEA1900C1559B /* BuyNowViewController.swift */; };
+		9D955970225EEA1900C1559B /* BuyNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95596E225EEA1900C1559B /* BuyNowViewController.swift */; };
+		9D955971225EEA1900C1559B /* BuyNowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D95596E225EEA1900C1559B /* BuyNowViewController.swift */; };
 		9D9C665921A321B800309443 /* YourChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9C665821A321B800309443 /* YourChannelViewController.swift */; };
 		9D9E4A45218626F800B3C74C /* Discover2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */; };
 		9D9E4A4721862B1700B3C74C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D9E4A4621862B1700B3C74C /* StoreKit.framework */; };
@@ -247,6 +250,7 @@
 		9D94016F21B1AF5F00E32912 /* ThanksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
 		9D94017321B1B1BE00E32912 /* MyOwnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOwnViewController.swift; sourceTree = "<group>"; };
 		9D94017721B1B2A700E32912 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
+		9D95596E225EEA1900C1559B /* BuyNowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyNowViewController.swift; sourceTree = "<group>"; };
 		9D9C665821A321B800309443 /* YourChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChannelViewController.swift; sourceTree = "<group>"; };
 		9D9E4A44218626F800B3C74C /* Discover2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover2ViewController.swift; sourceTree = "<group>"; };
 		9D9E4A4621862B1700B3C74C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -590,6 +594,7 @@
 				9D0E8F4D225EE1A600F9FF5F /* AccountTableViewCell.swift */,
 				9D0E8F51225EE1B300F9FF5F /* CoachTableViewCell.swift */,
 				9D0E8F49225EE0D700F9FF5F /* CoachViewController.swift */,
+				9D95596E225EEA1900C1559B /* BuyNowViewController.swift */,
 			);
 			path = Coach;
 			sourceTree = "<group>";
@@ -863,6 +868,7 @@
 				9DB8ADFE219DD14D00D7D707 /* WatchViewController.swift in Sources */,
 				9DC27B9421C44B8B0005759C /* FilterViewController.swift in Sources */,
 				9D1EBF08217605AD004A566A /* FeedTableViewCell.swift in Sources */,
+				9D95596F225EEA1900C1559B /* BuyNowViewController.swift in Sources */,
 				9DD9801A21BEF2C400A02433 /* CreditCardViewController.swift in Sources */,
 				9D50E19821B0BD0F00065C81 /* SignInViewController.swift in Sources */,
 				9DD354D4217231BC003F828A /* ShakeToReportViewController.swift in Sources */,
@@ -957,6 +963,7 @@
 				9D86EDD921C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9D0E8F4F225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */,
 				9D0E8F47225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */,
+				9D955970225EEA1900C1559B /* BuyNowViewController.swift in Sources */,
 				9D94017121B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801721BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017921B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
@@ -987,6 +994,7 @@
 				9D86EDDA21C1727500A8385B /* CompletedViewController.swift in Sources */,
 				9D0E8F50225EE1A600F9FF5F /* AccountTableViewCell.swift in Sources */,
 				9D0E8F48225EE08100F9FF5F /* AccountOverviewViewController.swift in Sources */,
+				9D955971225EEA1900C1559B /* BuyNowViewController.swift in Sources */,
 				9D94017221B1AF6000E32912 /* ThanksViewController.swift in Sources */,
 				9DD9801821BEF2BC00A02433 /* ProductViewController.swift in Sources */,
 				9D94017A21B1B2A700E32912 /* OrdersTableViewCell.swift in Sources */,
