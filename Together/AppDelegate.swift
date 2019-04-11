@@ -67,27 +67,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
       
 //
         if Auth.auth().currentUser == nil {
-            
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview1") as UIViewController
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = initialViewControlleripad
-            self.window?.makeKeyAndVisible()
+//
+//            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "Overview1") as UIViewController
+//            self.window = UIWindow(frame: UIScreen.main.bounds)
+//            self.window?.rootViewController = initialViewControlleripad
+//            self.window?.makeKeyAndVisible()
             
         } else {
             
-            let currentUser = Auth.auth().currentUser
-            //
-            uid = (currentUser?.uid)!
-            
-            
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "HomeTab") as! UITabBarController
-            
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = tabBarBuyer
-            
-            self.window?.makeKeyAndVisible()
+//            let currentUser = Auth.auth().currentUser
+//            //
+//            uid = (currentUser?.uid)!
+//            
+//            
+//            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let tabBarBuyer : UITabBarController = mainStoryboardIpad.instantiateViewController(withIdentifier: "HomeTab") as! UITabBarController
+//            
+//            self.window = UIWindow(frame: UIScreen.main.bounds)
+//            self.window?.rootViewController = tabBarBuyer
+//            
+//            self.window?.makeKeyAndVisible()
             
         }
 
